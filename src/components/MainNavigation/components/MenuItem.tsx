@@ -18,13 +18,14 @@ export const MenuItem = ({
   visible,
   active,
 }: MenuItemProps) => {
+  const isLeft = side === "left";
   return (
     <span
       className={fallback(
         className,
         merge(
           styles.item,
-          side === "left" ? styles.left : styles.right,
+          isLeft ? styles.left : styles.right,
           visible && styles.visible,
           active && styles.active
         )

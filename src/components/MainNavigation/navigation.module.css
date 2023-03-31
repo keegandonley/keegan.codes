@@ -8,12 +8,19 @@
   left: calc(50% - 20px);
   width: 40px;
   height: 40px;
-  background: white;
+  background: var(--theme-dark);
   border-radius: 100%;
   display: flex;
   align-items: center;
-  border: 3px solid var(--theme-blue-1);
+  border: 2px solid var(--theme-dark);
   cursor: pointer;
+  overflow: hidden;
+  transition: border-color var(--animation);
+}
+
+.dark {
+  border-color: var(--theme-yellow);
+  background-color: var(--theme-yellow);
 }
 
 .themeWrapper svg {

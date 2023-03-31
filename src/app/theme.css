@@ -1,10 +1,14 @@
 :root {
   /* Theme colors */
-  --theme-primary: #0036ca;
-  --theme-blue-1: rgb(40, 95, 220);
-  --theme-blue-2: rgb(81, 151, 219);
+  --theme-blue-1: #87ceeb;
+  --theme-blue-2: #1e90ff;
+  --theme-blue-3: #000080;
   --theme-text: #19376d;
+  --theme-yellow: #f6ae2d;
+  --theme-dark: #272727;
   --theme-inverted-text: #e3e5f0;
 
+  /* Theme animation */
   --animation: 0.5s ease-in-out;
+  --animation-curve: cubic-bezier(0.2, 0.85, 0.45, 1.3);
 }

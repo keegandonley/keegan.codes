@@ -5,7 +5,9 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import { MainNavigation } from "@/components/MainNavigation";
 import { Raleway } from "next/font/google";
 import { merge } from "@/util/classNames";
+
 config.autoAddCss = false;
+
 const font = Raleway({ subsets: ["latin"], weight: ["200", "600"] });
 
 export const metadata = {

@@ -1,0 +1,27 @@
+.animatedIcon {
+  position: absolute;
+  left: -2px;
+  bottom: -2px;
+  right: -2px;
+  transition: transform var(--animation);
+  transition-timing-function: var(--animation-curve);
+  height: calc(100% + 4px);
+  display: flex;
+  align-items: center;
+  border-radius: 100%;
+}
+
+.fromBottom {
+  transform: translateY(40px);
+  background-color: var(--theme-dark);
+  color: var(--theme-inverted-text);
+}
+
+.fromTop {
+  transform: translateY(-40px);
+  background-color: var(--theme-yellow);
+}
+
+.show {
+  transform: translateY(0);
+}

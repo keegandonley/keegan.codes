@@ -1,7 +1,7 @@
 .image {
   margin: 0 auto;
   border-radius: 100%;
-  border: 3px solid var(--theme-blue-1);
+  border: 3px solid var(--theme-blue-2);
   user-select: none;
   transition: width var(--animation), height var(--animation);
 }

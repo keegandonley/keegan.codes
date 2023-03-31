@@ -13,6 +13,6 @@
 }
 
 .paragraph a {
-  color: var(--theme-blue-1);
+  color: var(--theme-blue-2);
   text-decoration: dotted;
 }
