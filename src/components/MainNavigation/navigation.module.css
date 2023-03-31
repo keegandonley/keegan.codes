@@ -1,0 +1,21 @@
+.avatarWrapper {
+  position: relative;
+}
+
+.themeWrapper {
+  position: absolute;
+  bottom: -10px;
+  left: calc(50% - 20px);
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  border: 3px solid var(--theme-blue-1);
+  cursor: pointer;
+}
+
+.themeWrapper svg {
+  margin: 0 auto;
+}

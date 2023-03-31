@@ -1,21 +1,37 @@
-import Image from "next/image";
-import { Raleway } from "next/font/google";
-import styles from "./page.module.css";
-import { Avatar } from "@/components/Avatar";
 import { HeroText } from "@/components/Hero/Text";
 import { HeroBlock } from "@/components/Hero/Block";
 import { Divider } from "@/components/Divider";
-
-const font = Raleway({ subsets: ["latin"], weight: "200" });
+import { Social } from "@/components/Social";
+import { Paragraph } from "@/components/Paragraph";
+import Link from "next/link";
+import { Button } from "@/components/Button";
 
 export default function Home() {
   return (
-    <main className={font.className}>
-      <HeroBlock>
-        <Avatar width={150} />
+    <>
+      <HeroBlock isHomePage>
         <HeroText>Keegan Donley</HeroText>
       </HeroBlock>
       <Divider />
-    </main>
+      <Social />
+      <section>
+        <Paragraph>
+          Hi there! I&apos;m a <strong>full-stack engineer</strong> located in
+          Austin, Texas.
+        </Paragraph>
+        <Paragraph>
+          I love solving challenging problems for the web, and building
+          applications that are performant, accessible, and easy to use.
+        </Paragraph>
+        <Paragraph>
+          I&apos;m currently working as a{" "}
+          <strong>principal front-end engineer</strong> at{" "}
+          <Link href="https://kizen.com">Kizen</Link>.
+        </Paragraph>
+        <div>
+          <Button href="/blog">Read my blog</Button>
+        </div>
+      </section>
+    </>
   );
 }

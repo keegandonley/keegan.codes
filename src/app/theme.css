@@ -1,8 +1,10 @@
-/* Theme colors */
-
 :root {
+  /* Theme colors */
   --theme-primary: #0036ca;
   --theme-blue-1: rgb(40, 95, 220);
   --theme-blue-2: rgb(81, 151, 219);
   --theme-text: #19376d;
+  --theme-inverted-text: #e3e5f0;
+
+  --animation: 0.5s ease-in-out;
 }

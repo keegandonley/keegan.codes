@@ -1,5 +1,12 @@
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding-top: 4rem;
+  transition: padding-top 0.5s ease-in-out;
+  align-items: center;
+  text-align: center;
+}
+
+.small {
+  padding-top: 2rem;
 }

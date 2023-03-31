@@ -1,6 +1,7 @@
 .text {
-  padding: 2rem;
+  padding-bottom: 1rem;
   text-align: center;
   font-size: var(--text-largest);
   color: var(--theme-text);
+  margin: 0 auto;
 }

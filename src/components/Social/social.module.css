@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+
+.icons {
+  display: flex;
+  column-gap: 1rem;
+  font-size: 1.1rem;
+}
+
+.icon {
+  transition: all 0.2s;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+  filter: saturate(130%);
+}
