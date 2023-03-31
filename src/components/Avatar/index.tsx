@@ -20,6 +20,7 @@ export const Avatar = ({
       width={width}
       src={avatar}
       alt={alt}
+      placeholder="blur"
     />
   );
 };
