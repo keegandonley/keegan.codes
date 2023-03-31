@@ -13,13 +13,19 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: ({ children }) => (
       <h1 className={merge(styles.h, styles.h1)}>{children}</h1>
     ),
-    p: ({ children }) => <p className={styles.p}>{children}</p>,
     h2: ({ children }) => (
       <h2 className={merge(styles.h, styles.h2)}>{children}</h2>
     ),
     h3: ({ children }) => (
       <h3 className={merge(styles.h, styles.h3)}>{children}</h3>
     ),
+    h4: ({ children }) => (
+      <h4 className={merge(styles.h, styles.h4)}>{children}</h4>
+    ),
+    h5: ({ children }) => (
+      <h5 className={merge(styles.h, styles.h5)}>{children}</h5>
+    ),
+    p: ({ children }) => <p className={styles.p}>{children}</p>,
     a: ({ children, href }) => (
       <a className={styles.a} href={href}>
         {children}

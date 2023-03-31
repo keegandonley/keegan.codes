@@ -1,0 +1,28 @@
+.wrapper {
+  padding: 2rem 0;
+}
+
+.a {
+  text-decoration: none;
+  color: var(--theme-text);
+}
+
+.h1 {
+  border-bottom: 1px solid var(--theme-blue-2);
+  padding-bottom: 0.2rem;
+}
+
+.tags {
+  display: flex;
+  float: right;
+  column-gap: 0.5rem;
+}
+
+.tag {
+  background: var(--theme-blue-2);
+  color: var(--theme-inverted-text);
+  padding: 0.1rem 0.6rem;
+  font-size: 0.8rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

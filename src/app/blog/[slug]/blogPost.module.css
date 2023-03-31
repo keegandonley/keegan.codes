@@ -1,5 +1,15 @@
 .article {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem 6rem 6rem 6rem;
+  padding: 4rem 6rem 6rem 6rem;
+}
+
+.back {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--theme-blue-2);
+}
+
+.title {
+  padding-top: 1rem;
 }

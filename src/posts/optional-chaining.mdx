@@ -1,0 +1,195 @@
+export const title = "The Dangers of Optional Chaining Overuse";
+export const slug = "the-downside-of-optional-chaining-overuse";
+export const tags = ["javascript", "software"];
+
+Optional chaining is a pattern I rely on daily to write clear, maintainable, and stable code. Before I get into the risks of over-use, here's a quick refresher:
+
+### What is Optional Chaining?
+
+[Optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining "Optional Chaining") is an approach to accessing properties on an object in javascript, without having to first know whether the object is defined. Let's look at an example of the problem this solves:
+
+```javascript
+const handlers = {
+  value: {
+    push: () => console.log("push"),
+  },
+};
+
+const execute = (type, action) => {
+  handlers[type][action]();
+};
+```
+
+In the above example, calling `execute('value', 'push')` will work correctly. However, if you attempt to use invalid values there is no protection - `execute('value', 'pop')` or `execute('result', 'push')` will both throw an error.
+
+Let's try to fix this the old-fashioned way:
+
+```javascript
+const handlers = {
+  value: {
+    push: () => console.log("push"),
+  },
+};
+
+const execute = (type, action) => {
+  if (handlers[type] && handlers[type][action]) {
+    handlers[type][action]();
+  } else {
+    // Handle the error state here
+  }
+};
+```
+
+Optional chaining solves this same problem, but with a bit of syntactic sugar that makes things a bit shorter:
+
+```javascript
+const handlers = {
+  value: {
+    push: () => console.log("push"),
+  },
+};
+
+const execute = (type, action) => {
+  handlers[type]?.[action]?.();
+};
+```
+
+> Note the `?.` operator. This is the operator used for optional chaining. It can be used for access to a property: `handlers[type]?.[action]` (`handlers.value?.push`) or to call a function: `handlers.value?.()`
+
+This second example has the same safeguards in place as the option above it, but is a lot simpler to write! In this approach, we don't get an easy error state, however. More on that below.
+
+If this pattern can protect us from errors, why not make liberal use of it and always use optional chaining, just to be safe? Let's get into the risks of optional chaining.
+
+### When is it Too Much?
+
+There are tradeoffs to this approach, and there are a few reasons to be careful of overusing optional chaining. Let's start with code quality and get more technical as we go:
+
+#### Code Quality
+
+Sometimes, optional chaining can get in the way of readable code and be a mess to untangle, especially when combined with nullish coalescing (similar to some of the problems that come with nested ternaries). Here's an example:
+
+```javascript
+const result =
+  response1?.result?.(selection?.value)?.data?.value ??
+  response2?.result?.data?.value;
+```
+
+That's a little tricky to read, especially with the function call in there! You might have been better off with a more straightforward control flow.
+
+#### Debuggability & Error Reporting
+
+Optional chaining, by design, silently fails. That's the entire point of the operator, but this can lead to some difficult to debug issues. Let's look at a similar example:
+
+```javascript
+const result = response?.resul?.data?.values?.[2];
+```
+
+Let's say `result` is `undefined` after execution, which is unexpected. Finding where the issue lies and logging the appropriate error can be tricky. Did the response not include the `values` key? Was `values` included but was less than 3 elements long? Or is it because of the typo where `resul` should be `result`?
+
+All your application knows is that `result` is `undefined`, but it can't properly log an error or display a message about what the issue is, since that information has been lost.
+
+#### Performance
+
+Optional chaining is slower than traditional property access because there are additional checks involved.
+
+```javascript
+`a?.b?.c?.d?.e` will be slower than `a.b.c.d.e`, so it should only be used when the existence of a value is truly unknown.
+```
+
+#### Transpilation
+
+This is probably one of the sneakiest pitfalls because we don't often think about what our code transpiles to. However, if your application is transpiled using Babel or a similar tool, the optional chaining needs to be expanded to compatible javascript for all browsers. Let's look at how optional chaining transpiles.
+
+First, a simple example that makes heavy use of optional chaining and nullish coalescence:
+
+```javascript
+const result = data?.methods?.fetch?.(results?.payload?.options)?.result ?? [];
+```
+
+Kind of ugly and complex (see [Code Quality](#codequality "Code Quality")), but it gets the job done and seems very safe - there's no chance of your code crashing on the user! Let's use the [Babel repl](https://babeljs.io/repl "Babel Repl") and see what that transpiles to:
+
+```javascript
+var _data$methods$fetch$r,
+  _data,
+  _data$methods,
+  _data$methods$fetch,
+  _data$methods$fetch$c,
+  _results,
+  _results$payload;
+var result =
+  (_data$methods$fetch$r =
+    (_data = data) === null || _data === void 0
+      ? void 0
+      : (_data$methods = _data.methods) === null || _data$methods === void 0
+      ? void 0
+      : (_data$methods$fetch = _data$methods.fetch) === null ||
+        _data$methods$fetch === void 0
+      ? void 0
+      : (_data$methods$fetch$c = _data$methods$fetch.call(
+          _data$methods,
+          (_results = results) === null || _results === void 0
+            ? void 0
+            : (_results$payload = _results.payload) === null ||
+              _results$payload === void 0
+            ? void 0
+            : _results$payload.options
+        )) === null || _data$methods$fetch$c === void 0
+      ? void 0
+      : _data$methods$fetch$c.result) !== null &&
+  _data$methods$fetch$r !== void 0
+    ? _data$methods$fetch$r
+    : [];
+```
+
+Yikes! We went from a 79 byte line of code to a _797_ byte line of code. That's 10x the size of what I originally wrote! Even if I write this out longhand in a way that needs no or minimal transpilation, I can do much better, at 303 bytes:
+
+```javascript
+let result;
+if (data && data.methods && data.methods.fetch) {
+  let response;
+  if (results && results.payload) {
+    response = data.methods.fetch(results.payload.option);
+  } else {
+    response = data.methods.fetch();
+  }
+  if (response.result) {
+    result = response.result;
+  } else {
+    result = null;
+  }
+}
+```
+
+What if we can use optional chaining intelligently, only when we don't know if a value is defined or not? In my first example, I went a bit overboard on the `?.` operator. Let's imagine for a moment some values are guaranteed to be defined because, as the developer of this application, we have knowledge of how it works. We can use less optional chaining when aware of these known-to-be-defined values:
+
+```javascript
+const result = data.methods.fetch(results.payload?.options)?.result ?? [];
+```
+
+We're assuming here that we can guarantee `data.methods.fetch` will always be defined, as well as `results.payload`. When this is transpiled, we get a much smaller "ballooning" effect:
+
+```javascript
+var _data$methods$fetch$r, _data$methods$fetch, _results$payload;
+var result =
+  (_data$methods$fetch$r =
+    (_data$methods$fetch = data.methods.fetch(
+      (_results$payload = results.payload) === null ||
+        _results$payload === void 0
+        ? void 0
+        : _results$payload.options
+    )) === null || _data$methods$fetch === void 0
+      ? void 0
+      : _data$methods$fetch.result) !== null && _data$methods$fetch$r !== void 0
+    ? _data$methods$fetch$r
+    : [];
+```
+
+The result here went from 74 bytes to 417 bytes. Much better! This is still almost 6x the size of the original, but we did better than 10x. The transpilation step certainly adds some cost to using optional chaining, but as browsers catch up and support modern javascript this step can be avoided, and already can be in most modern browsers.
+
+### Conclusion
+
+Based on these examples, it should be clear that optional chaining comes with tradeoffs. Too much of a good thing can be problematic, and we can see that when reading code, debugging it, executing it, and transpiling it.
+
+I still consider this one of my favorite operators (if such a thing exists), and it can really save time and make code more readable when used correctly. It's important to remember that using optional chaining without reason comes with a large cost that should be avoided.
+
+[Read more on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining "MDN Optional Chaining") if you're interested, and read further about [nullish coalescing](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing "MDN - Nullish Coalescing") and [nullish coalescing assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment "MDN - Nullish Coalescing Assignment").

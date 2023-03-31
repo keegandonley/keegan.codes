@@ -7,9 +7,10 @@ import { faMoon, faSun } from "@fortawesome/pro-solid-svg-icons";
 
 interface ThemeToggleProps {
   example?: boolean;
+  size?: "large" | "small";
 }
 
-export const ThemeToggle = ({ example }: ThemeToggleProps) => {
+export const ThemeToggle = ({ example, size = "large" }: ThemeToggleProps) => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   const toggleTheme = useCallback(() => {
@@ -17,12 +18,15 @@ export const ThemeToggle = ({ example }: ThemeToggleProps) => {
   }, []);
 
   const isLight = theme === "light";
+  const isSmall = size === "small";
+
   return (
     <button
       className={merge(
         styles.themeWrapper,
         isLight && styles.dark,
-        example && styles.relative
+        example && styles.relative,
+        isSmall && styles.small
       )}
       onClick={toggleTheme}
     >

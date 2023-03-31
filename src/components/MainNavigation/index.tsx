@@ -23,7 +23,7 @@ export const MainNavigation = () => {
       </MenuItem>
       <div className={styles.avatarWrapper}>
         <Avatar width={isHomePage ? 150 : 75} />
-        <ThemeToggle />
+        <ThemeToggle size={isHomePage ? "large" : "small"} />
       </div>
       <MenuItem
         href="/blog"

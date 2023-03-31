@@ -5,6 +5,8 @@ import { Social } from "@/components/Social";
 import { Paragraph } from "@/components/Paragraph";
 import Link from "next/link";
 import { Button } from "@/components/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faNewspaper } from "@fortawesome/pro-solid-svg-icons";
 
 export default function Home() {
   return (
@@ -28,9 +30,11 @@ export default function Home() {
           <strong>principal front-end engineer</strong> at{" "}
           <Link href="https://kizen.com">Kizen</Link>.
         </Paragraph>
-        <div>
-          <Button href="/blog">Read my blog</Button>
-        </div>
+        <Paragraph>
+          <Link href="/blog">
+            <FontAwesomeIcon icon={faNewspaper} /> <strong>Read my blog</strong>
+          </Link>
+        </Paragraph>
       </section>
     </>
   );

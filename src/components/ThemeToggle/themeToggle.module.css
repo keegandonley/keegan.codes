@@ -11,7 +11,8 @@
   border: 2px solid var(--theme-dark);
   cursor: pointer;
   overflow: hidden;
-  transition: border-color var(--animation);
+  transition: border-color var(--animation), width var(--animation),
+    height var(--animation), left var(--animation), bottom var(--animation);
 }
 
 .dark {
@@ -29,4 +30,10 @@
   top: auto;
   right: auto;
   bottom: auto;
+}
+
+.small {
+  left: calc(50% - 15px);
+  width: 30px;
+  height: 30px;
 }
