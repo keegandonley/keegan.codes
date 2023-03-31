@@ -6,7 +6,7 @@ import { HeroText } from "@/components/Hero/Text";
 import { HeroBlock } from "@/components/Hero/Block";
 import { Divider } from "@/components/Divider";
 
-const font = Raleway({ subsets: ["latin"], weight: "300" });
+const font = Raleway({ subsets: ["latin"], weight: "200" });
 
 export default function Home() {
   return (

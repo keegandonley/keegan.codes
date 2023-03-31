@@ -1,6 +1,6 @@
 .text {
-  color: var(--theme-text);
-  padding: 4rem;
+  padding: 2rem;
   text-align: center;
   font-size: var(--text-largest);
+  color: var(--theme-text);
 }

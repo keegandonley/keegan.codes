@@ -2,4 +2,6 @@
   margin: 0 auto;
   border-radius: 100%;
   border: 3px solid var(--theme-blue-1);
+  user-select: none;
+  pointer-events: none;
 }
