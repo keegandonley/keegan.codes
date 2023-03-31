@@ -3,6 +3,11 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-}
+};
 
-module.exports = nextConfig
+const withMDX = require("@next/mdx")({
+  options: {
+    remarkPlugins: [require("remark-prism")],
+  },
+});
+module.exports = withMDX(nextConfig);

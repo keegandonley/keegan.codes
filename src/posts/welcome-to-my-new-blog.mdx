@@ -1,0 +1,52 @@
+import { ThemeToggle } from "../components/ThemeToggle";
+import { InteractiveContent } from "../components/InteractiveContent";
+
+# Welcome to my New Blog!
+
+This is an entirely new website built from the ground-up using many modern technologies and frameworks.
+In this post I'm going to dive into how it's built! I wrote this blog post over the course of
+a month while I was building the new application.
+
+## Tools Used
+
+This website is build using [NextJS](https://nextjs.org/), and more specifically, the new
+[app directory](https://beta.nextjs.org/docs/getting-started) that's currently in beta. Here are some other
+tools I used:
+
+- MDX (for writing content)
+- CSS Modules
+- FontAwesome
+
+## Components
+
+I built quite a few unique components for this website! Let's take a look at some of my favorites:
+
+### Theme Toggle
+
+<InteractiveContent>
+  <ThemeToggle example />
+  
+  Animated when switching between light and dark modes
+
+</InteractiveContent>
+
+### Theme
+
+The theme is using simple CSS variables:
+
+```css
+:root {
+  /* Theme colors */
+  --theme-blue-1: #87ceeb;
+  --theme-blue-2: #1e90ff;
+  --theme-blue-3: #000080;
+  --theme-text: #19376d;
+  --theme-yellow: #f6ae2d;
+  --theme-dark: #272727;
+  --theme-inverted-text: #e3e5f0;
+
+  /* Theme animation */
+  --animation: 0.5s ease-in-out;
+  --animation-curve: cubic-bezier(0.2, 0.85, 0.45, 1.3);
+}
+```
