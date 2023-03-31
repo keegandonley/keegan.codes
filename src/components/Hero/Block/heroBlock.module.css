@@ -1,4 +1,5 @@
-.hero {
+.container {
   display: flex;
   flex-direction: column;
+  padding-top: 4rem;
 }
