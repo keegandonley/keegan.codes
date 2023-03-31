@@ -16,7 +16,11 @@ export default function Home() {
     <section>
       <div className={styles.wrapper}>
         {posts.map((post) => {
-          return <MDXEntryRow key={post.slug} {...post} />;
+          return (
+            <div>
+              <MDXEntryRow key={post.slug} {...post} />
+            </div>
+          );
         })}
       </div>
     </section>
