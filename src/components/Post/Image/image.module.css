@@ -1,0 +1,11 @@
+.imageParent {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 30rem;
+  z-index: -1;
+}
+
+.imageParent img {
+  object-fit: contain;
+}
