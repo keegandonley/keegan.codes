@@ -1,0 +1,24 @@
+export const slug = "review-your-own-pull-requests";
+export const title = "Review Your Own Pull Requests";
+export const description =
+  "Leave the coding mindset and enter the reviewing mindset to improve the quality of code you submit";
+export const tags = ["software", "opinion", "career"];
+export const cover = "review-prs-cover.png";
+
+I was recently asked for my advice on writing quality code that gets through code review on the first try and how to avoid that dreaded "changes requested" notification that's always somehow right as you're ending your day. This is some of the best advice I can give: pretend you're the developer reviewing your code and go through the entire process yourself before even considering having someone else review it.
+
+For as long as I can remember, the first thing I do once I open a pull request is to review it myself, as if I'm seeing it for the first time. There are a number of reasons I do this, and some common issues I frequently catch:
+
+1. For significant features with many changes, I may have missed opportunities to refactor or share existing logic. The opportunities can be more easily found when looking at changes in isolation.
+
+2. It's easy for debugging logic or flags to slip through when wrapping up a feature, and these are more easily caught in review. (Side note: I often run `git diff | grep console` before committing just to make sure I didn't slip any console logs through that aren't intended)
+
+3. Typos in variable names or other text may not be evident if my IDE's intellisense is automatically importing files and autocompleting variable names. These are much easier to catch in review. Spelling things correctly, even variable names, is important for discoverability and searchability.
+
+4. Complex pieces of code that may have been clear to me when I wrote them aren't always clear later, especially to other developers. When reviewing my changes with a fresh look I have a second chance to make sure I still understand everything written and that it's documented where needed.
+
+Of course, I pay attention to all of these things during active development as well and do my best not to commit and push code that has the above issues, but it's always a good idea to double-check at the end. Getting into the code _review_ mindset instead of the code _authoring_ mindset can be enough of a perspective shift to really improve the quality of my code! You'd be surprised how many pull requests over the years I've reviewed that had issues that would've been easily caught with only a brief skim of the proposed changes.
+
+When I follow this process, I find myself frequently uncovering issues and making modifications before seeking out another set of eyes. If I'd skipped this step, it's quite likely that whoever reviewed my pull request would quickly find the same issues, but with much more time overhead.
+
+Going through a full code review process on my own PR is sometimes time-consuming, but it's worth it to not waste team members' time on needless back-and-forth over simple issues. It's Friday afternoon, and I can rest easy knowing I'm not likely to get that dreaded email as I sit down for dinner that "changes are requested."
