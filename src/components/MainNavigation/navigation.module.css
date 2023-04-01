@@ -1,3 +1,48 @@
 .avatarWrapper {
   position: relative;
 }
+
+.navigationBubble {
+  position: absolute;
+  background-color: var(--theme-background);
+  left: -6rem;
+  right: -6rem;
+  top: 1rem;
+  bottom: 1rem;
+  z-index: -1;
+  border-radius: 2rem;
+  box-shadow: 0px 0px 42px 1px rgba(0, 0, 0, 0.51);
+}
+
+.avatarBubble {
+  position: absolute;
+  background-color: var(--theme-background);
+  left: -1rem;
+  right: -1rem;
+  top: -1rem;
+  bottom: -1rem;
+  z-index: -1;
+  border-radius: 100%;
+  box-shadow: 0px 0px 42px 1px rgba(0, 0, 0, 0.51);
+}
+
+.avatarBubble::before {
+  background: var(--theme-background);
+  display: block;
+  content: ".";
+  font-size: 0;
+  width: 16rem;
+  position: absolute;
+  left: -4.5rem;
+  border-radius: 2rem;
+  top: 2rem;
+  bottom: 2rem;
+}
+
+.shadowGroup {
+  opacity: 0;
+}
+
+.shadow {
+  opacity: 1;
+}

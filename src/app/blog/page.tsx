@@ -9,6 +9,8 @@ export default function Home() {
       title: component.title,
       slug: component.slug,
       tags: component.tags ?? [],
+      description: component.description,
+      cover: component.cover,
     };
   });
 
@@ -16,11 +18,7 @@ export default function Home() {
     <section>
       <div className={styles.wrapper}>
         {posts.map((post) => {
-          return (
-            <div>
-              <MDXEntryRow key={post.slug} {...post} />
-            </div>
-          );
+          return <MDXEntryRow key={post.slug} {...post} />;
         })}
       </div>
     </section>

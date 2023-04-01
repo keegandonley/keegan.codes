@@ -9,8 +9,7 @@
 
 .small {
   padding-top: 2rem;
-  background: white;
   position: sticky;
-  top: -25px;
+  top: 0;
   z-index: 99;
 }

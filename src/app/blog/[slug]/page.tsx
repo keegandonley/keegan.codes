@@ -6,6 +6,8 @@ import { merge } from "@/util/classNames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
 import Link from "next/link";
+import { BottomFade } from "@/components/BottomFade";
+import Image from "next/image";
 
 export async function generateStaticParams() {
   return [
@@ -34,11 +36,16 @@ export default function BlogPage({ params }: BlogPageProps) {
 
   const Component = found.default;
   const title = found.title;
+  const cover = found.cover;
 
   if (!Component) return <div>404</div>;
 
   return (
     <article className={styles.article}>
+      <div className={styles.coverWrapper}>
+        {cover ? <Image src={cover} alt="todo" fill /> : null}
+        <BottomFade />
+      </div>
       <Link href="/blog" className={styles.back}>
         <FontAwesomeIcon icon={faArrowLeft} /> back
       </Link>
