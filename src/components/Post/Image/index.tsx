@@ -24,6 +24,5 @@ export const Img = ({ src, className, alt }: any) => {
     );
   }
 
-  console.log("nulled");
   return null;
 };
