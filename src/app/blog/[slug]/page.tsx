@@ -7,6 +7,8 @@ import Link from "next/link";
 import { BottomFade } from "@/components/BottomFade";
 import Image from "next/image";
 import { H1 } from "@/components/Post/Heading/H1";
+import { getImageMetadata, parseToProps } from "@/util/image";
+import { BUCKET_URL } from "@/util/r2";
 
 export async function generateStaticParams() {
   return [
@@ -36,13 +38,21 @@ export default function BlogPage({ params }: BlogPageProps) {
   const Component = found.default;
   const title = found.title;
   const cover = found.cover;
+  const metadata = getImageMetadata(cover);
 
   if (!Component) return <div>404</div>;
 
   return (
     <article className={styles.article}>
       <div className={styles.coverWrapper}>
-        {cover ? <Image src={cover} alt="todo" fill /> : null}
+        {cover ? (
+          <Image
+            src={`${BUCKET_URL}/${cover}`}
+            alt="todo"
+            fill
+            {...parseToProps(metadata)}
+          />
+        ) : null}
         <BottomFade />
       </div>
       <Link href="/blog" className={styles.back}>

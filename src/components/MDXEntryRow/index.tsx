@@ -3,6 +3,8 @@ import Link from "next/link";
 import styles from "./mdxEntryRow.module.css";
 import Image from "next/image";
 import { BottomFade } from "../BottomFade";
+import { BUCKET_URL } from "@/util/r2";
+import { getImageMetadata, parseToProps } from "@/util/image";
 
 interface MDXEntryRowProps extends ElementBaseProps {
   title: string;
@@ -19,13 +21,19 @@ export const MDXEntryRow = ({
   description,
   cover,
 }: MDXEntryRowProps) => {
+  const metadata = getImageMetadata(cover);
   return (
     <div className={styles.wrapper}>
       <Link href={`/blog/${slug}`} className={styles.a}>
         {cover ? (
           <div className={styles.imageParent}>
             <BottomFade />
-            <Image src={cover} alt="todo" fill />
+            <Image
+              src={`${BUCKET_URL}/${cover}`}
+              alt="todo"
+              fill
+              //   {...parseToProps(metadata)}
+            />
           </div>
         ) : (
           <div className={styles.imageParent}></div>

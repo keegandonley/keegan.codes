@@ -1,12 +1,18 @@
 package main
 
 import (
+	"bytes"
 	"context"
+	"encoding/base64"
 	"fmt"
+	"image/jpeg"
+	"os"
 	"sync"
 	"time"
 
+	"github.com/esimov/stackblur-go"
 	"github.com/joho/godotenv"
+	"github.com/nfnt/resize"
 	"golang.org/x/time/rate"
 
 	"github.com/bbrks/go-blurhash"
@@ -16,6 +22,7 @@ type ImageMetadata struct {
 	BlurHash string `json:"blurHash"`
 	Width    int    `json:"width"`
 	Height   int    `json:"height"`
+	DataUrl  string `json:"dataUrl"`
 }
 
 func main() {
@@ -43,12 +50,30 @@ func main() {
 			defer wg.Done()
 			image, _ := downloadImage("https://static.donley.xyz/" + *fileName)
 
+			blurred, _ := stackblur.Process(image, 2000)
+
 			blurHash, _ := blurhash.Encode(4, 3, image)
+
+			newImage := resize.Resize(100, 0, blurred, resize.NearestNeighbor)
+
+			// Encode the blurred image to JPEG
+			var buf bytes.Buffer
+			err := jpeg.Encode(&buf, newImage, &jpeg.Options{Quality: 75})
+			if err != nil {
+				os.Exit(1)
+			}
+
+			// Base64-encode the image data
+			encoded := base64.StdEncoding.EncodeToString(buf.Bytes())
+
+			// Create a data URL with the appropriate MIME type
+			dataURL := "data:image/jpeg;base64," + encoded
 
 			metadata := ImageMetadata{
 				Width:    image.Bounds().Dx(),
 				Height:   image.Bounds().Dy(),
 				BlurHash: blurHash,
+				DataUrl:  dataURL,
 			}
 
 			hashes[*fileName] = metadata
