@@ -2,8 +2,8 @@
   display: flex;
   flex: 1 1 auto;
   position: relative;
-  min-width: calc(33% - 1rem);
-  max-width: calc(33% - 1rem);
+  min-width: calc(33% - 8px);
+  max-width: calc(33% - 8px);
   transition: all var(--animation);
   box-shadow: var(--theme-box-shadow-small);
   border-radius: 1rem;
@@ -14,8 +14,8 @@
 
 @media only screen and (max-width: 900px) {
   .wrapper {
-    min-width: calc(50% - 1rem);
-    max-width: calc(50% - 1rem);
+    min-width: calc(50% - 8px);
+    max-width: calc(50% - 8px);
   }
 }
 
