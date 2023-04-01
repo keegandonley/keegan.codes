@@ -4,6 +4,7 @@ import * as AppleShortcutsFitness from "./apple-shortcuts-fitness.mdx";
 import * as ReviewYourPRs from "./review-your-own-pull-requests.mdx";
 import * as Holidays2022 from "./happy-holidays-22.mdx";
 import * as AiPrompts from "./using-ai-to-generate-dall-e-2-prompts.mdx";
+import * as ChatGPTPoems from "./chatgpt-writes-poems-about-the-internet.mdx";
 
 const posts = {
   Welcome,
@@ -12,6 +13,7 @@ const posts = {
   ReviewYourPRs,
   Holidays2022,
   AiPrompts,
+  ChatGPTPoems,
 };
 
 export default posts;

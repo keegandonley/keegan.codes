@@ -9,6 +9,7 @@ import { Anchor } from "./components/Post/Anchor";
 import { Ul } from "./components/Post/Ul";
 import { Li } from "./components/Post/Li";
 import { Img } from "./components/Post/Image";
+import { Hr } from "./components/Post/Hr";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -22,6 +23,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ul: Ul,
     li: Li,
     img: Img,
+    hr: Hr,
     ...components,
   };
 }
