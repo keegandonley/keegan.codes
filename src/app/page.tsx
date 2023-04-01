@@ -4,7 +4,6 @@ import { Divider } from "@/components/Divider";
 import { Social } from "@/components/Social";
 import { Paragraph } from "@/components/Paragraph";
 import Link from "next/link";
-import { Button } from "@/components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faNewspaper } from "@fortawesome/pro-solid-svg-icons";
 

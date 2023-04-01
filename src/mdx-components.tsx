@@ -1,38 +1,25 @@
 import type { MDXComponents } from "mdx/types";
-import styles from "./mdx.module.css";
-import { merge } from "./util/classNames";
-// This file allows you to provide custom React components
-// to be used in MDX files. You can import and use any
-// React component you want, including components from
-// other libraries.
+import { H1 } from "./components/Post/Heading/H1";
+import { H2 } from "./components/Post/Heading/H2";
+import { H3 } from "./components/Post/Heading/H3";
+import { H4 } from "./components/Post/Heading/H4";
+import { H5 } from "./components/Post/Heading/H5";
+import { Paragraph } from "./components/Post/Paragraph";
+import { Anchor } from "./components/Post/Anchor";
+import { Ul } from "./components/Post/Ul";
+import { Li } from "./components/Post/Li";
 
-// This file is required to use MDX in `app` directory.
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    // Allows customizing built-in components, e.g. to add styling.
-    h1: ({ children }) => (
-      <h1 className={merge(styles.h, styles.h1)}>{children}</h1>
-    ),
-    h2: ({ children }) => (
-      <h2 className={merge(styles.h, styles.h2)}>{children}</h2>
-    ),
-    h3: ({ children }) => (
-      <h3 className={merge(styles.h, styles.h3)}>{children}</h3>
-    ),
-    h4: ({ children }) => (
-      <h4 className={merge(styles.h, styles.h4)}>{children}</h4>
-    ),
-    h5: ({ children }) => (
-      <h5 className={merge(styles.h, styles.h5)}>{children}</h5>
-    ),
-    p: ({ children }) => <p className={styles.p}>{children}</p>,
-    a: ({ children, href }) => (
-      <a className={styles.a} href={href}>
-        {children}
-      </a>
-    ),
-    ul: ({ children }) => <ul className={styles.ul}>{children}</ul>,
-    li: ({ children }) => <li className={styles.li}>{children}</li>,
+    h1: H1,
+    h2: H2,
+    h3: H3,
+    h4: H4,
+    h5: H5,
+    p: Paragraph,
+    a: Anchor,
+    ul: Ul,
+    li: Li,
     ...components,
   };
 }

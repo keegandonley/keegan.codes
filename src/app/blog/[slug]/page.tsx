@@ -1,13 +1,12 @@
 import Posts from "@/posts";
 import styles from "./blogPost.module.css";
 import "./syntax-theme.css";
-import mdxStyles from "../../../mdx.module.css";
-import { merge } from "@/util/classNames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
 import Link from "next/link";
 import { BottomFade } from "@/components/BottomFade";
 import Image from "next/image";
+import { H1 } from "@/components/Post/Heading/H1";
 
 export async function generateStaticParams() {
   return [
@@ -49,9 +48,7 @@ export default function BlogPage({ params }: BlogPageProps) {
       <Link href="/blog" className={styles.back}>
         <FontAwesomeIcon icon={faArrowLeft} /> back
       </Link>
-      <h1 className={merge(mdxStyles.h, mdxStyles.h1, styles.title)}>
-        {title}
-      </h1>
+      <H1 className={styles.title}>{title}</H1>
       <Component />
     </article>
   );
