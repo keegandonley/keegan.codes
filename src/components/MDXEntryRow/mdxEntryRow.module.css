@@ -5,6 +5,9 @@
   min-width: calc(33% - 1rem);
   max-width: calc(33% - 1rem);
   transition: all var(--animation);
+  box-shadow: var(--theme-box-shadow-small);
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 900px) {
@@ -33,7 +36,7 @@
 }
 
 .content {
-  margin-top: -50px;
+  margin-top: -5rem;
   padding: 1rem;
 }
 

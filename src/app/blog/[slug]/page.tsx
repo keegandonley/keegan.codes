@@ -14,7 +14,7 @@ export async function generateStaticParams() {
   return [
     Object.keys(Posts).map((key) => {
       const component = (Posts as any)[key];
-      return component.slug;
+      return { slug: component.slug };
     }),
   ];
 }
