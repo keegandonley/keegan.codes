@@ -1,5 +1,6 @@
 :root {
   /* Theme colors */
+  --theme-blue-0: #d3e9f1;
   --theme-blue-1: #87ceeb;
   --theme-blue-2: #1e90ff;
   --theme-blue-3: #000080;
@@ -9,7 +10,7 @@
   --theme-inverted-text: #e3e5f0;
   --theme-transparent: rgba(0, 0, 0, 0);
   --code-background: #282a36;
-  --shadow-color: rgba(0, 0, 0, 0.51);
+  --shadow-color: rgb(164, 164, 164);
   /* rgba(255, 255, 255, 1); */
   /* Theme animation */
   --animation: 0.5s ease-in-out;
@@ -17,6 +18,6 @@
 
   /* Use-cases */
   --theme-background: rgba(255, 255, 255, 1);
-  --theme-box-shadow-standard: 0px 0px 42px 1px var(--shadow-color);
+  --theme-box-shadow-standard: 0px 0px 20px 1px var(--shadow-color);
   --theme-box-shadow-small: 0px 0px 100px 0px rgba(226, 226, 226, 0.5);
 }

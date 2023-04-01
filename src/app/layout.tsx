@@ -5,6 +5,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import { MainNavigation } from "@/components/MainNavigation";
 import { Raleway } from "next/font/google";
 import { merge } from "@/util/classNames";
+import { Background } from "@/components/Background";
 
 config.autoAddCss = false;
 
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className={merge(font.className, "preload")}>
         <MainNavigation />
         <main>{children}</main>
+        <Background />
       </body>
     </html>
   );

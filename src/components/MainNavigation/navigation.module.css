@@ -4,30 +4,32 @@
 
 .navigationBubble {
   position: absolute;
-  background-color: var(--theme-background);
+  background-color: transparent;
   left: -6rem;
   right: -6rem;
   top: 1rem;
   bottom: 1rem;
   z-index: -1;
   border-radius: 2rem;
-  box-shadow: var(--theme-box-shadow-standard);
+  box-shadow: none;
+  transition: all 0s;
 }
 
 .avatarBubble {
   position: absolute;
-  background-color: var(--theme-background);
+  background-color: transparent;
   left: -1rem;
   right: -1rem;
   top: -1rem;
   bottom: -1rem;
   z-index: -1;
   border-radius: 100%;
-  box-shadow: var(--theme-box-shadow-standard);
+  box-shadow: none;
+  transition: all 0s;
 }
 
 .avatarBubble::before {
-  background: var(--theme-background);
+  background-color: transparent;
   display: block;
   content: ".";
   font-size: 0;
@@ -40,10 +42,19 @@
 }
 
 .shadowGroup {
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;
 }
 
 .shadow {
-  opacity: 1;
+  background-color: var(--theme-background);
+  box-shadow: var(--theme-box-shadow-standard);
+  transition: all var(--animation);
+  transition-delay: 0.3s;
+}
+
+.shadow:before {
+  background-color: var(--theme-background);
+  transition: all var(--animation);
+  transition-delay: 0.6s;
 }

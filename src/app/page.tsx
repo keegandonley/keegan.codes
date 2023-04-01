@@ -6,6 +6,7 @@ import { Paragraph } from "@/components/Paragraph";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faNewspaper } from "@fortawesome/pro-solid-svg-icons";
+import { Background } from "@/components/Background";
 
 export default function Home() {
   return (

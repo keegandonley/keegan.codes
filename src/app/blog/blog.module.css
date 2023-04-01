@@ -1,9 +1,13 @@
 .wrapper {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 4rem 2rem;
   display: flex;
   column-gap: 1rem;
   row-gap: 1rem;
   flex-wrap: wrap;
+}
+
+.bodyText {
+  margin-top: 4rem;
 }

@@ -1,0 +1,19 @@
+.background {
+  left: 0;
+  right: 0;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  background: linear-gradient(
+    180deg,
+    var(--theme-blue-0) 0%,
+    var(--theme-transparent) 85%
+  );
+  z-index: -5;
+  transition: opacity var(--animation);
+  top: 0;
+}
+
+.visible {
+  opacity: 1;
+}

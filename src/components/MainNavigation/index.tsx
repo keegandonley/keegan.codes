@@ -27,17 +27,20 @@ export const MainNavigation = () => {
       <div className={styles.avatarWrapper}>
         <Avatar width={isHomePage ? 150 : 75} />
         <ThemeToggle size={isHomePage ? "large" : "small"} />
-        {isBlogPage ? (
+        <div className={merge(styles.shadowGroup)}>
           <div
             className={merge(
-              styles.shadowGroup,
-              isArticlePage ? styles.shadow : styles.noShadow
+              styles.navigationBubble,
+              isBlogPage ? styles.shadow : styles.noShadow
             )}
-          >
-            <div className={merge(styles.navigationBubble)}></div>
-            <div className={merge(styles.avatarBubble)}></div>
-          </div>
-        ) : null}
+          ></div>
+          <div
+            className={merge(
+              styles.avatarBubble,
+              isBlogPage ? styles.shadow : styles.noShadow
+            )}
+          ></div>
+        </div>
       </div>
       <MenuItem
         href="/blog"
