@@ -1,7 +1,7 @@
 .article {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 8rem 6rem 6rem 6rem;
+  padding: 14rem 6rem 6rem 6rem;
 }
 
 .back {
@@ -18,7 +18,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  height: 300px;
+  height: 500px;
   top: 0;
   z-index: -1;
 }

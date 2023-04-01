@@ -32,7 +32,7 @@ export const MDXEntryRow = ({
               src={`${BUCKET_URL}/${cover}`}
               alt="todo"
               fill
-              //   {...parseToProps(metadata)}
+              {...parseToProps(metadata)}
             />
           </div>
         ) : (

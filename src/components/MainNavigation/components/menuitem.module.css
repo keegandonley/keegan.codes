@@ -1,9 +1,10 @@
 .item {
   flex: 1 0 30%;
   padding: 0 2rem;
-  transform: translateY(-250px);
+  transform: translateY(-25px);
   opacity: 0;
   transition: transform var(--animation), opacity var(--animation);
+  pointer-events: none;
 }
 
 .item a {
@@ -13,15 +14,18 @@
 
 .left {
   text-align: right;
+  transform: translateX(-20rem);
 }
 
 .right {
   text-align: left;
+  transform: translateX(20rem);
 }
 
 .visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) translateX(0);
+  pointer-events: all;
 }
 
 .active {

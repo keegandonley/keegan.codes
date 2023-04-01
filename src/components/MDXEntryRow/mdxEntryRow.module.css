@@ -4,12 +4,27 @@
   position: relative;
   min-width: calc(33% - 1rem);
   max-width: calc(33% - 1rem);
+  transition: all var(--animation);
+}
+
+@media only screen and (max-width: 900px) {
+  .wrapper {
+    min-width: calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .wrapper {
+    min-width: 100%;
+    max-width: 100%;
+  }
 }
 
 .imageParent {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 250px;
   z-index: -1;
 }
 
