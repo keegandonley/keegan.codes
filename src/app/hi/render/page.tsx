@@ -5,7 +5,6 @@ import styles from "./render.module.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { Social } from "@/components/Social";
 import { URLS } from "@/components/Social/socials";
 import { merge } from "@/util/classNames";
 
@@ -25,7 +24,7 @@ export default function RenderPage() {
         .
       </Paragraph>
       <Paragraph className={styles.paragraph}>
-        I'd love to connect on{" "}
+        I&apos;d love to connect on{" "}
         <Link href={URLS.linkedIn} target="_blank" rel="noopener noreferrer">
           <strong>
             <FontAwesomeIcon icon={faLinkedin} /> LinkedIn
