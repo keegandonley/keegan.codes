@@ -1,0 +1,15 @@
+.bq {
+  background: var(--theme-blue-0);
+  border-left: 3px solid var(--theme-blue-2);
+  line-height: 1.8rem;
+  margin: 2rem 0 1rem 0;
+  padding: 0 1rem;
+}
+
+.bq :global(.svg-inline--fa) {
+  margin-right: 0.5rem;
+}
+
+.bq p {
+  font-size: 1rem;
+}

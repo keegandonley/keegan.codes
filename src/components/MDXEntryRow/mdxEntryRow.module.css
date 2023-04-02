@@ -54,7 +54,9 @@
 .tags {
   padding-top: 1rem;
   display: flex;
-  column-gap: 0.5rem;
+  column-gap: 0.7rem;
+  row-gap: 0.3rem;
+  flex-wrap: wrap;
 }
 
 .tag {

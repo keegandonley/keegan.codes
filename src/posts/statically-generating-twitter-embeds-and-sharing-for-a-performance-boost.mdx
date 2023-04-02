@@ -1,0 +1,210 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleExclamation } from "@fortawesome/pro-solid-svg-icons";
+
+export const title =
+  "Statically Generating Twitter Embeds and Sharing for a Performance Boost";
+export const slug =
+  "statically-generating-twitter-embeds-and-sharing-for-a-performance-boost";
+export const tags = [
+  "software",
+  "tutorial",
+  "blog",
+  "react",
+  "front-end",
+  "nextjs",
+];
+export const description =
+  "Embedded Tweets and share buttons were bogging down my blog, so I wrote custom UI that is statically generated using the Twitter API to speed things back up";
+export const cover = "twitter-api-cover.png";
+
+> <FontAwesomeIcon icon={faCircleExclamation} /> After the [changes to the Twitter
+> API Policy](https://twitter.com/TwitterDev/status/1641222783601631233), this post
+> is largely no longer applicable to how my blog works. In [my new architecture](/blog/welcome-to-my-new-blog)
+> I've decided to forego Twitter embeds. Sharing content still essentially works
+> the same way, but the static generation of embedded Tweets is no more. Regardless,
+> I'm leaving this post up for posterity.
+
+My blog historically had minimal integration with Twitter. At the top and bottom of each post, there was a "tweet" button, and a "follow @keegandonley" button. These came from the official Twitter embed API, and they were pretty simple. Here's a refresher on how they looked:
+
+![](twitter-bot-post:image-1.png)
+
+This worked well enough, though I did have the occasional performance issue or FOUC from deferring loading the CSS. However, once I wrote [_Building a Super Simple (and Free!) Twitter Bot_](https://keegandonley.com/blog/building-a-super-simple-and-free-twitter-bot "Building a Super Simple (and Free!) Twitter Bot"), I wanted to have an embedded Tweet to show the end result. I used Twitter's basic embed API and it worked fine, however it was slow to load, difficult to style, and I had to write a bunch of custom code to get it to play nice with my automatic dark/light mode switching. Not to mention I was having to load Twitter's third-party javascript, something I really try to avoid here. You can see [the old version deployed here](https://website-2-0-8w63ssplg-kdonley.vercel.app/blog/building-a-super-simple-and-free-twitter-bot "Preview Link - Old Twitter Embed") through a Vercel preview link if you'd like to compare.
+
+I really wasn't okay with the performance hit, and showing a few Tweets is simple enough, right? Because my blog is [statically generated](https://keegandonley.com/blog/building-a-static-generated-blog-with-next-js "Static Generation") and deployed with Vercel, I decided the best approach was to build the UI components myself and use the Twitter API to fetch the relevant Tweet.
+
+## Getting the Tweet Data
+
+In order to keep my blog's performance high, I want all the data fetching to happen on the server side when the page is generated. I leverage NextJS's `getStaticProps` for this.
+
+First, I needed to settle on a format for "embedding" Tweets. I settled on a simple HTML tag:
+
+```html
+<div
+  class="twitter-embed"
+  data-tweet="https://twitter.com/whatstatusisit/status/1554033715285823488"
+></div>
+```
+
+I have a class, `twitter-embed` so I can write a selector to find all embedded Tweets, and then a `data-tweet` attribute storing the actual link.
+
+On the server, I was already parsing Markdown content into HTML and then mutating it using a virtual DOM, so I was able to reuse that infrastructure to get all the Tweets in a particular blog post:
+
+```javascript
+export async function getStaticProps({ params }) {
+  const post = getPost(params.id);
+  const converter = new showdown.Converter({
+    disableForced4SpacesIndentedSublists: true,
+    tables: true,
+  });
+  const html = converter.makeHtml(post.content);
+  const dom = new JSDOM(html);
+  const virtualDocument = dom.window.document;
+
+  const elems = virtualDocument.querySelectorAll(".twitter-embed");
+
+  elems.forEach((tweetContainer) => {
+    const tweet = tweetContainer.getAttribute("data-tweet");
+    const tweetId = tweet?.split("/").pop();
+
+    // Now, you have a tweetId to use with the API!
+  });
+}
+```
+
+Using the Twitter API is pretty straightforward, and all that's needed is a little bit of data to render the Tweet card in its simplest form. Here's how my call looks, with some expansions to fetch the profile image and public metrics (likes, retweets, etc).
+
+```javascript
+const data = await fetch(
+  `https://api.twitter.com/2/tweets/${tweetId}?expansions=author_id&tweet.fields=public_metrics&user.fields=profile_image_url`,
+  {
+    headers: {
+      Authorization: `Bearer ${process.env.TWITTER_API_BEARER_TOKEN}`,
+    },
+  }
+);
+const tweetData = await data.json();
+```
+
+## Rendering the Card
+
+My blog uses a custom replacement mechanism to add dynamic content to the statically generated HTML. This is a little different than using something like MDX component replacement, but the end result is similar. Essentially, my `getStaticProps` call returns HTML as a string that is then rendered. In order to accomplish this, I use `react-dom`'s `ReactDOMServer` to render the Tweet markup into the destination div. Everything is styled with Tailwind and uses the data from the above API call.
+
+```jsx
+const res = ReactDOMServer.renderToString(
+  <div className="border-gray-200 border-1 rounded-lg shadow max-w-[500px] mx-auto p-4 mb-12 bg-white dark:bg-gray-800 text-black dark:text-white">
+    <div className="flex">
+      <div className="w-12 h-12">
+        <img
+          src={tweetData?.includes?.users?.[0]?.profile_image_url}
+          alt="Profile Image"
+          className="!rounded-full !shadow-none"
+        />
+      </div>
+      <div className="ml-2">
+        <div>{tweetData?.includes?.users?.[0]?.name}</div>
+        <a
+          href={`https://twitter.com/${tweetData?.includes?.users?.[0].username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @{tweetData?.includes?.users?.[0]?.username}
+        </a>
+      </div>
+      <div className="ml-auto text-2xl text-blue-400">
+        <FontAwesomeIcon icon={faTwitter} />
+      </div>
+    </div>
+    <div className="mt-4">{tweetData?.data?.text}</div>
+    <div className="mt-4">
+      <div>
+        <FontAwesomeIcon icon={faHeart} className="mr-2" />
+        {tweetData?.data?.public_metrics?.like_count ?? 0}
+      </div>
+    </div>
+    <div className="mt-4 w-full flex !text-blue-400">
+      <a
+        href={tweet}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex-grow w-full border border-blue-400 rounded-full text-center py-1 !text-blue-400 hover:bg-blue-400 hover:!text-white transition-all no-underline cursor-pointer twitter"
+      >
+        Read more on Twitter
+      </a>
+    </div>
+  </div>
+);
+```
+
+## Revalidating
+
+Because I'm no longer calling the Twitter embed API on each page load, the UI will be "stuck" at the point at which the blog post was generated, which is not great! That is unless the data is periodically re-fetched. This can happen in a couple of ways.
+
+Each post gets rebuilt when my site redeploys, which is fairly frequent, though I do have gaps sometimes where I don't write much (meaning no deployments). In those instances, I still want the Tweets to be somewhat live (for stats changes, profile photo updates, etc). This is a balancing act between performance and liveness. What I do is set a post's `revalidate` return value from getStaticProps to 1 day if and only if it has at least 1 Tweet embedded. If it has none, revalidate remains undefined, meaning it doesn't revalidate until my blog redeploys.
+
+This revalidate parameter means that if a user visits the post after it is stale for one day, it will be re-fetched in the background and updated. In this way, Tweet data will never be more than approximately 24 hours old.
+
+With that, every Tweet using my custom embed syntax will be replaced with a statically rendered card, right there in the post! Here's a real-life example:
+
+```html
+<div
+  class="twitter-embed"
+  data-tweet="https://twitter.com/keegandonley/status/1579660652037431296"
+></div>
+```
+
+## Remaining Buttons
+
+After this, all that was left were the small buttons at the top and bottom of the post. These use Twitter _intents_ to feel interactive, without needing the Twitter API at all!
+
+The "follow" button is just a link to _'https://twitter.com/intent/follow?screen_name=keegandonley'_ using the "follow" intent.
+
+The "tweet this post" button is a link to _'https://twitter.com/intent/tweet?text=URIEncodedTextHere'_ using the "tweet" intent.
+
+My "Discuss on Twitter" button is even simpler, with just a link to search Twitter for my post url: _'https://twitter.com/search?q=$\{encodeURIComponent\('https://keegandonley.com/blog/' + post.slug'\)\}'_
+
+## Final Thoughts
+
+My Twitter card UI is still pretty basic, and I plan to tinker with it and get it closer to feature parity with Twitter's actual embeds, though for now, it gets the job done. An added benefit is that I can design the embed however I want! Dark mode works easily, and I don't need any third-party javascript on the frontend.
+
+> Here's a (slightly truncated) example of my `getStaticProps` and a component that could render the content.
+
+#### pages/blog/\[id\].tsx
+
+```jsx
+    export async function getStaticProps({ params }) {
+        const post = getPost(params.id);
+    	const converter = new showdown.Converter({
+    		disableForced4SpacesIndentedSublists: true,
+    		tables: true,
+    	});
+    	const html = converter.makeHtml(post.content);
+    	const dom = new JSDOM(html);
+    	const virtualDocument = dom.window.document;
+
+        /* Replace all the <div class="twitter-embed></div> elements with actual Twitter card */
+    	const numTweets = await createTweetStaticEmbeds(virtualDocument);
+
+        return {
+    		props: {
+    			post: {
+    				...post,
+    				content: dom.window.document.body.innerHTML,
+    			},
+    			css: post.themeCSS,
+    		},
+    		revalidate: numTweets > 0 ? 1 * 24 * 60 * 60 : undefined, // 1 day
+    	};
+    };
+
+    const Post = ({ post, css }) => {
+        return (
+            <Head>
+                <style dangerouslySetInnerHTML={{ __html: css ?? '' }} />
+            </Head>
+            <h1>{post.title}</h1>
+            <article dangerouslySetInnerHTML={{ __html: post.content }} />
+        );
+    };
+
+    export default Post;
+```
