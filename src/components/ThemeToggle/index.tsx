@@ -16,6 +16,7 @@ interface ThemeToggleProps {
   size?: "large" | "small";
   initialTheme?: "light" | "dark";
   hasChosenTheme?: boolean;
+  ignoreGlobalState?: boolean;
 }
 
 export const ThemeToggle = ({
@@ -23,36 +24,41 @@ export const ThemeToggle = ({
   size = "large",
   initialTheme,
   hasChosenTheme,
+  ignoreGlobalState = false,
 }: ThemeToggleProps) => {
   const [theme, setTheme] = useState<"light" | "dark">(
     () => initialTheme ?? "dark"
   );
 
   const toggleTheme = useCallback(() => {
-    // TODO - set this to false to allow the fallback on system default
-    document.cookie = `chosen-theme=true;path=/`;
+    if (!ignoreGlobalState) {
+      // TODO - set this to false to allow the fallback on system default
+      document.cookie = `chosen-theme=true; path=/; expires=Tue, 19 Jan 2038 04:14:07 GMT`;
+    }
+
     setTheme((theme) => (theme === "light" ? "dark" : "light"));
-  }, []);
+  }, [ignoreGlobalState]);
 
   const handleMatch = useCallback((prefersDark: boolean) => {
     setTheme(prefersDark ? "dark" : "light");
   }, []);
 
   useEffect(() => {
-    if (!hasChosenTheme) {
+    if (!hasChosenTheme && !ignoreGlobalState) {
       handleMatch(getPrefersDark());
     }
-  }, [handleMatch, hasChosenTheme]);
+  }, [handleMatch, hasChosenTheme, ignoreGlobalState]);
 
   useEffect(() => {
-    document.cookie = `theme=${theme};path=/`;
-
-    if (theme === "dark") {
-      addDarkTheme();
-    } else {
-      removeDarkTheme();
+    if (!ignoreGlobalState) {
+      document.cookie = `theme=${theme}; path=/; expires=Tue, 19 Jan 2038 04:14:07 GMT`;
+      if (theme === "dark") {
+        addDarkTheme();
+      } else {
+        removeDarkTheme();
+      }
     }
-  }, [theme]);
+  }, [theme, ignoreGlobalState]);
 
   const handleColorSchemeChange = useCallback(
     (event: MediaQueryListEvent) => {

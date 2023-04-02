@@ -21,7 +21,7 @@ export const MainNavigation = ({
 
   useEffect(() => {
     document.body.classList.remove("preload");
-  }, []);
+  }, [pathname]);
 
   return (
     <HeroBlock isHomePage={isHomePage}>

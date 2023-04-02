@@ -43,7 +43,7 @@ export default function BlogPage({ params }: BlogPageProps) {
   if (!Component) return <div>404</div>;
 
   return (
-    <article className={styles.article}>
+    <>
       <div className={styles.coverWrapper}>
         {cover ? (
           <Image
@@ -56,11 +56,13 @@ export default function BlogPage({ params }: BlogPageProps) {
         ) : null}
         <BottomFade />
       </div>
-      <Link href="/blog" className={styles.back}>
-        <FontAwesomeIcon icon={faArrowLeft} /> back
-      </Link>
-      <H1 className={styles.title}>{title}</H1>
-      <Component />
-    </article>
+      <article className={styles.article}>
+        <Link href="/blog" className={styles.back}>
+          <FontAwesomeIcon icon={faArrowLeft} /> back
+        </Link>
+        <H1 className={styles.title}>{title}</H1>
+        <Component />
+      </article>
+    </>
   );
 }

@@ -1,8 +1,9 @@
 .article {
   max-width: 900px;
   margin: 0 auto;
-  padding: 20rem 2rem 2rem 2rem;
+  padding: 14rem 2rem 2rem 2rem;
   color: var(--theme-text);
+  position: relative;
 }
 
 .back {
