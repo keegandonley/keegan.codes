@@ -85,6 +85,8 @@ export const ThemeToggle = ({
         isSmall && styles.small
       )}
       onClick={toggleTheme}
+      title="Toggle Theme"
+      aria-label="Toggle Theme"
     >
       <AnimatedIcon icon={faMoon} from="bottom" visible={isLight} />
       <AnimatedIcon icon={faSun} from="top" visible={!isLight} />
