@@ -15,6 +15,10 @@
   transition: all 0.2s;
 }
 
+:global(body.dark) .icon path {
+  color: var(--darkColor);
+}
+
 .icon:hover {
   transform: scale(1.2);
   filter: saturate(130%);

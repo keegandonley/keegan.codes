@@ -6,7 +6,7 @@ import { AnimatedIcon } from "../AnimatedIcon";
 import { faMoon, faSun } from "@fortawesome/pro-solid-svg-icons";
 
 interface ThemeToggleProps {
-  example?: boolean;
+  relative?: boolean;
   size?: "large" | "small";
   initialTheme?: "light" | "dark";
 }
@@ -24,7 +24,7 @@ const removeDarkTheme = () => {
 };
 
 export const ThemeToggle = ({
-  example,
+  relative,
   size = "large",
   initialTheme,
 }: ThemeToggleProps) => {
@@ -81,7 +81,7 @@ export const ThemeToggle = ({
       className={merge(
         styles.themeWrapper,
         isLight && styles.dark,
-        example && styles.relative,
+        relative && styles.relative,
         isSmall && styles.small
       )}
       onClick={toggleTheme}
