@@ -27,27 +27,33 @@ type ImageMetadata struct {
 
 func main() {
 	godotenv.Load()
+	file := "../src/image-metadata.json"
 
+	hashes, _ := readMapFromJSONFile(file)
 	objects := getObjects("k10y-assets").Contents
-
-	hashes := make(map[string]ImageMetadata)
 
 	limiter := rate.NewLimiter(rate.Every(time.Second), 10)
 	var wg sync.WaitGroup
 
 	for _, object := range objects {
-		err := limiter.Wait(context.Background())
-		if err != nil {
-			fmt.Println("Error waiting for rate limiter:", err)
-			continue
-		}
-
 		wg.Add(1)
 
 		fileName := object.Key
+		_, ok := hashes[*fileName]
 
-		go func(fileName *string) {
+		go func(fileName *string, shouldProcess bool) {
 			defer wg.Done()
+			if !shouldProcess {
+				fmt.Println("Skipping", *fileName)
+				return
+			}
+
+			err := limiter.Wait(context.Background())
+			if err != nil {
+				fmt.Println("Error waiting for rate limiter:", err)
+				return
+			}
+
 			image, _ := downloadImage("https://static.donley.xyz/" + *fileName)
 
 			blurred, _ := stackblur.Process(image, 2000)
@@ -58,8 +64,8 @@ func main() {
 
 			// Encode the blurred image to JPEG
 			var buf bytes.Buffer
-			err := jpeg.Encode(&buf, newImage, &jpeg.Options{Quality: 75})
-			if err != nil {
+			imgErr := jpeg.Encode(&buf, newImage, &jpeg.Options{Quality: 75})
+			if imgErr != nil {
 				os.Exit(1)
 			}
 
@@ -77,10 +83,10 @@ func main() {
 			}
 
 			hashes[*fileName] = metadata
-		}(fileName)
+		}(fileName, !ok)
 	}
 
 	wg.Wait()
 
-	writeMapToJSONFile("../src/image-metadata.json", hashes)
+	writeMapToJSONFile(file, hashes)
 }
