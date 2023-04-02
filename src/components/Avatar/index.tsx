@@ -7,12 +7,14 @@ import { fallback, merge } from "@/util/classNames";
 interface AvatarProps extends ElementBaseProps {
   width?: number;
   alt?: string;
+  priority?: boolean;
 }
 
 export const Avatar = ({
   width = 100,
   alt = "A photo of Keegan Donley",
   className,
+  priority = false,
 }: Omit<AvatarProps, "children">) => {
   return (
     <Image
@@ -21,6 +23,7 @@ export const Avatar = ({
       src={avatar}
       alt={alt}
       placeholder="blur"
+      priority={priority}
     />
   );
 };

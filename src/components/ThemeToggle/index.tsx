@@ -3,25 +3,19 @@ import { merge } from "@/util/classNames";
 import { useCallback, useEffect, useState } from "react";
 import styles from "./themeToggle.module.css";
 import { AnimatedIcon } from "../AnimatedIcon";
-import { faMoon, faSun } from "@fortawesome/pro-solid-svg-icons";
+import { faMoon, faSunBright } from "@fortawesome/pro-solid-svg-icons";
+import {
+  addDarkTheme,
+  getMatch,
+  getPrefersDark,
+  removeDarkTheme,
+} from "./util";
 
 interface ThemeToggleProps {
   relative?: boolean;
   size?: "large" | "small";
   initialTheme?: "light" | "dark";
 }
-
-const getPrefersDark = () => {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
-};
-
-const addDarkTheme = () => {
-  document.body.classList.add("dark");
-};
-
-const removeDarkTheme = () => {
-  document.body.classList.remove("dark");
-};
 
 export const ThemeToggle = ({
   relative,
@@ -62,14 +56,10 @@ export const ThemeToggle = ({
   );
 
   useEffect(() => {
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", handleColorSchemeChange);
+    getMatch().addEventListener("change", handleColorSchemeChange);
 
     return () => {
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .removeEventListener("change", handleColorSchemeChange);
+      getMatch().removeEventListener("change", handleColorSchemeChange);
     };
   }, [handleColorSchemeChange]);
 
@@ -89,7 +79,7 @@ export const ThemeToggle = ({
       aria-label="Toggle Theme"
     >
       <AnimatedIcon icon={faMoon} from="bottom" visible={isLight} />
-      <AnimatedIcon icon={faSun} from="top" visible={!isLight} />
+      <AnimatedIcon icon={faSunBright} from="top" visible={!isLight} />
     </button>
   );
 };

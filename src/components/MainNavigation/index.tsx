@@ -27,7 +27,7 @@ export const MainNavigation = ({
         Home
       </MenuItem>
       <div className={styles.avatarWrapper}>
-        <Avatar width={isHomePage ? 150 : 75} />
+        <Avatar width={isHomePage ? 150 : 75} priority />
         <ThemeToggle
           size={isHomePage ? "large" : "small"}
           initialTheme={initialTheme}
