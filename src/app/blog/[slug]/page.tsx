@@ -10,14 +10,14 @@ import { H1 } from "@/components/Post/Heading/H1";
 import { getImageMetadata, parseToProps } from "@/util/image";
 import { BUCKET_URL } from "@/util/r2";
 
-export async function generateStaticParams() {
-  return [
-    Object.keys(Posts).map((key) => {
-      const component = (Posts as any)[key];
-      return { slug: component.slug };
-    }),
-  ];
-}
+// export async function generateStaticParams() {
+//   return [
+//     Object.keys(Posts).map((key) => {
+//       const component = (Posts as any)[key];
+//       return { slug: component.slug };
+//     }),
+//   ];
+// }
 
 interface BlogPageProps {
   params: {

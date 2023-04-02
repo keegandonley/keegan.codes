@@ -6,6 +6,12 @@ import { MainNavigation } from "@/components/MainNavigation";
 import { Raleway } from "next/font/google";
 import { merge } from "@/util/classNames";
 import { Background } from "@/components/Background";
+import { cookies } from "next/headers";
+
+const userTheme = () => {
+  const cookieStore = cookies();
+  return cookieStore.get("theme")?.value as "light" | "dark" | undefined;
+};
 
 config.autoAddCss = false;
 
@@ -21,10 +27,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const theme = userTheme();
   return (
     <html lang="en">
-      <body className={merge(font.className, "preload")}>
-        <MainNavigation />
+      <body
+        className={merge(font.className, "preload", theme === "dark" && "dark")}
+      >
+        <MainNavigation initialTheme={theme} />
         <main>{children}</main>
         <Background />
       </body>

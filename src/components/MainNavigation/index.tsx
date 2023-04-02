@@ -8,12 +8,14 @@ import styles from "./navigation.module.css";
 import { ThemeToggle } from "../ThemeToggle";
 import { merge } from "@/util/classNames";
 
-export const MainNavigation = () => {
+export const MainNavigation = ({
+  initialTheme,
+}: {
+  initialTheme?: "light" | "dark";
+}) => {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  const isExactlyBlogPage = pathname === "/blog";
   const isBlogPage = pathname.startsWith("/blog");
-  const isArticlePage = isBlogPage && !isExactlyBlogPage;
 
   useEffect(() => {
     document.body.classList.remove("preload");
@@ -26,7 +28,10 @@ export const MainNavigation = () => {
       </MenuItem>
       <div className={styles.avatarWrapper}>
         <Avatar width={isHomePage ? 150 : 75} />
-        <ThemeToggle size={isHomePage ? "large" : "small"} />
+        <ThemeToggle
+          size={isHomePage ? "large" : "small"}
+          initialTheme={initialTheme}
+        />
         <div className={merge(styles.shadowGroup)}>
           <div
             className={merge(

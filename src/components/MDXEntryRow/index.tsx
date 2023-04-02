@@ -32,6 +32,9 @@ export const MDXEntryRow = ({
               src={`${BUCKET_URL}/${cover}`}
               alt="todo"
               fill
+              sizes="(max-width: 550px) 100vw,
+              (max-width: 900px) 50vw,
+              33vw"
               {...parseToProps(metadata)}
             />
           </div>

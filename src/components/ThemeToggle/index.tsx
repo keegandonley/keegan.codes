@@ -8,6 +8,7 @@ import { faMoon, faSun } from "@fortawesome/pro-solid-svg-icons";
 interface ThemeToggleProps {
   example?: boolean;
   size?: "large" | "small";
+  initialTheme?: "light" | "dark";
 }
 
 const getPrefersDark = () => {
@@ -22,8 +23,14 @@ const removeDarkTheme = () => {
   document.body.classList.remove("dark");
 };
 
-export const ThemeToggle = ({ example, size = "large" }: ThemeToggleProps) => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+export const ThemeToggle = ({
+  example,
+  size = "large",
+  initialTheme,
+}: ThemeToggleProps) => {
+  const [theme, setTheme] = useState<"light" | "dark">(
+    () => initialTheme ?? "light"
+  );
 
   const toggleTheme = useCallback(() => {
     setTheme((theme) => (theme === "light" ? "dark" : "light"));
@@ -38,6 +45,8 @@ export const ThemeToggle = ({ example, size = "large" }: ThemeToggleProps) => {
   }, [handleMatch]);
 
   useEffect(() => {
+    document.cookie = `theme=${theme}`;
+
     if (theme === "dark") {
       addDarkTheme();
     } else {
