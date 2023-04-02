@@ -7,7 +7,7 @@
   text-align: center;
   overflow: hidden;
   height: 16rem;
-  transition: height var(--animation);
+  transition: all var(--animation);
 }
 
 .small {
