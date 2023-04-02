@@ -50,6 +50,7 @@ export default function BlogPage({ params }: BlogPageProps) {
             src={`${BUCKET_URL}/${cover}`}
             alt="todo"
             fill
+            priority
             {...parseToProps(metadata)}
           />
         ) : null}
