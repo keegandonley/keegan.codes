@@ -1,13 +1,6 @@
 import { ImageProps } from "next/image";
 import imageMetadata from "../image-metadata.json";
 
-interface ImageMetadata {
-  blurHash: string;
-  width: number;
-  height: number;
-  dataUrl: string;
-}
-
 export const getImageMetadata = (image?: string) => {
   const metadata = image
     ? (imageMetadata as Record<string, ImageMetadata>)[image]
@@ -25,4 +18,10 @@ export const parseToProps = (metadata?: ImageMetadata): Partial<ImageProps> => {
     placeholder: "blur",
     blurDataURL: metadata.dataUrl,
   };
+};
+
+export const parseSource = (src: string): [string, string[]] => {
+  const [imgUrl, ...flags] = src.split("?");
+
+  return [imgUrl, flags];
 };
