@@ -1,7 +1,8 @@
 .article {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 16rem 6rem 6rem 6rem;
+  padding: 20rem 2rem 2rem 2rem;
+  color: var(--theme-text);
 }
 
 .back {
@@ -26,7 +27,7 @@
   right: 0;
   height: 500px;
   top: 0;
-  z-index: -1;
+  z-index: 0;
 }
 
 .coverWrapper img {

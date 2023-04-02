@@ -14,7 +14,14 @@ export const ThemeToggle = ({ example, size = "large" }: ThemeToggleProps) => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   const toggleTheme = useCallback(() => {
-    setTheme((theme) => (theme === "dark" ? "light" : "dark"));
+    // Toggle dark class on html body
+    if (document.body.classList.contains("dark")) {
+      document.body.classList.remove("dark");
+      setTheme("light");
+    } else {
+      document.body.classList.add("dark");
+      setTheme("dark");
+    }
   }, []);
 
   const isLight = theme === "light";

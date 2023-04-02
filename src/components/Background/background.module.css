@@ -9,9 +9,10 @@
     var(--theme-blue-0) 0%,
     var(--theme-transparent) 85%
   );
-  z-index: -5;
+  z-index: 0;
   transition: opacity var(--animation);
   top: 0;
+  pointer-events: none;
 }
 
 .visible {

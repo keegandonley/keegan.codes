@@ -21,3 +21,32 @@
   --theme-box-shadow-standard: 0px 0px 20px 1px var(--shadow-color);
   --theme-box-shadow-small: 0px 0px 100px 0px rgba(226, 226, 226, 0.5);
 }
+
+body.dark {
+  --theme-blue-0: #00465f;
+  --theme-blue-1: #4bb9e5;
+  --theme-blue-2: #86c0fb;
+  --theme-blue-3: #8cb4da;
+  --theme-text: #d0d6e3;
+  --theme-yellow: #f6ae2d;
+  --theme-dark: #272727;
+  --theme-inverted-text: #e3e5f0;
+  --theme-transparent: rgba(0, 0, 0, 0);
+  --code-background: #282a36;
+  --shadow-color: #2e2e47;
+
+  /* Theme animation */
+  --animation: 0.5s ease-in-out;
+  --animation-curve: cubic-bezier(0.2, 0.85, 0.45, 1.3);
+
+  /* Use-cases */
+  --theme-background: #0a0935;
+  --theme-box-shadow-standard: 0px 0px 20px 1px var(--shadow-color);
+  --theme-box-shadow-small: 0px 0px 100px 0px rgba(46, 46, 71, 0.5);
+}
+
+* {
+  --no-animation: 0s linear;
+  transition: color var(--no-animation), background-color var(--no-animation),
+    border-color var(--no-animation), box-shadow var(--no-animation);
+}

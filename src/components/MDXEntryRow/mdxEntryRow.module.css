@@ -4,11 +4,11 @@
   position: relative;
   min-width: calc(33% - 8px);
   max-width: calc(33% - 8px);
-  transition: all var(--animation);
   box-shadow: var(--theme-box-shadow-small);
+  background: var(--theme-background);
+  transition: min-width var(--animation), max-width var(--animation);
   border-radius: 1rem;
   overflow: hidden;
-  background: var(--theme-background);
   z-index: 99;
 }
 
