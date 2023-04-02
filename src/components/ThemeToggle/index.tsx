@@ -1,6 +1,6 @@
 "use client";
 import { merge } from "@/util/classNames";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./themeToggle.module.css";
 import { AnimatedIcon } from "../AnimatedIcon";
 import { faMoon, faSun } from "@fortawesome/pro-solid-svg-icons";
@@ -10,19 +10,59 @@ interface ThemeToggleProps {
   size?: "large" | "small";
 }
 
+const getPrefersDark = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+};
+
+const addDarkTheme = () => {
+  document.body.classList.add("dark");
+};
+
+const removeDarkTheme = () => {
+  document.body.classList.remove("dark");
+};
+
 export const ThemeToggle = ({ example, size = "large" }: ThemeToggleProps) => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   const toggleTheme = useCallback(() => {
-    // Toggle dark class on html body
-    if (document.body.classList.contains("dark")) {
-      document.body.classList.remove("dark");
-      setTheme("light");
-    } else {
-      document.body.classList.add("dark");
-      setTheme("dark");
-    }
+    setTheme((theme) => (theme === "light" ? "dark" : "light"));
   }, []);
+
+  const handleMatch = useCallback((prefersDark: boolean) => {
+    setTheme(prefersDark ? "dark" : "light");
+  }, []);
+
+  useEffect(() => {
+    handleMatch(getPrefersDark());
+  }, [handleMatch]);
+
+  useEffect(() => {
+    if (theme === "dark") {
+      addDarkTheme();
+    } else {
+      removeDarkTheme();
+    }
+  }, [theme]);
+
+  const handleColorSchemeChange = useCallback(
+    (event: MediaQueryListEvent) => {
+      handleMatch(event.matches);
+    },
+    [handleMatch]
+  );
+
+  useEffect(() => {
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", handleColorSchemeChange);
+
+    return () => {
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .removeEventListener("change", handleColorSchemeChange);
+    };
+  }, [handleColorSchemeChange]);
 
   const isLight = theme === "light";
   const isSmall = size === "small";
