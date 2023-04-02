@@ -23,3 +23,7 @@ body {
 .preload * {
   transition: none !important;
 }
+
+body {
+  overflow-x: hidden;
+}

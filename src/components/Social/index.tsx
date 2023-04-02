@@ -8,12 +8,9 @@ import {
   faGithub,
   faInstagram,
   faLinkedin,
-  faLinkedinIn,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./social.module.css";
-import Link from "next/link";
 import { URLS } from "./socials";
 import { Icon } from "./Icon";
 

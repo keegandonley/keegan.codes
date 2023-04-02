@@ -1,0 +1,33 @@
+.renderLogoContainer {
+  background: rgb(255, 136, 223);
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 100%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  transition: transform var(--animation);
+}
+
+.renderLogoContainer:hover {
+  transform: scale(1.1);
+}
+
+.renderLogo {
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.firstParagraph {
+  padding-top: 2rem;
+}
+
+.paragraph a {
+  color: rgb(255, 136, 223);
+}
