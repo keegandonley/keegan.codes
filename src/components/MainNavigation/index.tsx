@@ -10,8 +10,10 @@ import { merge } from "@/util/classNames";
 
 export const MainNavigation = ({
   initialTheme,
+  hasChosenTheme,
 }: {
   initialTheme?: "light" | "dark";
+  hasChosenTheme?: boolean;
 }) => {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
@@ -31,6 +33,7 @@ export const MainNavigation = ({
         <ThemeToggle
           size={isHomePage ? "large" : "small"}
           initialTheme={initialTheme}
+          hasChosenTheme={hasChosenTheme}
         />
         <div className={merge(styles.shadowGroup)}>
           <div

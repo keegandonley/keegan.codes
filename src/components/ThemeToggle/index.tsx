@@ -15,18 +15,22 @@ interface ThemeToggleProps {
   relative?: boolean;
   size?: "large" | "small";
   initialTheme?: "light" | "dark";
+  hasChosenTheme?: boolean;
 }
 
 export const ThemeToggle = ({
   relative,
   size = "large",
   initialTheme,
+  hasChosenTheme,
 }: ThemeToggleProps) => {
   const [theme, setTheme] = useState<"light" | "dark">(
-    () => initialTheme ?? "light"
+    () => initialTheme ?? "dark"
   );
 
   const toggleTheme = useCallback(() => {
+    // TODO - set this to false to allow the fallback on system default
+    document.cookie = `chosen-theme=true;path=/`;
     setTheme((theme) => (theme === "light" ? "dark" : "light"));
   }, []);
 
@@ -35,11 +39,13 @@ export const ThemeToggle = ({
   }, []);
 
   useEffect(() => {
-    handleMatch(getPrefersDark());
-  }, [handleMatch]);
+    if (!hasChosenTheme) {
+      handleMatch(getPrefersDark());
+    }
+  }, [handleMatch, hasChosenTheme]);
 
   useEffect(() => {
-    document.cookie = `theme=${theme}`;
+    document.cookie = `theme=${theme};path=/`;
 
     if (theme === "dark") {
       addDarkTheme();

@@ -13,6 +13,12 @@ const userTheme = () => {
   return cookieStore.get("theme")?.value as "light" | "dark" | undefined;
 };
 
+const getHasChosenTheme = () => {
+  const cookieStore = cookies();
+  const cookieValue = cookieStore.get("chosen-theme")?.value;
+  return cookieValue === "true";
+};
+
 config.autoAddCss = false;
 
 const font = Raleway({ subsets: ["latin"], weight: ["200", "600"] });
@@ -28,12 +34,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const theme = userTheme();
+  const hasChosenTheme = getHasChosenTheme();
   return (
     <html lang="en">
       <body
         className={merge(font.className, "preload", theme === "dark" && "dark")}
       >
-        <MainNavigation initialTheme={theme} />
+        <MainNavigation initialTheme={theme} hasChosenTheme={hasChosenTheme} />
         <main>{children}</main>
         <Background />
       </body>
