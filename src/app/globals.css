@@ -28,3 +28,7 @@ body {
 body {
   overflow-x: hidden;
 }
+
+strong {
+  font-weight: 600;
+}

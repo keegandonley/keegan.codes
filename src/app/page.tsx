@@ -1,6 +1,5 @@
 import { HeroText } from "@/components/Hero/Text";
 import { HeroBlock } from "@/components/Hero/Block";
-import { Divider } from "@/components/Divider";
 import { Social } from "@/components/Social";
 import { Paragraph } from "@/components/Paragraph";
 import Link from "next/link";
@@ -12,28 +11,31 @@ export default function Home() {
   return (
     <>
       <HeroBlock isHomePage collapse>
-        <HeroText>Keegan Donley</HeroText>
+        <HeroText className={styles.name}>Keegan Donley</HeroText>
       </HeroBlock>
-      <Divider />
       <Social />
       <section className={styles.content}>
-        <Paragraph>
+        <Paragraph className={styles.paragraph}>
           Hi there! I&apos;m a <strong>full-stack engineer</strong> located in
-          Austin, Texas.
+          Austin, Texas. I love solving challenging problems for the web, and
+          building applications that are performant, accessible, and easy to
+          use.
         </Paragraph>
-        <Paragraph>
-          I love solving challenging problems for the web, and building
-          applications that are performant, accessible, and easy to use.
-        </Paragraph>
-        <Paragraph>
+        <Paragraph className={styles.paragraph}>
           I&apos;m currently working as a{" "}
           <strong>principal front-end engineer</strong> at{" "}
-          <Link href="https://kizen.com">Kizen</Link>.
-        </Paragraph>
-        <Paragraph>
-          <Link href="/blog">
-            <FontAwesomeIcon icon={faNewspaper} /> <strong>Read my blog</strong>
+          <Link href="https://kizen.com">
+            <strong>Kizen</strong>
           </Link>
+          .
+        </Paragraph>
+        <Paragraph className={styles.paragraph}>
+          I currently have 32 posts on{" "}
+          <Link href="/blog">
+            <strong>my blog</strong>
+          </Link>
+          , with topics ranging from software and web development, to connected
+          fitness and travel.
         </Paragraph>
       </section>
     </>

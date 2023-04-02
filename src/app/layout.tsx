@@ -21,7 +21,7 @@ const getHasChosenTheme = () => {
 
 config.autoAddCss = false;
 
-const font = Raleway({ subsets: ["latin"], weight: ["200", "600"] });
+const font = Raleway({ subsets: ["latin"], weight: ["200", "600", "900"] });
 
 export const metadata = {
   title: "Keegan Donley",

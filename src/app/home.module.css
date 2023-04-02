@@ -9,3 +9,38 @@
   text-align: center;
   font-size: 0.9rem;
 }
+
+.paragraph {
+  text-align: left;
+  max-width: 800px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@keyframes textGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.name {
+  background: linear-gradient(
+    90deg,
+    var(--theme-blue-1),
+    var(--theme-blue-3),
+    var(--theme-yellow),
+    var(--theme-blue-2)
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+  font-weight: 900;
+  animation: textGradient 15s ease infinite;
+  background-size: 400% 400%;
+}
