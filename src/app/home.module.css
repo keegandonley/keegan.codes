@@ -1,0 +1,11 @@
+.content {
+  padding-bottom: 6rem;
+}
+
+.footer {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.9rem;
+}

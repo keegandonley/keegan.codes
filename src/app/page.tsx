@@ -6,16 +6,17 @@ import { Paragraph } from "@/components/Paragraph";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faNewspaper } from "@fortawesome/pro-solid-svg-icons";
+import styles from "./home.module.css";
 
 export default function Home() {
   return (
     <>
-      <HeroBlock isHomePage>
+      <HeroBlock isHomePage collapse>
         <HeroText>Keegan Donley</HeroText>
       </HeroBlock>
       <Divider />
       <Social />
-      <section>
+      <section className={styles.content}>
         <Paragraph>
           Hi there! I&apos;m a <strong>full-stack engineer</strong> located in
           Austin, Texas.
