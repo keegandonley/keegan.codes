@@ -6,6 +6,7 @@ import * as Holidays2022 from "./happy-holidays-22.mdx";
 import * as AiPrompts from "./using-ai-to-generate-dall-e-2-prompts.mdx";
 import * as ChatGPTPoems from "./chatgpt-writes-poems-about-the-internet.mdx";
 import * as TwitterBot from "./statically-generating-twitter-embeds-and-sharing-for-a-performance-boost.mdx";
+import * as Fitness2 from "./my-connected-fitness-tools-part-2.mdx";
 
 const posts = {
   Welcome,
@@ -16,6 +17,7 @@ const posts = {
   AiPrompts,
   ChatGPTPoems,
   TwitterBot,
+  Fitness2,
 };
 
 export default posts;
