@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const redirects = require("./redirects.js");
+
 const nextConfig = {
   experimental: {
     appDir: true,
@@ -12,6 +14,17 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
+  },
+  redirects: async () => {
+    return [
+      ...redirects.map((r) => {
+        return {
+          source: r[0],
+          destination: r[1],
+          permanent: Boolean(r[3]) ?? true,
+        };
+      }),
+    ];
   },
 };
 
