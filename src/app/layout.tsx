@@ -25,7 +25,7 @@ config.autoAddCss = false;
 
 const font = Raleway({ subsets: ["latin"], weight: ["200", "600", "900"] });
 
-export async function generateMetadata(_: any, parent?: ResolvingMetadata) {
+export async function generateMetadata() {
   const theme = userTheme();
 
   return {
