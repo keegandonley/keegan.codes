@@ -19,6 +19,8 @@ import { BUCKET_URL } from "@/util/r2";
 //   ];
 // }
 
+export const runtime = "experimental-edge";
+
 interface BlogPageProps {
   params: {
     slug: string;

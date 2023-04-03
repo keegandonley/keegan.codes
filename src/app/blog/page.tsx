@@ -3,6 +3,8 @@ import Posts from "@/posts";
 import styles from "./blog.module.css";
 import { Paragraph } from "@/components/Paragraph";
 
+export const runtime = "experimental-edge";
+
 export default function Home() {
   const posts = Object.keys(Posts).map((key) => {
     const component = (Posts as any)[key];
