@@ -28,6 +28,7 @@
   padding-top: 2rem;
 }
 
-.paragraph a {
+/* Lazy way to raise the precedence for the link color */
+.paragraph.paragraph a {
   color: rgb(255, 136, 223);
 }
