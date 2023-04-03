@@ -40,6 +40,11 @@ export default function Home() {
           , with topics ranging from software and web development, to connected
           fitness and travel.
         </Paragraph>
+        <Paragraph className={styles.paragraph}>
+          I strive to be always learning, and will share as much as I can about
+          my passions here on my website. Come join me and follow along as I
+          work to build a better web!
+        </Paragraph>
       </section>
     </>
   );
