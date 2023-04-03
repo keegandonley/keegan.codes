@@ -51,6 +51,12 @@ export const ThemeToggle = ({
 
   useEffect(() => {
     if (!ignoreGlobalState) {
+      document?.querySelector('meta[name="theme-color"]')?.setAttribute(
+        "content",
+        // TODO: let's standardize the background colors
+        theme === "dark" ? "#0a0935" : "rgba(255, 255, 255, 1)"
+      );
+
       document.cookie = `theme=${theme}; path=/; expires=Tue, 19 Jan 2038 04:14:07 GMT`;
       if (theme === "dark") {
         addDarkTheme();
