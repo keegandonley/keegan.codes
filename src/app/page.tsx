@@ -6,7 +6,7 @@ import Link from "next/link";
 import styles from "./home.module.css";
 import posts from "../posts";
 
-export const runtime = "experimental-edge";
+// export const runtime = "experimental-edge";
 
 export default function Home() {
   const postCount = Object.keys(posts).length;
