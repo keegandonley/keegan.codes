@@ -3,11 +3,12 @@ import { HeroBlock } from "@/components/Hero/Block";
 import { Social } from "@/components/Social";
 import { Paragraph } from "@/components/Paragraph";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faNewspaper } from "@fortawesome/pro-solid-svg-icons";
 import styles from "./home.module.css";
+import posts from "../posts";
 
 export default function Home() {
+  const postCount = Object.keys(posts).length;
+
   return (
     <>
       <HeroBlock isHomePage collapse>
@@ -30,7 +31,7 @@ export default function Home() {
           .
         </Paragraph>
         <Paragraph className={styles.paragraph}>
-          I currently have 32 posts on{" "}
+          I currently have {postCount} posts on{" "}
           <Link href="/blog">
             <strong>my blog</strong>
           </Link>

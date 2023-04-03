@@ -74,6 +74,7 @@ export const ThemeToggle = ({
         );
 
       document.cookie = `theme=${theme}; path=/; expires=Tue, 19 Jan 2038 04:14:07 GMT`;
+
       if (theme === "dark") {
         addDarkTheme();
       } else {
