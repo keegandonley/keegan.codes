@@ -8,7 +8,7 @@ import { faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { URLS } from "@/components/Social/socials";
 import { merge } from "@/util/classNames";
 
-export const runtime = "experimental-edge";
+// export const runtime = "experimental-edge";
 
 export default function RenderPage() {
   return (
