@@ -7,6 +7,8 @@ import { Raleway } from "next/font/google";
 import { merge } from "@/util/classNames";
 import { Background } from "@/components/Background";
 import { cookies } from "next/headers";
+import { ResolvingMetadata } from "next/dist/lib/metadata/types/metadata-interface";
+import { background } from "@/theme/colors";
 
 const userTheme = () => {
   const cookieStore = cookies();
@@ -23,10 +25,15 @@ config.autoAddCss = false;
 
 const font = Raleway({ subsets: ["latin"], weight: ["200", "600", "900"] });
 
-export const metadata = {
-  title: "Keegan Donley",
-  description: "Principal Front-End Engineer at Kizen",
-};
+export async function generateMetadata(_: any, parent?: ResolvingMetadata) {
+  const theme = userTheme();
+
+  return {
+    title: "Keegan Donley",
+    description: "Principal Front-End Engineer at Kizen",
+    themeColor: theme === "light" ? background.light : background.dark,
+  };
+}
 
 export default function RootLayout({
   children,

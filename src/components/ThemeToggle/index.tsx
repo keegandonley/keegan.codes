@@ -10,6 +10,8 @@ import {
   getPrefersDark,
   removeDarkTheme,
 } from "./util";
+import { usePathname } from "next/navigation";
+import { background } from "@/theme/colors";
 
 interface ThemeToggleProps {
   relative?: boolean;
@@ -29,6 +31,19 @@ export const ThemeToggle = ({
   const [theme, setTheme] = useState<"light" | "dark">(
     () => initialTheme ?? "dark"
   );
+
+  const route = usePathname();
+
+  useEffect(() => {
+    if (!ignoreGlobalState) {
+      document
+        ?.querySelector('meta[name="theme-color"]')
+        ?.setAttribute(
+          "content",
+          theme === "dark" ? background.dark : background.light
+        );
+    }
+  }, [route, theme, ignoreGlobalState, initialTheme]);
 
   const toggleTheme = useCallback(() => {
     if (!ignoreGlobalState) {
@@ -51,11 +66,12 @@ export const ThemeToggle = ({
 
   useEffect(() => {
     if (!ignoreGlobalState) {
-      document?.querySelector('meta[name="theme-color"]')?.setAttribute(
-        "content",
-        // TODO: let's standardize the background colors
-        theme === "dark" ? "#0a0935" : "rgba(255, 255, 255, 1)"
-      );
+      document
+        ?.querySelector('meta[name="theme-color"]')
+        ?.setAttribute(
+          "content",
+          theme === "dark" ? background.dark : background.light
+        );
 
       document.cookie = `theme=${theme}; path=/; expires=Tue, 19 Jan 2038 04:14:07 GMT`;
       if (theme === "dark") {
