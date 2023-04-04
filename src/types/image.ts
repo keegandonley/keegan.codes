@@ -1,5 +1,5 @@
 interface ImageMetadata {
-  blurHash: string;
+  // blurHash: string;
   width: number;
   height: number;
   dataUrl: string;

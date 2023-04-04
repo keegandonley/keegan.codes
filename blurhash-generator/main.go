@@ -14,15 +14,13 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/nfnt/resize"
 	"golang.org/x/time/rate"
-
-	"github.com/bbrks/go-blurhash"
 )
 
 type ImageMetadata struct {
-	BlurHash string `json:"blurHash"`
-	Width    int    `json:"width"`
-	Height   int    `json:"height"`
-	DataUrl  string `json:"dataUrl"`
+	// BlurHash string `json:"blurHash"`
+	Width   int    `json:"width"`
+	Height  int    `json:"height"`
+	DataUrl string `json:"dataUrl"`
 }
 
 func main() {
@@ -58,7 +56,7 @@ func main() {
 
 			blurred, _ := stackblur.Process(image, 2000)
 
-			blurHash, _ := blurhash.Encode(4, 3, image)
+			// blurHash, _ := blurhash.Encode(4, 3, image)
 
 			newImage := resize.Resize(100, 0, blurred, resize.NearestNeighbor)
 
@@ -76,10 +74,10 @@ func main() {
 			dataURL := "data:image/jpeg;base64," + encoded
 
 			metadata := ImageMetadata{
-				Width:    image.Bounds().Dx(),
-				Height:   image.Bounds().Dy(),
-				BlurHash: blurHash,
-				DataUrl:  dataURL,
+				Width:  image.Bounds().Dx(),
+				Height: image.Bounds().Dy(),
+				// BlurHash: blurHash,
+				DataUrl: dataURL,
 			}
 
 			hashes[*fileName] = metadata
