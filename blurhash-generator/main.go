@@ -5,7 +5,7 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
-	"image/jpeg"
+	"image/png"
 	"os"
 	"sync"
 	"time"
@@ -14,15 +14,13 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/nfnt/resize"
 	"golang.org/x/time/rate"
-
-	"github.com/bbrks/go-blurhash"
 )
 
 type ImageMetadata struct {
-	BlurHash string `json:"blurHash"`
-	Width    int    `json:"width"`
-	Height   int    `json:"height"`
-	DataUrl  string `json:"dataUrl"`
+	// BlurHash string `json:"blurHash"`
+	Width   int    `json:"width"`
+	Height  int    `json:"height"`
+	DataUrl string `json:"dataUrl"`
 }
 
 func main() {
@@ -55,16 +53,19 @@ func main() {
 			}
 
 			image, _ := downloadImage("https://static.donley.xyz/" + *fileName)
+			cropped, x, y := cropTransparent(image)
 
-			blurred, _ := stackblur.Process(image, 2000)
+			blurredCropped, _ := stackblur.Process(cropped, 2000)
 
-			blurHash, _ := blurhash.Encode(4, 3, image)
+			// blurHash, _ := blurhash.Encode(4, 3, image)
 
-			newImage := resize.Resize(100, 0, blurred, resize.NearestNeighbor)
+			addedImage := addTransparent(image, blurredCropped, x, y)
+
+			resizedImage := resize.Resize(50, 0, addedImage, resize.NearestNeighbor)
 
 			// Encode the blurred image to JPEG
 			var buf bytes.Buffer
-			imgErr := jpeg.Encode(&buf, newImage, &jpeg.Options{Quality: 75})
+			imgErr := png.Encode(&buf, resizedImage)
 			if imgErr != nil {
 				os.Exit(1)
 			}
@@ -73,13 +74,13 @@ func main() {
 			encoded := base64.StdEncoding.EncodeToString(buf.Bytes())
 
 			// Create a data URL with the appropriate MIME type
-			dataURL := "data:image/jpeg;base64," + encoded
+			dataURL := "data:image/png;base64," + encoded
 
 			metadata := ImageMetadata{
-				Width:    image.Bounds().Dx(),
-				Height:   image.Bounds().Dy(),
-				BlurHash: blurHash,
-				DataUrl:  dataURL,
+				Width:  image.Bounds().Dx(),
+				Height: image.Bounds().Dy(),
+				// BlurHash: blurHash,
+				DataUrl: dataURL,
 			}
 
 			hashes[*fileName] = metadata
