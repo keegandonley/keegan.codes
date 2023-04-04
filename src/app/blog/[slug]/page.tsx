@@ -2,12 +2,12 @@ import Posts from "@/posts";
 import styles from "./blogPost.module.css";
 import "./syntax-theme.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons/faArrowLeft";
 import Link from "next/link";
 import { BottomFade } from "@/components/BottomFade";
 import Image from "next/image";
 import { H1 } from "@/components/Post/Heading/H1";
-import { getImageMetadata, parseToProps } from "@/util/image";
+import { getImageMetadata, parseSource, parseToProps } from "@/util/image";
 import { BUCKET_URL } from "@/util/r2";
 
 // export async function generateStaticParams() {
@@ -40,7 +40,7 @@ export default function BlogPage({ params }: BlogPageProps) {
   const Component = found.default;
   const title = found.title;
   const cover = found.cover;
-  const metadata = getImageMetadata(cover);
+  const metadata = getImageMetadata(parseSource(cover)[0]);
 
   if (!Component) return <div>404</div>;
 
