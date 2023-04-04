@@ -26,7 +26,7 @@ export const Img = ({ src, className, alt, ...rest }: any) => {
         className={merge(
           imageStyles.imageParent,
           isVertical && imageStyles.vertical,
-          ratio < 0.6 && imageStyles.short
+          ratio < 0.5 && imageStyles.short
         )}
         data-ratio={ratio}
         data-flags={flags.join(",")}
@@ -44,6 +44,8 @@ export const Img = ({ src, className, alt, ...rest }: any) => {
               ? "none"
               : "drop-shadow(0 0 0.5rem var(--shadow-color))",
           }}
+          placeholder="blur"
+          blurDataURL={metadata.dataUrl}
         />
       </span>
     );

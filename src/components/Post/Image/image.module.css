@@ -18,3 +18,14 @@
 .vertical {
   height: 50rem;
 }
+
+@media only screen and (max-width: 700px) {
+  .imageParent,
+  .short {
+    height: 15rem;
+  }
+
+  .vertical {
+    height: 25rem;
+  }
+}
