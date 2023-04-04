@@ -25,7 +25,7 @@ export const AnimatedIcon = ({
         merge(
           styles.animatedIcon,
           visible && styles.show,
-          fromBottom ? styles.fromBottom : styles.fromTop
+          fromBottom ? styles.darkModeToggle : styles.lightModeToggle
         )
       )}
     >

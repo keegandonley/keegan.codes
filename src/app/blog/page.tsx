@@ -2,6 +2,7 @@ import { MDXEntryRow } from "@/components/MDXEntryRow";
 import Posts from "@/posts";
 import styles from "./blog.module.css";
 import { Paragraph } from "@/components/Paragraph";
+import ScrollFixer from "@/components/ScrollFixer";
 
 // export const runtime = "experimental-edge";
 
@@ -18,16 +19,21 @@ export default function Home() {
   });
 
   return (
-    <section>
-      <Paragraph className={styles.bodyText}>
-        Thanks for stopping by! This is a space for random thoughts, interests,
-        hobbies, etc. of mine. I hope you find something interesting!
-      </Paragraph>
-      <div className={styles.wrapper}>
-        {posts.map((post) => {
-          return <MDXEntryRow key={post.slug} {...post} />;
-        })}
-      </div>
-    </section>
+    <>
+      <ScrollFixer />
+
+      <section>
+        <Paragraph className={styles.bodyText}>
+          Thanks for stopping by! This is a space for random thoughts,
+          interests, hobbies, etc. of mine. I hope you find something
+          interesting!
+        </Paragraph>
+        <div className={styles.wrapper}>
+          {posts.map((post) => {
+            return <MDXEntryRow key={post.slug} {...post} />;
+          })}
+        </div>
+      </section>
+    </>
   );
 }

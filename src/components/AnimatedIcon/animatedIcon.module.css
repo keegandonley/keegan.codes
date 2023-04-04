@@ -11,15 +11,16 @@
   border-radius: 100%;
 }
 
-.fromBottom {
+.darkModeToggle {
   transform: translateY(40px);
   background-color: var(--theme-dark);
-  color: var(--theme-inverted-text);
+  color: var(--theme-off-white);
 }
 
-.fromTop {
+.lightModeToggle {
   transform: translateY(-40px);
   background-color: var(--theme-yellow);
+  color: var(--theme-dark-blue);
 }
 
 .show {

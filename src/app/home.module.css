@@ -10,7 +10,7 @@
   font-size: 0.9rem;
 }
 
-.paragraph {
+.paragraph.paragraph {
   text-align: left;
   max-width: 800px;
   padding-left: 2rem;
