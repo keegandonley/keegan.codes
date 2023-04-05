@@ -29,7 +29,7 @@
   }
 }
 
-.name {
+.name.name {
   background: linear-gradient(
     90deg,
     var(--theme-blue-1),
