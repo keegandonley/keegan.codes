@@ -1,21 +1,21 @@
 :root {
   /* Static colors */
-  --theme-dark-blue: #20417b;
-  --theme-high-contrast: #0e2041;
-  --theme-off-white: #e3e5f0;
+  --theme-dark-blue: rgba(32, 65, 123, 1);
+  --theme-high-contrast: rgba(14, 32, 65, 1);
+  --theme-off-white: rgba(227, 229, 240, 1);
 
   /* Theme colors */
-  --theme-blue-0: #d3e9f1;
-  --theme-blue-1: #87ceeb;
-  --theme-blue-2: #1e90ff;
-  --theme-blue-3: #000080;
+  --theme-blue-0: rgba(211, 233, 241, 1);
+  --theme-blue-1: rgba(135, 206, 235, 1);
+  --theme-blue-2: rgba(30, 144, 255, 1);
+  --theme-blue-3: rgba(0, 0, 128, 1);
   --theme-text: var(--theme-dark-blue);
   --theme-text-high-contrast: var(--theme-high-contrast);
-  --theme-yellow: #f6ae2d;
-  --theme-dark: #272727;
+  --theme-yellow: rgba(246, 174, 45, 1);
+  --theme-dark: rgba(39, 39, 39, 1);
   --theme-inverted-text: var(--theme-off-white);
   --theme-transparent: rgba(0, 0, 0, 0);
-  --code-background: #282a36;
+  --code-background: rgba(40, 42, 54, 1);
   --shadow-color: rgb(164, 164, 164);
 
   /* Theme animation */
@@ -34,27 +34,27 @@
 }
 
 body.dark {
-  --theme-high-contrast: #c9daf9;
+  --theme-high-contrast: rgba(201, 218, 249, 1);
 
-  --theme-blue-0: #00465f;
-  --theme-blue-1: #4bb9e5;
-  --theme-blue-2: #86c0fb;
-  --theme-blue-3: #6495c3;
-  --theme-text: #d0d6e3;
+  --theme-blue-0: rgba(0, 70, 95, 1);
+  --theme-blue-1: rgba(75, 185, 229, 1);
+  --theme-blue-2: rgba(134, 192, 251, 1);
+  --theme-blue-3: rgba(100, 149, 195, 1);
+  --theme-text: rgba(208, 214, 227, 1);
   --theme-text-high-contrast: var(--theme-high-contrast);
-  --theme-yellow: #f6ae2d;
-  --theme-dark: #272727;
-  --theme-inverted-text: #19376d;
+  --theme-yellow: rgba(246, 174, 45, 1);
+  --theme-dark: rgba(39, 39, 39, 1);
+  --theme-inverted-text: rgba(25, 55, 109, 1);
   --theme-transparent: rgba(0, 0, 0, 0);
-  --code-background: #282a36;
-  --shadow-color: #2e2e47;
+  --code-background: rgba(40, 42, 54, 1);
+  --shadow-color: rgba(46, 46, 71, 1);
 
   /* Theme animation */
   --animation: 0.5s ease-in-out;
   --animation-curve: cubic-bezier(0.2, 0.85, 0.45, 1.3);
 
   /* Use-cases */
-  --theme-background: #0a0935;
+  --theme-background: rgba(10, 9, 53, 1);
   --theme-box-shadow-standard: 0px 0px 20px 1px var(--shadow-color);
   --theme-box-shadow-small: 0px 0px 100px 0px rgba(46, 46, 71, 0.5);
   --theme-background-gradient: linear-gradient(
