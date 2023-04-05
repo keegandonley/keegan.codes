@@ -31,6 +31,7 @@
     var(--theme-blue-2) 0%,
     var(--theme-transparent) 85%
   );
+  --theme-pill: rgba(200, 200, 200, 0.5);
 }
 
 body.dark {

@@ -40,11 +40,16 @@
 .content {
   margin-top: -5rem;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .a {
   text-decoration: none;
   color: var(--theme-text);
+  display: flex;
+  flex-direction: column;
 }
 
 .h1 {
@@ -55,13 +60,19 @@
 .tags {
   padding-top: 2rem;
   display: flex;
-  column-gap: 0.7rem;
-  row-gap: 0.3rem;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
   flex-wrap: wrap;
+  margin-top: auto;
 }
 
 .tag {
   color: var(--theme-blue-2);
+  background: var(--theme-pill);
+  border-radius: 1.5rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  color: var(--theme-text-high-contrast);
 }
 
 .description {
