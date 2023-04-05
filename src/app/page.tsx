@@ -4,13 +4,11 @@ import { Social } from "@/components/Social";
 import { Paragraph } from "@/components/Paragraph";
 import Link from "next/link";
 import styles from "./home.module.css";
-import posts from "../posts";
+import { postCount } from "../post-count";
 
-// export const runtime = "experimental-edge";
+export const runtime = "experimental-edge";
 
 export default function Home() {
-  const postCount = Object.keys(posts).length;
-
   return (
     <>
       <HeroBlock isHomePage collapse>

@@ -5,12 +5,10 @@ import {
   linkedInBlue,
   twitterBlue,
 } from "@/theme/brandColors";
-import {
-  faGithub,
-  faInstagram,
-  faLinkedin,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
 import styles from "./social.module.css";
 import { URLS } from "./socials";
 import { Icon } from "./Icon";
