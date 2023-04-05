@@ -10,6 +10,7 @@
   --theme-blue-2: rgba(30, 144, 255, 1);
   --theme-blue-3: rgba(0, 0, 128, 1);
   --theme-text: var(--theme-dark-blue);
+  --theme-text-secondary: rgba(32, 65, 123, 0.6);
   --theme-text-high-contrast: var(--theme-high-contrast);
   --theme-yellow: rgba(246, 174, 45, 1);
   --theme-dark: rgba(39, 39, 39, 1);
@@ -42,6 +43,7 @@ body.dark {
   --theme-blue-2: rgba(134, 192, 251, 1);
   --theme-blue-3: rgba(100, 149, 195, 1);
   --theme-text: rgba(208, 214, 227, 1);
+  --theme-text-secondary: rgba(208, 214, 227, 0.6);
   --theme-text-high-contrast: var(--theme-high-contrast);
   --theme-yellow: rgba(246, 174, 45, 1);
   --theme-dark: rgba(39, 39, 39, 1);

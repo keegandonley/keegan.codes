@@ -15,6 +15,7 @@ export default function Home() {
       tags: component.tags ?? [],
       description: component.description,
       cover: component.cover,
+      published: component.published,
     };
   });
 
@@ -30,9 +31,16 @@ export default function Home() {
           I&apos;ll also write about other things that I&apos;m interested in!
         </Paragraph>
         <div className={styles.wrapper}>
-          {posts.map((post) => {
-            return <MDXEntryRow key={post.slug} {...post} />;
-          })}
+          {posts
+            .sort((a, b) => {
+              if (!a.published || !b.published) {
+                return 0;
+              }
+              return b.published.getTime() - a.published.getTime();
+            })
+            .map((post) => {
+              return <MDXEntryRow key={post.slug} {...post} />;
+            })}
         </div>
       </section>
     </>

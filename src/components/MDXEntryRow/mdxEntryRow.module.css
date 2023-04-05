@@ -78,3 +78,9 @@
 .description {
   line-height: 1.5rem;
 }
+
+.date {
+  font-size: 0.8rem;
+  padding-top: 1rem;
+  color: var(--theme-text-secondary);
+}

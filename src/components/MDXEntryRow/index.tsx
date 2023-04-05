@@ -12,6 +12,7 @@ interface MDXEntryRowProps extends ElementBaseProps {
   tags: string[];
   description?: string;
   cover?: string;
+  published?: Date;
 }
 
 export const MDXEntryRow = ({
@@ -20,7 +21,16 @@ export const MDXEntryRow = ({
   tags,
   description,
   cover,
+  published,
 }: MDXEntryRowProps) => {
+  const formattedDate = published
+    ? published.toLocaleString("en-US", {
+        timeZone: "America/Chicago",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      })
+    : "";
   const metadata = getImageMetadata(cover);
   return (
     <div className={styles.wrapper}>
@@ -44,10 +54,11 @@ export const MDXEntryRow = ({
         <div className={styles.content}>
           <h1 className={styles.h1}>{title}</h1>
           <p className={styles.description}>{description}</p>
+          <p className={styles.date}> {formattedDate}</p>
           <div className={styles.tags}>
             {tags.map((tag) => {
               return (
-                <span key={tag} className={styles.tag}>
+                <span className={styles.tag} key={tag}>
                   {tag}
                 </span>
               );
