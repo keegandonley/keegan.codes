@@ -7,6 +7,7 @@ import * as AiPrompts from "./using-ai-to-generate-dall-e-2-prompts.mdx";
 import * as ChatGPTPoems from "./chatgpt-writes-poems-about-the-internet.mdx";
 import * as TwitterBot from "./statically-generating-twitter-embeds-and-sharing-for-a-performance-boost.mdx";
 import * as Fitness2 from "./my-connected-fitness-tools-part-2.mdx";
+import * as Newsletter from "./why-write-a-newsletter.mdx";
 
 const posts = {
   Welcome,
@@ -18,6 +19,7 @@ const posts = {
   ChatGPTPoems,
   TwitterBot,
   Fitness2,
+  Newsletter,
 };
 
 export default posts;
