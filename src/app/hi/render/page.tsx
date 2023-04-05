@@ -4,11 +4,12 @@ import Image from "next/image";
 import styles from "./render.module.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
 import { URLS } from "@/components/Social/socials";
 import { merge } from "@/util/classNames";
 
-// export const runtime = "experimental-edge";
+export const runtime = "experimental-edge";
 
 export default function RenderPage() {
   return (

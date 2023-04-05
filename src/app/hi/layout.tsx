@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./hi.module.css";
-import { faPartyHorn } from "@fortawesome/pro-solid-svg-icons";
+import { faPartyHorn } from "@fortawesome/pro-solid-svg-icons/faPartyHorn";
 
 export default function hiLayout({ children }: { children: React.ReactNode }) {
   return (
