@@ -1,7 +1,7 @@
 "use client";
 import { Avatar } from "../Avatar";
 import { HeroBlock } from "../Hero/Block";
-import { usePathname } from "next/navigation";
+import { usePathname, useSelectedLayoutSegments } from "next/navigation";
 import { MenuItem } from "./components/MenuItem";
 import { useEffect } from "react";
 import styles from "./navigation.module.css";
@@ -18,6 +18,8 @@ export const MainNavigation = ({
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const isBlogPage = pathname.startsWith("/blog");
+  const router = useSelectedLayoutSegments();
+  console.log(router);
 
   useEffect(() => {
     document.body.classList.remove("preload");

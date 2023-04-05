@@ -9,6 +9,7 @@ import Image from "next/image";
 import { H1 } from "@/components/Post/Heading/H1";
 import { getImageMetadata, parseSource, parseToProps } from "@/util/image";
 import { BUCKET_URL } from "@/util/r2";
+import { notFound } from "next/navigation";
 
 // export async function generateStaticParams() {
 //   return [
@@ -33,7 +34,9 @@ export default function BlogPage({ params }: BlogPageProps) {
     return component.slug === params.slug;
   });
 
-  if (!componentKey) return <div>404</div>;
+  if (!componentKey) {
+    notFound();
+  }
 
   const found = (Posts as any)[componentKey];
 
@@ -42,7 +45,9 @@ export default function BlogPage({ params }: BlogPageProps) {
   const cover = found.cover;
   const metadata = getImageMetadata(parseSource(cover)[0]);
 
-  if (!Component) return <div>404</div>;
+  if (!Component) {
+    notFound();
+  }
 
   return (
     <>
