@@ -3,10 +3,11 @@ import { Avatar } from "../Avatar";
 import { HeroBlock } from "../Hero/Block";
 import { usePathname, useSelectedLayoutSegments } from "next/navigation";
 import { MenuItem } from "./components/MenuItem";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import styles from "./navigation.module.css";
 import { ThemeToggle } from "../ThemeToggle";
 import { merge } from "@/util/classNames";
+import { slugs } from "../../post-slugs";
 
 export const MainNavigation = ({
   initialTheme,
@@ -18,15 +19,24 @@ export const MainNavigation = ({
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const isBlogPage = pathname.startsWith("/blog");
-  const router = useSelectedLayoutSegments();
-  console.log(router);
+  const segments = useSelectedLayoutSegments();
+
+  const isBlog404 = useMemo(() => {
+    if (segments[0] === "blog") {
+      const slug = segments[1];
+
+      return Boolean(slug) && !slugs.includes(slug);
+    } else {
+      return false;
+    }
+  }, [segments]);
 
   useEffect(() => {
     document.body.classList.remove("preload");
   }, [pathname]);
 
   return (
-    <HeroBlock isHomePage={isHomePage}>
+    <HeroBlock isHomePage={isHomePage} sticky={!isBlog404}>
       <MenuItem href="/" side="left" visible={!isHomePage} active={isHomePage}>
         Home
       </MenuItem>
@@ -41,13 +51,13 @@ export const MainNavigation = ({
           <div
             className={merge(
               styles.navigationBubble,
-              isBlogPage ? styles.shadow : styles.noShadow
+              isBlogPage && !isBlog404 ? styles.shadow : styles.noShadow
             )}
           ></div>
           <div
             className={merge(
               styles.avatarBubble,
-              isBlogPage ? styles.shadow : styles.noShadow
+              isBlogPage && !isBlog404 ? styles.shadow : styles.noShadow
             )}
           ></div>
         </div>

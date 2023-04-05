@@ -16,4 +16,13 @@ func main() {
 
 	writeCountToTsFile(countFile, count-excludedFileCount)
 
+	contents, err := loadFilesInDir("../src/posts")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	slugs := getSlugs(contents)
+	writeSlugsToTsFile("../src/post-slugs.ts", slugs)
+
 }

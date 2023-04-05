@@ -5,6 +5,7 @@ import { fallback, merge } from "@/util/classNames";
 interface HeroBlockProps extends ElementBaseProps {
   isHomePage?: boolean;
   collapse?: boolean;
+  sticky?: boolean;
 }
 
 export const HeroBlock = ({
@@ -12,6 +13,7 @@ export const HeroBlock = ({
   isHomePage,
   className,
   collapse,
+  sticky,
 }: HeroBlockProps) => {
   return (
     <div
@@ -20,7 +22,8 @@ export const HeroBlock = ({
         merge(
           styles.container,
           !isHomePage && styles.small,
-          collapse && styles.collapse
+          collapse && styles.collapse,
+          sticky && styles.sticky
         )
       )}
     >

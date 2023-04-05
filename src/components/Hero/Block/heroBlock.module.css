@@ -11,10 +11,13 @@
 
 .small {
   padding-top: 2rem;
-  position: sticky;
   top: -2rem;
   z-index: 100;
   height: 12rem;
+}
+
+.small.sticky {
+  position: sticky;
 }
 
 .collapse {
