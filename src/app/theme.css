@@ -1,6 +1,7 @@
 :root {
   /* Static colors */
-  --theme-dark-blue: #19376d;
+  --theme-dark-blue: #20417b;
+  --theme-high-contrast: #0e2041;
   --theme-off-white: #e3e5f0;
 
   /* Theme colors */
@@ -9,6 +10,7 @@
   --theme-blue-2: #1e90ff;
   --theme-blue-3: #000080;
   --theme-text: var(--theme-dark-blue);
+  --theme-text-high-contrast: var(--theme-high-contrast);
   --theme-yellow: #f6ae2d;
   --theme-dark: #272727;
   --theme-inverted-text: var(--theme-off-white);
@@ -24,14 +26,22 @@
   --theme-background: rgba(255, 255, 255, 1);
   --theme-box-shadow-standard: 0px 0px 20px 1px var(--shadow-color);
   --theme-box-shadow-small: 0px 0px 100px 0px rgba(226, 226, 226, 0.5);
+  --theme-background-gradient: linear-gradient(
+    180deg,
+    var(--theme-blue-2) 0%,
+    var(--theme-transparent) 85%
+  );
 }
 
 body.dark {
+  --theme-high-contrast: #c9daf9;
+
   --theme-blue-0: #00465f;
   --theme-blue-1: #4bb9e5;
   --theme-blue-2: #86c0fb;
   --theme-blue-3: #6495c3;
   --theme-text: #d0d6e3;
+  --theme-text-high-contrast: var(--theme-high-contrast);
   --theme-yellow: #f6ae2d;
   --theme-dark: #272727;
   --theme-inverted-text: #19376d;
@@ -47,6 +57,11 @@ body.dark {
   --theme-background: #0a0935;
   --theme-box-shadow-standard: 0px 0px 20px 1px var(--shadow-color);
   --theme-box-shadow-small: 0px 0px 100px 0px rgba(46, 46, 71, 0.5);
+  --theme-background-gradient: linear-gradient(
+    180deg,
+    var(--theme-blue-1) 0%,
+    var(--theme-transparent) 85%
+  );
 }
 
 * {

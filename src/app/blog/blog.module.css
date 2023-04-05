@@ -8,9 +8,10 @@
   flex-wrap: wrap;
 }
 
-.bodyText {
-  margin-top: 4rem;
-  font-weight: 600;
+.bodyText.bodyText {
+  margin-top: 1rem;
   position: relative;
   z-index: 1;
+  max-width: 900px;
+  color: var(--theme-text-high-contrast);
 }

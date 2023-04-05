@@ -24,9 +24,10 @@ export default function Home() {
 
       <section>
         <Paragraph className={styles.bodyText}>
-          Thanks for stopping by! This is a space for random thoughts,
-          interests, hobbies, etc. of mine. I hope you find something
-          interesting!
+          Welcome to my blog, thanks for stopping by! This is a space for random
+          thoughts, interests, hobbies, etc. of mine. I hope you find something
+          interesting! Most of what I write about is software development, but
+          I&apos;ll also write about other things that I&apos;m interested in!
         </Paragraph>
         <div className={styles.wrapper}>
           {posts.map((post) => {
