@@ -3,4 +3,5 @@ go 1.20
 use (
 	./blurhash-generator
 	./post-metadata-generator
+	./img-serve
 )
