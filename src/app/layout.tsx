@@ -7,8 +7,9 @@ import { Raleway } from "next/font/google";
 import { merge } from "@/util/classNames";
 import { Background } from "@/components/Background";
 import { cookies } from "next/headers";
-import { ResolvingMetadata } from "next/dist/lib/metadata/types/metadata-interface";
 import { background } from "@/theme/colors";
+import { Banner } from "@/components/Banner";
+import { faSpaceStationMoonConstruction } from "@fortawesome/pro-solid-svg-icons/faSpaceStationMoonConstruction";
 
 const userTheme = () => {
   const cookieStore = cookies();
@@ -47,6 +48,10 @@ export default function RootLayout({
       <body
         className={merge(font.className, "preload", theme === "dark" && "dark")}
       >
+        <Banner level={1} icon={faSpaceStationMoonConstruction}>
+          This is the beta version of my new blog! May be unstable or change at
+          any time.
+        </Banner>
         <MainNavigation initialTheme={theme} hasChosenTheme={hasChosenTheme} />
         <main>{children}</main>
         <Background />
