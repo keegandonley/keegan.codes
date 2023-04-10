@@ -10,6 +10,7 @@ import { cookies } from "next/headers";
 import { background } from "@/theme/colors";
 import { Banner } from "@/components/Banner";
 import { faSpaceStationMoonConstruction } from "@fortawesome/pro-solid-svg-icons/faSpaceStationMoonConstruction";
+import Link from "next/link";
 
 const userTheme = () => {
   const cookieStore = cookies();
@@ -49,8 +50,11 @@ export default function RootLayout({
         className={merge(font.className, "preload", theme === "dark" && "dark")}
       >
         <Banner level={1} icon={faSpaceStationMoonConstruction}>
-          This is the beta version of my new blog! May be unstable or change at
-          any time.
+          <span>
+            This site is in beta.{" "}
+            <Link href="https://k10y.com">Click here</Link> to visit the live
+            version
+          </span>
         </Banner>
         <MainNavigation initialTheme={theme} hasChosenTheme={hasChosenTheme} />
         <main>{children}</main>

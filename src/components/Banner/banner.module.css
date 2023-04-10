@@ -11,7 +11,7 @@
   box-shadow: var(--theme-box-shadow-small);
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 500px) {
   .banner {
     top: calc((var(--banner-level-rems) - 1rem) * 3.4);
     height: 3.4rem;
@@ -20,4 +20,9 @@
 
 .banner svg {
   padding: 0 0.5rem;
+}
+
+.banner a {
+  text-decoration: none;
+  color: var(--theme-blue-1);
 }
