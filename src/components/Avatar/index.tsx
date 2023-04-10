@@ -2,7 +2,7 @@ import Image from "next/image";
 import avatar from "./avatar.jpg";
 import styles from "./avatar.module.css";
 import { ElementBaseProps } from "@/types/elements";
-import { fallback, merge } from "@/util/classNames";
+import { fallback } from "@/util/classNames";
 
 interface AvatarProps extends ElementBaseProps {
   width?: number;

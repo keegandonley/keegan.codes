@@ -44,6 +44,7 @@ export default function RootLayout({
 }) {
   const theme = userTheme();
   const hasChosenTheme = getHasChosenTheme();
+
   return (
     <html lang="en">
       <body

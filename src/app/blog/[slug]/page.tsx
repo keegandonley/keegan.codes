@@ -1,4 +1,3 @@
-import Posts from "@/posts";
 import styles from "./blogPost.module.css";
 import "./syntax-theme.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,17 +9,8 @@ import { H1 } from "@/components/Post/Heading/H1";
 import { getImageMetadata, parseSource, parseToProps } from "@/util/image";
 import { BUCKET_URL } from "@/util/r2";
 import { notFound } from "next/navigation";
-
-// export async function generateStaticParams() {
-//   return [
-//     Object.keys(Posts).map((key) => {
-//       const component = (Posts as any)[key];
-//       return { slug: component.slug };
-//     }),
-//   ];
-// }
-
-// export const runtime = "experimental-edge";
+import { Metadata } from "next";
+import { getComponentForKey, getKey } from "../util";
 
 interface BlogPageProps {
   params: {
@@ -28,17 +18,31 @@ interface BlogPageProps {
   };
 }
 
+export async function generateMetadata({
+  params,
+}: BlogPageProps): Promise<Metadata> {
+  const componentKey = getKey({ slug: params.slug });
+  if (componentKey) {
+    const found = getComponentForKey({ key: componentKey });
+
+    return {
+      title: `${found.title} · Keegan Donley`,
+    };
+  }
+
+  return {
+    title: "Keegan Donley",
+  };
+}
+
 export default function BlogPage({ params }: BlogPageProps) {
-  const componentKey = Object.keys(Posts).find((key) => {
-    const component = (Posts as any)[key];
-    return component.slug === params.slug;
-  });
+  const componentKey = getKey({ slug: params.slug });
 
   if (!componentKey) {
     notFound();
   }
 
-  const found = (Posts as any)[componentKey];
+  const found = getComponentForKey({ key: componentKey });
 
   const Component = found.default;
   const title = found.title;
