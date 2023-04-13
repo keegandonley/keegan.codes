@@ -37,11 +37,7 @@ export async function generateMetadata() {
   };
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: any) {
   const theme = userTheme();
   const hasChosenTheme = getHasChosenTheme();
 

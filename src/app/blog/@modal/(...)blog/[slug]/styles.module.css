@@ -1,0 +1,73 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+  background-color: transparent;
+  backdrop-filter: blur(0);
+  overflow-y: scroll;
+  transition: background-color var(--animation),
+    backdrop-filter var(--animation);
+}
+
+.wrapper.fadeIn {
+  background-color: rgba(39, 39, 39, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.inner {
+  background: var(--theme-background);
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  top: 100vh;
+  transition: top var(--animation);
+  transition-delay: 10ms;
+}
+
+.inner.fadeIn {
+  top: 0;
+}
+
+.coverWrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40rem;
+  top: 0;
+  z-index: 0;
+}
+
+.coverWrapper img {
+  object-fit: cover;
+}
+
+.article {
+  padding: 30rem 2rem 4rem 2rem;
+  z-index: 2;
+  position: relative;
+  margin: 0 auto;
+  color: var(--theme-text);
+  position: relative;
+}
+
+.back {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--theme-blue-3);
+  opacity: 0.7;
+  transition: opacity var(--animation);
+  cursor: pointer;
+}
+
+.back:hover {
+  opacity: 1;
+}
+
+.title {
+  padding-top: 1rem;
+}
