@@ -11,6 +11,7 @@ import { Li } from "./components/Post/Li";
 import { Img } from "./components/Post/Image";
 import { Hr } from "./components/Post/Hr";
 import { Blockquote } from "./components/Post/Blockquote";
+import { Ol } from "./components/Post/Ol";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -26,6 +27,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     img: Img,
     hr: Hr,
     blockquote: Blockquote,
+    ol: Ol,
     ...components,
   };
 }

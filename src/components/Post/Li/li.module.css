@@ -1,3 +1,7 @@
 .li {
   padding-top: 0.5rem;
 }
+
+.li::marker {
+  font-size: 1.1em;
+}
