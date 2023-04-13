@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { merge } from "@/util/classNames";
 import { useRouter } from "next/navigation";
@@ -14,13 +14,19 @@ export default function Modal({ children }: any) {
   const router = useRouter();
 
   useEffect(() => {
+    document.body.classList.add("lockScroll");
     setTimeout(() => setFadedIn(true), 100);
   }, []);
+
+  const handleBack = useCallback(() => {
+    document.body.classList.remove("lockScroll");
+    router.back();
+  }, [router]);
 
   return (
     <div
       className={merge(styles.wrapper, fadedIn ? styles.fadeIn : "")}
-      onClick={router.back}
+      onClick={handleBack}
     >
       <div
         className={merge(styles.inner, fadedIn ? styles.fadeIn : "")}
