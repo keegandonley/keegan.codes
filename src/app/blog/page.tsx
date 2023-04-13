@@ -24,12 +24,12 @@ export default function Home() {
       <ScrollFixer />
 
       <section>
-        <Paragraph className={styles.bodyText}>
+        {/* <Paragraph className={styles.bodyText}>
           Welcome to my blog, thanks for stopping by! This is a space for random
           thoughts, interests, hobbies, etc. of mine. I hope you find something
           interesting! Most of what I write about is software development, but
           I&apos;ll also write about other things that I&apos;m interested in!
-        </Paragraph>
+        </Paragraph> */}
         <div className={styles.wrapper}>
           {posts
             .sort((a, b) => {

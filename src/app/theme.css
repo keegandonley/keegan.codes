@@ -33,6 +33,12 @@
     var(--theme-transparent) 85%
   );
   --theme-pill: rgba(200, 200, 200, 0.5);
+
+  /* Github squares */
+  --color-gh-1: #0e4429;
+  --color-gh-2: #006d32;
+  --color-gh-3: #26a641;
+  --color-gh-4: #39d353;
 }
 
 body.dark {

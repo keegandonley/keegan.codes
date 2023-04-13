@@ -5,7 +5,6 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import { MainNavigation } from "@/components/MainNavigation";
 import { Raleway } from "next/font/google";
 import { merge } from "@/util/classNames";
-import { Background } from "@/components/Background";
 import { background } from "@/theme/colors";
 import { getHasChosenTheme, userTheme } from "@/util/cookies";
 
@@ -24,7 +23,6 @@ export default function RootLayout({ children }: any) {
       >
         <MainNavigation initialTheme={theme} hasChosenTheme={hasChosenTheme} />
         <main>{children}</main>
-        <Background />
       </body>
     </html>
   );
