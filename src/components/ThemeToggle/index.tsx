@@ -4,19 +4,21 @@ import { useCallback, useEffect, useState } from "react";
 import styles from "./themeToggle.module.css";
 import { AnimatedIcon } from "../AnimatedIcon";
 import { faMoon, faSunBright } from "@fortawesome/pro-solid-svg-icons";
+import { usePathname } from "next/navigation";
 import {
-  addDarkTheme,
   getMatch,
   getPrefersDark,
-  removeDarkTheme,
-} from "./util";
-import { usePathname } from "next/navigation";
-import { background } from "@/theme/colors";
+  handleTheme,
+  setHasChosenThemeCookie,
+  setMetaTheme,
+  setThemeCookie,
+} from "@/util/theme";
+import { Theme, ThemeChooserSize } from "@/types/theme";
 
 interface ThemeToggleProps {
   relative?: boolean;
-  size?: "large" | "small";
-  initialTheme?: "light" | "dark";
+  size?: ThemeChooserSize;
+  initialTheme?: Theme;
   hasChosenTheme?: boolean;
   ignoreGlobalState?: boolean;
 }
@@ -28,27 +30,20 @@ export const ThemeToggle = ({
   hasChosenTheme,
   ignoreGlobalState = false,
 }: ThemeToggleProps) => {
-  const [theme, setTheme] = useState<"light" | "dark">(
-    () => initialTheme ?? "dark"
-  );
+  const [theme, setTheme] = useState<Theme>(() => initialTheme ?? "dark");
 
   const route = usePathname();
 
   useEffect(() => {
     if (!ignoreGlobalState) {
-      document
-        ?.querySelector('meta[name="theme-color"]')
-        ?.setAttribute(
-          "content",
-          theme === "dark" ? background.dark : background.light
-        );
+      setMetaTheme(theme);
     }
   }, [route, theme, ignoreGlobalState, initialTheme]);
 
   const toggleTheme = useCallback(() => {
     if (!ignoreGlobalState) {
       // TODO - set this to false to allow the fallback on system default
-      document.cookie = `chosen-theme=true; path=/; expires=Tue, 19 Jan 2038 04:14:07 GMT`;
+      setHasChosenThemeCookie();
     }
 
     setTheme((theme) => (theme === "light" ? "dark" : "light"));
@@ -66,20 +61,9 @@ export const ThemeToggle = ({
 
   useEffect(() => {
     if (!ignoreGlobalState) {
-      document
-        ?.querySelector('meta[name="theme-color"]')
-        ?.setAttribute(
-          "content",
-          theme === "dark" ? background.dark : background.light
-        );
-
-      document.cookie = `theme=${theme}; path=/; expires=Tue, 19 Jan 2038 04:14:07 GMT`;
-
-      if (theme === "dark") {
-        addDarkTheme();
-      } else {
-        removeDarkTheme();
-      }
+      setMetaTheme(theme);
+      setThemeCookie(theme);
+      handleTheme(theme);
     }
   }, [theme, ignoreGlobalState]);
 

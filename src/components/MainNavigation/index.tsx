@@ -8,12 +8,13 @@ import styles from "./navigation.module.css";
 import { ThemeToggle } from "../ThemeToggle";
 import { merge } from "@/util/classNames";
 import { slugs } from "../../post-slugs";
+import { Theme } from "@/types/theme";
 
 export const MainNavigation = ({
   initialTheme,
   hasChosenTheme,
 }: {
-  initialTheme?: "light" | "dark";
+  initialTheme?: Theme;
   hasChosenTheme?: boolean;
 }) => {
   const pathname = usePathname();

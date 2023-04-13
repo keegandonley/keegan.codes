@@ -2,7 +2,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  height: 40rem;
+  height: 30rem;
   top: 0;
   z-index: 0;
 }
@@ -12,7 +12,7 @@
 }
 
 .article {
-  padding: 30rem 2rem 4rem 2rem;
+  padding: 20rem 2rem 4rem 2rem;
   z-index: 2;
   position: relative;
   margin: 0 auto;

@@ -6,34 +6,13 @@ import { MainNavigation } from "@/components/MainNavigation";
 import { Raleway } from "next/font/google";
 import { merge } from "@/util/classNames";
 import { Background } from "@/components/Background";
-import { cookies } from "next/headers";
 import { background } from "@/theme/colors";
 import { LayoutProps } from "../../.next/types/app/layout";
-
-const userTheme = () => {
-  const cookieStore = cookies();
-  return cookieStore.get("theme")?.value as "light" | "dark" | undefined;
-};
-
-const getHasChosenTheme = () => {
-  const cookieStore = cookies();
-  const cookieValue = cookieStore.get("chosen-theme")?.value;
-  return cookieValue === "true";
-};
+import { getHasChosenTheme, userTheme } from "@/util/cookies";
 
 config.autoAddCss = false;
 
 const font = Raleway({ subsets: ["latin"], weight: ["200", "600", "900"] });
-
-export async function generateMetadata() {
-  const theme = userTheme();
-
-  return {
-    title: "Keegan Donley",
-    description: "Principal Front-End Engineer at Kizen",
-    themeColor: theme === "light" ? background.light : background.dark,
-  };
-}
 
 export default function RootLayout({ children }: LayoutProps) {
   const theme = userTheme();
@@ -50,4 +29,14 @@ export default function RootLayout({ children }: LayoutProps) {
       </body>
     </html>
   );
+}
+
+export async function generateMetadata() {
+  const theme = userTheme();
+
+  return {
+    title: "Keegan Donley",
+    description: "Principal Front-End Engineer at Kizen",
+    themeColor: theme === "light" ? background.light : background.dark,
+  };
 }
