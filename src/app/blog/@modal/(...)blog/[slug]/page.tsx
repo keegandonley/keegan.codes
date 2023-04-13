@@ -1,10 +1,17 @@
-import Modal from "./Modal";
-import RenderPost from "./RenderPost";
+import { Modal } from "@/components/Modal";
+import { PostModal } from "@/components/PostModal";
+import "../../../../syntax-theme.css";
 
-export default function Interceptor({ params }: any) {
+interface InterceptorProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default function Interceptor({ params }: InterceptorProps) {
   return (
     <Modal>
-      <RenderPost slug={params.slug} />
+      <PostModal slug={params.slug} />
     </Modal>
   );
 }

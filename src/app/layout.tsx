@@ -8,9 +8,7 @@ import { merge } from "@/util/classNames";
 import { Background } from "@/components/Background";
 import { cookies } from "next/headers";
 import { background } from "@/theme/colors";
-import { Banner } from "@/components/Banner";
-import { faSpaceStationMoonConstruction } from "@fortawesome/pro-solid-svg-icons/faSpaceStationMoonConstruction";
-import Link from "next/link";
+import { LayoutProps } from "../../.next/types/app/layout";
 
 const userTheme = () => {
   const cookieStore = cookies();
@@ -37,7 +35,7 @@ export async function generateMetadata() {
   };
 }
 
-export default function RootLayout({ children }: any) {
+export default function RootLayout({ children }: LayoutProps) {
   const theme = userTheme();
   const hasChosenTheme = getHasChosenTheme();
 
@@ -46,13 +44,6 @@ export default function RootLayout({ children }: any) {
       <body
         className={merge(font.className, "preload", theme === "dark" && "dark")}
       >
-        <Banner level={1} icon={faSpaceStationMoonConstruction}>
-          <span>
-            This site is in beta.{" "}
-            <Link href="https://k10y.com">Click here</Link> to visit the live
-            version
-          </span>
-        </Banner>
         <MainNavigation initialTheme={theme} hasChosenTheme={hasChosenTheme} />
         <main>{children}</main>
         <Background />

@@ -1,14 +1,18 @@
 import { getComponentForKey, getKey } from "@/app/blog/util";
-import styles from "./styles.module.css";
+import styles from "./postModal.module.css";
 import { notFound } from "next/navigation";
 import { getImageMetadata, parseSource, parseToProps } from "@/util/image";
 import Image from "next/image";
 import { BottomFade } from "@/components/BottomFade";
 import { BUCKET_URL } from "@/util/r2";
 import { H1 } from "@/components/Post/Heading/H1";
-import ClientBack from "./ClientBack";
+import { ClientBackButton } from "@/components/ClientBackButton";
 
-export default function RenderPost({ slug }: any) {
+interface PostModalProps {
+  slug: string;
+}
+
+export const PostModal = ({ slug }: PostModalProps) => {
   const componentKey = getKey({ slug });
 
   if (!componentKey) {
@@ -41,10 +45,10 @@ export default function RenderPost({ slug }: any) {
         <BottomFade />
       </div>
       <article className={styles.article}>
-        <ClientBack />
+        <ClientBackButton />
         <H1 className={styles.title}>{title}</H1>
         <Component />
       </article>
     </>
   );
-}
+};

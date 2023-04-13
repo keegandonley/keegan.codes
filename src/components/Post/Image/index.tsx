@@ -12,7 +12,7 @@ const getImageRatio = (metadata?: ImageMetadata) => {
 
 // For now this is `any` because I can't figure out how to
 // make MDX happy. TODO: fix
-export const Img = ({ src, className, alt, ...rest }: any) => {
+export const Img = ({ src, className, alt }: any) => {
   const [imgUrl, flags] = parseSource(src);
   const metadata = getImageMetadata(imgUrl);
   const ratio = getImageRatio(metadata);
