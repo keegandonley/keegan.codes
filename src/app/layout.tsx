@@ -7,14 +7,13 @@ import { Raleway } from "next/font/google";
 import { merge } from "@/util/classNames";
 import { Background } from "@/components/Background";
 import { background } from "@/theme/colors";
-import { LayoutProps } from "../../.next/types/app/layout";
 import { getHasChosenTheme, userTheme } from "@/util/cookies";
 
 config.autoAddCss = false;
 
 const font = Raleway({ subsets: ["latin"], weight: ["200", "600", "900"] });
 
-export default function RootLayout({ children }: LayoutProps) {
+export default function RootLayout({ children }: any) {
   const theme = userTheme();
   const hasChosenTheme = getHasChosenTheme();
 
