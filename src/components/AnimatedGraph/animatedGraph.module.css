@@ -36,7 +36,7 @@
   border: 1px solid transparent;
   opacity: 0;
   animation: fadeSquares 8s infinite;
-  transition: all 0.3s;
+  transition: opacity 0.3s;
 }
 
 .color-1 {
