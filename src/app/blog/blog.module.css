@@ -15,3 +15,42 @@
   max-width: 900px;
   color: var(--theme-text-high-contrast);
 }
+
+@keyframes shimmer {
+  0% {
+    background-position: -1200px 0;
+  }
+  100% {
+    background-position: 1200px 0;
+  }
+}
+
+.loadingItem {
+  display: flex;
+  flex: 1 1 auto;
+  position: relative;
+  min-width: calc(33% - 8px);
+  max-width: calc(33% - 8px);
+  box-shadow: var(--theme-box-shadow-small);
+  background: var(--theme-background);
+  transition: min-width var(--animation), max-width var(--animation);
+  border-radius: 1rem;
+  overflow: hidden;
+  z-index: 99;
+  height: 20rem;
+  animation-duration: 2.2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  animation-timing-function: linear;
+  background: #ddd;
+  background: linear-gradient(to right, #f6f6f6 8%, #f0f0f0 18%, #f6f6f6 33%);
+  background-size: 1200px 100%;
+}
+
+@media only screen and (max-width: 900px) {
+  .loadingItem {
+    min-width: calc(50% - 8px);
+    max-width: calc(50% - 8px);
+  }
+}
