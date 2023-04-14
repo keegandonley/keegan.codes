@@ -1,4 +1,3 @@
-import { AnimatedGraph } from "@/components/AnimatedGraph";
 import styles from "./blog.module.css";
 
 export default function Loading() {
@@ -14,7 +13,6 @@ export default function Loading() {
           <div className={styles.loadingItem} />
         </div>
       </section>
-      <AnimatedGraph />
     </>
   );
 }
