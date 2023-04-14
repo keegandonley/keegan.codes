@@ -15,7 +15,7 @@ export const AnimatedGraph = () => {
       {coloredValues.map(({ color, interval }, i) => {
         return (
           <div
-            key={i}
+            key={`${i}${color}${interval}`}
             className={merge(
               styles.square,
               styles[`color-${color}`],

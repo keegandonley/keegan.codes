@@ -13,7 +13,7 @@
 }
 
 .wrapper.fadeIn {
-  background-color: rgba(39, 39, 39, 0.8);
+  background-color: rgba(39, 39, 39, 0.3);
   backdrop-filter: blur(10px);
 }
 
