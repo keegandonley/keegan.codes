@@ -1,21 +1,11 @@
 "use client";
 
-import {
-  usePathname,
-  useSelectedLayoutSegments,
-  useRouter,
-} from "next/navigation";
 import styles from "./background.module.css";
 import { merge } from "@/util/classNames";
+import { useBlogRouter } from "@/hooks/useBlogRouter";
 
 export const Background = () => {
-  const pathname = usePathname();
-  const segments = useSelectedLayoutSegments();
-
-  const isLikelyInterceptedBlogPage =
-    segments[0] === "blog" && segments.length === 1;
-
-  const isExactlyBlogPage = pathname === "/blog" || isLikelyInterceptedBlogPage;
+  const isExactlyBlogPage = useBlogRouter();
 
   return (
     <div
