@@ -3,7 +3,6 @@ import imageStyles from "./image.module.css";
 import Image from "next/image";
 import { BUCKET_URL } from "@/util/r2";
 import { getImageMetadata, parseSource } from "@/util/image";
-import { fetchMetadata } from "@/util/api";
 
 const getImageRatio = (metadata?: ImageMetadata) => {
   if (!metadata) return 1;
@@ -11,17 +10,11 @@ const getImageRatio = (metadata?: ImageMetadata) => {
   return metadata.height / metadata.width;
 };
 
-export const Img = async ({
-  src,
-  className,
-  alt,
-}: {
-  src: string;
-  className: string;
-  alt: string;
-}) => {
+// For now this is `any` because I can't figure out how to
+// make MDX happy. TODO: fix
+export const Img = ({ src, className, alt }: any) => {
   const [imgUrl, flags] = parseSource(src);
-  const metadata = await fetchMetadata(imgUrl);
+  const metadata = getImageMetadata(imgUrl);
   const ratio = getImageRatio(metadata);
 
   const shouldHideShadow = flags.includes("hideShadow");
