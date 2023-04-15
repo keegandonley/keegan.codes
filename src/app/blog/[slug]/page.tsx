@@ -5,12 +5,16 @@ import Link from "next/link";
 import { BottomFade } from "@/components/BottomFade";
 import Image from "next/image";
 import { H1 } from "@/components/Post/Heading/H1";
-import { getImageMetadata, parseSource, parseToProps } from "@/util/image";
+import { parseSource, parseToProps } from "@/util/image";
 import { BUCKET_URL } from "@/util/r2";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getComponentForKey, getKey } from "../util";
 import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
+import { Suspense } from "react";
+import { fetchMetadata } from "@/util/api";
+
+export const runtime = "experimental-edge";
 
 interface BlogPageProps {
   params: {
@@ -35,7 +39,7 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPage({ params }: BlogPageProps) {
+export default async function BlogPage({ params }: BlogPageProps) {
   const componentKey = getKey({ slug: params.slug });
 
   if (!componentKey) {
@@ -47,7 +51,7 @@ export default function BlogPage({ params }: BlogPageProps) {
   const Component = found.default;
   const title = found.title;
   const cover = found.cover;
-  const metadata = getImageMetadata(parseSource(cover)[0]);
+  const metadata = await fetchMetadata(parseSource(cover)[0]);
 
   if (!Component) {
     notFound();
@@ -72,7 +76,9 @@ export default function BlogPage({ params }: BlogPageProps) {
           <FontAwesomeIcon icon={faArrowLeft} /> back
         </Link>
         <H1 className={styles.title}>{title}</H1>
-        <Component />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Component />
+        </Suspense>
       </article>
     </>
   );

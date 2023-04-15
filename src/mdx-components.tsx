@@ -24,7 +24,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     a: Anchor,
     ul: Ul,
     li: Li,
-    img: Img,
+    img: Img as any, // experimenting with async components here
     hr: Hr,
     blockquote: Blockquote,
     ol: Ol,
