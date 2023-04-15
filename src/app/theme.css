@@ -17,6 +17,7 @@
   --theme-inverted-text: var(--theme-off-white);
   --theme-transparent: rgba(0, 0, 0, 0);
   --code-background: rgba(40, 42, 54, 1);
+  --code-color: var(--theme-inverted-text);
   --shadow-color: rgb(164, 164, 164);
 
   /* Theme animation */
@@ -56,6 +57,7 @@ body.dark {
   --theme-inverted-text: rgba(25, 55, 109, 1);
   --theme-transparent: rgba(0, 0, 0, 0);
   --code-background: rgba(40, 42, 54, 1);
+  --code-color: var(--theme-text);
   --shadow-color: rgba(46, 46, 71, 1);
 
   /* Theme animation */
