@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import styles from "./modal.module.css";
 import { merge } from "@/util/classNames";
 import { useRouter } from "next/navigation";
+import { ClientBackButton } from "../ClientBackButton";
 
 const stopEvent = (e: any) => {
   e.stopPropagation();
@@ -19,12 +20,13 @@ export const Modal = ({ children }: ModalProps) => {
 
   useEffect(() => {
     document.body.classList.add("lockScroll");
-    setTimeout(() => setFadedIn(true), 0);
+    setFadedIn(true);
   }, []);
 
   const handleBack = useCallback(() => {
     document.body.classList.remove("lockScroll");
-    router.back();
+    setFadedIn(false);
+    setTimeout(router.back, 400);
   }, [router]);
 
   return (
@@ -36,6 +38,7 @@ export const Modal = ({ children }: ModalProps) => {
         className={merge(styles.inner, fadedIn ? styles.fadeIn : "")}
         onClick={stopEvent}
       >
+        <ClientBackButton className={styles.backButton} onClick={handleBack} />
         {children}
       </div>
     </div>

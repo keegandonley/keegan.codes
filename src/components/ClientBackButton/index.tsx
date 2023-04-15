@@ -2,13 +2,19 @@
 import styles from "./clientBackButton.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons/faArrowLeft";
-import { useBackToBlog } from "@/hooks/useBackToBlog";
+import { merge } from "@/util/classNames";
 
-export const ClientBackButton = () => {
-  const handleBack = useBackToBlog();
+interface ClientBackButtonProps {
+  onClick?: () => void;
+  className?: string;
+}
 
+export const ClientBackButton = ({
+  onClick,
+  className,
+}: ClientBackButtonProps) => {
   return (
-    <span className={styles.back} onClick={handleBack}>
+    <span className={merge(styles.back, className)} onClick={onClick}>
       <FontAwesomeIcon icon={faArrowLeft} /> back
     </span>
   );

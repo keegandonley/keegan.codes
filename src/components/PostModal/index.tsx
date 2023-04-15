@@ -6,7 +6,6 @@ import Image from "next/image";
 import { BottomFade } from "@/components/BottomFade";
 import { BUCKET_URL } from "@/util/r2";
 import { H1 } from "@/components/Post/Heading/H1";
-import { ClientBackButton } from "@/components/ClientBackButton";
 
 interface PostModalProps {
   slug: string;
@@ -45,7 +44,6 @@ export const PostModal = ({ slug }: PostModalProps) => {
         <BottomFade />
       </div>
       <article className={styles.article}>
-        <ClientBackButton />
         <H1 className={styles.title}>{title}</H1>
         <Component />
       </article>
