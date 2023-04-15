@@ -1,8 +1,8 @@
 "use client";
 import styles from "./clientBackButton.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons/faArrowLeft";
 import { merge } from "@/util/classNames";
+import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
 
 interface ClientBackButtonProps {
   onClick?: () => void;

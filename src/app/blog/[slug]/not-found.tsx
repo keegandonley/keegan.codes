@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./404.module.css";
-import { faBinarySlash } from "@fortawesome/pro-solid-svg-icons/faBinarySlash";
+import { faBinarySlash } from "@fortawesome/pro-solid-svg-icons";
 
 export default function NotFound() {
   return (

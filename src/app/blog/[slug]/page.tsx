@@ -1,7 +1,6 @@
 import styles from "./blogPost.module.css";
 import "../../syntax-theme.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons/faArrowLeft";
 import Link from "next/link";
 import { BottomFade } from "@/components/BottomFade";
 import Image from "next/image";
@@ -11,6 +10,7 @@ import { BUCKET_URL } from "@/util/r2";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getComponentForKey, getKey } from "../util";
+import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
 
 interface BlogPageProps {
   params: {

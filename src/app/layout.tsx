@@ -7,6 +7,7 @@ import { Raleway } from "next/font/google";
 import { merge } from "@/util/classNames";
 import { background } from "@/theme/colors";
 import { getHasChosenTheme, userTheme } from "@/util/cookies";
+import { Analytics } from "@vercel/analytics/react";
 
 config.autoAddCss = false;
 
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: any) {
       >
         <MainNavigation initialTheme={theme} hasChosenTheme={hasChosenTheme} />
         <main>{children}</main>
+        <Analytics />
       </body>
     </html>
   );
