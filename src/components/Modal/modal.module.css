@@ -45,25 +45,8 @@
   position: absolute;
   z-index: 9;
   padding: 1rem 1.5rem;
-  background: var(--theme-text);
+  background: var(--theme-dark-blue);
   opacity: 1;
-  color: var(--theme-inverted-text);
+  color: white;
   border-bottom-right-radius: 2rem;
-}
-
-.popOutButton {
-  position: absolute;
-  z-index: 9;
-  right: 0;
-  padding: 1rem 1.5rem;
-  background: var(--theme-text);
-  opacity: 1;
-  color: var(--theme-inverted-text);
-  border-bottom-left-radius: 2rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-
-.popOutButton svg {
-  margin-left: 0.3rem;
 }
