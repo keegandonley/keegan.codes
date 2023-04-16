@@ -3,6 +3,7 @@ import imageStyles from "./image.module.css";
 import Image from "next/image";
 import { BUCKET_URL } from "@/util/r2";
 import { getImageMetadata, parseSource } from "@/util/image";
+import { ImageLink } from "./ImageLink";
 
 const getImageRatio = (metadata?: ImageMetadata) => {
   if (!metadata) return 1;
@@ -23,33 +24,36 @@ export const Img = ({ src, className, alt }: any) => {
   if (metadata) {
     const isVertical = metadata.height > metadata.width;
     return (
-      <span
-        className={merge(
-          imageStyles.imageParent,
-          isVertical && imageStyles.vertical,
-          ratio < 0.5 && imageStyles.short,
-          isTableMode && imageStyles.tableMode
-        )}
-        data-ratio={ratio}
-        data-flags={flags.join(",")}
-        data-width={metadata.width}
-        data-height={metadata.height}
-        data-file={imgUrl}
-      >
-        <Image
-          src={`${BUCKET_URL}/${imgUrl}`}
-          alt={alt}
-          fill
-          className={merge(imageStyles.img, className)}
-          style={{
-            filter: shouldHideShadow
-              ? "none"
-              : "drop-shadow(0 0 0.5rem var(--shadow-color))",
-          }}
-          placeholder="blur"
-          blurDataURL={metadata.dataUrl}
-        />
-      </span>
+      // This is a span because images can be nexted inside paragraphs
+      <ImageLink img={imgUrl}>
+        <span
+          className={merge(
+            imageStyles.imageParent,
+            isVertical && imageStyles.vertical,
+            ratio < 0.5 && imageStyles.short,
+            isTableMode && imageStyles.tableMode
+          )}
+          data-ratio={ratio}
+          data-flags={flags.join(",")}
+          data-width={metadata.width}
+          data-height={metadata.height}
+          data-file={imgUrl}
+        >
+          <Image
+            src={`${BUCKET_URL}/${imgUrl}`}
+            alt={alt}
+            fill
+            className={merge(imageStyles.img, className)}
+            style={{
+              filter: shouldHideShadow
+                ? "none"
+                : "drop-shadow(0 0 0.5rem var(--shadow-color))",
+            }}
+            placeholder="blur"
+            blurDataURL={metadata.dataUrl}
+          />
+        </span>
+      </ImageLink>
     );
   }
 

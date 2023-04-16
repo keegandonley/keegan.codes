@@ -10,7 +10,11 @@ export async function GET(request: Request) {
     return NextResponse.error();
   }
 
-  const metadata = (imageMetadata as Record<string, ImageMetadata>)[fileName];
+  const decodedFileName = decodeURIComponent(fileName);
+
+  const metadata = (imageMetadata as Record<string, ImageMetadata>)[
+    decodedFileName
+  ];
 
   return NextResponse.json({ metadata });
 }

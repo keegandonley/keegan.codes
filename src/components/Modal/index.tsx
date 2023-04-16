@@ -1,14 +1,10 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import styles from "./modal.module.css";
-import { merge } from "@/util/classNames";
 import { useRouter } from "next/navigation";
 import { ClientBackButton } from "../ClientBackButton";
-
-const stopEvent = (e: any) => {
-  e.stopPropagation();
-  e.preventDefault();
-};
+import { ModalBase } from "./Base";
+import { lockScroll, unlockScroll } from "./util";
 
 interface ModalProps {
   children: any;
@@ -19,28 +15,20 @@ export const Modal = ({ children }: ModalProps) => {
   const router = useRouter();
 
   useEffect(() => {
-    document.body.classList.add("lockScroll");
+    lockScroll();
     setFadedIn(true);
   }, []);
 
   const handleBack = useCallback(() => {
-    document.body.classList.remove("lockScroll");
+    unlockScroll();
     setFadedIn(false);
     setTimeout(router.back, 400);
   }, [router]);
 
   return (
-    <div
-      className={merge(styles.wrapper, fadedIn ? styles.fadeIn : "")}
-      onClick={handleBack}
-    >
-      <div
-        className={merge(styles.inner, fadedIn ? styles.fadeIn : "")}
-        onClick={stopEvent}
-      >
-        <ClientBackButton className={styles.backButton} onClick={handleBack} />
-        {children}
-      </div>
-    </div>
+    <ModalBase handleBack={handleBack} fadedIn={fadedIn}>
+      <ClientBackButton className={styles.backButton} onClick={handleBack} />
+      {children}
+    </ModalBase>
   );
 };
