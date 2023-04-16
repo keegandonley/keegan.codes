@@ -1,0 +1,140 @@
+import { Table } from "../components/Post/Table/index.tsx";
+import { Td } from "../components/Post/Table/Td/index.tsx";
+import { Tr } from "../components/Post/Table/Tr/index.tsx";
+
+export const title = "How AI is Revolutionizing Personal Brand Creation";
+export const slug = "how-ai-is-revolutionizing-personal-brand-creation";
+export const tags = ["software", "ai", "DALL-E 2"];
+export const description =
+  "A dive into the many innovative tools and platforms that leverage AI, and how they are making it easier than ever to create content and build a personal brand.";
+export const cover = "ai-brand-cover.png";
+export const published = new Date(2022, 7, 31);
+
+My personal brand has become a much larger focus for me over the last few months. Most of this work revolves around this website - its goal is to allow you to get to know me and what I'm passionate about through blog posts, books I've read, music I listen to, and photography. I maintain [my blog](https://keegandonley.com/blog "Blog | Keegan Donley") and a [reading list](https://keegandonley.com/library "Reading List | Keegan Donley") of my favorite books. More recently I've even started writing about [vinyl records](https://keegandonley.com/vinyl/Ondekoza "Vinyl | Keegan Donley") that I find interesting or have a unique story. My website has also become a place for [personalized landing pages](https://keegandonley.com/render "Render | Keegan Donley") during events, a [self-hosted resume](https://keegandonley.com/resume "Resume"), and a one-stop shop for all [my social media links](https://keegandonley.com/ "Home | Keegan Donley"). This is all tied together with a custom URL shortening service I built, [k10y.com](https://k10y.com "k10y short link").
+
+However, all the ideas and content I just mentioned is only one part of the challenge! While ideation and brainstorming take up a lot of my time, even once I have a solid post or article, creating graphics can take even longer! Not to mention any custom code needed to support what I want to make (for example, my [library](/library "Library") page).
+
+Over time I've started to adopt a handful of different tools to make my day-to-day tasks a little easier. From creating image content to writing code, AI is playing an ever-growing role in enabling me to create my personal brand. When I stop to think about how much content creation has changed from just a few years ago, it's a large improvement!
+
+## Graphics
+
+Writing this blog demands a surprising amount of time spent on graphic design. To feel "complete", each post or page needs a cover image that appears when it's shared on social media. Even things that aren't blog posts need one - for when a direct link is shared either on social media, or even via direct message. Each of my personalized landing pages has a relevant and unique cover image:
+
+![Two tweets showing rich embeds, one with a shelf of books and one with a city skyline in pink. Background DALL-E 2 Prompt: an expressive oil painting of colored powder exploding on a black background](/uploads/twitter_posts.png)
+
+_Even just generating the above image for this post took a bit of work - it needed a background image, editing, and some post-processing!_
+
+Including graphics is important within each post to break up the content and illustrate points. My [technical interview post](https://keegandonley.com/blog/react-interview-questions "Technical Interview Post") used various header images to break up the content so it wasn't just a wall of text.
+
+For a while, I was using either my own photography⁽[¹](#notes "Notes")⁾ or free stock photos from [Unsplash](https://unsplash.com/ "Unsplash")⁽[²](#notes "Notes")⁾. These images, combined with icons from [FontAwesome](https://fontawesome.com/ "FontAwesome") did the trick for a while while I was getting started, but I wanted to improve the graphics in two ways. One, I wanted them to be more unique. Having images for my pages and posts that were brand new and never seen before was the end goal, so I could develop my own style and have my posts recognizable by their graphics. Two, I wanted them to be more closely related to the topic. Being constrained to only free stock images meant that the exact type of image I was looking for wasn't available. The remaining options were to either try my hand at some digital art myself (This would be time-consuming and probably not up to the level of quality I desire) or turn to AI as a solution.
+
+### Enter DALL·E 2
+
+Earlier this year, OpenAI opened up access to their text-to-image platform, [DALL·E 2](https://openai.com/dall-e-2/ "DALL·E 2"). I've covered the platform pretty extensively on my blog, starting with [a first look](https://keegandonley.com/blog/a-quick-look-at-openai-dall-e-2 "DALL-E 2 First Look") back in May when I first got early access. This is the platform I use to generate the majority of the cover art for my blog, as well as backgrounds for inline images. Each cover image only takes 2-3 minutes, and I can formulate the prompt to have a very relevant yet unique image generated. You can read about my technique for generating the cover images in [a previous post](https://keegandonley.com/blog/building-large-format-graphics-with-openai-s-dall-e-2 "Large Format") about generating large-format images.
+
+It doesn't just start and end with my blog posts though! I used DALL·E 2 for the profile photo and header for my [Twitter bot](https://keegandonley.com/blog/building-a-super-simple-and-free-twitter-bot) and even for the cover image of my personal Twitter page:
+
+![](ai-brand-post:image-1.png)
+
+The platform is fairly cheap, at 115 credits for $15. One credit is good for a single prompt, and you get back 4 "outputs" for each prompt. You also get 15 credits every month for free, and 50 in your first month after signing up. These don't roll over, so make sure you have a plan for the 50 credits before joining for the first time! You have commercial use rights to the images generated, but it's always a good idea to make sure you read over the [content policy](https://labs.openai.com/policies/content-policy) before getting started.
+
+Here are a few quick examples of prompts and their actual images. These are the results straight out of DALL·E 2, and then I take these and expand them to make cover images or backgrounds using [the technique](https://keegandonley.com/blog/building-large-format-graphics-with-openai-s-dall-e-2 "Large Format") I mentioned earlier.
+
+| Prompt                                                               | Image                                    |
+| -------------------------------------------------------------------- | ---------------------------------------- |
+| "a colored pencil drawing on old parchment of a macintosh computer " | ![](ai-brand-post:image-2.png?tableMode) |
+| "a wall of dense green vines, digital art"                           | ![](ai-brand-post:image-3.png?tableMode) |
+| "a robot fixing a computer; digital art"                             | ![](ai-brand-post:image-4.png?tableMode) |
+
+AI-assisted graphics have completely changed my workflow! I love that all the artwork I need for my website is custom, unique, and relevant. In nearly an instant, I can create brand-new, beautiful art to make my posts and pages dynamic. I'm going to be playing around with this platform for a long time to come, and you can follow along on my [DALL·E 2 Experiments page](https://keegandonley.com/dalle-experiments "DALL·E 2 Experiments"), or the [specific tag](https://keegandonley.com/blog?tag=DALL-E%202 "DALL·E 2 Tag") on my blog.
+
+## Code
+
+Not every content creator needs or wants to write code, but as a software engineer I certainly do! While many of the topics on my blog revolve around software, even when I'm not explicitly writing about it, a lot of custom code goes into keeping things running. From the [website itself](https://keegandonley.com/blog/building-a-static-generated-blog-with-next-js) to the [editor I'm building](https://twitter.com/keegandonley/status/1563389419088146434) to make writing easier, there's a ton of custom software that I've written over the last year or so of maintaining this blog. Recently, there have been many advances in AI-supported code tools, and I'm going to focus on the two that I use the most.
+
+### GitHub Copilot
+
+Copilot is a platform and extension for [Visual Studio Code](https://code.visualstudio.com/) from GitHub that uses machine learning to power a very accurate code auto-completion engine. It's trained on the massive amount of open-source code GitHub has access to and it's incredibly powerful. I utilize it for auto-writing mundane SQL queries, setting up data structures, and writing helper methods. Often, I'm able to simply describe what I want a function to do in a comment, and Copilot will recommend code that's around 90% or closer to a working solution. Here are a few examples, where you can see the code that I wrote, and then the hint of what Copilot wants to autocomplete to in grey. If I like it, all I have to do is hit tab to accept the proposed code and then keep writing.
+
+![](ai-brand-post:image-5.png)
+
+It's contextual too, so it knows which helper methods I've already written and how they work, for example autocompleting the following line:
+
+```javascript
+const user = await getProfileForEmail(authUser.email);
+```
+
+It was missing a second parameter that I wanted to pass, but as I said, it got me about 90% of the way there. This has sped up my development time on new features dramatically.
+
+Copilot is an add-on to your GitHub subscription for $10/month or $100/year, and it's well worth it to me. Rather than avoiding this new tool or fearing that it would somehow replace me in my job (that's not a realistic threat for [many reasons](https://twitter.com/ProgrammerDude/status/1560548247286022145 "Copilot Tweet")), I've been working to learn how to integrate the system into my workflow and use it to be even more productive.
+
+### Fig
+
+[Fig](https://fig.io/ "Fig") is the second main code tool I use, and the newest in my workflow. I've been trialing it for the last few weeks to get a feel for how useful it can be. I suppose it doesn't have any features specifically useful for brand creation on their own, however, I do use it extensively to help speed up writing and maintaining code. It provides smart auto-complete for terminal commands based on the context I'm working in.
+
+Recently, the team rolled out [Fig AI](https://fig.io/user-manual/ai "Fig AI"), which allows you to convert plain English into bash commands, right in the shell. Check out this example when I tested out "start my react app and pipe output to a log file:"
+
+![](ai-brand-post:image-6.jpg)
+
+It recommended the correct command, `npm start > log.txt 2>&1`. It's even smart enough to warn you that the command generated may be destructive and you'll likely want to take a closer look at what it's doing:
+
+![](ai-brand-post:image-7.png)
+
+I'm still evaluating if Fig AI will remain a permanent part of my workflow, but it's certainly come in handy in situations where I've forgotten a shell command. I no longer need to waste time googling it if it's something simple that Fig can figure out for me. The normal intelligent command autocompletion doesn't rely on any sort of AI but is still a big time saver, and is free to use. This free version will definitely remain a part of my development workflow for the foreseeable future. Adding Fig AI requires the $5/month pro subscription because it relies on [OpenAI Codex](https://openai.com/blog/openai-codex/).
+
+## Writing
+
+Sometimes (but rarely), the writing itself isn't the main focus of the content I create. There are situations when I want to quickly draft up a press release summarizing changes to an open-source library, for example, or come up with a short and succinct summary or Tweet about a blog post. There are a number of interesting tools in this space, but they all tend to work the same. They take some input, such as a topic, keywords, and tone, and can generate copy based on the provided information. I enjoy the writing aspect of my blog (in fact, that's the whole point) so I don't use these tools to write long-form content (it's not quite good enough anyways - I bet you'd notice if this post was not written by a human), but the tools can be useful for generating outlines of blog posts to help me organize my thoughts, or generate taglines and social media captions. Here's a quick example, from [copy.ai](https://copy.ai "Copy AI"):
+
+<Table>
+  <tbody>
+    <Tr>
+      <Td rowSpan={3}>Inputs</Td>
+      <Td>Description</Td>
+      <Td>
+        "A brief summary about How AI is Revolutionizing Personal Brand
+        Creation"
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>Main Points</Td>
+      <Td>
+        "Innovations in artificial intelligence have made it much easier and
+        simpler to build a personal brand through graphic design, coding, and
+        writing copy. It's cheap, easy, and ensures that you don't need to have
+        every possible skill in media production to build a successful image."
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>Tone</Td>
+      <Td>"Professional"</Td>
+    </Tr>
+    <Tr>
+      <Td colSpan={2}>Output</Td>
+      <Td>
+        "Artificial intelligence is revolutionizing the way you build your
+        personal brand. You no longer have to be a graphic designer to create
+        compelling images, or a coding expert to build websites. The AI-powered
+        tools out there make it possible for anyone to create content at scale,
+        and they're incredibly affor dable."
+      </Td>
+    </Tr>
+  </tbody>
+</Table>
+
+It's not quite how I would have put it, but it's a good start! I find that using these tools as a launching-off point, either by generating short summaries or getting brainstorming started is the most effective utilization. Just for fun, I did want to see how copy.ai would do at writing this entire blog post from scratch. The result is very general and buzzwordy, but it's worth checking out just to see how powerful these tools can be! You can read [a PDF of the full text here](/uploads/brand_ai.pdf "AI PDF").
+
+For a good laugh, I'd recommend checking out the [Viral Post Generator](https://viralpostgenerator.com/?target=998942e43ce445e7a8ed43cc51862f42&params=%7B%7D) for LinkedIn. It's a tongue-in-cheek application of text generation to build content that feels right at home on LinkedIn.
+
+![](ai-brand-post:image-8.png)
+
+## Conclusion
+
+These tools have completely changed how I work and create content. My posts are more engaging, dynamic, and unique. I also am able to write more custom code to support interactive features. While all the tools I mentioned have important roles, I can say confidently that DALL·E 2 has been the most impactful. To be able to have an idea pop into my head, and immediately translate it into an image that is brand-new and I have the rights to share and monetize how I see fit is incredibly powerful and has been a complete game-changer. Hopefully that comes across in the quality of the graphics that accompany my writing!
+
+---
+
+#### Notes
+
+1. Personal Photography Cover Examples: [https://keegandonley.com/blog/building-a-static-generated-blog-with-next-js](https://keegandonley.com/blog/building-a-static-generated-blog-with-next-js "https://keegandonley.com/blog/building-a-static-generated-blog-with-next-js"), [https://keegandonley.com/blog/trip-to-europe-part-i-barcelona](https://keegandonley.com/blog/trip-to-europe-part-i-barcelona "https://keegandonley.com/blog/trip-to-europe-part-i-barcelona"), [https://keegandonley.com/blog/oura-ring-generation-3-first-impressions](https://keegandonley.com/blog/oura-ring-generation-3-first-impressions "https://keegandonley.com/blog/oura-ring-generation-3-first-impressions")
+2. Unsplash Photography Cover Examples: [https://keegandonley.com/blog/my-home-network-configuration-for-speed-and-privacy](https://keegandonley.com/blog/my-home-network-configuration-for-speed-and-privacy "https://keegandonley.com/blog/my-home-network-configuration-for-speed-and-privacy"), [https://keegandonley.com/blog/input-deno-v2.0.3-released](https://keegandonley.com/blog/input-deno-v2.0.3-released "https://keegandonley.com/blog/input-deno-v2.0.3-released")

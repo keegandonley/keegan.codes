@@ -18,6 +18,7 @@ export const Img = ({ src, className, alt }: any) => {
   const ratio = getImageRatio(metadata);
 
   const shouldHideShadow = flags.includes("hideShadow");
+  const isTableMode = flags.includes("tableMode");
 
   if (metadata) {
     const isVertical = metadata.height > metadata.width;
@@ -26,7 +27,8 @@ export const Img = ({ src, className, alt }: any) => {
         className={merge(
           imageStyles.imageParent,
           isVertical && imageStyles.vertical,
-          ratio < 0.5 && imageStyles.short
+          ratio < 0.5 && imageStyles.short,
+          isTableMode && imageStyles.tableMode
         )}
         data-ratio={ratio}
         data-flags={flags.join(",")}
