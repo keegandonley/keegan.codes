@@ -8,6 +8,7 @@ import * as ChatGPTPoems from "./chatgpt-writes-poems-about-the-internet.mdx";
 import * as TwitterBot from "./statically-generating-twitter-embeds-and-sharing-for-a-performance-boost.mdx";
 import * as Fitness2 from "./my-connected-fitness-tools-part-2.mdx";
 import * as Newsletter from "./why-write-a-newsletter.mdx";
+import * as Testing from "./common-types-of-web-application-tests-and-how-they-can-improve-performance-and-reliability.mdx";
 
 const posts = {
   Welcome,
@@ -20,6 +21,7 @@ const posts = {
   TwitterBot,
   Fitness2,
   Newsletter,
+  Testing,
 };
 
 export default posts;

@@ -1,5 +1,7 @@
-/** @type {import('next').NextConfig} */
-const redirects = require("./redirects.js");
+import addMdx from "@next/mdx";
+import remarkGfm from "remark-gfm";
+import remarkPrism from "remark-prism";
+import redirects from "./redirects.js";
 
 const nextConfig = {
   reactStrictMode: true,
@@ -39,9 +41,10 @@ const nextConfig = {
   },
 };
 
-const withMDX = require("@next/mdx")({
+const withMDX = addMdx({
   options: {
-    remarkPlugins: [require("remark-prism")],
+    remarkPlugins: [remarkPrism, remarkGfm],
   },
 });
-module.exports = withMDX(nextConfig);
+
+export default withMDX(nextConfig);

@@ -16,6 +16,14 @@ export const Anchor = ({ children, className, href }: AnchorProps) => {
     );
   }
 
+  if (href?.startsWith("#")) {
+    return (
+      <a className={merge(aStyles.a, className)} href={href}>
+        {children}
+      </a>
+    );
+  }
+
   return (
     <a
       className={merge(aStyles.a, className)}

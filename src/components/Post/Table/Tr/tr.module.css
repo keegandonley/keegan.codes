@@ -1,0 +1,7 @@
+.tr:first-child td {
+  border-top: none;
+}
+
+.tr:last-child td {
+  border-bottom: none;
+}

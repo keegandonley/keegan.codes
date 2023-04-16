@@ -1,0 +1,167 @@
+export const title =
+  "Common Types of Web Application Tests and How They Can Improve Performance and Reliability";
+export const slug =
+  "common-types-of-web-application-tests-and-how-they-can-improve-performance-and-reliability";
+export const tags = ["software", "testing", "monitoring", "web"];
+export const description =
+  "Testing web applications is a crucial part of the development process, but it can be daunting at first. I break down the different types of web application testing I rely on, and how they can be useful to you!";
+export const cover = "testing-code-cover.png";
+export const published = new Date(2022, 8, 22);
+
+Testing web applications is a crucial part of the development process, but it can be daunting at first. There are so many terms to learn! What's an end-to-end test? A unit test? What's synthetic monitoring? Do I even need to do all of these?
+
+I'm currently spending a lot of time on testing and monitoring, both in my work at [Kizen](https://kizen.com/ "Kizen") and for my personal projects. In this post, I'm going to break down the definitions of the different kinds of testing and monitoring, and explain their benefits and limitations.
+
+I'll approach testing in this post in four parts:
+
+1. [Definitions](#whatdoallthesewordsmean "Definitions")
+2. [Reasoning & Benefits](#whyshoulditestatall "Reasoning & Benefits")
+3. [Testing Strategies](#strategiesfortesting "Strategies")
+4. [Summary](#summary "Summary")
+
+# Definitions: What do All These Words Mean?
+
+First, let's establish some definitions. There are a lot of different ways to test code with pros and cons, but they're all important in their own way.
+
+## End-to-End Tests
+
+End-to-end testing, sometimes abbreviated as E2E, is the highest level of testing. This type of test aims to verify the entire product from start to finish and ensure that everything behaves as expected throughout. For example, one such test may first log in a user, then create a new dashboard, verify the empty state, add some data, verify it renders correctly, and then filter the dashboard and ensure it renders correctly yet again. In essence, an end-to-end test should simulate the behavior of a user. As we dive into the other types of tests, you'll find that end-to-end tests tend to cover a lot of the same surface area as the others, but in a more complete way, testing flows from start to finish.
+
+## Unit Tests
+
+Unit testing is in many ways the opposite of [end-to-end](#endtoendtests "End-to-End") testing. Its aim is to test the _smallest_ possible component of a codebase. This class of tests should evaluate whether a small piece of the code is behaving as expected, in isolation. Rather than test the entire login and dashboard user flow from the example above, there may be hundreds of unit tests ensuring each smaller piece works. For example, a unit test could validate that a currency formatter is working correctly. The test could take the input `1748.20` and ensure that the output of the formatter is as expected, for example, `$1.75k`.
+
+## Integration Tests
+
+I like to think of integration testing as the intersection of [unit](#unittests "Unit Tests") and [end-to-end](#endtoendtests "End-to-End") tests. They don't go so far as to test the entire application from a user's perspective, however, a key component of integration tests is to test how well multiple modules work together; how well they _integrate_. For example, let's say I have a function that sums up a user's expenses for the month. A very simple integration test would be, "Can I get the user's total spending, and display it?" This combines the simple function from above, formatting the dollar value to be displayed, and compounds it with the action of calculating the value to be formatted.
+
+## Performance Tests
+
+Performance tests don't check the validity of the system output, but rather they monitor how efficiently actions are performed. These benchmarks can be run under a variety of circumstances. For example, in the application from my previous examples, a performance test could be used to verify that the application doesn't slow down when the user scales from having only 10 transactions to, say, 100,000 transactions. In the case of web applications, I also rely on performance tests to ensure that my [core web vitals](https://web.dev/vitals/ "Web.Dev Vitals") are good. These tests measure LCP, FID, and CIS to name a few. I won't get into these metrics too much right now; I'll save those for another time. For now, you can read on [web.dev](https://web.dev/vitals/ "Core Vitals") if you're interested in more information.
+
+## Visual Tests
+
+Visual tests are less widely used than the others listed here, however, I have found value in them in the past. You may also hear these referred to as "screenshot tests." Essentially, visual tests spin up an application, and do some action (in a way somewhat similar to [end-to-end](#endtoendtests "End-to-End") tests), but rather than verify some data output or result, instead, they compare the resulting state _visually_ to how it looked in the original version. These tests often will take a screenshot and compare it to the reference screenshot. Visual tests are good for catching issues with the UI, such as a button being the wrong color, the wrong font being applied, or the spacing/layout being in a broken state.
+
+## Smoke Tests
+
+Many of the above-mentioned tests can be compute-intensive or time-intensive and expensive to run. Smoke tests, however, are designed to run and fail/pass very quickly. A good smoke test could be, for example, ensuring that your CDN is reachable. Or, after every deployment, a smoke test could be run to quickly perform a user login and then logout, in order to verify that the authentication system is up and running.
+
+> There are so many kinds of tests that this article would go on forever if I listed them all. I think this list covers the kind of tests that are valuable for web applications and can be used in tandem to build a resiliant and performant system.
+
+# Reasoning: Why Should I Test At All?
+
+Testing your code is crucial to the development process, but why is that? It can be very time-consuming, but it's an investment in future stability and productivity.
+
+### Reducing Developer Burden
+
+Keeping track of all the features in a medium or large-sized application can become daunting very quickly. If you're making changes to one module that is used in dozens of places across an app, it can quickly become impossible to test every possible permutation manually. Having robust testing suites ensures that after making a critical change, you can easily verify that no other areas of the application are broken. Peace of mind during development and even deployment to your users is a huge benefit.
+
+### Improving User Experience
+
+Sometimes, it's easy to miss a performance regression when working in development. When using test data, an application may seem performant, but in the real world, that may not be the case at all. Rather than wait for user reports to flood in that your app is slow, [**performance tests**](#visualtests "Performance") could catch the issue before it becomes a problem.
+
+I rely on performance testing to ensure that this blog is a smooth reading experience and that I don't accidentally slow it down by adding new features.
+
+Even without performance testing, nobody wants to roll out a broken update to users. Ensuring every release functions correctly goes a long way toward building user trust and confidence.
+
+### Maintaining Security
+
+Having tests surrounding security is very important. Verifying your authentication systems and data protection systems are functioning correctly can help prevent security holes from being opened up. I often write tests to verify that access controls are working as expected when there is shared data involved. If a user revokes another user's access to a particular page or piece of data, it's expected that the data is now restricted, and having test coverage of those scenarios ensures those guidelines are followed.
+
+# Strategies for Testing
+
+There are many ways to test your code, and your use cases will determine exactly which approach you take. That said, I feel that there are five generally important points in the software lifecycle at which I try to employ various testing strategies on my own code:
+
+1. [During Development](#1duringdevelopment "During Development")
+2. [Before Merging](#2beforemerging)
+3. [After Deployment](#3afterdeployment "After Deployment")
+4. [Scheduled Runs](#4scheduledruns "Scheduled Runs")
+5. [Production Monitoring](#5productionmonitoring "Production Monitoring")
+
+This is not an exhaustive list of all the situations where you can test your code, but these are the ones I rely on. I'll also recommend the frameworks and platforms that I use, but keep in mind there are myriad good choices out there.
+
+## 1. During Development
+
+Having tests available to run at will during development is critical to helping prevent regressions. As I mentioned, this can be a huge help in [reducing the burden on developers](#reducingdeveloperburden "Reducing Burden"). While working on changes to critical components, I find it incredibly valuable to be able to run a suite of tests to verify that I haven't broken anything elsewhere in the app.
+
+|                        |                                                                                                               |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Recommended Tool       | [Playwright](https://playwright.dev/ "Playwright"), [Jest](https://jestjs.io/ "Jest")                         |
+| Recommended Platform   | Local ([NodeJS](https://nodejs.org/en/ "NodeJS"))                                                             |
+| Recommended Test Types | [E2E](#endtoendtests "End-to-end"), [Unit](#unittests "Unit"), [Integration](#integrationtests "Integration") |
+
+## 2. Before Merging
+
+After development is done, the next step in my workflow is to open a pull request on Github. Once a PR is opened, this is a great opportunity to run some tests! Depending on your application size, you likely don't want to run an entire E2E suite. This is time-consuming and expensive, especially given how often pull requests are opened in some organizations or projects. However, if that's a decision you choose to make, just be aware this can be a bottleneck for getting code into production and plan accordingly. Regardless, this is a great time to run your unit tests, and if you build every PR (such as with Vercel), you can run performance testing here too, on a simulated production build!
+
+|                        |                                                                                                                                    |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Recommended Tool       | [Playwright](https://playwright.dev/ "Playwright"), [Mocha](https://mochajs.org/ "Mocha")                                          |
+| Recommended Platform   | CI platform ([Jenkins](https://www.jenkins.io/ "Jenkins"), [Github Actions](https://github.com/features/actions "Github Actions")) |
+| Recommended Test Types | [Unit](#unittests "Unit"), [Performance](#performancetests "Performance")                                                          |
+
+## 3. After Deployment
+
+Once you've finished building a PR and merged it, you have another opportunity to run some tests! Ideally, before rolling out to production, you would have the ability to run some [smoke tests](#smoketests "Smoke Tests") to ensure that everything is up and running before you direct traffic over to the newly deployed version. These can be as simple as "is the CDN working?" and "can a user log in?"
+
+|                        |                                                                                                                                    |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Recommended Tool       | [Playwright](https://playwright.dev/ "Playwright"), [Mocha](https://mochajs.org/ "Mocha")                                          |
+| Recommended Platform   | CI platform ([Jenkins](https://www.jenkins.io/ "Jenkins"), [Github Actions](https://github.com/features/actions "Github Actions")) |
+| Recommended Test Types | [Smoke](#smoketests "Smoke Tests"), [Visual](#visualtests "Visual Tests")                                                          |
+
+## 4. Scheduled Runs
+
+Having tests run periodically can be valuable to catch major regressions or other issues. If you have a test suite with thousands of end-to-end tests, it may not be feasible to run those tests on every single pull request. Sometimes these tests may take many hours to run. Instead, these can be run on an interval, say, nightly, or manually run before releasing a major feature that you know may cause breaking changes.
+
+|                        |                                                                                                                                    |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Recommended Tool       | [Playwright](https://playwright.dev/ "Playwright"), [Mocha](https://mochajs.org/ "Mocha")                                          |
+| Recommended Platform   | CI platform ([Jenkins](https://www.jenkins.io/ "Jenkins"), [Github Actions](https://github.com/features/actions "Github Actions")) |
+| Recommended Test Types | [E2E](#endtoendtests "End-to-end"), [Integration](#integrationtests "Integration")                                                 |
+
+## 5. Production Monitoring
+
+Production monitoring is a critical part of the system to detect issues once code has been deployed to your users. There are two main types of production monitoring: _synthetic_ and _organic_. I'll cover the differences and explain what each type is used for:
+
+### Organic Monitoring
+
+Organic monitoring is an approach to monitoring your application in production based on real user data. For example, part of my process for building and maintaining this blog uses organic performance monitoring via Vercel. When a reader is using my site, the performance is being analyzed and I can see in real-time how my web vitals are. Check out some of the statistics I'm able to track in real-time:
+
+![](testing-post:image-1.png?hideShadow)
+
+There are also other monitoring tools out there, like [Sentry](https://sentry.io "Sentry"), that can alert when users encounter errors or other exception conditions while using the app. Crucially, this type of monitoring relies on people using your app and only catches issues after they've occurred. Useful, but not the whole picture.
+
+### Synthetic Monitoring
+
+Synthetic monitoring can look for all the same types of issues as organic monitoring, however, the traffic is generated specifically by an automated testing system, rather than waiting for users to use your application. The key difference between _synthetic_ and _organic_ monitoring is the **traffic source**. Like my organic monitoring on this website, Vercel integrates with synthetic performance checks before deploying a new release to ensure there have been no major regressions:
+
+![](testing-post:image-2.png?hideShadow)
+
+[Checkly](https://www.checklyhq.com/ "Checkly HQ") is a platform I use both for synthetic monitoring on personal projects and for my day-to-day job. I am able to write tests using [Playwright](https://playwright.dev/ "Playwright") in the same way I would write end-to-end tests, so it makes it easy to set up multiple types of testing and monitoring based on the same codebase. Typically, synthetic tests will be closer to smoke tests or integration tests rather than full-blown end-to-end tests, to make sure they aren't prohibitively expensive as you want these to run frequently to alert you to any production issues (every 5-15 minutes or so depending on how critical of a system you are testing).
+
+|                        |                                                                              |
+| ---------------------- | ---------------------------------------------------------------------------- |
+| Recommended Tool       | [Playwright](https://playwright.dev/ "Playwright")                           |
+| Recommended Platform   | [Checkly](https://www.checklyhq.com/ "Checkly HQ")                           |
+| Recommended Test Types | [Smoke](#smoketests "Smoke"), [Integration](#integrationtests "Integration") |
+
+![](/uploads/summary_compressed.png)
+
+# Summary
+
+With the types of testing and scenarios I outlined here, you should be well on your way to setting up a robust system of testing and monitoring to improve the performance and reliability of your application! This is not an exhaustive list, however, and every application will have unique scenarios that may require novel approaches to testing and monitoring.
+
+To recap, here are my recommendations for testing:
+
+|                        |                                                                                                                       |                                                                       |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| End-to-End Tests (E2E) | High-level, complete user flows from start to finish                                                                  | Run periodically or during development                                |
+| Unit Tests             | Low-level, test small units of code that perform a single action in isolation                                         | Run during development and before merging new code                    |
+| Integration Tests      | A combination of unit tests to verify how they work when integrated together                                          | Run during development and (potentially) during production monitoring |
+| Performance Tests      | Tests that verify application performance rather than correctness                                                     | Run before merging and/or after deployment                            |
+| Visual Tests           | Tests that check whether the application appears visually as expected                                                 | Run during development and before merging new code                    |
+| Smoke Tests            | Fast, efficient tests that ensure your application is running and accessible. Can be performed quickly and frequently | Run after deployment and during production monitoring                 |
+
+> In my spare time I do some consulting on determining a testing/monitoring strategy and getting it set up for your specific application. If you're interested, [shoot me an email](mailto:kd+testing@keegandonley.com?subject=Application%20Testing%20Consulting "Email Me") and together we can get your application tested and monitored!

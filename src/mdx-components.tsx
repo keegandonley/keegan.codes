@@ -12,6 +12,10 @@ import { Img } from "./components/Post/Image";
 import { Hr } from "./components/Post/Hr";
 import { Blockquote } from "./components/Post/Blockquote";
 import { Ol } from "./components/Post/Ol";
+import { Table } from "./components/Post/Table";
+import { Td } from "./components/Post/Table/Td";
+import { Tr } from "./components/Post/Table/Tr";
+import { Th } from "./components/Post/Table/Th";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -28,6 +32,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     hr: Hr,
     blockquote: Blockquote,
     ol: Ol,
+    table: Table,
+    td: Td,
+    tr: Tr,
+    th: Th,
     ...components,
   };
 }

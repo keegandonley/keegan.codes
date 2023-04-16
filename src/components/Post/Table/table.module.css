@@ -1,0 +1,14 @@
+.table {
+  border-collapse: collapse;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.cell {
+  padding: 1.2rem 1.4rem;
+  border: 1px solid #bbb;
+}
+
+.wrapper {
+  overflow-x: auto;
+}
