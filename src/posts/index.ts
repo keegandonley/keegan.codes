@@ -13,6 +13,7 @@ import * as AiBrand from "./how-ai-is-revolutionizing-personal-brand-creation.md
 import * as GitBisect from "./debugging-code-using-git-bisect.mdx";
 import * as Kizen from "./beginning-a-new-chapter-of-my-career-with-kizen.mdx";
 import * as ConnectedFitness from "./my-approach-to-connected-fitness.mdx";
+import * as TwitterBotTutorial from "./building-a-super-simple-and-free-twitter-bot.mdx";
 
 const posts = {
   Welcome,
@@ -30,6 +31,7 @@ const posts = {
   GitBisect,
   Kizen,
   ConnectedFitness,
+  TwitterBotTutorial,
 };
 
 export default posts;
