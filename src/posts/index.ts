@@ -11,6 +11,7 @@ import * as Newsletter from "./why-write-a-newsletter.mdx";
 import * as Testing from "./common-types-of-web-application-tests-and-how-they-can-improve-performance-and-reliability.mdx";
 import * as AiBrand from "./how-ai-is-revolutionizing-personal-brand-creation.mdx";
 import * as GitBisect from "./debugging-code-using-git-bisect.mdx";
+import * as Kizen from "./beginning-a-new-chapter-of-my-career-with-kizen.mdx";
 
 const posts = {
   Welcome,
@@ -26,6 +27,7 @@ const posts = {
   Testing,
   AiBrand,
   GitBisect,
+  Kizen,
 };
 
 export default posts;
