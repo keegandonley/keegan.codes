@@ -11,7 +11,7 @@ export default async function ImageModalPage({ params }: ImageModalPageProps) {
   const baseUrl =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : "https://k10y.vercel.app";
+      : `https://${process.env.VERCEL_URL}`;
   const data = await fetch(
     `${baseUrl}/api/img/metadata?id=${encodeURIComponent(params.imgSrc)}`
   );
