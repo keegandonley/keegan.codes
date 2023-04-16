@@ -8,10 +8,12 @@ interface ImageModalPageProps {
 }
 
 export default async function ImageModalPage({ params }: ImageModalPageProps) {
+  const baseUrl =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://k10y.vercel.app";
   const data = await fetch(
-    `http://localhost:3000/api/img/metadata?id=${encodeURIComponent(
-      params.imgSrc
-    )}`
+    `${baseUrl}/api/img/metadata?id=${encodeURIComponent(params.imgSrc)}`
   );
 
   const json = await data.json();
