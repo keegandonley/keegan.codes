@@ -13,3 +13,8 @@
 .bq p {
   font-size: 1rem;
 }
+
+.bq code {
+  background: none;
+  color: var(--theme-text);
+}

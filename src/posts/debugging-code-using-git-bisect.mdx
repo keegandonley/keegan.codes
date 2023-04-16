@@ -1,0 +1,52 @@
+export const title = "Debugging Code Using Git Bisect";
+export const slug = "debugging-code-using-git-bisect";
+export const tags = ["software", "tutorial", "debugging"];
+export const description =
+  "A step-by-step guide to one of my favorite tools in my debugging toolkit";
+export const cover = "git-bisect-cover.png";
+export const published = new Date(2022, 4, 9);
+
+Imagine this situation: A part of a large application you haven't looked at in a while has a regression - maybe it's something minor like a drop-down that no longer works. You're sure it _used_ to work, but there have been hundreds or thousands of commits to the project by various developers since then. How do you go about tracking down when the bug was introduced? If it wasn't caught in regression testing the moment it was broken, this can be a daunting task!
+
+One of my favorite debugging tools is git-bisect. In the past, I've been known as the "git bisect guy" who could quickly track down exactly when regressions were introduced, but it's actually quite simple to do!
+
+## How Does it Work?
+
+Git bisect is a way to track down what commit introduced some state into a codebase. You can use it to find a bug or any other condition of the codebase, for example, to find a point in time when the build process was substantially slowed down. Under the hood, it uses binary search to quickly narrow down a wide range of possible commits to the commit of interest. Here's a quick refresher on binary search:
+
+Binary search is used to find a value in a list of sequential items. It's very efficient, since, due to the ordering constraint, it is able to run in O(log n) in the average and worst cases. Lucky for us, git commits are sorted by time, and we are searching for a specific moment in time, so the binary search algorithm is perfect! Even if there are 1000 commits to search, it would take at most 10 iterations to find the problem:
+
+> `⌊log₂(1000) + 1⌋ = 10`
+
+The nature of logarithmic time means that even as we double the number of commits, the number of iterations only increases by one. This is great for searching through very long commit histories, and means we don't really get penalized in repositories that have a lot of commits, or, for example, don't squash-merge pull requests (that's a debate for another blog post). Check out the results when I double the number of possible commits:
+
+> `⌊log₂(2000) + 1⌋ = 11`
+
+If you want to, you can pause here and [read in more detail how binary search works](https://en.wikipedia.org/wiki/Binary_search_algorithm "Binary Search - Wikipedia"). However, you don't need to know every detail of the implementation to use git bisect effectively.
+
+## Using Git Bisect in Practice
+
+Now that we know generally how git-bisect works under the hood, let's get to debugging! I mentioned above that this is useful for finding any defined behavior in a codebase - not just bugs. However, to keep this simple, we'll assume we're hunting down a bug that exists currently and didn't exist at some point in the past.
+
+1. Start bisecting with `git bisect start`. (Note all bisecting commands need to be done at the top level of the working tree)
+2. Find a commit sha where the bug does not exist. Remember, if you knew exactly which commit introduced the bug we wouldn't need to do this. Since we don't know, I usually just pick an arbitrary commit that I'm sure is far enough back in time. Double-check to make sure you chose one without the bug because if we get the bounds wrong binary search will run all the way to the worst-case and not give us anything valuable.
+3. Run `git bisect <sha> good` to indicate the left bound for the search algorithm. For example, `git bisect 21be99d good`. (You can use a short or full-length sha)
+4. Now, we need to find the upper bound commit where we know the bug _does_ exist. In most cases, I just use the latest commit to keep it simple.
+5. Run `git bisect <sha> bad`. For example, `git bisect 4baa4ad bad`.
+6. Git bisect will choose a commit in the middle, by calculating `⌊(L + R) / 2⌋`, where `L` and `R` are the upper and lower bounds. This commit will be checked out automatically.
+7. Inspect the state of the application, and determine if the bug exists or not. In the case of a web application, you could run it and check manually, run your test suite, or verify any other criteria you wish.
+8. If the bug persists, run `git bisect bad` to indicate to the algorithm to search on the left-hand side of the current commit. If it does not, run `git bisect good`.
+9. Repeat steps 7 and 8 until bisecting is complete. When the problem is identified, you'll see a message like `986b24f87c611523966cd340914f55ffc8f7ca46 is the first bad commit`. Now you know where to hunt for the bug!
+10. Run `git bisect reset` to exit and return to a normal state.
+
+The rest is up to you! Using git-bisect has given you a great starting point and eliminated a substantial amount of work in tracking down your issue. Instead of starting from scratch, if everything went smoothly and you make small enough commits, you may not have many code changes to look through to find the bug!
+
+If you're not hunting for bugs, and bisect for some other reason, there are aliases available that might make more sense. Instead of _bad,_ you can use _new_, and instead of _good,_ you can use _old_. For debugging, I think the former terms make more sense.
+
+Another potentially useful command is `git bisect skip` - if you can't test a revision for some reason, you can't indicate whether it is good or bad, so it should be marked as skipped.
+
+## Summary
+
+Git bisect is one of my favorite debugging methods in my toolkit, and it has saved me so much time. It's actually one of the big upsides in my opinion of monorepo development. If the backend and frontend are version-controlled with the same git history, git-bisect becomes a powerful tool for tracking down full-stack bugs that involve interaction between and back-end and front-end. It is also most effective when commits are kept small and with good, useful messages.
+
+Do you rely on git-bisect to solve problems in your codebase? Do you have other great methods in your debugging toolkit? I love to discuss debugging and all things software over on [Twitter](https://twitter.com/keegandonley "Twitter") and [LinkedIn](https://www.linkedin.com/in/keegan-donley-2202a873/ "LinkedIn - Keegan")!

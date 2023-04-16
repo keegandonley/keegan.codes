@@ -10,6 +10,7 @@ import * as Fitness2 from "./my-connected-fitness-tools-part-2.mdx";
 import * as Newsletter from "./why-write-a-newsletter.mdx";
 import * as Testing from "./common-types-of-web-application-tests-and-how-they-can-improve-performance-and-reliability.mdx";
 import * as AiBrand from "./how-ai-is-revolutionizing-personal-brand-creation.mdx";
+import * as GitBisect from "./debugging-code-using-git-bisect.mdx";
 
 const posts = {
   Welcome,
@@ -24,6 +25,7 @@ const posts = {
   Newsletter,
   Testing,
   AiBrand,
+  GitBisect,
 };
 
 export default posts;
