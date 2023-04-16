@@ -12,6 +12,7 @@ import * as Testing from "./common-types-of-web-application-tests-and-how-they-c
 import * as AiBrand from "./how-ai-is-revolutionizing-personal-brand-creation.mdx";
 import * as GitBisect from "./debugging-code-using-git-bisect.mdx";
 import * as Kizen from "./beginning-a-new-chapter-of-my-career-with-kizen.mdx";
+import * as ConnectedFitness from "./my-approach-to-connected-fitness.mdx";
 
 const posts = {
   Welcome,
@@ -28,6 +29,7 @@ const posts = {
   AiBrand,
   GitBisect,
   Kizen,
+  ConnectedFitness,
 };
 
 export default posts;
