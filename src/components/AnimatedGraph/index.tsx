@@ -2,6 +2,7 @@ import { merge } from "@/util/classNames";
 import styles from "./animatedGraph.module.css";
 import { BottomFade } from "../BottomFade";
 import { headers } from "next/headers";
+import { RadialFade } from "../RadialFade";
 
 const toMatch = [
   /Android/i,
@@ -46,6 +47,7 @@ export const AnimatedGraph = () => {
           ></div>
         );
       })}
+      <RadialFade />
       <BottomFade />
     </div>
   );

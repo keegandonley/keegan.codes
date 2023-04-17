@@ -40,6 +40,8 @@
   --color-gh-2: #006d32;
   --color-gh-3: #26a641;
   --color-gh-4: #39d353;
+
+  --grid-line: 1px dotted lightgray;
 }
 
 body.dark {

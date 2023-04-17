@@ -4,11 +4,7 @@
   position: relative;
   min-width: calc(33% - 8px);
   max-width: calc(33% - 8px);
-  box-shadow: var(--theme-box-shadow-small);
-  background: var(--theme-background);
   transition: min-width var(--animation), max-width var(--animation);
-  border-radius: 1rem;
-  overflow: hidden;
   z-index: 99;
 }
 
@@ -38,11 +34,11 @@
 }
 
 .content {
-  margin-top: -5rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  background: var(--theme-background);
 }
 
 .a {
@@ -83,4 +79,24 @@
   font-size: 0.8rem;
   padding-top: 1rem;
   color: var(--theme-text-secondary);
+}
+
+.horizontalLine {
+  position: absolute;
+  border-top: 1px solid transparent;
+  width: 100vw;
+  height: 1px;
+  left: -2rem;
+}
+
+.wrapper:nth-child(n + 0) .horizontalLine {
+  border-top: var(--grid-line);
+}
+
+.verticalLine {
+  position: absolute;
+  border-left: var(--grid-line);
+  width: 1px;
+  height: calc(100% + 1rem);
+  top: 0rem;
 }

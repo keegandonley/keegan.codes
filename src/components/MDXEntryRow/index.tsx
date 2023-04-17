@@ -34,10 +34,11 @@ export const MDXEntryRow = ({
   const metadata = getImageMetadata(cover);
   return (
     <div className={styles.wrapper}>
+      <div className={styles.horizontalLine}></div>
+      <div className={styles.verticalLine}></div>
       <Link href={`/blog/${slug}`} className={styles.a}>
         {cover ? (
           <div className={styles.imageParent}>
-            <BottomFade />
             <Image
               src={`${BUCKET_URL}/${cover}`}
               alt="todo"
