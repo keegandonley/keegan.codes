@@ -25,7 +25,7 @@ export const AnimatedGraph = () => {
     return userAgent ? userAgent.match(toMatchItem) : false;
   });
 
-  const values = Array(isLikelyMobile ? 200 : 1500).fill(1);
+  const values = Array(isLikelyMobile ? 500 : 1000).fill(1);
 
   const coloredValues = values.map((_, i) => {
     const color = Math.floor(Math.random() * 7) + 1;
