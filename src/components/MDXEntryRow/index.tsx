@@ -4,9 +4,9 @@ import styles from "./mdxEntryRow.module.css";
 import Image from "next/image";
 import { BUCKET_URL } from "@/util/r2";
 import { getImageMetadata, parseToProps } from "@/util/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar, faCircle } from "@fortawesome/pro-solid-svg-icons";
 import { merge } from "@/util/classNames";
+import { Date } from "./components/Date";
+import { Tags } from "./components/Tags";
 
 interface MDXEntryRowProps extends ElementBaseProps {
   title: string;
@@ -26,14 +26,6 @@ export const MDXEntryRow = ({
   cover,
   published,
 }: MDXEntryRowProps) => {
-  const formattedDate = published
-    ? published.toLocaleString("en-US", {
-        timeZone: "America/Chicago",
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-      })
-    : "";
   const metadata = getImageMetadata(cover);
   return (
     <div className={merge(styles.wrapper)}>
@@ -58,21 +50,8 @@ export const MDXEntryRow = ({
         <div className={styles.content}>
           <h1 className={styles.h1}>{title}</h1>
           <p className={styles.description}>{description}</p>
-          <p className={styles.date}>
-            <FontAwesomeIcon icon={faCalendar} className={styles.sectionIcon} />{" "}
-            {formattedDate}
-          </p>
-          <div className={styles.tags}>
-            {tags.map((tag) => {
-              return (
-                <span className={styles.tag} key={tag}>
-                  {tag}
-                </span>
-              );
-            })}
-            <FontAwesomeIcon icon={faCircle} className={styles.icon} />
-            <div className={styles.borderFade} />
-          </div>
+          <Date date={published} />
+          <Tags tags={tags} />
         </div>
       </Link>
     </div>
