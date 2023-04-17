@@ -90,8 +90,11 @@
   top: 0rem;
 }
 
-.wrapper:hover .imageParent {
-  transform: perspective(1500px) rotateY(15deg);
-  z-index: 9999;
-  filter: brightness(1.2);
+/* Only run the hover animations on larger screens */
+@media only screen and (min-width: 650px) {
+  .wrapper:hover .imageParent {
+    transform: perspective(1500px) rotateY(15deg);
+    z-index: 9999;
+    filter: brightness(1.2);
+  }
 }
