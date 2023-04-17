@@ -15,6 +15,21 @@
   max-width: 800px;
   padding-left: 2rem;
   padding-right: 2rem;
+  padding-bottom: 2rem;
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+}
+
+.sectionHeader {
+  text-align: left;
+  max-width: 800px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-size: 2rem;
+  font-weight: 900;
+  padding-top: 10rem;
+  margin: 0 auto;
+  color: var(--theme-text);
 }
 
 @keyframes textGradient {
@@ -39,8 +54,18 @@
   );
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 900;
   animation: textGradient 15s ease infinite;
   background-size: 400% 400%;
+}
+
+.icon {
+  font-size: 10rem;
+}
+
+.heroIcon {
+  font-size: 8rem;
+  margin: 0 auto;
+  padding-top: 5rem;
 }
