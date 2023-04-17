@@ -25,8 +25,10 @@
 .imageParent {
   position: relative;
   width: 100%;
-  height: 350px;
+  height: 250px;
   z-index: -1;
+  margin-left: -2rem;
+  transition: var(--animation);
 }
 
 .imageParent img {
@@ -34,11 +36,15 @@
 }
 
 .content {
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+  padding-right: 1rem;
   background: var(--theme-background);
+  margin-left: -2rem;
+  width: 100%;
 }
 
 .a {
@@ -46,11 +52,18 @@
   color: var(--theme-text);
   display: flex;
   flex-direction: column;
+  padding-left: 2rem;
 }
 
 .h1 {
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  margin-left: -1px;
   font-weight: 600;
+  border-left: 3px solid var(--theme-text);
+  z-index: 99;
+  line-height: 1.8rem;
+  font-size: 1.4rem;
 }
 
 .tags {
@@ -59,7 +72,11 @@
   column-gap: 0.5rem;
   row-gap: 0.5rem;
   flex-wrap: wrap;
-  margin-top: auto;
+  justify-content: flex-end;
+  border-bottom: var(--grid-line);
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  position: relative;
 }
 
 .tag {
@@ -72,25 +89,27 @@
 }
 
 .description {
-  line-height: 1.5rem;
+  line-height: 1.4rem;
+  padding-left: 2rem;
+  opacity: 0.8;
+  font-weight: 200;
 }
 
 .date {
   font-size: 0.8rem;
   padding-top: 1rem;
+  padding-left: 2rem;
+
   color: var(--theme-text-secondary);
 }
 
-.horizontalLine {
+.wrapper:nth-child(0) .horizontalLine {
+  border-top: var(--grid-line);
   position: absolute;
-  border-top: 1px solid transparent;
+  border-top: none;
   width: 100vw;
   height: 1px;
-  left: -2rem;
-}
-
-.wrapper:nth-child(n + 0) .horizontalLine {
-  border-top: var(--grid-line);
+  left: 0;
 }
 
 .verticalLine {
@@ -99,4 +118,38 @@
   width: 1px;
   height: calc(100% + 1rem);
   top: 0rem;
+}
+
+.icon {
+  position: absolute;
+  left: -2px;
+  bottom: -3px;
+  font-size: 5px;
+  color: var(--theme-grid-line-color);
+  transform: rotate(45deg);
+  opacity: 1;
+}
+
+.wrapper:hover .imageParent {
+  transform: perspective(1500px) rotateY(15deg);
+  z-index: 9999;
+  filter: brightness(1.2);
+}
+
+.sectionIcon {
+  padding-right: 0.2rem;
+  padding-bottom: 1px; /* aligns with text */
+}
+
+.borderFade {
+  position: absolute;
+  height: 5px;
+  right: -2px;
+  bottom: -3px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--theme-transparent) 0%,
+    var(--theme-background) 100%
+  );
 }

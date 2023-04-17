@@ -41,7 +41,8 @@
   --color-gh-3: #26a641;
   --color-gh-4: #39d353;
 
-  --grid-line: 1px dotted lightgray;
+  --theme-grid-line-color: rgb(211, 211, 211);
+  --grid-line: 1px dashed var(--theme-grid-line-color);
 }
 
 body.dark {
@@ -75,6 +76,8 @@ body.dark {
     var(--theme-blue-1) 0%,
     var(--theme-transparent) 85%
   );
+  --theme-grid-line-color: rgb(28, 43, 72);
+  --grid-line: 1px dashed var(--theme-grid-line-color);
 }
 
 * {

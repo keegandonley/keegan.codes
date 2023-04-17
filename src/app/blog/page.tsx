@@ -27,8 +27,8 @@ export default async function BlogPage() {
               }
               return b.published.getTime() - a.published.getTime();
             })
-            .map((post) => {
-              return <MDXEntryRow key={post.slug} {...post} />;
+            .map((post, index) => {
+              return <MDXEntryRow key={post.slug} index={index} {...post} />;
             })}
         </div>
       </section>

@@ -11,7 +11,10 @@ import { Analytics } from "@vercel/analytics/react";
 
 config.autoAddCss = false;
 
-const font = Raleway({ subsets: ["latin"], weight: ["200", "600", "900"] });
+const font = Raleway({
+  subsets: ["latin"],
+  weight: ["100", "200", "600", "900"],
+});
 
 export default function RootLayout({ children }: any) {
   const theme = userTheme();
