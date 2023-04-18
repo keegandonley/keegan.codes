@@ -19,8 +19,8 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  min-width: calc(33% - 2rem);
-  max-width: calc(33% - 2rem);
+  min-width: calc(33% - 1rem);
+  max-width: calc(33% - 1rem);
 }
 
 .column a {
