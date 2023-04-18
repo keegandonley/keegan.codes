@@ -1,0 +1,13 @@
+.fade {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center 60%,
+    var(--theme-background) 55%,
+    var(--theme-transparent) 75%
+  );
+}

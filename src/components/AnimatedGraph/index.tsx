@@ -2,6 +2,7 @@ import { merge } from "@/util/classNames";
 import styles from "./animatedGraph.module.css";
 import { BottomFade } from "../BottomFade";
 import { headers } from "next/headers";
+import { RadialFade } from "../RadialFade";
 
 const toMatch = [
   /Android/i,
@@ -24,10 +25,10 @@ export const AnimatedGraph = () => {
     return userAgent ? userAgent.match(toMatchItem) : false;
   });
 
-  const values = Array(isLikelyMobile ? 500 : 1500).fill(1);
+  const values = Array(isLikelyMobile ? 500 : 1000).fill(1);
 
   const coloredValues = values.map((_, i) => {
-    const color = Math.floor(Math.random() * 5) + 1;
+    const color = Math.floor(Math.random() * 7) + 1;
     const interval = Math.floor(Math.random() * 7) + 1;
     return { color, interval };
   });
@@ -46,6 +47,7 @@ export const AnimatedGraph = () => {
           ></div>
         );
       })}
+      <RadialFade />
       <BottomFade />
     </div>
   );

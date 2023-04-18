@@ -1,0 +1,34 @@
+.tags {
+  padding-top: 2rem;
+  display: flex;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  border-bottom: var(--grid-line);
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  left: -2px;
+  bottom: -3px;
+  font-size: 5px;
+  color: var(--theme-grid-line-color);
+  opacity: 1;
+}
+
+.borderFade {
+  position: absolute;
+  height: 5px;
+  right: -2px;
+  bottom: -3px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--theme-transparent) 0%,
+    var(--theme-background) 100%
+  );
+}

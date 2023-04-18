@@ -1,0 +1,8 @@
+.tag {
+  color: var(--theme-blue-2);
+  background: var(--theme-pill);
+  border-radius: 1.5rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  color: var(--theme-text-high-contrast);
+}

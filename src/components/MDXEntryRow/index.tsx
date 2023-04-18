@@ -2,9 +2,11 @@ import { ElementBaseProps } from "@/types/elements";
 import Link from "next/link";
 import styles from "./mdxEntryRow.module.css";
 import Image from "next/image";
-import { BottomFade } from "../BottomFade";
 import { BUCKET_URL } from "@/util/r2";
 import { getImageMetadata, parseToProps } from "@/util/image";
+import { merge } from "@/util/classNames";
+import { Date } from "./components/Date";
+import { Tags } from "./components/Tags";
 
 interface MDXEntryRowProps extends ElementBaseProps {
   title: string;
@@ -13,6 +15,7 @@ interface MDXEntryRowProps extends ElementBaseProps {
   description?: string;
   cover?: string;
   published?: Date;
+  index: number;
 }
 
 export const MDXEntryRow = ({
@@ -23,21 +26,14 @@ export const MDXEntryRow = ({
   cover,
   published,
 }: MDXEntryRowProps) => {
-  const formattedDate = published
-    ? published.toLocaleString("en-US", {
-        timeZone: "America/Chicago",
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-      })
-    : "";
   const metadata = getImageMetadata(cover);
   return (
-    <div className={styles.wrapper}>
+    <div className={merge(styles.wrapper)}>
+      <div className={styles.horizontalLine}></div>
+      <div className={styles.verticalLine}></div>
       <Link href={`/blog/${slug}`} className={styles.a}>
         {cover ? (
           <div className={styles.imageParent}>
-            <BottomFade />
             <Image
               src={`${BUCKET_URL}/${cover}`}
               alt="todo"
@@ -54,16 +50,8 @@ export const MDXEntryRow = ({
         <div className={styles.content}>
           <h1 className={styles.h1}>{title}</h1>
           <p className={styles.description}>{description}</p>
-          <p className={styles.date}> {formattedDate}</p>
-          <div className={styles.tags}>
-            {tags.map((tag) => {
-              return (
-                <span className={styles.tag} key={tag}>
-                  {tag}
-                </span>
-              );
-            })}
-          </div>
+          <Date date={published} />
+          <Tags tags={tags} />
         </div>
       </Link>
     </div>
