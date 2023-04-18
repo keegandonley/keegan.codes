@@ -1,5 +1,6 @@
 .content {
   padding-bottom: 6rem;
+  padding-top: 5rem;
 }
 
 .footer {
@@ -27,7 +28,8 @@
   padding-right: 2rem;
   font-size: 2rem;
   font-weight: 900;
-  padding-top: 10rem;
+  padding-top: 8rem;
+  padding-bottom: 2rem;
   margin: 0 auto;
   color: var(--theme-text);
 }
@@ -68,4 +70,33 @@
   font-size: 8rem;
   margin: 0 auto;
   padding-top: 5rem;
+}
+
+.blogButton {
+  text-align: center;
+  margin-top: 6rem;
+  display: flex;
+}
+
+.blogButtonText {
+  background: linear-gradient(
+    90deg,
+    var(--theme-blue-1),
+    var(--theme-blue-3),
+    var(--theme-yellow),
+    var(--theme-blue-2)
+  );
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  border-radius: 10rem;
+  color: white;
+  animation: textGradient 30s ease infinite;
+  background-size: 400% 400%;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.blogButtonText svg {
+  margin-left: 0.5rem;
+  padding-top: 1px;
 }

@@ -2,7 +2,7 @@ import Image from "next/image";
 import avatar from "./avatar.jpg";
 import styles from "./avatar.module.css";
 import { ElementBaseProps } from "@/types/elements";
-import { fallback } from "@/util/classNames";
+import { merge } from "@/util/classNames";
 
 interface AvatarProps extends ElementBaseProps {
   width?: number;
@@ -18,7 +18,7 @@ export const Avatar = ({
 }: Omit<AvatarProps, "children">) => {
   return (
     <Image
-      className={fallback(className, styles.image)}
+      className={merge(styles.image, className)}
       width={width}
       src={avatar}
       alt={alt}

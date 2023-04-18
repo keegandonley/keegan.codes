@@ -8,9 +8,11 @@ import { postCount } from "../post-count";
 import { H1 } from "@/components/Post/Heading/H1";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faArrowRight,
   faComputerClassic,
   faGraduationCap,
 } from "@fortawesome/pro-solid-svg-icons";
+import { Footer } from "@/components/Footer";
 
 export const runtime = "experimental-edge";
 
@@ -39,6 +41,11 @@ export default function Home() {
           </Link>
           .
         </Paragraph>
+        <div className={styles.blogButton}>
+          <Link href="/blog" className={styles.blogButtonText}>
+            Read my Blog <FontAwesomeIcon icon={faArrowRight} />
+          </Link>
+        </div>
         <h1 className={styles.sectionHeader}>Always Learning</h1>
         <Paragraph className={styles.paragraph}>
           I strive to be always learning, and will share as much as I can about
@@ -54,6 +61,7 @@ export default function Home() {
           fitness and travel.
         </Paragraph>
       </section>
+      <Footer />
     </>
   );
 }
