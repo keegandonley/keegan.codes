@@ -6,8 +6,8 @@
   right: 0;
   bottom: 0;
   background: radial-gradient(
-    circle at center 60%,
-    var(--theme-background) 55%,
-    var(--theme-transparent) 75%
+    circle at center 80%,
+    var(--theme-background) 45%,
+    var(--theme-transparent) 65%
   );
 }

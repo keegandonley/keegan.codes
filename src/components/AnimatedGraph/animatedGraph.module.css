@@ -9,11 +9,8 @@
   gap: 0.5rem;
   padding: 0.5rem;
   justify-content: space-evenly;
-  opacity: 0.5;
-}
-
-:global(body.dark) .container {
-  opacity: 0.4;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 @keyframes fadeSquares {
