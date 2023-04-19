@@ -7,6 +7,7 @@ import { getImageMetadata, parseToProps } from "@/util/image";
 import { merge } from "@/util/classNames";
 import { Date } from "./components/Date";
 import { Tags } from "./components/Tags";
+import { getIsLikelyMobile } from "@/util/userAgent";
 
 interface MDXEntryRowProps extends ElementBaseProps {
   title: string;
@@ -25,8 +26,11 @@ export const MDXEntryRow = ({
   description,
   cover,
   published,
+  index,
 }: MDXEntryRowProps) => {
   const metadata = getImageMetadata(cover);
+  const isLikelyMobile = getIsLikelyMobile();
+
   return (
     <div className={merge(styles.wrapper)}>
       <div className={styles.horizontalLine}></div>
@@ -41,6 +45,8 @@ export const MDXEntryRow = ({
               sizes="(max-width: 550px) 100vw,
               (max-width: 900px) 50vw,
               33vw"
+              // Rough guess at which images are above the fold
+              priority={isLikelyMobile ? index < 2 : index < 4}
               {...parseToProps(metadata)}
             />
           </div>

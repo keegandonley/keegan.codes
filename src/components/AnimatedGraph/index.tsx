@@ -1,29 +1,11 @@
 import { merge } from "@/util/classNames";
 import styles from "./animatedGraph.module.css";
 import { BottomFade } from "../BottomFade";
-import { headers } from "next/headers";
 import { RadialFade } from "../RadialFade";
-
-const toMatch = [
-  /Android/i,
-  /webOS/i,
-  /iPhone/i,
-  /iPad/i,
-  /iPod/i,
-  /BlackBerry/i,
-  /Windows Phone/i,
-];
+import { getIsLikelyMobile } from "@/util/userAgent";
 
 export const AnimatedGraph = () => {
-  const h = headers();
-  const userAgent = h.get("User-Agent");
-
-  // Normally detecting a user agent like this is not a good idea, but this is a
-  // simple performance optimization to avoid rendering a lot of squares.
-  // If we get it wrong, it's not a big deal.
-  const isLikelyMobile = toMatch.some((toMatchItem) => {
-    return userAgent ? userAgent.match(toMatchItem) : false;
-  });
+  const isLikelyMobile = getIsLikelyMobile();
 
   const values = Array(isLikelyMobile ? 500 : 1000).fill(1);
 
