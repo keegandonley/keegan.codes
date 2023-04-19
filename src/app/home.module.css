@@ -1,6 +1,7 @@
 .content {
   padding-bottom: 6rem;
   padding-top: 5rem;
+  z-index: 1;
 }
 
 .footer {
@@ -13,17 +14,17 @@
 
 .paragraph.paragraph {
   text-align: left;
-  max-width: 800px;
+  max-width: 1000px;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-bottom: 2rem;
+  padding-bottom: 1.2rem;
   font-size: 1.4rem;
   line-height: 2.2rem;
 }
 
 .sectionHeader {
   text-align: left;
-  max-width: 800px;
+  max-width: 1000px;
   padding-left: 2rem;
   padding-right: 2rem;
   font-size: 2rem;
@@ -99,4 +100,46 @@
 .blogButtonText svg {
   margin-left: 0.5rem;
   padding-top: 1px;
+}
+
+.cta {
+  display: flex;
+  padding-top: 4rem;
+  z-index: 1;
+  position: relative;
+}
+
+.menu {
+  margin: 0 auto;
+  font-weight: 600;
+  color: var(--theme-text);
+  font-size: 1.2rem;
+  display: flex;
+  column-gap: 1rem;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--theme-text);
+}
+
+.top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 40rem;
+  z-index: 0;
+}
+
+.top::before {
+  border-radius: 100%;
+  position: absolute;
+  background: transparent;
+  right: -25rem;
+  left: -25rem;
+  top: -20rem;
+  content: "";
+  bottom: 0;
+  box-shadow: var(--theme-box-shadow-small);
 }

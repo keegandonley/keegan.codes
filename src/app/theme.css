@@ -61,7 +61,7 @@ body.dark {
   --theme-transparent: rgba(0, 0, 0, 0);
   --code-background: rgba(40, 42, 54, 1);
   --code-color: var(--theme-text);
-  --shadow-color: rgba(46, 46, 71, 1);
+  --shadow-color: rgb(28, 28, 75);
 
   /* Theme animation */
   --animation: 0.5s ease-in-out;

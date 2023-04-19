@@ -3,6 +3,8 @@
   align-items: center;
   flex-direction: column;
   padding-top: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .icons {

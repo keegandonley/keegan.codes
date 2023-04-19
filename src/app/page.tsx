@@ -19,10 +19,16 @@ export const runtime = "experimental-edge";
 export default function Home() {
   return (
     <>
+      <div className={styles.top} />
       <HeroBlock isHomePage collapse>
         <HeroText className={styles.name}>Keegan Donley</HeroText>
       </HeroBlock>
       <Social />
+      <div className={styles.cta}>
+        <div className={styles.menu}>
+          Developer, maker, and lifelong learner
+        </div>
+      </div>
       <section className={styles.content}>
         <h1 className={styles.sectionHeader}>Hi There, I&apos;m Kegan!</h1>
         <Paragraph className={styles.paragraph}>
@@ -49,16 +55,17 @@ export default function Home() {
         <h1 className={styles.sectionHeader}>Always Learning</h1>
         <Paragraph className={styles.paragraph}>
           I strive to be always learning, and will share as much as I can about
-          my passions here on my website. Come join me and follow along as I
-          work to build a better web!
+          my passions here on my website. My favorite projects combine software,
+          hardware, hobby electronics, and more!
         </Paragraph>
         <Paragraph className={styles.paragraph}>
           To that end, I currently have {postCount} posts on{" "}
           <Link href="/blog">
             <strong>my blog</strong>
           </Link>
-          , with topics ranging from software and web development, to connected
-          fitness and travel.
+          , with topics ranging from software and web development, to
+          electronics, connected fitness and travel. Come join me and follow
+          along as I work to build a better web!
         </Paragraph>
       </section>
       <Footer />

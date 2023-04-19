@@ -20,9 +20,12 @@ export const Footer = ({ className, children }: FooterProps) => {
         </div>
         <div className={styles.column}>{children}</div>
         <div className={styles.column}>
-          <Avatar width={50} />
+          <div className={styles.avatar}>
+            <Avatar width={50} />
+          </div>
         </div>
       </div>
+      <div className={styles.copyright}>&copy; 2023 by Keegan Donley</div>
     </footer>
   );
 };

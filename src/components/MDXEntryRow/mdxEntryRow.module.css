@@ -4,7 +4,6 @@
   position: relative;
   min-width: calc(33% - 8px);
   max-width: calc(33% - 8px);
-  transition: min-width var(--animation), max-width var(--animation);
   z-index: 99;
 }
 
