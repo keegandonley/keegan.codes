@@ -17,6 +17,8 @@ export const AnimatedGraph = () => {
 
   return (
     <div className={styles.container}>
+      <RadialFade />
+      <BottomFade />
       {coloredValues.map(({ color, interval }, i) => {
         return (
           <div
@@ -29,8 +31,6 @@ export const AnimatedGraph = () => {
           ></div>
         );
       })}
-      <RadialFade />
-      <BottomFade />
     </div>
   );
 };
