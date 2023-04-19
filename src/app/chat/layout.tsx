@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./chat.module.css";
-import { faHeadset, faMegaphone } from "@fortawesome/pro-solid-svg-icons";
+import { faHeadset } from "@fortawesome/pro-solid-svg-icons";
 
 export default function ChatLayout({ children }: { children: any }) {
   return (

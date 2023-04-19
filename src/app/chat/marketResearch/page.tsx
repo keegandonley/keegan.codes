@@ -1,5 +1,7 @@
 import { Body, EmbedScript, EmbedTarget, Intro } from "@/components/Calendly";
 
+export const runtime = "experimental-edge";
+
 export default function ChatMarketResearchPage() {
   return (
     <Intro>
