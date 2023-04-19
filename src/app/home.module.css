@@ -126,10 +126,17 @@
 .top {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 4rem;
   right: 0;
   height: 40rem;
   z-index: 0;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 500px) {
+  .top {
+    top: 8rem;
+  }
 }
 
 .top::before {
@@ -138,8 +145,8 @@
   background: transparent;
   right: -25rem;
   left: -25rem;
-  top: -20rem;
+  top: -10rem;
   content: "";
-  bottom: 0;
+  bottom: 5rem;
   box-shadow: var(--theme-box-shadow-small);
 }
