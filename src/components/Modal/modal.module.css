@@ -5,16 +5,13 @@
   right: 0;
   bottom: 0;
   z-index: 999999;
-  background-color: transparent;
-  backdrop-filter: blur(0);
   overflow-y: scroll;
   transition: background-color var(--animation),
     backdrop-filter var(--animation);
 }
 
 .wrapper.fadeIn {
-  background-color: rgba(39, 39, 39, 0.3);
-  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.85);
 }
 
 .inner {
