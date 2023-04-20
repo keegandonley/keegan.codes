@@ -28,9 +28,6 @@
   z-index: 9;
   margin-left: -2rem;
   transition: var(--animation);
-  /* This is intentionally quite small but it makes a difference! */
-  border-radius: 3px;
-  overflow: hidden;
 }
 
 .imageParent img {
@@ -95,7 +92,7 @@
 /* Only run the hover animations on larger screens */
 @media only screen and (min-width: 650px) {
   .wrapper:hover .imageParent {
-    transform: perspective(1500px) rotateY(15deg);
+    transform: perspective(1500px) rotateY(15deg) translateZ(-80px);
     z-index: 9999;
     filter: brightness(1.2);
   }
