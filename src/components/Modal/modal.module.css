@@ -6,8 +6,7 @@
   bottom: 0;
   z-index: 999999;
   overflow-y: scroll;
-  transition: background-color var(--animation),
-    backdrop-filter var(--animation);
+  transition: background-color var(--animation);
 }
 
 .wrapper.fadeIn {
