@@ -4,10 +4,10 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  height: 40rem;
   background: radial-gradient(
-    circle at center 80%,
-    var(--theme-background) 45%,
-    var(--theme-transparent) 65%
+    circle at center 160%,
+    var(--theme-background) 75%,
+    var(--theme-transparent) 85%
   );
 }

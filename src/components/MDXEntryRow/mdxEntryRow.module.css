@@ -28,6 +28,9 @@
   z-index: 9;
   margin-left: -2rem;
   transition: var(--animation);
+  /* This is intentionally quite small but it makes a difference! */
+  border-radius: 3px;
+  overflow: hidden;
 }
 
 .imageParent img {
