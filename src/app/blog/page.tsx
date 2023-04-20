@@ -32,6 +32,9 @@ export default async function BlogPage() {
             .map((post, index) => {
               return <MDXEntryRow key={post.slug} index={index} {...post} />;
             })}
+          <MDXEntryRow key="extra-1" index={-1} filler />
+          <MDXEntryRow key="extra-2" index={-1} filler />
+          <MDXEntryRow key="extra-3" index={-1} filler />
         </div>
       </section>
       <AnimatedGraph />

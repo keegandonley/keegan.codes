@@ -5,13 +5,8 @@ import { Paragraph } from "@/components/Paragraph";
 import Link from "next/link";
 import styles from "./home.module.css";
 import { postCount } from "../post-count";
-import { H1 } from "@/components/Post/Heading/H1";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowRight,
-  faComputerClassic,
-  faGraduationCap,
-} from "@fortawesome/pro-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 import { Footer } from "@/components/Footer";
 
 export const runtime = "experimental-edge";

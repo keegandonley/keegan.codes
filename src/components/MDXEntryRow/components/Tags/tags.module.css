@@ -1,13 +1,12 @@
 .tags {
   padding-top: 2rem;
   display: flex;
-  column-gap: 0.5rem;
+  column-gap: 0.8rem;
   row-gap: 0.5rem;
   flex-wrap: wrap;
   justify-content: flex-end;
   border-bottom: var(--grid-line);
   padding-bottom: 1rem;
-  padding-right: 1rem;
   position: relative;
 }
 

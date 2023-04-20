@@ -10,13 +10,14 @@ import { Tags } from "./components/Tags";
 import { getIsLikelyMobile } from "@/util/userAgent";
 
 interface MDXEntryRowProps extends ElementBaseProps {
-  title: string;
-  slug: string;
-  tags: string[];
+  title?: string;
+  slug?: string;
+  tags?: string[];
   description?: string;
   cover?: string;
   published?: Date;
   index: number;
+  filler?: boolean;
 }
 
 export const MDXEntryRow = ({
@@ -27,12 +28,13 @@ export const MDXEntryRow = ({
   cover,
   published,
   index,
+  filler,
 }: MDXEntryRowProps) => {
   const metadata = getImageMetadata(cover);
   const isLikelyMobile = getIsLikelyMobile();
 
   return (
-    <div className={merge(styles.wrapper)}>
+    <div className={merge(styles.wrapper, filler && styles.filler)}>
       <div className={styles.horizontalLine}></div>
       <div className={styles.verticalLine}></div>
       <Link href={`/blog/${slug}`} className={styles.a}>
@@ -53,13 +55,18 @@ export const MDXEntryRow = ({
         ) : (
           <div className={styles.imageParent}></div>
         )}
-        <div className={styles.content}>
-          <h1 className={styles.h1}>{title}</h1>
-          <p className={styles.description}>{description}</p>
-          <Date date={published} />
-          <Tags tags={tags} />
-        </div>
+        {!filler ? (
+          <div className={styles.content}>
+            <h1 className={styles.h1}>{title}</h1>
+            <p className={styles.description}>{description}</p>
+            {published ? <Date date={published} /> : false}
+            {tags && tags.length > 0 ? <Tags tags={tags} /> : false}
+          </div>
+        ) : (
+          false
+        )}
       </Link>
+      {filler ? <div className={styles.borderFade} /> : false}
     </div>
   );
 };

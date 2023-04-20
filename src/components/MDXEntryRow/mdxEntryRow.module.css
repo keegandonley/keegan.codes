@@ -7,6 +7,32 @@
   z-index: 99;
 }
 
+.wrapper.filler {
+  height: 0;
+}
+
+.fillterContent {
+  background-color: red;
+  height: 2px;
+  width: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.borderFade {
+  position: absolute;
+  height: 4rem;
+  left: -2px;
+  top: -2rem;
+  width: 5px;
+  background: linear-gradient(
+    180deg,
+    var(--theme-transparent) 0%,
+    var(--theme-background) 100%
+  );
+}
+
 @media only screen and (max-width: 900px) {
   .wrapper {
     min-width: calc(50% - 8px);
@@ -27,11 +53,12 @@
   height: 250px;
   z-index: 9;
   margin-left: -2rem;
-  transition: var(--animation);
 }
 
 .imageParent img {
   object-fit: cover;
+  /* Tiny border radius still makes a differnece */
+  border-radius: var(--tiny-border-radius);
 }
 
 .content {
@@ -65,6 +92,12 @@
   font-size: 1.4rem;
 }
 
+.imageParent,
+.h1,
+.description {
+  transition: filter var(--animation);
+}
+
 .description {
   line-height: 1.4rem;
   padding-left: 2rem;
@@ -91,9 +124,9 @@
 
 /* Only run the hover animations on larger screens */
 @media only screen and (min-width: 650px) {
-  .wrapper:hover .imageParent {
-    transform: perspective(1500px) rotateY(15deg) translateZ(-80px);
-    z-index: 9999;
-    filter: brightness(1.2);
+  .wrapper:hover .h1,
+  .wrapper:hover .imageParent,
+  .wrapper:hover .description {
+    filter: brightness(1.3);
   }
 }
