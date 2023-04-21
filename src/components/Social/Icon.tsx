@@ -10,6 +10,7 @@ interface SocialIconProps extends ElementBaseProps {
   icon: IconDefinition;
   color: string;
   darkColor?: string;
+  name: string;
 }
 
 export const Icon = ({
@@ -18,6 +19,7 @@ export const Icon = ({
   icon,
   color,
   darkColor,
+  name,
 }: Omit<SocialIconProps, "children">) => {
   return (
     <Link
@@ -25,6 +27,7 @@ export const Icon = ({
       target="_blank"
       rel="noopener noreferrer"
       className={className}
+      aria-label={`Keegan Donley's ${name}`}
     >
       <FontAwesomeIcon
         icon={icon}
