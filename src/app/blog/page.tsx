@@ -1,7 +1,6 @@
 import { MDXEntryRow } from "@/components/MDXEntryRow";
 import Posts from "@/posts";
 import styles from "./blog.module.css";
-import { AnimatedGraph } from "@/components/AnimatedGraph";
 import { RadialFade } from "@/components/RadialFade";
 
 export default async function BlogPage() {
@@ -37,7 +36,6 @@ export default async function BlogPage() {
           <MDXEntryRow key="extra-3" index={-1} filler />
         </div>
       </section>
-      <AnimatedGraph />
     </>
   );
 }
