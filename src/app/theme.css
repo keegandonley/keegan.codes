@@ -86,5 +86,5 @@ body.dark {
 * {
   --no-animation: 0s linear;
   transition: color var(--no-animation), background-color var(--no-animation),
-    border-color var(--no-animation), box-shadow var(--no-animation);
+    box-shadow var(--no-animation);
 }

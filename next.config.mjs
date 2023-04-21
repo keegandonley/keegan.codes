@@ -17,6 +17,8 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 60 * 60 * 24 * 2,
   },
   modularizeImports: {
     "@fortawesome/pro-solid-svg-icons": {

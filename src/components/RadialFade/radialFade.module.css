@@ -4,10 +4,48 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 40rem;
+  bottom: 0;
   background: radial-gradient(
     circle at center 160%,
     var(--theme-background) 75%,
     var(--theme-transparent) 85%
   );
+}
+
+.invert {
+  background: radial-gradient(
+    circle at center bottom,
+    var(--theme-transparent) 25%,
+    var(--theme-background) 50%
+  );
+}
+
+@media screen and (max-width: 900px) {
+  .invert {
+    background: radial-gradient(
+      circle at center bottom,
+      var(--theme-transparent) 25%,
+      var(--theme-background) 60%
+    );
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .invert {
+    background: radial-gradient(
+      circle at center bottom,
+      var(--theme-transparent) 25%,
+      var(--theme-background) 70%
+    );
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .invert {
+    background: radial-gradient(
+      circle at center bottom,
+      var(--theme-transparent) 25%,
+      var(--theme-background) 80%
+    );
+  }
 }
