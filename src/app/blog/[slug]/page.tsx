@@ -12,6 +12,8 @@ import { Metadata } from "next";
 import { getComponentForKey, getKey } from "../util";
 import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
 
+export const runtime = "experimental-edge";
+
 interface BlogPageProps {
   params: {
     slug: string;

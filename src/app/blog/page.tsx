@@ -4,6 +4,8 @@ import styles from "./blog.module.css";
 import { AnimatedGraph } from "@/components/AnimatedGraph";
 import { Delay } from "@/components/Delay";
 
+export const runtime = "experimental-edge";
+
 export default async function BlogPage() {
   const posts = Object.keys(Posts).map((key) => {
     const component = (Posts as any)[key];
