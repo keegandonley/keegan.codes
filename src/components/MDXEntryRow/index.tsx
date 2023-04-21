@@ -33,11 +33,13 @@ export const MDXEntryRow = ({
   const metadata = getImageMetadata(cover);
   const isLikelyMobile = getIsLikelyMobile();
 
+  const Parent = slug ? Link : "div";
+
   return (
     <div className={merge(styles.wrapper, filler && styles.filler)}>
       <div className={styles.horizontalLine}></div>
       <div className={styles.verticalLine}></div>
-      <Link href={`/blog/${slug}`} className={styles.a}>
+      <Parent href={`/blog/${slug}`} className={styles.a}>
         {cover ? (
           <div className={styles.imageParent}>
             <Image
@@ -65,7 +67,7 @@ export const MDXEntryRow = ({
         ) : (
           false
         )}
-      </Link>
+      </Parent>
       {filler ? <div className={styles.borderFade} /> : false}
     </div>
   );

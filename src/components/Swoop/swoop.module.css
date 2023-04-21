@@ -1,0 +1,31 @@
+.swoop {
+  position: absolute;
+  left: 0;
+  top: 4rem;
+  right: 0;
+  height: 40rem;
+  z-index: 0;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 500px) {
+  .swoop {
+    top: 8rem;
+  }
+}
+
+.swoop::before {
+  border-radius: 100%;
+  position: absolute;
+  background: transparent;
+  right: -25rem;
+  left: -25rem;
+  top: -10rem;
+  content: "";
+  bottom: 5rem;
+  box-shadow: var(--theme-box-shadow-small);
+}
+
+.swoop.compact {
+  top: -8rem;
+}

@@ -8,13 +8,14 @@ import { postCount } from "../post-count";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 import { Footer } from "@/components/Footer";
+import { Swoop } from "@/components/Swoop";
 
 export const runtime = "experimental-edge";
 
 export default function Home() {
   return (
     <>
-      <div className={styles.top} />
+      <Swoop />
       <HeroBlock isHomePage collapse>
         <HeroText className={styles.name}>Keegan Donley</HeroText>
       </HeroBlock>
