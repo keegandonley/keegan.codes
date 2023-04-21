@@ -19,15 +19,31 @@ export const Social = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.icons}>
-        <Icon icon={faTwitter} color={twitterBlue} url={URLS.twitter} />
+        <Icon
+          icon={faTwitter}
+          color={twitterBlue}
+          url={URLS.twitter}
+          name="Twitter"
+        />
         <Icon
           icon={faGithub}
           color={githubGrey}
           darkColor={githubGreyLight}
           url={URLS.github}
+          name="Github"
         />
-        <Icon icon={faLinkedin} color={linkedInBlue} url={URLS.linkedIn} />
-        <Icon icon={faInstagram} color={instagramOrange} url={URLS.instagram} />
+        <Icon
+          icon={faLinkedin}
+          color={linkedInBlue}
+          url={URLS.linkedIn}
+          name="LinkedIn"
+        />
+        <Icon
+          icon={faInstagram}
+          color={instagramOrange}
+          url={URLS.instagram}
+          name="Instagram"
+        />
       </div>
     </div>
   );
