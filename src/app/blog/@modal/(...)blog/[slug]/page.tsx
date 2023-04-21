@@ -2,7 +2,7 @@ import { Modal } from "@/components/Modal";
 import { PostModal } from "@/components/PostModal";
 import "../../../../syntax-theme.css";
 
-export const runtime = "experimental-edge";
+export const runtime = "nodejs";
 
 interface InterceptorProps {
   params: {
