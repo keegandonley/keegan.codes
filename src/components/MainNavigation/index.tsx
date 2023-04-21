@@ -10,7 +10,7 @@ import { merge } from "@/util/classNames";
 import { slugs } from "../../post-slugs";
 import { Theme } from "@/types/theme";
 
-export const MainNavigation = ({
+const MainNavigation = ({
   initialTheme,
   hasChosenTheme,
 }: {
@@ -76,3 +76,5 @@ export const MainNavigation = ({
     </HeroBlock>
   );
 };
+
+export default MainNavigation;
