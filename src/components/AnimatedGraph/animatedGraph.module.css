@@ -1,16 +1,21 @@
 .container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  max-height: 60vh;
+  overflow: hidden;
+}
+
+.squares {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.5rem;
   padding: 0.5rem;
   justify-content: space-evenly;
-  max-height: 60vh;
-  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 @keyframes fadeSquares {

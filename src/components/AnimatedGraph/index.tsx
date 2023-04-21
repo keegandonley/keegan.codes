@@ -2,11 +2,12 @@ import { merge } from "@/util/classNames";
 import styles from "./animatedGraph.module.css";
 import { BottomFade } from "../BottomFade";
 import { getIsLikelyMobile } from "@/util/userAgent";
+import { RadialFade } from "../RadialFade";
 
 export const AnimatedGraph = () => {
   const isLikelyMobile = getIsLikelyMobile();
 
-  const values = Array(isLikelyMobile ? 500 : 1200).fill(1);
+  const values = Array(isLikelyMobile ? 150 : 250).fill(1);
 
   const coloredValues = values.map((_, i) => {
     const color = Math.floor(Math.random() * 7) + 1;
@@ -16,19 +17,22 @@ export const AnimatedGraph = () => {
 
   return (
     <div className={styles.container}>
-      <BottomFade />
-      {coloredValues.map(({ color, interval }, i) => {
-        return (
-          <div
-            key={`${i}${color}${interval}`}
-            className={merge(
-              styles.square,
-              styles[`color-${color}`],
-              styles[`animate-${interval}`]
-            )}
-          ></div>
-        );
-      })}
+      <div className={styles.squares}>
+        {coloredValues.map(({ color, interval }, i) => {
+          return (
+            <div
+              key={`${i}${color}${interval}`}
+              className={merge(
+                styles.square,
+                styles[`color-${color}`],
+                styles[`animate-${interval}`]
+              )}
+            ></div>
+          );
+        })}
+        <RadialFade invert />
+        <BottomFade />
+      </div>
     </div>
   );
 };

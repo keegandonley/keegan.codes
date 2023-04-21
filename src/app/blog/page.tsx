@@ -1,7 +1,7 @@
 import { MDXEntryRow } from "@/components/MDXEntryRow";
 import Posts from "@/posts";
 import styles from "./blog.module.css";
-import { RadialFade } from "@/components/RadialFade";
+import { AnimatedGraph } from "@/components/AnimatedGraph";
 
 export default async function BlogPage() {
   const posts = Object.keys(Posts).map((key) => {
@@ -20,7 +20,6 @@ export default async function BlogPage() {
     <>
       <section>
         <div className={styles.wrapper}>
-          <RadialFade />
           {posts
             .sort((a, b) => {
               if (!a.published || !b.published) {
@@ -36,6 +35,7 @@ export default async function BlogPage() {
           <MDXEntryRow key="extra-3" index={-1} filler />
         </div>
       </section>
+      <AnimatedGraph />
     </>
   );
 }
