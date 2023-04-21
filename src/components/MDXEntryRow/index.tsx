@@ -46,7 +46,7 @@ export const MDXEntryRow = ({
               fill
               sizes="(max-width: 550px) 100vw,
               (max-width: 900px) 50vw,
-              33vw"
+              500px"
               // Rough guess at which images are above the fold
               priority={isLikelyMobile ? index < 2 : index < 4}
               {...parseToProps(metadata)}
