@@ -2,6 +2,7 @@ import { MDXEntryRow } from "@/components/MDXEntryRow";
 import Posts from "@/posts";
 import styles from "./blog.module.css";
 import { AnimatedGraph } from "@/components/AnimatedGraph";
+import { Delay } from "@/components/Delay";
 
 export default async function BlogPage() {
   const posts = Object.keys(Posts).map((key) => {
@@ -35,7 +36,9 @@ export default async function BlogPage() {
           <MDXEntryRow key="extra-3" index={-1} filler />
         </div>
       </section>
-      <AnimatedGraph />
+      <Delay>
+        <AnimatedGraph />
+      </Delay>
     </>
   );
 }
