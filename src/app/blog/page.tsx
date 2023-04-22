@@ -3,12 +3,14 @@ import Posts from "@/posts";
 import styles from "./blog.module.css";
 import { AnimatedGraph } from "@/components/AnimatedGraph";
 import { Delay } from "@/components/Delay";
+import wordCounts from "../../post-word-counts.json";
+import { Post } from "@/types/post";
 
 export const runtime = "experimental-edge";
 
 export default async function BlogPage() {
   const posts = Object.keys(Posts).map((key) => {
-    const component = (Posts as any)[key];
+    const component = (Posts as any)[key] as Post;
     return {
       title: component.title,
       slug: component.slug,
@@ -16,6 +18,7 @@ export default async function BlogPage() {
       description: component.description,
       cover: component.cover,
       published: component.published,
+      wordCount: (wordCounts as Record<string, number>)[component.slug],
     };
   });
 

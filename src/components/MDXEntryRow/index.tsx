@@ -8,6 +8,8 @@ import { merge } from "@/util/classNames";
 import { Date } from "./components/Date";
 import { Tags } from "./components/Tags";
 import { getIsLikelyMobile } from "@/util/userAgent";
+import { getReadingTime } from "@/util/content";
+import { ReadingTime } from "./components/ReadingTime";
 
 interface MDXEntryRowProps extends ElementBaseProps {
   title?: string;
@@ -18,6 +20,7 @@ interface MDXEntryRowProps extends ElementBaseProps {
   published?: Date;
   index: number;
   filler?: boolean;
+  wordCount?: number;
 }
 
 export const MDXEntryRow = ({
@@ -29,6 +32,7 @@ export const MDXEntryRow = ({
   published,
   index,
   filler,
+  wordCount,
 }: MDXEntryRowProps) => {
   const metadata = getImageMetadata(cover);
   const isLikelyMobile = getIsLikelyMobile();
@@ -61,7 +65,10 @@ export const MDXEntryRow = ({
           <div className={styles.content}>
             <h1 className={styles.h1}>{title}</h1>
             <p className={styles.description}>{description}</p>
-            {published ? <Date date={published} /> : false}
+            <div className={styles.metadata}>
+              {published ? <Date date={published} /> : false}
+              <ReadingTime wordCount={wordCount} />
+            </div>
             {tags && tags.length > 0 ? <Tags tags={tags} /> : false}
           </div>
         ) : (

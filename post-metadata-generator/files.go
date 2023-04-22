@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 	"strconv"
@@ -62,5 +63,21 @@ func writeSlugsToTsFile(filename string, slugs []string) error {
 	content := fmt.Sprintf(constTemplate, slugsString)
 
 	err := os.WriteFile(filename, []byte(content), 0644)
+	return err
+}
+
+func writeWordCountsToJSONFile(filename string, wordCounts map[string]int) error {
+	jsonData, err := json.MarshalIndent(wordCounts, "", "  ")
+	if err != nil {
+		fmt.Printf("Error marshalling JSON: %v", err)
+		return err
+	}
+
+	err = os.WriteFile(filename, jsonData, 0644)
+	if err != nil {
+		fmt.Printf("Error writing JSON to file: %v", err)
+		return err
+	}
+
 	return err
 }

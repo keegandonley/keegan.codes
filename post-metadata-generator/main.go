@@ -25,4 +25,7 @@ func main() {
 	slugs := getSlugs(contents)
 	writeSlugsToTsFile("../src/post-slugs.ts", slugs)
 
+	wordCounts := getWordCounts(contents)
+	writeWordCountsToJSONFile("../src/post-word-counts.json", wordCounts)
+
 }

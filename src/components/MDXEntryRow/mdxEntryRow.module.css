@@ -122,6 +122,12 @@
   top: 0rem;
 }
 
+.metadata {
+  display: flex;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
 /* Only run the hover animations on larger screens */
 @media only screen and (min-width: 650px) {
   .wrapper:hover .h1,

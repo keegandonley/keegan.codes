@@ -1,8 +1,6 @@
 .tag {
-  color: var(--theme-blue-2);
-  /* border-radius: 1.5rem; */
   padding: 0 0 0 0.5rem;
   font-size: 0.8rem;
-  color: var(--theme-text-high-contrast);
+  color: var(--theme-text);
   border-left: 1px dashed var(--theme-pill);
 }

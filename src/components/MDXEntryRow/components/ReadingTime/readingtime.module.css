@@ -1,7 +1,8 @@
-.date {
+.readingTime {
   font-size: 0.8rem;
   padding-top: 1rem;
   padding-left: 2rem;
+  margin-left: auto;
 
   color: var(--theme-text-secondary);
 
@@ -12,6 +13,5 @@
 }
 
 .sectionIcon {
-  padding-bottom: 1px; /* aligns with text */
   opacity: 0.5;
 }
