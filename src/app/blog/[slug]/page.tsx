@@ -11,6 +11,8 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getComponentForKey, getKey } from "../util";
 import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
+import wordCounts from "../../../post-word-counts.json";
+import { ReadingTime } from "@/components/MDXEntryRow/components/ReadingTime";
 
 export const runtime = "experimental-edge";
 
@@ -50,6 +52,7 @@ export default function BlogPage({ params }: BlogPageProps) {
   const title = found.title;
   const cover = found.cover;
   const metadata = getImageMetadata(parseSource(cover)[0]);
+  const wordCount = (wordCounts as Record<string, number>)[found.slug];
 
   if (!Component) {
     notFound();
@@ -74,6 +77,9 @@ export default function BlogPage({ params }: BlogPageProps) {
           <FontAwesomeIcon icon={faArrowLeft} /> back
         </Link>
         <H1 className={styles.title}>{title}</H1>
+        <div className={styles.metadata}>
+          <ReadingTime wordCount={wordCount} />
+        </div>
         <Component />
       </article>
     </>

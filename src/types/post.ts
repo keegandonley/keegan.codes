@@ -5,4 +5,5 @@ export interface Post {
   description: string;
   cover: string;
   published: Date;
+  default: any;
 }

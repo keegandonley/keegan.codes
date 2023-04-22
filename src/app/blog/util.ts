@@ -1,4 +1,5 @@
 import Posts from "@/posts";
+import { Post } from "@/types/post";
 
 interface GetKeyArg {
   slug: string;
@@ -15,6 +16,6 @@ interface GetComponentArg {
   key: string;
 }
 
-export const getComponentForKey = ({ key }: GetComponentArg) => {
+export const getComponentForKey = ({ key }: GetComponentArg): Post => {
   return (Posts as any)[key];
 };

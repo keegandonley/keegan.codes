@@ -6,12 +6,14 @@ import Image from "next/image";
 import { BottomFade } from "@/components/BottomFade";
 import { BUCKET_URL } from "@/util/r2";
 import { H1 } from "@/components/Post/Heading/H1";
+import { ReadingTime } from "../MDXEntryRow/components/ReadingTime";
 
 interface PostModalProps {
   slug: string;
+  wordCount: number;
 }
 
-export const PostModal = ({ slug }: PostModalProps) => {
+export const PostModal = ({ slug, wordCount }: PostModalProps) => {
   const componentKey = getKey({ slug });
 
   if (!componentKey) {
@@ -45,6 +47,9 @@ export const PostModal = ({ slug }: PostModalProps) => {
       </div>
       <article className={styles.article}>
         <H1 className={styles.title}>{title}</H1>
+        <div className={styles.metadata}>
+          <ReadingTime wordCount={wordCount} />
+        </div>
         <Component />
       </article>
     </>
