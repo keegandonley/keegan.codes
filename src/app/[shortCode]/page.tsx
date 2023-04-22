@@ -4,6 +4,7 @@ import { faRadar } from "@fortawesome/pro-solid-svg-icons";
 import Posts from "@/posts";
 import { Post } from "@/types/post";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
 
 const posts = Object.keys(Posts).map((key) => {
   const component = (Posts as any)[key] as Post;
@@ -21,6 +22,44 @@ const posts = Object.keys(Posts).map((key) => {
 interface ShortCodePageProps {
   params: {
     shortCode: string;
+  };
+}
+
+export async function generateMetadata({
+  params: { shortCode },
+}: ShortCodePageProps): Promise<Metadata> {
+  const found = posts.find((post) => post.shortCodes?.includes(shortCode));
+
+  if (!found) {
+    return {
+      title: "Error · Keegan Donley",
+      openGraph: {
+        title: "Error · Keegan Donley",
+        description: "You've found an invalid short code!",
+        url: `https://keegandonley.com/${shortCode}`,
+        siteName: "Keegan Donley",
+        locale: "en_US",
+        authors: ["Keegan Donley"],
+        images: [
+          {
+            url: `/api/og/error?value=${shortCode}`,
+            width: 1200,
+            height: 600,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Error · Keegan Donley",
+        description: "You've found an invalid short code!",
+        creator: "@keegandonley",
+        images: [`/api/og/error?value=${shortCode}`],
+      },
+    };
+  }
+
+  return {
+    title: "Keegan Donley",
   };
 }
 
