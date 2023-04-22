@@ -33,13 +33,17 @@ const MainNavigation = ({
   }, [segments]);
 
   const isChat = segments[0] === "chat";
+  const isResume = segments[0] === "resume";
 
   useEffect(() => {
     document.body.classList.remove("preload");
   }, [pathname]);
 
   return (
-    <HeroBlock isHomePage={isHomePage} sticky={!isBlog404 && !isChat}>
+    <HeroBlock
+      isHomePage={isHomePage}
+      sticky={!isBlog404 && !isChat && !isResume}
+    >
       <MenuItem href="/" side="left" visible={!isHomePage} active={isHomePage}>
         Home
       </MenuItem>

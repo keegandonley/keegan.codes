@@ -1,0 +1,21 @@
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 3rem 10rem 3rem;
+  color: var(--theme-text);
+}
+
+.wrapper p {
+  padding: 0.3rem 0;
+}
+
+.wrapper h1 {
+  padding-top: 6rem;
+}
+
+.wrapper svg {
+  opacity: 0.5;
+  font-size: 0.8em;
+  padding-bottom: 2px;
+  padding-right: 0.5rem;
+}
