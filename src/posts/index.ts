@@ -20,6 +20,7 @@ import * as Conference from "./getting-the-most-out-of-in-person-tech-conference
 import * as DevCulture from "./maintaining-a-culture-of-confident-energized-and-successful-engineers.mdx";
 import * as OpenAIFirst from "./a-quick-look-at-openai-dall-e-2.mdx";
 import * as ReactInterview from "./react-interview-questions.mdx";
+import * as BookQuote from "./designing-and-building-a-raspberry-pi-based-book-quote-clock.mdx";
 
 const posts = {
   Welcome,
@@ -44,6 +45,7 @@ const posts = {
   DevCulture,
   OpenAIFirst,
   ReactInterview,
+  BookQuote,
 };
 
 export default posts;
