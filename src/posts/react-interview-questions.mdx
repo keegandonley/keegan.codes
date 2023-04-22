@@ -1,0 +1,83 @@
+export const title = "React Technical Interview Questions";
+export const slug = "react-interview-questions";
+export const tags = ["react", "software", "interview"];
+export const description =
+  "A collection of my thoughts and suggestions on React/front-end technical interviews";
+export const cover = "react-interview-cover.png";
+export const published = new Date(2022, 3, 29);
+export const shortCodes = ["interview"];
+
+I've spent a lot of time working with the React framework, including interviewing for jobs and conducting interviews focused on front-end development using it. This post is intended to be a collection of my thoughts on software interviews in general, and also more specifically interviews for roles dealing with React.
+
+Interviewing for software jobs can be super stressful, so it's important to me that a technical interview for a react-focused role gives a good picture of the candidate's skills, without being overwhelming. Over time I've built a list of the things I like to see in an interview, and I use these criteria when looking for a new role. Throughout the interview process, I evaluate a company based on its hiring practices, as much as they're evaluating me. On the flip side, this list of important things is also what I have referred to in the past when conducting interviews and has been partially compiled from where conversations lead during interview conversations.
+
+![](react-interview-post:chat.png)
+
+## Describe a Project
+
+It's really important to be able to clearly describe a large project that you worked on. This is a great low-stress dialog that allows you to get comfortable and share your knowledge without feeling like you're being quizzed. This is the starting point for interviews I conduct, and I love it as a participant when an interview starts this way to break the ice. This is your time to show off how much you know about your field! This could mean React knowledge, or if the job is framework-agnostic, general web development skills. There are several important things I'm looking for in this conversation:
+
+- Framework choices and why you chose or didn't choose them.
+- Technical/architectural choices for the application. If this is a React app, this is a great time to talk about choices of using Redux, context API, classes versus hooks, and any other informed decisions that were made and why.
+- Was the project technically complex and challenging? Ideally, you wouldn't choose to discuss a basic app that took you an hour or two to build. I want to understand how you face challenges and solve hard problems!
+
+Bonus points if you're able to use a visual aid when explaining the project! I like to use a [FigJam](https://www.figma.com/figjam/ "FigJam - Figma") board for live diagramming. It's an important skill to be able to concisely and clearly show an application architecture visually.
+
+### Follow Up Questions
+
+Depending on how deep into the details you got when describing your project, I may not ask many of these questions explicitly, but these are the things I am looking to understand:
+
+- Was it your decision to use the frameworks used in the project? If so, how did you come to those decisions? If not, did you agree with the decisions made? Did you enjoy using the solutions chosen?
+- What part(s) of the project did you work on?
+- What part of the project do you feel was your greatest technical achievement? What part are you not so proud of or do you think could have been improved?
+- What is the structure of the project? How did you organize the code?
+- Are there particular IDEs or development tools you rely on or enjoy?
+- Was this a collaborative or a solo project? If it was collaborative, I want to hear about how you kept your work organized and how you work with others.
+
+![](react-interview-post:javascript.png)
+
+## Javascript Questions
+
+To reiterate, I **really** don't like stressful, quiz-like interviews. That said, I still want to get an understanding of your javascript knowledge, especially as it related to React. These are some of the topics that I find are important to touch on:
+
+- Can you tell me about arrow functions and how they behave? Using this syntax is very common in React, especially for hooks-based applications.
+- Do you have experience with Typescript? (I know, I said these were Javascript questions) Writing React is a super nice experience with Typescript and I build all my React apps using it ([including this blog](https://keegandonley.com/blog/building-a-static-generated-blog-with-next-js "My Blog Article")). If you are familiar with Typescript, I'll chat about the ways React works with it, including component prop and state typing. If you don't, that's alright! I'd like to understand what you know about Typescript and if you have any other typing solutions in past projects, such as Prop-Types.
+- Are you familiar with modern Javascript and proposal features? There are some really powerful patterns like optional chaining and nullish coalescence that have been introduced in recent years.
+
+I'll say it again, I have a strong dislike for the idea of spending months practicing "Leetcode" style problems ahead of an interview, especially since the day-to-day work will likely look very different from those problems. That said, coding challenges are important, but should 100% be related to the job you're applying for. I see it as a red flag for a company if they expect me to spend tons of time on trick questions, and will absolutely use it to decide if I want to continue with the interview process or accept an offer if extended.
+
+> This does limit which companies I interview with because some companies love the trick questions, but I've always followed this rule and have continued to find myself in jobs I love.
+
+- Basic coding challenge - It's always a good idea to be prepared for a basic coding challenge. The best ones are simple and can be completed in 10-15 minutes, with additive levels of complexity. For example, if your first solution to whatever problem presented runs in O(n²) or linear time, I might ask if you could rethink the design to run in constant time, and evolve the question to dig deeper into your understanding of the solution and the language. For the kind of coding challenges I find most valuable, some common questions are:
+  - What is the time and space complexity of the solution?
+  - Is there a way you could trade off efficiency in one area to improve in another? A good example of this is indexing - searching text can be expensive in terms of time, or you can build an index ahead of time and make searching very fast, but with a much larger memory footprint. I'm not looking for math equations here - just a general understanding of efficiency.
+  - How well do you know functional programming patterns? If your solution leverages for loops, while loops, or other structures, can you re-write it in a more functional approach using, for example, array prototype methods like `.map`, `.forEach`, or `.reduce`?
+    - A good follow-up to this is "when are these patterns appropriate?" In many cases, a giant reducer can be very hard to read and maintain. Writing _good_ software isn't just about being clever, so I'm looking for clean code in your solutions.
+  - Are you familiar with the different types of variable declarations (`var`, `const`, and `let`)? Can you explain how scope behaves for each one, and how they behave differently for different data types?
+
+![](react-interview-post:tests.png)
+
+## Testing Strategies
+
+I love tests. Writing them can be tedious, but the payoff is huge when the end result is a large suite of passing tests! There are so many ways of testing front-end code out there, so in an interview environment what I'm looking for is an understanding of the basics of testing applications. Are you familiar with the different kinds of tests? I'll typically ask you to explain integration testing, end-to-end testing, and unit testing. I also like to chat about snapshot tests and visual tests (such as screenshot tests). You don't have to be an expert in the particular testing libraries I'm using (right now I'm a big fan of [Playwright](https://playwright.dev/ "Playwright")) but I would hope candidates are familiar with a number of the popular options at least at a high level.
+
+Testing strategies vary substantially from organization to organization. Some teams place a lot of emphasis on having good test coverage, and some don't have a focus on testing at all! I like to talk about past experiences with testing, but if you're coming from somewhere without good testing practices, that shouldn't count against you. Just be prepared to talk about tests in theory, and maybe get a little practice on your own with some basic test frameworks if you find yourself in this situation.
+
+![](react-interview-post:debug.png)
+
+## Debugging Strategies
+
+Debugging code will always be a part of the job as long as code continues to be written. This isn't a section I spend a ton of time on, but it's still important to have an understanding of. Are you familiar with the debugging tools for React? If you use third-party libraries, are you familiar with their debugging tools? React-Query and Redux both have effective and useful developer tools. In general, are you familiar with using a debugger?
+
+This can also be a good time to mention other skills in your toolkit for diagnosing issues. Are you familiar with git-bisect and how it can be used to hunt down bugs? Tell me about it! Hearing you have experience with Git and other technologies is always a plus. Was there a particularly nasty bug you managed to squash that you're proud of? I'd love to hear about the challenge and how you overcame them! Here are some questions I like that revolve around debugging:
+
+- What is a breakpoint?
+- What's the first thing you do when you have an issue you're trying to fix?
+- Tell me about a time you solved a major bug or issue that you're proud of!
+- If you get stuck on an issue and can't seem to solve it, what is your next step? Would you reach out for help? If so, how would you figure out who is a good person to get help from?
+
+## Conclusion
+
+These are my thoughts on what makes a good React interview, and is a window into both my interview preparation process as a candidate, and how I like to conduct an effective React interview. This isn't an exhaustive list of everything you should know, but it's a good start!
+
+Do you have thoughts on React interviews, or software interviews in general! I love to chat about this topic, so if you do too find me on Twitter and let's chat!

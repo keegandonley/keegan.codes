@@ -19,6 +19,7 @@ import * as Inpainting from "./building-large-format-graphics-with-openai-s-dall
 import * as Conference from "./getting-the-most-out-of-in-person-tech-conferences.mdx";
 import * as DevCulture from "./maintaining-a-culture-of-confident-energized-and-successful-engineers.mdx";
 import * as OpenAIFirst from "./a-quick-look-at-openai-dall-e-2.mdx";
+import * as ReactInterview from "./react-interview-questions.mdx";
 
 const posts = {
   Welcome,
@@ -42,6 +43,7 @@ const posts = {
   Conference,
   DevCulture,
   OpenAIFirst,
+  ReactInterview,
 };
 
 export default posts;
