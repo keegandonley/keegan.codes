@@ -6,4 +6,5 @@ export interface Post {
   cover: string;
   published: Date;
   default: any;
+  shortCodes?: string[];
 }
