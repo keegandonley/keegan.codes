@@ -17,6 +17,7 @@ import * as TwitterBotTutorial from "./building-a-super-simple-and-free-twitter-
 import * as Lisbon from "./trip-to-europe-part-ii-lisbon.mdx";
 import * as Inpainting from "./building-large-format-graphics-with-openai-s-dall-e-2.mdx";
 import * as Conference from "./getting-the-most-out-of-in-person-tech-conferences.mdx";
+import * as DevCulture from "./maintaining-a-culture-of-confident-energized-and-successful-engineers.mdx";
 
 const posts = {
   Welcome,
@@ -38,6 +39,7 @@ const posts = {
   Lisbon,
   Inpainting,
   Conference,
+  DevCulture,
 };
 
 export default posts;
