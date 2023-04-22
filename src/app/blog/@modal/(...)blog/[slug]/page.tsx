@@ -2,6 +2,7 @@ import { Modal } from "@/components/Modal";
 import { PostModal } from "@/components/PostModal";
 import "../../../../syntax-theme.css";
 import wordCounts from "../../../../../post-word-counts.json";
+
 export const runtime = "nodejs";
 
 interface InterceptorProps {
@@ -10,9 +11,8 @@ interface InterceptorProps {
   };
 }
 
-export default function Interceptor({ params }: InterceptorProps) {
+export default async function Interceptor({ params }: InterceptorProps) {
   const wordCount = (wordCounts as Record<string, number>)[params.slug];
-
   return (
     <Modal>
       <PostModal slug={params.slug} wordCount={wordCount} />
