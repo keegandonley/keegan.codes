@@ -31,6 +31,28 @@ export async function generateMetadata({
 
     return {
       title: `${found.title} · Keegan Donley`,
+      openGraph: {
+        title: found.title,
+        description: found.description,
+        url: `https://keegandonley.com/blog/${params.slug}`,
+        siteName: "Keegan Donley",
+        locale: "en_US",
+        authors: ["Keegan Donley"],
+        images: [
+          {
+            url: `/api/og/post?slug=${params.slug}`,
+            width: 1200,
+            height: 600,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: found.title,
+        description: found.description,
+        creator: "@keegandonley",
+        images: [`/api/og/post?slug=${params.slug}`],
+      },
     };
   }
 
