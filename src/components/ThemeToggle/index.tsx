@@ -14,6 +14,7 @@ import {
   setThemeCookie,
 } from "@/util/theme";
 import { Theme, ThemeChooserSize } from "@/types/theme";
+import va from "@vercel/analytics";
 
 interface ThemeToggleProps {
   relative?: boolean;
@@ -46,10 +47,19 @@ export const ThemeToggle = ({
       setHasChosenThemeCookie();
     }
 
+    va.track("Toggle Theme", {
+      theme: theme === "light" ? "dark" : "light",
+      ignoreGlobalState: ignoreGlobalState,
+    });
+
     setTheme((theme) => (theme === "light" ? "dark" : "light"));
-  }, [ignoreGlobalState]);
+  }, [ignoreGlobalState, theme]);
 
   const handleMatch = useCallback((prefersDark: boolean) => {
+    va.track("Theme Match", {
+      prefersDark,
+    });
+
     setTheme(prefersDark ? "dark" : "light");
   }, []);
 
