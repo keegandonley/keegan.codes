@@ -16,6 +16,10 @@
   height: 20rem;
 }
 
+.giant {
+  height: 50rem;
+}
+
 .imageParent img {
   object-fit: contain;
 }
@@ -32,5 +36,9 @@
 
   .vertical {
     height: 25rem;
+  }
+
+  .giant {
+    height: 30rem;
   }
 }

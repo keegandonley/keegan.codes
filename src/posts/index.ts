@@ -15,6 +15,7 @@ import * as Kizen from "./beginning-a-new-chapter-of-my-career-with-kizen.mdx";
 import * as ConnectedFitness from "./my-approach-to-connected-fitness.mdx";
 import * as TwitterBotTutorial from "./building-a-super-simple-and-free-twitter-bot.mdx";
 import * as Lisbon from "./trip-to-europe-part-ii-lisbon.mdx";
+import * as Inpainting from "./building-large-format-graphics-with-openai-s-dall-e-2.mdx";
 
 const posts = {
   Welcome,
@@ -34,6 +35,7 @@ const posts = {
   ConnectedFitness,
   TwitterBotTutorial,
   Lisbon,
+  Inpainting,
 };
 
 export default posts;
