@@ -16,6 +16,7 @@ import * as ConnectedFitness from "./my-approach-to-connected-fitness.mdx";
 import * as TwitterBotTutorial from "./building-a-super-simple-and-free-twitter-bot.mdx";
 import * as Lisbon from "./trip-to-europe-part-ii-lisbon.mdx";
 import * as Inpainting from "./building-large-format-graphics-with-openai-s-dall-e-2.mdx";
+import * as Conference from "./getting-the-most-out-of-in-person-tech-conferences.mdx";
 
 const posts = {
   Welcome,
@@ -36,6 +37,7 @@ const posts = {
   TwitterBotTutorial,
   Lisbon,
   Inpainting,
+  Conference,
 };
 
 export default posts;
