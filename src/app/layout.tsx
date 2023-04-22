@@ -8,6 +8,8 @@ import { background } from "@/theme/colors";
 import { getHasChosenTheme, userTheme } from "@/util/cookies";
 import { Analytics } from "@vercel/analytics/react";
 import dynamic from "next/dynamic";
+import { get } from "@vercel/edge-config";
+import { Banner } from "@/components/Banner";
 
 const DynamicNavigation = dynamic(() => import("@/components/MainNavigation"));
 
@@ -18,15 +20,18 @@ const font = Raleway({
   weight: ["100", "200", "600", "900"],
 });
 
-export default function RootLayout({ children }: any) {
+export default async function RootLayout({ children }: any) {
   const theme = userTheme();
   const hasChosenTheme = getHasChosenTheme();
+  const event: any = await get("event");
 
   return (
     <html lang="en">
       <body
         className={merge(font.className, "preload", theme === "dark" && "dark")}
       >
+        {/* Display banner text from the edge config if an event is active */}
+        {event?.active ? <Banner level={0}>{event.text}</Banner> : null}
         <DynamicNavigation
           initialTheme={theme}
           hasChosenTheme={hasChosenTheme}
