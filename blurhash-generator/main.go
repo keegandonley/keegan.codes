@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"image/jpeg"
 	"os"
+	"strings"
 	"sync"
 	"time"
 
@@ -81,7 +82,7 @@ func main() {
 			}
 
 			hashes[*fileName] = metadata
-		}(fileName, !ok)
+		}(fileName, !ok && !strings.Contains(*fileName, ".svg"))
 	}
 
 	wg.Wait()
