@@ -18,6 +18,7 @@ import * as Lisbon from "./trip-to-europe-part-ii-lisbon.mdx";
 import * as Inpainting from "./building-large-format-graphics-with-openai-s-dall-e-2.mdx";
 import * as Conference from "./getting-the-most-out-of-in-person-tech-conferences.mdx";
 import * as DevCulture from "./maintaining-a-culture-of-confident-energized-and-successful-engineers.mdx";
+import * as OpenAIFirst from "./a-quick-look-at-openai-dall-e-2.mdx";
 
 const posts = {
   Welcome,
@@ -40,6 +41,7 @@ const posts = {
   Inpainting,
   Conference,
   DevCulture,
+  OpenAIFirst,
 };
 
 export default posts;
