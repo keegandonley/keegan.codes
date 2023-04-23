@@ -29,6 +29,7 @@ import * as Oura from "./oura-ring-generation-3-first-impressions.mdx";
 import * as NextJS from "./deciding-on-a-custom-template-for-bootstrapping-nextjs-apps.mdx";
 import * as CalendarTutorial from "./how-to-build-a-calendar-component-in-react.mdx";
 import * as HomeNetwork from "./my-home-network-configuration-for-speed-and-privacy.mdx";
+import * as DesignHobby from "./getting-back-into-design-work.mdx";
 
 const posts = {
   Welcome,
@@ -62,6 +63,7 @@ const posts = {
   NextJS,
   CalendarTutorial,
   HomeNetwork,
+  DesignHobby,
 };
 
 export default posts;
