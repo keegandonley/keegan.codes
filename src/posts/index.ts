@@ -30,6 +30,7 @@ import * as NextJS from "./deciding-on-a-custom-template-for-bootstrapping-nextj
 import * as CalendarTutorial from "./how-to-build-a-calendar-component-in-react.mdx";
 import * as HomeNetwork from "./my-home-network-configuration-for-speed-and-privacy.mdx";
 import * as DesignHobby from "./getting-back-into-design-work.mdx";
+import * as Stars from "./my-first-real-astrophotography-attempt.mdx";
 
 const posts = {
   Welcome,
@@ -64,6 +65,7 @@ const posts = {
   CalendarTutorial,
   HomeNetwork,
   DesignHobby,
+  Stars,
 };
 
 export default posts;
