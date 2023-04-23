@@ -1,0 +1,113 @@
+export const title = "My Home Network Configuration for Speed and Privacy";
+export const slug = "my-home-network-configuration-for-speed-and-privacy";
+export const tags = ["networking", "software", "hobby", "home", "raspberry pi"];
+export const description =
+  "I show you how my home network works, what hardware I use, and my tools to keep my connection fast and private!";
+export const cover = "network-cover.png";
+export const published = new Date(2021, 10, 5);
+export const shortCodes = ["home-net", "network", "home-network"];
+
+As a software engineer, I spend a substantial amount of time on the internet. Whether I'm pushing and pulling code, watching tutorials, reading news, or just relaxing, there's little that frustrates me more than a poorly functioning internet connection. Not to mention that working from home, a poor connection also inhibits my ability to work effectively. My first apartment when I moved to Austin was the first time I had a place with CAT-6 wiring in every room, and it was a game changer. However, once I moved to a larger space I decided there was more I wanted to do to optimize the experience.
+
+There are four key aspects I paid attention to when designing my home network:
+
+- [**Service Provider**](#serviceprovider "Service Provider") - There's nothing I can do if my service is terrible, so this was an important starting place.
+- [**Network Hardware**](#networkhardware "Network Hardware") - I knew the modem from my ISP wasn't going to cut it, and upgrades were necessary.
+- [**Software**](#software "Software") - It wasn't just about the hardware - I also wanted network-wide ad blocking and remote access to my home network.
+- [**Peripheral Support**](#peripherals "Peripherals") - One of my main goals was to have reliable whole-home audio, among other smart home devices.
+
+## Service Provider
+
+There's not a lot to say here as options are limited to begin with, but I got pretty lucky based on the location of our house. We're one of the few neighborhoods in the area (for now) that is serviced by AT&T Fiber. I decided it was worth it to spring for top-tier service, so I went ahead with symmetrical gigabit service. This means my theoretical upload/download speed is somewhere around 990 Mbps. This plan also has no data cap, unlike the slower plans. We tend to average about 1 terabyte of bandwidth usage per month, so this uncapped plan is important.
+
+![](network-post:image-1.png)
+
+> Here's a quick speed test from my MacBook Air over wifi - not bad!
+
+## Network Hardware
+
+I love a cool new piece of tech. I haven't tried as many options as I did for [my connected health set up](https://keegandonley.com/blog/my-approach-to-connected-fitness "Connected Health"), but I do like the choices I've made for the time being.
+
+- [**Eeero 6**](#eero6 "Eero 6") - Eero is a mesh wifi system owned by Amazon. I have 3 wifi 6 nodes spread around the house for wide coverage, including the entire front yard and back yard (Why do I need this? Who knows...).
+- **Raspberry Pi 4** - I have 2 of these, one runs my DNS server, and one runs my VPN server (more on these below)
+- **Raspberry Pi 1B** - This is an old Raspberry Pi I dragged out of the garage and back to life so act as a media server that our smart TVs can stream from
+- **Raspberry Pi Zero** - This one is super lightweight and serves as a small web server. It only serves content on my local network so I didn't need something so powerful as the more expensive units.
+- **Netgear Powerline Adapter** - I miss having a home completely wired with CAT-6, but my powerline adapter provides a good enough hard line in my office for setting up devices without wifi cards, and connecting my music recording workstation.
+
+### Eero 6
+
+I have to say I was skeptical of Eero because of their ownership by Amazon, mostly due to privacy concerns, but at the price point I don't know of a better performing wifi 6 mesh network. I have three nodes in key points of the house, one is central and provides ethernet connections to my media system and game console, and two more are located at the far ends.
+
+Eero makes it easy to track usage across all devices on the network, as well as set up more complicated features like port forwarding and address reservation. I can also set up a custom DNS server address to point at my local DNS server (more on that below).
+
+![](network-post:image-2.png)
+
+> The Eero app is where I have address reservation set up for my 4 servers, port forwarding for my VPN, management of my guest network, and monitoring of connected devices. If a new device connects that hasn't been seen, I get a handy push notification. The only downside I've come across is that network management is _only_ done from the mobile app. There is no web interface I can get to for configuration.
+
+Without a more advanced router than the one AT&T gave me, I wouldn't be able to set a custom DNS server for my entire network. In that scenario, I'd have to point each of my devices at my local DNS server in order for them to use it. This wasn't ideal but thankfully with my new Eero setup that's no longer an issue.
+
+### Raspberry Pi 4
+
+I have 2 Raspberry Pi Model 4s, hardwired into my network. One serves as my DNS server running pi-hole for ad blocking, and another running Wireguard is my VPN server. My phone, laptops, and iPad all connect to this VPN server when I'm away from home, so I have access to devices on my local network, and I can use my DNS server from anywhere to get the benefits of pi-hole.
+
+## Software
+
+There is a _lot_ of software involved in running a network. I'm going to focus on the specific software that I've either configured or written to support my network.
+
+### Pi-hole
+
+Pi-hole is one of the core pieces of software that I rely on. It's an amazing piece of open source software that acts as a DNS server, and does not allow dns queries to resolve that are for trackers or advertisements. It ships with a very robust list of known ads, but I can also monitor a query log and add entries to a whitelist or blacklist as needed.
+
+![](network-post:image-3.png)
+
+> Over 40,000 dns queries blocked in the last 24 hours! Between my girlfriend and I we have a lot of devices, but this number was still shockingly high the first time I saw it.
+
+### Home Network Dashboard
+
+I decided to build out my own little dashboard for managing my home network. This little web application runs on my small Raspberry Pi Zero, and I didn't need to bother with any authentication, so it was super simple! I have access to it remotely via my VPN, while guests on our guest network are isolated so they can't access any of the configuration tools.
+
+![](network-post:image-4.png)
+
+> A cool advantage of running my own DNS server, is that I can add my own mappings. This means I can access my local servers at a really simple address, for example `file.home.local`. I even have the dashboard accessible at simply `http://dashboard` from any device on my network.
+
+### Wireguard and PiVPN
+
+I run [Wireguard](https://www.wireguard.com/ "Wireguard") on my VPN server, so that I can access my home network from my phone or other devices when I'm away. I installed Wireguard using a tool called PiVPN, which makes it super easy to get up and running!
+
+![](network-post:image-5.png)
+
+> **Wireguard vs OpenVPN**
+>
+> I chose Wireguard over OpenVPN for its performance. You can read more directly from the Wireguard website:
+>
+> _WireGuard® is an extremely simple yet fast and modern VPN that utilizes **state-of-the-art**_ [**_cryptography_**](https://www.wireguard.com/protocol/)_. It aims to be_ [_faster_](https://www.wireguard.com/performance/)_,_ [_simpler_](https://www.wireguard.com/quickstart/)_, leaner, and more useful than IPsec, while avoiding the massive headache. It intends to be considerably more performant than OpenVPN. WireGuard is designed as a general purpose VPN for running on embedded interfaces and super computers alike, fit for many different circumstances._
+
+![](network-post:image-6.png)
+
+The Wireguard app is also great, and it allows the tunnel to be connected dynamically, based on my network. This way, whenever I'm on cellular or another wifi network, it activates automatically. Bonus points because it works exactly the same on my iPad and my laptop.
+
+The last thing I needed was an address at which to access my VPN server. Rather than pay for Eeero's dynamic DNS service, I opted for the free [DuckDNS](https://www.duckdns.org/ "Duck DNS"). It's super simple - I have a subdomain like `keeganshouse.duckdns.org`, and My Raspberry Pi runs a cron job every 5 minutes to update DuckDNS with my current public ip address. A service like this is necessary since my public ip address can change at any time.
+
+## Peripherals
+
+Having a reliable network has allowed me to set up some cool tech in my house - I won't go too in depth here but I wanted to touch on a couple things.
+
+### Sonos Whole-Home Audio
+
+Probably my absolute favorite upgrade to my home has been whole-home audio with Sonos. Moving away from Bluetooth for music and relying on wifi has been a game changer. I can play to any combination of speakers in the house, and group them how I like.
+
+![](network-post:image-7.png)
+
+> **Pro Tip:** While I have 2 Sonos Ones and a Sonos Beam, I also have 2 of the dramatically cheaper [Symfonisk Sonos speakers from IKEA](https://www.ikea.com/us/en/p/symfonisk-wifi-bookshelf-speaker-white-80435211/ "Symfonisk Link"). They work fantastically, and support Airplay 2 just like the Sonos branded speakers.
+
+Two of these speakers have direct ethernet connections, and the rest are over wifi spread over around 3,000 square feet. I love that I can play to even the farthest away speakers with ease.
+
+### Smart Home
+
+I have a ton of smart home devices - nearly two dozen wifi light bulbs, as well as cameras, lamps, switches, and TVs. My network handles it all with ease. Down the road I hope to give a closer look into my smart home setup, so stay tuned!
+
+## Conclusions
+
+I had a lot of fun setting this up! I learned a lot about how DNS and VPNs work, and now I have a setup that I feel is a good balance of privacy and convenience, and also has strong security, even when I'm away from home.
+
+Down the road, look for more on my home network! I may talk more in depth about my different services running on the network, or devices I use! For now, [connect with me on Twitter](https://twitter.com/keegandonley "Twitter") if you have any thoughts about my setup, or input on what you want to hear more about!
