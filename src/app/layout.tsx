@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 import dynamic from "next/dynamic";
 import { get } from "@vercel/edge-config";
 import { Banner } from "@/components/Banner";
+import { Suspense } from "react";
 
 const DynamicNavigation = dynamic(() => import("@/components/MainNavigation"));
 
@@ -37,7 +38,10 @@ export default async function RootLayout({ children }: any) {
           hasChosenTheme={hasChosenTheme}
         />
         <main>{children}</main>
-        <Analytics />
+        {/* Adding suspense to try https://github.com/vercel/next.js/issues/48442#issuecomment-1519139562 */}
+        <Suspense>
+          <Analytics />
+        </Suspense>
       </body>
     </html>
   );
