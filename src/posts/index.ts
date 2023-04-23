@@ -22,6 +22,7 @@ import * as OpenAIFirst from "./a-quick-look-at-openai-dall-e-2.mdx";
 import * as ReactInterview from "./react-interview-questions.mdx";
 import * as BookQuote from "./designing-and-building-a-raspberry-pi-based-book-quote-clock.mdx";
 import * as Barcelona from "./trip-to-europe-part-i-barcelona.mdx";
+import * as Onboarding from "./tips-for-onboarding-onto-an-existing-codebase.mdx";
 
 const posts = {
   Welcome,
@@ -48,6 +49,7 @@ const posts = {
   ReactInterview,
   BookQuote,
   Barcelona,
+  Onboarding,
 };
 
 export default posts;

@@ -16,6 +16,10 @@
   height: 20rem;
 }
 
+.tiny {
+  height: 6rem;
+}
+
 .giant {
   height: 50rem;
 }

@@ -20,6 +20,7 @@ export const Img = ({ src, className, alt }: any) => {
   const shouldHideShadow = flags.includes("hideShadow");
   const isTableMode = flags.includes("tableMode");
   const isGiant = flags.includes("giant");
+  const isTiny = flags.includes("tiny");
 
   if (metadata) {
     const isVertical = metadata.height > metadata.width;
@@ -30,7 +31,8 @@ export const Img = ({ src, className, alt }: any) => {
           isVertical && imageStyles.vertical,
           ratio < 0.5 && imageStyles.short,
           isTableMode && imageStyles.tableMode,
-          isGiant && imageStyles.giant
+          isGiant && imageStyles.giant,
+          isTiny && imageStyles.tiny
         )}
         data-ratio={ratio}
         data-flags={flags.join(",")}

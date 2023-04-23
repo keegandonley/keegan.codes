@@ -1,1 +1,1 @@
-export const postCount = 24;
+export const postCount = 25;

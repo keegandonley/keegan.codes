@@ -1,0 +1,68 @@
+export const title = "Tips for Onboarding Onto an Existing Codebase";
+export const slug = "tips-for-onboarding-onto-an-existing-codebase";
+export const tags = ["career", "software", "opinion"];
+export const description =
+  "How I onboard onto new codebases and what I learned starting a new role in 2022";
+export const cover = "onboard-cover.png";
+export const published = new Date(2022, 0, 18);
+export const shortCodes = ["onboarding"];
+
+Right at the start of 2022, I [started a new role as a senior frontend engineer at Kizen](https://keegandonley.com/blog/beginning-a-new-chapter-of-my-career-with-kizen "Kizen Post"). I've spent the last two weeks onboarding, getting familiar with the codebase, and beginning to make meaningful contributions. In this post, I want to talk share my process for rapidly learning a new codebase, team, and company, since I have a few tricks I've found to be very effective, and they even enabled me to get a handful of small features into production in my first week.
+
+In addition to onboarding in this new role, I will also talk a bit about my process for getting familiar with new codebases in other situations - like joining an open-source project or taking over a freelance project from a previous developer.
+
+# 1. Watch and Read
+
+I can't stress enough how important it is to use all the materials available to you. If you're lucky enough that the new project or company has solid documentation or writeups, it's important to utilize them. The same goes for videos. The two days before I started my new role, and the first two days of my job were mostly spent reading documentation and watching videos about different parts of the product. When else will you get paid to watch videos and read? Take advantage of it!
+
+After I've read the official documentation, I move on to reading issues, bug reports, and pull requests. This works well for getting up to speed on individual projects (perhaps you're starting to contribute to a new open-source tool), and also for entire companies! I spent a good half-day reading existing Jira tickets, and looking through both open and recently merged pull requests, just to get a feel for the kind of work being done.
+
+While I found documentation and historical work to be super helpful and important, at some point you'll have to start looking into the code. As soon as I get access to a codebase, there are a few things I try to do to get up to speed.
+
+# 2. Play With the Code
+
+Nobody likes to spend their time simply reading through thousands upon thousands of lines of code. That's why I typically jump right in, modifying code as I go and experimenting to see what happens!
+
+### Create Fake Tasks
+
+The first time I look at a piece of code, whether an open-source project, a freelance project I'm taking on, or a new project at a company, I try to invent some small tasks for myself and work to complete them. Let's take a simple example of [my blog page](https://keegandonley.com/blog/building-a-static-generated-blog-with-next-js "Building my Blog"):
+
+![The blog page with a list of three articles and some metadata](onboard-post:image-1.png?hideShadow "My Blog Page")
+
+Assuming I knew nothing about the code, the first thing I'd do is come up with a handful of changes to try to make (usually I just pick these at random!). In this example, maybe
+
+- Changing the published date display format
+- Making the tag buttons match the theme color
+- Adding a hover animation before clicking on a blog post
+
+One by one, I would work my way through these fake tasks and see if I can get to the expected result. I typically continue doing this for a few hours; I pick a random element or piece of the app, try to make the change, and in the process learn a lot about how the code is put together. This works well not only for frontend projects, but any code you may be tasked with working on. I find it valuable, especially in the case of cross-discipline projects, to create tasks that span a number of languages or parts of the project. For example, a few things involving CSS, and few logic or data manipulation changes, and perhaps even some backend work if applicable.
+
+### Find a Real Task
+
+While fake tasks are fun, it would be more fun to try to make a meaningful change. In a logical progression, once I'm comfortable with my fake tasks, I try to find something real to work on. Typically in the first day or two, you won't have any actual work assigned to you. That doesn't mean there isn't work to be done! I typically look through the to-do list of tasks that are expected to be completed in the current sprint/development cycle and try to find something that I am somewhat familiar with. For example, if one of my fake tasks from earlier was to implement a color theme for the tag buttons, I might look for a real task that involves the theming engine or a similar part of the code.
+
+Once I find a good task, I ask myself how I'd go about solving it. I don't spend a lot of time on this, since it's not "my job" (yet!), but spending a few minutes trying to reason about an issue, especially if I've already gotten familiar with the code, can be a huge help.
+
+# 3. Ask Questions
+
+Assuming you've worked hard to learn all you can on your own, the next step is to fill in any gaps with institutional knowledge from others. In the case of open-source projects, this may be accomplished by reaching out to existing maintainers or posting comments on issues. In a work environment, this means talking to colleagues who are familiar with the code. One way to do this is using git blame to see who a good person is to reach out to, based on what they've worked on in the past.
+
+![](onboard-post:image-2.png?tiny)
+
+> If I have a question about a particular line or piece of code, I can easily see who last modified that portion. This person is likely a good place to start. (Incidentally, there will likely be times you debug an issue and realize that it was you who wrote it a while back 😬)
+
+# 4. Do Real Work
+
+Finally! You're ready to make a meaningful contribution! Depending on your environment, you may either be assigned a "warm-up" task to work on, or you may have to choose a task from the backlog (typically in open-source projects there will be issues marked as "good for first-time contributors"). You can always ask to be assigned something small if you feel ready sooner than expected, even if the onboarding process is intended to go on longer.
+
+For example, my first real ticket at [Kizen](https://keegandonley.com/blog/beginning-a-new-chapter-of-my-career-with-kizen "Kizen Post") was to add a tooltip giving context to some data. Luckily, I had already made myself familiar with a number of UI elements, including tooltips, icons, and text elements. Thanks to my prior work, my first ticket was a breeze, and I was able to focus more on learning the engineering processes that were in place, rather than worrying about how to actually add the feature.
+
+In my first few days, I was also assigned a pull request to review. While I didn't have a ton of background on what I was reviewing, I took the opportunity to review for semantic issues or stylistic problems, but more importantly, I took some time to comment in a few spots on the PR asking for clarification on a few things that confused me. Another learning opportunity!
+
+# Conclusions
+
+At the end of the day, your process will likely look a bit different from mine. Every job, project, or company is different and there's no one-size-fits-all solution. Starting a new role can be scary, and it's never easy to jump head-first into a new codebase. Hopefully what I've learned and used in the past can be helpful, and help lead to a smooth onboarding process!
+
+If you have any other tips, tricks, or comments, I'd love to hear about them [on Twitter](https://twitter.com/keegandonley "Twitter Profile")! As always, I love to talk about anything software and look forward to an opportunity to chat!
+
+> I used some points from this blog post as the basis of my responses to [my interview on the Exaltitude blog](https://www.exaltitude.io/blogs/two-ways-to-effectively-onboard-onto-an-existing-codebase "Exaltitude blog"). Check it out to read more about this, and some other thoughts of mine as a software engineer!
