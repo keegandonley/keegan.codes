@@ -24,6 +24,7 @@ import * as BookQuote from "./designing-and-building-a-raspberry-pi-based-book-q
 import * as Barcelona from "./trip-to-europe-part-i-barcelona.mdx";
 import * as Onboarding from "./tips-for-onboarding-onto-an-existing-codebase.mdx";
 import * as InputDeno from "./input-deno-v2.0.3-released.mdx";
+import * as StaticBlog from "./building-a-static-generated-blog-with-next-js.mdx";
 
 const posts = {
   Welcome,
@@ -52,6 +53,7 @@ const posts = {
   Barcelona,
   Onboarding,
   InputDeno,
+  StaticBlog,
 };
 
 export default posts;
