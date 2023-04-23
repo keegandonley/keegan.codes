@@ -10,7 +10,8 @@
     "blurhash": "cd blurhash-generator && go run . && cd -",
     "metadata": "cd post-metadata-generator && go run . && cd -",
     "serve": "cd img-serve && go run . && cd - || cd -",
-    "process": "yarn blurhash && yarn metadata"
+    "process": "yarn blurhash && yarn metadata",
+    "validate-shortcodes": "node ./validate/validateShortcodes.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^6.4.0",
