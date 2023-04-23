@@ -26,6 +26,7 @@ import * as Onboarding from "./tips-for-onboarding-onto-an-existing-codebase.mdx
 import * as InputDeno from "./input-deno-v2.0.3-released.mdx";
 import * as StaticBlog from "./building-a-static-generated-blog-with-next-js.mdx";
 import * as Oura from "./oura-ring-generation-3-first-impressions.mdx";
+import * as NextJS from "./deciding-on-a-custom-template-for-bootstrapping-nextjs-apps.mdx";
 
 const posts = {
   Welcome,
@@ -56,6 +57,7 @@ const posts = {
   InputDeno,
   StaticBlog,
   Oura,
+  NextJS,
 };
 
 export default posts;

@@ -1,0 +1,97 @@
+export const title = "Choosing a Custom Template for Bootstrapping NextJS Apps";
+export const slug =
+  "deciding-on-a-custom-template-for-bootstrapping-nextjs-apps";
+export const tags = ["react", "software", "hobby", "open source", "frontend"];
+export const description =
+  "There are many different starter templates out there for NextJS, but I wanted to evaluate all my past projects and create the perfect one for bootstrapping future projects.";
+export const cover = "nextjs-template-cover.png";
+export const published = new Date(2021, 11, 6);
+export const shortCodes = ["bootstrapping", "nextjs-template"];
+
+# What are NextJS Examples?
+
+[NextJS](https://nextjs.org/ "NextJS") has a great application of [project examples](https://nextjs.org/examples "NextJS Examples"), from which anyone can generate a new project. I've used a lot of different examples in the past, from Typescript starter kits, to Tailwind CSS, to turnkey examples that try to anticipate every possible need. I've also written a handful of templates, like the [changelog app template](https://github.com/pinpt/app-template "Changelog App Template") for [Pinpoint](https://pinpoint.com/ "Pinpoint"). You can think of these like project templates, and I'll be using the words `example` and `template` interchangeably throughout.
+
+# The Issues
+
+I've found that most of the existing examples are pretty good but fall into one of two issues for me - they either include too many dependencies because the example tries to account for too many possible use cases, or there is is too much boilerplate I need to go in and delete every time I start a new project. Needing to go in and start stripping out development tools I don't need, or start deleting api endpoints and pages defeats the purpose of a nice template in my mind. Otherwise, I still find myself doing a bunch of the same repetitive tasks on each new NextJS project I bootstrap.
+
+In analyzing my process for the last few projects I've started, I realized I almost always do a few specific things, in this general order:
+
+1. Delete app the `/api` routes in the project
+2. Delete all the pages except the index
+3. Remove all the content from the index page
+4. Remove all the stylesheets and their imports
+5. Add a code formatter (usually prettier)
+6. Add Tailwind CSS
+7. Sometimes add a custom `_document` page
+
+If I'm being honest, this isn't really that much work. However, sometimes I'll build multiple new NextJS projects in a day, or at least a few per week, and the time these tasks take adds up! I find it pretty rare that I work on a project that needs api routes, so I find myself always deleting these at first, and adding them back only if I discover I need them down the line.
+
+# My Perfect Template
+
+Enter my new favorite example template: [**next-tailwind-barebones**](https://github.com/keegandonley/next-tailwind-barebones "Next-Tailwind-Barebones"). (Okay, I admit I might be biased because I wrote it myself). To make this example, I took the lowest common denominator from all my projects; that is, whatever tools or features I use across all (or nearly all) of my existing work. What I found this to be was [Tailwind](https://tailwindcss.com/ "Tailwind") and its associated configuration, [Typescript](https://www.typescriptlang.org/ "Typescript"), and [Prettier](https://prettier.io/ "Prettier") for formatting. Nothing more, and nothing less.
+
+```javascript
+import type { NextPage } from "next";
+const Home: NextPage = () => {
+  return (
+    <div classNAme="flex flex-col items-center w-screen h-screen justify-center">
+      <p>
+        Hello, world! This is a sample{" "}
+        <span className="font-bold">NextJS app</span> with{" "}
+        <span className="font-bold text-blue-600">TailwindCSS</span> and{" "}
+        <span className="font-bold text-indigo-600">Typescript</span>.
+      </p>
+      <p className="mt-4">
+        <a
+          className="text-blue-400"
+          href="https://next-tailwind-barebones.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Live Example
+        </a>{" "}
+        |{" "}
+        <a
+          className="text-blue-400"
+          href="https://github.com/keegandonley/next-tailwind-barebones"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Github Repo
+        </a>
+      </p>
+    </div>
+  );
+};
+```
+
+I find it so much more efficient to add tools as I need them, rather than add a bunch of stuff up front and then spend time going through and removing what I don't need.
+
+Ever since I spent a couple hours to really think about the most logical starting place for NextJS apps and build my perfect template, my productivity has gone way up, and it's more enjoyable than ever to spin up a quick test app to try out an idea or built a quick one-off project. It's as easy as:
+
+    npx create-next-app@latest -e https://github.com/keegandonley/next-tailwind-barebones
+
+I designed this template with my exact needs in mind, and if it suits yours too, start using it today! It's [available on GitHub](https://github.com/keegandonley/next-tailwind-barebones "Github Repo") and I try to keep it pretty up-to-date. Now that I have a nice base built, I plan to fork it and create a few more complicated versions built on top of the same base - perhaps something with an image API pre-built, or some commonly used utilities already built out in the lib directory. I also may add a more opinionated prettier config, as the one I ship the example with tries to stay super simple:
+
+```json
+{
+  "trailingComma": "es5",
+  "useTabs": true,
+  "semi": true,
+  "singleQuote": true,
+  "importOrder": [
+    "^react$",
+    "^next/(.*)$",
+    "^@.*",
+    "^[A-Z]",
+    "^[a-z]",
+    "^[../]",
+    "^[./]",
+    ".*"
+  ]
+}
+```
+
+> Do you have a template you use frequently for starting new projects? I'd love to hear [on Twitter](https://twitter.com/keegandonley "Twitter Link") about any cool ones you've come across! If you're on Polywork, [join me in discussion](https://www.polywork.com/keegandonley/highlights/3ccd6c2d-af95-41da-b6e3-b9ed6129bbef "Polywork Profile") over there too!
