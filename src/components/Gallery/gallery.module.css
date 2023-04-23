@@ -1,0 +1,217 @@
+.wrapper {
+  width: 100%;
+  height: 30rem;
+  position: relative;
+  display: flex;
+  column-gap: 0.5rem;
+  padding-top: 1rem;
+}
+
+.imageParent {
+  position: relative;
+  height: 100%;
+  flex-shrink: 1;
+  min-width: 2px;
+  transition: all var(--animation);
+  cursor: pointer;
+}
+
+.imageParent.distance-1 {
+  min-width: 2rem;
+}
+
+.imageParent.distance-2 {
+  min-width: 1.7rem;
+}
+
+.imageParent.distance-3 {
+  min-width: 1.4rem;
+}
+
+.imageParent.distance-4 {
+  min-width: 1.1rem;
+}
+
+.imageParent.distance-5 {
+  min-width: 0.8rem;
+}
+
+.imageParent.distance-6 {
+  min-width: 0.5rem;
+}
+
+.imageParent.distance-7 {
+  min-width: 0.4rem;
+}
+
+.imageParent.distance-8 {
+  min-width: 0.3rem;
+}
+
+.imageParent.distance-9 {
+  min-width: 0.2rem;
+}
+
+.imageParent.distance-10 {
+  min-width: 0.1rem;
+}
+
+.imageParent.distance-1:hover {
+  min-width: 4rem;
+}
+
+.imageParent.distance-2:hover {
+  min-width: 3.4rem;
+}
+
+.imageParent.distance-3:hover {
+  min-width: 2.8rem;
+}
+
+.imageParent.distance-4:hover {
+  min-width: 2.2rem;
+}
+
+.imageParent.distance-5:hover {
+  min-width: 1.6rem;
+}
+
+.imageParent.distance-6:hover {
+  min-width: 1rem;
+}
+
+.imageParent.distance-7:hover {
+  min-width: 0.8rem;
+}
+
+.imageParent.distance-8:hover {
+  min-width: 0.6rem;
+}
+
+.imageParent.distance-9:hover {
+  min-width: 0.4rem;
+}
+
+.imageParent.distance-10:hover {
+  min-width: 0.2rem;
+}
+
+.active {
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+.imageParent img {
+  object-fit: cover;
+  /* Tiny border radius still makes a differnece */
+  border-radius: var(--tiny-border-radius);
+  object-position: center;
+}
+
+@media screen and (max-width: 500px) {
+  .wrapper {
+    width: 100%;
+    position: relative;
+    display: flex;
+    row-gap: 0.5rem;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .imageParent {
+    position: relative;
+    flex-shrink: 1;
+    max-height: 2px;
+    transition: all var(--animation);
+    cursor: pointer;
+    min-height: 2px;
+  }
+
+  .imageParent.distance-1 {
+    max-height: 2rem;
+    min-height: 1.5rem;
+  }
+
+  .imageParent.distance-2 {
+    max-height: 1.7rem;
+    min-height: 1.2rem;
+  }
+
+  .imageParent.distance-3 {
+    max-height: 1.4rem;
+    min-height: 0.9rem;
+  }
+
+  .imageParent.distance-4 {
+    max-height: 1.1rem;
+  }
+
+  .imageParent.distance-5 {
+    max-height: 0.8rem;
+  }
+
+  .imageParent.distance-6 {
+    max-height: 0.5rem;
+  }
+
+  .imageParent.distance-7 {
+    max-height: 0.4rem;
+  }
+
+  .imageParent.distance-8 {
+    max-height: 0.3rem;
+  }
+
+  .imageParent.distance-9 {
+    max-height: 0.2rem;
+  }
+
+  .imageParent.distance-10 {
+    max-height: 0.1rem;
+  }
+
+  .imageParent.distance-1:hover {
+    max-height: 4rem;
+  }
+
+  .imageParent.distance-2:hover {
+    max-height: 3.4rem;
+  }
+
+  .imageParent.distance-3:hover {
+    max-height: 2.8rem;
+  }
+
+  .imageParent.distance-4:hover {
+    max-height: 2.2rem;
+  }
+
+  .imageParent.distance-5:hover {
+    max-height: 1.6rem;
+  }
+
+  .imageParent.distance-6:hover {
+    max-height: 1rem;
+  }
+
+  .imageParent.distance-7:hover {
+    max-height: 0.8rem;
+  }
+
+  .imageParent.distance-8:hover {
+    max-height: 0.6rem;
+  }
+
+  .imageParent.distance-9:hover {
+    max-height: 0.4rem;
+  }
+
+  .imageParent.distance-10:hover {
+    max-height: 0.2rem;
+  }
+
+  .active {
+    max-height: 20rem;
+    min-height: 20rem;
+  }
+}

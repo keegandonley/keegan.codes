@@ -16,6 +16,12 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "barcelona.gallery.static.donley.xyz",
+        port: "",
+        pathname: "/**",
+      },
     ],
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 2,

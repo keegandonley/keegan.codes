@@ -24,12 +24,9 @@ type ImageMetadata struct {
 	DataUrl string `json:"dataUrl"`
 }
 
-func main() {
-	godotenv.Load()
-	file := "../src/image-metadata.json"
-
+func executeBucket(file string, bucket string, bucketURL string) {
 	hashes, _ := readMapFromJSONFile(file)
-	objects := getObjects("k10y-assets").Contents
+	objects := getObjects(bucket).Contents
 
 	limiter := rate.NewLimiter(rate.Every(time.Second), 10)
 	var wg sync.WaitGroup
@@ -53,7 +50,7 @@ func main() {
 				return
 			}
 
-			image, _ := downloadImage("https://static.donley.xyz/" + *fileName)
+			image, _ := downloadImage(bucketURL + *fileName)
 
 			blurred, _ := stackblur.Process(image, 2000)
 
@@ -88,4 +85,14 @@ func main() {
 	wg.Wait()
 
 	writeMapToJSONFile(file, hashes)
+}
+
+func postImages() {
+	executeBucket("../src/image-metadata.json", "k10y-assets", "https://static.donley.xyz/")
+	executeBucket("../src/galleries/barcelona/image-metadata.json", "k10y-gallery-barcelona", "https://barcelona.gallery.static.donley.xyz/")
+}
+
+func main() {
+	godotenv.Load()
+	postImages()
 }
