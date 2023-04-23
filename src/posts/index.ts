@@ -25,6 +25,7 @@ import * as Barcelona from "./trip-to-europe-part-i-barcelona.mdx";
 import * as Onboarding from "./tips-for-onboarding-onto-an-existing-codebase.mdx";
 import * as InputDeno from "./input-deno-v2.0.3-released.mdx";
 import * as StaticBlog from "./building-a-static-generated-blog-with-next-js.mdx";
+import * as Oura from "./oura-ring-generation-3-first-impressions.mdx";
 
 const posts = {
   Welcome,
@@ -54,6 +55,7 @@ const posts = {
   Onboarding,
   InputDeno,
   StaticBlog,
+  Oura,
 };
 
 export default posts;
