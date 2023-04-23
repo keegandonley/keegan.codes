@@ -1,0 +1,43 @@
+export const title = "Input-Deno v2.0.3 Released";
+export const slug = "input-deno-v2.0.3-released";
+export const tags = [
+  "deno",
+  "library",
+  "software",
+  "input-deno",
+  "open source",
+];
+export const description = "An overview of what changed in Input-Deno v.2.0.3";
+export const cover = "input-deno-cover.png";
+export const published = new Date(2021, 10, 2);
+export const shortCodes = ["input-deno-2-0-3", "input-deno"];
+
+After a long hiatus from maintaining my deno input handling library, [input-deno](https://deno.land/x/input@2.0.3 "Deno Land Link"), I've published a new version with a new input handling type and a critical bug fix for private input!
+
+This version switches to use a deferred promise for handling private input (a mode where the output is not displayed in the console as it is typed). Using this same approach, I also implemented a `wait` method, that can be used to prompt the user to "press any key to continue".
+
+You can now use the following:
+
+```javascript
+import Input from "https://raw.githubusercontent.com/keegandonley/input-deno/master/index.ts";
+
+const input = new Input();
+
+await input.wait();
+const result = await input.question("Say something: ", false);
+console.log("You said", result);
+```
+
+to yield the following output:
+
+```
+    Press any key to continue...
+    Say something: Hello, world!
+    You said Hello, world!
+```
+
+Using this new deferred promise also fixes an issue where the program could crash when using private input.
+
+> Bear in mind that this new `wait` method needs to be run with the `--unstable` flag, or it will have no effect.
+
+You can refer to the [issue on Github](https://github.com/keegandonley/input-deno/issues/21 "Github Link") and any feedback is always welcome!

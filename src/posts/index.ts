@@ -23,6 +23,7 @@ import * as ReactInterview from "./react-interview-questions.mdx";
 import * as BookQuote from "./designing-and-building-a-raspberry-pi-based-book-quote-clock.mdx";
 import * as Barcelona from "./trip-to-europe-part-i-barcelona.mdx";
 import * as Onboarding from "./tips-for-onboarding-onto-an-existing-codebase.mdx";
+import * as InputDeno from "./input-deno-v2.0.3-released.mdx";
 
 const posts = {
   Welcome,
@@ -50,6 +51,7 @@ const posts = {
   BookQuote,
   Barcelona,
   Onboarding,
+  InputDeno,
 };
 
 export default posts;
