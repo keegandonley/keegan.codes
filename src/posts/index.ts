@@ -27,6 +27,7 @@ import * as InputDeno from "./input-deno-v2.0.3-released.mdx";
 import * as StaticBlog from "./building-a-static-generated-blog-with-next-js.mdx";
 import * as Oura from "./oura-ring-generation-3-first-impressions.mdx";
 import * as NextJS from "./deciding-on-a-custom-template-for-bootstrapping-nextjs-apps.mdx";
+import * as CalendarTutorial from "./how-to-build-a-calendar-component-in-react.mdx";
 
 const posts = {
   Welcome,
@@ -58,6 +59,7 @@ const posts = {
   StaticBlog,
   Oura,
   NextJS,
+  CalendarTutorial,
 };
 
 export default posts;
