@@ -1,4 +1,5 @@
 import {
+  blueSkyBlue,
   githubGrey,
   githubGreyLight,
   instagramOrange,
@@ -14,16 +15,17 @@ import {
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { faClouds } from "@fortawesome/pro-solid-svg-icons";
 
 export const Social = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.icons}>
         <Icon
-          icon={faTwitter}
-          color={twitterBlue}
-          url={URLS.twitter}
-          name="Twitter"
+          icon={faClouds}
+          color={blueSkyBlue}
+          url={URLS.bluesky}
+          name="Bluesky"
         />
         <Icon
           icon={faGithub}
@@ -43,6 +45,12 @@ export const Social = () => {
           color={instagramOrange}
           url={URLS.instagram}
           name="Instagram"
+        />
+        <Icon
+          icon={faTwitter}
+          color={twitterBlue}
+          url={URLS.twitter}
+          name="Twitter"
         />
       </div>
     </div>
