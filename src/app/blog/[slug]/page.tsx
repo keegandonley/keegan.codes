@@ -52,7 +52,7 @@ export async function generateMetadata({
         title: found.title,
         description: found.description,
         creator: "@keegandonley",
-        images: [`/api/og/post?slug=${params.slug}`],
+        images: [`/api/og/post?slug=${params.slug}&width=1200&height=630`],
       },
     };
   }
