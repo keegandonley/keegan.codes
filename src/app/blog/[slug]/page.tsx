@@ -40,9 +40,9 @@ export async function generateMetadata({
         authors: ["Keegan Donley"],
         images: [
           {
-            url: `/api/og/post?slug=${params.slug}`,
-            width: 1200,
-            height: 600,
+            url: `/api/og/post?slug=${params.slug}&width=800&height=418`,
+            width: 800,
+            height: 418,
             type: "image/png",
           },
         ],

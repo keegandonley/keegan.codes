@@ -18,6 +18,9 @@ export async function GET(request: Request) {
 
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get("slug");
+  const width = searchParams.get("width") ?? "800";
+  const height = searchParams.get("height") ?? "418";
+
   if (!slug) {
     console.error("Missing slug at", request.url);
     return new Response("No slug provided", { status: 400 });
@@ -113,8 +116,8 @@ export async function GET(request: Request) {
       </div>
     ),
     {
-      width: 1200,
-      height: 600,
+      width: parseInt(width),
+      height: parseInt(height),
     }
   );
 }
