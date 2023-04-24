@@ -40,9 +40,10 @@ export async function generateMetadata({
         authors: ["Keegan Donley"],
         images: [
           {
-            url: `/api/og/post?slug=${params.slug}`,
+            url: `/api/og/post?slug=${params.slug}&width=1200&height=630`,
             width: 1200,
-            height: 600,
+            height: 630,
+            type: "image/png",
           },
         ],
       },
@@ -51,7 +52,7 @@ export async function generateMetadata({
         title: found.title,
         description: found.description,
         creator: "@keegandonley",
-        images: [`/api/og/post?slug=${params.slug}`],
+        images: [`/api/og/post?slug=${params.slug}&width=1200&height=630`],
       },
     };
   }
