@@ -2,5 +2,9 @@
   padding: 0 0 0 0.5rem;
   font-size: 0.8rem;
   color: var(--theme-text);
+  border: none;
   border-left: 1px dashed var(--theme-pill);
+  text-decoration: none;
+  background: none;
+  cursor: pointer;
 }

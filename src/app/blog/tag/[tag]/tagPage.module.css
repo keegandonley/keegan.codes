@@ -1,0 +1,37 @@
+.button {
+  z-index: 9;
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  background: var(--theme-text);
+  color: var(--theme-inverted-text);
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  display: flex;
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+}
+
+.icon {
+  font-size: 0.8rem;
+  padding-left: 0.5rem;
+  padding-right: 0.6rem;
+  display: block;
+}
+
+.iconWrapper {
+  border-left: 1px solid var(--theme-inverted-text);
+  height: 100%;
+  display: block;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  height: 100%;
+  padding: 0.2rem 1rem;
+}
