@@ -32,7 +32,7 @@ export default async function RootLayout({ children }: any) {
         className={merge(font.className, "preload", theme === "dark" && "dark")}
       >
         {/* Display banner text from the edge config if an event is active */}
-        {event?.active ? <Banner level={0}>{event.text}</Banner> : null}
+        {event?.active ? <Banner level={1}>{event.text}</Banner> : null}
         <DynamicNavigation
           initialTheme={theme}
           hasChosenTheme={hasChosenTheme}
