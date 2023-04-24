@@ -21,6 +21,7 @@ const MainNavigation = ({
   const isHomePage = pathname === "/";
   const isBlogPage = pathname.startsWith("/blog");
   const segments = useSelectedLayoutSegments();
+  const isExactlyBlogPage = isBlogPage && segments.length === 1;
 
   const isBlog404 = useMemo(() => {
     if (segments[0] === "blog") {
@@ -37,6 +38,17 @@ const MainNavigation = ({
   useEffect(() => {
     document.body.classList.remove("preload");
   }, [pathname]);
+
+  // When pressing the back button, we need to remove the lockScroll class
+  // so scrolling works. Otherwise, this is handled by the clicks on the modal
+  // component
+  useEffect(() => {
+    window.addEventListener("popstate", function (event) {
+      if (window.location.pathname.startsWith("/blog")) {
+        document.body.classList.remove("lockScroll");
+      }
+    });
+  }, [isExactlyBlogPage]);
 
   return (
     <HeroBlock
