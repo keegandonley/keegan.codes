@@ -25,8 +25,7 @@ const MainNavigation = ({
   const isBlog404 = useMemo(() => {
     if (segments[0] === "blog") {
       const slug = segments[1];
-
-      return Boolean(slug) && !slugs.includes(slug);
+      return Boolean(slug) && !slugs.includes(slug) && slug !== "tag";
     } else {
       return false;
     }

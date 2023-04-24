@@ -1,8 +1,7 @@
 .button {
   z-index: 9;
   position: relative;
-  margin: 0 auto;
-  padding: 0;
+  margin: 2rem auto 0 auto;
   background: var(--theme-text);
   color: var(--theme-inverted-text);
   border: none;
