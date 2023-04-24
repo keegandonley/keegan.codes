@@ -43,6 +43,7 @@ export async function generateMetadata({
             url: `/api/og/post?slug=${params.slug}`,
             width: 1200,
             height: 600,
+            type: "image/png",
           },
         ],
       },
