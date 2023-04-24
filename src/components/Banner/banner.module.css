@@ -1,5 +1,5 @@
 .banner {
-  position: sticky;
+  position: absolute;
   top: calc((var(--banner-level-rems) - 1rem) * 2.2);
   background: var(--theme-text);
   z-index: 100;
