@@ -26,7 +26,7 @@
     "@types/react": "^18.0.38",
     "@types/react-dom": "^18.0.11",
     "@vercel/analytics": "^1.0.0",
-    "@vercel/edge-config": "^0.1.7",
+    "@vercel/edge-config": "^0.1.8",
     "@vercel/og": "^0.5.3",
     "eslint": "^8.39.0",
     "eslint-config-next": "^13.3.1",
