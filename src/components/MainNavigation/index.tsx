@@ -9,6 +9,7 @@ import { ThemeToggle } from "../ThemeToggle";
 import { merge } from "@/util/classNames";
 import { slugs } from "../../post-slugs";
 import { Theme } from "@/types/theme";
+import { slugs as bookSlugs } from "../../book-slugs";
 
 const MainNavigation = ({
   initialTheme,
@@ -22,13 +23,22 @@ const MainNavigation = ({
   const isBlogPage = pathname.startsWith("/blog");
   const isLibraryPage = pathname.startsWith("/library");
   const segments = useSelectedLayoutSegments();
-  const isExactlyBlogPage = isBlogPage && segments.length === 1;
-  const isExactlyLibraryPage = isLibraryPage && segments.length === 1;
+  // const isExactlyBlogPage = isBlogPage && segments.length === 1;
+  // const isExactlyLibraryPage = isLibraryPage && segments.length === 1;
 
   const isBlog404 = useMemo(() => {
     if (segments[0] === "blog") {
       const slug = segments[1];
       return Boolean(slug) && !slugs.includes(slug) && slug !== "tag";
+    } else {
+      return false;
+    }
+  }, [segments]);
+
+  const isBook404 = useMemo(() => {
+    if (segments[0] === "library") {
+      const slug = segments[1];
+      return Boolean(slug) && !bookSlugs.includes(slug) && slug !== "tag";
     } else {
       return false;
     }
@@ -58,7 +68,7 @@ const MainNavigation = ({
   return (
     <HeroBlock
       isHomePage={isHomePage}
-      sticky={!isBlog404 && !isChat && !isResume}
+      sticky={!isBlog404 && !isBook404 && !isChat && !isResume}
     >
       <MenuItem href="/" side="left" visible={!isHomePage} active={isHomePage}>
         Home
