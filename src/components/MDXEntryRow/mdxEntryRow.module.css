@@ -55,6 +55,10 @@
   margin-left: -2rem;
 }
 
+.imageParent.book {
+  height: 500px;
+}
+
 .imageParent img {
   object-fit: cover;
   /* Tiny border radius still makes a differnece */

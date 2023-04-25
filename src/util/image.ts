@@ -1,9 +1,18 @@
 import { ImageProps } from "next/image";
 import imageMetadata from "../image-metadata.json";
+import bookCoverMetadata from "../book-cover-metadata.json";
 
 export const getImageMetadata = (image?: string) => {
   const metadata = image
     ? (imageMetadata as Record<string, ImageMetadata>)[image]
+    : undefined;
+
+  return metadata;
+};
+
+export const getBookCoverMetadata = (image?: string) => {
+  const metadata = image
+    ? (bookCoverMetadata as Record<string, ImageMetadata>)[image]
     : undefined;
 
   return metadata;

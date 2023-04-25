@@ -20,8 +20,10 @@ const MainNavigation = ({
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const isBlogPage = pathname.startsWith("/blog");
+  const isLibraryPage = pathname.startsWith("/library");
   const segments = useSelectedLayoutSegments();
   const isExactlyBlogPage = isBlogPage && segments.length === 1;
+  const isExactlyLibraryPage = isLibraryPage && segments.length === 1;
 
   const isBlog404 = useMemo(() => {
     if (segments[0] === "blog") {
@@ -43,12 +45,15 @@ const MainNavigation = ({
   // so scrolling works. Otherwise, this is handled by the clicks on the modal
   // component
   useEffect(() => {
-    window.addEventListener("popstate", function (event) {
-      if (window.location.pathname.startsWith("/blog")) {
+    window.addEventListener("popstate", function () {
+      if (
+        window.location.pathname.startsWith("/blog") ||
+        window.location.pathname.startsWith("/library")
+      ) {
         document.body.classList.remove("lockScroll");
       }
     });
-  }, [isExactlyBlogPage]);
+  }, []);
 
   return (
     <HeroBlock
@@ -69,13 +74,17 @@ const MainNavigation = ({
           <div
             className={merge(
               styles.navigationBubble,
-              isBlogPage && !isBlog404 ? styles.shadow : styles.noShadow
+              (isBlogPage || isLibraryPage) && !isBlog404
+                ? styles.shadow
+                : styles.noShadow
             )}
           ></div>
           <div
             className={merge(
               styles.avatarBubble,
-              isBlogPage && !isBlog404 ? styles.shadow : styles.noShadow
+              (isBlogPage || isLibraryPage) && !isBlog404
+                ? styles.shadow
+                : styles.noShadow
             )}
           ></div>
         </div>
