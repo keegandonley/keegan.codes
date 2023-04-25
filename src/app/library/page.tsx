@@ -14,8 +14,8 @@ export default function LibraryPage() {
       tags: component.tags ?? [],
       description: component.description,
       cover: component.cover,
-      published: component.published,
-      readDate: component.readDate,
+      published: component.readDate,
+      publicationDate: component.published,
     };
   });
   return (
@@ -24,10 +24,10 @@ export default function LibraryPage() {
         <div className={styles.wrapper}>
           {books
             .sort((a, b) => {
-              if (!a.readDate || !b.readDate) {
+              if (!a.published || !b.published) {
                 return 0;
               }
-              return b.readDate.getTime() - a.readDate.getTime();
+              return b.published.getTime() - a.published.getTime();
             })
             .map((post, index) => {
               return (
