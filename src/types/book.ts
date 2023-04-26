@@ -12,4 +12,5 @@ export interface Book {
   isbn: string;
   goodreads: string;
   rating: number;
+  default: any;
 }

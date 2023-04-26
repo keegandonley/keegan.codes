@@ -48,7 +48,10 @@ export const MDXEntryRow = ({
     <div className={merge(styles.wrapper, filler && styles.filler)}>
       <div className={styles.horizontalLine}></div>
       <div className={styles.verticalLine}></div>
-      <Parent href={`/blog/${slug}`} className={styles.a}>
+      <Parent
+        href={`/${book ? "library" : "blog"}/${slug}`}
+        className={styles.a}
+      >
         {cover ? (
           <div className={merge(styles.imageParent, book && styles.book)}>
             <Image

@@ -62,7 +62,7 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPage({ params }: BlogPageProps) {
+export default function BlogSlugPage({ params }: BlogPageProps) {
   const componentKey = getKey({ slug: params.slug });
 
   if (!componentKey) {
