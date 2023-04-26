@@ -6,6 +6,7 @@
   padding-bottom: 6rem;
   padding-top: 4rem;
   padding: 4rem;
+  width: 90%;
 }
 
 .metadata {
@@ -32,4 +33,16 @@
 .coverWrapper img {
   object-fit: cover;
   border-radius: 4px;
+}
+
+@media only screen and (max-width: 550px) {
+  .wrapper {
+    flex-direction: column-reverse;
+    padding-top: 4rem;
+    width: 100%;
+  }
+
+  .coverWrapper {
+    width: 100%;
+  }
 }
