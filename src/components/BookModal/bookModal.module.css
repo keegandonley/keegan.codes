@@ -1,16 +1,19 @@
+/* NOTE: The importants are just to get around a bug in nextjs, they
+should be removed ASAP  */
+
 .bookModalWrapper {
-  padding-top: 22rem;
+  padding-top: 22rem !important;
 }
 
 @media only screen and (max-width: 900px) {
   .bookModalWrapper {
-    flex-direction: column-reverse;
-    padding: 2rem;
-    padding-top: 24rem;
-    width: 100%;
+    flex-direction: column-reverse !important;
+    padding: 2rem !important;
+    padding-top: 24rem !important;
+    width: 100% !important;
   }
 
   .booModalCoverWrapper {
-    width: 100%;
+    width: 100% !important;
   }
 }
