@@ -5,6 +5,8 @@ import { MDXEntryRow } from "@/components/MDXEntryRow";
 import { Book } from "@/types/book";
 import styles from "./library.module.css";
 
+export const runtime = "experimental-edge";
+
 export default function LibraryPage() {
   const books = Object.keys(Books).map((key) => {
     const component = (Books as any)[key] as Book;

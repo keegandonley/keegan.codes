@@ -7,6 +7,8 @@ import { H1 } from "@/components/Post/Heading/H1";
 import Image from "next/image";
 import { BOOK_BUCKET_URL } from "@/util/r2";
 
+export const runtime = "experimental-edge";
+
 interface LibraryPageProps {
   params: {
     slug: string;
