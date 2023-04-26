@@ -1,48 +1,16 @@
-.wrapper {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  padding: 0rem;
-  padding-top: 4rem;
-  width: 90%;
-}
-
-.metadata {
-  flex: 1 1 50%;
-  position: relative;
-  margin-top: 2.5rem;
-  min-height: 600px;
-}
-
-.article {
-  flex: 1 1 50%;
-  color: var(--theme-text);
-}
-
-.coverWrapper {
-  position: absolute;
-  left: 0;
-  height: 475px;
-  top: 0;
-  z-index: 0;
-  width: 80%;
-}
-
-.coverWrapper img {
-  object-fit: cover;
-  border-radius: 4px;
+.bookModalWrapper {
+  padding-top: 22rem;
 }
 
 @media only screen and (max-width: 900px) {
-  .wrapper {
+  .bookModalWrapper {
     flex-direction: column-reverse;
     padding: 2rem;
-    padding-top: 4rem;
+    padding-top: 24rem;
     width: 100%;
   }
 
-  .coverWrapper {
-    width: 70%;
+  .booModalCoverWrapper {
+    width: 100%;
   }
 }

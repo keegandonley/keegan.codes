@@ -4,8 +4,22 @@
   display: flex;
   flex-direction: row;
   padding-bottom: 6rem;
-  padding-top: 4rem;
+  padding-top: 14rem;
   width: 90%;
+  position: relative;
+}
+
+.headerWrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 500px;
+  top: 0;
+  z-index: 0;
+}
+
+.headerWrapper img {
+  object-fit: cover;
 }
 
 .metadata {
@@ -30,17 +44,28 @@
 }
 
 .coverWrapper img {
-  object-fit: cover;
-  border-radius: 4px;
+  object-fit: contain;
+  object-position: top;
+  width: 100%;
+  background-size: contain;
+}
+
+.author {
+  opacity: 0.5;
+  font-size: 1.5rem;
+  margin-top: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
 }
 
 @media only screen and (max-width: 900px) {
   .wrapper {
     flex-direction: column-reverse;
-    padding-top: 1rem;
+    padding-top: 14rem;
   }
 
   .coverWrapper {
-    width: 70%;
+    width: 100%;
+    margin: 0 auto;
   }
 }

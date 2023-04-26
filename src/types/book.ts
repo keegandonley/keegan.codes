@@ -13,4 +13,5 @@ export interface Book {
   goodreads: string;
   rating: number;
   default: any;
+  headerImage?: string;
 }

@@ -8,6 +8,7 @@ import * as Nobber from "./nobber.mdx";
 import * as MidnightLibrary from "./the-midnight-library.mdx";
 import * as NoRulesRules from "./no-rules-rules.mdx";
 import * as LessonsInChemistry from "./lessons-in-chemistry.mdx";
+import * as TraderJoe from "./becoming-trader-joe.mdx";
 
 const books = {
   Pixar,
@@ -20,6 +21,7 @@ const books = {
   MidnightLibrary,
   NoRulesRules,
   LessonsInChemistry,
+  TraderJoe,
 };
 
 export default books;
