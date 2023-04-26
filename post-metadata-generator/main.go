@@ -4,10 +4,9 @@ import (
 	"fmt"
 )
 
-func main() {
-	count, err := countFilesInDir("../src/posts")
+func process(dir string, countFile string, slugsFile string, wordCountsFile string) {
+	count, err := countFilesInDir(dir)
 	excludedFileCount := 3
-	countFile := "../src/post-count.ts"
 
 	if err != nil {
 		fmt.Println(err)
@@ -16,16 +15,22 @@ func main() {
 
 	writeCountToTsFile(countFile, count-excludedFileCount)
 
-	contents, err := loadFilesInDir("../src/posts")
+	contents, err := loadFilesInDir(dir)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
 	slugs := getSlugs(contents)
-	writeSlugsToTsFile("../src/post-slugs.ts", slugs)
+	writeSlugsToTsFile(slugsFile, slugs)
 
 	wordCounts := getWordCounts(contents)
-	writeWordCountsToJSONFile("../src/post-word-counts.json", wordCounts)
+	writeWordCountsToJSONFile(wordCountsFile, wordCounts)
+
+}
+
+func main() {
+	process("../src/posts", "../src/post-count.ts", "../src/post-slugs.ts", "../src/post-word-counts.json")
+	process("../src/books", "../src/book-count.ts", "../src/book-slugs.ts", "../src/book-word-counts.json")
 
 }

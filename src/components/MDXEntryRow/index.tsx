@@ -2,13 +2,16 @@ import { ElementBaseProps } from "@/types/elements";
 import Link from "next/link";
 import styles from "./mdxEntryRow.module.css";
 import Image from "next/image";
-import { BUCKET_URL } from "@/util/r2";
-import { getImageMetadata, parseToProps } from "@/util/image";
+import { BOOK_BUCKET_URL, BUCKET_URL } from "@/util/r2";
+import {
+  getBookCoverMetadata,
+  getImageMetadata,
+  parseToProps,
+} from "@/util/image";
 import { merge } from "@/util/classNames";
 import { Date } from "./components/Date";
 import { Tags } from "./components/Tags";
 import { getIsLikelyMobile } from "@/util/userAgent";
-import { getReadingTime } from "@/util/content";
 import { ReadingTime } from "./components/ReadingTime";
 
 interface MDXEntryRowProps extends ElementBaseProps {
@@ -21,6 +24,7 @@ interface MDXEntryRowProps extends ElementBaseProps {
   index: number;
   filler?: boolean;
   wordCount?: number;
+  book?: boolean;
 }
 
 export const MDXEntryRow = ({
@@ -33,8 +37,9 @@ export const MDXEntryRow = ({
   index,
   filler,
   wordCount,
+  book,
 }: MDXEntryRowProps) => {
-  const metadata = getImageMetadata(cover);
+  const metadata = book ? getBookCoverMetadata(cover) : getImageMetadata(cover);
   const isLikelyMobile = getIsLikelyMobile();
 
   const Parent = slug ? Link : "div";
@@ -43,11 +48,14 @@ export const MDXEntryRow = ({
     <div className={merge(styles.wrapper, filler && styles.filler)}>
       <div className={styles.horizontalLine}></div>
       <div className={styles.verticalLine}></div>
-      <Parent href={`/blog/${slug}`} className={styles.a}>
+      <Parent
+        href={`/${book ? "library" : "blog"}/${slug}`}
+        className={styles.a}
+      >
         {cover ? (
-          <div className={styles.imageParent}>
+          <div className={merge(styles.imageParent, book && styles.book)}>
             <Image
-              src={`${BUCKET_URL}/${cover}`}
+              src={`${book ? BOOK_BUCKET_URL : BUCKET_URL}/${cover}`}
               alt="todo"
               fill
               sizes="(max-width: 550px) 100vw,

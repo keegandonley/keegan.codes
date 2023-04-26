@@ -90,6 +90,7 @@ func executeBucket(file string, bucket string, bucketURL string) {
 func postImages() {
 	executeBucket("../src/image-metadata.json", "k10y-assets", "https://static.donley.xyz/")
 	executeBucket("../src/galleries/barcelona/image-metadata.json", "k10y-gallery-barcelona", "https://barcelona.gallery.static.donley.xyz/")
+	executeBucket("../src/book-cover-metadata.json", "k10y-library-assets", "https://library.static.donley.xyz/")
 }
 
 func main() {
