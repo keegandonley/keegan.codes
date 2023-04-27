@@ -25,6 +25,7 @@ interface MDXEntryRowProps extends ElementBaseProps {
   filler?: boolean;
   wordCount?: number;
   book?: boolean;
+  columns?: number;
 }
 
 export const MDXEntryRow = ({
@@ -38,6 +39,7 @@ export const MDXEntryRow = ({
   filler,
   wordCount,
   book,
+  columns = 3,
 }: MDXEntryRowProps) => {
   const metadata = book ? getBookCoverMetadata(cover) : getImageMetadata(cover);
   const isLikelyMobile = getIsLikelyMobile();
@@ -45,7 +47,13 @@ export const MDXEntryRow = ({
   const Parent = slug ? Link : "div";
 
   return (
-    <div className={merge(styles.wrapper, filler && styles.filler)}>
+    <div
+      className={merge(
+        styles.wrapper,
+        filler && styles.filler,
+        styles[`col-${columns}`]
+      )}
+    >
       <div className={styles.horizontalLine}></div>
       <div className={styles.verticalLine}></div>
       <Parent

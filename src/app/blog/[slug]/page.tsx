@@ -31,6 +31,7 @@ export async function generateMetadata({
 
     return {
       title: `${found.title} · Keegan Donley`,
+      description: found.description,
       openGraph: {
         title: found.title,
         description: found.description,

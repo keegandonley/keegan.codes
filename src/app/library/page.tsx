@@ -33,12 +33,19 @@ export default function LibraryPage() {
             })
             .map((post, index) => {
               return (
-                <MDXEntryRow key={post.slug} index={index} {...post} book />
+                <MDXEntryRow
+                  key={post.slug}
+                  index={index}
+                  columns={4}
+                  {...post}
+                  book
+                />
               );
             })}
-          <MDXEntryRow key="extra-1" index={-1} filler />
-          <MDXEntryRow key="extra-2" index={-1} filler />
-          <MDXEntryRow key="extra-3" index={-1} filler />
+          <MDXEntryRow key="extra-1" index={-1} columns={4} filler />
+          <MDXEntryRow key="extra-2" index={-1} columns={4} filler />
+          <MDXEntryRow key="extra-3" index={-1} columns={4} filler />
+          <MDXEntryRow key="extra-4" index={-1} columns={4} filler />
         </div>
       </section>
       <Delay>
