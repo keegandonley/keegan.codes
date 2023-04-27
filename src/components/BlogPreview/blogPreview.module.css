@@ -28,7 +28,6 @@
   display: flex;
   column-gap: 0.5rem;
   margin-top: 4rem;
-  overflow: hidden;
 }
 
 .imageParent {
@@ -41,15 +40,15 @@
   min-width: 8rem;
   filter: grayscale(100%);
   border-radius: 1rem;
+
   box-shadow: var(--theme-box-shadow-small);
-  overflow: hidden;
 }
 
 .text {
   opacity: 0;
   position: absolute;
   bottom: 0;
-  width: 100%;
+  right: 0;
   left: 0;
   transition: opacity var(--animation);
   z-index: 999999;
@@ -62,7 +61,6 @@
   padding: 1.4rem;
   max-height: 100%;
   overflow: hidden;
-  min-width: 50vw;
 }
 
 .text h1 {
