@@ -44,7 +44,7 @@ export const ClientRenderer = ({ posts }: ClientRendererProps) => {
               alt="todo"
               fill
               sizes="(max-width: 1000px) 100vw,
-              25vw"
+              600px"
               {...parseToProps(post.metadata)}
             />
           </Link>
