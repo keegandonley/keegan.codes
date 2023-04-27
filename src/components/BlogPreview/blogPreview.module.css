@@ -54,7 +54,7 @@
   z-index: 999999;
   transition-delay: 0s;
   font-weight: 900;
-  color: var(--theme-inverted-text);
+  color: var(--theme-off-white);
   backdrop-filter: blur(50px);
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
@@ -119,5 +119,9 @@
 
   .text p {
     font-size: 1rem;
+  }
+
+  .fallback {
+    height: 944px; /* This is a hack to avoid CLS - can probably be done better */
   }
 }
