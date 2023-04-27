@@ -15,6 +15,7 @@ export const Footer = ({ className, children }: FooterProps) => {
         <div className={styles.column}>
           <strong>Keegan Donley</strong>
           <Link href="/blog">Blog</Link>
+          <Link href="/library">Reading List</Link>
           <Link href="/resume">Résumé</Link>
         </div>
         <div className={styles.column}>{children}</div>

@@ -21,7 +21,7 @@ const font = Raleway({
   weight: ["100", "200", "600", "900"],
 });
 
-export default async function RootLayout({ children }: any) {
+export default async function RootLayout({ children, postModal }: any) {
   const theme = userTheme();
   const hasChosenTheme = getHasChosenTheme();
   const event: any = await get("event");
@@ -38,6 +38,7 @@ export default async function RootLayout({ children }: any) {
           hasChosenTheme={hasChosenTheme}
         />
         <main>{children}</main>
+        {postModal}
         {/* Adding suspense to try https://github.com/vercel/next.js/issues/48442#issuecomment-1519139562 */}
         <Suspense>
           <Analytics />
