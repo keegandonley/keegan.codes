@@ -10,10 +10,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 import { Footer } from "@/components/Footer";
 import { Swoop } from "@/components/Swoop";
+import Posts from "@/posts";
+import { Post } from "@/types/post";
+import { BlogPreview } from "@/components/BlogPreview";
 
 export const runtime = "experimental-edge";
 
 export default function Home() {
+  const posts = Object.keys(Posts)
+    .map((key) => {
+      const component = (Posts as any)[key] as Post;
+      return {
+        title: component.title,
+        slug: component.slug,
+        description: component.description,
+        cover: component.cover,
+      } as Post;
+    })
+    .slice(0, 4);
+
   return (
     <>
       <Swoop />
@@ -44,9 +59,10 @@ export default function Home() {
           </Link>
           .
         </Paragraph>
+        <BlogPreview posts={posts} />
         <div className={styles.blogButton}>
           <Link href="/blog" className={styles.blogButtonText}>
-            Read my Blog <FontAwesomeIcon icon={faArrowRight} />
+            Read More on my Blog <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>
         <h1 className={styles.sectionHeader}>Always Learning</h1>
