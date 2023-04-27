@@ -19,10 +19,10 @@ const MainNavigation = ({
   hasChosenTheme?: boolean;
 }) => {
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
+  const segments = useSelectedLayoutSegments();
+  const isHomePage = pathname === "/" || !segments.length;
   const isBlogPage = pathname.startsWith("/blog");
   const isLibraryPage = pathname.startsWith("/library");
-  const segments = useSelectedLayoutSegments();
   // const isExactlyBlogPage = isBlogPage && segments.length === 1;
   // const isExactlyLibraryPage = isLibraryPage && segments.length === 1;
 

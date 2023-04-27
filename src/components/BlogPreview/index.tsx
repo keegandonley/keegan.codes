@@ -11,7 +11,7 @@ interface BlogPreviewProps {
   posts: Post[];
 }
 
-export const BlogPreview = ({ posts }: BlogPreviewProps) => {
+const BlogPreview = ({ posts }: BlogPreviewProps) => {
   const postsWithMetadata = posts.map((post) => {
     return {
       ...post,
@@ -24,3 +24,5 @@ export const BlogPreview = ({ posts }: BlogPreviewProps) => {
     </div>
   );
 };
+
+export default BlogPreview;

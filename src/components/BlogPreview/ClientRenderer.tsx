@@ -43,6 +43,8 @@ export const ClientRenderer = ({ posts }: ClientRendererProps) => {
               src={`${BUCKET_URL}/${post.cover}`}
               alt="todo"
               fill
+              sizes="(max-width: 1000px) 100vw,
+              25vw"
               {...parseToProps(post.metadata)}
             />
           </Link>

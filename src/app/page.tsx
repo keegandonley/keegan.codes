@@ -12,7 +12,11 @@ import { Footer } from "@/components/Footer";
 import { Swoop } from "@/components/Swoop";
 import Posts from "@/posts";
 import { Post } from "@/types/post";
-import { BlogPreview } from "@/components/BlogPreview";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import { Fallback as BlogPreviewFallback } from "@/components/BlogPreview/Fallback";
+
+const DynamicBlogPreview = dynamic(() => import("@/components/BlogPreview"));
 
 export const runtime = "experimental-edge";
 
@@ -59,10 +63,12 @@ export default function Home() {
           </Link>
           .
         </Paragraph>
-        <BlogPreview posts={posts} />
+        <Suspense fallback={<BlogPreviewFallback />}>
+          <DynamicBlogPreview posts={posts} />
+        </Suspense>
         <div className={styles.blogButton}>
           <Link href="/blog" className={styles.blogButtonText}>
-            Read More on my Blog <FontAwesomeIcon icon={faArrowRight} />
+            Read more on my blog <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>
         <h1 className={styles.sectionHeader}>Always Learning</h1>
