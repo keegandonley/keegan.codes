@@ -1,7 +1,6 @@
 import { Paragraph } from "@/components/Paragraph";
-import renderLogo from "./render-logo.svg";
 import Image from "next/image";
-import styles from "./render.module.css";
+import styles from "./hi.module.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { URLS } from "@/components/Social/socials";
@@ -12,10 +11,10 @@ export const runtime = "experimental-edge";
 
 export default function RenderPage() {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.content}>
       <Paragraph className={merge(styles.firstParagraph, styles.paragraph)}>
-        My name is Keegan Donley, and I&apos;m currently a principal font-end
-        engineer at{" "}
+        My name is <strong className={styles.name}>Keegan Donley</strong>, and
+        I&apos;m currently a principal font-end engineer at{" "}
         <Link
           href="https://kizen.com"
           target="_blank"
@@ -47,13 +46,6 @@ export default function RenderPage() {
         </Link>{" "}
         about a number of topics, ranging from software to fitness to travel.
       </Paragraph>
-      <div className={styles.renderLogoContainer}>
-        <Image
-          src={renderLogo}
-          alt="Render Logo"
-          className={styles.renderLogo}
-        />
-      </div>
     </div>
   );
 }

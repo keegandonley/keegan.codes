@@ -1,3 +1,5 @@
+const v2Domain = "https://v2.keegandonley.com";
+
 module.exports = [
   // origin | destination | permanent
   ["/twitter", "https://twitter.com/keegandonley"],
@@ -20,4 +22,7 @@ module.exports = [
     "/refer/render",
     "https://ti.to/render-atlanta/2023/discount/2023Ref-keegan@kizen.com",
   ],
+  ["/vinyl", `${v2Domain}/vinyl`],
+  ["/vinyl/:slug*", `${v2Domain}/vinyl/:slug*`],
+  ["/contact", "/hi"],
 ];

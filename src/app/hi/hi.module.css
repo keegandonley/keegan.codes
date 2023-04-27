@@ -5,6 +5,19 @@
   text-align: center;
 }
 
+.content {
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 1rem 2rem 4rem 2rem;
+  text-align: center;
+}
+
 .h2 {
   color: var(--theme-text);
+  font-weight: 600;
+}
+
+.name {
+  color: var(--theme-blue-1);
+  font-size: 1.2em;
 }
