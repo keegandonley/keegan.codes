@@ -20,14 +20,38 @@
   border-radius: 1rem;
 }
 
-.wrapper {
+.outer {
   max-width: 1000px;
   margin: 0 auto;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.controls {
+  margin-left: auto;
+  margin-bottom: 1rem;
+  display: flex;
+  column-gap: 1rem;
+  color: var(--theme-text);
+  font-size: 1.2rem;
+}
+
+.control {
+  opacity: 0.5;
+  transition: opacity var(--animation);
+  cursor: pointer;
+}
+
+.control:hover {
+  opacity: 0.8;
+}
+
+.wrapper {
   height: 30rem;
   position: relative;
   display: flex;
   column-gap: 0.5rem;
-  margin-top: 4rem;
 }
 
 .imageParent {
@@ -38,7 +62,7 @@
   transition: all var(--animation);
   cursor: pointer;
   min-width: 8rem;
-  filter: grayscale(100%);
+  filter: grayscale(100%) contrast(1.4);
   border-radius: 1rem;
 
   box-shadow: var(--theme-box-shadow-small);
@@ -77,7 +101,7 @@
 .active {
   flex-shrink: 0;
   flex-grow: 1;
-  filter: grayscale(0%);
+  filter: grayscale(0%) contrast(1);
 }
 
 .active .text {
@@ -105,6 +129,7 @@
     flex-grow: 1;
     height: 14rem;
     filter: grayscale(0%);
+    transition: none;
   }
 
   .text {
@@ -123,5 +148,9 @@
 
   .fallback {
     height: 944px; /* This is a hack to avoid CLS - can probably be done better */
+  }
+
+  .controls {
+    display: none;
   }
 }

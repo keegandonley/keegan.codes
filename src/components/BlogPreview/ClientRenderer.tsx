@@ -10,6 +10,11 @@ import { H1 } from "../Post/Heading/H1";
 import { Paragraph } from "../Paragraph";
 import { BottomFade } from "../BottomFade";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowCircleLeft,
+  faArrowCircleRight,
+} from "@fortawesome/pro-solid-svg-icons";
 
 interface PostWithMetadata extends Post {
   metadata?: ImageMetadata;
@@ -23,33 +28,51 @@ export const ClientRenderer = ({ posts }: ClientRendererProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <>
-      {posts.map((post, postIndex) => {
-        return (
-          <Link
-            key={post.slug}
-            className={merge(
-              styles.imageParent,
-              postIndex === activeIndex && styles.active
-            )}
-            onMouseOver={() => setActiveIndex(postIndex)}
-            href={`/blog/${post.slug}`}
-          >
-            <span className={styles.text}>
-              <h1>{post.title}</h1>
-              <p>{post.description}</p>
-            </span>
-            <Image
-              src={`${BUCKET_URL}/${post.cover}`}
-              alt="todo"
-              fill
-              sizes="(max-width: 1000px) 100vw,
+    <div className={styles.outer}>
+      <div className={styles.controls}>
+        <FontAwesomeIcon
+          className={styles.control}
+          icon={faArrowCircleLeft}
+          onClick={() => {
+            setActiveIndex((activeIndex - 1 + posts.length) % posts.length);
+          }}
+        />
+        <FontAwesomeIcon
+          className={styles.control}
+          icon={faArrowCircleRight}
+          onClick={() => {
+            setActiveIndex((activeIndex + 1) % posts.length);
+          }}
+        />
+      </div>
+      <div className={styles.wrapper}>
+        {posts.map((post, postIndex) => {
+          return (
+            <Link
+              key={post.slug}
+              className={merge(
+                styles.imageParent,
+                postIndex === activeIndex && styles.active
+              )}
+              onMouseOver={() => setActiveIndex(postIndex)}
+              href={`/blog/${post.slug}`}
+            >
+              <span className={styles.text}>
+                <h1>{post.title}</h1>
+                <p>{post.description}</p>
+              </span>
+              <Image
+                src={`${BUCKET_URL}/${post.cover}`}
+                alt="todo"
+                fill
+                sizes="(max-width: 1000px) 100vw,
               600px"
-              {...parseToProps(post.metadata)}
-            />
-          </Link>
-        );
-      })}
-    </>
+                {...parseToProps(post.metadata)}
+              />
+            </Link>
+          );
+        })}
+      </div>
+    </div>
   );
 };
