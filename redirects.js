@@ -25,4 +25,5 @@ module.exports = [
   ["/vinyl", `${v2Domain}/vinyl`],
   ["/vinyl/:slug*", `${v2Domain}/vinyl/:slug*`],
   ["/contact", "/hi"],
+  ["/shortcuts", `${v2Domain}/shortcuts`],
 ];
