@@ -80,6 +80,7 @@
   font-weight: 900;
   color: var(--theme-off-white);
   backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.3);
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
   padding: 1.4rem;
