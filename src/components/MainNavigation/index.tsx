@@ -84,7 +84,7 @@ const MainNavigation = ({
           <div
             className={merge(
               styles.navigationBubble,
-              (isBlogPage || isLibraryPage) && !isBlog404
+              (isBlogPage || isLibraryPage) && !isBlog404 && !isHomePage
                 ? styles.shadow
                 : styles.noShadow
             )}
@@ -92,7 +92,7 @@ const MainNavigation = ({
           <div
             className={merge(
               styles.avatarBubble,
-              (isBlogPage || isLibraryPage) && !isBlog404
+              (isBlogPage || isLibraryPage) && !isBlog404 && !isHomePage
                 ? styles.shadow
                 : styles.noShadow
             )}

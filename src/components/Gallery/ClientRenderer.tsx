@@ -1,11 +1,12 @@
 "use client";
-
+import { useCallback } from "react";
 import { Gallery } from "@/types/galleries";
 import styles from "./gallery.module.css";
 import { merge } from "@/util/classNames";
 import { useState } from "react";
 import Image from "next/image";
 import { parseToProps } from "@/util/image";
+import va from "@vercel/analytics";
 
 interface ClientRendererProps {
   parsedGallery: Gallery;
@@ -17,6 +18,14 @@ export default function ClientRenderer({
   bucket,
 }: ClientRendererProps) {
   const [active, setActive] = useState(1);
+
+  const handleGalleryClick = useCallback((index: number) => {
+    setActive(index)
+    va.track("Click Gallery Image", {
+      bucket,
+      index,
+    });
+  }, [bucket]);
 
   return (
     <div className={styles.wrapper}>
@@ -30,7 +39,7 @@ export default function ClientRenderer({
               index === active && styles.active,
               styles[`distance-${distanceFromActive}`]
             )}
-            onClick={() => setActive(index)}
+            onClick={() => handleGalleryClick(index)}
           >
             <Image
               src={`${bucket}/${photo.image}`}
