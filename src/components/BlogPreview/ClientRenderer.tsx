@@ -47,6 +47,14 @@ export const ClientRenderer = ({ posts }: ClientRendererProps) => {
       </div>
       <div className={styles.wrapper}>
         {posts.map((post, postIndex) => {
+          const metadata = post.metadata;
+          let resultWidth = 600;
+          if (metadata) {
+            const ratio = metadata.width / metadata.height;
+            const desiredHeight = 480;
+            resultWidth = desiredHeight * ratio;
+          }
+
           return (
             <Link
               key={post.slug}
@@ -65,8 +73,8 @@ export const ClientRenderer = ({ posts }: ClientRendererProps) => {
                 src={`${BUCKET_URL}/${post.cover}`}
                 alt="todo"
                 fill
-                sizes="(max-width: 1000px) 100vw,
-              600px"
+                sizes={`(max-width: 1000px) 100vw,
+              ${resultWidth}px`}
                 {...parseToProps(post.metadata)}
               />
             </Link>

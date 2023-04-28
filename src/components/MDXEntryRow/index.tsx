@@ -45,6 +45,12 @@ export const MDXEntryRow = ({
   const isLikelyMobile = getIsLikelyMobile();
 
   const Parent = slug ? Link : "div";
+  let resultWidth = 500;
+  if (metadata) {
+    const ratio = metadata.width / metadata.height;
+    const desiredHeight = 250;
+    resultWidth = desiredHeight * ratio;
+  }
 
   return (
     <div
@@ -66,9 +72,9 @@ export const MDXEntryRow = ({
               src={`${book ? BOOK_BUCKET_URL : BUCKET_URL}/${cover}`}
               alt="todo"
               fill
-              sizes="(max-width: 550px) 100vw,
+              sizes={`(max-width: 550px) 100vw,
               (max-width: 900px) 50vw,
-              500px"
+              ${resultWidth}px`}
               // Rough guess at which images are above the fold
               priority={isLikelyMobile ? index < 2 : index < 4}
               {...parseToProps(metadata)}
