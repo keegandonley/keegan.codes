@@ -30,7 +30,7 @@ const nextConfig = {
       },
     ],
     formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 60 * 60 * 24 * 2,
+    minimumCacheTTL: 60 * 60 * 24 * 90,
   },
   modularizeImports: {
     "@fortawesome/pro-solid-svg-icons": {
