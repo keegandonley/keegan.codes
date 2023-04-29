@@ -79,9 +79,11 @@ export const ThemeToggle = ({
 
   const handleColorSchemeChange = useCallback(
     (event: MediaQueryListEvent) => {
-      handleMatch(event.matches);
+      if (!hasChosenTheme && !ignoreGlobalState) {
+        handleMatch(event.matches);
+      }
     },
-    [handleMatch]
+    [handleMatch, hasChosenTheme, ignoreGlobalState]
   );
 
   useEffect(() => {
