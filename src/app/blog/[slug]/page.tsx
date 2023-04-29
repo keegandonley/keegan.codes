@@ -13,6 +13,7 @@ import { getComponentForKey, getKey } from "../util";
 import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
 import wordCounts from "../../../post-word-counts.json";
 import { ReadingTime } from "@/components/MDXEntryRow/components/ReadingTime";
+import { NAME } from "@/metadata";
 
 export const runtime = "experimental-edge";
 
@@ -30,7 +31,7 @@ export async function generateMetadata({
     const found = getComponentForKey({ key: componentKey });
 
     return {
-      title: `${found.title} · Keegan Donley`,
+      title: `${found.title} · ${NAME}`,
       description: found.description,
       openGraph: {
         title: found.title,

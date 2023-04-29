@@ -11,6 +11,7 @@ import dynamic from "next/dynamic";
 import { get } from "@vercel/edge-config";
 import { Banner } from "@/components/Banner";
 import { Suspense } from "react";
+import { BASEURL, DESCRIPTION, NAME } from "@/metadata";
 
 const DynamicNavigation = dynamic(() => import("@/components/MainNavigation"));
 
@@ -52,8 +53,31 @@ export async function generateMetadata() {
   const theme = userTheme();
 
   return {
-    title: "Keegan Donley",
-    description: "Principal Front-End Engineer at Kizen",
+    title: NAME,
+    description: DESCRIPTION,
     themeColor: theme === "light" ? background.light : background.dark,
+    openGraph: {
+      title: NAME,
+      description: DESCRIPTION,
+      url: `${BASEURL}`,
+      siteName: NAME,
+      locale: "en_US",
+      authors: ["Keegan Donley"],
+      images: [
+        {
+          url: `/api/og/page?page=home&width=1200&height=630`,
+          width: 1200,
+          height: 630,
+          type: "image/png",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: NAME,
+      description: DESCRIPTION,
+      creator: "@keegandonley",
+      images: [`/api/og/page?page=home&width=1200&height=630`],
+    },
   };
 }
