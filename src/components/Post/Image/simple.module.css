@@ -1,0 +1,11 @@
+.parent {
+  position: relative;
+  height: var(--height);
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+.parent img {
+  object-fit: contain;
+  object-position: center;
+}

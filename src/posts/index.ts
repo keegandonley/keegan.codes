@@ -33,7 +33,7 @@ import * as DesignHobby from "./getting-back-into-design-work.mdx";
 import * as Stars from "./my-first-real-astrophotography-attempt.mdx";
 
 const posts = {
-  // Welcome,
+  Welcome,
   OptionalChaining,
   AppleShortcutsFitness,
   ReviewYourPRs,
