@@ -14,7 +14,7 @@ import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
 import wordCounts from "../../../post-word-counts.json";
 import { ReadingTime } from "@/components/MDXEntryRow/components/ReadingTime";
 import { BASEURL, NAME } from "@/metadata";
-import { Track } from "./Track";
+import { Track } from "@/components/Track";
 
 export const runtime = "experimental-edge";
 
@@ -107,7 +107,7 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
           <ReadingTime wordCount={wordCount} />
         </div>
         <Component />
-        <Track />
+        <Track slug={params.slug} inModal={false} />
       </article>
     </>
   );
