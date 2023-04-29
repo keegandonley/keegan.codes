@@ -13,6 +13,7 @@ import { Date } from "./components/Date";
 import { Tags } from "./components/Tags";
 import { getIsLikelyMobile } from "@/util/userAgent";
 import { ReadingTime } from "./components/ReadingTime";
+import { ViewCount } from "../ViewCount";
 
 interface MDXEntryRowProps extends ElementBaseProps {
   title?: string;
@@ -26,6 +27,7 @@ interface MDXEntryRowProps extends ElementBaseProps {
   wordCount?: number;
   book?: boolean;
   columns?: number;
+  showViewCount?: boolean;
 }
 
 export const MDXEntryRow = ({
@@ -40,6 +42,7 @@ export const MDXEntryRow = ({
   wordCount,
   book,
   columns = 3,
+  showViewCount = false,
 }: MDXEntryRowProps) => {
   const metadata = book ? getBookCoverMetadata(cover) : getImageMetadata(cover);
   const isLikelyMobile = getIsLikelyMobile();
@@ -89,6 +92,9 @@ export const MDXEntryRow = ({
               {published ? <Date date={published} /> : false}
               <ReadingTime wordCount={wordCount} />
             </div>
+            {slug && showViewCount && (
+              <ViewCount slug={slug} className={styles.viewCount} />
+            )}
             {tags && tags.length > 0 ? <Tags tags={tags} /> : false}
           </div>
         ) : (

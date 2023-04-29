@@ -12,8 +12,12 @@ export const ReadingTime = ({ wordCount }: ReadingTimeProps) => {
 
   return readingTime ? (
     <p className={styles.readingTime}>
-      <FontAwesomeIcon icon={faStopwatch} className={styles.sectionIcon} />~
-      {readingTime} min read
+      <FontAwesomeIcon
+        icon={faStopwatch}
+        className={styles.sectionIcon}
+        fixedWidth
+      />
+      ~{readingTime} min read
     </p>
   ) : null;
 };
