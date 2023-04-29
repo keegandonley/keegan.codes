@@ -5,6 +5,8 @@ import { BUCKET_URL } from "@/util/r2";
 import { ImageResponse } from "@vercel/og";
 import { cookies } from "next/headers";
 import { Div } from "../components/Div";
+import { postCount as bookCount } from "@/book-count";
+import { postCount } from "@/post-count";
 
 export const runtime = "edge";
 
@@ -15,6 +17,18 @@ const getMetadata = (page: string) => {
     return {
       title: NAME,
       description: DESCRIPTION,
+    };
+  }
+  if (page === "blog") {
+    return {
+      title: "Blog · " + NAME,
+      description: `${postCount} posts and counting!`,
+    };
+  }
+  if (page === "library") {
+    return {
+      title: "Library · " + NAME,
+      description: `A collection of ${bookCount} books I've enjoyed`,
     };
   }
 };

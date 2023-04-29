@@ -4,6 +4,10 @@ import { Delay } from "@/components/Delay";
 import { MDXEntryRow } from "@/components/MDXEntryRow";
 import { Book } from "@/types/book";
 import styles from "./library.module.css";
+import { userTheme } from "@/util/cookies";
+import { BASEURL, NAME } from "@/metadata";
+import { postCount } from "@/book-count";
+import { background } from "@/theme/colors";
 
 export const runtime = "experimental-edge";
 
@@ -53,4 +57,37 @@ export default function LibraryPage() {
       </Delay>
     </>
   );
+}
+
+export async function generateMetadata() {
+  const theme = userTheme();
+
+  return {
+    title: `Blog · ${NAME}`,
+    description: `My library of ${postCount} books I've enjoyed`,
+    themeColor: theme === "light" ? background.light : background.dark,
+    openGraph: {
+      title: `Blog · ${NAME}`,
+      description: `My library of ${postCount} books I've enjoyed`,
+      url: `${BASEURL}/library`,
+      siteName: NAME,
+      locale: "en_US",
+      authors: ["Keegan Donley"],
+      images: [
+        {
+          url: `/api/og/page?page=library&width=1200&height=630`,
+          width: 1200,
+          height: 630,
+          type: "image/png",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Library · ${NAME}`,
+      description: `My library of ${postCount} books I've enjoyed`,
+      creator: "@keegandonley",
+      images: [`/api/og/page?page=library&width=1200&height=630`],
+    },
+  };
 }
