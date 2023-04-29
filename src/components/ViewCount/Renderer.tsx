@@ -7,18 +7,23 @@ interface ViewCountRendererProps {
 }
 
 const getValue = async (slug: string): Promise<number> => {
-  const data = await fetch(
-    `${
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
-        : "https://keegan.codes"
-    }/api/view?slug=${slug}`,
-    { next: { revalidate: 60 } }
-  );
+  try {
+    const data = await fetch(
+      `${
+        process.env.NODE_ENV === "development"
+          ? "http://localhost:3000"
+          : "https://keegan.codes"
+      }/api/view?slug=${slug}`,
+      { next: { revalidate: 60 } }
+    );
 
-  const { views } = await data.json();
+    const { views } = await data.json();
 
-  return views;
+    return views;
+  } catch (ex) {
+    console.error("Error for slug", slug, ex);
+    return 0;
+  }
 };
 
 export const ViewCountRenderer = async ({
