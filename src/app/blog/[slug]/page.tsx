@@ -13,7 +13,7 @@ import { getComponentForKey, getKey } from "../util";
 import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
 import wordCounts from "../../../post-word-counts.json";
 import { ReadingTime } from "@/components/MDXEntryRow/components/ReadingTime";
-import { NAME } from "@/metadata";
+import { BASEURL, NAME } from "@/metadata";
 
 export const runtime = "experimental-edge";
 
@@ -36,8 +36,8 @@ export async function generateMetadata({
       openGraph: {
         title: found.title,
         description: found.description,
-        url: `https://keegandonley.com/blog/${params.slug}`,
-        siteName: "Keegan Donley",
+        url: `${BASEURL}/blog/${params.slug}`,
+        siteName: NAME,
         locale: "en_US",
         authors: ["Keegan Donley"],
         images: [
@@ -60,7 +60,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: "Keegan Donley",
+    title: NAME,
   };
 }
 

@@ -1,6 +1,7 @@
 import { BookContent } from "@/components/BookContent";
 import { Metadata } from "next";
 import { getComponentForKey, getKey } from "../util";
+import { BASEURL, NAME } from "@/metadata";
 
 export const runtime = "experimental-edge";
 
@@ -23,8 +24,8 @@ export async function generateMetadata({
       openGraph: {
         title: found.title,
         description: found.description,
-        url: `https://keegandonley.com/library/${params.slug}`,
-        siteName: "Keegan Donley",
+        url: `${BASEURL}/library/${params.slug}`,
+        siteName: NAME,
         locale: "en_US",
         authors: ["Keegan Donley"],
         images: [
@@ -47,7 +48,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: "Keegan Donley",
+    title: NAME,
   };
 }
 
