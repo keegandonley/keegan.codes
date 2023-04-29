@@ -7,7 +7,6 @@ import { ClientBackButton } from "../ClientBackButton";
 
 const stopEvent = (e: any) => {
   e.stopPropagation();
-  e.preventDefault();
 };
 
 interface ModalProps {
