@@ -5,10 +5,13 @@ import { AnimatedGraph } from "@/components/AnimatedGraph";
 import { Delay } from "@/components/Delay";
 import wordCounts from "../../post-word-counts.json";
 import { Post } from "@/types/post";
+import { get } from "@vercel/edge-config";
 
 export const runtime = "experimental-edge";
 
 export default async function BlogPage() {
+  const flags: any = await get("flags");
+
   const posts = Object.keys(Posts).map((key) => {
     const component = (Posts as any)[key] as Post;
     return {
@@ -34,7 +37,14 @@ export default async function BlogPage() {
               return b.published.getTime() - a.published.getTime();
             })
             .map((post, index) => {
-              return <MDXEntryRow key={post.slug} index={index} {...post} />;
+              return (
+                <MDXEntryRow
+                  key={post.slug}
+                  showViewCount={flags?.viewCounts}
+                  index={index}
+                  {...post}
+                />
+              );
             })}
           <MDXEntryRow key="extra-1" index={-1} filler />
           <MDXEntryRow key="extra-2" index={-1} filler />
