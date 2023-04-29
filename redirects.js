@@ -16,8 +16,6 @@ module.exports = [
   ["/helloiam", "https://helloiam.io/k"],
   ["/timeoutJS", "https://keegandonley.github.io/timeoutJS/"],
   ["/subscribe", "https://www.getrevue.co/profile/keegandonley"],
-  ["/qr/testing", "https://keegandonley.com/testing"],
-  ["/qr/slides/testing", "https://keegandonley.com/slides/testing"],
   [
     "/refer/render",
     "https://ti.to/render-atlanta/2023/discount/2023Ref-keegan@kizen.com",
@@ -26,4 +24,5 @@ module.exports = [
   ["/vinyl/:slug*", `${v2Domain}/vinyl/:slug*`],
   ["/contact", "/hi"],
   ["/shortcuts", `${v2Domain}/shortcuts`],
+  ["/qr/:slug*", `${v2Domain}/qr/:slug*`],
 ];

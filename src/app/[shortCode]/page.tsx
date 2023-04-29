@@ -5,6 +5,7 @@ import Posts from "@/posts";
 import { Post } from "@/types/post";
 import { redirect } from "next/navigation";
 import { Metadata } from "next";
+import { BASEURL, NAME } from "@/metadata";
 
 const posts = Object.keys(Posts).map((key) => {
   const component = (Posts as any)[key] as Post;
@@ -32,12 +33,12 @@ export async function generateMetadata({
 
   if (!found) {
     return {
-      title: "Error · Keegan Donley",
+      title: `Error · ${NAME}`,
       openGraph: {
-        title: "Error · Keegan Donley",
+        title: `Error · ${NAME}`,
         description: "You've found an invalid short code!",
-        url: `https://keegandonley.com/${shortCode}`,
-        siteName: "Keegan Donley",
+        url: `${BASEURL}/${shortCode}`,
+        siteName: NAME,
         locale: "en_US",
         authors: ["Keegan Donley"],
         images: [
@@ -50,7 +51,7 @@ export async function generateMetadata({
       },
       twitter: {
         card: "summary_large_image",
-        title: "Error · Keegan Donley",
+        title: `Error · ${NAME}`,
         description: "You've found an invalid short code!",
         creator: "@keegandonley",
         images: [`/api/og/error?value=${shortCode}`],
@@ -59,9 +60,11 @@ export async function generateMetadata({
   }
 
   return {
-    title: "Keegan Donley",
+    title: NAME,
   };
 }
+
+export const runtime = "experimental-edge";
 
 export default async function ShortCodePage({
   params: { shortCode },

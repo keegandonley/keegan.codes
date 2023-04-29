@@ -7,12 +7,11 @@ import { merge } from "@/util/classNames";
 import { background } from "@/theme/colors";
 import { getHasChosenTheme, userTheme } from "@/util/cookies";
 import { Analytics } from "@vercel/analytics/react";
-import dynamic from "next/dynamic";
 import { get } from "@vercel/edge-config";
 import { Banner } from "@/components/Banner";
 import { Suspense } from "react";
-
-const DynamicNavigation = dynamic(() => import("@/components/MainNavigation"));
+import { BASEURL, DESCRIPTION, NAME } from "@/metadata";
+import MainNavigation from "@/components/MainNavigation";
 
 config.autoAddCss = false;
 
@@ -33,10 +32,7 @@ export default async function RootLayout({ children, postModal }: any) {
       >
         {/* Display banner text from the edge config if an event is active */}
         {event?.active ? <Banner level={1}>{event.text}</Banner> : null}
-        <DynamicNavigation
-          initialTheme={theme}
-          hasChosenTheme={hasChosenTheme}
-        />
+        <MainNavigation initialTheme={theme} hasChosenTheme={hasChosenTheme} />
         <main>{children}</main>
         {postModal}
         {/* Adding suspense to try https://github.com/vercel/next.js/issues/48442#issuecomment-1519139562 */}
@@ -52,8 +48,31 @@ export async function generateMetadata() {
   const theme = userTheme();
 
   return {
-    title: "Keegan Donley",
-    description: "Principal Front-End Engineer at Kizen",
+    title: NAME,
+    description: DESCRIPTION,
     themeColor: theme === "light" ? background.light : background.dark,
+    openGraph: {
+      title: NAME,
+      description: DESCRIPTION,
+      url: `${BASEURL}`,
+      siteName: NAME,
+      locale: "en_US",
+      authors: ["Keegan Donley"],
+      images: [
+        {
+          url: `/api/og/page?page=home&width=1200&height=630`,
+          width: 1200,
+          height: 630,
+          type: "image/png",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: NAME,
+      description: DESCRIPTION,
+      creator: "@keegandonley",
+      images: [`/api/og/page?page=home&width=1200&height=630`],
+    },
   };
 }
