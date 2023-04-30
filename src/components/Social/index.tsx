@@ -15,14 +15,19 @@ import {
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { faClouds } from "@fortawesome/pro-solid-svg-icons";
+import {
+  faCloudRainbow,
+  faCloudSun,
+  faClouds,
+  faCloudsSun,
+} from "@fortawesome/pro-solid-svg-icons";
 
 export const Social = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.icons}>
         <Icon
-          icon={faClouds}
+          icon={faCloudRainbow}
           color={blueSkyBlue}
           url={URLS.bluesky}
           name="Bluesky"

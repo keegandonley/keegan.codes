@@ -5,6 +5,7 @@ module.exports = [
   ["/twitter", "https://twitter.com/keegandonley"],
   ["/linkedin", "https://www.linkedin.com/in/k10y/"],
   ["/github", "https://github.com/keegandonley"],
+  ["/instagram", "https://www.instagram.com/keegandonley"],
   ["/dribbble", "https://dribbble.com/keegandonley"],
   ["/dribble", "https://dribbble.com/keegandonley"], // Because typos lol
   ["/peloton", "https://members.onepeloton.com/members/jeepcode/overview"],
