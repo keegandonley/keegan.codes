@@ -1,4 +1,4 @@
-import { ThemeToggle } from "../components/ThemeToggle";
+import { Avatar } from "../components/Avatar";
 import { InteractiveContent } from "../components/InteractiveContent";
 import { SimpleImg } from "../components/Post/Image/Simple";
 
@@ -35,7 +35,6 @@ Here's a pared-down version of my app file structure. All I removed are css file
 ├── @postModal
 │   ├── (...)blog
 │   │   └── [slug]
-│   │       ├── loading.module.css
 │   │       ├── loading.tsx
 │   │       └── page.tsx
 │   └── default.ts
@@ -57,7 +56,6 @@ Here's a pared-down version of my app file structure. All I removed are css file
 │   ├── tag
 │   │   └── [tag]
 │   │       └── page.tsx
-├── home.module.css
 ├── layout.tsx
 ├── library
 │   ├── @libraryModal
@@ -70,16 +68,15 @@ Here's a pared-down version of my app file structure. All I removed are css file
 │   │   └── page.tsx
 │   ├── default.ts
 │   ├── layout.tsx
-│   ├── page.tsx
-│   └── util.ts
+│   └── page.tsx
 └── page.tsx
 ```
 
 This pattern allows me to do some interesting things that were not previously possible. For example, when switching from the home
-page to my blog page, you'll note that the navigation animates at the top of the page when transitioning. This is because the
+page to my blog page, you'll note that the navigation menu/widget animates at the top of the page when transitioning. This is because the
 navigation lives in `layout.tsx` at the top level of my app, and nested pages are rendered inside the layout.
 
-The other cool thing you can do with the app directory is URL-based modals, which is how I did the effect on my blog where posts are opened
+Another powerful pattern you can use with the app directory is URL-based modals. This is how I did the effect on my blog where posts are opened
 in a slide-up tray, until you perform a hard refresh, at which point they are opened full-screen as a normal page. This is done with a combination
 of [parallel routes](https://beta.nextjs.org/docs/routing/parallel-routes) and [intercepted routes](https://beta.nextjs.org/docs/routing/intercepting-routes).
 
@@ -96,11 +93,12 @@ export default function BlogLayout({ children, modal }: any) {
 }
 ```
 
-Everything under the `@modal` subtree can be rendered after the layout's children!
+Everything under the `@modal` subtree can be rendered after the layout's children! My slide-up modal is a fixed position element that goes
+in this `modal` slot, but you could also use this, for example, to show two routes side-by-side.
 
 The last thing we need to do for the modal behavior is
-intercept the route change and render the modal instead of the page. This is done using intercepted routes. The folders that begin with `(...)` are
-intercepted routes. They can be used to render an alternate page when the route transitions to the one that is being intercepted. In this case,
+intercept the route change and render the modal instead of the target page. This is done using intercepted routes. The folders that begin with `(...)` are
+interceptors that can "catch" a route change that matches the rest of the file path. They can be used to render an alternate page when the route transitions to the one that is being intercepted. In this case,
 clicking an article from `/blog` will transition to `/blog/[slug]`, which is intercepted by `(...)blog/[slug]` and causes the `@modal` page to be rendered alongside the children.
 
 I can even still return a `loading.tsx` file from the parallel route, to show a loading indicator if the post page is not yet loaded:
@@ -119,6 +117,8 @@ export default function BlogModalLoading() {
 }
 ```
 
+You'll see this loader occasionally if the server takes a moment to load the post in the modal.
+
 ## NextJS Image Component
 
 Nothing kills performance of a website like large images, but you'll notice they're pervasive throughout my site and blog. This works thanks to the NextJS
@@ -127,7 +127,7 @@ I leverage nearly everywhere.
 
 My images are stored in a number of different R2 buckets on Cloudflare, and I automatically build blurred representations of each one. This blur dataUrl as
 well as image metadata (like dimensions) are stored in a JSON file that is generated at build time. This allows me to use the `<Image />` component effectively,
-by passing in dimensions and blur dataUrl for each image. All of the image preprocessing and metadata generation happens in Go. Here's an example of how I create
+by passing in dimensions and blur dataUrl for each image. All of the image preprocessing and metadata generation happens in Go. Here's a snippet of how I create
 the blurDataUrl:
 
 ```go
@@ -196,7 +196,7 @@ export async function GET(request: Request) {
 
 ## Vercel Edge Config
 
-[Vercel edge config](https://vercel.com/docs/concepts/edge-network/edge-config) is a data store with negligible latency that can be used to store
+[Vercel edge config](https://vercel.com/docs/concepts/edge-network/edge-config) is a data store with negligible read latency that can be used to store
 small amounts of data. I use it to conditionally hide or show a maintenance banner on my site. With edge configs, I can
 turn it on and off and change the message without having to redeploy my site.
 
@@ -229,11 +229,22 @@ return (
 );
 ```
 
+Edge configs can also be used as a feature flagging system. I have a different edge config for
+each environment (local dev, production, and preview deployments), and I can use them to conditionally
+turn on and off features I'm testing but not quite ready to release.
+
+You are [quite limited](https://vercel.com/docs/concepts/edge-network/edge-config/edge-config-limits#limits) in the number
+of edge configs you can have, and the size each config can be, so if you implement this in a large project with lots
+of flags, you may start hitting the limits early, especially on the hobby plan from Vercel.
+
 ## MDX Rendering
 
 I use [MDX](https://mdxjs.com/) to render my blog posts. MDX is a superset of markdown that allows you to embed React components in your markdown, among other
 advanced features. In the app directory paradigm of NextJS, MDX rendering is a bit tricker than in the
 past, but it's still possible.
+
+Rather than MDX files being pages, they're just files in my [`/posts` directory](https://github.com/keegandonley/keegan.codes/tree/main/src/posts). I then import them into my blog and the route handler
+picks the correct one at request time based on the slug.
 
 I have each post in a file, with the main content, and some exports at the top for the metadata:
 
@@ -281,9 +292,9 @@ return (
 ```
 
 MDX is great because I can import React components and render them, yielding much more dynamic
-blog posts than on my old blog. For example, I can render elements like my theme toggle:
+blog posts than on my old blog. For example, I can render elements like my avatar image:
 
-<ThemeToggle relative ignoreGlobalState />
+<Avatar />
 
 I plan to use this for more interactive posts in the future, but it's already being leveraged in
 a few places, like that OG image preview from earlier.
@@ -295,7 +306,36 @@ especially for ones I need to stand up quickly. However, I knew that I wanted my
 complex design that I felt would require an unweildy number of tailwind classes. I also wanted to be able to
 keep my CSS skills sharp, and building this website was a great way to do that.
 
+CSS modules, variables, and media queries come together to create a nice design system for my website,
+even without a CSS framework like Tailwind.
+
+```css
+.inner {
+  background: var(--theme-background);
+  width: var(--main-width);
+  max-width: var(--main-max-width);
+  margin: 0 auto;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  transform: translateY(100vh);
+  transition: transform var(--animation);
+  transition-delay: 10ms;
+  border-radius: calc(var(--tiny-border-radius) * 2);
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 700px) {
+  .inner {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+}
+```
+
 ## Conclusion
 
-I hope you enjoyed this dive into how my new website is built! I'm really excited about the new features and look,
-and I'm, excited for what's to come. If you have any questions, feel free to reach out to me on [Twitter](https://keegan.codes/twitter) or [Bluesky](https://keegan.codes/bsky)!
+I hope you enjoyed this dive into how my new website is built! There's a lot to unpack here, and a ton
+of new features I'd like to dive into more in future posts. I'm really excited about the new features and look,
+and I'm looking forward to what's to come. If you have any questions, feel free to reach out to me on [Twitter](https://keegan.codes/twitter) or [Bluesky](https://keegan.codes/bsky)!
