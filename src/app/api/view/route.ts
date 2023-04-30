@@ -20,3 +20,15 @@ export async function POST(request: Request) {
 
   return new Response("Success!", { status: 200 });
 }
+
+export async function GET(request: Request) {
+  const url = new URL(request.url);
+  const slug = url.searchParams.get("slug");
+  const conn = connect(config);
+  const results = await conn.execute(
+    "SELECT views FROM post_page_views_aggregate WHERE slug = ?",
+    [slug]
+  );
+
+  return new Response(JSON.stringify(results.rows[0]), { status: 200 });
+}

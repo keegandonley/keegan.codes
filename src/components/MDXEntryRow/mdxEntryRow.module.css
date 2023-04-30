@@ -148,6 +148,25 @@
   padding-top: 0.5rem;
 }
 
+.viewCount {
+  font-size: 0.8rem;
+  padding-top: 1rem;
+  padding-left: 2rem;
+  margin-right: auto;
+
+  color: var(--theme-text-secondary);
+
+  display: flex;
+  text-align: center;
+  align-items: center;
+  column-gap: 0.7rem;
+  width: 100%;
+}
+
+.viewCount svg {
+  opacity: 0.5;
+}
+
 /* Only run the hover animations on larger screens */
 @media only screen and (min-width: 650px) {
   .wrapper:hover .h1,

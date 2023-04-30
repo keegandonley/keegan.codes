@@ -10,7 +10,11 @@ interface DateProps {
 export const Date = ({ date }: DateProps) => {
   return (
     <p className={styles.date}>
-      <FontAwesomeIcon icon={faCalendar} className={styles.sectionIcon} />{" "}
+      <FontAwesomeIcon
+        icon={faCalendar}
+        fixedWidth
+        className={styles.sectionIcon}
+      />{" "}
       {formatDate(date)}
     </p>
   );
