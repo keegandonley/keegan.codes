@@ -26,7 +26,7 @@ export async function GET(request: Request) {
   const slug = url.searchParams.get("slug");
   const conn = connect(config);
   const results = await conn.execute(
-    "SELECT COUNT(*) as views FROM post_page_views WHERE slug = ?",
+    "SELECT views FROM post_page_views_aggregate WHERE slug = ?",
     [slug]
   );
 
