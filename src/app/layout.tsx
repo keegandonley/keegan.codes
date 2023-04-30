@@ -12,6 +12,7 @@ import { Banner } from "@/components/Banner";
 import { Suspense } from "react";
 import { BASEURL, DESCRIPTION, NAME } from "@/metadata";
 import MainNavigation from "@/components/MainNavigation";
+import { ModalBoundary } from "@/components/ModalBoundary";
 
 config.autoAddCss = false;
 
@@ -34,7 +35,7 @@ export default async function RootLayout({ children, postModal }: any) {
         {event?.active ? <Banner level={1}>{event.text}</Banner> : null}
         <MainNavigation initialTheme={theme} hasChosenTheme={hasChosenTheme} />
         <main>{children}</main>
-        {postModal}
+        <ModalBoundary>{postModal}</ModalBoundary>
         {/* Adding suspense to try https://github.com/vercel/next.js/issues/48442#issuecomment-1519139562 */}
         <Suspense>
           <Analytics />
