@@ -1,4 +1,5 @@
 import { connect } from "@planetscale/database";
+import { NextResponse } from "next/server";
 
 const config = {
   host: process.env.host,
@@ -27,9 +28,7 @@ export async function GET(request: Request) {
       })
     );
 
-    return new Response(JSON.stringify({ updated: results.rows.length }), {
-      status: 200,
-    });
+    return NextResponse.json({ ok: true });
   } catch (ex) {
     console.error(ex);
     return new Response(JSON.stringify(ex), { status: 500 });
