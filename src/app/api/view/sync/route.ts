@@ -18,9 +18,10 @@ export async function GET(request: Request) {
     await Promise.all(
       results.rows.map((row: any) => {
         try {
+          console.log("updated slug", row.slug, "with", row.views, "views");
           return conn.execute(
             "INSERT INTO post_page_views_aggregate (slug, views) VALUES (?, ?) ON DUPLICATE KEY UPDATE views = ?",
-            [row.views, row.views, row.views]
+            [row.slug, row.views, row.views]
           );
         } catch (ex) {
           console.error(ex);
