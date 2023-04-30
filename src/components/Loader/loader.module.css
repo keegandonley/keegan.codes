@@ -1,0 +1,19 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.container {
+  animation-duration: 0.3s;
+  animation-name: fadeIn;
+}
+
+.icon {
+  margin: 0 auto;
+  color: var(--theme-text);
+}
