@@ -1,11 +1,15 @@
 .parent {
   position: relative;
-  height: var(--height);
   margin-top: 2rem;
   margin-bottom: 4rem;
+  display: flex;
 }
 
 .parent img {
   object-fit: contain;
   object-position: center;
+  width: 100%;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 0.5rem var(--shadow-color));
+  max-width: 700px;
 }
