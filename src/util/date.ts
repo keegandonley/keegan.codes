@@ -1,10 +1,11 @@
 export const formatDate = (date?: Date) => {
-  return (
+  const result =
     date?.toLocaleString("en-US", {
-      timeZone: "America/Chicago",
+      timeZone: "UTC",
       month: "long",
       day: "numeric",
       year: "numeric",
-    }) ?? ""
-  );
+    }) ?? "";
+  console.log(date, result);
+  return result;
 };

@@ -29,6 +29,7 @@ export default function Home() {
         slug: component.slug,
         description: component.description,
         cover: component.cover,
+        published: component.published,
       } as Post;
     })
     .slice(0, 4);
