@@ -14,7 +14,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowCircleLeft,
   faArrowCircleRight,
+  faCalendar,
 } from "@fortawesome/pro-solid-svg-icons";
+import { formatDate } from "@/util/date";
 
 interface PostWithMetadata extends Post {
   metadata?: ImageMetadata;
@@ -67,6 +69,14 @@ export const ClientRenderer = ({ posts }: ClientRendererProps) => {
             >
               <span className={styles.text}>
                 <h1>{post.title}</h1>
+                <p className={styles.metadata}>
+                  <FontAwesomeIcon
+                    icon={faCalendar}
+                    fixedWidth
+                    className={styles.metadataIcon}
+                  />
+                  {formatDate(post.published)}
+                </p>
                 <p>{post.description}</p>
               </span>
               <Image
