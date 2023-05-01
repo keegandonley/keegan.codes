@@ -1,7 +1,7 @@
 export const formatDate = (date?: Date) => {
   const result =
     date?.toLocaleString("en-US", {
-      timeZone: "America/Chicago",
+      timeZone: "UTC",
       month: "long",
       day: "numeric",
       year: "numeric",
