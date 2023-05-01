@@ -6,6 +6,5 @@ export const formatDate = (date?: Date) => {
       day: "numeric",
       year: "numeric",
     }) ?? "";
-  console.log(date, result);
   return result;
 };
