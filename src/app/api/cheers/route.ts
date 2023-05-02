@@ -1,5 +1,6 @@
 import { connect } from "@planetscale/database";
 import kv from "@vercel/kv";
+import { get } from "@vercel/edge-config";
 
 const config = {
   host: process.env.host,
@@ -7,7 +8,6 @@ const config = {
   password: process.env.password,
 };
 
-const MAX_ALLOWED_IN_24_HOURS = 30;
 const ONE_DAY = 86400000;
 
 export async function POST(request: Request) {
@@ -15,36 +15,29 @@ export async function POST(request: Request) {
   if (!res.id) {
     return new Response("Error! Who are you?", { status: 400 });
   }
-  const count = parseInt(
-    ((await kv.get(`cheers-rl-${res.id}`)) as string) ?? 0
-  );
-  const starts = parseInt(
-    ((await kv.get(`cheers-rl-starts-${res.id}`)) as string) ?? 0
-  );
 
-  if (starts === 0) {
-    kv.set(`cheers-rl-starts-${res.id}`, Date.now());
+  const maxAllowed = (await get("cheersLimit")) as number | undefined;
+
+  if (!maxAllowed) {
+    return new Response("Error! Missing maxAllowed parameter", { status: 500 });
   }
 
-  const currentTs = Date.now();
-  const diff = currentTs - starts;
+  const key = `cheers-${res.id}`;
 
-  let quota = MAX_ALLOWED_IN_24_HOURS - count;
-  if (diff > ONE_DAY) {
-    quota = MAX_ALLOWED_IN_24_HOURS;
-    kv.set(`cheers-rl-starts-${res.id}`, Date.now());
-    kv.set(`cheers-rl-${res.id}`, 0);
+  const value = await kv.get(key);
+  const count = value ? parseInt(value as string) : -1;
+
+  if (count < 0) {
+    await kv.set(key, 0, { ex: ONE_DAY });
   }
 
-  console.log(quota, count, starts);
-  if (quota <= 0) {
-    return new Response(
-      `Error! You've reached your limit! Try again in ${ONE_DAY - diff}ms`,
-      { status: 400 }
-    );
+  if (count >= maxAllowed) {
+    return new Response(`Error! You've reached your limit! Try again later!`, {
+      status: 400,
+    });
   }
 
-  kv.set(`cheers-rl-${res.id}`, count + 1);
+  kv.incr(key);
   const conn = connect(config);
   const results = await conn.execute(
     "INSERT INTO post_cheers (slug, cheers_date, location) VALUES (?, ?, ?)",
@@ -52,7 +45,6 @@ export async function POST(request: Request) {
   );
 
   if (results.rowsAffected !== 1) {
-    kv.set(`cheers-rl-${res.id}`, count);
     return new Response("Error!", { status: 500 });
   }
 
@@ -67,8 +59,6 @@ export async function GET(request: Request) {
     "SELECT count(*) as count FROM post_cheers WHERE slug = ?",
     [slug]
   );
-
-  console.log(results);
 
   return new Response(JSON.stringify(results.rows[0]), { status: 200 });
 }
