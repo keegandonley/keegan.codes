@@ -1,5 +1,4 @@
 import { merge } from "@/util/classNames";
-import { cache } from "react";
 
 interface ViewCountRendererProps {
   slug: string;

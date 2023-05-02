@@ -15,6 +15,8 @@ import wordCounts from "../../../post-word-counts.json";
 import { ReadingTime } from "@/components/MDXEntryRow/components/ReadingTime";
 import { BASEURL, NAME } from "@/metadata";
 import { Track } from "@/components/Track";
+import { Cheers } from "@/components/Cheers";
+import { get } from "@vercel/edge-config";
 
 export const runtime = "experimental-edge";
 
@@ -28,6 +30,7 @@ export async function generateMetadata({
   params,
 }: BlogPageProps): Promise<Metadata> {
   const componentKey = getKey({ slug: params.slug });
+
   if (componentKey) {
     const found = getComponentForKey({ key: componentKey });
 
@@ -65,8 +68,9 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogSlugPage({ params }: BlogPageProps) {
+export default async function BlogSlugPage({ params }: BlogPageProps) {
   const componentKey = getKey({ slug: params.slug });
+  const flags: any = await get("flags");
 
   if (!componentKey) {
     notFound();
@@ -104,8 +108,14 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
         </Link>
         <H1 className={styles.title}>{title}</H1>
         <div className={styles.metadata}>
-          <ReadingTime wordCount={wordCount} />
+          {flags?.cheers ? (
+            <div className={styles.cheersWrapper}>
+              <Cheers slug={params.slug} location="blog" />
+            </div>
+          ) : null}
+          <ReadingTime wordCount={wordCount} className={styles.readingTime} />
         </div>
+
         <Component />
         <Track slug={params.slug} inModal={false} />
       </article>

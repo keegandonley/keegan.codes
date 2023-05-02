@@ -7,3 +7,9 @@ interface AggregateBody {
   slug: string;
   views: number;
 }
+
+interface CheersBody {
+  slug: string;
+  location: string;
+  id: string;
+}
