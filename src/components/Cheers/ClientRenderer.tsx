@@ -72,6 +72,7 @@ export const CheersClientRenderer = ({
         className={merge(styles.wrapper, cheersing && styles.cheersing)}
         onClick={handleClickCheers}
         disabled={loading}
+        aria-label="Give cheers"
       >
         <FontAwesomeIcon
           icon={faChampagneGlass}
