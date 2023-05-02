@@ -1,0 +1,118 @@
+.wrapper {
+  border: none;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  background: none;
+  cursor: pointer;
+  border-radius: 100%;
+  margin-left: 0.5rem;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  padding-top: 12px;
+  padding-right: 0.2rem;
+  color: var(--theme-text-secondary);
+  opacity: 0.5;
+  font-size: 0.8rem;
+}
+
+.glass {
+  position: absolute;
+  font-size: 1.5rem;
+  bottom: 8px;
+  color: #aaa;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease-in-out;
+  transition-delay: 0;
+  color: var(--theme-text-secondary);
+  opacity: 0.5;
+  text-shadow: var(--theme-box-shadow-standard);
+}
+
+.left {
+  left: 4px;
+  transform: rotate(-15deg);
+}
+
+.right {
+  right: 4px;
+  transform: rotate(15deg);
+}
+
+.wrapper:hover .left {
+  transform: rotate(-15deg) translateY(2px);
+  transition-delay: 0;
+}
+
+.wrapper:hover .right {
+  transform: rotate(15deg) translateY(2px);
+  transition-delay: 0;
+}
+
+.wrapper:active .left,
+.wrapper.cheersing .left {
+  transform: rotate(12deg) translateX(6px) translateY(-2px);
+  transition-delay: 0;
+}
+
+.wrapper:active .right,
+.wrapper.cheersing .right {
+  transform: rotate(-12deg) translateX(-6px) translateY(-2px);
+  transition-delay: 0;
+}
+
+.wrapper.cheersing .bubble {
+  opacity: 1;
+}
+
+.bubbles {
+  position: absolute;
+  width: 10px;
+  top: -8px;
+  left: 20px;
+}
+
+.bubble {
+  fill: var(--theme-text-secondary);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* In order from bottom to top (I know...) */
+.bubble8 {
+  transition-delay: 0.1s;
+}
+
+.bubble6 {
+  transition-delay: 0.2s;
+}
+
+.bubble4 {
+  transition-delay: 0.1s;
+}
+
+.bubble1 {
+  transition-delay: 0.2s;
+}
+
+.bubble2 {
+  transition-delay: 0.3s;
+}
+
+.bubble3 {
+  transition-delay: 0.4s;
+}
+
+.bubble5 {
+  transition-delay: 0.3s;
+}
+
+.bubble7 {
+  transition-delay: 0.4s;
+}
