@@ -16,7 +16,6 @@ import { ReadingTime } from "@/components/MDXEntryRow/components/ReadingTime";
 import { BASEURL, NAME } from "@/metadata";
 import { Track } from "@/components/Track";
 import { Cheers } from "@/components/Cheers";
-import { get } from "@vercel/edge-config";
 
 export const runtime = "experimental-edge";
 
@@ -68,9 +67,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function BlogSlugPage({ params }: BlogPageProps) {
+export default function BlogSlugPage({ params }: BlogPageProps) {
   const componentKey = getKey({ slug: params.slug });
-  const flags: any = await get("flags");
 
   if (!componentKey) {
     notFound();
@@ -108,11 +106,9 @@ export default async function BlogSlugPage({ params }: BlogPageProps) {
         </Link>
         <H1 className={styles.title}>{title}</H1>
         <div className={styles.metadata}>
-          {flags?.cheers ? (
-            <div className={styles.cheersWrapper}>
-              <Cheers slug={params.slug} location="blog" />
-            </div>
-          ) : null}
+          <div className={styles.cheersWrapper}>
+            <Cheers slug={params.slug} location="blog" />
+          </div>
           <ReadingTime wordCount={wordCount} className={styles.readingTime} />
         </div>
 

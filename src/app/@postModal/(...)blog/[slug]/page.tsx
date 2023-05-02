@@ -1,10 +1,8 @@
 import { Modal } from "@/components/Modal";
-import { PostModal as _PostModal } from "@/components/PostModal";
+import { PostModal } from "@/components/PostModal";
 import "../../../syntax-theme.css";
 import wordCounts from "../../../../post-word-counts.json";
 import { Track } from "@/components/Track";
-
-const PostModal = _PostModal as any;
 
 export const runtime = "nodejs";
 

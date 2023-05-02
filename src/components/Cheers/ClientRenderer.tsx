@@ -2,7 +2,7 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./cheers.module.css";
-import { faChampagneGlass, faCircle } from "@fortawesome/pro-solid-svg-icons";
+import { faChampagneGlass } from "@fortawesome/pro-solid-svg-icons";
 import { merge } from "@/util/classNames";
 import { useCallback, useRef, useState } from "react";
 import va from "@vercel/analytics";

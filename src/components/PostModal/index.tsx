@@ -7,7 +7,6 @@ import { BottomFade } from "@/components/BottomFade";
 import { BUCKET_URL } from "@/util/r2";
 import { H1 } from "@/components/Post/Heading/H1";
 import { ReadingTime } from "../MDXEntryRow/components/ReadingTime";
-import { get } from "@vercel/edge-config";
 import { Cheers } from "../Cheers";
 
 interface PostModalProps {
@@ -15,9 +14,8 @@ interface PostModalProps {
   wordCount: number;
 }
 
-export const PostModal = async ({ slug, wordCount }: PostModalProps) => {
+export const PostModal = ({ slug, wordCount }: PostModalProps) => {
   const componentKey = getKey({ slug });
-  const flags: any = await get("flags");
 
   if (!componentKey) {
     notFound();
@@ -51,11 +49,9 @@ export const PostModal = async ({ slug, wordCount }: PostModalProps) => {
       <article className={styles.article}>
         <H1 className={styles.title}>{title}</H1>
         <div className={styles.metadata}>
-          {flags?.cheers ? (
-            <div className={styles.cheersWrapper}>
-              <Cheers slug={slug} location="modal" />
-            </div>
-          ) : null}
+          <div className={styles.cheersWrapper}>
+            <Cheers slug={slug} location="modal" />
+          </div>
           <ReadingTime className={styles.readingTime} wordCount={wordCount} />
         </div>
         <Component />
