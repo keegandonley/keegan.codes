@@ -11,7 +11,7 @@ import { background } from "@/theme/colors";
 
 export const runtime = "experimental-edge";
 
-export default async function LibraryPage() {
+export default function LibraryPage() {
   const books = Object.keys(Books).map((key) => {
     const component = (Books as any)[key] as Book;
     return {
