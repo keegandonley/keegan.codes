@@ -10,6 +10,8 @@ const config = {
 
 const ONE_DAY = 86400000;
 
+export const runtime = "edge";
+
 export async function POST(request: Request) {
   const res: CheersBody = await request.json();
   if (!res.id) {

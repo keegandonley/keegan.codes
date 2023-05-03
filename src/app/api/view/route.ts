@@ -6,6 +6,8 @@ const config = {
   password: process.env.password,
 };
 
+export const runtime = "edge";
+
 export async function POST(request: Request) {
   const res: TrackBody = await request.json();
   const conn = connect(config);
