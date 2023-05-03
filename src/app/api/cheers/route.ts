@@ -8,7 +8,7 @@ const config = {
   password: process.env.password,
 };
 
-const ONE_DAY = 86400000;
+const HALF_DAY_SECONDS = 60 * 60 * 12;
 
 export const runtime = "edge";
 
@@ -30,7 +30,7 @@ export async function POST(request: Request) {
   const count = value ? parseInt(value as string) : -1;
 
   if (count < 0) {
-    await kv.set(key, 0, { ex: ONE_DAY });
+    await kv.set(key, 0, { ex: HALF_DAY_SECONDS });
   }
 
   if (count >= maxAllowed) {
