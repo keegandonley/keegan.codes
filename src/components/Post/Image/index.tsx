@@ -1,13 +1,13 @@
-import { merge } from "@/util/classNames";
+import { injectVariables, merge } from "@/util/classNames";
 import imageStyles from "./image.module.css";
 import Image from "next/image";
 import { BUCKET_URL } from "@/util/r2";
 import { getImageMetadata, parseSource } from "@/util/image";
 
-const getImageRatio = (metadata?: ImageMetadata) => {
+const getAspectRatio = (metadata?: ImageMetadata) => {
   if (!metadata) return 1;
 
-  return metadata.height / metadata.width;
+  return metadata.width / metadata.height;
 };
 
 // For now this is `any` because I can't figure out how to
@@ -15,30 +15,24 @@ const getImageRatio = (metadata?: ImageMetadata) => {
 export const Img = ({ src, className, alt }: any) => {
   const [imgUrl, flags] = parseSource(src);
   const metadata = getImageMetadata(imgUrl);
-  const ratio = getImageRatio(metadata);
+  const cssAspectRatio = getAspectRatio(metadata);
 
   const shouldHideShadow = flags.includes("hideShadow");
   const isTableMode = flags.includes("tableMode");
-  const isGiant = flags.includes("giant");
-  const isTiny = flags.includes("tiny");
 
   if (metadata) {
-    const isVertical = metadata.height > metadata.width;
     return (
       <span
         className={merge(
           imageStyles.imageParent,
-          isVertical && imageStyles.vertical,
-          ratio < 0.5 && imageStyles.short,
-          isTableMode && imageStyles.tableMode,
-          isGiant && imageStyles.giant,
-          isTiny && imageStyles.tiny
+          isTableMode && imageStyles.tableMode
         )}
-        data-ratio={ratio}
+        data-ratio={cssAspectRatio}
         data-flags={flags.join(",")}
         data-width={metadata.width}
         data-height={metadata.height}
         data-file={imgUrl}
+        style={injectVariables([["aspect-ratio", String(cssAspectRatio)]])}
       >
         <Image
           src={`${BUCKET_URL}/${imgUrl}`}
