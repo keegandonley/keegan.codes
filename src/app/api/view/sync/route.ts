@@ -7,7 +7,7 @@ const config = {
   password: process.env.password,
 };
 
-export async function GET(request: Request) {
+export async function GET() {
   const conn = connect(config);
   try {
     const results = await conn.execute(

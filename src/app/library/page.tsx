@@ -11,7 +11,7 @@ import { background } from "@/theme/colors";
 
 export const runtime = "experimental-edge";
 
-export default function LibraryPage() {
+export default async function LibraryPage() {
   const books = Object.keys(Books).map((key) => {
     const component = (Books as any)[key] as Book;
     return {
@@ -41,6 +41,7 @@ export default function LibraryPage() {
                   key={post.slug}
                   index={index}
                   columns={4}
+                  showViewCount={false}
                   {...post}
                   book
                 />
