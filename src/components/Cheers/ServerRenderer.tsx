@@ -13,7 +13,12 @@ const getValue = async (slug: string): Promise<number> => {
         process.env.NODE_ENV === "development"
           ? "http://localhost:3000"
           : "https://keegan.codes"
-      }/api/cheers?slug=${slug}`
+      }/api/cheers?slug=${slug}`,
+      {
+        next: {
+          revalidate: 20,
+        },
+      }
     );
 
     const { count } = await data.json();

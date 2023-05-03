@@ -41,6 +41,7 @@ export default function LibraryPage() {
                   key={post.slug}
                   index={index}
                   columns={4}
+                  showViewCount={false}
                   {...post}
                   book
                 />

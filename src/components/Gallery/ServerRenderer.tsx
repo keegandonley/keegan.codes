@@ -15,7 +15,12 @@ export default async function GalleryRenderer({ gallery }: GalleryProps) {
       process.env.NODE_ENV === "development"
         ? "http://localhost:3000"
         : "https://keegan.codes"
-    }/api/gallery?gallery=${gallery}`
+    }/api/gallery?gallery=${gallery}`,
+    {
+      next: {
+        revalidate: 60 * 60,
+      },
+    }
   );
 
   const parsed = (await data.json()) as { gallery: Gallery; bucket: string };

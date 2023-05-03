@@ -13,7 +13,10 @@ import { Date } from "./components/Date";
 import { Tags } from "./components/Tags";
 import { getIsLikelyMobile } from "@/util/userAgent";
 import { ReadingTime } from "./components/ReadingTime";
-import { ViewCount } from "../ViewCount";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
 
 interface MDXEntryRowProps extends ElementBaseProps {
   title?: string;
@@ -93,7 +96,9 @@ export const MDXEntryRow = ({
               <ReadingTime wordCount={wordCount} />
             </div>
             {slug && showViewCount && (
-              <ViewCount slug={slug} className={styles.viewCount} />
+              <Suspense>
+                <DynamicViewCount slug={slug} className={styles.viewCount} />
+              </Suspense>
             )}
             {tags && tags.length > 0 ? <Tags tags={tags} /> : false}
           </div>
