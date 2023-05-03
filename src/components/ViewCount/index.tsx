@@ -1,4 +1,3 @@
-import { merge } from "@/util/classNames";
 import { ViewCountRenderer as _ViewCountRenderer } from "./Renderer";
 import { Suspense } from "react";
 import { ViewCountFallback } from "./Fallback";
@@ -12,7 +11,7 @@ interface ViewCountProps {
   className?: string;
 }
 
-export const ViewCount = ({ slug, className }: ViewCountProps) => {
+export default function ViewCount({ slug, className }: ViewCountProps) {
   return (
     <span className={className}>
       <FontAwesomeIcon icon={faEye} fixedWidth />
@@ -21,4 +20,4 @@ export const ViewCount = ({ slug, className }: ViewCountProps) => {
       </Suspense>
     </span>
   );
-};
+}
