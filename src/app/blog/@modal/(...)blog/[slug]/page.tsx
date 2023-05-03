@@ -3,7 +3,7 @@ import { PostModal } from "@/components/PostModal";
 import "../../../../syntax-theme.css";
 import wordCounts from "../../../../../post-word-counts.json";
 
-export const runtime = "nodejs";
+export const runtime = "experimental-edge";
 
 interface InterceptorProps {
   params: {
