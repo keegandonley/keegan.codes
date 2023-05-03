@@ -6,9 +6,6 @@ import styles from "./blogPreview.module.css";
 import Image from "next/image";
 import { BUCKET_URL } from "@/util/r2";
 import { parseToProps } from "@/util/image";
-import { H1 } from "../Post/Heading/H1";
-import { Paragraph } from "../Paragraph";
-import { BottomFade } from "../BottomFade";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

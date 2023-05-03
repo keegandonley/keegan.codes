@@ -1,6 +1,5 @@
 import { Post } from "@/types/post";
 import { ClientRenderer } from "./ClientRenderer";
-import styles from "./blogPreview.module.css";
 import { getImageMetadata } from "@/util/image";
 
 interface BlogPreviewProps {
