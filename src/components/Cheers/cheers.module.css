@@ -18,7 +18,7 @@
   padding-top: 12px;
   padding-right: 0.2rem;
   color: var(--theme-text-secondary);
-  opacity: 0.5;
+  opacity: 0.7;
   font-size: 0.8rem;
 }
 
@@ -31,7 +31,7 @@
   transition: transform 0.2s ease-in-out;
   transition-delay: 0;
   color: var(--theme-text-secondary);
-  opacity: 0.5;
+  opacity: 0.6;
   text-shadow: var(--theme-box-shadow-standard);
 }
 

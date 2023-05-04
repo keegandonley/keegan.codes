@@ -16,6 +16,10 @@ import { ReadingTime } from "@/components/MDXEntryRow/components/ReadingTime";
 import { BASEURL, NAME } from "@/metadata";
 import { Track } from "@/components/Track";
 import { Cheers } from "@/components/Cheers";
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
+
+const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
 
 export const runtime = "experimental-edge";
 
@@ -104,12 +108,25 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
         <Link href="/blog" className={styles.back}>
           <FontAwesomeIcon icon={faArrowLeft} /> back
         </Link>
-        <H1 className={styles.title}>{title}</H1>
-        <div className={styles.metadata}>
-          <div className={styles.cheersWrapper}>
-            <Cheers slug={params.slug} location="blog" />
+        <div className={styles.topSection}>
+          <H1 className={styles.title}>{title}</H1>
+          <div className={styles.metadata}>
+            <div className={styles.cheersWrapper}>
+              <Cheers slug={params.slug} location="blog" />
+            </div>
+            <div className={styles.subItems}>
+              <ReadingTime
+                wordCount={wordCount}
+                className={styles.readingTime}
+              />
+              <Suspense>
+                <DynamicViewCount
+                  slug={params.slug}
+                  className={styles.viewCount}
+                />
+              </Suspense>
+            </div>
           </div>
-          <ReadingTime wordCount={wordCount} className={styles.readingTime} />
         </div>
 
         <Component />
