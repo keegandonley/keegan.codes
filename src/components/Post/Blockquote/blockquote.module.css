@@ -17,4 +17,5 @@
 .bq code {
   background: none;
   color: var(--theme-text);
+  word-break: break-word;
 }
