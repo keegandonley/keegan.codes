@@ -9,7 +9,6 @@ import tagPageStyles from "./tagPage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/pro-solid-svg-icons";
 import Link from "next/link";
-import { get } from "@vercel/edge-config";
 
 export const runtime = "experimental-edge";
 
@@ -20,7 +19,6 @@ interface BlogTagPageProps {
 }
 
 export default async function BlogTagPage({ params }: BlogTagPageProps) {
-  const flags: any = await get("flags");
   const decodedTag = decodeURIComponent(params.tag);
 
   const posts = Object.keys(Posts)
@@ -66,7 +64,7 @@ export default async function BlogTagPage({ params }: BlogTagPageProps) {
                 <MDXEntryRow
                   key={post.slug}
                   index={index}
-                  showViewCount={flags?.viewCounts}
+                  showViewCount
                   {...post}
                 />
               );
