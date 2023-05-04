@@ -10,12 +10,7 @@ import { BASEURL, NAME } from "@/metadata";
 const posts = Object.keys(Posts).map((key) => {
   const component = (Posts as any)[key] as Post;
   return {
-    title: component.title,
     slug: component.slug,
-    tags: component.tags ?? [],
-    description: component.description,
-    cover: component.cover,
-    published: component.published,
     shortCodes: component.shortCodes,
   };
 });
@@ -70,7 +65,7 @@ export default async function ShortCodePage({
   params: { shortCode },
 }: ShortCodePageProps) {
   const foundPost = posts.find((post) => post.shortCodes?.includes(shortCode));
-
+  console.log(foundPost?.slug);
   if (foundPost?.slug) {
     redirect(`/blog/${foundPost.slug}`);
   }

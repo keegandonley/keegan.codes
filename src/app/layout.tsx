@@ -18,7 +18,6 @@ config.autoAddCss = false;
 
 const font = Raleway({
   subsets: ["latin"],
-  weight: ["100", "200", "600", "900"],
 });
 
 export default async function RootLayout({ children, postModal }: any) {
