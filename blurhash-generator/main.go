@@ -56,7 +56,7 @@ func executeBucket(file string, bucket string, bucketURL string) {
 
 			// blurHash, _ := blurhash.Encode(4, 3, image)
 
-			newImage := resize.Resize(100, 0, blurred, resize.NearestNeighbor)
+			newImage := resize.Resize(50, 0, blurred, resize.NearestNeighbor)
 
 			// Encode the blurred image to JPEG
 			var buf bytes.Buffer
