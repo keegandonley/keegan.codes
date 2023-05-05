@@ -32,6 +32,12 @@ export default function Home() {
         published: component.published,
       } as Post;
     })
+    .sort((a, b) => {
+      if (!a.published || !b.published) {
+        return 0;
+      }
+      return b.published.getTime() - a.published.getTime();
+    })
     .slice(0, 4);
 
   return (

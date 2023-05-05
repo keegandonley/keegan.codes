@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { BottomFade } from "@/components/BottomFade";
 import Image from "next/image";
-import { H1 } from "@/components/Post/Heading/H1";
 import { getImageMetadata, parseSource, parseToProps } from "@/util/image";
 import { BUCKET_URL } from "@/util/r2";
 import { notFound } from "next/navigation";
@@ -12,15 +11,9 @@ import { Metadata } from "next";
 import { getComponentForKey, getKey } from "../util";
 import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
 import wordCounts from "../../../post-word-counts.json";
-import { ReadingTime } from "@/components/MDXEntryRow/components/ReadingTime";
 import { BASEURL, NAME } from "@/metadata";
 import { Track } from "@/components/Track";
-import { Cheers } from "@/components/Cheers";
-import { Suspense } from "react";
-import dynamic from "next/dynamic";
 import { PostHeader } from "@/components/PostHeader";
-
-const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
 
 export const runtime = "experimental-edge";
 

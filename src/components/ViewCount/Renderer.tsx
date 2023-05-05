@@ -20,7 +20,7 @@ const getValue = async (slug: string): Promise<number> => {
 
     return views;
   } catch (ex) {
-    console.error("Error for slug", slug, ex);
+    console.error("Error for slug when getting page views", slug, ex);
     return 0;
   }
 };
