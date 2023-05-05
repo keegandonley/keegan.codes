@@ -1,14 +1,13 @@
 .wrapper {
   display: flex;
   width: 100%;
-  padding: 1rem 0;
   align-items: center;
   border-left: 4px solid var(--theme-text);
 
-  padding: 2rem;
+  padding: 1.2rem;
   border-radius: 1rem;
   box-shadow: var(--theme-box-shadow-small);
-  margin: 2rem 0 4rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .wrapper p {
