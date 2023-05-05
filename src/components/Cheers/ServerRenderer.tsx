@@ -25,7 +25,7 @@ const getValue = async (slug: string): Promise<number> => {
 
     return parseInt(count);
   } catch (ex) {
-    console.error("Error for slug", slug, ex);
+    console.error("Error for slug when getting cheers count", slug, ex);
     return 0;
   }
 };
