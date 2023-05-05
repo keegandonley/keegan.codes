@@ -31,6 +31,7 @@ import * as CalendarTutorial from "./how-to-build-a-calendar-component-in-react.
 import * as HomeNetwork from "./my-home-network-configuration-for-speed-and-privacy.mdx";
 import * as DesignHobby from "./getting-back-into-design-work.mdx";
 import * as Stars from "./my-first-real-astrophotography-attempt.mdx";
+import * as Currying from "./currying-react.mdx";
 
 const posts = {
   Welcome,
@@ -66,6 +67,7 @@ const posts = {
   HomeNetwork,
   DesignHobby,
   Stars,
+  Currying,
 };
 
 export default posts;

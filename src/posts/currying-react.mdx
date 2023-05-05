@@ -1,0 +1,173 @@
+import { CurryingExample } from "../components/Post/Interactive/Currying";
+
+export const title = "A Helpful Currying Pattern for React Callbacks";
+export const slug = "a-helpful-currying-pattern-for-react-callbacks";
+export const tags = ["React", "javascript"];
+export const description = "How to use currying with React";
+export const cover = "react-currying-cover.png";
+export const published = new Date(2023, 4, 4);
+export const shortCodes = ["currying-react"];
+
+Currying is a technique in functional programming to break down function calls
+in a more modular way. A function is transformed from having multiple arguments,
+to being a sequence of single-argument calls. The pattern breaks down functions
+into smaller, more focused functions, often making code easier to read (and thus
+maintain). Currying isn’t unique to Javascript, but since I’m focusing on use-cases
+with React in this post, I’ll be focusing on Javascript.
+
+Before we get to React, though, here’s a basic example. Let’s start with
+an `add` function:
+
+```jsx
+const add = (a, b) => {
+  return a + b;
+};
+
+add(1, 2); // 3
+```
+
+Here’s the curried version:
+
+```jsx
+const curriedAdd = (a) => {
+  return (b) => {
+    return a + b;
+  };
+};
+
+curriedAdd(1)(2); // 3
+```
+
+The curried version still performs the same function, but you’ll not the
+important different in how the call is structured, with add(1, 2) in the original
+function, and curriedAdd(1)(2) in the curried version.
+
+It may or may not be immediately obvious why this pattern is valuable, so let’s
+look at a real application in React. Here we have three buttons, that perform
+actions on a number:
+
+<CurryingExample />
+
+```jsx
+const Math = () => {
+  const [value, setValue] = useState(1);
+
+  const handleIncrement = () => {
+    setValue((v) => v + 1);
+  };
+
+  const handleDecrement = () => {
+    setValue((v) => v - 1);
+  };
+
+  const handleDouble = () => {
+    setValue((v) => v * 2);
+  };
+
+  return (
+    <>
+      <p>Value is {value}</p>
+      <button onClick={handleIncrement}>Increment</button>
+      <button onClick={handleDecrement}>Decrement</button>
+      <button onClick={handleDouble}>Double</button>
+    </>
+  );
+};
+```
+
+Three buttons, three callbacks. This is usually the go-to, but let’s think about
+maintainability for a moment. Imagine we want to add some additional state, like
+hasChanged to indicate the value has been updated. We’d have to add it in three places!
+Not so good in terms of ease of maintenance. Okay, let’s try a single function:
+
+```jsx
+const Math = () => {
+  const [value, setValue] = useState(1);
+
+  const handleClick = (action) => {
+    if (action === "increment") {
+      return setValue((v) => v + 1);
+    }
+    if (action === "decrement") {
+      return setValue((v) => v - 1);
+    }
+    if (action === "double") {
+      return setValue((v) => v * 2);
+    }
+  };
+
+  return (
+    <>
+      <p>Value is {value}</p>
+      <button onClick={() => handleClick("increment")}>Increment</button>
+      <button onClick={() => handleClick("decrement")}>Decrement</button>
+      <button onClick={() => handleClick("double")}>Double</button>
+    </>
+  );
+};
+```
+
+Now, we only have one callback, but in order to call handleClick , we need to
+create an anonymous function for each onClick handler, in order to pass the field.
+Now, we can apply the principals of currying we learned earlier, and get a result
+that’s easy to understand and maintain.
+
+```jsx
+const Math = () => {
+  const [value, setValue] = useState(1);
+
+  const clickHandlerFor = (action) => {
+    return () => {
+      if (action === "increment") {
+        return setValue((v) => v + 1);
+      }
+      if (action === "decrement") {
+        return setValue((v) => v - 1);
+      }
+      if (action === "double") {
+        return setValue((v) => v * 2);
+      }
+    };
+  };
+
+  return (
+    <>
+      <p>Value is {value}</p>
+      <button onClick={clickHandlerFor("increment")}>Increment</button>
+      <button onClick={clickHandlerFor("decrement")}>Decrement</button>
+      <button onClick={clickHandlerFor("double")}>Double</button>
+    </>
+  );
+};
+```
+
+This works well for input components too!
+
+```jsx
+const Form = () => {
+  const [name, setName] = useState("");
+  const [termsAccepted, setTermsAccepted] = useState(false);
+
+  const inputHandlerFor = (field) => {
+    return (ev) => {
+      if (field === "name") {
+        return setName(ev.target.value);
+      }
+      if (field === "terms") {
+        return setTerms(ev.target.checked);
+      }
+    };
+  };
+
+  return (
+    <form>
+      <input type="text" onChange={inputHandlerFor("name")} value={name} />
+      <input
+        type="checkbox"
+        onChange={inputHandlerFor("terms")}
+        checked={termsAccepted}
+      />
+    </form>
+  );
+};
+```
