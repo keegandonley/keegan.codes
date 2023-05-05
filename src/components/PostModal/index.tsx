@@ -10,6 +10,7 @@ import { ReadingTime } from "../MDXEntryRow/components/ReadingTime";
 import { Cheers } from "../Cheers";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
+import { PostHeader } from "../PostHeader";
 
 const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
 
@@ -51,23 +52,12 @@ export const PostModal = ({ slug, wordCount }: PostModalProps) => {
         <BottomFade />
       </div>
       <article className={styles.article}>
-        <div className={styles.topSection}>
-          <H1 className={styles.title}>{title}</H1>
-          <div className={styles.metadata}>
-            <div className={styles.cheersWrapper}>
-              <Cheers slug={slug} location="modal" />
-            </div>
-            <div className={styles.subItems}>
-              <ReadingTime
-                className={styles.readingTime}
-                wordCount={wordCount}
-              />
-              <Suspense>
-                <DynamicViewCount slug={slug} className={styles.viewCount} />
-              </Suspense>
-            </div>
-          </div>
-        </div>
+        <PostHeader
+          slug={slug}
+          title={title}
+          location="modal"
+          wordCount={wordCount}
+        />
         <Component />
       </article>
     </>
