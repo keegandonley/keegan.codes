@@ -15,7 +15,22 @@
 }
 
 .bq code {
-  background: none;
+  background: var(--theme-blue-1);
+  border-left: 2px solid var(--theme-blue-2);
+
   color: var(--theme-text);
+  padding: 0.1rem 0.3rem;
+  box-shadow: var(--theme-box-shadow-tiny);
+  border-radius: 5px;
+  font-size: 1rem;
   word-break: break-word;
+}
+
+:global(body.dark) .bq code {
+  background: var(--theme-blue-3);
+}
+
+.bq pre code {
+  background: none;
+  border: none;
 }
