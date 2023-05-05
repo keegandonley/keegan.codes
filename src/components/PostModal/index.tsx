@@ -5,14 +5,7 @@ import { getImageMetadata, parseSource, parseToProps } from "@/util/image";
 import Image from "next/image";
 import { BottomFade } from "@/components/BottomFade";
 import { BUCKET_URL } from "@/util/r2";
-import { H1 } from "@/components/Post/Heading/H1";
-import { ReadingTime } from "../MDXEntryRow/components/ReadingTime";
-import { Cheers } from "../Cheers";
-import { Suspense } from "react";
-import dynamic from "next/dynamic";
 import { PostHeader } from "../PostHeader";
-
-const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
 
 interface PostModalProps {
   slug: string;
