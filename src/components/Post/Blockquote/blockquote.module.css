@@ -30,7 +30,7 @@
   background: var(--theme-blue-3);
 }
 
-.bq pre code {
+.bq.bq pre code {
   background: none;
   border: none;
 }
