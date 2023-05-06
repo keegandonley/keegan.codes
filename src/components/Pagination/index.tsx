@@ -47,6 +47,8 @@ export default function Pagination({ pageCount }: PaginationProps) {
         <button
           className={merge(styles.button, !hasPreviousPage && styles.hidden)}
           onClick={handleGoBack}
+          disabled={!hasPreviousPage}
+          aria-label="Go back one page"
         >
           <FontAwesomeIcon className={styles.icon} icon={faArrowCircleLeft} />
         </button>
@@ -60,6 +62,8 @@ export default function Pagination({ pageCount }: PaginationProps) {
         <button
           className={merge(styles.button, !hasNextPage && styles.hidden)}
           onClick={handleGoForward}
+          disabled={!hasNextPage}
+          aria-label="Go forward one page"
         >
           <FontAwesomeIcon className={styles.icon} icon={faArrowCircleRight} />
         </button>
