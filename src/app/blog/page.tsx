@@ -68,9 +68,6 @@ export default function BlogPage({ searchParams: { page } }: BlogPageProps) {
           <MDXEntryRow key="extra-3" index={-1} filler />
         </div>
       </section>
-      <Delay>
-        <AnimatedGraph />
-      </Delay>
     </>
   );
 }
