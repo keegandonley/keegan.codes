@@ -17,18 +17,18 @@
   }
 
   to {
-    opacity: 1;
+    opacity: 0.95;
   }
 }
 
 .container {
   background: var(--theme-background);
-  padding: 0.5rem 0.5rem;
+  padding: 0.3rem 0.3rem;
   border-radius: 100px;
   box-shadow: var(--theme-box-shadow-standard);
   color: var(--theme-text);
   font-weight: 200;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   display: flex;
   align-items: center;
   column-gap: 0.5rem;
@@ -47,7 +47,8 @@
 .icon {
   font-size: 1rem;
   color: var(--theme-text);
-  padding-top: 3px;
+  font-size: 1.5rem;
+  padding-top: 2px;
 }
 
 .button {
