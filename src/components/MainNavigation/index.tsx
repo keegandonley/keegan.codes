@@ -26,8 +26,6 @@ const MainNavigation = ({
   // const isExactlyBlogPage = isBlogPage && segments.length === 1;
   // const isExactlyLibraryPage = isLibraryPage && segments.length === 1;
 
-  console.log(segments);
-
   const isBlog404 = useMemo(() => {
     if (segments[0] === "blog" && segments[1] !== "(blogMainGroup)") {
       const slug = segments[1];
