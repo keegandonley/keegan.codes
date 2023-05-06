@@ -11,6 +11,16 @@
   pointer-events: none;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .container {
   background: var(--theme-background);
   padding: 0.5rem 0.5rem;
@@ -23,6 +33,11 @@
   align-items: center;
   column-gap: 0.5rem;
   pointer-events: all;
+  animation-duration: 0.3s;
+  animation-name: fadeIn;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  z-index: 99999;
 }
 
 .label pre {

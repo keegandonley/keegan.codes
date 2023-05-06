@@ -6,24 +6,24 @@ import {
   faArrowCircleLeft,
   faArrowCircleRight,
 } from "@fortawesome/pro-solid-svg-icons";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 import { merge } from "@/util/classNames";
+import { useBlogRouter } from "@/hooks/useBlogRouter";
 
 interface PaginationProps {
   pageCount: number;
-  pageNumber: number;
-  hasNextPage: boolean;
-  hasPreviousPage: boolean;
+  segment: string;
 }
 
-export default function Pagination({
-  pageCount,
-  pageNumber,
-  hasNextPage,
-  hasPreviousPage,
-}: PaginationProps) {
+export default function Pagination({ pageCount }: PaginationProps) {
   const router = useRouter();
+  const queryParams = useSearchParams();
+  const isExactlyBlogPage = useBlogRouter();
+
+  const pageNumber = parseInt(queryParams.get("page") ?? "1", 10);
+  const hasNextPage = pageNumber < pageCount;
+  const hasPreviousPage = pageNumber > 1;
 
   const handleGoForward = useCallback(() => {
     if (hasNextPage) {
@@ -36,6 +36,10 @@ export default function Pagination({
       router.push(`/blog?page=${pageNumber - 1}`);
     }
   }, [hasPreviousPage, pageNumber, router]);
+
+  if (!isExactlyBlogPage) {
+    return null;
+  }
 
   return (
     <div className={styles.wrapper}>

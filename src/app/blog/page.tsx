@@ -9,10 +9,6 @@ import { userTheme } from "@/util/cookies";
 import { BASEURL, NAME } from "@/metadata";
 import { postCount } from "@/post-count";
 import { background } from "@/theme/colors";
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
-
-const DynamicPagination = dynamic(() => import("@/components/Pagination"));
 
 export const runtime = "experimental-edge";
 
@@ -73,14 +69,6 @@ export default function BlogPage({ searchParams: { page } }: BlogPageProps) {
         </div>
       </section>
       <Delay>
-        <Suspense>
-          <DynamicPagination
-            pageCount={pageCount}
-            pageNumber={pageNumber}
-            hasNextPage={hasNextPage}
-            hasPreviousPage={hasPreviousPage}
-          />
-        </Suspense>
         <AnimatedGraph />
       </Delay>
     </>
