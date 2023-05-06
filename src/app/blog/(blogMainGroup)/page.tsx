@@ -3,7 +3,7 @@ import Posts from "@/posts";
 import styles from "./blog.module.css";
 import { AnimatedGraph } from "@/components/AnimatedGraph";
 import { Delay } from "@/components/Delay";
-import wordCounts from "../../post-word-counts.json";
+import wordCounts from "../../../post-word-counts.json";
 import { Post } from "@/types/post";
 import { userTheme } from "@/util/cookies";
 import { BASEURL, NAME } from "@/metadata";
