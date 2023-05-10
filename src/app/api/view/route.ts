@@ -32,5 +32,11 @@ export async function GET(request: Request) {
     [slug]
   );
 
-  return new Response(JSON.stringify(results.rows[0]), { status: 200 });
+  if (!results?.rows?.[0]) {
+    console.error("No results found for slug", slug, "results:", results);
+  }
+
+  return new Response(JSON.stringify(results?.rows?.[0] ?? {}), {
+    status: 200,
+  });
 }

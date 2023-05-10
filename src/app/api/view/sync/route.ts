@@ -7,8 +7,11 @@ const config = {
   password: process.env.password,
 };
 
+export const runtime = "edge";
+
 export async function GET() {
   const conn = connect(config);
+  console.log("Processing views");
   try {
     const results = await conn.execute(
       "SELECT slug, COUNT(*) as views FROM post_page_views GROUP BY slug",
@@ -29,7 +32,10 @@ export async function GET() {
       })
     );
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({
+      ok: true,
+      count: results.rows.length,
+    });
   } catch (ex) {
     console.error(ex);
     return new Response(JSON.stringify(ex), { status: 500 });

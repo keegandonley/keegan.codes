@@ -5,13 +5,7 @@ import { getImageMetadata, parseSource, parseToProps } from "@/util/image";
 import Image from "next/image";
 import { BottomFade } from "@/components/BottomFade";
 import { BUCKET_URL } from "@/util/r2";
-import { H1 } from "@/components/Post/Heading/H1";
-import { ReadingTime } from "../MDXEntryRow/components/ReadingTime";
-import { Cheers } from "../Cheers";
-import { Suspense } from "react";
-import dynamic from "next/dynamic";
-
-const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
+import { PostHeader } from "../PostHeader";
 
 interface PostModalProps {
   slug: string;
@@ -51,23 +45,12 @@ export const PostModal = ({ slug, wordCount }: PostModalProps) => {
         <BottomFade />
       </div>
       <article className={styles.article}>
-        <div className={styles.topSection}>
-          <H1 className={styles.title}>{title}</H1>
-          <div className={styles.metadata}>
-            <div className={styles.cheersWrapper}>
-              <Cheers slug={slug} location="modal" />
-            </div>
-            <div className={styles.subItems}>
-              <ReadingTime
-                className={styles.readingTime}
-                wordCount={wordCount}
-              />
-              <Suspense>
-                <DynamicViewCount slug={slug} className={styles.viewCount} />
-              </Suspense>
-            </div>
-          </div>
-        </div>
+        <PostHeader
+          slug={slug}
+          title={title}
+          location="modal"
+          wordCount={wordCount}
+        />
         <Component />
       </article>
     </>

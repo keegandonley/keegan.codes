@@ -1,0 +1,255 @@
+import { CurryingExample } from "../components/Post/Interactive/Currying";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGraduationCap } from "@fortawesome/pro-solid-svg-icons";
+
+export const title = "Mastering React Component Callbacks with Currying";
+export const slug = "mastering-react-component-callbacks-with-currying";
+export const tags = ["React", "javascript"];
+export const description =
+  "How to use functional currying to make React callbacks more clear and maintainable";
+export const cover = "react-currying-cover.png";
+export const published = new Date(2023, 4, 5);
+export const shortCodes = ["currying-react"];
+
+Currying is a technique in functional programming to break down function call arguments.
+A function is transformed from having <em>multiple arguments</em>,
+to being a <em>sequence of single-argument calls</em>. This pattern breaks down functions
+into smaller, more focused functions, often making code easier to read (and thus
+maintain).
+
+Currying isn’t unique to Javascript, but since I’m focusing on use-cases
+with React in this post, I’ll be focusing on Javascript in my example code.
+
+## Currying: A Basic Example
+
+Before we get to React, though, here’s a basic example. Let’s start with
+a simple `add` function, that sums two integers together:
+
+```jsx
+const add = (a, b) => {
+  return a + b;
+};
+
+add(1, 2); // 3
+```
+
+Now, here’s the curried version:
+
+```jsx
+const add = (a) => {
+  return (b) => {
+    return a + b;
+  };
+};
+
+add(1)(2); // 3
+```
+
+> The curried version still performs the same function, but be sure to note the
+> important difference in how the call is structured, with `add(1, 2)` in the original
+> function, and `add(1)(2)` in the curried version. Instead of calling one function with
+> two arguments, we’re calling two functions in sequence, each with one argument.
+
+## Applications in React
+
+It may or may not be immediately obvious why this pattern is valuable, so let’s
+look at a real application in React. Here we have three buttons, that perform
+actions on a number (go ahead, try it out):
+
+<CurryingExample />
+
+### Basic Approach
+
+Here's the most basic version of the source code for the above interaction: three buttons, three callbacks:
+
+```jsx
+const Math = () => {
+  const [value, setValue] = useState(1);
+
+  const handleIncrement = () => {
+    setValue((v) => v + 1);
+  };
+
+  const handleDecrement = () => {
+    setValue((v) => v - 1);
+  };
+
+  const handleDouble = () => {
+    setValue((v) => v * 2);
+  };
+
+  return (
+    <>
+      <p>Value is {value}</p>
+      <button onClick={handleIncrement}>Increment</button>
+      <button onClick={handleDecrement}>Decrement</button>
+      <button onClick={handleDouble}>Double</button>
+    </>
+  );
+};
+```
+
+This is often the "knee-jerk" first approach, but let’s think about
+maintainability for a moment. Imagine we want to add some additional state, like a variable
+`hasChanged` to indicate the value has been updated. We’d have to set it in three places!
+Not so good in terms of ease of maintenance.
+
+In the next example, we'll add in that new state
+variable while improving the code a bit.
+
+### Using a Single Handler
+
+Here's another common and fairly simple approach: using a single function that takes an additional
+argument, like an action to perform. If you want to add some complexity after or before
+updating the value, it's easy to do in just one place:
+
+```jsx
+const Math = () => {
+  const [value, setValue] = useState(1);
+  const [hasChanged, setHasChanged] = useState(false);
+
+  const handleClick = (action) => {
+    setHasChanged(true); // New logic that runs no matter which action is taken
+
+    if (action === "increment") {
+      return setValue((v) => v + 1);
+    }
+    if (action === "decrement") {
+      return setValue((v) => v - 1);
+    }
+    if (action === "double") {
+      return setValue((v) => v * 2);
+    }
+  };
+
+  return (
+    <>
+      <p>Value is {value}</p>
+      <button onClick={() => handleClick("increment")}>Increment</button>
+      <button onClick={() => handleClick("decrement")}>Decrement</button>
+      <button onClick={() => handleClick("double")}>Double</button>
+    </>
+  );
+};
+```
+
+Now, we only have one callback, but in order to call `handleClick` , we need to
+create an anonymous function for each `onClick` handler, in order to pass the field.
+
+This isn't ideal, and we can do better!
+
+### Applying Principles of Currying
+
+It's finally time to apply the principles of currying we learned earlier, and write this handler
+in a way that’s easy to understand and maintain:
+
+```jsx
+const Math = () => {
+  const [value, setValue] = useState(1);
+
+  const clickHandlerFor = (action) => {
+    return (event) => {
+      event.stopPropagation(); // New logic that runs no matter which action is taken
+
+      if (action === "increment") {
+        return setValue((v) => v + 1);
+      }
+      if (action === "decrement") {
+        return setValue((v) => v - 1);
+      }
+      if (action === "double") {
+        return setValue((v) => v * 2);
+      }
+    };
+  };
+
+  return (
+    <>
+      <p>Value is {value}</p>
+      <button onClick={clickHandlerFor("increment")}>Increment</button>
+      <button onClick={clickHandlerFor("decrement")}>Decrement</button>
+      <button onClick={clickHandlerFor("double")}>Double</button>
+    </>
+  );
+};
+```
+
+> In this curried version, each `onClick` handler is a function that returns a function. If we think outside of React for a
+> moment like we did at the beginning, we can see this is just like currying our `add` function from earlier! Instead of
+> calling `clickHandler("increment", event)`, this new code is effectively calling `clickHandlerFor("increment")(event)`.
+
+### Input Example
+
+This works well for input components too!
+
+```jsx
+const Form = () => {
+  const [name, setName] = useState("");
+  const [termsAccepted, setTermsAccepted] = useState(false);
+
+  const inputHandlerFor = (field) => {
+    return (ev) => {
+      if (field === "name") {
+        return setName(ev.target.value);
+      }
+      if (field === "terms") {
+        return setTerms(ev.target.checked);
+      }
+    };
+  };
+
+  return (
+    <form>
+      <input type="text" onChange={inputHandlerFor("name")} value={name} />
+      <input
+        type="checkbox"
+        onChange={inputHandlerFor("terms")}
+        checked={termsAccepted}
+      />
+    </form>
+  );
+};
+```
+
+> Without currying, our inputs with their callbacks would be something like this:
+>
+> ```jsx
+> <input onChange={(event) => inputHandler("name", event)} />
+> ```
+>
+> The curried approach is far more concise and still easy to read and understand!
+
+### Mapping Example
+
+If you want to access the data from the item you clicked, a curried
+click handler is perfect for the job:
+
+```jsx
+const data = [
+  { id: 1, name: "John" },
+  { id: 2, name: "Jane" },
+  { id: 3, name: "Joe" },
+];
+
+const clickHandler = (data) => (event) => {
+  console.log("clicked on", data.id);
+};
+
+return data.map((dataItem) => {
+  return <button onClick={clickHandler(dataItem)}>{d.name}</button>;
+});
+```
+
+> Like before, this call is effectively `clickHandler(dataItem)(event)`,
+> which in its uncurried format would be `clickHandler(dataItem, event)`.
+
+## Conclusion
+
+Currying is an advanced functional programming technique that applies to many languages!
+Hopefully it's now more clear how it can be used to improve your React applications, and
+any other code you find yourself working on.
+
+> <FontAwesomeIcon icon={faGraduationCap} /> **Currying** comes from the name of
+> the mathematician Haskell Curry, who was a pioneer in the field of mathematical
+> logic and functional programming. He was also the namesake of the Haskell programming
+> language!
