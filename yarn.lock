@@ -416,10 +416,10 @@
   resolved "https://registry.yarnpkg.com/@vercel/analytics/-/analytics-1.0.1.tgz#38308a626c91866cb00a249c08bf65251e9b9d81"
   integrity sha512-Ux0c9qUfkcPqng3vrR0GTrlQdqNJ2JREn/2ydrVuKwM3RtMfF2mWX31Ijqo1opSjNAq6rK76PwtANw6kl6TAow==
 
-"@vercel/edge-config@^0.1.9":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@vercel/edge-config/-/edge-config-0.1.9.tgz#e9e9ecff9b8dad8e654e31783a2f6358593b71b6"
-  integrity sha512-tw52z4AqBgDNxm+sfLtTHOTTwuEKKaiPnklY+RRnMRSLuHTTIfv5yCLtmu3cjYDmZmMK5EZGxgO1mFGL5WdcNQ==
+"@vercel/edge-config@^0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@vercel/edge-config/-/edge-config-0.1.10.tgz#61428d1b7c6bd31968d09b71058b8465c1b69f6f"
+  integrity sha512-QdahUjvtpnnKD/vd79Gre7OVoEwjspktCFvOI6IXUqQ45e/Sk3In/rLOySF0dg4XHDWEuy+DRIK0SIOW2/C1FQ==
 
 "@vercel/kv@^0.1.2":
   version "0.1.2"
