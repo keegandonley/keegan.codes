@@ -421,10 +421,10 @@
   resolved "https://registry.yarnpkg.com/@vercel/edge-config/-/edge-config-0.1.10.tgz#61428d1b7c6bd31968d09b71058b8465c1b69f6f"
   integrity sha512-QdahUjvtpnnKD/vd79Gre7OVoEwjspktCFvOI6IXUqQ45e/Sk3In/rLOySF0dg4XHDWEuy+DRIK0SIOW2/C1FQ==
 
-"@vercel/kv@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@vercel/kv/-/kv-0.2.0.tgz#edd0df7a1480f66c1280ad69ad902fb8148cde78"
-  integrity sha512-cMPpNGDtbqmSiELq3OhP6h8nhjmyyFj7yEcxisD0yCEHQvL38moS+xT105lwHbt/j42pBp9jcJsdx1wYfRERSg==
+"@vercel/kv@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@vercel/kv/-/kv-0.2.1.tgz#f66bd79dd3ab14c83bcd09f2e4c0049b46f7ee25"
+  integrity sha512-0O1CVh0maG/bduAE6DPKUTfGSnORgrcS5xBYZCb62sOU7PrVZrXhaPbUSBE4q5PXS5DC+cpN6FY2RWNlslUaWQ==
   dependencies:
     "@upstash/redis" "1.20.6"
 
