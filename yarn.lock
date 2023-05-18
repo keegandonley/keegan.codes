@@ -149,10 +149,10 @@
   dependencies:
     glob "7.1.7"
 
-"@next/mdx@^13.4.2":
-  version "13.4.2"
-  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-13.4.2.tgz#2ec40024969feccca386e841d4ae675bfe25436b"
-  integrity sha512-AT/gxEGkKOwceFSTvoa97vAJh0KsDcw+oW1UFTW4e0zcJCmvieniJoq+JHLMzKoyfC9VjozeCR9yGAchZrli1A==
+"@next/mdx@^13.4.3-canary.2":
+  version "13.4.3-canary.2"
+  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-13.4.3-canary.2.tgz#4c4227ca84a885a92aab4ec77467ebed1ddbeab4"
+  integrity sha512-Ata8Ap30RZ9znbKE6ns20I/gVJXT0XUu4O00ndmUUv6NqS37AEqcvoB3xZpLd00yi6SzTpvbWZ3Hhs1NRRxlLw==
   dependencies:
     source-map "^0.7.0"
 
