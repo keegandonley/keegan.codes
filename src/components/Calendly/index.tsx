@@ -12,11 +12,16 @@ export const EmbedScript = () => {
   );
 };
 
-export const EmbedTarget = ({ meeting = "career-chat" }) => {
+export const EmbedTarget = ({
+  meeting = "career-chat",
+  color = "00465f",
+  textColor = "d0d6e3",
+  primaryColor = "4bb9e5",
+}) => {
   return (
     <div
       className={merge("calendly-inline-widget", styles.calendlyContainer)}
-      data-url={`https://calendly.com/k10y/${meeting}?hide_event_type_details=1&background_color=00465f&text_color=d0d6e3&primary_color=4bb9e5`}
+      data-url={`https://calendly.com/k10y/${meeting}?hide_event_type_details=1&background_color=${color}&text_color=${textColor}&primary_color=${primaryColor}`}
     />
   );
 };

@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { URLS } from "@/components/Social/socials";
 import { merge } from "@/util/classNames";
 import { faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { EmbedScript, EmbedTarget } from "@/components/Calendly";
+import { Hr } from "@/components/Post/Hr";
 
 export const runtime = "experimental-edge";
 
@@ -47,6 +49,19 @@ export default function RenderPage() {
         </Link>{" "}
         about a number of topics, ranging from software to fitness to travel.
       </Paragraph>
+
+      <Hr theme="ff88df" />
+      <Paragraph>
+        Want to grab a coffee? Happy hour? A bite to eat? I love meeting new
+        people at conferences like this, so feel free to schedule a time to
+        connect!
+      </Paragraph>
+      <EmbedTarget
+        meeting="render"
+        color="ff88df"
+        textColor="20417b"
+        primaryColor="20417b"
+      />
       <div className={styles.renderLogoContainer}>
         <Image
           src={renderLogo}
@@ -54,6 +69,7 @@ export default function RenderPage() {
           className={styles.renderLogo}
         />
       </div>
+      <EmbedScript />
     </div>
   );
 }

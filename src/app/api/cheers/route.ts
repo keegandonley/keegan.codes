@@ -1,5 +1,5 @@
 import { connect } from "@planetscale/database";
-import kv from "@vercel/kv";
+import { kv } from "@vercel/kv";
 import { get } from "@vercel/edge-config";
 
 const config = {
