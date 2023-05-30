@@ -2,8 +2,42 @@
   border-top: 1px solid var(--theme-blue-2);
   border-bottom: 0;
   margin: 0.5rem 10rem;
+  position: relative;
+  overflow: visible;
+}
+
+.divider::before {
+  content: "";
+  height: 3px;
+  width: 50%;
+  left: -1px;
+  top: -2px;
+  background: linear-gradient(
+    to left,
+    transparent 00%,
+    var(--theme-background) 90%
+  );
+  position: absolute;
+}
+
+.divider::after {
+  content: "";
+  height: 3px;
+  width: 50%;
+  right: -1px;
+  top: -2px;
+  background: linear-gradient(
+    to right,
+    transparent 00%,
+    var(--theme-background) 90%
+  );
+  position: absolute;
 }
 
 .post {
   margin: 2rem 2rem 1rem 0;
+}
+
+.theme {
+  border-color: var(--theme);
 }
