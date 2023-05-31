@@ -12,7 +12,12 @@ interface InterceptorProps {
   };
 }
 
-export default async function Interceptor({ params }: InterceptorProps) {
+export default async function Interceptor(args: InterceptorProps) {
+  const params = args?.params;
+
+  if (!params) {
+    return null;
+  }
   const wordCount = (wordCounts as Record<string, number>)[params.slug];
   return (
     <Modal>
