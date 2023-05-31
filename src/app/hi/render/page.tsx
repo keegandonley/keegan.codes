@@ -13,7 +13,11 @@ import { HiTrack } from "@/components/Track/Hi";
 
 export const runtime = "experimental-edge";
 
-export default function RenderPage() {
+export default function RenderPage({
+  searchParams,
+}: {
+  searchParams: { scan: string };
+}) {
   return (
     <div className={styles.wrapper}>
       <Paragraph className={merge(styles.firstParagraph, styles.paragraph)}>
@@ -71,7 +75,7 @@ export default function RenderPage() {
         />
       </div>
       <EmbedScript />
-      <HiTrack slug="render" qrScanned />
+      <HiTrack slug="render" qrScanned={searchParams?.scan === "true"} />
     </div>
   );
 }
