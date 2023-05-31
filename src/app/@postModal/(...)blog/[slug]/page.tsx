@@ -1,4 +1,3 @@
-"use client";
 import { Modal } from "@/components/Modal";
 import { PostModal } from "@/components/PostModal";
 import "../../../syntax-theme.css";
