@@ -3,6 +3,11 @@ interface TrackBody {
   inModal: boolean;
 }
 
+interface HiTrackBody {
+  slug: string;
+  qrScanned: boolean;
+}
+
 interface AggregateBody {
   slug: string;
   views: number;

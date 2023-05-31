@@ -9,6 +9,7 @@ import { merge } from "@/util/classNames";
 import { faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { EmbedScript, EmbedTarget } from "@/components/Calendly";
 import { Hr } from "@/components/Post/Hr";
+import { HiTrack } from "@/components/Track/Hi";
 
 export const runtime = "experimental-edge";
 
@@ -70,6 +71,7 @@ export default function RenderPage() {
         />
       </div>
       <EmbedScript />
+      <HiTrack slug="render" qrScanned />
     </div>
   );
 }
