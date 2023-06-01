@@ -25,6 +25,14 @@ const EmbedTarget = ({
       url={`https://calendly.com/k10y/${meeting}?hide_event_type_details=1&background_color=${color[theme]}&text_color=${textColor[theme]}&primary_color=${primaryColor[theme]}`}
       styles={{
         height: "100rem",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+      pageSettings={{
+        hideEventTypeDetails: true,
       }}
     />
   );
