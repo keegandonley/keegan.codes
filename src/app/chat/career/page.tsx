@@ -1,5 +1,5 @@
-import { Body, EmbedScript, Intro } from "@/components/Calendly";
-import { EmbedTarget } from "@/components/Calendly/EmbedTarget";
+import { Body, Intro } from "@/components/Calendly";
+import EmbedTarget from "@/components/Calendly/EmbedTarget";
 
 export const runtime = "experimental-edge";
 

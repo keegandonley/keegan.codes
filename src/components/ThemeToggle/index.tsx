@@ -33,11 +33,11 @@ export const ThemeToggle = ({
   ignoreGlobalState = false,
 }: ThemeToggleProps) => {
   const [theme, setTheme] = useState<Theme>(() => initialTheme ?? "dark");
-  const themeContext = useContext(ThemeContext);
+  const { setTheme: ctxSetTheme } = useContext(ThemeContext);
 
-  if (themeContext.theme !== theme) {
-    themeContext.setTheme(theme);
-  }
+  useEffect(() => {
+    ctxSetTheme(theme);
+  }, [ctxSetTheme, theme]);
 
   const route = usePathname();
 

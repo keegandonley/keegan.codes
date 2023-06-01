@@ -7,10 +7,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { URLS } from "@/components/Social/socials";
 import { merge } from "@/util/classNames";
 import { faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { EmbedScript } from "@/components/Calendly";
 import { Hr } from "@/components/Post/Hr";
 import { HiTrack } from "@/components/Track/Hi";
-import { EmbedTarget } from "@/components/Calendly/EmbedTarget";
+import dynamic from "next/dynamic";
+
+const DynamicEmbed = dynamic(() => import("@/components/Calendly/EmbedTarget"));
 
 export const runtime = "experimental-edge";
 
@@ -62,7 +63,7 @@ export default function RenderPage({
         people at conferences like this, so feel free to schedule a time to
         connect!
       </Paragraph>
-      <EmbedTarget
+      <DynamicEmbed
         meeting="render"
         primaryColor={{ light: "ff88df", dark: "ff88df" }}
       />

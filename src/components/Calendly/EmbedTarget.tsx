@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { InlineWidget, useCalendlyEventListener } from "react-calendly";
 import va from "@vercel/analytics";
 
-export const EmbedTarget = ({
+const EmbedTarget = ({
   meeting = "career-chat",
   color = { light: "ffffff", dark: "0A0935" },
   textColor = { light: "20417B", dark: "D0D6E3" },
@@ -29,3 +29,5 @@ export const EmbedTarget = ({
     />
   );
 };
+
+export default EmbedTarget;
