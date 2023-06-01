@@ -1,7 +1,8 @@
 "use client";
 import { ThemeContext } from "@/app/themeProvider";
 import { useContext } from "react";
-import { InlineWidget } from "react-calendly";
+import { InlineWidget, useCalendlyEventListener } from "react-calendly";
+import va from "@vercel/analytics";
 
 export const EmbedTarget = ({
   meeting = "career-chat",
@@ -11,11 +12,19 @@ export const EmbedTarget = ({
 }) => {
   const { theme } = useContext(ThemeContext);
 
+  useCalendlyEventListener({
+    onProfilePageViewed: () => va.track("Profile Page Viewed", { meeting }),
+    onDateAndTimeSelected: () =>
+      va.track("Date and Time Selected", { meeting }),
+    onEventTypeViewed: () => va.track("Event Type Viewed", { meeting }),
+    onEventScheduled: () => va.track("Event Scheduled", { meeting }),
+  });
+
   return (
     <InlineWidget
       url={`https://calendly.com/k10y/${meeting}?hide_event_type_details=1&background_color=${color[theme]}&text_color=${textColor[theme]}&primary_color=${primaryColor[theme]}`}
       styles={{
-        height: "90rem",
+        height: "100rem",
       }}
     />
   );

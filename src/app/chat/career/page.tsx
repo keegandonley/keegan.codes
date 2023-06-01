@@ -13,7 +13,6 @@ export default function ChatCareerPage() {
         I&apos;m happy to chat!
       </Body>
       <EmbedTarget meeting="career-chat" />
-      <EmbedScript />
     </Intro>
   );
 }

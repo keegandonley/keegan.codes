@@ -13,7 +13,6 @@ export default function ChatMarketResearchPage() {
         notes.
       </Body>
       <EmbedTarget meeting="market-research" />
-      <EmbedScript />
     </Intro>
   );
 }

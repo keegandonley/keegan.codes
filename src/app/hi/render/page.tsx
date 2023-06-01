@@ -73,7 +73,6 @@ export default function RenderPage({
           className={styles.renderLogo}
         />
       </div>
-      <EmbedScript />
       <HiTrack slug="render" qrScanned={searchParams?.scan === "true"} />
     </div>
   );
