@@ -1,4 +1,5 @@
-import { Body, EmbedScript, EmbedTarget, Intro } from "@/components/Calendly";
+import { Body, Intro } from "@/components/Calendly";
+import EmbedTarget from "@/components/Calendly/EmbedTarget";
 
 export const runtime = "experimental-edge";
 
@@ -12,7 +13,6 @@ export default function ChatMarketResearchPage() {
         notes.
       </Body>
       <EmbedTarget meeting="market-research" />
-      <EmbedScript />
     </Intro>
   );
 }

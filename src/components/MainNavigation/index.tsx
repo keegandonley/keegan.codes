@@ -23,6 +23,7 @@ const MainNavigation = ({
   const isHomePage = pathname === "/" || !segments.length;
   const isBlogPage = pathname.startsWith("/blog");
   const isLibraryPage = pathname.startsWith("/library");
+
   // const isExactlyBlogPage = isBlogPage && segments.length === 1;
   // const isExactlyLibraryPage = isLibraryPage && segments.length === 1;
 

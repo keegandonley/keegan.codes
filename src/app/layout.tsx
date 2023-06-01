@@ -13,6 +13,7 @@ import { Suspense } from "react";
 import { BASEURL, DESCRIPTION, NAME } from "@/metadata";
 import MainNavigation from "@/components/MainNavigation";
 import { ModalBoundary } from "@/components/ModalBoundary";
+import ThemeProvider from "./themeProvider";
 
 config.autoAddCss = false;
 
@@ -30,11 +31,16 @@ export default async function RootLayout({ children, postModal }: any) {
       <body
         className={merge(font.className, "preload", theme === "dark" && "dark")}
       >
-        {/* Display banner text from the edge config if an event is active */}
-        {event?.active ? <Banner level={1}>{event.text}</Banner> : null}
-        <MainNavigation initialTheme={theme} hasChosenTheme={hasChosenTheme} />
-        <main>{children}</main>
-        <ModalBoundary>{postModal}</ModalBoundary>
+        <ThemeProvider>
+          {/* Display banner text from the edge config if an event is active */}
+          {event?.active ? <Banner level={1}>{event.text}</Banner> : null}
+          <MainNavigation
+            initialTheme={theme}
+            hasChosenTheme={hasChosenTheme}
+          />
+          <main>{children}</main>
+          <ModalBoundary>{postModal}</ModalBoundary>
+        </ThemeProvider>
         {/* Adding suspense to try https://github.com/vercel/next.js/issues/48442#issuecomment-1519139562 */}
         <Suspense>
           <Analytics />
@@ -48,6 +54,7 @@ export async function generateMetadata() {
   const theme = userTheme();
 
   return {
+    metadataBase: new URL("https://keegan.codes"),
     title: NAME,
     description: DESCRIPTION,
     themeColor: theme === "light" ? background.light : background.dark,

@@ -7,9 +7,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { URLS } from "@/components/Social/socials";
 import { merge } from "@/util/classNames";
 import { faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { EmbedScript, EmbedTarget } from "@/components/Calendly";
 import { Hr } from "@/components/Post/Hr";
 import { HiTrack } from "@/components/Track/Hi";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+const DynamicEmbed = dynamic(() => import("@/components/Calendly/EmbedTarget"));
 
 export const runtime = "experimental-edge";
 
@@ -61,12 +64,12 @@ export default function RenderPage({
         people at conferences like this, so feel free to schedule a time to
         connect!
       </Paragraph>
-      <EmbedTarget
-        meeting="render"
-        color="ff88df"
-        textColor="20417b"
-        primaryColor="20417b"
-      />
+      <Suspense>
+        <DynamicEmbed
+          meeting="render"
+          primaryColor={{ light: "ff88df", dark: "ff88df" }}
+        />
+      </Suspense>
       <div className={styles.renderLogoContainer}>
         <Image
           src={renderLogo}
@@ -74,7 +77,6 @@ export default function RenderPage({
           className={styles.renderLogo}
         />
       </div>
-      <EmbedScript />
       <HiTrack slug="render" qrScanned={searchParams?.scan === "true"} />
     </div>
   );
