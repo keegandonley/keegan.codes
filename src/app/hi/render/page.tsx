@@ -7,9 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { URLS } from "@/components/Social/socials";
 import { merge } from "@/util/classNames";
 import { faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { EmbedScript, EmbedTarget } from "@/components/Calendly";
+import { EmbedScript } from "@/components/Calendly";
 import { Hr } from "@/components/Post/Hr";
 import { HiTrack } from "@/components/Track/Hi";
+import { EmbedTarget } from "@/components/Calendly/EmbedTarget";
 
 export const runtime = "experimental-edge";
 
@@ -63,9 +64,7 @@ export default function RenderPage({
       </Paragraph>
       <EmbedTarget
         meeting="render"
-        color="ff88df"
-        textColor="20417b"
-        primaryColor="20417b"
+        primaryColor={{ light: "ff88df", dark: "ff88df" }}
       />
       <div className={styles.renderLogoContainer}>
         <Image

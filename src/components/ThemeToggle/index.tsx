@@ -1,6 +1,6 @@
 "use client";
 import { merge } from "@/util/classNames";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import styles from "./themeToggle.module.css";
 import { AnimatedIcon } from "../AnimatedIcon";
 import { faMoon, faSunBright } from "@fortawesome/pro-solid-svg-icons";
@@ -15,6 +15,7 @@ import {
 } from "@/util/theme";
 import { Theme, ThemeChooserSize } from "@/types/theme";
 import va from "@vercel/analytics";
+import { ThemeContext } from "@/app/themeProvider";
 
 interface ThemeToggleProps {
   relative?: boolean;
@@ -32,6 +33,11 @@ export const ThemeToggle = ({
   ignoreGlobalState = false,
 }: ThemeToggleProps) => {
   const [theme, setTheme] = useState<Theme>(() => initialTheme ?? "dark");
+  const themeContext = useContext(ThemeContext);
+
+  if (themeContext.theme !== theme) {
+    themeContext.setTheme(theme);
+  }
 
   const route = usePathname();
 

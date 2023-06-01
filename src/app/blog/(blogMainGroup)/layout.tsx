@@ -1,4 +1,3 @@
-import { ModalBoundary } from "@/components/ModalBoundary";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import Posts from "@/posts";
@@ -9,7 +8,7 @@ const DynamicPagination = dynamic(() => import("@/components/Pagination"));
 
 const postsPerPage = 12;
 
-export default function BlogLayout({ children, modal, params }: any) {
+export default function BlogLayout({ children }: any) {
   const allPosts = Object.keys(Posts);
   const pageCount = Math.ceil(allPosts.length / postsPerPage);
   return (
@@ -21,7 +20,6 @@ export default function BlogLayout({ children, modal, params }: any) {
         </Suspense>
         <AnimatedGraph />
       </Delay>
-      <ModalBoundary>{modal}</ModalBoundary>
     </>
   );
 }
