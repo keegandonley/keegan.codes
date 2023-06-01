@@ -10,6 +10,7 @@ import { faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { Hr } from "@/components/Post/Hr";
 import { HiTrack } from "@/components/Track/Hi";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
 const DynamicEmbed = dynamic(() => import("@/components/Calendly/EmbedTarget"));
 
@@ -63,10 +64,12 @@ export default function RenderPage({
         people at conferences like this, so feel free to schedule a time to
         connect!
       </Paragraph>
-      <DynamicEmbed
-        meeting="render"
-        primaryColor={{ light: "ff88df", dark: "ff88df" }}
-      />
+      <Suspense>
+        <DynamicEmbed
+          meeting="render"
+          primaryColor={{ light: "ff88df", dark: "ff88df" }}
+        />
+      </Suspense>
       <div className={styles.renderLogoContainer}>
         <Image
           src={renderLogo}
