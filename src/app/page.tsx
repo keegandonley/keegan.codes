@@ -53,7 +53,7 @@ export default function Home() {
         </div>
       </div>
       <section className={styles.content}>
-        <h1 className={styles.sectionHeader}>Hi There, I&apos;m Kegan!</h1>
+        <h1 className={styles.sectionHeader}>Hi There, I&apos;m Keegan!</h1>
         <Paragraph className={styles.paragraph}>
           I&apos;m a <strong>full-stack engineer</strong> located in Austin,
           Texas.
