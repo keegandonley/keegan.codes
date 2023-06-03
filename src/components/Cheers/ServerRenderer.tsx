@@ -16,7 +16,7 @@ const getValue = async (slug: string): Promise<number> => {
       }/api/cheers?slug=${slug}`,
       {
         next: {
-          revalidate: 5,
+          revalidate: 0,
         },
       }
     );
