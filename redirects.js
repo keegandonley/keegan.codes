@@ -14,6 +14,8 @@ module.exports = [
   ["/atl", "/hi/render"],
   ["/renderatl", "/hi/render"],
   ["/render", "/hi/render"],
+  ["/tailwind", "/hi/tailwind"],
+  ["/tailwindconnect", "/hi/tailwind"],
   ["/helloiam", "https://helloiam.io/k"],
   ["/timeoutJS", "https://keegandonley.github.io/timeoutJS/"],
   ["/subscribe", "https://www.getrevue.co/profile/keegandonley"],
