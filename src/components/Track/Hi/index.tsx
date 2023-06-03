@@ -11,9 +11,6 @@ export const HiTrack = ({ qrScanned, slug }: HiTrackBody) => {
           slug: slug,
           qrScanned,
         } as HiTrackBody),
-        next: {
-          revalidate: 60 * 20,
-        },
       });
     }
   }, [qrScanned, slug]);
