@@ -1,0 +1,17 @@
+.tailwindLogo {
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.firstParagraph {
+  padding-top: 2rem;
+}
+
+/* Lazy way to raise the precedence for the link color */
+.paragraph.paragraph a {
+  color: rgb(82, 178, 207);
+}
