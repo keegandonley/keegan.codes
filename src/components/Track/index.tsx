@@ -11,9 +11,6 @@ export const Track = ({ inModal, slug }: TrackBody) => {
           slug: slug,
           inModal: inModal,
         } as TrackBody),
-        next: {
-          revalidate: 60 * 20,
-        },
       });
     }
   }, [inModal, slug]);
