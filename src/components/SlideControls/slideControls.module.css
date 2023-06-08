@@ -1,0 +1,29 @@
+.wrapper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  color: var(--theme-text);
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  column-gap: 1rem;
+  opacity: 0.1;
+  transition: opacity var(--animation);
+}
+
+.wrapper:hover {
+  opacity: 1;
+}
+
+.divider {
+  padding: 0 0.2rem;
+  opacity: 0.5;
+}
+
+.button {
+  cursor: pointer;
+  transition: color var(--animation);
+}
+
+.button:hover {
+  color: var(--theme-blue-1);
+}
