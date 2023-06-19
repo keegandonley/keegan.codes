@@ -2,6 +2,7 @@
 import { merge } from "@/util/classNames";
 import styles from "./slideControls.module.css";
 import {
+  faBackwardFast,
   faChevronLeft,
   faChevronRight,
   faExpand,
@@ -10,10 +11,28 @@ import {
 } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useEffect } from "react";
+import { useParams, usePathname, useRouter } from "next/navigation";
 
 export const SlideControls = () => {
-  const handleGoBack = useCallback(() => {}, []);
-  const handleGoForward = useCallback(() => {}, []);
+  const { slide } = useParams();
+  const slideIndex = parseInt(slide ?? "0", 10);
+  const pathname = usePathname();
+  const slideName = pathname.split("/")[2];
+  const router = useRouter();
+
+  const handleGoBack = useCallback(() => {
+    if (slideIndex > 0) {
+      router.push(`/slides/${slideName}/${slideIndex - 1}`);
+    }
+  }, [router, slideIndex, slideName]);
+
+  const handleGoForward = useCallback(() => {
+    router.push(`/slides/${slideName}/${slideIndex + 1}`);
+  }, [router, slideIndex, slideName]);
+
+  const goToStart = useCallback(() => {
+    router.push(`/slides/${slideName}/0`);
+  }, [router, slideName]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -43,6 +62,12 @@ export const SlideControls = () => {
       />
       <FontAwesomeIcon icon={faPipe} className={styles.divider} />
       <FontAwesomeIcon icon={faExpand} className={merge(styles.button)} />
+      <FontAwesomeIcon icon={faPipe} className={styles.divider} />
+      <FontAwesomeIcon
+        icon={faBackwardFast}
+        className={merge(styles.button)}
+        onClick={goToStart}
+      />
       <FontAwesomeIcon
         icon={faFlagCheckered}
         className={merge(styles.button)}

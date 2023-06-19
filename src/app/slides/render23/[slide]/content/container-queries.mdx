@@ -1,0 +1,65 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBadgeCheck } from "@fortawesome/pro-solid-svg-icons";
+import { Columns } from "../../../components/Columns";
+import {
+  BrowserSupport,
+  SUPPORTLEVELS,
+} from "../../../components/BrowserSupport";
+
+# <FontAwesomeIcon icon={faBadgeCheck} color="green" /> Container Queries
+
+---
+
+### Like media queries, but for the parent's dimensions instead of the viewport
+
+<Columns count={2}>
+    ```css
+    /* Media query using viewport size */
+
+    @media (width > 10em) {
+        .content {
+            /* Your styles */
+        }
+    }
+    ```
+
+    ```css
+    /* Using a container query */
+
+    @container (width > 5em) {
+        .content {
+            /* Your styles */
+        }
+    }
+    ```
+
+</Columns>
+
+By default this uses the nearest parent, but you can also set a named context to control which element is considered.
+
+<Columns count={2}>
+    ```css
+    .block {
+        container-type: inline-size;
+        container-name: mainBlock;
+    }
+    
+    ```
+
+    ```css
+    @container mainBlock (min-width: 700px) {
+        .heading {
+            font-size: 0.8em;
+        }
+    }
+    ```
+
+</Columns>
+
+<BrowserSupport
+  chrome={SUPPORTLEVELS.FULL}
+  firefox={SUPPORTLEVELS.FULL}
+  safari={SUPPORTLEVELS.FULL}
+  edge={SUPPORTLEVELS.FULL}
+  ie={SUPPORTLEVELS.NONE}
+/>

@@ -1,0 +1,63 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBadgeCheck } from "@fortawesome/pro-solid-svg-icons";
+import { Columns } from "../../../components/Columns";
+import {
+  BrowserSupport,
+  SUPPORTLEVELS,
+} from "../../../components/BrowserSupport";
+
+# <FontAwesomeIcon icon={faBadgeCheck} color="green" /> Media Range Syntax
+
+---
+
+### The Media Queries Level 4 syntax allows for more easily computing viewport ranges
+
+<Columns count={2}>
+    ```css
+    /* The old way to do a mobile breakpoint */
+
+    @media (max-width: 450px) {
+        .content {
+            /* Your styles */
+        }
+    }
+    ```
+
+    ```css
+    /* The new way to do a mobile breakpoint */
+
+    @media (width <= 450px) {
+        .content {
+            /* Your styles */
+        }
+    }
+    ```
+
+</Columns>
+
+<Columns count={2}>
+    ```css
+    /* The old way to do a range */
+
+    @media (min-width: 450px) and (max-width: 650px) {
+        /* styles */
+    }
+    ```
+
+    ```css
+    /* The new way to do a range */
+
+    @media (450px <= width <= 650px) {
+        /* styles */
+    }
+    ```
+
+</Columns>
+
+<BrowserSupport
+  chrome={SUPPORTLEVELS.FULL}
+  firefox={SUPPORTLEVELS.FULL}
+  safari={SUPPORTLEVELS.FULL}
+  edge={SUPPORTLEVELS.FULL}
+  ie={SUPPORTLEVELS.NONE}
+/>
