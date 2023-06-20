@@ -1,0 +1,37 @@
+.ul {
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.ul li {
+  flex-grow: 1;
+  padding: 1.9rem 0;
+  list-style-type: none;
+}
+
+.ul li:nth-child(1) {
+  background-color: color-mix(in srgb, #34c9eb 0%, white);
+}
+
+.ul li:nth-child(2) {
+  background-color: color-mix(in srgb, #34c9eb 25%, white);
+}
+
+.ul li:nth-child(3) {
+  background-color: color-mix(in srgb, #34c9eb 50%, white);
+}
+
+.ul li:nth-child(4) {
+  background-color: color-mix(in srgb, #34c9eb 75%, white);
+}
+
+.ul li:nth-child(5) {
+  background-color: color-mix(in srgb, #34c9eb 100%, white);
+}
+
+.ul li:nth-child(6) {
+  background-color: color-mix(in srgb, #34c9eb, white);
+}

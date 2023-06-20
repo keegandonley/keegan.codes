@@ -1,5 +1,4 @@
 import { Paragraph } from "@/components/Paragraph";
-import Image from "next/image";
 import styles from "./hi.module.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

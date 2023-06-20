@@ -82,6 +82,7 @@ export const SlideControls = () => {
       <FontAwesomeIcon
         icon={faFlagCheckered}
         className={merge(styles.button)}
+        onClick={goToStart}
       />
     </div>
   );

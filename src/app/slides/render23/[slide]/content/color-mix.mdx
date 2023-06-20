@@ -1,0 +1,72 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBadgeCheck } from "@fortawesome/pro-solid-svg-icons";
+import { Columns } from "../../../components/Columns";
+import {
+  BrowserSupport,
+  SUPPORTLEVELS,
+} from "../../../components/BrowserSupport";
+import styles from "./css/color-mix.module.css";
+
+# <FontAwesomeIcon icon={faBadgeCheck} color="green" /> Color Mixing
+
+---
+
+### Allows blending of colors in different color spaces
+
+<Columns count={2}>
+    ```css
+    color-mix(in lch, plum, pink);
+    color-mix(in lch, plum 40%, pink);
+    color-mix(in srgb, #34c9eb 20%, white);
+    color-mix(in hsl longer hue, hsl(120 100% 50%) 20%, white);
+    ```
+
+    Indicate the color space, and the two colors you want to mix
+
+</Columns>
+
+<Columns count={2}>
+    <div>
+        ```html
+        <ul>
+            <li>0%</li>
+            <li>25%</li>
+            <li>50%</li>
+            <li>75%</li>
+            <li>100%</li>
+        </ul>
+        ```
+
+        <ul className={styles.ul}>
+            <li>0%</li>
+            <li>25%</li>
+            <li>50%</li>
+            <li>75%</li>
+            <li>100%</li>
+        </ul>
+
+    </div>
+
+    ```css
+    li:nth-child(1) {
+        background-color: color-mix(in srgb, #34c9eb 0%, white);
+    }
+
+    li:nth-child(2) {
+        background-color: color-mix(in srgb, #34c9eb 25%, white);
+    }
+
+    li:nth-child(3) {
+        background-color: color-mix(in srgb, #34c9eb 50%, white);
+    }
+    ```
+
+</Columns>
+
+<BrowserSupport
+  chrome={SUPPORTLEVELS.FULL}
+  firefox={SUPPORTLEVELS.FULL}
+  safari={SUPPORTLEVELS.FULL}
+  edge={SUPPORTLEVELS.FULL}
+  ie={SUPPORTLEVELS.NONE}
+/>
