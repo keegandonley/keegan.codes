@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 export default function Render23TitleSlidePage() {
-  return <div>Hey</div>;
+  redirect("/slides/render23/0");
 }

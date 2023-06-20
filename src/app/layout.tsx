@@ -27,7 +27,7 @@ export default async function RootLayout({ children, postModal }: any) {
   const event: any = await get("event");
 
   return (
-    <html lang="en">
+    <html lang="en" id="fullscreen-context">
       <body
         className={merge(font.className, "preload", theme === "dark" && "dark")}
       >

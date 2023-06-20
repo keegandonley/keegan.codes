@@ -48,6 +48,13 @@ export const SlideControls = () => {
     };
   }, [handleGoBack, handleGoForward]);
 
+  const enterFullScreen = useCallback(() => {
+    const element = document.getElementById("fullscreen-context");
+    if (element?.requestFullscreen) {
+      element.requestFullscreen();
+    }
+  }, []);
+
   return (
     <div className={styles.wrapper}>
       <FontAwesomeIcon
@@ -61,7 +68,11 @@ export const SlideControls = () => {
         onClick={handleGoForward}
       />
       <FontAwesomeIcon icon={faPipe} className={styles.divider} />
-      <FontAwesomeIcon icon={faExpand} className={merge(styles.button)} />
+      <FontAwesomeIcon
+        icon={faExpand}
+        className={merge(styles.button)}
+        onClick={enterFullScreen}
+      />
       <FontAwesomeIcon icon={faPipe} className={styles.divider} />
       <FontAwesomeIcon
         icon={faBackwardFast}
