@@ -1,0 +1,32 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  column-gap: 1rem;
+  padding: 1.2rem 0;
+  margin-top: auto;
+  /* border: 1px solid var(--theme-text); */
+  border-radius: 0.5rem;
+  box-shadow: var(--theme-box-shadow-small);
+}
+
+.browser {
+  flex: 1 1 20%;
+}
+
+.support {
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+
+.support.full {
+  color: green;
+}
+
+.support.partial {
+  color: yellow;
+}
+
+.support.none {
+  color: #c21b1b;
+}

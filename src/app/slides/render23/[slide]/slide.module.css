@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100dvh;
+  color: var(--theme-text);
+  padding: 2rem;
+  text-align: center;
+  justify-content: flex-start;
+  padding-bottom: 2rem;
+  overflow-y: auto;
+}

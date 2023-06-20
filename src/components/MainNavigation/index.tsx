@@ -23,6 +23,7 @@ const MainNavigation = ({
   const isHomePage = pathname === "/" || !segments.length;
   const isBlogPage = pathname.startsWith("/blog");
   const isLibraryPage = pathname.startsWith("/library");
+  const isASlide = pathname.startsWith("/slides");
 
   // const isExactlyBlogPage = isBlogPage && segments.length === 1;
   // const isExactlyLibraryPage = isLibraryPage && segments.length === 1;
@@ -66,6 +67,10 @@ const MainNavigation = ({
       }
     });
   }, []);
+
+  if (isASlide) {
+    return null;
+  }
 
   return (
     <HeroBlock

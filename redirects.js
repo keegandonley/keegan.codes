@@ -30,4 +30,5 @@ module.exports = [
   ["/qr/:slug*", `${v2Domain}/qr/:slug*`],
   ["/bsky", "https://staging.bsky.app/profile/keegan.codes"],
   ["/bluesky", "/bsky"],
+  ["/render23recap", "/slides/render23"],
 ];

@@ -1,0 +1,48 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRobotAstromech } from "@fortawesome/pro-solid-svg-icons";
+import { Columns } from "../../../components/Columns";
+
+# <FontAwesomeIcon icon={faRobotAstromech} /> A New Attack Vector
+
+---
+
+### Copilot Hallucinates
+
+<Columns count={2}>
+
+    ```jsx
+    import React, { useState, useEffect } from 'react';
+    import Scroll from 'super-easy-react-scroll';
+
+    const InfiniteScroll = () => {
+        const [data, setData] = useState([]);
+        const [isLoading, setIsLoading] = useState(false);
+        const [pageNumber, setPageNumber] = useState(1);
+
+        return (
+            <div>
+                {isLoading && <p>Loading more data...</p>}
+                <Scroll data={data} />
+            </div>
+        );
+    };
+    ```
+
+    <div>
+        Copilot and ChatGPT can hallucinate npm packages
+
+        `super-easy-react-scroll` is not a real package
+
+        This provides an opportunity for an attacker to claim that package name, and publish a malicious package
+
+        #### The solution?
+
+        Don't trust the output, always verify that the package is real and serves the intended purpose
+
+    </div>
+
+</Columns>
+
+---
+
+#### Remember, you don't have to deploy the malicious package, it could use a postinstall script
