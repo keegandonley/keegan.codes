@@ -31,4 +31,5 @@ module.exports = [
   ["/bsky", "https://staging.bsky.app/profile/keegan.codes"],
   ["/bluesky", "/bsky"],
   ["/render23recap", "/slides/render23"],
+  ["/v2", v2Domain],
 ];
