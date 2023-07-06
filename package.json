@@ -31,7 +31,7 @@
     "@vercel/kv": "^0.2.2",
     "@vercel/og": "^0.5.8",
     "eslint": "^8.44.0",
-    "eslint-config-next": "^13.4.7",
+    "eslint-config-next": "^13.4.8",
     "next": "^13.4.8",
     "react": "^18.2.0",
     "react-calendly": "^4.1.1",
