@@ -22,7 +22,7 @@
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.4.13",
-    "@planetscale/database": "^1.8.0",
+    "@planetscale/database": "^1.10.0",
     "@types/node": "^20.4.9",
     "@types/react": "^18.2.19",
     "@types/react-dom": "^18.2.7",
