@@ -15,7 +15,7 @@ import { useParams, usePathname, useRouter } from "next/navigation";
 
 export const SlideControls = () => {
   const { slide } = useParams();
-  const slideIndex = parseInt(slide ?? "0", 10);
+  const slideIndex = parseInt((slide as string) ?? "0", 10);
   const pathname = usePathname();
   const slideName = pathname.split("/")[2];
   const router = useRouter();
