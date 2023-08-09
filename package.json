@@ -24,7 +24,7 @@
     "@next/mdx": "^13.4.13",
     "@planetscale/database": "^1.10.0",
     "@types/node": "^20.4.9",
-    "@types/react": "^18.2.19",
+    "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@vercel/analytics": "^1.0.1",
     "@vercel/edge-config": "^0.2.1",
