@@ -2,7 +2,7 @@ import "./globals.css";
 import "./theme.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import { Raleway } from "next/font/google";
+import localFont from "next/font/local";
 import { merge } from "@/util/classNames";
 import { background } from "@/theme/colors";
 import { getHasChosenTheme, userTheme } from "@/util/cookies";
@@ -14,11 +14,19 @@ import { BASEURL, DESCRIPTION, NAME } from "@/metadata";
 import MainNavigation from "@/components/MainNavigation";
 import { ModalBoundary } from "@/components/ModalBoundary";
 import ThemeProvider from "./themeProvider";
-
 config.autoAddCss = false;
 
-const font = Raleway({
-  subsets: ["latin"],
+const font = localFont({
+  src: [
+    {
+      path: "/fonts/Raleway.ttf",
+      style: "normal",
+    },
+    {
+      path: "/fonts/RalewayItalic.ttf",
+      style: "italic",
+    },
+  ],
 });
 
 export default async function RootLayout({ children, postModal }: any) {
