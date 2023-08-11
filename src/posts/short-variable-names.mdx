@@ -10,4 +10,57 @@ export const shortCodes = ["short-variables"];
 Back when I was in college working for Appcelerator and Pinpoint, I also worked
 part-time as a teaching assistant at Santa Rosa Junior College, where I spent a lot
 of time running labs, debugging C++ and Python with students, and grading a few
-hundred assignments every week. Needless to say, I read a _lot_ of code!
+hundred assignments every week. All that to say, I read a _lot_ of code! I had a number
+of guidelines for grading assignments, but one of the most controversial ones was variable
+naming conventions.
+
+Most of the classes I worked on were introductory programming classes, so the students
+were given pretty strict code quality guidelines. The variable naming conventions were
+one of the most important ones, and the students were told to use descriptive variable
+names _always_, and _never_ abbreviate anything except for loop counters.
+
+If you've ever worked on a codebase with a lot of abbreviations, you know how hard it
+can be to read and understand. Abbreviations are often ambiguous, and it's hard to
+understand what they mean, especially if you didn't write them, or they're non-standard
+abbreviations. That's the point this rule was trying to make, and it's a good lesson
+for students to learn early on in their studies.
+
+## What about the real world?
+
+In the real world, things aren't always so black and white. I wouldn't want to waste
+a lot of time being overly prescriptive about variable names, but we also don't want to end
+up with a codebase full of abbreviations that are hard to understand. This slows the team
+(or even just me on solo projects) down, and makes it harder to maintain the codebase.
+
+So, when is it okay to use abbreviations in naming? I have a few scenarios
+where I'm fine with abbreviations and short names. The following are the criteria I use to decide whether or not to
+use an abbreviation, and I generally apply them when I do code review as well.
+
+#### Standard Abbreviations
+
+The first one is a bit obvious, but computing is not without abbreviations. There are a number of abbreviations that are baked into languages
+and nobody would expect these to be avoided. Take this C++ example:
+
+```c++
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string userInput;
+
+    std::cout << "Please enter some text: ";
+    std::getline(std::cin, userInput);
+
+    std::cout << "You entered: " << userInput << std::endl;
+
+    return 0;
+}
+```
+
+> We've got lots of abbreviations here! `iostream`, `int`, `std`, `cout`, `cin`, and `endl` are all abbreviations.
+
+You wouldn't expect these to "count" as abbreviations per se, but you'd be surprised some of the hoops
+I saw students jump through to avoid using them, usually to prove a point that the rule was dumb. (For real, I once had a student submit
+code full of preprocessor directives like `#define STANDARD_INPUT_STREAM std::cin` and `#define END_LINE std::endl`)
+
+Now that I've covered my bases with the obvious and a bit silly, let's move on to some more realistic scenarios.
