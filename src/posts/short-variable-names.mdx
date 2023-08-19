@@ -1,17 +1,17 @@
-export const title = "When are Short Variable Names a Good Idea?";
-export const slug = "short-variable-names";
+export const title = "When are Abbreviated Variable Names a Good Idea?";
+export const slug = "abbreviated-variable-names";
 export const tags = ["software", "opinion"];
 export const description =
   "Most advice says to avoid abbreviations in variable names, but are there situations where they're acceptable?";
 export const cover = "short-variable-names-cover.png";
 export const published = new Date(2023, 7, 14);
-export const shortCodes = ["short-variables"];
+export const shortCodes = ["abbreviated-variables"];
 
-Back when I was in college working for Appcelerator and Pinpoint, I also worked
+Back when I was in college working on my computer science degree, I also worked
 part-time as a teaching assistant at Santa Rosa Junior College, where I spent a lot
 of time running labs, debugging C++ and Python with students, and grading a few
 hundred assignments every week. All that to say, I read a _lot_ of code! I had a number
-of guidelines for grading assignments, but one of the most controversial ones was variable
+of guidelines (not written by me) for grading assignments, but one of the most controversial ones was variable
 naming conventions.
 
 Most of the classes I worked on were introductory programming classes, so the students
@@ -34,7 +34,8 @@ up with a codebase full of abbreviations that are hard to understand. This slows
 
 So, when is it okay to use abbreviations in naming? I have a few scenarios
 where I'm fine with abbreviations and short names. The following are the criteria I use to decide whether or not to
-use an abbreviation, and I generally apply them when I do code review as well.
+use an abbreviation, and I generally apply them when I do code reviews as well to try to keep a codebase
+in good shape.
 
 #### Standard Abbreviations
 
@@ -60,7 +61,70 @@ int main() {
 > We've got lots of abbreviations here! `iostream`, `int`, `std`, `cout`, `cin`, and `endl` are all abbreviations.
 
 You wouldn't expect these to "count" as abbreviations per se, but you'd be surprised some of the hoops
-I saw students jump through to avoid using them, usually to prove a point that the rule was dumb. (For real, I once had a student submit
-code full of preprocessor directives like `#define STANDARD_INPUT_STREAM std::cin` and `#define END_LINE std::endl`)
+I saw students jump through to avoid using them, usually to prove a point that the rule was dumb. I once had a student submit
+code full of preprocessor directives like `#define STANDARD_INPUT_STREAM std::cin` and `#define END_LINE std::endl` so that they could
+then use `STANDARD_INPUT_STREAM` and `END_LINE` in their code. I know what they were trying to prove, but it was a bit silly and made the
+code nearly impossible to follow. Needless to say, avoiding abbreviations can go too far.
 
 Now that I've covered my bases with the obvious and a bit silly, let's move on to some more realistic scenarios.
+
+#### Well-Accepted Abbreviations and Acronyms
+
+There are a number of abbreviations and acronyms that are well-accepted in the world. These are usually
+okay to abbreviate in code as well. For example, abbreviations like `min`, `max`, `approx`, etc. My goal
+here is to avoid ambiguity and confusion, so if the abbreviation is well-known and unambiguous, I'm generally
+fine with it.
+
+#### Convention
+
+Many languages have conventions for how to name things. For example, loops often use `i`, `j`, and `k` as
+loop counters. In JavaScript, `el` is often used for element and `idx` for index. These
+typically serve to simplify code and make it easier to read.
+
+```javascript
+for (let i = 1; i <= 3; i++) {
+  for (let j = 1; j <= 3; j++) {
+    console.log(`i: ${i}, j: ${j}`);
+  }
+}
+```
+
+> This is a pretty common pattern, and it's pretty easy to understand what's going on here.
+
+#### Small Scope
+
+For a long time, I've followed the rule of thumb that the longer a variable is in scope, the more descriptive
+it should be. If I'm writing a small mapping function, I'll often use a single-letter variable because it's
+only in scope for a single line.
+
+```javascript
+const data = [1, 2, 3, 4, 5];
+const even = data.filter((d) => d % 2 === 0);
+```
+
+> Normally, I'd advise against using `d` as a variable name abbreviation of `data`, but in this case, it's
+> only in scope for a moment and it's nearly impossible to misundertand its use.
+
+Once a variable is in scope for a couple lines, I'll start to lengthen the variable names.
+
+```javascript
+const data = [1, 2, 3, 4, 5];
+const result = data.reduce((acc, curr) => {
+  if (curr % 2 === 0) {
+    acc.push(curr);
+  }
+  return acc;
+}, []);
+```
+
+> Here, I've used `acc` and `curr` as abbreviations for `accumulator` and `current`, respectively. These are
+> still pretty short, but they're in scope for a few lines, so I've lengthened them a bit.
+
+## Final Thoughts
+
+At the end of the day, being overly prescriptive with naming conventions can be a waste of time. It's useful
+to have some guidelines, but there are always exceptions. I've found that the guidelines above are a good starting
+point, but I make exceptions when it makes sense.
+
+If you really prefer short variable names, keeping your scopes small and composing code into smaller units will go a
+long ways towards making your code more readable and maintable even with abbreviated names.
