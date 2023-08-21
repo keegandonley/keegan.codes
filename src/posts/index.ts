@@ -32,6 +32,7 @@ import * as HomeNetwork from "./my-home-network-configuration-for-speed-and-priv
 import * as DesignHobby from "./getting-back-into-design-work.mdx";
 import * as Stars from "./my-first-real-astrophotography-attempt.mdx";
 import * as Currying from "./currying-react.mdx";
+import * as ShortVariableNames from "./short-variable-names.mdx";
 
 const posts = {
   Welcome,
@@ -68,6 +69,7 @@ const posts = {
   DesignHobby,
   Stars,
   Currying,
+  ShortVariableNames,
 };
 
 export default posts;
