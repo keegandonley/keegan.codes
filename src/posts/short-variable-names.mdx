@@ -8,7 +8,7 @@ export const published = new Date(2023, 7, 21);
 export const shortCodes = ["abbreviated-variables"];
 
 Back when I was in college working on my computer science degree, I also worked
-part-time as a teaching assistant at Santa Rosa Junior College, where I spent a lot
+part-time as a teaching assistant at Santa Rosa Junior College and a few other schools, where I spent a lot
 of time running labs, debugging C++ and Python with students, and grading a few
 hundred assignments every week. All that to say, I read a _lot_ of code! I had a number
 of guidelines (not written by me) for grading assignments, but one of the most controversial ones was variable
@@ -27,19 +27,20 @@ for students to learn early on in their studies.
 
 ## What about the real world?
 
-In the real world, things aren't always so black and white. I wouldn't want to waste
-a lot of time being overly prescriptive about variable names, but we also don't want to end
-up with a codebase full of abbreviations that are hard to understand. This slows the team
-(or even just me on solo projects) down, and makes it harder to maintain the codebase.
+In the real world, things aren't always so black and white. I don't want to waste
+a lot of time being overly prescriptive about variable names, but I also don't want to end
+up with a codebase full of abbreviations that are hard to understand. This slows the team down,
+and makes it harder to maintain the codebase. Even on personal projects it can be frustrating
+if I didn't follow good practices and can't read my own code later.
 
 So, when is it okay to use abbreviations in naming? I try to avoid them, except in a few
 pre-defined scenarios I've come up with. The following are the criteria I use to decide whether or not to
 use an abbreviation, and I generally apply them when I do code reviews as well to try to keep the codebase
 in good shape.
 
-#### Standard Abbreviations
+#### Standard Abbreviations are Fine
 
-The first one is a bit obvious, but the world of software is not without abbreviations. There are a number of abbreviations that are baked into languages
+This first one is a bit obvious, but the world of software is not without abbreviations. There are a number of abbreviations that are baked into languages
 and nobody would expect these to be avoided. Take this C++ example:
 
 ```c++
@@ -68,7 +69,7 @@ code nearly impossible to follow. Needless to say, avoiding abbreviations can go
 
 Now that I've covered my bases with the obvious and a bit silly, let's move on to some more realistic scenarios.
 
-#### Well-Accepted Abbreviations and Acronyms
+#### Well-Accepted Abbreviations and Acronyms are Generally Fine
 
 There are a number of abbreviations and acronyms that are well-accepted in the world. These are usually
 okay to abbreviate in code as well. For example, abbreviations like `min`, `max`, `approx`, etc. My goal
@@ -88,9 +89,10 @@ function findMin(numbers) {
 ```
 
 > There's not a lot of ambiguity here regarding what `min` means. Maybe if we were also talking about
-> time it could be confused for "minutes," but in this context there's not much room for confusion.
+> time it could be confused for "minutes," but in this context there's not much room for confusion. It all depends
+> on context, and even well-defined abbreviations can be ambiguous at times.
 
-#### Convention
+#### Convention Should be Followed
 
 Many languages have well-established conventions for how to name things. For example, loops often use `i`, `j`, and `k` as
 loop counters. In JavaScript, `el` is often used for element and `idx` for index. These
@@ -106,14 +108,14 @@ for (let i = 1; i <= 3; i++) {
 
 > This is a pretty common pattern, and it's pretty easy to understand what's going on here.
 
-#### Small Scope
+#### Scope Size Affects Naming
 
 This is the primary rule that I pay attention to, because it can apply in almost all scenarios and acts
 as a good general guideline.
 
 For a long time, I've followed the rule of thumb that the longer a variable is in scope, the more descriptive
 it should be. I'm not sure where I first heard this suggestion, but it always stuck with me. If I'm writing a small mapping function, I'll often use a single-letter variable because it's
-only in scope for a single line.
+only in scope for a single line, or even just a few tokens.
 
 ```javascript
 const data = [1, 2, 3, 4, 5];
@@ -170,7 +172,8 @@ const customerRevenue = orders.reduce<{ [key: number]: number }>(
 
 ## Final Thoughts
 
-At the end of the day, being overly prescriptive with naming conventions can be a waste of time. It's useful
+At the end of the day, being overly prescriptive with naming conventions can be a frustrating waste of time, just like being too
+black-and-white about anything in software can cause issues. It's useful
 to have some guidelines, but there are always exceptions. I've found that the guidelines above are a good starting
 point, but I make exceptions when it makes sense.
 
