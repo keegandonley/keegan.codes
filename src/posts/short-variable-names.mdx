@@ -32,14 +32,14 @@ a lot of time being overly prescriptive about variable names, but we also don't 
 up with a codebase full of abbreviations that are hard to understand. This slows the team
 (or even just me on solo projects) down, and makes it harder to maintain the codebase.
 
-So, when is it okay to use abbreviations in naming? I have a few scenarios
-where I'm fine with abbreviations and short names. The following are the criteria I use to decide whether or not to
-use an abbreviation, and I generally apply them when I do code reviews as well to try to keep a codebase
+So, when is it okay to use abbreviations in naming? I try to avoid them, except in a few
+pre-defined scenarios I've come up with. The following are the criteria I use to decide whether or not to
+use an abbreviation, and I generally apply them when I do code reviews as well to try to keep the codebase
 in good shape.
 
 #### Standard Abbreviations
 
-The first one is a bit obvious, but computing is not without abbreviations. There are a number of abbreviations that are baked into languages
+The first one is a bit obvious, but the world of software is not without abbreviations. There are a number of abbreviations that are baked into languages
 and nobody would expect these to be avoided. Take this C++ example:
 
 ```c++
@@ -60,7 +60,7 @@ int main() {
 
 > We've got lots of abbreviations here! `iostream`, `int`, `std`, `cout`, `cin`, and `endl` are all abbreviations.
 
-You wouldn't expect these to "count" as abbreviations per se, but you'd be surprised some of the hoops
+You wouldn't expect these to "count" as abbreviations per se, because they are part of the language, but you'd be surprised some of the hoops
 I saw students jump through to avoid using them, usually to prove a point that the rule was dumb. I once had a student submit
 code full of preprocessor directives like `#define STANDARD_INPUT_STREAM std::cin` and `#define END_LINE std::endl` so that they could
 then use `STANDARD_INPUT_STREAM` and `END_LINE` in their code. I know what they were trying to prove, but it was a bit silly and made the
@@ -75,9 +75,24 @@ okay to abbreviate in code as well. For example, abbreviations like `min`, `max`
 here is to avoid ambiguity and confusion, so if the abbreviation is well-known and unambiguous, I'm generally
 fine with it.
 
+```javascript
+function findMin(numbers) {
+  let min = numbers[0];
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] < min) {
+      min = numbers[i];
+    }
+  }
+  return min;
+}
+```
+
+> There's not a lot of ambiguity here regarding what `min` means. Maybe if we were also talking about
+> time it could be confused for "minutes," but in this context there's not much room for confusion.
+
 #### Convention
 
-Many languages have conventions for how to name things. For example, loops often use `i`, `j`, and `k` as
+Many languages have well-established conventions for how to name things. For example, loops often use `i`, `j`, and `k` as
 loop counters. In JavaScript, `el` is often used for element and `idx` for index. These
 typically serve to simplify code and make it easier to read.
 
@@ -93,8 +108,11 @@ for (let i = 1; i <= 3; i++) {
 
 #### Small Scope
 
+This is the primary rule that I pay attention to, because it can apply in almost all scenarios and acts
+as a good general guideline.
+
 For a long time, I've followed the rule of thumb that the longer a variable is in scope, the more descriptive
-it should be. If I'm writing a small mapping function, I'll often use a single-letter variable because it's
+it should be. I'm not sure where I first heard this suggestion, but it always stuck with me. If I'm writing a small mapping function, I'll often use a single-letter variable because it's
 only in scope for a single line.
 
 ```javascript
@@ -103,7 +121,8 @@ const even = data.filter((d) => d % 2 === 0);
 ```
 
 > Normally, I'd advise against using `d` as a variable name abbreviation of `data`, but in this case, it's
-> only in scope for a moment and it's nearly impossible to misundertand its use.
+> only in scope for a moment and it's nearly impossible to misundertand its use. You also don't have to "remember"
+> for very long what the name means when reading code, so there's not much cognitive overhead.
 
 Once a variable is in scope for a couple lines, I'll start to lengthen the variable names.
 
@@ -118,7 +137,36 @@ const result = data.reduce((acc, curr) => {
 ```
 
 > Here, I've used `acc` and `curr` as abbreviations for `accumulator` and `current`, respectively. These are
-> still pretty short, but they're in scope for a few lines, so I've lengthened them a bit.
+> still pretty short, but they're in scope for a few lines, so I've lengthened them a bit. This is also a fairly
+> standard naming convention, so it's doubly acceptable in my book.
+
+That's still a pretty short example though. Here's a longer one, where I use more descriptive names for the
+reduce function arguments.
+
+```typescript
+interface Order {
+  customerId: number;
+  items: {
+    productId: number;
+    price: number;
+  }[];
+}
+
+const orders = [...someData];
+
+const customerRevenue = orders.reduce<{ [key: number]: number }>(
+  (result, order) => {
+    const { customerId, items } = order;
+    const totalOrderPrice = items.reduce((sum, item) => sum + item.price, 0);
+    result[customerId] = (result[customerId] || 0) + totalOrderPrice;
+    return result;
+  },
+  {}
+);
+```
+
+> Here, we have a longer scope, and nested reduce functions. I've used `result` and `sum` as the accumulators here
+> so that they're more descriptive, and named the current items based on what they represent.
 
 ## Final Thoughts
 
