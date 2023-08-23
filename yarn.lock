@@ -239,10 +239,10 @@
     tiny-glob "^0.2.9"
     tslib "^2.4.0"
 
-"@planetscale/database@^1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@planetscale/database/-/database-1.10.0.tgz#04f1f2e153c899e637704514c6eef911fa888095"
-  integrity sha512-XMfNRjIPgGTga6g1YpGr7E21CcnHZcHZdyhRUIiZ/AlpD+ts65UF2B3wKjcu7MKMynmmcOGs6R9kAT6D1OTlZQ==
+"@planetscale/database@^1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@planetscale/database/-/database-1.11.0.tgz#690fddbb828c39f5e117db11641dafccd9cf4222"
+  integrity sha512-aWbU+D/IRHoDE9975y+Q4c+EwwAWxCPwFId+N1AhQVFXzbeJMkj6KN2iQtoi03elcLMRdfT+V3i9Z4WRw+/oIA==
 
 "@resvg/resvg-wasm@2.4.1":
   version "2.4.1"
