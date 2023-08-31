@@ -28,6 +28,7 @@ export const Icon = ({
       rel="noopener noreferrer"
       className={className}
       aria-label={`Keegan Donley's ${name}`}
+      prefetch={false}
     >
       <FontAwesomeIcon
         icon={icon}
