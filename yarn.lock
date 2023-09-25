@@ -441,13 +441,13 @@
   dependencies:
     "@upstash/redis" "1.21.0"
 
-"@vercel/og@^0.5.14":
-  version "0.5.14"
-  resolved "https://registry.yarnpkg.com/@vercel/og/-/og-0.5.14.tgz#7e9ebb25930d241765120e112fbf625f64466987"
-  integrity sha512-2UOkXYgzorv4g2EZdRdy3b343DQC7WJyBq0T0MMf63UH8YUmbOCir7ULB0kgonrUoiL9qIq+E8eeSmHDLYHAdQ==
+"@vercel/og@^0.5.17":
+  version "0.5.17"
+  resolved "https://registry.yarnpkg.com/@vercel/og/-/og-0.5.17.tgz#270d4a9f9c94fcfe4c38aad7a2a6fff4ac59c8ed"
+  integrity sha512-/GOyUBq3MhB3ygbhTJoZ0cHvwlyKdt0g8f4npuj4mwFlp57S7j4XWwgtqILK3XdFf25esN9i77fInrDkeRJfgA==
   dependencies:
     "@resvg/resvg-wasm" "2.4.1"
-    satori "0.10.6"
+    satori "0.10.8"
     yoga-wasm-web "0.3.3"
 
 abab@^2.0.3, abab@^2.0.5:
@@ -3378,10 +3378,10 @@ safe-regex-test@^1.0.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-satori@0.10.6:
-  version "0.10.6"
-  resolved "https://registry.yarnpkg.com/satori/-/satori-0.10.6.tgz#7eff5e2266dd4b69f3c65208df0629f9fe90849c"
-  integrity sha512-bhAAnh+ZZgulFpxoDi5AB1VA3MsN6AnhB0Elfdj5bQitn4N9GHAB3MC5eFauOnXHF7a9TT1jIPHhUY4JQsP6Xg==
+satori@0.10.8:
+  version "0.10.8"
+  resolved "https://registry.yarnpkg.com/satori/-/satori-0.10.8.tgz#15dac06ef46d08e8fbc5bbb7e372eadbb7d2eded"
+  integrity sha512-WlPLxgpx5kIyMuOO6qi98DhZGIbRk5XJRqENkt6D6gyDBWGyo3M5kcSl0X/oSFHUH+n4unlzwMejoPM47s4zug==
   dependencies:
     "@shuding/opentype.js" "1.4.0-beta.0"
     css-background-parser "^0.1.0"
