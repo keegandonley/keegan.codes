@@ -5,9 +5,6 @@ import redirects from "./redirects.js";
 
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    appDir: true,
-  },
   images: {
     remotePatterns: [
       {
