@@ -26,7 +26,7 @@
     "@types/node": "^20.8.3",
     "@types/react": "^18.2.25",
     "@types/react-dom": "^18.2.11",
-    "@vercel/analytics": "^1.0.2",
+    "@vercel/analytics": "^1.1.0",
     "@vercel/edge-config": "^0.4.1",
     "@vercel/kv": "^0.2.3",
     "@vercel/og": "^0.5.17",
