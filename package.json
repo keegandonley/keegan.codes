@@ -23,7 +23,7 @@
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.5.4",
     "@planetscale/database": "^1.11.0",
-    "@types/node": "^20.8.3",
+    "@types/node": "^20.8.4",
     "@types/react": "^18.2.27",
     "@types/react-dom": "^18.2.12",
     "@vercel/analytics": "^1.1.0",
