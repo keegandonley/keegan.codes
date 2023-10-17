@@ -21,5 +21,8 @@ jobs:
         with:
           node-version: "16"
 
+      - name: Install
+        run: yarn install
+
       - name: Run check-shortcodes script
         run: yarn validate-shortcodes
