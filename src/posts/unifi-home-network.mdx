@@ -1,0 +1,36 @@
+export const title = "Ubiquiti at Home: My Residental Network Using Unifi";
+export const slug = "unifi-home-network";
+export const tags = ["networking", "hobby"];
+export const description =
+  "A walkthrough of my brand new home network using Unifi from Ubiquiti";
+export const cover = "unifi-network-cover-nature.png";
+export const published = new Date(2023, 9, 10);
+export const shortCodes = ["unifi"];
+
+I recently moved, and as a first-time homeowner one of the biggest aspects of homeownership I was looking forward
+to was being able to rewire the house to support a fast and reliable network. Previously, I was using an Eero
+mesh network in the house I was renting, and you can read more about that setup in [my writeup from a couple years
+ago](https://keegan.codes/blog/my-home-network-configuration-for-speed-and-privacy).
+
+I had been eyeing Ubiquiti's Unifi line of networking equipment for a while, and I finally decided to pull the
+trigger after careful planning of cable runs while the house was being renovated. Here's how I came to that decision
+and how I have it all set up.
+
+## Requirements
+
+I started off with a list of requirements for the new network, based on what I learned from my previous house's installation.
+
+#### Ethernet backhaul for all access points
+
+My old mesh network worked alright, but for the best performance and reliability I wanted to have all of my access
+points hard wired using ethernet.
+
+#### Wired clients wherever possible
+
+Everything that's internet-connected and stationary should have a wired connection. This includes all smart TVs,
+Apple TVs, game consoles, speakers, etc.
+
+#### Subscription-free
+
+My old Eero network required a subscription to get the most out of it, and I didn't want to have to pay a monthly
+fee for my new setup.
