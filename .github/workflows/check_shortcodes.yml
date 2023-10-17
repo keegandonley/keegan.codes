@@ -9,6 +9,9 @@ jobs:
   check-shortcodes:
     runs-on: ubuntu-latest
 
+    env:
+      FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
