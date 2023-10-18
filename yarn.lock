@@ -10368,6 +10368,7 @@ __metadata:
     sharp: ^0.32.6
     storybook: ^7.5.0
     typescript: ^5.2.2
+    webpack: ^5.89.0
   languageName: unknown
   linkType: soft
 
@@ -15789,7 +15790,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:5":
+"webpack@npm:5, webpack@npm:^5.89.0":
   version: 5.89.0
   resolution: "webpack@npm:5.89.0"
   dependencies:
