@@ -78,7 +78,8 @@
 .imageParent img {
   object-fit: cover;
   /* Tiny border radius still makes a differnece */
-  border-radius: var(--tiny-border-radius);
+  border-radius: 18px;
+  box-shadow: 1px 1px 20px 1px var(--shadow-color);
 }
 
 .content {
