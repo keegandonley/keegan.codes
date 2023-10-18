@@ -26,6 +26,10 @@
   word-break: break-word;
 }
 
+.bq pre code {
+  color: inherit;
+}
+
 :global(body.dark) .bq code {
   background: var(--theme-blue-3);
 }

@@ -37,3 +37,12 @@ next-env.d.ts
 
 # credentials
 blurhash-generator/.env
+
+# yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
