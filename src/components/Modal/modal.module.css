@@ -24,7 +24,7 @@
   transform: translateY(100vh);
   transition: transform var(--animation);
   transition-delay: 10ms;
-  border-radius: calc(var(--tiny-border-radius) * 2);
+  border-radius: 18px;
   overflow: hidden;
 }
 
@@ -47,5 +47,11 @@
   background: var(--theme-dark-blue);
   opacity: 1;
   color: white;
-  border-bottom-right-radius: 2rem;
+  border-bottom-right-radius: 18px;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  box-shadow: 1px 1px 40px 1px var(--shadow-color);
+  left: 10px;
+  top: 10px;
 }
