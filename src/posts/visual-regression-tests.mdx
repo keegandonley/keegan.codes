@@ -16,11 +16,14 @@ another component or piece of the design system. It became important early on th
 I set up visual regression testing to make sure that one style change doesn’t break
 any other use-cases.
 
+I've used a similar pattern in other projects in the past and here on my own site, so what I'm going
+to share here is how I have it set up for my own personal use.
+
 ## What is Visual Regression Testing?
 
-I've [written about testing before](https://keegan.codes/blog/common-types-of-web-application-tests-and-how-they-can-improve-performance-and-reliability) including visual tests, but here's a quick recap:
+I've [written about testing before](https://keegan.codes/blog/common-types-of-web-application-tests-and-how-they-can-improve-performance-and-reliability#visualtests) including visual tests, but here's a quick recap:
 
-Rather than test that a component behaves correctly, or has the right markup, a visual test actually loads
+Rather than test that a component [behaves correctly](https://keegan.codes/blog/common-types-of-web-application-tests-and-how-they-can-improve-performance-and-reliability#integrationtests), or has the right markup, a visual test actually loads
 up the component, renders it, and takes a screenshot to compare it to a reference image. These
 reference images are committed to the repository so any time the test is run, it can compare to the same
 reference file. Many solutions will show a nice diff and explain how the reference image differs
@@ -71,10 +74,10 @@ export const Primary: Story = {
 };
 ```
 
-Here, I have just one story stories: `Primary`. We can easily add a few more:
+Here, I have just one story - `Primary`. We can easily add a few more:
 
 ```tsx
-export const Empty: Story = {
+export const EmptyCount: Story = {
   args: {
     count: 0,
     slug: "text-slug",
@@ -82,7 +85,7 @@ export const Empty: Story = {
   },
 };
 
-export const Overflow: Story = {
+export const OverflowValue: Story = {
   args: {
     count: 999999,
     slug: "text-slug",
@@ -95,10 +98,13 @@ When we're finished, all 3 of these stories will be turned into visual regressio
 
 ## Testing Approach
 
-I set up my visual regression tests using [Jest](https://jestjs.io/) and [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) from
-American Express. Here's how it works: the test framework saves a reference image on the first run, and then
+I set up my visual regression tests using [Jest](https://jestjs.io/) and [americanexpress/jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot).
+Here's how it works: the test framework saves a reference image on the first run, and then
 compares subsequent runs to that reference image in order to determine if any pixels
 changed. If they did change unexpectedly, the test fails.
+
+There are some other options like setting a threshold of how much change is allowed, but I recommend
+starting simple and tune it from there if you run into issues.
 
 Here’s my approach for turning stories into tests:
 
@@ -152,9 +158,9 @@ while ((match = storyExpression.exec(storyContent)) !== null) {
 
 #### 3. Convert the Test Names to Story IDs
 
-In this case, my story names will be parsed as `Primary` and `Empty` and `Overflow` - that’s a good
-start, but we need to convert them to story IDs. My story files are using the [component
-story format (CSF)](https://storybook.js.org/docs/react/api/csf) so I was able to look at the source code and figure out how the story
+In this case, my story names will be parsed as `Primary`, `EmptyCount` and `OverflowValue` - that’s a good
+start, but we need to convert them to story IDs. My story files are using the open-source [component
+story format (CSF)](https://storybook.js.org/docs/react/api/csf), so I was able to look at the source code and figure out how the story
 ids are generated from the names. That code
 is [here](https://github.com/ComponentDriven/csf/blob/4c735fea4f0c9605b93497238303cb4ab9304727/src/toStartCaseStr.ts#L4)
 on Github if you want to check it out, but I included a modified version below.
@@ -179,6 +185,8 @@ const ids = storyNames.map((name) => {
 });
 ```
 
+All these replacements and regular expressions should yield a consistent story ID for each story name.
+
 #### 4. Create the Test Using the Derived iFrame URL
 
 Finally, it’s time to spin up a test. This is where we build the iframe URL to navigate to,
@@ -198,9 +206,14 @@ browsing and screenshotting, but any library that works with Jest that can take 
 will work.
 
 ```typescript
+import { toMatchImageSnapshot } from "jest-image-snapshot";
+import puppeteer from "puppeteer";
+
+expect.extend({ toMatchImageSnapshot });
+
 describe("Test Cheers Component", () => {
   test.each(ids)("cheers-%s", (id) => {
-    // init the browser
+    // initialize the browser
     const browser = await puppeteer.launch({
       headless: "new",
       defaultViewport: {
@@ -210,6 +223,7 @@ describe("Test Cheers Component", () => {
     });
 
     const page = await browser.newPage();
+
     // navigate to our story, in a bare frame without any storybook UI
     await page.goto(
       `http://localhost:6006/iframe.html?args=&id=post-cheers--${id}&viewMode=story`
@@ -231,6 +245,10 @@ describe("Test Cheers Component", () => {
 });
 ```
 
+On the initial run, all the snapshots will be saved in a directory `__image_snapshots__` alongside your components. Make sure to commit this!
+
+> To update the snapshots later if a component intentionally changes, re-run the tests you want to update with the `-u` flag.
+
 ## Keep it Tidy
 
 All these images committed in the repo could become a burden, so I made a couple optimizations.
@@ -240,7 +258,8 @@ so I size each test canvas to match the component being tested.
 
 Second, all the snapshots are stored in [Git LFS](https://git-lfs.com/) instead of being committed as binary data.
 This means that the binary files are uploaded to a storage provider, while the repo has just pointers committed to it.
-You can read more about [how GitHub handles Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage), which is what I use.
+You can read more about [how GitHub handles Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage),
+which is what I use for hosting my objects.
 
 Here's my `.gitattributes` file to get you started:
 
@@ -248,10 +267,13 @@ Here's my `.gitattributes` file to get you started:
 src/components/**/*/__image_snapshots__/*snap.png filter=lfs diff=lfs merge=lfs -text
 ```
 
+The syntax is similar to `.gitignore`, but instead this tells Git to use LFS for any files matching the pattern.
+
 ## Conclusion
 
 Visual regression tests give me a lot of confidence that my components are working as expected, and
 that changes made by myself and others won't cause any issues. These tests can easily be run in CI and are pretty
-fast, so I run them on every pull request to make sure I can deploy with confidence!
+fast, so I run them on every pull request to make sure I can deploy with confidence, and also during development
+to spot-check my changes!
 
 > Do you deploy visual tests like this for your application or design system? I'd love to chat about it!
