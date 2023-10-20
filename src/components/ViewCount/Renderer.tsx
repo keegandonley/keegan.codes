@@ -13,7 +13,7 @@ const getValue = async (slug: string): Promise<number> => {
           ? "http://localhost:3000"
           : "https://keegan.codes"
       }/api/view?slug=${slug}`,
-      { next: { revalidate: 60 * 5 } }
+      { next: { revalidate: 60 * 2 } }
     );
 
     const { views } = await data.json();
