@@ -10,7 +10,7 @@ require (
 	github.com/esimov/stackblur-go v1.1.0
 	github.com/joho/godotenv v1.5.1
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
-	golang.org/x/image v0.6.0
+	golang.org/x/image v0.10.0
 	golang.org/x/time v0.3.0
 )
 
