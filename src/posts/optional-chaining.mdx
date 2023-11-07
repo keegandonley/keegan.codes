@@ -97,9 +97,9 @@ All your application knows is that `result` is `undefined`, but it can't properl
 
 Optional chaining is slower than traditional property access because there are additional checks involved.
 
-```javascript
-`a?.b?.c?.d?.e` will be slower than `a.b.c.d.e`, so it should only be used when the existence of a value is truly unknown.
-```
+
+> `a?.b?.c?.d?.e` will be slower than `a.b.c.d.e`, so it should only be used when the existence of a value is truly unknown.
+
 
 #### Transpilation
 
