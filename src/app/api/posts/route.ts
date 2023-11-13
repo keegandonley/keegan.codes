@@ -2,8 +2,8 @@ export const runtime = "edge";
 import Posts from "@/posts";
 import { Post } from "@/types/post";
 import wordCounts from "../../../post-word-counts.json";
-import { PAGE_SIZE } from "@/util/pagination";
 import { connect } from "@planetscale/database";
+import { get } from "@vercel/edge-config";
 
 const config = {
   host: process.env.host,
@@ -11,9 +11,9 @@ const config = {
   password: process.env.password,
 };
 
-const postsPerPage = PAGE_SIZE;
-
 export async function GET(request: Request) {
+  const postsPerPage = parseInt((await get("blogPageSize")) ?? "12");
+
   const url = new URL(request.url);
   const _page = url.searchParams.get("page");
   const pageNumber = _page ? parseInt(_page, 10) : -1;

@@ -3,12 +3,12 @@
 import { Post } from "@/types/post";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { MDXEntryRow } from "../MDXEntryRow";
-import { PAGE_SIZE } from "@/util/pagination";
 
 interface DynamicPostsProps {
   previousPage: number;
   isLikelyMobile: boolean;
   pageCount: number;
+  postsPerPage: number;
 }
 
 interface PostWithViewCount extends Post {
@@ -16,7 +16,7 @@ interface PostWithViewCount extends Post {
 }
 
 export const DynamicPosts = (props: DynamicPostsProps) => {
-  const { previousPage, isLikelyMobile, pageCount } = props;
+  const { previousPage, isLikelyMobile, pageCount, postsPerPage } = props;
   const currentPage = previousPage + 1;
   const [isVisibile, setIsVisible] = useState(false);
   const [pageData, setPageData] = useState<PostWithViewCount[]>();
@@ -70,7 +70,7 @@ export const DynamicPosts = (props: DynamicPostsProps) => {
         return (
           <MDXEntryRow
             key={post.slug}
-            index={index + previousPage * PAGE_SIZE}
+            index={index + previousPage * postsPerPage}
             isLikelyMobile={isLikelyMobile}
             {...post}
             published={new Date(post.published)}
@@ -88,6 +88,7 @@ export const DynamicPosts = (props: DynamicPostsProps) => {
           previousPage={currentPage}
           isLikelyMobile={isLikelyMobile}
           pageCount={pageCount}
+          postsPerPage={postsPerPage}
         />
       ) : null}
       {hasNextPage && !pageData ? (

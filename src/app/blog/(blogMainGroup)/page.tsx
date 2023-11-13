@@ -9,7 +9,7 @@ import { postCount } from "@/post-count";
 import { background } from "@/theme/colors";
 import { DynamicPosts } from "@/components/DynamicPosts";
 import { getIsLikelyMobile } from "@/util/userAgent";
-import { PAGE_SIZE } from "@/util/pagination";
+import { get } from "@vercel/edge-config";
 
 export const runtime = "experimental-edge";
 
@@ -19,9 +19,9 @@ interface BlogPageProps {
   };
 }
 
-const postsPerPage = PAGE_SIZE;
+export default async function BlogPage() {
+  const postsPerPage = parseInt((await get("blogPageSize")) ?? "12");
 
-export default function BlogPage({ searchParams: { page } }: BlogPageProps) {
   const allPosts = Object.keys(Posts);
   const posts = allPosts
     .map((key) => {
@@ -69,6 +69,7 @@ export default function BlogPage({ searchParams: { page } }: BlogPageProps) {
             previousPage={1}
             isLikelyMobile={isLikelyMobile}
             pageCount={pageCount}
+            postsPerPage={postsPerPage}
           />
           <MDXEntryRow
             key="extra-1"
