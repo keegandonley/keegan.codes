@@ -60,14 +60,19 @@ export default async function RootLayout({ children, postModal }: any) {
   );
 }
 
-export async function generateMetadata() {
+export async function generateViewport() {
   const theme = userTheme();
 
+  return {
+    themeColor: theme === "light" ? background.light : background.dark,
+  };
+}
+
+export async function generateMetadata() {
   return {
     metadataBase: new URL("https://keegan.codes"),
     title: NAME,
     description: DESCRIPTION,
-    themeColor: theme === "light" ? background.light : background.dark,
     openGraph: {
       title: NAME,
       description: DESCRIPTION,

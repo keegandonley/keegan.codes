@@ -6,13 +6,18 @@ import { background } from "@/theme/colors";
 
 export const runtime = "experimental-edge";
 
-export async function generateMetadata() {
+export async function generateViewport() {
   const theme = userTheme();
 
   return {
+    themeColor: theme === "light" ? background.light : background.dark,
+  };
+}
+
+export async function generateMetadata() {
+  return {
     title: "Keegan Donley's Résumé",
     description: "Principal Front-End Engineer at Kizen",
-    themeColor: theme === "light" ? background.light : background.dark,
   };
 }
 

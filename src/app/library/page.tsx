@@ -60,13 +60,18 @@ export default function LibraryPage() {
   );
 }
 
-export async function generateMetadata() {
+export async function generateViewport() {
   const theme = userTheme();
 
   return {
+    themeColor: theme === "light" ? background.light : background.dark,
+  };
+}
+
+export async function generateMetadata() {
+  return {
     title: `Blog · ${NAME}`,
     description: `My library of ${postCount} books I've enjoyed`,
-    themeColor: theme === "light" ? background.light : background.dark,
     openGraph: {
       title: `Blog · ${NAME}`,
       description: `My library of ${postCount} books I've enjoyed`,

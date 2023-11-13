@@ -72,13 +72,18 @@ export default function BlogPage({ searchParams: { page } }: BlogPageProps) {
   );
 }
 
-export async function generateMetadata() {
+export async function generateViewport() {
   const theme = userTheme();
 
   return {
+    themeColor: theme === "light" ? background.light : background.dark,
+  };
+}
+
+export async function generateMetadata() {
+  return {
     title: `Blog · ${NAME}`,
     description: `My blog with ${postCount} posts and counting!`,
-    themeColor: theme === "light" ? background.light : background.dark,
     openGraph: {
       title: `Blog · ${NAME}`,
       description: `My blog with ${postCount} posts and counting!`,
