@@ -1843,44 +1843,44 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-common-types@npm:6.4.0":
-  version: 6.4.0
-  resolution: "@fortawesome/fontawesome-common-types@npm:6.4.0::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Ffontawesome-common-types%2F-%2F6.4.0%2Ffontawesome-common-types-6.4.0.tgz"
-  checksum: a9b79136caa615352bd921cfe2710516321b402cd76c3f0ae68e579a7e3d7645c5a5c0ecd7516c0b207adeeffd1d2174978638d8c0d3c8c937d66fca4f2ff556
+"@fortawesome/fontawesome-common-types@npm:6.4.2":
+  version: 6.4.2
+  resolution: "@fortawesome/fontawesome-common-types@npm:6.4.2::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Ffontawesome-common-types%2F-%2F6.4.2%2Ffontawesome-common-types-6.4.2.tgz"
+  checksum: 4a22932bd0cac65be1d35b739624f366b6c247b60eb5b8f66218957f54ce1cae56e2a20ea88789ede45d1e1c0c1014f160e01c1752122ec174ad0823e60f94bf
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-pro@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "@fortawesome/fontawesome-pro@npm:6.4.0::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Ffontawesome-pro%2F-%2F6.4.0%2Ffontawesome-pro-6.4.0.tgz"
-  checksum: 4de15a52e406ae0d46736710d94e0f82c99a3eeb16d067343e9889a28dea400f73b5e77edf775e16f3cb36019666241803e4d3be017ced3cceff47ba2fb7c43f
+"@fortawesome/fontawesome-pro@npm:^6.4.2":
+  version: 6.4.2
+  resolution: "@fortawesome/fontawesome-pro@npm:6.4.2::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Ffontawesome-pro%2F-%2F6.4.2%2Ffontawesome-pro-6.4.2.tgz"
+  checksum: 8af23532c35c189ef9b5a6d6fc59e8ede0446f0e26dc80fe5665d69c6694f0195b906bf0d9b041276ca29cb274080abc946b89c3e89e41498149b184ff207180
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-svg-core@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "@fortawesome/fontawesome-svg-core@npm:6.4.0::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Ffontawesome-svg-core%2F-%2F6.4.0%2Ffontawesome-svg-core-6.4.0.tgz"
+"@fortawesome/fontawesome-svg-core@npm:^6.4.2":
+  version: 6.4.2
+  resolution: "@fortawesome/fontawesome-svg-core@npm:6.4.2::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Ffontawesome-svg-core%2F-%2F6.4.2%2Ffontawesome-svg-core-6.4.2.tgz"
   dependencies:
-    "@fortawesome/fontawesome-common-types": 6.4.0
-  checksum: 5d4e6c15f814f5ce29053b666d0c7d194dc8ba173d128a38cc5856403a09d4e817e54956d30ed8d48d621f2f5ebcc71756f4e8fe5c5a091c636fc728fcb2362b
+    "@fortawesome/fontawesome-common-types": 6.4.2
+  checksum: 0c0ecd9058883b128127e2b281c983ba6272be38a17577aaa2293ada58e9b1538357fe44430ded508d49ae3f5cc55aa720a0448d2b9d99689bb912d786f034e5
   languageName: node
   linkType: hard
 
-"@fortawesome/free-brands-svg-icons@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "@fortawesome/free-brands-svg-icons@npm:6.4.0::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Ffree-brands-svg-icons%2F-%2F6.4.0%2Ffree-brands-svg-icons-6.4.0.tgz"
+"@fortawesome/free-brands-svg-icons@npm:^6.4.2":
+  version: 6.4.2
+  resolution: "@fortawesome/free-brands-svg-icons@npm:6.4.2::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Ffree-brands-svg-icons%2F-%2F6.4.2%2Ffree-brands-svg-icons-6.4.2.tgz"
   dependencies:
-    "@fortawesome/fontawesome-common-types": 6.4.0
-  checksum: 110b22ec366793bc2daa10d0016dfcdf0a0341ced0d8d5c4f68c86e7ffb5e58d3a0b32062e0daaf38af010f85147a9d33e7fd7a8fde79309af7a05254eadbf31
+    "@fortawesome/fontawesome-common-types": 6.4.2
+  checksum: 79efd840297f7b8dc057b553e46df1d5bfbc58e936bb2c7a3e488721fbbd430a70c4f4c613ac4d52bdc752e115b104fcd92774f35080ae04b8075add5423b6f0
   languageName: node
   linkType: hard
 
-"@fortawesome/pro-solid-svg-icons@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "@fortawesome/pro-solid-svg-icons@npm:6.4.0::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Fpro-solid-svg-icons%2F-%2F6.4.0%2Fpro-solid-svg-icons-6.4.0.tgz"
+"@fortawesome/pro-solid-svg-icons@npm:^6.4.2":
+  version: 6.4.2
+  resolution: "@fortawesome/pro-solid-svg-icons@npm:6.4.2::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Fpro-solid-svg-icons%2F-%2F6.4.2%2Fpro-solid-svg-icons-6.4.2.tgz"
   dependencies:
-    "@fortawesome/fontawesome-common-types": 6.4.0
-  checksum: f30e6573528355c6238ba96801bf2eaa9b0221b5e2d70e99b0874dd946e8e8bd2e193ff8cd6bc966d741264162fca1f606b458b611bd262e61d49b6679d44b3a
+    "@fortawesome/fontawesome-common-types": 6.4.2
+  checksum: 806155113141f86184fa2d21701287e5ebc4c618ad2eb3d9eeadde2c44c89bf08d6707e9f4b6ebf50b511f3d68ebdb76d29391aa5862820429fc53212c6b9639
   languageName: node
   linkType: hard
 
@@ -2133,10 +2133,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/env@npm:13.5.5":
-  version: 13.5.5
-  resolution: "@next/env@npm:13.5.5"
-  checksum: 4e3a92f2bd60189d81eb0437bf8141de26dec371edc125553c2d93b1de4c40ce99e8c81f60d8450961fab5c8880a6bcfccd23d9ef9c86aceab2f5380776def9f
+"@next/env@npm:14.0.2":
+  version: 14.0.2
+  resolution: "@next/env@npm:14.0.2"
+  checksum: 5a43177f3cb19ad61b60d0b30d0c0cc2b8d0f6089c8b820f51536280ee00a20c3d38969e3c309cf9dfa35acafe0bb4bc452167a7fea25baaa7036156191e2f1e
   languageName: node
   linkType: hard
 
@@ -2149,9 +2149,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/mdx@npm:^13.5.5":
-  version: 13.5.5
-  resolution: "@next/mdx@npm:13.5.5"
+"@next/mdx@npm:^14.0.2":
+  version: 14.0.2
+  resolution: "@next/mdx@npm:14.0.2"
   dependencies:
     source-map: ^0.7.0
   peerDependencies:
@@ -2162,69 +2162,69 @@ __metadata:
       optional: true
     "@mdx-js/react":
       optional: true
-  checksum: bf22b266a2e2c782c5b885ae2d37ef09929afe19d6b89ae2177558631dac120ca08375111cbe5d4fc73879c2d21dd017c24918323feaa9d4bf3575dbec0d8f32
+  checksum: dfb4f1d823cd46ba170ead682442efeaf9a937b04785c23ed540345175ca7ee0a6ee5ad60bd5da4df193512e47dc913e0b3cc86b65b990624b8c0f042cebea55
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-arm64@npm:13.5.5":
-  version: 13.5.5
-  resolution: "@next/swc-darwin-arm64@npm:13.5.5"
+"@next/swc-darwin-arm64@npm:14.0.2":
+  version: 14.0.2
+  resolution: "@next/swc-darwin-arm64@npm:14.0.2"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-x64@npm:13.5.5":
-  version: 13.5.5
-  resolution: "@next/swc-darwin-x64@npm:13.5.5"
+"@next/swc-darwin-x64@npm:14.0.2":
+  version: 14.0.2
+  resolution: "@next/swc-darwin-x64@npm:14.0.2"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-gnu@npm:13.5.5":
-  version: 13.5.5
-  resolution: "@next/swc-linux-arm64-gnu@npm:13.5.5"
+"@next/swc-linux-arm64-gnu@npm:14.0.2":
+  version: 14.0.2
+  resolution: "@next/swc-linux-arm64-gnu@npm:14.0.2"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-musl@npm:13.5.5":
-  version: 13.5.5
-  resolution: "@next/swc-linux-arm64-musl@npm:13.5.5"
+"@next/swc-linux-arm64-musl@npm:14.0.2":
+  version: 14.0.2
+  resolution: "@next/swc-linux-arm64-musl@npm:14.0.2"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-gnu@npm:13.5.5":
-  version: 13.5.5
-  resolution: "@next/swc-linux-x64-gnu@npm:13.5.5"
+"@next/swc-linux-x64-gnu@npm:14.0.2":
+  version: 14.0.2
+  resolution: "@next/swc-linux-x64-gnu@npm:14.0.2"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-musl@npm:13.5.5":
-  version: 13.5.5
-  resolution: "@next/swc-linux-x64-musl@npm:13.5.5"
+"@next/swc-linux-x64-musl@npm:14.0.2":
+  version: 14.0.2
+  resolution: "@next/swc-linux-x64-musl@npm:14.0.2"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-win32-arm64-msvc@npm:13.5.5":
-  version: 13.5.5
-  resolution: "@next/swc-win32-arm64-msvc@npm:13.5.5"
+"@next/swc-win32-arm64-msvc@npm:14.0.2":
+  version: 14.0.2
+  resolution: "@next/swc-win32-arm64-msvc@npm:14.0.2"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-win32-ia32-msvc@npm:13.5.5":
-  version: 13.5.5
-  resolution: "@next/swc-win32-ia32-msvc@npm:13.5.5"
+"@next/swc-win32-ia32-msvc@npm:14.0.2":
+  version: 14.0.2
+  resolution: "@next/swc-win32-ia32-msvc@npm:14.0.2"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@next/swc-win32-x64-msvc@npm:13.5.5":
-  version: 13.5.5
-  resolution: "@next/swc-win32-x64-msvc@npm:13.5.5"
+"@next/swc-win32-x64-msvc@npm:14.0.2":
+  version: 14.0.2
+  resolution: "@next/swc-win32-x64-msvc@npm:14.0.2"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -2900,10 +2900,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@resvg/resvg-wasm@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@resvg/resvg-wasm@npm:2.5.0"
-  checksum: 86b5128549ad685318b1669cecf00ac1986eac4c31515720c6245faabae1977bbc87df5dd5d0396dd06302151bdd0eff5bca6a705a3a4f72981188d53a10fe69
+"@resvg/resvg-wasm@npm:2.6.0":
+  version: 2.6.0
+  resolution: "@resvg/resvg-wasm@npm:2.6.0"
+  checksum: 730ababcab7d11be84129ab68aa9b86bb393b820b5a0a223fb53232462c33bc777eb875170691f54cd5d29c6aa36498f5b7dcd7fca000b56818e3e312be01804
   languageName: node
   linkType: hard
 
@@ -4762,12 +4762,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@upstash/redis@npm:1.22.0":
-  version: 1.22.0
-  resolution: "@upstash/redis@npm:1.22.0"
+"@upstash/redis@npm:1.24.3":
+  version: 1.24.3
+  resolution: "@upstash/redis@npm:1.24.3"
   dependencies:
-    isomorphic-fetch: ^3.0.0
-  checksum: 894b7d4e318c55fdcbf0f322efd9ace94a37f1b8f9d7cb2cdf8b8b4859814379665c7e00feef3565578455d98492710d14ed4a2b043ec412b5d640a4d5a2dd55
+    crypto-js: ^4.2.0
+  checksum: 7fbecc3b46616e31f60ad0d68f9a8b53d8cf36e53bc35f475b43366d8a832c7fa2fe64f279f7b3ba8a4d184eb7aa5e71586a00df6b3fadf3c05366efd34ceaa3
   languageName: node
   linkType: hard
 
@@ -4796,23 +4796,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/kv@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "@vercel/kv@npm:0.2.3"
+"@vercel/kv@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@vercel/kv@npm:1.0.0"
   dependencies:
-    "@upstash/redis": 1.22.0
-  checksum: 3a2b1e3a0ebf605b69341b449bd81edde94f9d00393cc6971759b950c90cff782e1e4fa5daf672f4769aa8301e00f7b7fdec07cdd98d40530652d83c043125ed
+    "@upstash/redis": 1.24.3
+  checksum: 91f870f75ac74a74f8e6a55c44fa59b081dd6721fa696aa412e8c8c33c3cfecb4852222e034b0cbb4142a46e5ef397e756b087418c830043d396a8de97d0fc5b
   languageName: node
   linkType: hard
 
-"@vercel/og@npm:^0.5.19":
-  version: 0.5.19
-  resolution: "@vercel/og@npm:0.5.19"
+"@vercel/og@npm:^0.5.20":
+  version: 0.5.20
+  resolution: "@vercel/og@npm:0.5.20"
   dependencies:
-    "@resvg/resvg-wasm": 2.5.0
+    "@resvg/resvg-wasm": 2.6.0
     satori: 0.10.9
     yoga-wasm-web: 0.3.3
-  checksum: 27bc5415b10d10a3268f2c9710d6f0c57e3e4f22f98adc1f1fba9b21d7c23214636c16ba4abd92f4042ae3f9830bad18cd379a71206a649aaa9f03d901096878
+  checksum: b6e08f3a9b2a0ef7c2cfe074d7e2699e7d4b1ab78cab370846ebea92dcb1becfcfef50309e1f905c1c37f37a64484fc789b0a364a5ce9496b8b4ab25048e7aaa
   languageName: node
   linkType: hard
 
@@ -6675,6 +6675,13 @@ __metadata:
     randombytes: ^2.0.0
     randomfill: ^1.0.3
   checksum: c1609af82605474262f3eaa07daa0b2140026bd264ab316d4bf1170272570dbe02f0c49e29407fe0d3634f96c507c27a19a6765fb856fed854a625f9d15618e2
+  languageName: node
+  linkType: hard
+
+"crypto-js@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "crypto-js@npm:4.2.0"
+  checksum: f051666dbc077c8324777f44fbd3aaea2986f198fe85092535130d17026c7c2ccf2d23ee5b29b36f7a4a07312db2fae23c9094b644cc35f7858b1b4fcaf27774
   languageName: node
   linkType: hard
 
@@ -9968,16 +9975,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isomorphic-fetch@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "isomorphic-fetch@npm:3.0.0"
-  dependencies:
-    node-fetch: ^2.6.1
-    whatwg-fetch: ^3.4.1
-  checksum: e5ab79a56ce5af6ddd21265f59312ad9a4bc5a72cebc98b54797b42cb30441d5c5f8d17c5cd84a99e18101c8af6f90c081ecb8d12fd79e332be1778d58486d75
-  languageName: node
-  linkType: hard
-
 "istanbul-lib-coverage@npm:^3.0.0, istanbul-lib-coverage@npm:^3.2.0":
   version: 3.2.0
   resolution: "istanbul-lib-coverage@npm:3.2.0"
@@ -10339,14 +10336,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "k10y@workspace:."
   dependencies:
-    "@fortawesome/fontawesome-pro": ^6.4.0
-    "@fortawesome/fontawesome-svg-core": ^6.4.0
-    "@fortawesome/free-brands-svg-icons": ^6.4.0
-    "@fortawesome/pro-solid-svg-icons": ^6.4.0
+    "@fortawesome/fontawesome-pro": ^6.4.2
+    "@fortawesome/fontawesome-svg-core": ^6.4.2
+    "@fortawesome/free-brands-svg-icons": ^6.4.2
+    "@fortawesome/pro-solid-svg-icons": ^6.4.2
     "@fortawesome/react-fontawesome": ^0.2.0
     "@mdx-js/loader": ^2.3.0
     "@mdx-js/react": ^2.3.0
-    "@next/mdx": ^13.5.5
+    "@next/mdx": ^14.0.2
     "@planetscale/database": ^1.11.0
     "@storybook/addon-essentials": ^7.5.0
     "@storybook/addon-interactions": ^7.5.0
@@ -10361,13 +10358,13 @@ __metadata:
     "@types/react-dom": ^18.2.13
     "@vercel/analytics": ^1.1.1
     "@vercel/edge-config": ^0.4.1
-    "@vercel/kv": ^0.2.3
-    "@vercel/og": ^0.5.19
+    "@vercel/kv": ^1.0.0
+    "@vercel/og": ^0.5.20
     "@vercel/speed-insights": ^0.0.4
     eslint: ^8.51.0
     eslint-config-next: ^13.5.4
     eslint-plugin-storybook: ^0.6.15
-    next: ^13.5.5
+    next: ^14.0.2
     react: ^18.2.0
     react-calendly: ^4.2.0
     react-dom: ^18.2.0
@@ -11769,20 +11766,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^13.5.5":
-  version: 13.5.5
-  resolution: "next@npm:13.5.5"
+"next@npm:^14.0.2":
+  version: 14.0.2
+  resolution: "next@npm:14.0.2"
   dependencies:
-    "@next/env": 13.5.5
-    "@next/swc-darwin-arm64": 13.5.5
-    "@next/swc-darwin-x64": 13.5.5
-    "@next/swc-linux-arm64-gnu": 13.5.5
-    "@next/swc-linux-arm64-musl": 13.5.5
-    "@next/swc-linux-x64-gnu": 13.5.5
-    "@next/swc-linux-x64-musl": 13.5.5
-    "@next/swc-win32-arm64-msvc": 13.5.5
-    "@next/swc-win32-ia32-msvc": 13.5.5
-    "@next/swc-win32-x64-msvc": 13.5.5
+    "@next/env": 14.0.2
+    "@next/swc-darwin-arm64": 14.0.2
+    "@next/swc-darwin-x64": 14.0.2
+    "@next/swc-linux-arm64-gnu": 14.0.2
+    "@next/swc-linux-arm64-musl": 14.0.2
+    "@next/swc-linux-x64-gnu": 14.0.2
+    "@next/swc-linux-x64-musl": 14.0.2
+    "@next/swc-win32-arm64-msvc": 14.0.2
+    "@next/swc-win32-ia32-msvc": 14.0.2
+    "@next/swc-win32-x64-msvc": 14.0.2
     "@swc/helpers": 0.5.2
     busboy: 1.6.0
     caniuse-lite: ^1.0.30001406
@@ -11820,7 +11817,7 @@ __metadata:
       optional: true
   bin:
     next: dist/bin/next
-  checksum: 034a52cf9a5df79912ad67467e00ab98e6505a7544514a12d6310d67fea760764f6b04ade344d457aadecb6170dd50eb0709346fd97a9e6659fcabd5e510fb97
+  checksum: b133fcd8035191dd7469bcb8c0b0c6325dac890020298d2ac4dce1dfb388ede0824532a5aaff778c6871c015de89adca25108ffb35634f3f38397279bad43175
   languageName: node
   linkType: hard
 
@@ -11886,20 +11883,6 @@ __metadata:
     encoding:
       optional: true
   checksum: d76d2f5edb451a3f05b15115ec89fc6be39de37c6089f1b6368df03b91e1633fd379a7e01b7ab05089a25034b2023d959b47e59759cb38d88341b2459e89d6e5
-  languageName: node
-  linkType: hard
-
-"node-fetch@npm:^2.6.1":
-  version: 2.6.9
-  resolution: "node-fetch@npm:2.6.9"
-  dependencies:
-    whatwg-url: ^5.0.0
-  peerDependencies:
-    encoding: ^0.1.0
-  peerDependenciesMeta:
-    encoding:
-      optional: true
-  checksum: acb04f9ce7224965b2b59e71b33c639794d8991efd73855b0b250921382b38331ffc9d61bce502571f6cc6e11a8905ca9b1b6d4aeb586ab093e2756a1fd190d0
   languageName: node
   linkType: hard
 
@@ -15841,13 +15824,6 @@ __metadata:
   dependencies:
     iconv-lite: 0.4.24
   checksum: 5be4efe111dce29ddee3448d3915477fcc3b28f991d9cf1300b4e50d6d189010d47bca2f51140a844cf9b726e8f066f4aee72a04d687bfe4f2ee2767b2f5b1e6
-  languageName: node
-  linkType: hard
-
-"whatwg-fetch@npm:^3.4.1":
-  version: 3.6.2
-  resolution: "whatwg-fetch@npm:3.6.2"
-  checksum: ee976b7249e7791edb0d0a62cd806b29006ad7ec3a3d89145921ad8c00a3a67e4be8f3fb3ec6bc7b58498724fd568d11aeeeea1f7827e7e1e5eae6c8a275afed
   languageName: node
   linkType: hard
 
