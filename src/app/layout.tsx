@@ -14,7 +14,7 @@ import { BASEURL, DESCRIPTION, NAME } from "@/metadata";
 import MainNavigation from "@/components/MainNavigation";
 import { ModalBoundary } from "@/components/ModalBoundary";
 import ThemeProvider from "./themeProvider";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+// import { SpeedInsights } from "@vercel/speed-insights/next";
 config.autoAddCss = false;
 
 const font = localFont({
@@ -54,7 +54,7 @@ export default async function RootLayout({ children, postModal }: any) {
         <Suspense>
           <Analytics />
         </Suspense>
-        <SpeedInsights />
+        {/* <SpeedInsights /> */}
       </body>
     </html>
   );
