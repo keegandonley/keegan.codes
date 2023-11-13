@@ -11,10 +11,10 @@ import {
 import { merge } from "@/util/classNames";
 import { Date } from "./components/Date";
 import { Tags } from "./components/Tags";
-import { getIsLikelyMobile } from "@/util/userAgent";
 import { ReadingTime } from "./components/ReadingTime";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+import { ViewCountRenderer } from "../ViewCount/Renderer";
 
 const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
 
@@ -31,6 +31,9 @@ interface MDXEntryRowProps extends ElementBaseProps {
   book?: boolean;
   columns?: number;
   showViewCount?: boolean;
+  isLikelyMobile: boolean;
+  className?: string;
+  fixedViewCount?: number;
 }
 
 export const MDXEntryRow = ({
@@ -46,9 +49,11 @@ export const MDXEntryRow = ({
   book,
   columns = 3,
   showViewCount = false,
+  isLikelyMobile,
+  className,
+  fixedViewCount,
 }: MDXEntryRowProps) => {
   const metadata = book ? getBookCoverMetadata(cover) : getImageMetadata(cover);
-  const isLikelyMobile = getIsLikelyMobile();
 
   const Parent = slug ? Link : "div";
   let resultWidth = 500;
@@ -63,7 +68,8 @@ export const MDXEntryRow = ({
       className={merge(
         styles.wrapper,
         filler && styles.filler,
-        styles[`col-${columns}`]
+        styles[`col-${columns}`],
+        className
       )}
     >
       <div className={styles.horizontalLine}></div>
@@ -95,9 +101,13 @@ export const MDXEntryRow = ({
               {published ? <Date date={published} /> : false}
               <ReadingTime wordCount={wordCount} />
             </div>
-            {slug && showViewCount && (
+            {slug && (showViewCount || fixedViewCount) && (
               <Suspense>
-                <DynamicViewCount slug={slug} className={styles.viewCount} />
+                <DynamicViewCount
+                  slug={slug}
+                  className={styles.viewCount}
+                  fixedCount={fixedViewCount}
+                />
               </Suspense>
             )}
             {tags && tags.length > 0 ? <Tags tags={tags} /> : false}

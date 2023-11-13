@@ -8,10 +8,13 @@ import { userTheme } from "@/util/cookies";
 import { BASEURL, NAME } from "@/metadata";
 import { postCount } from "@/book-count";
 import { background } from "@/theme/colors";
+import { getIsLikelyMobile } from "@/util/userAgent";
 
 export const runtime = "experimental-edge";
 
 export default function LibraryPage() {
+  const isLikelyMobile = getIsLikelyMobile();
+
   const books = Object.keys(Books).map((key) => {
     const component = (Books as any)[key] as Book;
     return {
@@ -42,15 +45,40 @@ export default function LibraryPage() {
                   index={index}
                   columns={4}
                   showViewCount={false}
+                  isLikelyMobile={isLikelyMobile}
                   {...post}
                   book
                 />
               );
             })}
-          <MDXEntryRow key="extra-1" index={-1} columns={4} filler />
-          <MDXEntryRow key="extra-2" index={-1} columns={4} filler />
-          <MDXEntryRow key="extra-3" index={-1} columns={4} filler />
-          <MDXEntryRow key="extra-4" index={-1} columns={4} filler />
+          <MDXEntryRow
+            key="extra-1"
+            index={-1}
+            columns={4}
+            filler
+            isLikelyMobile={isLikelyMobile}
+          />
+          <MDXEntryRow
+            key="extra-2"
+            index={-1}
+            columns={4}
+            filler
+            isLikelyMobile={isLikelyMobile}
+          />
+          <MDXEntryRow
+            key="extra-3"
+            index={-1}
+            columns={4}
+            filler
+            isLikelyMobile={isLikelyMobile}
+          />
+          <MDXEntryRow
+            key="extra-4"
+            index={-1}
+            columns={4}
+            filler
+            isLikelyMobile={isLikelyMobile}
+          />
         </div>
       </section>
       <Delay>
