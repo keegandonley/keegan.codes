@@ -15,7 +15,7 @@ interface PostWithViewCount extends Post {
   viewCount: number;
 }
 
-export const DynamicPosts = (props: DynamicPostsProps) => {
+const DynamicPosts = (props: DynamicPostsProps) => {
   const { previousPage, isLikelyMobile, pageCount, postsPerPage } = props;
   const currentPage = previousPage + 1;
   const [isVisibile, setIsVisible] = useState(false);
@@ -116,3 +116,5 @@ export const DynamicPosts = (props: DynamicPostsProps) => {
     </>
   );
 };
+
+export default DynamicPosts;

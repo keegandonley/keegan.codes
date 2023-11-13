@@ -7,17 +7,16 @@ import { userTheme } from "@/util/cookies";
 import { BASEURL, NAME } from "@/metadata";
 import { postCount } from "@/post-count";
 import { background } from "@/theme/colors";
-import { DynamicPosts } from "@/components/DynamicPosts";
 import { getIsLikelyMobile } from "@/util/userAgent";
 import { get } from "@vercel/edge-config";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+const DynamicDynamicPosts = dynamic(
+  () => import("@/components/DynamicPosts/index")
+);
 
 export const runtime = "experimental-edge";
-
-interface BlogPageProps {
-  searchParams: {
-    page?: string;
-  };
-}
 
 export default async function BlogPage() {
   const postsPerPage = parseInt((await get("blogPageSize")) ?? "12");
@@ -65,12 +64,14 @@ export default async function BlogPage() {
               />
             );
           })}
-          <DynamicPosts
-            previousPage={1}
-            isLikelyMobile={isLikelyMobile}
-            pageCount={pageCount}
-            postsPerPage={postsPerPage}
-          />
+          <Suspense>
+            <DynamicDynamicPosts
+              previousPage={1}
+              isLikelyMobile={isLikelyMobile}
+              pageCount={pageCount}
+              postsPerPage={postsPerPage}
+            />
+          </Suspense>
           <MDXEntryRow
             key="extra-1"
             index={-1}
