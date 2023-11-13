@@ -9,15 +9,24 @@ const ViewCountRenderer = _ViewCountRenderer as any;
 interface ViewCountProps {
   slug: string;
   className?: string;
+  fixedCount?: number;
 }
 
-export default function ViewCount({ slug, className }: ViewCountProps) {
+export default function ViewCount({
+  slug,
+  className,
+  fixedCount,
+}: ViewCountProps) {
   return (
     <span className={className}>
       <FontAwesomeIcon icon={faEye} fixedWidth />
-      <Suspense fallback={<ViewCountFallback />}>
-        <ViewCountRenderer slug={slug} />
-      </Suspense>
+      {fixedCount ? (
+        <span>{fixedCount}</span>
+      ) : (
+        <Suspense fallback={<ViewCountFallback />}>
+          <ViewCountRenderer slug={slug} />
+        </Suspense>
+      )}
     </span>
   );
 }

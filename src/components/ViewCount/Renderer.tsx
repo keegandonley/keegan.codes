@@ -3,6 +3,7 @@ import { merge } from "@/util/classNames";
 interface ViewCountRendererProps {
   slug: string;
   className?: string;
+  fixedCount?: number;
 }
 
 const getValue = async (slug: string): Promise<number> => {

@@ -9,6 +9,7 @@ import tagPageStyles from "./tagPage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/pro-solid-svg-icons";
 import Link from "next/link";
+import { getIsLikelyMobile } from "@/util/userAgent";
 
 export const runtime = "experimental-edge";
 
@@ -20,6 +21,7 @@ interface BlogTagPageProps {
 
 export default async function BlogTagPage({ params }: BlogTagPageProps) {
   const decodedTag = decodeURIComponent(params.tag);
+  const isLikelyMobile = getIsLikelyMobile();
 
   const posts = Object.keys(Posts)
     .map((key) => {
@@ -65,13 +67,29 @@ export default async function BlogTagPage({ params }: BlogTagPageProps) {
                   key={post.slug}
                   index={index}
                   showViewCount
+                  isLikelyMobile={isLikelyMobile}
                   {...post}
                 />
               );
             })}
-          <MDXEntryRow key="extra-1" index={-1} filler />
-          <MDXEntryRow key="extra-2" index={-1} filler />
-          <MDXEntryRow key="extra-3" index={-1} filler />
+          <MDXEntryRow
+            key="extra-1"
+            index={-1}
+            filler
+            isLikelyMobile={isLikelyMobile}
+          />
+          <MDXEntryRow
+            key="extra-2"
+            index={-1}
+            filler
+            isLikelyMobile={isLikelyMobile}
+          />
+          <MDXEntryRow
+            key="extra-3"
+            index={-1}
+            filler
+            isLikelyMobile={isLikelyMobile}
+          />
         </div>
       </section>
       <Delay>

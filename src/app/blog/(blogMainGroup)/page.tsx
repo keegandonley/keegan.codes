@@ -1,14 +1,15 @@
 import { MDXEntryRow } from "@/components/MDXEntryRow";
 import Posts from "@/posts";
 import styles from "./blog.module.css";
-import { AnimatedGraph } from "@/components/AnimatedGraph";
-import { Delay } from "@/components/Delay";
 import wordCounts from "../../../post-word-counts.json";
 import { Post } from "@/types/post";
 import { userTheme } from "@/util/cookies";
 import { BASEURL, NAME } from "@/metadata";
 import { postCount } from "@/post-count";
 import { background } from "@/theme/colors";
+import { DynamicPosts } from "@/components/DynamicPosts";
+import { getIsLikelyMobile } from "@/util/userAgent";
+import { PAGE_SIZE } from "@/util/pagination";
 
 export const runtime = "experimental-edge";
 
@@ -18,11 +19,9 @@ interface BlogPageProps {
   };
 }
 
-const postsPerPage = 12;
+const postsPerPage = PAGE_SIZE;
 
 export default function BlogPage({ searchParams: { page } }: BlogPageProps) {
-  const pageNumber = parseInt(page ?? "1", 10);
-
   const allPosts = Object.keys(Posts);
   const posts = allPosts
     .map((key) => {
@@ -43,11 +42,10 @@ export default function BlogPage({ searchParams: { page } }: BlogPageProps) {
       }
       return b.published.getTime() - a.published.getTime();
     })
-    .slice((pageNumber - 1) * postsPerPage, pageNumber * postsPerPage);
+    .slice(0, postsPerPage);
 
   const pageCount = Math.ceil(allPosts.length / postsPerPage);
-  const hasNextPage = pageNumber < pageCount;
-  const hasPreviousPage = pageNumber > 1;
+  const isLikelyMobile = getIsLikelyMobile();
 
   return (
     <>
@@ -59,13 +57,37 @@ export default function BlogPage({ searchParams: { page } }: BlogPageProps) {
                 key={post.slug}
                 showViewCount
                 index={index}
+                isLikelyMobile={isLikelyMobile}
+                className={
+                  index === posts.length - 1 ? "last-element-page-1" : ""
+                }
                 {...post}
               />
             );
           })}
-          <MDXEntryRow key="extra-1" index={-1} filler />
-          <MDXEntryRow key="extra-2" index={-1} filler />
-          <MDXEntryRow key="extra-3" index={-1} filler />
+          <DynamicPosts
+            previousPage={1}
+            isLikelyMobile={isLikelyMobile}
+            pageCount={pageCount}
+          />
+          <MDXEntryRow
+            key="extra-1"
+            index={-1}
+            filler
+            isLikelyMobile={isLikelyMobile}
+          />
+          <MDXEntryRow
+            key="extra-2"
+            index={-1}
+            filler
+            isLikelyMobile={isLikelyMobile}
+          />
+          <MDXEntryRow
+            key="extra-3"
+            index={-1}
+            filler
+            isLikelyMobile={isLikelyMobile}
+          />
         </div>
       </section>
     </>
