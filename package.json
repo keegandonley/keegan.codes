@@ -57,5 +57,8 @@
     "storybook": "^7.5.3",
     "webpack": "^5.89.0"
   },
-  "packageManager": "yarn@3.6.4"
+  "packageManager": "yarn@3.6.4",
+  "resolutions": {
+    "browserify-sign": "^4.2.2"
+  }
 }
