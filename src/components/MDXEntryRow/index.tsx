@@ -95,11 +95,9 @@ export const MDXEntryRow = ({
           <div className={merge(styles.imageParent, book && styles.book)}>
             <Image
               src={`${BUCKET_URL}/loading-cover.png`}
-              alt="todo"
+              alt="Loading image placeholder"
               fill
               sizes={`(max-width: 550px) 100vw, (max-width: 900px) 50vw, ${resultWidth}px`}
-              // Prioritize the loader since if we're rendering it, someone is probably looking at it
-              priority
               {...parseToProps(getImageMetadata("loading-cover.png"))}
             />
           </div>
