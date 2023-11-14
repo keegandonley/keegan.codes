@@ -9,6 +9,7 @@ interface DynamicPostsProps {
   isLikelyMobile: boolean;
   pageCount: number;
   postsPerPage: number;
+  remainingPosts: number;
 }
 
 interface PostWithViewCount extends Post {
@@ -16,7 +17,13 @@ interface PostWithViewCount extends Post {
 }
 
 const DynamicPosts = (props: DynamicPostsProps) => {
-  const { previousPage, isLikelyMobile, pageCount, postsPerPage } = props;
+  const {
+    previousPage,
+    isLikelyMobile,
+    pageCount,
+    postsPerPage,
+    remainingPosts,
+  } = props;
   const currentPage = previousPage + 1;
   const [isVisibile, setIsVisible] = useState(false);
   const [pageData, setPageData] = useState<PostWithViewCount[]>();
@@ -82,13 +89,29 @@ const DynamicPosts = (props: DynamicPostsProps) => {
             fixedViewCount={post.viewCount}
           />
         );
-      })}
+      }) ??
+        (isVisibile
+          ? Array(remainingPosts)
+              .fill(null)
+              .map((_, index) => {
+                return (
+                  <MDXEntryRow
+                    key={`loader-${currentPage}-${index}`}
+                    index={index + previousPage * postsPerPage}
+                    isLikelyMobile={isLikelyMobile}
+                    filler
+                    loader
+                  />
+                );
+              })
+          : null)}
       {hasNextPage && pageData ? (
         <DynamicPosts
           previousPage={currentPage}
           isLikelyMobile={isLikelyMobile}
           pageCount={pageCount}
           postsPerPage={postsPerPage}
+          remainingPosts={remainingPosts - pageData.length}
         />
       ) : null}
       {hasNextPage && !pageData ? (

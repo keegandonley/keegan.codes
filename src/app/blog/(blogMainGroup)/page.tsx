@@ -70,6 +70,7 @@ export default async function BlogPage() {
               isLikelyMobile={isLikelyMobile}
               pageCount={pageCount}
               postsPerPage={postsPerPage}
+              remainingPosts={allPosts.length - postsPerPage}
             />
           </Suspense>
           <MDXEntryRow

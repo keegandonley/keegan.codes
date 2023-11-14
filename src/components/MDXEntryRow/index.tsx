@@ -14,7 +14,6 @@ import { Tags } from "./components/Tags";
 import { ReadingTime } from "./components/ReadingTime";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import { ViewCountRenderer } from "../ViewCount/Renderer";
 
 const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
 
@@ -34,6 +33,7 @@ interface MDXEntryRowProps extends ElementBaseProps {
   isLikelyMobile: boolean;
   className?: string;
   fixedViewCount?: number;
+  loader?: boolean;
 }
 
 export const MDXEntryRow = ({
@@ -52,6 +52,7 @@ export const MDXEntryRow = ({
   isLikelyMobile,
   className,
   fixedViewCount,
+  loader,
 }: MDXEntryRowProps) => {
   const metadata = book ? getBookCoverMetadata(cover) : getImageMetadata(cover);
 
@@ -67,7 +68,7 @@ export const MDXEntryRow = ({
     <div
       className={merge(
         styles.wrapper,
-        filler && styles.filler,
+        filler && !loader ? styles.filler : "",
         styles[`col-${columns}`],
         className
       )}
@@ -76,9 +77,9 @@ export const MDXEntryRow = ({
       <div className={styles.verticalLine}></div>
       <Parent
         href={`/${book ? "library" : "blog"}/${slug}`}
-        className={styles.a}
+        className={merge(styles.a, loader ? styles.loader : "")}
       >
-        {cover ? (
+        {cover && !loader ? (
           <div className={merge(styles.imageParent, book && styles.book)}>
             <Image
               src={`${book ? BOOK_BUCKET_URL : BUCKET_URL}/${cover}`}
@@ -88,6 +89,18 @@ export const MDXEntryRow = ({
               // Rough guess at which images are above the fold
               priority={isLikelyMobile ? index < 2 : index < 4}
               {...parseToProps(metadata)}
+            />
+          </div>
+        ) : loader ? (
+          <div className={merge(styles.imageParent, book && styles.book)}>
+            <Image
+              src={`${BUCKET_URL}/loading-cover.png`}
+              alt="todo"
+              fill
+              sizes={`(max-width: 550px) 100vw, (max-width: 900px) 50vw, ${resultWidth}px`}
+              // Prioritize the loader since if we're rendering it, someone is probably looking at it
+              priority
+              {...parseToProps(getImageMetadata("loading-cover.png"))}
             />
           </div>
         ) : (
@@ -112,9 +125,16 @@ export const MDXEntryRow = ({
             )}
             {tags && tags.length > 0 ? <Tags tags={tags} /> : false}
           </div>
-        ) : (
-          false
-        )}
+        ) : loader ? (
+          <div className={styles.content}>
+            <h1 className={merge(styles.h1, styles.placeholder)}>
+              We&apos;ll be Right Back
+            </h1>
+            <p className={styles.description}>
+              A really great post is loading right now!
+            </p>
+          </div>
+        ) : null}
       </Parent>
       {filler ? <div className={styles.borderFade} /> : false}
     </div>
