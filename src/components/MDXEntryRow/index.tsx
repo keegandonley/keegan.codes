@@ -131,7 +131,8 @@ export const MDXEntryRow = ({
               We&apos;ll be Right Back
             </h1>
             <p className={styles.description}>
-              A really great post is loading right now!
+              Hang tight while this awesome blog post is downloaded!
+              Shouldn&apos;t be long now...
             </p>
           </div>
         ) : null}
