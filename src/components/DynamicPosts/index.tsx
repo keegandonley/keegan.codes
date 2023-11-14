@@ -62,8 +62,7 @@ const DynamicPosts = (props: DynamicPostsProps) => {
 
   const getPostData = useCallback(async () => {
     const result = await fetch(`/api/posts?page=${currentPage}`);
-    const response = await result.json();
-    setPageData(response.data);
+    setPageData(await result.json());
   }, [currentPage]);
 
   useEffect(() => {
