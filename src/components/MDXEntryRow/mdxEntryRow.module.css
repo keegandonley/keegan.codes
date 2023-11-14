@@ -18,6 +18,8 @@
 
 .wrapper.filler {
   height: 0;
+  min-height: 0;
+  max-height: 0;
 }
 
 .fillterContent {
@@ -82,6 +84,11 @@
   box-shadow: 1px 1px 20px 1px var(--shadow-color);
 }
 
+.placeholder {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -100,6 +107,10 @@
   display: flex;
   flex-direction: column;
   padding-left: 2rem;
+}
+
+.loader {
+  width: 100%;
 }
 
 .h1 {

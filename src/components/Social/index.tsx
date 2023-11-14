@@ -5,6 +5,8 @@ import {
   instagramOrange,
   linkedInBlue,
   twitterBlue,
+  xGrey,
+  xGreyLight,
 } from "@/theme/brandColors";
 import styles from "./social.module.css";
 import { URLS } from "./socials";
@@ -13,14 +15,9 @@ import {
   faGithub,
   faInstagram,
   faLinkedin,
-  faTwitter,
+  faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import {
-  faCloudRainbow,
-  faCloudSun,
-  faClouds,
-  faCloudsSun,
-} from "@fortawesome/pro-solid-svg-icons";
+import { faCloudRainbow } from "@fortawesome/pro-solid-svg-icons";
 
 export const Social = () => {
   return (
@@ -52,8 +49,9 @@ export const Social = () => {
           name="Instagram"
         />
         <Icon
-          icon={faTwitter}
-          color={twitterBlue}
+          icon={faXTwitter}
+          color={xGrey}
+          darkColor={xGreyLight}
           url={URLS.twitter}
           name="Twitter"
         />

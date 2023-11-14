@@ -136,12 +136,13 @@
     row-gap: 1rem;
     padding: 0 1rem;
     height: unset;
+    padding: 0 30px;
   }
 
   .imageParent {
     position: relative;
     flex-grow: 1;
-    height: 16rem;
+    height: 10rem;
     filter: grayscale(0%);
     transition: none;
   }
@@ -151,6 +152,14 @@
     flex-grow: 1;
     opacity: 1;
     min-width: unset;
+    margin-right: 25%;
+    border-radius: 0;
+    height: 100%;
+  }
+
+  .imageParent:nth-child(odd) .text {
+    margin-right: 0;
+    margin-left: 25%;
   }
 
   .text h1 {
@@ -160,6 +169,9 @@
   .text p {
     font-size: 0.9rem;
     line-height: 1.4rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .fallback {
