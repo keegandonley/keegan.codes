@@ -142,7 +142,7 @@
   .imageParent {
     position: relative;
     flex-grow: 1;
-    height: 9rem;
+    height: 10rem;
     filter: grayscale(0%);
     transition: none;
   }
