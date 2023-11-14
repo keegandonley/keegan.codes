@@ -1,5 +1,4 @@
 import { MDXEntryRow } from "@/components/MDXEntryRow";
-import Posts from "@/posts";
 import styles from "./blog.module.css";
 import wordCounts from "../../../post-word-counts.json";
 import { Post } from "@/types/post";
@@ -20,6 +19,15 @@ export const runtime = "experimental-edge";
 
 export default async function BlogPage() {
   const postsPerPage = parseInt((await get("blogPageSize")) ?? "12");
+  const result = await fetch(
+    `${
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000"
+        : "https://keegan.codes"
+    }/api/posts?page=1`
+  );
+  const response = await result.json();
+  const Posts = response.data;
 
   const allPosts = Object.keys(Posts);
   const posts = allPosts
@@ -31,7 +39,7 @@ export default async function BlogPage() {
         tags: component.tags ?? [],
         description: component.description,
         cover: component.cover,
-        published: component.published,
+        published: new Date(component.published),
         wordCount: (wordCounts as Record<string, number>)[component.slug],
       };
     })
@@ -40,10 +48,9 @@ export default async function BlogPage() {
         return 0;
       }
       return b.published.getTime() - a.published.getTime();
-    })
-    .slice(0, postsPerPage);
+    });
 
-  const pageCount = Math.ceil(allPosts.length / postsPerPage);
+  const pageCount = Math.ceil(response.count / postsPerPage);
   const isLikelyMobile = getIsLikelyMobile();
 
   return (
@@ -70,7 +77,7 @@ export default async function BlogPage() {
               isLikelyMobile={isLikelyMobile}
               pageCount={pageCount}
               postsPerPage={postsPerPage}
-              remainingPosts={allPosts.length - postsPerPage}
+              remainingPosts={response.count - postsPerPage}
             />
           </Suspense>
           <MDXEntryRow

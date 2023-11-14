@@ -40,7 +40,7 @@ export async function GET(request: Request) {
     });
 
   if (pageNumber === -1) {
-    return new Response(JSON.stringify([]));
+    return new Response(JSON.stringify({ data: [], count: 0 }));
   }
 
   const result = posts.slice(
@@ -71,13 +71,14 @@ export async function GET(request: Request) {
   );
 
   return new Response(
-    JSON.stringify(
-      result.map((post, index) => {
+    JSON.stringify({
+      data: result.map((post, index) => {
         return {
           ...post,
           viewCount: pageViews[index]?.views ?? 0,
         };
-      })
-    )
+      }),
+      count: posts.length,
+    })
   );
 }
