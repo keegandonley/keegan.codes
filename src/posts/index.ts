@@ -34,6 +34,7 @@ import * as Stars from "./my-first-real-astrophotography-attempt.mdx";
 import * as Currying from "./currying-react.mdx";
 import * as ShortVariableNames from "./short-variable-names.mdx";
 import * as VisualRegression from "./visual-regression-tests.mdx";
+import * as JavascriptTailwind from "./javascript-variables-in-tailwind.mdx";
 
 const posts = {
   Welcome,
@@ -72,6 +73,7 @@ const posts = {
   Currying,
   ShortVariableNames,
   VisualRegression,
+  JavascriptTailwind,
 };
 
 export default posts;
