@@ -1,0 +1,149 @@
+export const title = "Using Javascript Variables in Tailwind";
+export const slug = "using-javascript-variables-in-tailwind";
+export const tags = ["javascript", "css", "tailwind"];
+export const description =
+  "How to use dynamically calculated or user generated values in Tailwind";
+export const cover = "cover";
+export const published = new Date(2023, 10, 16);
+export const shortCodes = ["js-in-tailwind"];
+
+Tailwind is a CSS utility framework that provides shorthand classes for rapidly composing
+designs. Instead of writing CSS rules, you simply add utility classes to your element. Take
+this simple element and some styling:
+
+```html
+<style>
+  .box {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: rgb(239, 68, 68);
+  }
+</style>
+
+<div className="box"></div>
+```
+
+In Tailwind, using the shorthand utility classes, the same element can be written as:
+
+```html
+<div className="w-14 h-14 bg-red-500"></div>
+```
+
+For reference, here's how that element looks using either approach:
+
+<div
+  style={{
+    width: "3.5rem",
+    height: "3.5rem",
+    backgroundColor: "rgb(239, 68, 68)",
+  }}
+/>
+
+> My examples from this point on will use React, but the same principles apply to any framework.
+
+## A Quick Look at How Tailwind Works
+
+Tailwind provides many utility classes that can be used to style element, mirroring
+almost all the CSS properties. You wouldn't want to include all of these classes in your
+app if they aren't used, though, so the Tailwind CLI parses your code and generated a CSS
+bundle of only the utility classes you're using.
+
+In my first example, I used the token `red-500` for the color. This yields some generated CSS:
+
+```css
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+```
+
+Tailwind also allows for arbitrary values, using a special notation
+(note the lack of spaces inside the rgb color):
+
+```jsx
+<div className="bg-[rgb(239,68,68)]" />
+```
+
+Like before, the Tailwind CLI will parse this out and generate a bundle with the correct class. In this case, it looks like this:
+
+```css
+.bg-\[rgb\(239\2c 68\2c 68\)\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+```
+
+This parsing is where some issues can arise, especially if you're using content from another
+system or storage medium, like user-defined colors.
+
+Let's look another contrived example. In this one,
+we'll have a user-defined color stored in a variable, and we want to use that as the background.
+
+```javascript
+const color = "rgb(239, 68, 68)";
+```
+
+Can we simply build the className dynamically, like this?
+
+```jsx
+<div className={`bg-${color}`} />
+```
+
+❌ This approach won't work, because the Tailwind CLI can't statically determine what that class will be,
+so it doesn't get included in the bundle.
+
+## Common Solution
+
+One of the most common solutions I've seen is to use the `style` attribute instead of the `className` attribute:
+
+```jsx
+<div
+  className="w-14 h-14"
+  style={{
+    backgroundColor: color,
+  }}
+/>
+```
+
+⚠️ This does work, but I don't particularly like this approach. Not only are we breaking out of Tailwind's
+utility classes, reducing maintainability and increasing surface area for bugs, but we're also
+introducing inline styles, which can be very difficult to override because they take the highest precendence.
+
+There has to be a better way to pass arbitrary values to Tailwind.
+
+## Using The Style Prop the Right Way
+
+We're on the right track here, because the solution does involve inline styles, but in a different way
+that avoids all the problems I listed above. The solution is to use the `style` attribute to set a CSS
+variable, that we can then access from Tailwind.
+
+```jsx
+<div
+  className="w-14 h-14 bg-[var(--user-color)]"
+  style={{
+    "--user-color": "rgb(239, 68, 68)",
+  }}
+/>
+```
+
+Let's look at the generated CSS to see why this works:
+
+```css
+.bg-\[var\(--user-color\)\] {
+  background-color: var(--user-color);
+}
+```
+
+✅ We can statically analyze and parse the className, so no issues there! And, we're using a CSS variable,
+rather than passing rules as inline styles, so we don't end up with split strategies for our styling,
+or precendence issues.
+
+## Applications
+
+This pattern isn't limited to colors! This can be used for any CSS property that has a tailwind utility class!
+I've used this approach in conjunction with calculations for padding, margin, and even font sizes.
+
+> This blog post is the first in a series I'll be writing about using Tailwind in enterprise-scale applications, and
+> some of the problems we've had to solve at [Kizen](https://kizen.com) as we migrate from a CSS-in-js approach to Tailwind.
+>
+> Stay tuned for more, and if you have any topics about Tailwind at scale you'd like covered, shoot me an email at [tailwind@k10y.com](mailto:tailwind@k10y.com)!
