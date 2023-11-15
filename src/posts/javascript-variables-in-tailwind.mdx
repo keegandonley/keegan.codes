@@ -1,15 +1,22 @@
 export const title = "Using Javascript Variables in Tailwind";
 export const slug = "using-javascript-variables-in-tailwind";
-export const tags = ["javascript", "css", "tailwind"];
+export const tags = ["javascript", "css", "Tailwind", "web"];
 export const description =
   "How to use dynamically calculated or user generated values in Tailwind";
-export const cover = "cover";
+export const cover = "tailwind-variables-cover.png";
 export const published = new Date(2023, 10, 16);
 export const shortCodes = ["js-in-tailwind"];
 
-Tailwind is a CSS utility framework that provides shorthand classes for rapidly composing
-designs. Instead of writing CSS rules, you simply add utility classes to your element. Take
-this simple element and some styling:
+[Tailwind](https://tailwindcss.com/) is a CSS utility framework that provides shorthand classes for rapidly composing
+designs. Instead of writing CSS rules, you simply add utility classes to your element. I've built many sites using Tailwind,
+and many without. This blog post will be the first in a series about using Tailwind at enterprise scale and the tips and tricks
+I've developed while building a component library at [Kizen](https://kizen.com) and migrating to Tailwind from a css-in-js approach.
+
+Before we get started, I want to acknowledge that Tailwind can be a bit
+polarizing within the web development community, but this post isn't about whether or not you should use Tailwind - that's
+for you to decide!
+
+With that out of the way, let's get into it! I'll start with a quick refresher on Tailwind. Take this simple element and some styling:
 
 ```html
 <style>
