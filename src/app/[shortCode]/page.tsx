@@ -65,7 +65,7 @@ export default async function ShortCodePage({
   params: { shortCode },
 }: ShortCodePageProps) {
   const foundPost = posts.find((post) => post.shortCodes?.includes(shortCode));
-  console.log(foundPost?.slug);
+
   if (foundPost?.slug) {
     redirect(`/blog/${foundPost.slug}`);
   }

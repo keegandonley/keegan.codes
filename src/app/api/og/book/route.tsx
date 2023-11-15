@@ -38,9 +38,7 @@ export async function GET(request: Request) {
   }
 
   const found = getComponentForKey({ key });
-  console.log(found.cover);
   const coverMetadata = getBookCoverMetadata(parseSource(found.cover)[0]);
-  console.log(coverMetadata);
 
   return new ImageResponse(
     (

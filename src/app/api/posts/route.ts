@@ -70,6 +70,15 @@ export async function GET(request: Request) {
     })
   );
 
+  console.log(
+    "fetched blog page",
+    pageNumber,
+    "of",
+    Math.ceil(allPosts.length / postsPerPage),
+    "with page size",
+    postsPerPage
+  );
+
   return new Response(
     JSON.stringify(
       result.map((post, index) => {

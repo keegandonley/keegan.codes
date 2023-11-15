@@ -36,7 +36,16 @@ export async function GET(request: Request) {
     console.error("No results found for slug", slug, "results:", results);
   }
 
-  return new Response(JSON.stringify(results?.rows?.[0] ?? {}), {
+  const row = results?.rows?.[0] as { views: number } | undefined;
+
+  console.log(
+    "Calculated views for slug",
+    slug,
+    ":",
+    row?.views ?? "undefined"
+  );
+
+  return new Response(JSON.stringify(row ?? {}), {
     status: 200,
   });
 }
