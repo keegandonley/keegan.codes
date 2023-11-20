@@ -35,6 +35,7 @@ import * as Currying from "./currying-react.mdx";
 import * as ShortVariableNames from "./short-variable-names.mdx";
 import * as VisualRegression from "./visual-regression-tests.mdx";
 import * as JavascriptTailwind from "./javascript-variables-in-tailwind.mdx";
+import * as RecursiveReact from "./recursive-react-components.mdx";
 
 const posts = {
   Welcome,
@@ -74,6 +75,7 @@ const posts = {
   ShortVariableNames,
   VisualRegression,
   JavascriptTailwind,
+  RecursiveReact,
 };
 
 export default posts;

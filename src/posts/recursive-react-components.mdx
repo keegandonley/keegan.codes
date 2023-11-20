@@ -1,0 +1,186 @@
+import {
+  RocketLaunch,
+  FileTree,
+} from "../interactivePosts/RecursiveReact/index.tsx";
+
+export const title = "Recursive React Component Rendering";
+export const slug = "recursive-react-component-rendering";
+export const tags = ["javascript"];
+export const description = "Description";
+export const cover = "cover";
+export const published = new Date(2023, 10, 22);
+export const shortCodes = ["recursive-react"];
+
+Recursion in React components is a neat pattern for writing simple and clear code. If you’ve never tried it before or seen this pattern, it might sound a bit odd at first, but it’s really quite useful. I’m going to show here how it works, the benefits, and some things to look out for when using recursion inside React rendering.
+
+## What is Recursion?
+
+Recursion is a powerful tool in computing where a function calls itself during its execution. This can be done over and over again until some base condition is met that stops the recursion.
+
+Here’s a quick example:
+
+```javascript
+const launchRocket = (count) => {
+  if (count === 0) {
+    console.log("liftoff!");
+  } else {
+    console.log(`${count}...`);
+    launchRocket(count - 1);
+  }
+};
+
+launchRocket(10);
+```
+
+Until the base case is met, we continually make a recursive call to the same function, decreasing the argument by 1. Once we count down to 0, the recursion ends, and our program is finished! Here’s the output:
+
+```
+10...
+9...
+8...
+7...
+6...
+5...
+4...
+3...
+2...
+1...
+liftoff!
+```
+
+## Recursion in React
+
+Similar to how this works in traditional programming, recursion can also be used when rendering React components! Let’s look at an example of this pattern, based on the first vanilla Javascript one.
+
+```jsx
+const RocketLaunch = (props) => {
+  if (props.count === 0) {
+    return "liftoff!";
+  }
+
+  return (
+    <>
+      {props.count}...
+      <RocketLaunch count={props.count - 1} />
+    </>
+  );
+};
+
+<RocketLaunch count={10} />;
+```
+
+Here, the `RocketLaunch` component renders the countdown text, and recursively renders itself, decreasing the count as we go until “liftoff!” is rendered, and we end the recursion.
+
+We can take a look at the transpiled code to understand how this works:
+
+```javascript
+const RocketLaunch = (props) => {
+  if (props.count === 0) {
+    return "liftoff!";
+  }
+
+  return React.createElement(
+    React.Fragment,
+    null,
+    props.count,
+    "...",
+    // This is the recursive call:
+    React.createElement(RocketLaunch, {
+      count: props.count - 1,
+    })
+  );
+};
+
+React.createElement(RocketLaunch, {
+  count: 10,
+});
+```
+
+Notice the recursive call in that code? We first call `React.createElement(RocketLaunch, {count: 10})`, and in the recursion we call `React.createElement(RocketLaunch, {count: props.count - 1})`. Doesn't look to different from vanilla Javascript, does it?
+
+Let's take a look at how this component renders in the browser:
+
+> Adjust the slider to change the initial countdown value
+
+<RocketLaunch />
+
+## Real-World Applications
+
+Now we know how to use recursion in React, but why would we want to do such a thing? This particular pattern
+is interesting to me because it has a few distinct use-cases.
+
+### Heirarchial File Tree
+
+Image we have a data structure like this, that represents a simple file tree:
+
+```javascript
+{
+    name: 'site',
+    children: [{
+        name: 'home',
+        children: [{
+            name: 'index.html',
+        }, {
+            name: 'index.css'
+        }]
+    }, {
+        name: 'about',
+        children: [{
+            name: 'resume',
+            children: [{
+                name: 'index.html',
+            }]
+        }, {
+            name: 'contact',
+            children: [{
+                name: 'company',
+                children: [{
+                    name: 'index.html'
+                }, {
+                    name: 'index.js'
+                }]
+            }]
+        }]
+    }]
+}
+```
+
+The following is a component that recursively renders itself down to each leaf node,
+adding padding to the left to represent the heirarchy.
+
+```jsx
+const FileTree = (props: any) => {
+  const path = `${props.path ?? ""}/${props.node.name}`;
+  const hasChildren = props.node.children?.length > 0;
+
+  return (
+    <div className="pl-5">
+      <div className="flex pb-5 gap-x-5">
+        <FontAwesomeIcon icon={hasChildren ? faFolderOpen : faFile} />
+        <div>
+          {props.node.name} <span className>({path})</span>
+        </div>
+      </div>
+      {props.node.children?.map((child: any) => {
+        return (
+          <FileTree key={`${path}/${child.name}`} node={child} path={path} />
+        );
+      })}
+    </div>
+  );
+};
+```
+
+The recursion here takes care of many concerns for us! The progressive padding is handled automatically,
+and we don't need to worry about how many levels deep the tree goes. React render keys are progressively built
+for each node based on the path. We can render this component with the following code:
+
+```jsx
+<FileTree node={/* The data payload here */} />
+```
+
+Here's how that component renders:
+
+<FileTree />
+
+### Pagination and Infinite Scrolling
