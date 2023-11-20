@@ -66,7 +66,7 @@ export async function GET(request: Request) {
         );
       }
 
-      return results.rows[0] as Record<"views", number>;
+      return results.rows[0] as Record<"views", number> | undefined;
     })
   );
 
