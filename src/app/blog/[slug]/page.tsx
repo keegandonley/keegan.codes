@@ -14,8 +14,12 @@ import wordCounts from "../../../post-word-counts.json";
 import { BASEURL, NAME } from "@/metadata";
 import { Track } from "@/components/Track";
 import { PostHeader } from "@/components/PostHeader";
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
 
 export const runtime = "experimental-edge";
+
+const Timeline = dynamic(() => import("@/components/Timeline"));
 
 interface BlogPageProps {
   params: {
@@ -111,6 +115,11 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
         <Component />
         <Track slug={params.slug} inModal={false} />
       </article>
+      <footer>
+        <Suspense>
+          <Timeline slug={params.slug} />
+        </Suspense>
+      </footer>
     </>
   );
 }
