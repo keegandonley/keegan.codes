@@ -170,8 +170,8 @@ In this case, my story names will be parsed as `Primary`, `EmptyCount` and `Over
 start, but we need to convert them to story IDs. My story files are using the open-source [component
 story format (CSF)](https://storybook.js.org/docs/react/api/csf), so I was able to look at the source code and figure out how the story
 ids are generated from the names. That code
-is [here](https://github.com/ComponentDriven/csf/blob/4c735fea4f0c9605b93497238303cb4ab9304727/src/toStartCaseStr.ts#L4)
-on Github if you want to check it out, but I included a modified version below.
+is [open-source on Github](https://github.com/ComponentDriven/csf/blob/4c735fea4f0c9605b93497238303cb4ab9304727/src/toStartCaseStr.ts#L4)
+if you want to check it out, but I included a modified version below.
 
 To get the story ids, we just need to modify that a little to match the format:
 
