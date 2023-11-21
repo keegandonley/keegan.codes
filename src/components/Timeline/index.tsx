@@ -12,6 +12,8 @@ import Image from "next/image";
 import { BUCKET_URL } from "@/util/r2";
 import { parseToProps } from "@/util/image";
 import { formatDate } from "@/util/date";
+import { AppContext } from "next/app";
+import { headers } from "next/headers";
 
 const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
 
@@ -20,25 +22,27 @@ interface TimelineProps {
 }
 
 const Timeline = async (props: TimelineProps) => {
+  const headersList = headers();
+
+  const host = headersList.get("host");
+
+  console.log("fetching further reading for host", host);
+
   const { slug } = props;
 
   const [previousPost, nextPost] = await Promise.all([
     (
       await fetch(
         `${
-          process.env.NODE_ENV === "development"
-            ? "http://localhost:3000"
-            : "https://keegan.codes"
-        }/api/posts/previous?slug=${slug}`
+          host?.includes("localhost") ? "http://" : "https://"
+        }${host}/api/posts/previous?slug=${slug}`
       )
     ).json(),
     (
       await fetch(
         `${
-          process.env.NODE_ENV === "development"
-            ? "http://localhost:3000"
-            : "https://keegan.codes"
-        }/api/posts/next?slug=${slug}`
+          host?.includes("localhost") ? "http://" : "https://"
+        }${host}/api/posts/next?slug=${slug}`
       )
     ).json(),
   ]);
