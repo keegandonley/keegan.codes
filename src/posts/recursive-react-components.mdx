@@ -1,11 +1,13 @@
 import { RocketLaunch } from "../interactivePosts/RecursiveReact/index.tsx";
 import { FileTree } from "../interactivePosts/RecursiveReact/index.tsx";
+import { Tweet } from "../components/Tweet";
 
 export const title = "Recursive React Component Rendering";
 export const slug = "recursive-react-component-rendering";
-export const tags = ["javascript"];
-export const description = "Description";
-export const cover = "react-recursion-cover.png";
+export const tags = ["React", "Javascript"];
+export const description =
+  "How to leverage recursion when building React applications and components";
+export const cover = "react-recursion-cover-water.png";
 export const published = new Date(2023, 10, 22);
 export const shortCodes = ["recursive-react"];
 
@@ -107,7 +109,7 @@ Let's take a look at how this component renders in the browser:
 Now we know how to use recursion in React, but why would we want to do such a thing? This particular pattern
 is interesting to me because it has a few distinct use-cases.
 
-### Heirarchial File Tree
+### Heirarchial Data
 
 Image we have a data structure like this, that represents a simple file tree:
 
@@ -182,3 +184,163 @@ Here's how that component renders:
 <FileTree />
 
 ### Pagination and Infinite Scrolling
+
+I recently rolled out a new feature on my blog - infinite scrolling on the blog list page. This was a fun feature to implement, and I used a recursive component to do it!
+
+The first page of the blog list is rendered server-side,
+and additional pages of data are fetched and rendered client-side. Additional
+pages are recursively rendered, only after the previous page has been finished.
+
+It's a lot more complex than what I'll show in the examples, but you can check out
+[the complete code on GitHub](https://github.com/keegandonley/keegan.codes/blob/main/src/components/DynamicPosts/index.tsx) to see how it all works.
+
+As long as there is an additional page of posts to be rendered, the previous page will
+recursively render the next page. I do this by passing through the recursive calls some props
+to help:
+
+```jsx
+const DynamicPosts = async (props) => {
+  const currentPage = props.previousPage + 1;
+  const nextPage = currentPage + 1;
+  const hasNextPage = nextPage <= pageCount;
+
+  const pageData = await fetchPage(currentPage);
+
+  return (
+    <>
+      <PageData data={pageData} />
+      {hasNextPage ? (
+        <DynamicPosts
+          previousPage={currentPage}
+          pageCount={props.pageCount}
+          postsPerPage={props.postsPerPage}
+          remainingPosts={props.remainingPosts - pageData.length}
+        />
+      ) : null}
+    </>
+  );
+};
+```
+
+> I return a fragment here instead of using a wrapping element. This is important so that
+> the recursive calls render all the `<PageData />` components as siblings.
+> This is the opposite to how it works in the file tree example, where we want each
+> recursive call to render as a child of the previous call.
+
+![](recursive-react-post:dom-example.png)
+
+You can see here that the recursive calls render as siblings, and the DOM is structured
+with a single parent for all the blog posts as the pages are fetched and rendered while the
+user scrolls. Each element with the class `last-element-page-*` represents the end of a page,
+and the next page was recursively rendered.
+
+### Simplifying UI Components
+
+While I was writing this post, [Adam Wathan](https://twitter.com/adamwathan), the creator of [Tailwind](https://keegan.codes/blog/using-javascript-variables-in-tailwind) published a [Tweet](https://twitter.com/adamwathan/status/1726707563440505116) about this pattern
+and how it can be used conditionally based on children:
+
+<Tweet id="1726707563440505116" centered />
+
+## Things to Watch Out For
+
+I hope I've sufficiently shown you that this is a useful pattern to use in React, but there are a few things to watch out for when using recursion to render components.
+
+### Choose The Right Base Case
+
+The [base case](https://www.thecshandbook.com/Recursion) **must** be hit in order to stop the recursion. If the base case
+is chosen incorrectly, the recursion may never end until your application crashes. You'll see something like this:
+
+```
+RangeError: Maximum call stack size exceeded
+```
+
+Let's revisit the rocket countdown example, but in this situation we want to count down by 2:
+
+```jsx
+const RocketLaunch = (props) => {
+  if (props.count === 0) {
+    return "liftoff!";
+  }
+
+  return (
+    <>
+      {props.count}...
+      <RocketLaunch count={props.count - 2} />
+    </>
+  );
+};
+
+<RocketLaunch count={10} />;
+```
+
+In this example, we'll count down by 2 just fine: `10`, `8`, `6`, `4`, `2`, `liftoff!`. But what if we change the initial count to 9?
+
+```jsx
+<RocketLaunch count={9} />
+```
+
+Now, we get `9`, `7`, `5`, `3`, `1`, `-1`, `-3`, `-5`, `-7`, `-11` and so on, forever! This is because the base case is never hit, and the recursion never ends.
+
+A better base case would have been:
+
+```javascript
+if (props.count <= 0) {
+  return "liftoff!";
+}
+```
+
+This issue can be particularly tricky, because the base case may be fine in most situations,
+but when taking in user input, it might fail! Always be sure to think carefully about the base case
+when using recursion.
+
+> Here's the same interactive example, but using the new base-case and a countdown interval of 2:
+
+<RocketLaunch interval={2} />
+
+### Be Aware of Excessive DOM Nodes
+
+As I touched on in my real-world examples, you need to be careful about how the DOM is structured
+when using recursion. In the file tree example, we want each recursive call to render as a child of the
+previous call. In the infinite scrolling example, we want each recursive call to render as a sibling of
+the previous call.
+
+The infinite scrolling could have been implemented with each page rendering inside its own
+container, but that would have introduced some complexity and many additional elements that
+aren't necessary.
+
+The same holds true for our countdown example. It might be fine to create a new element wrapping each number
+when we only have 10, but if this takes user input and doesn't have a sane maximum, what would happen if a user
+wanted to count down from 10,000? That's already a lot of elements, but now we'd not only have 10,000 additional
+elements we don't need, but the last one would be at a depth of 10,000! This would be a nightmare for the browser
+to render:
+
+```html
+<span>
+  10000...
+  <span>
+    9999...
+    <span>
+      9998...
+      <span>
+        9997...
+        <span>
+          9996...
+          <!-- And so on... -->
+          </span>
+        </span>
+      </span>
+    </span>
+  </span>
+</span>
+```
+
+> If you want to read more about browser performance and maximum DOM depth, the [Chrome for Developers](https://developer.chrome.com/en/docs/lighthouse/performance/dom-size/) article is a great resource.
+
+## Final Thoughts
+
+Recursion is a powerful tool in programming, and it can be used in React to simplify component rendering.
+It can also be used incorrectly to greatly _increase_ complexity and cause performance issues. Always be sure that you're using the right
+tool for the job, and that you're using it correctly!
+
+Hopefully this post has helped you understand how to use recursion in React, and some
+things to watch out for when doing so. If you have any questions or comments, let's discuss on [X (Twitter)](https://twitter.com/keegandonley)!

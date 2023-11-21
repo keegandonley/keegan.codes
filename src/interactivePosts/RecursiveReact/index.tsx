@@ -6,20 +6,23 @@ import { merge } from "@/util/classNames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile, faFolderOpen } from "@fortawesome/pro-solid-svg-icons";
 
-const RocketLaunchComponent = (props: any) => {
-  if (props.count === 0) {
+const RocketLaunchComponent = (props: { interval: number; count: number }) => {
+  if (props.count <= 0) {
     return "liftoff!";
   }
 
   return (
     <>
       {props.count}...
-      <RocketLaunchComponent count={props.count - 1} />
+      <RocketLaunchComponent
+        count={props.count - props.interval}
+        interval={props.interval}
+      />
     </>
   );
 };
 
-export const RocketLaunch = () => {
+export const RocketLaunch = ({ interval = 1 }: { interval: number }) => {
   const [count, setCount] = useState(10);
 
   return (
@@ -40,7 +43,7 @@ export const RocketLaunch = () => {
       <div className={styles.output}>
         Rendered Output:
         <div className={styles.example}>
-          <RocketLaunchComponent count={count} />
+          <RocketLaunchComponent count={count} interval={interval} />
         </div>
       </div>
     </div>

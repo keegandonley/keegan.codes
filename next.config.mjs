@@ -25,6 +25,8 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      { protocol: "https", hostname: "pbs.twimg.com" },
+      { protocol: "https", hostname: "abs.twimg.com" },
     ],
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 90,
