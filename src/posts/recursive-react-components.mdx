@@ -146,7 +146,8 @@ Image we have a data structure like this, that represents a simple file tree:
 ```
 
 The following is a component that recursively renders itself down to each leaf node,
-adding padding to the left to represent the heirarchy.
+adding padding to the left to represent the heirarchy. The styling is done with [Tailwind CSS](https://tailwindcss.com/)
+in my example code for simplicity. `pl` and `pb` here are shorthand for `padding-left` and `padding-bottom`.
 
 ```jsx
 const FileTree = (props: any) => {
@@ -173,7 +174,10 @@ const FileTree = (props: any) => {
 
 The recursion here takes care of many concerns for us! The progressive padding is handled automatically,
 and we don't need to worry about how many levels deep the tree goes. React render keys are progressively built
-for each node based on the path. We can render this component with the following code:
+for each node based on the path. In React, when mapping over an array of data to render components, each component
+needs a unique key. This is so React can keep track of which components have changed, and which ones need to be re-rendered.
+
+We can render the file tree with the following code, passing in the data object build earlier:
 
 ```jsx
 <FileTree node={/* The data payload here */} />
