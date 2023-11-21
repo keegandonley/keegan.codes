@@ -2,11 +2,12 @@
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+  padding-bottom: 2rem;
 }
 
 .example {
   background: var(--code-background);
-  color: var(--theme-inverted-text);
+  color: white;
   padding: 10px;
   border-radius: 5px;
   flex-grow: 1;
