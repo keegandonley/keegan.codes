@@ -11,11 +11,11 @@ export const cover = "react-recursion-cover-water.png";
 export const published = new Date(2023, 10, 22);
 export const shortCodes = ["recursive-react"];
 
-Recursion in React components is a neat pattern for writing simple and clear code. If you’ve never tried it before or seen this pattern, it might sound a bit odd at first, but it’s really quite useful. I’m going to show here how it works, the benefits, and some things to look out for when using recursion inside React rendering.
+Recursion in React components is a powerful pattern for writing simple and clear code. If you’ve never tried it before or seen this pattern, it might sound a bit odd at first, but it’s really quite useful. I’m going to show here how it works, the benefits, and some things to look out for when using recursion inside React rendering.
 
 ## What is Recursion?
 
-Recursion is a powerful tool in computing where a function calls itself during its execution. This can be done over and over again until some base condition is met that stops the recursion.
+Recursion is a programming tool in computing where a function calls itself during its execution. This can be done over and over again until some base condition is met that stops the recursion.
 
 Here’s a quick example:
 
@@ -32,7 +32,7 @@ const launchRocket = (count) => {
 launchRocket(10);
 ```
 
-Until the base case is met, we continually make a recursive call to the same function, decreasing the argument by 1. Once we count down to 0, the recursion ends, and our program is finished! Here’s the output:
+Until the base case is met, we continually make a recursive call to the same function, decreasing the count argument by 1. Once we count down to 0, the recursion ends, and our program is finished! Here’s the output for the `launchRocket` function:
 
 ```
 10...
@@ -50,7 +50,7 @@ liftoff!
 
 ## Recursion in React
 
-Similar to how this works in traditional programming, recursion can also be used when rendering React components! Let’s look at an example of this pattern, based on the first vanilla Javascript one.
+Similar to how this works in traditional programming, recursion can also be used when rendering React components! Let’s look at an example of this pattern, based on the first vanilla Javascript one:
 
 ```jsx
 const RocketLaunch = (props) => {
@@ -69,7 +69,7 @@ const RocketLaunch = (props) => {
 <RocketLaunch count={10} />;
 ```
 
-Here, the `RocketLaunch` component renders the countdown text, and recursively renders itself, decreasing the count as we go until “liftoff!” is rendered, and we end the recursion.
+Here, the `RocketLaunch` component renders the countdown text, and recursively renders itself, decreasing the count as we go until “liftoff!” is returned, and we end the recursion.
 
 We can take a look at the transpiled code to understand how this works:
 
@@ -104,14 +104,17 @@ Let's take a look at how this component renders in the browser:
 
 <RocketLaunch />
 
+That's enough of a proof of concept for me, so let's look at some real-world examples where this is useful.
+
 ## Real-World Applications
 
-Now we know how to use recursion in React, but why would we want to do such a thing? This particular pattern
-is interesting to me because it has a few distinct use-cases.
+We now know how to use recursion in React, but why would we want to do such a thing? This particular pattern
+is interesting to me because it has a few use-cases that are pretty different. There are many more out there, but
+these are some places I've used this pattern recently.
 
 ### Heirarchial Data
 
-Image we have a data structure like this, that represents a simple file tree:
+Imagine we have a data structure like this, that represents a simple file tree:
 
 ```javascript
 {
@@ -172,12 +175,12 @@ const FileTree = (props: any) => {
 };
 ```
 
-The recursion here takes care of many concerns for us! The progressive padding is handled automatically,
+The recursion here takes care of many concerns for us! The progressive indenting is handled automatically,
 and we don't need to worry about how many levels deep the tree goes. React render keys are progressively built
 for each node based on the path. In React, when mapping over an array of data to render components, each component
-needs a unique key. This is so React can keep track of which components have changed, and which ones need to be re-rendered.
+needs a unique key. This is so React can keep track of which components have changed and need to be re-rendered.
 
-We can render the file tree with the following code, passing in the data object build earlier:
+We can render the file tree with the following code, passing in the data object built earlier:
 
 ```jsx
 <FileTree node={/* The data payload here */} />
@@ -191,11 +194,12 @@ Here's how that component renders:
 
 I recently rolled out a new feature on my blog - infinite scrolling on the blog list page. This was a fun feature to implement, and I used a recursive component to do it!
 
-The first page of the blog list is rendered server-side,
-and additional pages of data are fetched and rendered client-side. Additional
-pages are recursively rendered, only after the previous page has been finished.
+The first page blog posts gets rendered server-side,
+and additional pages of data are fetched and parsed client-side. Additional
+pages are recursively rendered, only after the previous page has been finished and the last element
+has been scrolled into view.
 
-It's a lot more complex than what I'll show in the examples, but you can check out
+It's a lot more complex than what I'll show in the following examples, but you can check out
 [the complete code on GitHub](https://github.com/keegandonley/keegan.codes/blob/main/src/components/DynamicPosts/index.tsx) to see how it all works.
 
 As long as there is an additional page of posts to be rendered, the previous page will
@@ -208,6 +212,7 @@ const DynamicPosts = async (props) => {
   const nextPage = currentPage + 1;
   const hasNextPage = nextPage <= pageCount;
 
+  // This is an oversimplification of the data fetching, but you get the idea
   const pageData = await fetchPage(currentPage);
 
   return (
@@ -231,17 +236,20 @@ const DynamicPosts = async (props) => {
 > This is the opposite to how it works in the file tree example, where we want each
 > recursive call to render as a child of the previous call.
 
+Here is the HTML that is generated by this component after scrolling through a few pages:
+
 ![](recursive-react-post:dom-example.png)
 
 You can see here that the recursive calls render as siblings, and the DOM is structured
 with a single parent for all the blog posts as the pages are fetched and rendered while the
 user scrolls. Each element with the class `last-element-page-*` represents the end of a page,
-and the next page was recursively rendered.
+and the next page was recursively rendered. That element is also the one that tracks the visibility
+of the end of the page to kick off the request for the next one.
 
 ### Simplifying UI Components
 
 While I was writing this post, [Adam Wathan](https://twitter.com/adamwathan), the creator of [Tailwind](https://keegan.codes/blog/using-javascript-variables-in-tailwind) published a [Tweet](https://twitter.com/adamwathan/status/1726707563440505116) about this pattern
-and how it can be used conditionally based on children:
+and how it can be used conditionally based on children to create a simple checkbox component with or without a label:
 
 <Tweet id="1726707563440505116" centered />
 
@@ -258,7 +266,7 @@ is chosen incorrectly, the recursion may never end until your application crashe
 RangeError: Maximum call stack size exceeded
 ```
 
-Let's revisit the rocket countdown example, but in this situation we want to count down by 2:
+Let's revisit the rocket countdown example, with a twist. This time, we're in a hurry, and we want to count down by 2:
 
 ```jsx
 const RocketLaunch = (props) => {
@@ -269,7 +277,7 @@ const RocketLaunch = (props) => {
   return (
     <>
       {props.count}...
-      <RocketLaunch count={props.count - 2} />
+      <RocketLaunch count={props.count - 2} /> // Note the difference here
     </>
   );
 };
@@ -277,7 +285,7 @@ const RocketLaunch = (props) => {
 <RocketLaunch count={10} />;
 ```
 
-In this example, we'll count down by 2 just fine: `10`, `8`, `6`, `4`, `2`, `liftoff!`. But what if we change the initial count to 9?
+In this first example, we'll count down by 2 just fine: `10`, `8`, `6`, `4`, `2`, `liftoff!`. But what if we change the initial count to 9?
 
 ```jsx
 <RocketLaunch count={9} />
@@ -293,11 +301,13 @@ if (props.count <= 0) {
 }
 ```
 
-This issue can be particularly tricky, because the base case may be fine in most situations,
-but when taking in user input, it might fail! Always be sure to think carefully about the base case
-when using recursion.
+Now, if our counter "skips" 0, we'll still hit the base case and end the recursion.
 
-> Here's the same interactive example, but using the new base-case and a countdown interval of 2:
+This issue can be particularly tricky, because the base case may work fine in some or even most situations,
+but when taking in user input, it might fail! Always be sure to think carefully about the base case
+when using recursion, and be aware of what unexpected input might do.
+
+> Here's the same interactive example from the first RockerLaunch component, but using the new base-case and a countdown interval of 2:
 
 <RocketLaunch interval={2} />
 
@@ -309,11 +319,11 @@ previous call. In the infinite scrolling example, we want each recursive call to
 the previous call.
 
 The infinite scrolling could have been implemented with each page rendering inside its own
-container, but that would have introduced some complexity and many additional elements that
+container, but that would have introduced some complexity in the CSS, and many additional elements that
 aren't necessary.
 
 The same holds true for our countdown example. It might be fine to create a new element wrapping each number
-when we only have 10, but if this takes user input and doesn't have a sane maximum, what would happen if a user
+when we only have 10 recursive calls, but if this takes user input and doesn't have a sane maximum, what would happen if a user
 wanted to count down from 10,000? That's already a lot of elements, but now we'd not only have 10,000 additional
 elements we don't need, but the last one would be at a depth of 10,000! This would be a nightmare for the browser
 to render:
@@ -338,12 +348,12 @@ to render:
 </span>
 ```
 
-> If you want to read more about browser performance and maximum DOM depth, the [Chrome for Developers](https://developer.chrome.com/en/docs/lighthouse/performance/dom-size/) article is a great resource.
+> If you want to read more about browser performance and maximum DOM depth, this [Chrome for Developers](https://developer.chrome.com/en/docs/lighthouse/performance/dom-size/) article is a great resource.
 
 ## Final Thoughts
 
 Recursion is a powerful tool in programming, and it can be used in React to simplify component rendering.
-It can also be used incorrectly to greatly _increase_ complexity and cause performance issues. Always be sure that you're using the right
+It can also be used incorrectly to greatly _increase_ complexity and cause performance issues or hard-to-debug crashes. Always be sure that you're using the right
 tool for the job, and that you're using it correctly!
 
 Hopefully this post has helped you understand how to use recursion in React, and some
