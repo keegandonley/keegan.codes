@@ -1,0 +1,44 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  padding-bottom: 2rem;
+}
+
+.example {
+  background: var(--code-background);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  flex-grow: 1;
+  word-wrap: break-word;
+  flex-shrink: 1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.fixed {
+  white-space: nowrap;
+  flex-shrink: 1;
+  flex-grow: 0;
+}
+
+.output {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.small {
+  opacity: 0.5;
+  font-size: 0.7em;
+  padding-left: 5px;
+}
+
+@media only screen and (max-width: 550px) {
+  .output {
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: flex-start;
+  }
+}
