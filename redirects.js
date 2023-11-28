@@ -32,4 +32,5 @@ module.exports = [
   ["/bluesky", "/bsky"],
   ["/render23recap", "/slides/render23"],
   ["/v2", v2Domain],
+  ["/girlstart", "https://give.girlstart.org/team/542895"],
 ];
