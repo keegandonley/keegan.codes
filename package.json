@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev & npx next-video sync -w",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -34,7 +34,8 @@
     "@vercel/og": "^0.5.20",
     "eslint": "^8.53.0",
     "eslint-config-next": "^14.0.2",
-    "next": "^14.0.2",
+    "next": "14.0.1",
+    "next-video": "^0.9.1",
     "react": "^18.2.0",
     "react-calendly": "^4.3.0",
     "react-dom": "^18.2.0",

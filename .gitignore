@@ -46,3 +46,10 @@ blurhash-generator/.env
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# next-video
+videos/*
+!videos/*.json
+!videos/*.js
+!videos/*.ts
+public/_next-video

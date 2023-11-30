@@ -2,6 +2,7 @@ import addMdx from "@next/mdx";
 import remarkGfm from "remark-gfm";
 import remarkPrism from "remark-prism";
 import redirects from "./redirects.js";
+import { withNextVideo } from "next-video/process";
 
 const nextConfig = {
   reactStrictMode: true,
@@ -60,4 +61,6 @@ const withMDX = addMdx({
   },
 });
 
-export default withMDX(nextConfig);
+export default withNextVideo(withMDX(nextConfig), {
+  provider: "vercel-blob",
+});
