@@ -33,4 +33,5 @@ module.exports = [
   ["/render23recap", "/slides/render23"],
   ["/v2", v2Domain],
   ["/girlstart", "https://give.girlstart.org/team/542895"],
+  ["/reddit", "https://www.reddit.com/user/keegancodes"],
 ];

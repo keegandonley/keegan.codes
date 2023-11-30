@@ -4,4 +4,5 @@ export const URLS = {
   instagram: "/instagram",
   github: "/github",
   bluesky: "/bsky",
+  reddit: "/reddit",
 };

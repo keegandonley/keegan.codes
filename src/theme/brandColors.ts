@@ -6,3 +6,4 @@ export const githubGreyLight = "#f6f8fa";
 export const blueSkyBlue = "#59afff";
 export const xGrey = "#4a4949";
 export const xGreyLight = "#b5b5b5";
+export const redditOrange = "#ff4500";
