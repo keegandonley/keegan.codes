@@ -14,7 +14,8 @@ import { BASEURL, DESCRIPTION, NAME } from "@/metadata";
 import MainNavigation from "@/components/MainNavigation";
 import { ModalBoundary } from "@/components/ModalBoundary";
 import ThemeProvider from "./themeProvider";
-// import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 config.autoAddCss = false;
 
 const font = localFont({
@@ -53,6 +54,7 @@ export default async function RootLayout({ children, postModal }: any) {
         {/* Adding suspense to try https://github.com/vercel/next.js/issues/48442#issuecomment-1519139562 */}
         <Suspense>
           <Analytics />
+          <SpeedInsights />
         </Suspense>
         {/* <SpeedInsights /> */}
       </body>

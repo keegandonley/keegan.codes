@@ -32,6 +32,7 @@
     "@vercel/edge-config": "^0.4.1",
     "@vercel/kv": "^1.0.0",
     "@vercel/og": "^0.5.20",
+    "@vercel/speed-insights": "^0.0.6",
     "eslint": "^8.53.0",
     "eslint-config-next": "^14.0.2",
     "next": "^14.0.2",
