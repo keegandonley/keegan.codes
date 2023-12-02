@@ -14,10 +14,11 @@ import { useCallback, useEffect } from "react";
 import { useParams, usePathname, useRouter } from "next/navigation";
 
 export const SlideControls = () => {
-  const { slide } = useParams();
+  const params = useParams();
+  const { slide } = params ?? {};
   const slideIndex = parseInt((slide as string) ?? "0", 10);
   const pathname = usePathname();
-  const slideName = pathname.split("/")[2];
+  const slideName = pathname?.split("/")[2];
   const router = useRouter();
 
   const handleGoBack = useCallback(() => {
