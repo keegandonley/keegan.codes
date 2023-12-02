@@ -39,10 +39,10 @@ export default function Christmas23() {
         <hr className={merge(styles.divider)} />
         <h3>Wifi Information</h3>
         <p className={styles.entry}>
-          Network: <pre>Christmas23</pre>
+          Network: <code>Christmas23</code>
         </p>
         <p className={styles.entry}>
-          Password: <pre>girlstart</pre>
+          Password: <code>girlstart</code>
         </p>
       </article>
     </div>

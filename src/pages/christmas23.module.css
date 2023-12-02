@@ -36,8 +36,8 @@
   column-gap: 1em;
 }
 
-.entry pre {
-  margin: 0;
+.entry code {
+  /* margin: 0; */
   background-color: darkgreen;
   padding: 4px;
   border-radius: 8px;
