@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  height: 100dvh;
+  min-height: 100dvh;
   padding: 0 60px;
 }
 
