@@ -21,7 +21,7 @@ export default function Pagination({ pageCount }: PaginationProps) {
   const queryParams = useSearchParams();
   const isExactlyBlogPage = useBlogRouter();
 
-  const pageNumber = parseInt(queryParams.get("page") ?? "1", 10);
+  const pageNumber = parseInt(queryParams?.get("page") ?? "1", 10);
   const hasNextPage = pageNumber < pageCount;
   const hasPreviousPage = pageNumber > 1;
 
