@@ -7,7 +7,7 @@
   /* Theme colors */
   --theme-blue-0: rgba(211, 233, 241, 1);
   --theme-blue-1: rgba(135, 206, 235, 1);
-  --theme-blue-2: rgba(30, 144, 255, 1);
+  --theme-blue-2: rgb(9, 117, 226);
   --theme-blue-3: rgba(0, 0, 128, 1);
   --theme-text: var(--theme-dark-blue);
   --theme-text-secondary: rgba(32, 65, 123, 0.6);
