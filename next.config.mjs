@@ -63,4 +63,5 @@ const withMDX = addMdx({
 
 export default withNextVideo(withMDX(nextConfig), {
   provider: "vercel-blob",
+  folder: "videos",
 });
