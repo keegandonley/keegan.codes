@@ -7,14 +7,18 @@ import { merge } from "@/util/classNames";
 import { background } from "@/theme/colors";
 import { getHasChosenTheme, userTheme } from "@/util/cookies";
 import { Analytics } from "@vercel/analytics/react";
-import { get } from "@vercel/edge-config";
-import { Banner } from "@/components/Banner";
 import { Suspense } from "react";
 import { BASEURL, DESCRIPTION, NAME } from "@/metadata";
 import MainNavigation from "@/components/MainNavigation";
 import { ModalBoundary } from "@/components/ModalBoundary";
 import ThemeProvider from "./themeProvider";
-// import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import dynamic from "next/dynamic";
+
+const DynamicEventWaiter = dynamic(() =>
+  import("./event").then((m) => m.EventWaiter)
+);
+
 config.autoAddCss = false;
 
 const font = localFont({
@@ -33,7 +37,6 @@ const font = localFont({
 export default async function RootLayout({ children, postModal }: any) {
   const theme = userTheme();
   const hasChosenTheme = getHasChosenTheme();
-  const event: any = await get("event");
 
   return (
     <html lang="en" id="fullscreen-context">
@@ -42,7 +45,9 @@ export default async function RootLayout({ children, postModal }: any) {
       >
         <ThemeProvider>
           {/* Display banner text from the edge config if an event is active */}
-          {event?.active ? <Banner level={1}>{event.text}</Banner> : null}
+          <Suspense>
+            <DynamicEventWaiter />
+          </Suspense>
           <MainNavigation
             initialTheme={theme}
             hasChosenTheme={hasChosenTheme}
@@ -53,8 +58,8 @@ export default async function RootLayout({ children, postModal }: any) {
         {/* Adding suspense to try https://github.com/vercel/next.js/issues/48442#issuecomment-1519139562 */}
         <Suspense>
           <Analytics />
+          <SpeedInsights />
         </Suspense>
-        {/* <SpeedInsights /> */}
       </body>
     </html>
   );

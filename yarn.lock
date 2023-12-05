@@ -5397,6 +5397,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vercel/speed-insights@npm:^0.0.6":
+  version: 0.0.6
+  resolution: "@vercel/speed-insights@npm:0.0.6"
+  checksum: 2d45d0d0379fc05cc9f0ad004197ee4db8df808e7a4ea27dd38e96fb7cd10e10b3299dcac005de0aa70193463e787fe5b44418f528688ff3d31107deca50f5e5
+  languageName: node
+  linkType: hard
+
 "@webassemblyjs/ast@npm:1.11.6, @webassemblyjs/ast@npm:^1.11.5":
   version: 1.11.6
   resolution: "@webassemblyjs/ast@npm:1.11.6"
@@ -11307,6 +11314,7 @@ __metadata:
     "@vercel/edge-config": ^0.4.1
     "@vercel/kv": ^1.0.0
     "@vercel/og": ^0.5.20
+    "@vercel/speed-insights": ^0.0.6
     eslint: ^8.53.0
     eslint-config-next: ^14.0.2
     eslint-plugin-storybook: ^0.6.15

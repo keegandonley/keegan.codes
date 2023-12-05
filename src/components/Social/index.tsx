@@ -4,7 +4,7 @@ import {
   githubGreyLight,
   instagramOrange,
   linkedInBlue,
-  twitterBlue,
+  redditOrange,
   xGrey,
   xGreyLight,
 } from "@/theme/brandColors";
@@ -15,6 +15,7 @@ import {
   faGithub,
   faInstagram,
   faLinkedin,
+  faReddit,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { faCloudRainbow } from "@fortawesome/pro-solid-svg-icons";
@@ -53,7 +54,13 @@ export const Social = () => {
           color={xGrey}
           darkColor={xGreyLight}
           url={URLS.twitter}
-          name="Twitter"
+          name="X"
+        />
+        <Icon
+          icon={faReddit}
+          color={redditOrange}
+          url={URLS.reddit}
+          name="Reddit"
         />
       </div>
     </div>
