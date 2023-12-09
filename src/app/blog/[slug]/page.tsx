@@ -115,7 +115,11 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
         <Component />
         <Track slug={params.slug} inModal={false} />
       </article>
-      <footer>
+      <footer
+        style={{
+          minHeight: "300px",
+        }}
+      >
         <Suspense>
           <Timeline slug={params.slug} />
         </Suspense>
