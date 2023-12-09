@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/pro-solid-svg-icons";
 import Link from "next/link";
 import { getIsLikelyMobile } from "@/util/userAgent";
+import { getImageMetadata } from "@/util/image";
 
 export const runtime = "experimental-edge";
 
@@ -62,6 +63,8 @@ export default async function BlogTagPage({ params }: BlogTagPageProps) {
               return b.published.getTime() - a.published.getTime();
             })
             .map((post, index) => {
+              const metadata = getImageMetadata(post.cover);
+
               return (
                 <MDXEntryRow
                   key={post.slug}
@@ -69,6 +72,7 @@ export default async function BlogTagPage({ params }: BlogTagPageProps) {
                   showViewCount
                   isLikelyMobile={isLikelyMobile}
                   {...post}
+                  imageMetadata={metadata}
                 />
               );
             })}

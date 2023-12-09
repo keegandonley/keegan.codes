@@ -9,6 +9,7 @@ import { BASEURL, NAME } from "@/metadata";
 import { postCount } from "@/book-count";
 import { background } from "@/theme/colors";
 import { getIsLikelyMobile } from "@/util/userAgent";
+import { getBookCoverMetadata } from "@/util/image";
 
 export const runtime = "experimental-edge";
 
@@ -39,6 +40,8 @@ export default function LibraryPage() {
               return b.published.getTime() - a.published.getTime();
             })
             .map((post, index) => {
+              const metadata = getBookCoverMetadata(post.cover);
+
               return (
                 <MDXEntryRow
                   key={post.slug}
@@ -48,6 +51,7 @@ export default function LibraryPage() {
                   isLikelyMobile={isLikelyMobile}
                   {...post}
                   book
+                  imageMetadata={metadata}
                 />
               );
             })}
