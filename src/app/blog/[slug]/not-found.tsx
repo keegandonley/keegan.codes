@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./404.module.css";
 import { faBinarySlash } from "@fortawesome/pro-solid-svg-icons";
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 export default function NotFound() {
   return (

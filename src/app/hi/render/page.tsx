@@ -14,7 +14,7 @@ import { Suspense } from "react";
 
 const DynamicEmbed = dynamic(() => import("@/components/Calendly/EmbedTarget"));
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 export default function RenderPage({
   searchParams,

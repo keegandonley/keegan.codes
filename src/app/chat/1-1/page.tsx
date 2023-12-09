@@ -1,7 +1,7 @@
 import { Body, Intro } from "@/components/Calendly";
 import EmbedTarget from "@/components/Calendly/EmbedTarget";
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 export default function ChatOneOnOnePage() {
   return (

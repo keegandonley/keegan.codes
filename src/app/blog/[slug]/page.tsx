@@ -17,7 +17,7 @@ import { PostHeader } from "@/components/PostHeader";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 const Timeline = dynamic(() => import("@/components/Timeline"));
 

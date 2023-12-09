@@ -17,7 +17,7 @@ const DynamicDynamicPosts = dynamic(
   () => import("@/components/DynamicPosts/index")
 );
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 export default async function BlogPage() {
   const postsPerPage = parseInt((await get("blogPageSize")) ?? "12");

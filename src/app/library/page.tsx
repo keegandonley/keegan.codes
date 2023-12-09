@@ -11,7 +11,7 @@ import { background } from "@/theme/colors";
 import { getIsLikelyMobile } from "@/util/userAgent";
 import { getBookCoverMetadata } from "@/util/image";
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 export default function LibraryPage() {
   const isLikelyMobile = getIsLikelyMobile();

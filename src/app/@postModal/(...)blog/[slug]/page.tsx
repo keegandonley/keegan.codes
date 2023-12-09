@@ -4,7 +4,7 @@ import "../../../syntax-theme.css";
 import wordCounts from "../../../../post-word-counts.json";
 import { Track } from "@/components/Track";
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 interface InterceptorProps {
   params: {

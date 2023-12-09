@@ -59,7 +59,7 @@ export async function generateMetadata({
   };
 }
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 export default async function ShortCodePage({
   params: { shortCode },
