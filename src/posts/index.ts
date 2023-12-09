@@ -36,6 +36,7 @@ import * as ShortVariableNames from "./short-variable-names.mdx";
 import * as VisualRegression from "./visual-regression-tests.mdx";
 import * as JavascriptTailwind from "./javascript-variables-in-tailwind.mdx";
 import * as RecursiveReact from "./recursive-react-components.mdx";
+import * as CSSVarsTailwind from "./css-variables-from-custom-tailwind-theme.mdx";
 
 const posts = {
   Welcome,
@@ -76,6 +77,7 @@ const posts = {
   VisualRegression,
   JavascriptTailwind,
   RecursiveReact,
+  CSSVarsTailwind,
 };
 
 export default posts;

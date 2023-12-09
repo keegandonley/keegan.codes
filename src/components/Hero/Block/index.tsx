@@ -23,7 +23,8 @@ export const HeroBlock = ({
           styles.container,
           !isHomePage && styles.small,
           collapse && styles.collapse,
-          sticky && styles.sticky
+          sticky && styles.sticky,
+          !isHomePage && styles.fade
         )
       )}
     >

@@ -1,0 +1,11 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: minMax(0, 0.8fr) minMax(0, 1.2fr);
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+.wrapper :global(.remark-highlight),
+.wrapper :global(.remark-highlight) pre {
+  height: 100%;
+}
