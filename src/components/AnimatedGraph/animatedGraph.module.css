@@ -16,6 +16,8 @@
   justify-content: space-evenly;
   max-width: 1000px;
   margin: 0 auto;
+  z-index: 0;
+  position: relative;
 }
 
 @keyframes fadeSquares {

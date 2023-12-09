@@ -48,7 +48,7 @@ export default async function BlogPage() {
 
   return (
     <>
-      <section>
+      <section className={styles.section}>
         <div className={styles.wrapper}>
           {posts.map((post, index) => {
             return (
@@ -64,6 +64,7 @@ export default async function BlogPage() {
               />
             );
           })}
+
           <Suspense>
             <DynamicDynamicPosts
               previousPage={1}
