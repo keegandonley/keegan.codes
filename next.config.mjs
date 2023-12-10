@@ -1,3 +1,4 @@
+import { withNextVideo } from "next-video/process";
 import addMdx from "@next/mdx";
 import remarkGfm from "remark-gfm";
 import remarkPrism from "remark-prism";
@@ -65,4 +66,6 @@ const withMDX = addMdx({
   },
 });
 
-export default withBundleAnalyzer(withMDX(nextConfig));
+export default withNextVideo(withBundleAnalyzer(withMDX(nextConfig)), {
+  provider: "vercel-blob",
+});
