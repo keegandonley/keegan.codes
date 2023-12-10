@@ -13,7 +13,7 @@
   z-index: -1;
   border-radius: 2rem;
   box-shadow: none;
-  transition: opacity var(--animation) 0s;
+  transition: opacity var(--animation) 0.5s;
 }
 
 .avatarBubble {

@@ -2,6 +2,7 @@ import addMdx from "@next/mdx";
 import remarkGfm from "remark-gfm";
 import remarkPrism from "remark-prism";
 import redirects from "./redirects.js";
+import addAnalyzer from "@next/bundle-analyzer";
 
 const nextConfig = {
   reactStrictMode: true,
@@ -54,10 +55,14 @@ const nextConfig = {
   },
 };
 
+const withBundleAnalyzer = addAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
+
 const withMDX = addMdx({
   options: {
     remarkPlugins: [remarkPrism, remarkGfm],
   },
 });
 
-export default withMDX(nextConfig);
+export default withBundleAnalyzer(withMDX(nextConfig));

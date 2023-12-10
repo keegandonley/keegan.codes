@@ -9,7 +9,7 @@ import { HiTrack } from "@/components/Track/Hi";
 import Image from "next/image";
 import tailwindLogo from "./tailwind.png";
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 export default function TailwindPage({
   searchParams,

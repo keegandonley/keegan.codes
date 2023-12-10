@@ -1,0 +1,469 @@
+export const title = "Generating CSS Variables From a Custom Tailwind Theme";
+export const slug = "generating-css-variables-from-a-custom-tailwind-theme";
+export const tags = ["Tailwind", "css", "web", "design", "software"];
+export const description =
+  "How to access a custom Tailwind theme as CSS variables, and why it's a useful pattern";
+export const cover = "tailwind-css-variables-post-cover.png";
+export const published = new Date(2023, 11, 11);
+export const shortCodes = ["tailwind-variables", "css-variables"];
+
+Introducing Tailwind to an existing project for the first time can be a major challenge. Whether the existing
+app is written using CSS modules, CSS-in-JS, or some other approach, Tailwind is a big change. On large projects,
+there will likely be a transition period where multiple approaches are used at the same time. This can lead to issues with
+your theme having multiple sources of truth, or your new and old components having different styles. Worse yet, you may have clashes
+with Tailwind utility classes and your existing styles or third party libraries.
+
+One way I've found to mitigate these issues is to use CSS variables to expose the Tailwind theme to the rest of the application.
+This allows you to use the Tailwind build in your legacy codebase, and also gives you a single source of truth for your design tokens.
+
+> This post is part two in a series I'm writing about using Tailwind in enterprise-scale applications, and
+> some of the problems we've had to solve at [Kizen](https://kizen.com) as we migrate from a CSS-in-js approach to Tailwind.
+> If you missed the first one, it was about [how to use dynamically calculated or user generated values in Tailwind](/blog/using-javascript-variables-in-tailwind).
+
+Throughout this post, I'm going to be using the example of a large, complex application built with a css-in-js approach,
+that's being updated with a new design system and component library built with Tailwind. If you prefer, you can skip to **[how to generate CSS variables](#customtailwindplugins)**.
+
+### The Legacy Code
+
+The application being ported to Tailwind uses [emotion](https://emotion.sh/docs/introduction), a css-in-js library.
+Components can be written in a way similar to [styled-components](https://styled-components.com/), if you're more familiar with that tool.
+
+Here's an example of the global theme used by the css-in-js components:
+
+```javascript
+export const colors = {
+  greens: {
+    tea: "#D0F1BF",
+    teaLight: "#D0F1BF54",
+    dark: "#284D00",
+  },
+};
+```
+
+The component that needs to use the color imports the `colors` object from the theme, and then uses
+it in the template for the various color names:
+
+```jsx
+import { colors } from "@theme";
+import { styled } from "emotion";
+
+const WrapperComponent = styled.div`
+  background-color: ${theme.greens.tea};
+  color: ${theme.greens.dark};
+`;
+
+const Component = () => {
+  return (
+    <WrapperComponent>
+      This is a line of green text on a green background
+    </WrapperComponent>
+  );
+};
+```
+
+The result is an element like this:
+
+<div
+  style={{
+    color: "#284D00",
+    background: "rgb(208, 241, 191)",
+    padding: "0 1rem",
+  }}
+>
+  This is a line of green text on a green background
+</div>
+
+### The New Design System
+
+The new design system is built using Tailwind and a custom theme. These are the colors
+from the design system that are used to build the new components:
+
+```json
+{
+  "tea": "rgb(208, 241, 191)",
+  "mint": "rgb(182, 215, 185)",
+  "vine": "rgb(154, 189, 151)",
+  "moss": "rgb(100, 101, 54)",
+  "drab": "rgb(72, 61, 3)"
+}
+```
+
+> Notice a few changes: the **dark** green color doesn’t exist, but there’s
+> a similar color called **moss**. **Tea** is present in both, however in the new system, everything
+> is represented in rgb.
+
+While the application consists of a mix of the old and new components,
+we don’t want **tea** represented in hex for the old css-in-js system, and in rgb in the
+Tailwind theme. Design systems can change, and we want to ensure that updating the **tea** color
+is easy if we change our mind later.
+
+We also don’t want to replace every instance of **dark** with **moss**, because we
+aren’t ready to test and port every portion of the application.
+
+Since both the old and new components are being used at the same time, we need
+a strategy to keep a single source of truth _for each color_.
+
+Finally, to throw in one more curveball, I want to start moving
+toward a css-first approach in as many ways as possible. That means I don't want to simply import the
+`greens` object from `theme.js`.<sup>[⁂](#whynotimportthetailwindthemefileintothelegacytheme)</sup> The goal is to begin removing imported javascript, and rely on
+a generated CSS bundle instead.
+
+### The Goal
+
+The solution I want to build, is one that allows me us slowly replace the hex values with CSS variables
+representing the new colors. This way, we don’t have to maintain two sources of truth for a particular color,
+and we also don’t need to modify any of the existing styled components.
+
+```javascript
+export const colors = {
+  greens: {
+    tea: "var(--color-green-tea)",
+    teaLight: "#D0F1BF54",
+    dark: "#284D00",
+  },
+};
+```
+
+> This would be ideal! We don't need to make any additional imports, and any develop can also look at this
+> file and quickly parse out visually which colors have been ported to the new CSS variable approach, and which haven't.
+
+So, how do we access our Tailwind theme using CSS variables
+from anywhere in the new and legacy code?
+
+## Tailwind Behavior
+
+First, let’s look at what’s available from Tailwind out of the box. The following will take the colors defined in the design
+system, and create our custom Tailwind configuration.
+
+There's a simple color palette defined in a `theme.js` file.
+
+```javascript
+export const greens = {
+  tea: "rgb(208, 241, 191)",
+  mint: "rgb(182, 215, 185)",
+  vine: "rgb(154, 189, 151)",
+  moss: "rgb(100, 101, 54)",
+  drab: "rgb(72, 61, 3)",
+};
+```
+
+> In practice, this file is much larger, and contains many more color families: reds, blues, grays, etc.
+
+The color family is imported and used in our Tailwind config:
+
+```javascript
+const { greens } = require("./theme");
+
+module.exports = {
+  content: ["./**/*.html"],
+  theme: {
+    colors: {
+      ...greens,
+    },
+  },
+  plugins: [],
+};
+```
+
+> I'm not using `extend` in this example because my design system colors are the _only_ colors
+> I want Tailwind to be aware of. You could use the [extend property](https://tailwindcss.com/docs/theme#extending-the-default-theme) instead to preserve Tailwind's default colors.
+
+We'll also have some small HTML markup that uses our theme colors:
+
+```html
+<div class="text-moss bg-tea">
+  This is a line of green text on a green background
+</div>
+```
+
+When we put that all together, we get the following displayed in the browser:
+
+<div
+  style={{
+    color: "rgb(100, 101, 54)",
+    background: "rgb(208, 241, 191)",
+    padding: "0 1rem",
+  }}
+>
+  This is a line of green text on a green background
+</div>
+
+Finally, this is the CSS that is generated by the Tailwind CLI:
+
+```css
+.bg-tea {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 241 191 / var(--tw-bg-opacity));
+}
+
+.text-moss {
+  --tw-text-opacity: 1;
+  color: rgb(100 101 54 / var(--tw-text-opacity));
+}
+```
+
+> Tailwind automatically generated a class for each variable that's used in the files
+> that are passed to the `content` array in the config. It also generated some CSS variables for controlling opacity,
+> and used them in the generated classes.
+
+Our classes are being generated and our Tailwind component works as expected, but there’s no way to
+use them outside the Tailwind utility classes. In order to continue supporting the old styled components,
+we need a way to expose them.
+
+## Custom Tailwind Plugins
+
+Tailwind plugins are able to access our theme, and can also insert additional CSS into the compiled output.
+We can inline a simple plugin that will generate CSS variables for each color in our theme. They'll be
+part of the `:root` selector, and will be available anywhere in the application.
+
+```javascript
+const { greens } = require("./theme");
+
+module.exports = {
+  content: ["./**/*.html"],
+  theme: {
+    extend: {},
+    colors: {
+      ...greens,
+    },
+  },
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ":root": Object.entries(greens).reduce((acc, [name, value]) => {
+          return {
+            ...acc,
+            [`--color-green-${name}`]: value,
+          };
+        }, {}),
+      });
+    },
+  ],
+};
+```
+
+If we run the Tailwind CLI again, the compiled output has changed a bit:
+
+```css
+.bg-tea {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 241 191 / var(--tw-bg-opacity));
+}
+
+.text-moss {
+  --tw-text-opacity: 1;
+  color: rgb(100 101 54 / var(--tw-text-opacity));
+}
+
+:root {
+  --color-green-tea: rgb(208, 241, 191);
+  --color-green-mint: rgb(182, 215, 185);
+  --color-green-vine: rgb(154, 189, 151);
+  --color-green-moss: rgb(100, 101, 54);
+  --color-green-drab: rgb(72, 61, 3);
+}
+```
+
+Great! That's exactly what we needed in order to use our theme colors in the legacy codebase.
+Here's a refresher on what we were working towards:
+
+```javascript
+export const colors = {
+  greens: {
+    tea: "var(--color-green-tea)",
+    teaLight: "#D0F1BF54",
+    dark: "#284D00",
+  },
+};
+```
+
+There is still a problem, however. We haven't considered the `teaLight` color yet. This color is the same
+as `tea`, but with an alpha value applied. We’re now arguably in a worse-off state than we were before,
+with two implementations of the tea color in the css-in-js component.
+
+Let's go back and update our Tailwind CLI plugin to allow customizing the opacity of each color:
+
+```javascript
+function plugin({ addUtilities }) {
+  addUtilities({
+    ":root": Object.entries(greens).reduce((acc, [name, value]) => {
+      const colorParts = value.match(/\d+/g);
+
+      return {
+        ...acc,
+        [`--color-green-${name}-partial`]: colorParts.join(", "),
+        [`--color-green-${name}`]: `rgb(var(--color-green-${name}-partial), var(--opacity, 1))`,
+      };
+    }, {}),
+  });
+}
+```
+
+> Instead of generating the variable like before, first the plugin generates a "partial" of the color - just
+> the rgb components. Then, it uses the partial to create the rgb value.
+
+The resulting CSS variables are quite flexible and give us a number of options for using our colors outside
+of Tailwind's utility classes:
+
+```css
+.bg-tea {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 241 191 / var(--tw-bg-opacity));
+}
+
+.text-moss {
+  --tw-text-opacity: 1;
+  color: rgb(100 101 54 / var(--tw-text-opacity));
+}
+
+:root {
+  --color-green-tea-partial: 208, 241, 191;
+  --color-green-tea: rgb(var(--color-green-tea-partial), var(--opacity, 1));
+  --color-green-mint-partial: 182, 215, 185;
+  --color-green-mint: rgb(var(--color-green-mint-partial), var(--opacity, 1));
+  --color-green-vine-partial: 154, 189, 151;
+  --color-green-vine: rgb(var(--color-green-vine-partial), var(--opacity, 1));
+  --color-green-moss-partial: 100, 101, 54;
+  --color-green-moss: rgb(var(--color-green-moss-partial), var(--opacity, 1));
+  --color-green-drab-partial: 72, 61, 3;
+  --color-green-drab: rgb(var(--color-green-drab-partial), var(--opacity, 1));
+}
+```
+
+Now, we can revisit our legacy theme one more time:
+
+```javascript
+export const colors = {
+  greens: {
+    tea: "var(--color-green-tea)",
+    teaLight: "rgb(var(--color-green-tea-partial), 45)",
+    dark: "#284D00",
+  },
+};
+```
+
+As the project progresses and the migration to Tailwind continues, we can slowly replace the hex values with the CSS variables, and eventually
+remove the old theme entirely. In the meantime, at least we only have to define the actual value of `tea` once.
+
+## Digging Deeper
+
+There are a few additional things I want to note about this solution, valuable use-cases,
+and decisions that were made along the way. If you've had your fill, feel free to skip to the
+[conclusion](#conclusion).
+
+### Semantic Naming
+
+Having the generated variables is also useful for semantic naming. While we do have a `greens` color family,
+we also have a `primary` color family. These semantic families are preferred over the color families,
+because as we change our design system, we can swap out one color for another globally, and keep the same semantic meaning.
+
+These semantic names look something like this in the Tailwind config:
+
+```javascript
+const { greens } = require("./theme");
+
+const semantics = {
+  "alert-primary-background": "var(--color-green-mint)",
+  "alert-primary-text": "var(--color-green-moss)",
+};
+
+module.exports = {
+  content: ["./**/*.html"],
+  theme: {
+    extend: {},
+    colors: {
+      ...greens,
+      ...semantics,
+    },
+  },
+  plugins: [
+    // Our plugin from before goes here
+  ],
+};
+```
+
+> Note that the semantic names are passed in as part of the color theme, alongside the color family.
+
+The HTML can then be changed to use the new semantic classes:
+
+```html
+<div class="text-alert-primary-text bg-alert-primary-background">
+  This is a line of green text on a green background
+</div>
+```
+
+Just by making that one change, the generated CSS is cleaner, smaller, and it relies
+solely on the custom variables being generated:
+
+```css
+.bg-alert-primary-background {
+  background-color: var(--color-green-mint);
+}
+
+.text-alert-primary-text {
+  color: var(--color-green-moss);
+}
+
+:root {
+  --color-green-tea-partial: 208, 241, 191;
+  --color-green-tea: rgba(var(--color-green-tea-partial), var(--opacity, 1));
+  --color-green-mint-partial: 182, 215, 185;
+  --color-green-mint: rgba(var(--color-green-mint-partial), var(--opacity, 1));
+  --color-green-vine-partial: 154, 189, 151;
+  --color-green-vine: rgba(var(--color-green-vine-partial), var(--opacity, 1));
+  --color-green-moss-partial: 100, 101, 54;
+  --color-green-moss: rgba(var(--color-green-moss-partial), var(--opacity, 1));
+  --color-green-drab-partial: 72, 61, 3;
+  --color-green-drab: rgba(var(--color-green-drab-partial), var(--opacity, 1));
+}
+```
+
+This is my favorite part of the solution. Every variable has its purpose, and
+the CSS is generated in a way that's easy to read and understand. Additionally, the opacity
+logic is still preserved, and we can use the `--opacity` variable to change the opacity of any color.
+I recently wrote about [passing CSS variables to elements using inline styles](https://keegan.codes/blog/using-javascript-variables-in-tailwind),
+and this is a great example of how that can be useful.
+
+### Why Not Import the Tailwind Theme File Into the Legacy Theme?
+
+Above, I simplified a bit about why I didn't want to import the Tailwind theme file into the legacy theme, like this:
+
+```javascript
+import { greens } from "@design-system/theme.js";
+
+export const colors = {
+  greens: {
+    tea: greens.tea,
+    teaLight: "#D0F1BF54",
+    dark: "#284D00",
+  },
+};
+```
+
+There are a few reasons for this:
+
+1. It's not "portable". In reality, the theme is comprised of many color families across many files.
+   Being able to copy and paste varous parts of the theme during refactors is a convenience I'm not willing to give up.
+2. Importing `theme.js` from the Tailwind library is not a pattern I want to encourage in any way. The entire goal of this
+   project is moving **away** from importing javascript to control the look of the app. Even though the legacy theme is already using javascript,
+   it would be a step backward to introduce a pattern in the code where our brand new CSS theme is used like this.
+3. It's not a good separation of concerns. The `theme.js` file is an implementation detail of the design system. It's not part of the public API,
+   and as the design system evolves, we may want to move files around, or change how the theme is defined and structured entirely.
+   The CSS variables that are emitted, however, _are_ part of the public API. Those are the only thing that should be relied on from outside the design system.
+
+### What Other Variables are Useful to Generate?
+
+I don't only use this approach for colors. It's useful for font-sizes, spacing, and any other value that's used in the legacy codebase.
+
+In all, I have a plugin that takes in my custom theme, and outputs around 500 unique CSS variables, allowing
+the theme files and their design tokens to drive the Tailwind generation, and in turn the legacy codebase as sections get ported over.
+
+## Conclusion
+
+I'm continually learning new patterns and approaches to using Tailwind, and I hope this was interesting and useful to you. I'd love to hear
+your thoughts on this approach, and if you have something similar in your Tailwind build!
+
+> This blog post is the second in a series I'm writing about using Tailwind in enterprise-scale applications, and
+> some of the problems we've had to solve at [Kizen](https://kizen.com) as we migrate from a CSS-in-js approach to Tailwind.
+>
+> Stay tuned for more under the [css](https://keegan.codes/blog/tag/css) and [Tailwind](https://keegan.codes/blog/tag/Tailwind) tags on my blog, and if you have any topics about Tailwind at scale you'd like covered, shoot me an email at [tailwind@k10y.com](mailto:tailwind@k10y.com)!

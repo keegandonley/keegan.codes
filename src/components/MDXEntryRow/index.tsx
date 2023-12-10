@@ -34,6 +34,7 @@ interface MDXEntryRowProps extends ElementBaseProps {
   className?: string;
   fixedViewCount?: number;
   loader?: boolean;
+  imageMetadata?: ImageMetadata;
 }
 
 export const MDXEntryRow = ({
@@ -53,8 +54,9 @@ export const MDXEntryRow = ({
   className,
   fixedViewCount,
   loader,
+  imageMetadata,
 }: MDXEntryRowProps) => {
-  const metadata = book ? getBookCoverMetadata(cover) : getImageMetadata(cover);
+  const metadata = imageMetadata;
 
   const Parent = slug ? Link : "div";
   let resultWidth = 500;
@@ -98,7 +100,8 @@ export const MDXEntryRow = ({
               alt="Loading image placeholder"
               fill
               sizes={`(max-width: 550px) 100vw, (max-width: 900px) 50vw, ${resultWidth}px`}
-              {...parseToProps(getImageMetadata("loading-cover.png"))}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIABwAMgMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APWKgu7lLS3aaQ4VRmp6xvE8qRaPIzglcc0m7K4HOt8QI5r820CZwcZpLrx2bGYLLHkGuHW6sftQa2Qq+eSaW/tl1HBSYBvespVG5Rkk1G34nQ4qFNcy949i0fV4dXtRNEevUVo1wnw9t5LWGSJ5N4ru61jJSV0c6v1CiloxTASszXrY3Wlyxqu4kdK06CARzSaurAeMSaM8IIMJV8+lY91Y3v2oJAj/AICvd5LG3lOXiUn6VGul2aNuEC59cVeF5aEZRave45Sm2pX1RzngbTbizsS9wCHb1rr6RVVBhQAKWoSUVZA227sKKKKYj//Z"
             />
           </div>
         ) : (
