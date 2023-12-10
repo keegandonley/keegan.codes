@@ -3,6 +3,9 @@ import imageMetadata from "../image-metadata.json";
 import bookCoverMetadata from "../book-cover-metadata.json";
 
 export const getImageMetadata = (image?: string) => {
+  if (typeof window !== "undefined") {
+    throw new Error("getImageMetadata should only be called on the server");
+  }
   const metadata = image
     ? (imageMetadata as Record<string, ImageMetadata>)[image]
     : undefined;
@@ -11,6 +14,9 @@ export const getImageMetadata = (image?: string) => {
 };
 
 export const getBookCoverMetadata = (image?: string) => {
+  if (typeof window !== "undefined") {
+    throw new Error("getBookCoverMetadata should only be called on the server");
+  }
   const metadata = image
     ? (bookCoverMetadata as Record<string, ImageMetadata>)[image]
     : undefined;

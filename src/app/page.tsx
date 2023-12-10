@@ -18,7 +18,7 @@ import { Fallback as BlogPreviewFallback } from "@/components/BlogPreview/Fallba
 
 const DynamicBlogPreview = dynamic(() => import("@/components/BlogPreview"));
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 export default function Home() {
   const posts = Object.keys(Posts)

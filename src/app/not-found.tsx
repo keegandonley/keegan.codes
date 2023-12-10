@@ -1,8 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome/";
 import styles from "./not-found.module.css";
 import { faCompassSlash } from "@fortawesome/pro-solid-svg-icons";
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 export default function NotFound() {
   return (

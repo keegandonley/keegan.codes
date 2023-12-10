@@ -1,3 +1,22 @@
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.section {
+  opacity: 0;
+  animation-duration: 1s;
+  animation-name: fade-in;
+  animation-fill-mode: forwards;
+  z-index: 1;
+  position: relative;
+}
+
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;

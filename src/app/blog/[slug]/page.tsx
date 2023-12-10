@@ -17,7 +17,7 @@ import { PostHeader } from "@/components/PostHeader";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 const Timeline = dynamic(() => import("@/components/Timeline"));
 
@@ -115,7 +115,11 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
         <Component />
         <Track slug={params.slug} inModal={false} />
       </article>
-      <footer>
+      <footer
+        style={{
+          minHeight: "300px",
+        }}
+      >
         <Suspense>
           <Timeline slug={params.slug} />
         </Suspense>

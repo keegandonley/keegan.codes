@@ -14,6 +14,7 @@ interface DynamicPostsProps {
 
 interface PostWithViewCount extends Post {
   viewCount: number;
+  imageMetadata?: ImageMetadata;
 }
 
 const DynamicPosts = (props: DynamicPostsProps) => {
@@ -87,6 +88,7 @@ const DynamicPosts = (props: DynamicPostsProps) => {
                 : ""
             }
             fixedViewCount={post.viewCount}
+            imageMetadata={post.imageMetadata}
           />
         );
       }) ??

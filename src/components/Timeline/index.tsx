@@ -12,7 +12,6 @@ import Image from "next/image";
 import { BUCKET_URL } from "@/util/r2";
 import { parseToProps } from "@/util/image";
 import { formatDate } from "@/util/date";
-import { AppContext } from "next/app";
 import { headers } from "next/headers";
 
 const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
@@ -48,6 +47,53 @@ const Timeline = async (props: TimelineProps) => {
   ]);
 
   const isAlone = !previousPost?.slug || !nextPost?.slug;
+
+  let randomPost: any;
+
+  if (isAlone) {
+    randomPost = await (
+      await fetch(
+        `${
+          host?.includes("localhost") ? "http://" : "https://"
+        }${host}/api/posts/random?slug=${slug}`
+      )
+    ).json();
+  }
+
+  const remainder = randomPost ? (
+    <Link
+      className={merge(styles.post, isAlone ? styles.single : "")}
+      href={randomPost.slug}
+    >
+      <span className={merge(styles.postTitle, styles.random)}>
+        <h4>{randomPost.title}</h4>
+      </span>
+      <p>{randomPost.description}</p>
+      <div className={styles.metadataWrapper}>
+        <Suspense>
+          <DynamicViewCount
+            slug={slug}
+            className={styles.viewCount}
+            fixedCount={randomPost.viewCount}
+          />
+        </Suspense>
+        <p className={styles.metadata}>
+          {formatDate(new Date(randomPost.published))}
+        </p>
+      </div>
+      <Image
+        src={`${BUCKET_URL}/${randomPost.cover}`}
+        alt="todo"
+        fill
+        {...parseToProps(randomPost.metadata)}
+        sizes={
+          isAlone
+            ? `(max-width: 700px) 100vw, 50vw`
+            : `(max-width: 600px) 100vw, 50vw`
+        }
+      />
+    </Link>
+  ) : null;
 
   return (
     <>
@@ -91,7 +137,7 @@ const Timeline = async (props: TimelineProps) => {
             />
           </Link>
         ) : (
-          <div />
+          remainder
         )}
         {nextPost?.slug ? (
           <Link
@@ -131,7 +177,7 @@ const Timeline = async (props: TimelineProps) => {
             />
           </Link>
         ) : (
-          <div />
+          remainder
         )}
       </div>
     </>

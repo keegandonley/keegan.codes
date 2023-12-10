@@ -11,12 +11,13 @@ import { getIsLikelyMobile } from "@/util/userAgent";
 import { get } from "@vercel/edge-config";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+import { getImageMetadata } from "@/util/image";
 
 const DynamicDynamicPosts = dynamic(
   () => import("@/components/DynamicPosts/index")
 );
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 export default async function BlogPage() {
   const postsPerPage = parseInt((await get("blogPageSize")) ?? "12");
@@ -48,9 +49,11 @@ export default async function BlogPage() {
 
   return (
     <>
-      <section>
+      <section className={styles.section}>
         <div className={styles.wrapper}>
           {posts.map((post, index) => {
+            const metadata = getImageMetadata(post.cover);
+
             return (
               <MDXEntryRow
                 key={post.slug}
@@ -60,10 +63,12 @@ export default async function BlogPage() {
                 className={
                   index === posts.length - 1 ? "last-element-page-1" : ""
                 }
+                imageMetadata={metadata}
                 {...post}
               />
             );
           })}
+
           <Suspense>
             <DynamicDynamicPosts
               previousPage={1}

@@ -1,17 +1,49 @@
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-300px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+}
+
 .article {
   max-width: 900px;
   margin: 0 auto;
   padding: 14rem 2rem 2rem 2rem;
   color: var(--theme-text);
   position: relative;
+  animation-duration: 2s;
+  animation-name: fade-in;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
 }
 
 .back {
   font-size: 0.9rem;
   text-decoration: none;
   color: var(--theme-blue-3);
-  opacity: 0.7;
   transition: opacity var(--animation);
+  animation-name: slide-down;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  opacity: 0;
+  transform: translateY(-300px);
 }
 
 .back:hover {
@@ -25,6 +57,11 @@
   height: 500px;
   top: 0;
   z-index: 0;
+  animation-name: fade-in;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
 }
 
 .coverWrapper img {
