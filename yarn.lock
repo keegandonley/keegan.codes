@@ -2333,7 +2333,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@img/sharp-linux-x64@npm:0.33.0":
+"@img/sharp-linux-x64@npm:0.33.0, @img/sharp-linux-x64@npm:^0.33.0":
   version: 0.33.0
   resolution: "@img/sharp-linux-x64@npm:0.33.0"
   dependencies:
@@ -2341,6 +2341,7 @@ __metadata:
   dependenciesMeta:
     "@img/sharp-libvips-linux-x64":
       optional: true
+  checksum: 10f6cc8bf2da643d7477395f07932b805444f9a1317febe8f88eb2715d410c44cb9929bd4f4994c4f22df0aada922c5598723ce95089c5f46ea0e2c38cef417e
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
@@ -11409,6 +11410,7 @@ __metadata:
     "@fortawesome/free-brands-svg-icons": ^6.5.1
     "@fortawesome/pro-solid-svg-icons": ^6.5.1
     "@fortawesome/react-fontawesome": ^0.2.0
+    "@img/sharp-linux-x64": ^0.33.0
     "@mdx-js/loader": ^3.0.0
     "@mdx-js/react": ^3.0.0
     "@next/bundle-analyzer": ^14.0.4
