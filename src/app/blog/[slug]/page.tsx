@@ -98,6 +98,7 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
             fill
             priority
             {...parseToProps(metadata)}
+            quality={80}
           />
         ) : null}
         <BottomFade />

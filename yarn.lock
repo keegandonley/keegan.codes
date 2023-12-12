@@ -3570,16 +3570,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-onboarding@npm:^1.0.9":
-  version: 1.0.9
-  resolution: "@storybook/addon-onboarding@npm:1.0.9"
+"@storybook/addon-onboarding@npm:^1.0.10":
+  version: 1.0.10
+  resolution: "@storybook/addon-onboarding@npm:1.0.10"
   dependencies:
     "@storybook/telemetry": ^7.1.0
     react-confetti: ^6.1.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: fc80047b2e51f40ff85c7737f703ac2b0b82e7154f66b2648e59d84e0978e0ed3dabfea636038cb3bd5d0515e36b502cf5e9ed4dd74483a708187146573574d4
+  checksum: 2351cf260ab92f26ecbdd2a1bac7c5ff0e8674ea7a3dd177751f594434f77b74403b9f2b24f243f1899c6d727941fc21838213953959a80685de9f043f17723c
   languageName: node
   linkType: hard
 
@@ -5245,14 +5245,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/og@npm:^0.5.20":
-  version: 0.5.20
-  resolution: "@vercel/og@npm:0.5.20"
+"@vercel/og@npm:^0.6.1":
+  version: 0.6.1
+  resolution: "@vercel/og@npm:0.6.1"
   dependencies:
     "@resvg/resvg-wasm": 2.6.0
     satori: 0.10.9
     yoga-wasm-web: 0.3.3
-  checksum: b6e08f3a9b2a0ef7c2cfe074d7e2699e7d4b1ab78cab370846ebea92dcb1becfcfef50309e1f905c1c37f37a64484fc789b0a364a5ce9496b8b4ab25048e7aaa
+  checksum: db2ce5c896ee2f5eefdb303f45154568872a4c787ae6144ebda9dde438d96332e6dbbd6b92fb2615829079236251a9a42efaafd4160a367cda6233d6f7d0a548
   languageName: node
   linkType: hard
 
@@ -10754,7 +10754,7 @@ __metadata:
     "@storybook/addon-essentials": ^7.6.4
     "@storybook/addon-interactions": ^7.6.4
     "@storybook/addon-links": ^7.6.4
-    "@storybook/addon-onboarding": ^1.0.9
+    "@storybook/addon-onboarding": ^1.0.10
     "@storybook/blocks": ^7.6.4
     "@storybook/nextjs": ^7.6.4
     "@storybook/react": ^7.6.4
@@ -10765,7 +10765,7 @@ __metadata:
     "@vercel/analytics": ^1.1.1
     "@vercel/edge-config": ^0.4.1
     "@vercel/kv": ^1.0.1
-    "@vercel/og": ^0.5.20
+    "@vercel/og": ^0.6.1
     "@vercel/speed-insights": ^1.0.1
     eslint: ^8.55.0
     eslint-config-next: ^14.0.4
