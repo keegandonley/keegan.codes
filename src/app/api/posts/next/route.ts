@@ -4,6 +4,8 @@ import { Post } from "@/types/post";
 import { connect } from "@planetscale/database";
 import { getImageMetadata } from "@/util/image";
 
+export const runtime = "edge";
+
 const config = {
   host: process.env.host,
   username: process.env.username,
