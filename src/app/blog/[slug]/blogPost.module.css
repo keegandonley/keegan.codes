@@ -10,12 +10,10 @@
 
 @keyframes slide-down {
   from {
-    transform: translateY(-300px);
     opacity: 0;
   }
 
   to {
-    transform: translateY(0);
     opacity: 0.7;
   }
 }
@@ -26,24 +24,22 @@
   padding: 14rem 2rem 2rem 2rem;
   color: var(--theme-text);
   position: relative;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-name: fade-in;
   animation-fill-mode: forwards;
   opacity: 0;
-  animation-delay: 0.2s;
 }
 
 .back {
   font-size: 0.9rem;
   text-decoration: none;
-  color: var(--theme-blue-3);
+  color: var(--theme-text);
   transition: opacity var(--animation);
   animation-name: slide-down;
   animation-duration: 1s;
   animation-fill-mode: forwards;
-  animation-delay: 1s;
+  animation-delay: 0.7s;
   opacity: 0;
-  transform: translateY(-300px);
 }
 
 .back:hover {
@@ -58,9 +54,8 @@
   top: 0;
   z-index: 0;
   animation-name: fade-in;
-  animation-duration: 1s;
+  animation-duration: 0.2s;
   animation-fill-mode: forwards;
-  animation-delay: 0.2s;
   opacity: 0;
 }
 
