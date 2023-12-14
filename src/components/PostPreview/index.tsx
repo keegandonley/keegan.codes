@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
 import Link from "next/link";
 import { Suspense } from "react";
-import styles from "./postpreview.module.css";
+import styles from "./postPreview.module.css";
 import { merge } from "@/util/classNames";
 import dynamic from "next/dynamic";
 import { formatDate } from "@/util/date";
