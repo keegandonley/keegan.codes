@@ -1,0 +1,92 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  color: var(--theme-text);
+  text-decoration: none;
+  box-shadow: var(--theme-box-shadow-small);
+  padding: 1rem;
+  row-gap: 0.5rem;
+  position: relative;
+  width: 100%;
+  height: 140px;
+  margin-bottom: 2rem;
+}
+
+.post:hover img {
+  filter: grayscale(0);
+  opacity: 0.3;
+}
+
+.post * {
+  z-index: 1;
+  text-shadow: var(--shadow-color) 1px 0 20px;
+}
+
+.post img {
+  object-fit: cover;
+  border-radius: 0.5rem;
+  object-position: center;
+  z-index: 0;
+  filter: grayscale(0.3);
+  opacity: 0.2;
+  transition: all 0.2s;
+}
+
+.post h4 {
+  font-size: 1.2em;
+}
+
+.arrowRight {
+  margin-left: auto;
+}
+
+.postTitle {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+
+.metadataWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+  margin-top: auto;
+}
+
+.metadataWrapper .metadata {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+  margin: 0;
+  margin-left: auto;
+}
+
+.viewCount {
+  font-size: 0.8rem;
+
+  color: var(--theme-text-secondary);
+
+  display: flex;
+  text-align: center;
+  align-items: center;
+  column-gap: 0.7rem;
+}
+
+.viewCount svg {
+  opacity: 0.9;
+}
+
+.random {
+  display: block;
+}
+
+.random > span {
+  margin-bottom: 2rem;
+  opacity: 0.7;
+}
+
+.text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
