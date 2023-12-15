@@ -37,6 +37,7 @@ import * as VisualRegression from "./visual-regression-tests.mdx";
 import * as JavascriptTailwind from "./javascript-variables-in-tailwind.mdx";
 import * as RecursiveReact from "./recursive-react-components.mdx";
 import * as CSSVarsTailwind from "./css-variables-from-custom-tailwind-theme.mdx";
+import * as YearInReview2023 from "./2023-in-review.mdx";
 
 const posts = {
   Welcome,
@@ -78,6 +79,7 @@ const posts = {
   JavascriptTailwind,
   RecursiveReact,
   CSSVarsTailwind,
+  YearInReview2023,
 };
 
 export default posts;
