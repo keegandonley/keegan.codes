@@ -66,6 +66,9 @@
   .wrapper {
     min-width: 100%;
     max-width: 100%;
+    height: 600px;
+    min-height: 600px;
+    max-height: 600px;
   }
 }
 
