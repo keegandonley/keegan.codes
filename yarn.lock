@@ -3822,16 +3822,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-onboarding@npm:^1.0.10":
-  version: 1.0.10
-  resolution: "@storybook/addon-onboarding@npm:1.0.10"
+"@storybook/addon-onboarding@npm:^1.0.11":
+  version: 1.0.11
+  resolution: "@storybook/addon-onboarding@npm:1.0.11"
   dependencies:
     "@storybook/telemetry": ^7.1.0
     react-confetti: ^6.1.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 2351cf260ab92f26ecbdd2a1bac7c5ff0e8674ea7a3dd177751f594434f77b74403b9f2b24f243f1899c6d727941fc21838213953959a80685de9f043f17723c
+  checksum: adfcb71689dad2f763bf88373dce01bbfcecdcae729b430ebca16faf9ff71454bd3e0dfad511630272c3b06e9b565b2a63be9804c41bac0f7b9552913888c4bd
   languageName: node
   linkType: hard
 
@@ -11235,7 +11235,7 @@ __metadata:
     "@storybook/addon-essentials": ^7.6.10
     "@storybook/addon-interactions": ^7.6.10
     "@storybook/addon-links": ^7.6.10
-    "@storybook/addon-onboarding": ^1.0.10
+    "@storybook/addon-onboarding": ^1.0.11
     "@storybook/blocks": ^7.6.10
     "@storybook/nextjs": ^7.6.10
     "@storybook/react": ^7.6.10
