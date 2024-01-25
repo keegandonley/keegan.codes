@@ -18,7 +18,7 @@ module.exports = [
   ["/tailwindconnect", "/hi/tailwind"],
   ["/helloiam", "https://helloiam.io/k"],
   ["/timeoutJS", "https://keegandonley.github.io/timeoutJS/"],
-  ["/subscribe", "https://www.getrevue.co/profile/keegandonley"],
+  ["/subscribe", "https://keegancodes.beehiiv.com/subscribe"],
   [
     "/refer/render",
     "https://ti.to/render-atlanta/2023/discount/2023Ref-keegan@kizen.com",
