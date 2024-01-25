@@ -2691,6 +2691,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jridgewell/trace-mapping@npm:^0.3.20":
+  version: 0.3.22
+  resolution: "@jridgewell/trace-mapping@npm:0.3.22"
+  dependencies:
+    "@jridgewell/resolve-uri": ^3.1.0
+    "@jridgewell/sourcemap-codec": ^1.4.14
+  checksum: ac7dd2cfe0b479aa1b81776d40d789243131cc792dc8b6b6a028c70fcd6171958ae1a71bf67b618ffe3c0c3feead9870c095ee46a5e30319410d92976b28f498
+  languageName: node
+  linkType: hard
+
 "@juggle/resize-observer@npm:^3.3.1":
   version: 3.4.0
   resolution: "@juggle/resize-observer@npm:3.4.0"
@@ -3822,16 +3832,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-onboarding@npm:^1.0.10":
-  version: 1.0.10
-  resolution: "@storybook/addon-onboarding@npm:1.0.10"
+"@storybook/addon-onboarding@npm:^1.0.11":
+  version: 1.0.11
+  resolution: "@storybook/addon-onboarding@npm:1.0.11"
   dependencies:
     "@storybook/telemetry": ^7.1.0
     react-confetti: ^6.1.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 2351cf260ab92f26ecbdd2a1bac7c5ff0e8674ea7a3dd177751f594434f77b74403b9f2b24f243f1899c6d727941fc21838213953959a80685de9f043f17723c
+  checksum: adfcb71689dad2f763bf88373dce01bbfcecdcae729b430ebca16faf9ff71454bd3e0dfad511630272c3b06e9b565b2a63be9804c41bac0f7b9552913888c4bd
   languageName: node
   linkType: hard
 
@@ -5071,7 +5081,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/estree@npm:1.0.5":
+"@types/estree@npm:1.0.5, @types/estree@npm:^1.0.5":
   version: 1.0.5
   resolution: "@types/estree@npm:1.0.5"
   checksum: dd8b5bed28e6213b7acd0fb665a84e693554d850b0df423ac8076cc3ad5823a6bc26b0251d080bdc545af83179ede51dd3f6fa78cad2c46ed1f29624ddf3e41a
@@ -5273,12 +5283,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.11.5":
-  version: 20.11.5
-  resolution: "@types/node@npm:20.11.5"
+"@types/node@npm:^20.11.6":
+  version: 20.11.6
+  resolution: "@types/node@npm:20.11.6"
   dependencies:
     undici-types: ~5.26.4
-  checksum: a542727de1334ae20a3ca034b0ecf4b464a57ca01efc4f9cf43bd9ab93896125ab3c2de060ecd8f6ae23b86c6bf3463f681b643e69c032c6a662d376c98a6092
+  checksum: 54b3739f42d9c2266fd724d8ecbf50bc64eb0563343b65a6ea874a51a7fc8bb4793bf3a1b2222e40e3b7bd62cf5af5609899bf1a3de8b69748dcac65e63e8bdc
   languageName: node
   linkType: hard
 
@@ -5630,9 +5640,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/speed-insights@npm:^1.0.7":
-  version: 1.0.7
-  resolution: "@vercel/speed-insights@npm:1.0.7"
+"@vercel/speed-insights@npm:^1.0.8":
+  version: 1.0.8
+  resolution: "@vercel/speed-insights@npm:1.0.8"
   peerDependencies:
     "@sveltejs/kit": ^1 || ^2
     next: ">= 13"
@@ -5653,7 +5663,7 @@ __metadata:
       optional: true
     vue-router:
       optional: true
-  checksum: 91581b4e68f78581db8b0002122f80ad6900631f7967a90f7134a26d9e839ec306d9962dc68a21389f83bf91d16f9c846b6b2d726a8fa4c39339d74fda530371
+  checksum: f857a1f856197389f3429d1c318e1a8cae469a5d31c8e7c0b473bb8f6cfd52185a2fd4e202bed01826bfbf49c35fe943c1285546fa05be44a4514f76821960b4
   languageName: node
   linkType: hard
 
@@ -6760,6 +6770,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"browserslist@npm:^4.21.10":
+  version: 4.22.2
+  resolution: "browserslist@npm:4.22.2"
+  dependencies:
+    caniuse-lite: ^1.0.30001565
+    electron-to-chromium: ^1.4.601
+    node-releases: ^2.0.14
+    update-browserslist-db: ^1.0.13
+  bin:
+    browserslist: cli.js
+  checksum: 33ddfcd9145220099a7a1ac533cecfe5b7548ffeb29b313e1b57be6459000a1f8fa67e781cf4abee97268ac594d44134fcc4a6b2b4750ceddc9796e3a22076d9
+  languageName: node
+  linkType: hard
+
 "bser@npm:2.1.1":
   version: 2.1.1
   resolution: "bser@npm:2.1.1"
@@ -6905,6 +6929,13 @@ __metadata:
   version: 1.0.30001549
   resolution: "caniuse-lite@npm:1.0.30001549"
   checksum: 7f2abeedc8cf8b92cc0613855d71b995ce436068c0bcdd798c5af7d297ccf9f52496b00181beda42d82d25079dd4b6e389c67486156d40d8854e5707a25cb054
+  languageName: node
+  linkType: hard
+
+"caniuse-lite@npm:^1.0.30001565":
+  version: 1.0.30001580
+  resolution: "caniuse-lite@npm:1.0.30001580"
+  checksum: 8d287d1e2a64348365f55562457b52afc8c5e0e8ddf040e18e53395ca165241a697205611dc209dace5c7f7d1d3ee8d566672cce6f9668d658d7930b7a200875
   languageName: node
   linkType: hard
 
@@ -8117,6 +8148,13 @@ __metadata:
   version: 1.4.557
   resolution: "electron-to-chromium@npm:1.4.557"
   checksum: 16f24e8d648489f0bfe7c2ffd4ada282bd68465862779f1f2e0afff5357e96536b075731c4b721dd27e2eae72008dc66d79e7bce6315e1c8f02947d41d988b78
+  languageName: node
+  linkType: hard
+
+"electron-to-chromium@npm:^1.4.601":
+  version: 1.4.645
+  resolution: "electron-to-chromium@npm:1.4.645"
+  checksum: ac7d23b8123f09e2343016216b1a8f297ccfb4ae9dccefe3716023344cda8a81656916d40a87039fa3d448cac31c2c4147c6b913b22178a3a00d0221a8019513
   languageName: node
   linkType: hard
 
@@ -11235,19 +11273,19 @@ __metadata:
     "@storybook/addon-essentials": ^7.6.10
     "@storybook/addon-interactions": ^7.6.10
     "@storybook/addon-links": ^7.6.10
-    "@storybook/addon-onboarding": ^1.0.10
+    "@storybook/addon-onboarding": ^1.0.11
     "@storybook/blocks": ^7.6.10
     "@storybook/nextjs": ^7.6.10
     "@storybook/react": ^7.6.10
     "@storybook/testing-library": ^0.2.2
-    "@types/node": ^20.11.5
+    "@types/node": ^20.11.6
     "@types/react": ^18.2.48
     "@types/react-dom": ^18.2.18
     "@vercel/analytics": ^1.1.2
     "@vercel/edge-config": ^0.4.1
     "@vercel/kv": ^1.0.1
     "@vercel/og": ^0.6.2
-    "@vercel/speed-insights": ^1.0.7
+    "@vercel/speed-insights": ^1.0.8
     eslint: ^8.56.0
     eslint-config-next: ^14.1.0
     eslint-plugin-storybook: ^0.6.15
@@ -11262,7 +11300,7 @@ __metadata:
     storybook: ^7.6.10
     typescript: ^5.3.3
     vite: ^5.0.12
-    webpack: ^5.89.0
+    webpack: ^5.90.0
   languageName: unknown
   linkType: soft
 
@@ -12852,6 +12890,13 @@ __metadata:
   version: 2.0.13
   resolution: "node-releases@npm:2.0.13"
   checksum: 17ec8f315dba62710cae71a8dad3cd0288ba943d2ece43504b3b1aa8625bf138637798ab470b1d9035b0545996f63000a8a926e0f6d35d0996424f8b6d36dda3
+  languageName: node
+  linkType: hard
+
+"node-releases@npm:^2.0.14":
+  version: 2.0.14
+  resolution: "node-releases@npm:2.0.14"
+  checksum: 59443a2f77acac854c42d321bf1b43dea0aef55cd544c6a686e9816a697300458d4e82239e2d794ea05f7bbbc8a94500332e2d3ac3f11f52e4b16cbe638b3c41
   languageName: node
   linkType: hard
 
@@ -15839,6 +15884,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"terser-webpack-plugin@npm:^5.3.10":
+  version: 5.3.10
+  resolution: "terser-webpack-plugin@npm:5.3.10"
+  dependencies:
+    "@jridgewell/trace-mapping": ^0.3.20
+    jest-worker: ^27.4.5
+    schema-utils: ^3.1.1
+    serialize-javascript: ^6.0.1
+    terser: ^5.26.0
+  peerDependencies:
+    webpack: ^5.1.0
+  peerDependenciesMeta:
+    "@swc/core":
+      optional: true
+    esbuild:
+      optional: true
+    uglify-js:
+      optional: true
+  checksum: bd6e7596cf815f3353e2a53e79cbdec959a1b0276f5e5d4e63e9d7c3c5bb5306df567729da287d1c7b39d79093e56863c569c42c6c24cc34c76aa313bd2cbcea
+  languageName: node
+  linkType: hard
+
 "terser@npm:^5.10.0, terser@npm:^5.16.8":
   version: 5.22.0
   resolution: "terser@npm:5.22.0"
@@ -15850,6 +15917,20 @@ __metadata:
   bin:
     terser: bin/terser
   checksum: ee95981c54ebd381e0b7f5872c646e7a05543e53960f8e0c2f240863c368989d43a3ca80b7e9f691683c92ba199eb4b91d61785fef0b9ca4a887eb55866001f4
+  languageName: node
+  linkType: hard
+
+"terser@npm:^5.26.0":
+  version: 5.27.0
+  resolution: "terser@npm:5.27.0"
+  dependencies:
+    "@jridgewell/source-map": ^0.3.3
+    acorn: ^8.8.2
+    commander: ^2.20.0
+    source-map-support: ~0.5.20
+  bin:
+    terser: bin/terser
+  checksum: c165052cfea061e8512e9b9ba42a098c2ff6382886ae122b040fd5b6153443070cc2dcb4862269f1669c09c716763e856125a355ff984aa72be525d6fffd8729
   languageName: node
   linkType: hard
 
@@ -16871,7 +16952,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:5, webpack@npm:^5.89.0":
+"webpack@npm:5":
   version: 5.89.0
   resolution: "webpack@npm:5.89.0"
   dependencies:
@@ -16905,6 +16986,43 @@ __metadata:
   bin:
     webpack: bin/webpack.js
   checksum: 43fe0dbc30e168a685ef5a86759d5016a705f6563b39a240aa00826a80637d4a3deeb8062e709d6a4b05c63e796278244c84b04174704dc4a37bedb0f565c5ed
+  languageName: node
+  linkType: hard
+
+"webpack@npm:^5.90.0":
+  version: 5.90.0
+  resolution: "webpack@npm:5.90.0"
+  dependencies:
+    "@types/eslint-scope": ^3.7.3
+    "@types/estree": ^1.0.5
+    "@webassemblyjs/ast": ^1.11.5
+    "@webassemblyjs/wasm-edit": ^1.11.5
+    "@webassemblyjs/wasm-parser": ^1.11.5
+    acorn: ^8.7.1
+    acorn-import-assertions: ^1.9.0
+    browserslist: ^4.21.10
+    chrome-trace-event: ^1.0.2
+    enhanced-resolve: ^5.15.0
+    es-module-lexer: ^1.2.1
+    eslint-scope: 5.1.1
+    events: ^3.2.0
+    glob-to-regexp: ^0.4.1
+    graceful-fs: ^4.2.9
+    json-parse-even-better-errors: ^2.3.1
+    loader-runner: ^4.2.0
+    mime-types: ^2.1.27
+    neo-async: ^2.6.2
+    schema-utils: ^3.2.0
+    tapable: ^2.1.1
+    terser-webpack-plugin: ^5.3.10
+    watchpack: ^2.4.0
+    webpack-sources: ^3.2.3
+  peerDependenciesMeta:
+    webpack-cli:
+      optional: true
+  bin:
+    webpack: bin/webpack.js
+  checksum: 178a0e7e9e5b26264a19dd5fe554a3508a8afafc9cce972bfd4452b5128d0db1b37832f5e615be1cff1934f24da0de967929f199be2b3fe283ca1951f98ea3fe
   languageName: node
   linkType: hard
 
