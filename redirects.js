@@ -8,7 +8,7 @@ module.exports = [
   ["/instagram", "https://www.instagram.com/keegandonley"],
   ["/dribbble", "https://dribbble.com/keegandonley"],
   ["/dribble", "https://dribbble.com/keegandonley"], // Because typos lol
-  ["/peloton", "https://members.onepeloton.com/members/jeepcode/overview"],
+  ["/peloton", "https://members.onepeloton.com/members/keegancodes/overview"],
   ["/instagram", "https://www.instagram.com/keegandonley/"],
   ["/polywork", "https://www.polywork.com/keegandonley"],
   ["/atl", "/hi/render"],
