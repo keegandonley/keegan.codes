@@ -1,0 +1,37 @@
+export const title =
+  "Tracking Previous Prop Values in React Functional Components";
+export const slug = "react-fc-previous-props";
+export const tags = ["javascript", "React"];
+export const description = "Something about React props";
+export const cover = "react-prev-props-cover.png";
+export const published = new Date(2024, 1, 31);
+export const shortCodes = ["previous-props"];
+
+If you've been building with React for a while, you probably at one point used a lifecycle method
+called `componentWillReceiveProps`. This method was called before a component's props changed, giving
+you the ability to perform some series of actions before the component re-rendered with the new props.
+This was just one of a few ways you could access both the current and previous props in order to make
+decisions about what to do next.
+
+In the React hooks world, it isn't as easy to access the previous props. This is largely a good thing,
+and forces you as the developer to avoid patterns where you need to compare old and new props. If you find
+yourself reaching for this as a solution, it's a good opportunity to stop and think if there's a
+simpler solution that doesn't require you to compare props. However, sometimes it's still necessary,
+so let's get into how you can do this today with modern React.
+
+## You Don't Need useEffect
+
+As a rule of thumb, useEffect should be a last-resort tool when there is truly no better approach. Instead, we can
+simply call setState conditionally while we render. Let's jump right in and take a look at how it works:
+
+```jsx
+const NameField = ({ value }) => {
+  const [prevValue, setPrevValue] = useState(value);
+
+  if (value !== prevValue) {
+    setPrevValue(value);
+  }
+
+  /* Rendering logic */
+};
+```
