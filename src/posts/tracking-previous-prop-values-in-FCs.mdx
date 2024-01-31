@@ -1,0 +1,114 @@
+export const title = "Reacting to Prop Changes in React Functional Components";
+export const slug = "reacting-to-prop-changes-in-react-functional-components";
+export const tags = ["javascript", "React"];
+export const description =
+  "How your functional React component can detect and handle changes to props (without useEffect)";
+export const cover = "react-prev-props-cover.png";
+export const published = new Date(2024, 1, 31);
+export const shortCodes = ["react-prop-changes"];
+
+If you've been building with React for a while, you probably at one point used a lifecycle method
+called `componentDidUpdate`. This method was called after a component changed, giving
+you the ability to perform some series of actions based on new props, or state. If you want a refresher, you can read
+more in the [legacy React docs](https://legacy.reactjs.org/docs/react-component.html#componentdidupdate), but remember, this
+is not the recommended approach anymore.
+
+Today, we have functional React components and hooks. In the React hooks world, you can't use these old lifecycle methods to react to prop changes.
+This is largely a good thing,
+and forces you as the developer to avoid patterns where you need to compare old and new props. If you find
+yourself reaching for this as a solution, it's a good opportunity to stop and think if there's a
+simpler solution that doesn't require you to compare props.
+
+However, sometimes it's still necessary to react to prop changes in some way,
+so let's get into how you can do this today with modern React.
+
+## You Don't Need useEffect
+
+> As a rule of thumb, useEffect should be a last-resort tool that is only leveraged when there is truly no alternative.
+> It's not quite an anti-pattern, but think of useEffect as a code smell.
+
+You might have tried to accomplish this previously using a combination of useEffect and refs to track the previous prop value.
+This isn't great because you have to render with stale data, run the effect, then render again with the updated values.
+
+There's a better way if we ditch the effect! Instead, we can
+use a state variable to track the previous prop value, and simply update it conditionally while we render.
+Let's jump right in and take a look at how it works:
+
+```jsx
+const ComponentWithPropChangeHandler = ({ externalData }) => {
+  const [previousExternalData, setPreviousExternalData] =
+    useState(externalData);
+
+  if (!isEqual(externalData, previousExternalData)) {
+    setPreviousExternalData(externalData);
+    /* Here, you can react to the fact that the prop changed */
+  }
+
+  /* ...Rendering logic */
+};
+```
+
+> Notice there is no effect here; all this code does is set the previous options when they change, and
+> use a comparison to guard against infinite renders. Assume _isEqual_ has been implemented somewhere to
+> compare the two values.
+
+This can be taken a step further, to call a function with both the stale and updated version of the `externalData` prop:
+
+```jsx
+const ComponentWithPropChangeHandler = ({ externalData }) => {
+  const [previousExternalData, setPreviousExternalData] =
+    useState(externalData);
+
+  const handleExternalDataChange = (oldProp, newProp) => {
+    /* Handle prop change */
+  };
+
+  if (!isEqual(externalData, previousExternalData)) {
+    handleExternalDataChange(previousExternalData, externalData);
+    setPreviousExternalData(externalData);
+  }
+
+  /* ...Rendering logic */
+};
+```
+
+`handleExternalDataChange` can now handle any side-effects you need to run when the prop changes.
+However, **this is still a side-effect**, so you should be careful about what you do here, or better yet,
+try to avoid reacting to prop changes entirely.
+
+## One More Warning
+
+Sometimes, it's unavoidable to do things in a less-than-ideal way. I started using this pattern working
+on a legacy codebase to replace some effects. I am not willing nor do I have the time to rewrite major parts of the application to avoid the need
+for this pattern entirely at this time, but it's an improvement in both maintainability and performance.
+
+Be aware: setting state when rendering means your component's rendering is not pure, and also opens you up to
+potential infinite render loops. Imagine if `isEqual` has a bug, and always returns false:
+
+```javascript
+if (!buggedIsEqual(externalData, previousExternalData) /* always true */) {
+  handleExternalDataChange(previousExternalData, externalData);
+  setPreviousExternalData(externalData);
+}
+```
+
+> This will cause your compoenent to update its state on every render, triggering another render. React will
+> eventually crash after reaching its maximum update depth.
+
+All that to say: This is a powerful pattern that can be used to solve some problems, but it's not
+without its own issues, and you probably shouldn't reach for it as a first solution.
+
+## Conclusion
+
+The React documentation has [a nice guide to replacing effects](https://react.dev/learn/you-might-not-need-an-effect) with better approaches. It's a
+valuable resource and I recommend any React developer be familiar with it.
+
+You may be wondering if the React docs recommend the approach I covered here. In class-based components, setting state from the render function was a major faux pas!
+However, for modern React, the docs do recommend it as a last resort, but
+like I outlined earlier, they also recommend writing logic in a way that avoids the need to react to prop changes in this way at all.
+
+Now, get to replacing your effects!
+
+---
+
+Do you try to focus on avoiding useEffect? Have any tips or soltions of your own? [Join the discussion on X](https://twitter.com/keegandonley)!

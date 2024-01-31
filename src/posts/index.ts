@@ -38,6 +38,7 @@ import * as JavascriptTailwind from "./javascript-variables-in-tailwind.mdx";
 import * as RecursiveReact from "./recursive-react-components.mdx";
 import * as CSSVarsTailwind from "./css-variables-from-custom-tailwind-theme.mdx";
 import * as YearInReview2023 from "./2023-in-review.mdx";
+import * as ReactPreviousProps from "./tracking-previous-prop-values-in-FCs.mdx";
 
 const posts = {
   Welcome,
@@ -80,6 +81,7 @@ const posts = {
   RecursiveReact,
   CSSVarsTailwind,
   YearInReview2023,
+  ReactPreviousProps,
 };
 
 export default posts;
