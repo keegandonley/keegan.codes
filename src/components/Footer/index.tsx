@@ -25,7 +25,7 @@ export const Footer = ({ className, children }: FooterProps) => {
           </div>
         </div>
       </div>
-      <div className={styles.copyright}>&copy; 2023 by Keegan Donley</div>
+      <div className={styles.copyright}>&copy; 2024 by Keegan Donley</div>
     </footer>
   );
 };
