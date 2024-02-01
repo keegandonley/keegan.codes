@@ -15,6 +15,7 @@ import { Post } from "@/types/post";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { Fallback as BlogPreviewFallback } from "@/components/BlogPreview/Fallback";
+import { useLinkClick } from "@/hooks/useLinkClick";
 
 const DynamicBlogPreview = dynamic(() => import("@/components/BlogPreview"));
 

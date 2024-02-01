@@ -1,0 +1,28 @@
+<svg width="3888" height="280" viewBox="0 0 3888 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_2_19" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-1" y="0" width="3891" height="280">
+<path transform="translate(0, 20)" filter="url(#neon)" d="M0 59.9999C0 59.9999 359.5 187.5 487 59.9999C614.5 -67.5001 974 59.9999 974 59.9999C974 59.9999 1333.5 187.5 1461 59.9999C1588.5 -67.5001 1944 59.9999 1944 59.9999C1944 59.9999 2184.24 145.204 2341.59 106.655C2353.55 103.726 2365.03 100.082 2375.89 95.6316C2396.93 87.006 2415.65 75.3513 2431 59.9999C2472.81 18.1917 2539.56 3.80194 2610.41 3.34454C2652.32 3.07396 2695.66 7.67917 2736.11 14.3682C2835.82 30.8547 2918 59.9999 2918 59.9999C2918 59.9999 3158.24 145.204 3315.59 106.655C3327.55 103.726 3339.03 100.082 3349.89 95.6316C3370.93 87.006 3389.65 75.3513 3405 59.9999C3446.94 18.0582 3513.56 3.71034 3584.07 3.34059C3625.91 3.12118 3669.13 7.82375 3709.38 14.6034C3807.5 31.1302 3888 59.9999 3888 59.9999" stroke="black" stroke-width="12"/>
+</mask>
+<g mask="url(#mask0_2_19)">
+<rect transform="translate(0, 20)" y="-366" width="3888" height="845" fill="url(#paint0_linear_2_19)"/>
+</g>
+<defs>
+    <filter id="neon">
+        <feFlood flood-color="rgb(255,255,128)" flood-opacity="0.5" in="SourceGraphic" />
+        <feComposite operator="in" in2="SourceGraphic" />
+        <feGaussianBlur stdDeviation="10" />
+        <feComponentTransfer result="glow1">
+        <feFuncA type="linear" slope="3" intercept="0" />
+        </feComponentTransfer>
+        <feMerge>
+        <feMergeNode in="glow1" />
+        <feMergeNode in="SourceGraphic" />
+        </feMerge>
+    </filter>
+<linearGradient id="paint0_linear_2_19" x1="0" y1="479" x2="3888" y2="479" gradientUnits="userSpaceOnUse">
+<stop stop-color="#7F00FF"/>
+<stop offset="0.3" stop-color="#50A9FC"/>
+<stop offset="0.65" stop-color="#211089"/>
+<stop offset="1" stop-color="#7F00FF"/>
+</linearGradient>
+</defs>
+</svg>

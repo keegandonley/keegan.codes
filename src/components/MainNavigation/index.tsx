@@ -3,13 +3,23 @@ import { Avatar } from "../Avatar";
 import { HeroBlock } from "../Hero/Block";
 import { usePathname, useSelectedLayoutSegments } from "next/navigation";
 import { MenuItem } from "./components/MenuItem";
-import { useEffect, useMemo } from "react";
+import { Suspense, useEffect, useMemo } from "react";
 import styles from "./navigation.module.css";
 import { ThemeToggle } from "../ThemeToggle";
 import { merge } from "@/util/classNames";
 import { slugs } from "../../post-slugs";
 import { Theme } from "@/types/theme";
 import { slugs as bookSlugs } from "../../book-slugs";
+import { Waves } from "../Waves";
+import dynamic from "next/dynamic";
+import { useLinkClick } from "@/hooks/useLinkClick";
+
+const DynamicWaves = dynamic(
+  () => import("../Waves").then((mod) => mod.Waves),
+  {
+    ssr: false,
+  }
+);
 
 const MainNavigation = ({
   initialTheme,
@@ -54,6 +64,8 @@ const MainNavigation = ({
     document.body.classList.remove("preload");
   }, [pathname]);
 
+  useLinkClick();
+
   // When pressing the back button, we need to remove the lockScroll class
   // so scrolling works. Otherwise, this is handled by the clicks on the modal
   // component
@@ -73,48 +85,58 @@ const MainNavigation = ({
   }
 
   return (
-    <HeroBlock
-      isHomePage={isHomePage}
-      sticky={!isBlog404 && !isBook404 && !isChat && !isResume && !isHi}
-    >
-      <MenuItem href="/" side="left" visible={!isHomePage} active={isHomePage}>
-        Home
-      </MenuItem>
-      <div className={styles.avatarWrapper}>
-        <Avatar width={isHomePage ? 150 : 75} priority />
-        <ThemeToggle
-          size={isHomePage ? "large" : "small"}
-          initialTheme={initialTheme}
-          hasChosenTheme={hasChosenTheme}
-        />
-        <div className={merge(styles.shadowGroup)}>
-          <div
-            className={merge(
-              styles.navigationBubble,
-              (isBlogPage || isLibraryPage) && !isBlog404 && !isHomePage
-                ? styles.shadow
-                : styles.noShadow
-            )}
-          ></div>
-          <div
-            className={merge(
-              styles.avatarBubble,
-              (isBlogPage || isLibraryPage) && !isBlog404 && !isHomePage
-                ? styles.shadow
-                : styles.noShadow
-            )}
-          ></div>
-        </div>
-      </div>
-      <MenuItem
-        href="/blog"
-        side="right"
-        visible={!isHomePage}
-        active={isBlogPage}
+    <>
+      <HeroBlock
+        isHomePage={isHomePage}
+        sticky={!isBlog404 && !isBook404 && !isChat && !isResume && !isHi}
       >
-        Blog
-      </MenuItem>
-    </HeroBlock>
+        <MenuItem
+          href="/"
+          side="left"
+          visible={!isHomePage}
+          active={isHomePage}
+        >
+          Home
+        </MenuItem>
+        <div className={styles.avatarWrapper}>
+          <Avatar width={isHomePage ? 150 : 75} priority />
+          <ThemeToggle
+            size={isHomePage ? "large" : "small"}
+            initialTheme={initialTheme}
+            hasChosenTheme={hasChosenTheme}
+          />
+          <div className={merge(styles.shadowGroup)}>
+            <div
+              className={merge(
+                styles.navigationBubble,
+                (isBlogPage || isLibraryPage) && !isBlog404 && !isHomePage
+                  ? styles.shadow
+                  : styles.noShadow
+              )}
+            ></div>
+            <div
+              className={merge(
+                styles.avatarBubble,
+                (isBlogPage || isLibraryPage) && !isBlog404 && !isHomePage
+                  ? styles.shadow
+                  : styles.noShadow
+              )}
+            ></div>
+          </div>
+        </div>
+        <MenuItem
+          href="/blog"
+          side="right"
+          visible={!isHomePage}
+          active={isBlogPage}
+        >
+          Blog
+        </MenuItem>
+      </HeroBlock>
+      <Suspense>
+        <DynamicWaves />
+      </Suspense>
+    </>
   );
 };
 
