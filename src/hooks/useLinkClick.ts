@@ -17,25 +17,26 @@ export const useLinkClick = () => {
   );
 
   const getLinks = useCallback(() => {
-    const links = Array.from(document.getElementsByTagName("a"));
-    for (const link of links) {
-      if (link.getAttribute("data-click-handler-linked") !== "true") {
+    setTimeout(() => {
+      const links = Array.from(document.getElementsByTagName("a"));
+      for (const link of links) {
         if (link.target !== "_blank") {
-          link.setAttribute("data-click-handler-linked", "true");
           link.onmouseup = onClick(link.href);
         }
       }
-    }
+    }, 1);
   }, [onClick]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      getLinks();
-    }, 500);
+    const observer = new MutationObserver(getLinks);
 
-    return () => {
-      clearInterval(interval);
-    };
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+    });
+
+    return () => observer.disconnect();
   }, [getLinks]);
 
   useEffect(() => {
