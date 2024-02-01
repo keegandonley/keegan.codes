@@ -22,7 +22,8 @@
   margin-bottom: 2rem;
   position: relative;
   transform: translateY(100vh);
-  transition: transform var(--animation);
+  opacity: 0;
+  transition: transform var(--animation), opacity var(--animation);
   transition-delay: 10ms;
   border-radius: 18px;
   overflow: hidden;
@@ -38,6 +39,7 @@
 
 .inner.fadeIn {
   transform: translateY(0);
+  opacity: 1;
 }
 
 .backButton {
