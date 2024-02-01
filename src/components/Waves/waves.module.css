@@ -120,7 +120,7 @@
 
 .waves {
   position: fixed;
-  top: -12px;
+  top: 10px;
   left: 0;
   right: 0;
   height: 20px;
@@ -143,35 +143,35 @@
 }
 
 .wave-0 {
-  animation: pan-left-right-0 42s linear infinite;
+  animation: pan-left-right-0 44s linear infinite;
 }
 
 .wave-1 {
-  animation: pan-left-right-1 42s linear infinite;
+  animation: pan-left-right-1 40s linear infinite;
 }
 
 .wave-2 {
-  animation: pan-left-right-2 42s linear infinite;
+  animation: pan-left-right-2 36s linear infinite;
 }
 
 .wave-3 {
-  animation: pan-left-right-3 42s linear infinite;
+  animation: pan-left-right-3 32s linear infinite;
 }
 
 .wave-4 {
-  animation: pan-left-right-4 42s linear infinite;
+  animation: pan-left-right-4 30s linear infinite;
 }
 
 .wave-5 {
-  animation: pan-left-right-5 42s linear infinite;
+  animation: pan-left-right-5 31s linear infinite;
 }
 
 .wave-6 {
-  animation: pan-left-right-6 42s linear infinite;
+  animation: pan-left-right-6 39s linear infinite;
 }
 
 .wave-7 {
-  animation: pan-left-right-7 42s linear infinite;
+  animation: pan-left-right-7 35s linear infinite;
 }
 
 .graphic {
@@ -179,6 +179,7 @@
   animation: pulse 6s infinite;
   pointer-events: none;
   user-select: none;
+  opacity: 0.75;
 }
 
 .gradient {
@@ -188,6 +189,6 @@
   top: 0;
   bottom: 0;
   background: linear-gradient(to bottom, var(--theme-background), transparent);
-  opacity: 0.5;
+  opacity: 0.8;
   pointer-events: none;
 }

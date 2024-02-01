@@ -11,7 +11,7 @@ import wave6 from "./graphics/Wave 6.svg";
 import wave7 from "./graphics/Wave 7.svg";
 import wave8 from "./graphics/Wave 8.svg";
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { LoadingContext } from "@/app/loadingProvider";
 
 interface WaveProps {
@@ -63,17 +63,48 @@ export const Waves = () => {
 
   const waveWidth = 500;
   const waveCount = Math.ceil(forcedDocumentWidth / waveWidth) * 3;
-
   const { loading } = useContext(LoadingContext);
+  const [previousLoading, setPreviousLoading] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
+
+  const handleLoadingChange = (from: boolean, to: boolean) => {
+    if (!from && to) {
+      setTimeout(() => {
+        setShowLoader(true);
+      }, 200);
+    }
+  };
+
+  if (previousLoading !== loading) {
+    handleLoadingChange(previousLoading, loading);
+    setPreviousLoading(loading);
+  }
+
+  if (!loading && showLoader) {
+    setShowLoader(false);
+  }
 
   return (
-    <div className={merge(styles.waves, loading ? styles.visible : "")}>
+    <div
+      className={merge(
+        styles.waves,
+        loading && showLoader ? styles.visible : ""
+      )}
+    >
       <div className={styles.gradient}></div>
       <Wave
         waveCount={waveCount}
         waveWidth={waveWidth}
+        graphic={wave7}
+        top={5}
+        left={-29}
+        index={6}
+      />
+      <Wave
+        waveCount={waveCount}
+        waveWidth={waveWidth}
         graphic={wave1}
-        top={0}
+        top={2}
         left={-50}
         index={0}
       />
@@ -81,7 +112,7 @@ export const Waves = () => {
         waveCount={waveCount}
         waveWidth={waveWidth}
         graphic={wave2}
-        top={0}
+        top={5}
         left={-20}
         index={1}
       />
@@ -97,7 +128,7 @@ export const Waves = () => {
         waveCount={waveCount}
         waveWidth={waveWidth}
         graphic={wave4}
-        top={9}
+        top={3}
         left={-35}
         index={3}
       />
@@ -105,7 +136,7 @@ export const Waves = () => {
         waveCount={waveCount}
         waveWidth={waveWidth}
         graphic={wave5}
-        top={11}
+        top={2}
         left={-20}
         index={4}
       />
@@ -113,23 +144,15 @@ export const Waves = () => {
         waveCount={waveCount}
         waveWidth={waveWidth}
         graphic={wave8}
-        top={13}
+        top={3}
         left={-25}
         index={5}
       />
       <Wave
         waveCount={waveCount}
         waveWidth={waveWidth}
-        graphic={wave7}
-        top={22}
-        left={-29}
-        index={6}
-      />
-      <Wave
-        waveCount={waveCount}
-        waveWidth={waveWidth}
         graphic={wave6}
-        top={22}
+        top={4}
         left={-59}
         index={7}
       />
