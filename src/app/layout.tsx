@@ -14,6 +14,7 @@ import { ModalBoundary } from "@/components/ModalBoundary";
 import ThemeProvider from "./themeProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import dynamic from "next/dynamic";
+import LoadingProvider from "./loadingProvider";
 
 const DynamicEventWaiter = dynamic(() =>
   import("./event").then((m) => m.EventWaiter)
@@ -44,16 +45,18 @@ export default async function RootLayout({ children, postModal }: any) {
         className={merge(font.className, "preload", theme === "dark" && "dark")}
       >
         <ThemeProvider>
-          {/* Display banner text from the edge config if an event is active */}
-          <Suspense>
-            <DynamicEventWaiter />
-          </Suspense>
-          <MainNavigation
-            initialTheme={theme}
-            hasChosenTheme={hasChosenTheme}
-          />
-          <main>{children}</main>
-          <ModalBoundary>{postModal}</ModalBoundary>
+          <LoadingProvider>
+            {/* Display banner text from the edge config if an event is active */}
+            <Suspense>
+              <DynamicEventWaiter />
+            </Suspense>
+            <MainNavigation
+              initialTheme={theme}
+              hasChosenTheme={hasChosenTheme}
+            />
+            <main>{children}</main>
+            <ModalBoundary>{postModal}</ModalBoundary>
+          </LoadingProvider>
         </ThemeProvider>
         {/* Adding suspense to try https://github.com/vercel/next.js/issues/48442#issuecomment-1519139562 */}
         <Suspense>
