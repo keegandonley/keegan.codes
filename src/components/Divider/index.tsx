@@ -20,7 +20,7 @@ export const Divider = ({
         post && styles.post,
         theme && styles.theme
       )}
-      style={injectVariables([["theme", `#${theme}`]])}
+      style={theme ? injectVariables([["theme", `#${theme}`]]) : {}}
     />
   );
 };
