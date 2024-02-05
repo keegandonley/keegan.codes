@@ -57,7 +57,7 @@ const Wave = ({
   );
 };
 
-export const Waves = () => {
+export const Waves = ({ force }: { force?: boolean }) => {
   const documentWidth = window.innerWidth;
   const forcedDocumentWidth = documentWidth < 1200 ? 1200 : documentWidth;
 
@@ -84,13 +84,10 @@ export const Waves = () => {
     setShowLoader(false);
   }
 
+  const isLoading = (loading && showLoader) || force;
+
   return (
-    <div
-      className={merge(
-        styles.waves,
-        loading && showLoader ? styles.visible : ""
-      )}
-    >
+    <div className={merge(styles.waves, isLoading ? styles.visible : "")}>
       <div className={styles.gradient}></div>
       <Wave
         waveCount={waveCount}
