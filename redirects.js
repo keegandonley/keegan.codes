@@ -7,7 +7,7 @@ module.exports = [
   ["/github", "https://github.com/keegandonley"],
   ["/instagram", "https://www.instagram.com/keegandonley"],
   ["/dribbble", "https://dribbble.com/keegandonley"],
-  ["/dribble", "https://dribbble.com/keegandonley"], // Because typos lol
+  ["/dribble", "https://dribbble.com/keegandonley"],
   ["/peloton", "https://members.onepeloton.com/members/keegancodes/overview"],
   ["/instagram", "https://www.instagram.com/keegandonley/"],
   ["/polywork", "https://www.polywork.com/keegandonley"],
@@ -16,7 +16,6 @@ module.exports = [
   ["/render", "/hi/render"],
   ["/tailwind", "/hi/tailwind"],
   ["/tailwindconnect", "/hi/tailwind"],
-  ["/helloiam", "https://helloiam.io/k"],
   ["/timeoutJS", "https://keegandonley.github.io/timeoutJS/"],
   ["/subscribe", "https://keegancodes.beehiiv.com/subscribe"],
   [
@@ -28,7 +27,7 @@ module.exports = [
   ["/contact", "/hi"],
   ["/shortcuts", `${v2Domain}/shortcuts`],
   ["/qr/:slug*", `${v2Domain}/qr/:slug*`],
-  ["/bsky", "https://staging.bsky.app/profile/keegan.codes"],
+  ["/bsky", "https://bsky.app/profile/keegan.codes"],
   ["/bluesky", "/bsky"],
   ["/render23recap", "/slides/render23"],
   ["/v2", v2Domain],
