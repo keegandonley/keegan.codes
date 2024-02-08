@@ -28,7 +28,7 @@ module.exports = [
   ["/contact", "/hi"],
   ["/shortcuts", `${v2Domain}/shortcuts`],
   ["/qr/:slug*", `${v2Domain}/qr/:slug*`],
-  ["/bsky", "https://staging.bsky.app/profile/keegan.codes"],
+  ["/bsky", "https://bsky.app/profile/keegan.codes"],
   ["/bluesky", "/bsky"],
   ["/render23recap", "/slides/render23"],
   ["/v2", v2Domain],
