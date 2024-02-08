@@ -29,7 +29,7 @@
     "@planetscale/database": "^1.15.0",
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.55",
-    "@types/react-dom": "^18.2.18",
+    "@types/react-dom": "^18.2.19",
     "@vercel/analytics": "^1.1.3",
     "@vercel/edge-config": "^0.4.1",
     "@vercel/kv": "^1.0.1",
@@ -46,7 +46,7 @@
     "remark-prism": "^1.3.6",
     "sharp": "^0.33.2",
     "typescript": "^5.3.3",
-    "vite": "^5.0.12"
+    "vite": "^5.1.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.13",
