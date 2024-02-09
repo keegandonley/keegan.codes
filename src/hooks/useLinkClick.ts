@@ -9,7 +9,7 @@ export const useLinkClick = () => {
 
   const onClick = useCallback(
     (href: string) => (e: MouseEvent) => {
-      if (href !== window.location.href) {
+      if (!href.startsWith(window.location.href)) {
         setLoading(true);
       }
     },

@@ -9675,6 +9675,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"geist@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "geist@npm:1.2.2"
+  peerDependencies:
+    next: ">=13.2.0 <15"
+  checksum: beed77450b8f9041cb7b77a622cdd24b737b3d56ed5abed4ad8f98bed0960503a16b0cb2110747588ccca7cf537c6a88828ce267899f488d5b96258d56b9a053
+  languageName: node
+  linkType: hard
+
 "gensync@npm:^1.0.0-beta.2":
   version: 1.0.0-beta.2
   resolution: "gensync@npm:1.0.0-beta.2"
@@ -11289,6 +11298,7 @@ __metadata:
     eslint: ^8.56.0
     eslint-config-next: ^14.1.0
     eslint-plugin-storybook: ^0.6.15
+    geist: ^1.2.2
     next: ^14.1.0
     react: ^18.2.0
     react-calendly: ^4.3.0

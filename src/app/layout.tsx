@@ -2,7 +2,6 @@ import "./globals.css";
 import "./theme.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import localFont from "next/font/local";
 import { merge } from "@/util/classNames";
 import { background } from "@/theme/colors";
 import { getHasChosenTheme, userTheme } from "@/util/cookies";
@@ -15,25 +14,13 @@ import ThemeProvider from "./themeProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import dynamic from "next/dynamic";
 import LoadingProvider from "./loadingProvider";
+import { GeistSans } from "geist/font/sans";
 
 const DynamicEventWaiter = dynamic(() =>
   import("./event").then((m) => m.EventWaiter)
 );
 
 config.autoAddCss = false;
-
-const font = localFont({
-  src: [
-    {
-      path: "/fonts/Raleway.ttf",
-      style: "normal",
-    },
-    {
-      path: "/fonts/RalewayItalic.ttf",
-      style: "italic",
-    },
-  ],
-});
 
 export default async function RootLayout({ children, postModal }: any) {
   const theme = userTheme();
@@ -42,7 +29,11 @@ export default async function RootLayout({ children, postModal }: any) {
   return (
     <html lang="en" id="fullscreen-context">
       <body
-        className={merge(font.className, "preload", theme === "dark" && "dark")}
+        className={merge(
+          GeistSans.className,
+          "preload",
+          theme === "dark" && "dark"
+        )}
       >
         <ThemeProvider>
           <LoadingProvider>
