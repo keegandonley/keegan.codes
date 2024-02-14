@@ -3,6 +3,8 @@ import { Suspense } from "react";
 import { ViewCountFallback } from "./Fallback";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/pro-solid-svg-icons";
+import styles from "./viewcount.module.css";
+import { merge } from "@/util/classNames";
 
 const ViewCountRenderer = _ViewCountRenderer as any;
 
@@ -18,7 +20,7 @@ export default function ViewCount({
   fixedCount,
 }: ViewCountProps) {
   return (
-    <span className={className}>
+    <span className={merge(className, styles.wrapper)}>
       <FontAwesomeIcon icon={faEye} fixedWidth />
       {fixedCount ? (
         <span>{fixedCount}</span>
