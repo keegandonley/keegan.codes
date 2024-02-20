@@ -803,12 +803,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.11.18":
+"@types/node@npm:*":
   version: 20.11.18
   resolution: "@types/node@npm:20.11.18"
   dependencies:
     undici-types: ~5.26.4
   checksum: b34fb342152b5a5b486e9d54d62003f6ca18e2f0f1682c8c4a3d6388e9456dab310775cbdc8302a7945fb72a42ff283b770f8fb6ca5120f77b9b3b7de40c9760
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.11.19":
+  version: 20.11.19
+  resolution: "@types/node@npm:20.11.19"
+  dependencies:
+    undici-types: ~5.26.4
+  checksum: 259d16643ba611ade617a8212e594a3ac014727457507389bbf7213971346ab052d870f1e6e2df0afd0876ecd7874f578bccb130be01e069263cfc7136ddc0c1
   languageName: node
   linkType: hard
 
@@ -839,14 +848,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.2.55":
-  version: 18.2.55
-  resolution: "@types/react@npm:18.2.55"
+"@types/react@npm:^18.2.57":
+  version: 18.2.57
+  resolution: "@types/react@npm:18.2.57"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: a8eb4fa77f73831b9112d4f11a7006217dc0740361649b9b0da3fd441d151a9cd415d5d68b91c0af4e430e063424d301c77489e5edaddc9f711c4e46cf9818a5
+  checksum: 01e7a3424162468428f3b28acec5e5c6cd1e26775ff605d0f46c883dea2d835924873d36b9ea0b75e40c9593aa78ca56a8ccde66bd58dbf6ecb0dd95af28609d
   languageName: node
   linkType: hard
 
@@ -950,12 +959,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/analytics@npm:^1.1.4":
-  version: 1.1.4
-  resolution: "@vercel/analytics@npm:1.1.4"
+"@vercel/analytics@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@vercel/analytics@npm:1.2.2"
   dependencies:
     server-only: ^0.0.1
-  checksum: 6aa9da0b7eaf63e6c14d95d725f088df41558a927d50d5a3de34a7326171d9195ec67a52481a1490cf64083741a503d6fd18e58164bc2a4068b8e3a9ef50e6bc
+  peerDependencies:
+    next: ">= 13"
+    react: ^18 || ^19
+  peerDependenciesMeta:
+    next:
+      optional: true
+    react:
+      optional: true
+  checksum: 5913caeb2077d3d9c2eddabed90e40e29762e9e53941d3e1337daa0a60423ffef2a2c0b5a743ff37ea1aa9cfe7eb3159e4dff91cd4843a8503be5680c2faa98d
   languageName: node
   linkType: hard
 
@@ -966,15 +983,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/edge-config@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@vercel/edge-config@npm:1.0.0"
+"@vercel/edge-config@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@vercel/edge-config@npm:1.0.2"
   dependencies:
     "@vercel/edge-config-fs": 0.1.0
     ts-essentials: 9.4.1
   peerDependencies:
     "@opentelemetry/api": ^1.7.0
-  checksum: 2707bcee87270959039e2922d6f7540bad907b153989a46d1c6f592b75702418fc46f09caeac5414a83540abf8a94062bf0138f1a9d5cbdb18fca694085f4429
+  peerDependenciesMeta:
+    "@opentelemetry/api":
+      optional: true
+  checksum: 97b1d9e8c01ee6d049b8aa27440b6c526b4838184dadeaf6e3e0db15d056f3a691928571ecce7d885347b2f63a6e3ae082b10a15038c8bd5010183df87efc351
   languageName: node
   linkType: hard
 
@@ -3815,11 +3835,11 @@ __metadata:
     "@next/mdx": ^14.1.0
     "@opentelemetry/api": ^1.7.0
     "@planetscale/database": ^1.16.0
-    "@types/node": ^20.11.18
-    "@types/react": ^18.2.55
+    "@types/node": ^20.11.19
+    "@types/react": ^18.2.57
     "@types/react-dom": ^18.2.19
-    "@vercel/analytics": ^1.1.4
-    "@vercel/edge-config": ^1.0.0
+    "@vercel/analytics": ^1.2.2
+    "@vercel/edge-config": ^1.0.2
     "@vercel/kv": ^1.0.1
     "@vercel/og": ^0.6.2
     "@vercel/speed-insights": ^1.0.10
@@ -3835,7 +3855,7 @@ __metadata:
     remark-prism: ^1.3.6
     sharp: ^0.33.2
     typescript: ^5.3.3
-    webpack: ^5.90.2
+    webpack: ^5.90.3
   languageName: unknown
   linkType: soft
 
@@ -6549,9 +6569,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.90.2":
-  version: 5.90.2
-  resolution: "webpack@npm:5.90.2"
+"webpack@npm:^5.90.3":
+  version: 5.90.3
+  resolution: "webpack@npm:5.90.3"
   dependencies:
     "@types/eslint-scope": ^3.7.3
     "@types/estree": ^1.0.5
@@ -6582,7 +6602,7 @@ __metadata:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 4af55f314c3610e0b17afd01960c4cf9d8d90c87a58ef7d7dc7a0a019f48e2bba4eff63b02d9da56fc61df5b04af0d66b3fa4ec82937a780d37a64db84c643fe
+  checksum: de0c824ac220f41cc1153ac33e081d46260b104c4f2fda26f011cdf7a73f74cc091f288cb1fc16f88a36e35bac44e0aa85fc9922fdf3109dfb361f46b20f3fcc
   languageName: node
   linkType: hard
 
