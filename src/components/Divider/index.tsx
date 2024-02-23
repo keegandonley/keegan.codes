@@ -1,11 +1,13 @@
 import { ElementBaseProps } from "@/types/elements";
 import styles from "./divider.module.css";
 import { injectVariables, merge } from "@/util/classNames";
+import { CSSProperties } from "react";
 
 interface DividerProps extends ElementBaseProps {
   post?: boolean;
   theme?: string;
   style?: Record<`--${string}`, string>;
+  mdStyle?: CSSProperties;
 }
 
 export const Divider = ({
@@ -13,6 +15,7 @@ export const Divider = ({
   post,
   theme,
   style,
+  mdStyle,
 }: Omit<DividerProps, "children">) => {
   return (
     <hr
@@ -25,6 +28,7 @@ export const Divider = ({
       style={{
         ...(theme ? injectVariables([["theme", `#${theme}`]]) : {}),
         ...style,
+        ...mdStyle,
       }}
     />
   );
