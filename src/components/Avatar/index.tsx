@@ -8,6 +8,7 @@ interface AvatarProps extends ElementBaseProps {
   width?: number;
   alt?: string;
   priority?: boolean;
+  style?: Record<`--${string}`, string>;
 }
 
 export const Avatar = ({
@@ -15,6 +16,7 @@ export const Avatar = ({
   alt = "A photo of Keegan Donley",
   className,
   priority = false,
+  style,
 }: Omit<AvatarProps, "children">) => {
   return (
     <Image
@@ -24,6 +26,7 @@ export const Avatar = ({
       alt={alt}
       placeholder="blur"
       priority={priority}
+      style={style}
     />
   );
 };

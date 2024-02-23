@@ -5,12 +5,14 @@ import { injectVariables, merge } from "@/util/classNames";
 interface DividerProps extends ElementBaseProps {
   post?: boolean;
   theme?: string;
+  style?: Record<`--${string}`, string>;
 }
 
 export const Divider = ({
   className,
   post,
   theme,
+  style,
 }: Omit<DividerProps, "children">) => {
   return (
     <hr
@@ -20,7 +22,10 @@ export const Divider = ({
         post && styles.post,
         theme && styles.theme
       )}
-      style={theme ? injectVariables([["theme", `#${theme}`]]) : {}}
+      style={{
+        ...(theme ? injectVariables([["theme", `#${theme}`]]) : {}),
+        ...style,
+      }}
     />
   );
 };
