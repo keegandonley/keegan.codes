@@ -13,7 +13,7 @@ export default async function GalleryRenderer({ gallery }: GalleryProps) {
   const data = await fetch(
     `${
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
+        ? "http://localhost:3561"
         : "https://keegan.codes"
     }/api/gallery?gallery=${gallery}`,
     {
