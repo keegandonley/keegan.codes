@@ -77,5 +77,6 @@
   .viewCount {
     padding-left: 0;
     width: unset;
+    padding-top: 0.5rem;
   }
 }
