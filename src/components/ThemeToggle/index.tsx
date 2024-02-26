@@ -32,7 +32,7 @@ export const ThemeToggle = ({
   hasChosenTheme,
   ignoreGlobalState = false,
 }: ThemeToggleProps) => {
-  const [theme, setTheme] = useState<Theme>(() => initialTheme ?? "dark");
+  const [theme, setTheme] = useState<Theme>(() => initialTheme ?? "light");
   const { setTheme: ctxSetTheme } = useContext(ThemeContext);
 
   useEffect(() => {

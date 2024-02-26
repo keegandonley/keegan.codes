@@ -1,9 +1,9 @@
 export const title = "Reflecting on my Architecture Decisions: 1 Year Later";
 export const slug = "reflecting-architecture-decisions-1-year";
-export const tags = ["javascript"];
+export const tags = ["opinion", "web", "software", "React"];
 export const description =
   "Looking at my major architectural decisions for this website from a year ago and whether I still stand by them";
-export const cover = "architecture-1-year-cover.png";
+export const cover = "blueprint-cover-updated.png";
 export const published = new Date(2024, 1, 26);
 export const shortCodes = ["architecture-1"];
 import {
@@ -17,6 +17,8 @@ import { AppDirHeader } from "../interactivePosts/ArchitectureReflection/AppDirH
 import { CSSModulesHeader } from "../interactivePosts/ArchitectureReflection/CSSModulesHeader.tsx";
 import { VercelHeader } from "../interactivePosts/ArchitectureReflection/VercelHeader.tsx";
 import { DBHeader } from "../interactivePosts/ArchitectureReflection/DBHeader.tsx";
+import { ObjectHeader } from "../interactivePosts/ArchitectureReflection/ObjectHeader.tsx";
+import { ConclusionHeader } from "../interactivePosts/ArchitectureReflection/ConclusionHeader.tsx";
 
 It's been just over a year since I completely rebuilt this blog from the ground up. I had
 to make a lot of decisions a year ago about what the architecture would look like, and now
@@ -24,16 +26,16 @@ that I've lived with those choices for a year, I want to take a moment to evalua
 stand today. What decisions do I regret? Which ones worked well? Let's dig into it! I'll go
 over some major decisions I made, and how they've worked out.
 
-> When I launched this new blog, I wrote [a post about the architecture](blog/welcome-to-my-new-blog).
+> When I launched this new blog, I wrote [a post about the architecture](/blog/welcome-to-my-new-blog).
 > If you want more details about how certain things work, you can check that out for further reading.
 
 <CMSHeader />
 
-### 1: No CMS
+### 1 - No CMS
 
 My blog doesn't use a CMS. I prefer to own and control access to my content as much as I can. For
-this reason, I ruled out using a cloud CMS like Contentful. I also didn't want to deal with
-hosting my own headless CMS, like Strapi or Wordpress. Instead, all my posts are written in MDX and
+this reason, I ruled out using a cloud CMS like [Contentful](https://www.contentful.com/). I also didn't want to deal with
+hosting my own headless CMS, like [Strapi](https://strapi.io/) or [Wordpress](https://wordpress.org/). Instead, all my posts are written in MDX and
 directly committed to the repository.
 
 {/* prettier-ignore-start */}
@@ -43,10 +45,12 @@ directly committed to the repository.
     - I have complete ownership over my content, and don't rely on a proprietary storage format.
     - MDX is highly flexible. For example, I can
     use React components to embed custom layouts.
-    - Content is open-source like the code for my website.
+    - Content is open-source along with the application code for my website.
+    - Because content is essentially code, it's nicely version controlled and I can create branches while I try out different wording.
   </ProsWrapper>
   <ConsWrapper>
-    - More difficult to update - requires a PR to the repo.
+    - More difficult to publish & update - requires a PR to the repo.
+    - No web GUI to quickly make changes when away from my computer.
     - Less scalable than a CMS - as my volume of content grows, markdown files will become difficult to manage.
     - Tricker to set up with NextJS and stay efficient. I had to build some custom APIs to serve the content for single
     blog posts in some situations.
@@ -61,11 +65,14 @@ directly committed to the repository.
 
 {/* prettier-ignore-end */}
 
+I will have to think about file and content organization more as my content library grows. I don't have any
+worries about being able to solve that issue, however, when the time comes.
+
 <AppDirHeader />
 
-### 2: NextJS App Directory & RSC
+### 2 - NextJS App Router & RSC
 
-This site is built using the NextJS app directory. I started building it right as the beta came out, so it was a bit rough
+This site is built using the [NextJS app router](https://nextjs.org/docs/app). I started building it right as the beta came out, so it was a bit rough
 around the edges but really stabilized substantially as I got the site built out. I'm rendering everything serverside making
 heavy use of React server components, rather that doing ISR or partial prerendering. This is primarily for handling user settings,
 like the current theme. On every request, these settings are read from a cookie to make sure there's not a flash of the wrong
@@ -75,77 +82,85 @@ theme on the initial render.
 
 <ProsConsWrapper>
   <ProsWrapper>
-    - RSC enables my markdown content solution to work. Even without static generation, I can still efficiently
+    - [RSC](https://vercel.com/blog/understanding-react-server-components) enables my markdown content solution to work. Even without static generation, I can still efficiently
     serve the pages, along with complex image metadata for the loading blur state.
-    - Server rendering allows me to simplify logic around data fetching. For CurryingExample, the cheers and view
-    count components handle their own data and rely on suspense and RSC.
-    - I rely on many of the app directory features, like intercepted routes for the modal then opens when clicking a post link.
+    - Server rendering allows me to simplify logic around data fetching. For example, the cheers and view
+    count components at the top of each post handle their own data and rely on suspense and RSC.
+    - I rely on many of the app directory features, like intercepted routes for the modal that opens when clicking a post link.
     - I like building with server components.
-    - Good learning oportunity as technology evolves.
+    - Good learning oportunity for me as the technology evolves.
   </ProsWrapper>
   <ConsWrapper>
-    - The app directory and server components were a new paradigm that took time to learn
+    - The app directory and server components were a new paradigm that took time to learn.
+    - The development process is slower - the builds take longer to hot reload and everything is generally slower in dev mode. I expect this will improve in time.
     - Choosing to forego static generation or partial prerendering can hurt performance, especially since
     my old blog was entirely statically generated.
   </ConsWrapper>
 </ProsConsWrapper>
 <VerdictWrapper result="/">
-    Despite being entirely server rendered dynamically, I'm still able to get great performance from the site
+    Despite being server rendered dynamically, I'm still able to get great performance from the site
     thanks to server components. However, I do miss the simpicity of a statically generated site that doesn't require
     so many moving parts for every request. I would probably still build things the same way given the opportuity, however
-    I have started to build some pages under the old pages directory that I want to be able to statically generate. These are
-    pages that don't need to be aware of the global user settings, like my landing pages for conferences.
-    
-    I use this blog
-    as a testing ground for new features and technologies, so don't regret some of the over-engineering that went into it.
+    I have started to build some pages using the pages router that I want to be able to statically generate. These are
+    pages that don't need to be aware of the global user settings, like my landing pages for conferences. I am going to move
+    more toward this hybrid approach going forward.
 </VerdictWrapper>
 
 {/* prettier-ignore-end */}
 
+I use this blog as a testing ground for new features and technologies, so some things are overengineered on purpose if I am working
+on learning something new. Could I have built a simple static-generated site? Definitely. However, it was more fun to
+build it this way and learn some new React. My [old statically-generated blog](https://v2.keegandonley.com/blog) is still
+available and frozen in time, for comparison's sake.
+
 <CSSModulesHeader />
 
-### 3: CSS Modules
+### 3 - CSS Modules Instead of Tailwind
 
-I'm a big proponent of [Tailwind](https://keegan.codes/blog/tag/Tailwind) and I've written a bit about it, as well as use
-it heavily at work. However, when I started the project on this new site a year ago, I wanted to write it in vanilla CSS
-using just CSS modules. This was partially to keep my CSS skills sharp, but I also wanted the flexibility to do some complex
-things that just feel harder in Tailwind.
+I'm a big proponent of [Tailwind](https://tailwindcss.com/) and I've [written a bit about it](https://keegan.codes/blog/tag/Tailwind), as well as use
+it heavily at work for a brand-new design system. However, when I started the project on this new site a year ago, I wanted to write it in vanilla CSS
+using just CSS modules. This was partially to keep my CSS skills sharp, but I also wanted the flexibility to write complex
+CSS that might be a bit beyond what Tailwind supports.
 
 {/* prettier-ignore-start */}
 
 <ProsConsWrapper>
   <ProsWrapper>
-    - I get to continue using my CSS skills!
-    - I can do some complex selectors that just can't be done in Tailwind.
+    - I get to continue using and expanding my CSS skills!
+    - I can write complex selectors that just can't be done in Tailwind.
     - Performance is great because I can ship a minimal amount of CSS (only what's needed for the page).
   </ProsWrapper>
   <ConsWrapper>
-    - Rapid prototyping is slower than with Tailwind
-    - I had to write a lot of custom code for handling the colors in my theme
+    - Rapid prototyping is slower than with Tailwind, because I need to set up CSS files and imports.
+    - I had to write a lot of custom code for handling the colors and my theme.
   </ConsWrapper>
 </ProsConsWrapper>
 <VerdictWrapper result="-">
     If I could go back, I'd prefer to just use Tailwind from the beginning, and only drop into writing plain CSS
-    when I needed to do something more complicated than what Tailwind supports. I've actually started using Tailwind in the pages
+    when I needed to do something more complicated than what Tailwind supports. There's no reason it needs to be one or the other,
+    as I can do some Tailwind and some CSS. I've actually started using Tailwind in the pages
     directory when I work on pages that are static generated. I may end up doing more of the blog itself in Tailwind too as
     time progresses.
 </VerdictWrapper>
 
 {/* prettier-ignore-end */}
 
+I chose not to use Tailwind in this project for the reasons I outlined above, but I still am a big proponent of it! Most new projects I start these days
+are 100% Tailwind for styling.
+
 <VercelHeader />
 
-### 4: Vercel For (Almost) Everything
+### 4 - Vercel For (Almost) Everything
 
-My NextJS site is hosted on Vercel. My speed insights and page analytics are handled by Vercel. My edge config for feature flagging
-uses Vercel. My KV database for rate-limiting "cheers" actions use Vercel KV. Image optimization? Vercel. I think you see the pattern here. I'm pretty
+My NextJS site is hosted on [Vercel](https://vercel.com/). My [speed insights](https://vercel.com/docs/speed-insights) and [web analytics](https://vercel.com/docs/analytics) are handled by Vercel. My edge config for feature flagging
+uses Vercel. My KV database for rate-limiting "cheers" actions is Vercel KV. Image optimization? Vercel. I think you see the pattern here: I'm pretty
 locked into Vercel. Here's how that's been going:
 
 {/* prettier-ignore-start */}
 
 <ProsConsWrapper>
   <ProsWrapper>
-    - Tight integration with NextJS is helpful. No need to be concerned with how it runs.
+    - Tight integration with NextJS is a huge benefit. No need to be concerned with how it runs.
     - Performance is great. My site is running in edge functions and is fast for the majority of my readers.
     - Speed insights are incredibly valuable for diagnosing potential issues.
     - Build-in analytics are convenient, and protect my readers' privacy by not collecting sensitive information.
@@ -153,25 +168,29 @@ locked into Vercel. Here's how that's been going:
     - Cron jobs are easy to set up and run for background cleanup tasks.
   </ProsWrapper>
   <ConsWrapper>
-    - Vercel is expensive. For now I'm getting by with just a Pro plan, but as I need to scale price will become a serious factor.
+    - Vercel is expensive. For now I'm getting by with the base Pro plan (no overages yet), but as I need to scale price will become a serious factor.
     - Support is suboptimal. For non-enterprise customers (like me) I've found that getting help from support (even for major issues) can be slow.
+    - There's a bit of a vendor lock-in feeling that I don't love.
   </ConsWrapper>
 </ProsConsWrapper>
 <VerdictWrapper result="+">
-    I generally like owning my content as much as I can, which generally would mean I don't like locking in to one vendor. In this case,
+    I generally like owning my content as much as I can, which usually would mean I don't like locking in to one vendor. However, in this case,
     Vercel makes my life so easy that I am happy to use them for the majority of my infrastructure. I don't have to pay much now,
-    and if I scale to the point it gets too expensive, there are other options for hosting a NextJS site, just none that are quite as
+    and have some room to grow. Worst case scenario, if I scale to the point it gets too expensive, there are other options for hosting a NextJS site, just none that are quite as
     straightforward as Vercel.
 </VerdictWrapper>
 
 {/* prettier-ignore-end */}
 
+I don't worry too much about scaling with Vercel. My traffic doesn't cause overages yet, and to be honest if I get to the
+point where it becomes a problem, I'll be happy to have and solve the problems that come with large-scale growth.
+
 <DBHeader />
 
-### 4: Planetscale
+### 5 - Database: Planetscale
 
-The main piece of my infrastructure not running on Vercel is the database. Vercel's offering is far too expensive for what you get,
-and with my usage it wouldn't be a reasonable choice. Instead, I'm able to host everything on the free tier with Planetscale. I use the
+The largest piece of my infrastructure not running on Vercel is the database. Vercel's offering is far too expensive for what you get,
+and with my usage it wouldn't be a reasonable choice. Instead, I'm able to host everything on the free tier with [Planetscale](https://planetscale.com/). I use the
 database for view count tracking, cheers count tracking, management of some settings, and for my QR code scan link mappings.
 
 {/* prettier-ignore-start */}
@@ -193,3 +212,49 @@ database for view count tracking, cheers count tracking, management of some sett
 </VerdictWrapper>
 
 {/* prettier-ignore-end */}
+
+<ObjectHeader />
+
+### 6 - Object Storage: Cloudflare R2
+
+Object storage is relatively new offering from Vercel, but it's too expensive for my use-case,
+so I use [R2 from Cloudflare](https://www.cloudflare.com/developer-platform/r2/). All the images in my posts, as well as photo galleries
+are stored in R2, then processed at build time to generate some metadata, like the dimensions for each image, and a blur data URL for the loading state.
+After that, optimized images are served from Vercel, so the R2 storage is really just for holding the source material
+and I don't do a lot of traffic to Cloudflare itself.
+
+{/* prettier-ignore-start */}
+
+<ProsConsWrapper>
+  <ProsWrapper>
+    - My usage stays within the free tier, and probably will forever!
+    - API is compatible with AWS S3, which I'm already familiar with.
+    - Performance is excellent.
+    - A nicer web UI than AWS S3.
+  </ProsWrapper>
+  <ConsWrapper>
+    - Documentation isn't great, and I had to rely a lot on the S3 docs and forums when integrating R2.
+  </ConsWrapper>
+</ProsConsWrapper>
+<VerdictWrapper result="+">
+    Since I don't do much direct traffic to the assets, the performance of my object storage is
+    pretty inconsequential, but I like knowing that if anything changes with my approach, Cloudflare's object storage
+    is fast and cheap, and can scale with my project.
+</VerdictWrapper>
+
+{/* prettier-ignore-end */}
+
+<ConclusionHeader />
+
+## Conclusion
+
+After 1 year, while there are a few things I've learned and might do differently in the future,
+overall the majority of my decisions held up well, and I haven't had any major issues. It's a fairly hotly debated
+topic whether the NextJS app directory is stable enough for production use, and I can comfortably say that it is,
+based on working my way through building this website in parallel with the development and growth of the framework. The various
+cloud providers I've chosen for my services have been reliable and easy to work with, and I still stand by the tools I chose
+when I embarked on this project.
+
+---
+
+> Have you made some architecture decisions lately you either love or hate? [Join the discussion on X!](https://twitter.com/keegandonley)

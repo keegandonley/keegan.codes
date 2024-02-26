@@ -3,6 +3,10 @@
   grid-template-columns: repeat(2, minMax(0, 1fr));
   gap: 1rem;
   padding-bottom: 1rem;
+
+  @media screen and (max-width: 550px) {
+    display: flex;
+  }
 }
 
 .pros {
@@ -21,6 +25,8 @@
 
 .panel {
   padding: 1rem 1rem 1rem 0;
+  border-radius: 8px;
+  box-shadow: var(--theme-box-shadow-small);
 }
 
 .icon {
@@ -29,6 +35,8 @@
 
 .verdict {
   padding: 1rem;
+  border-radius: 8px;
+  box-shadow: var(--theme-box-shadow-small);
 }
 
 .verdict.positive {
@@ -44,4 +52,54 @@
 .verdict.neutral {
   background: #fcffd1;
   color: #6b3900;
+}
+
+.noCons {
+  text-align: center;
+  padding-top: 1rem;
+  opacity: 0.5;
+}
+
+.panel.collapsed {
+  @media screen and (max-width: 550px) {
+    width: 40px;
+    cursor: pointer;
+  }
+}
+
+.panel.collapsed .content,
+.panel.collapsed h3 {
+  @media screen and (max-width: 550px) {
+    display: none;
+  }
+}
+
+.panel.expanded {
+  @media screen and (max-width: 550px) {
+    width: 100%;
+  }
+}
+
+.panel .mobileText {
+  display: none;
+}
+
+.panel.expanded .mobileText {
+  @media screen and (max-width: 550px) {
+    display: none;
+  }
+}
+
+.panel.collapsed .mobileText {
+  @media screen and (max-width: 550px) {
+    display: flex;
+    writing-mode: vertical-lr;
+    gap: 0.5rem;
+  }
+}
+
+.panel.collapsed .mobileText {
+  @media screen and (max-width: 550px) {
+    padding-left: 10px;
+  }
 }
