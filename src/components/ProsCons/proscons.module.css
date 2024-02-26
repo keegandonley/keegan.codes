@@ -4,7 +4,7 @@
   gap: 1rem;
   padding-bottom: 1rem;
 
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 600px) {
     display: flex;
   }
 }
@@ -61,7 +61,7 @@
 }
 
 .panel.collapsed {
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 600px) {
     width: 40px;
     cursor: pointer;
   }
@@ -69,13 +69,13 @@
 
 .panel.collapsed .content,
 .panel.collapsed h3 {
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 600px) {
     display: none;
   }
 }
 
 .panel.expanded {
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 600px) {
     width: 100%;
   }
 }
@@ -85,13 +85,13 @@
 }
 
 .panel.expanded .mobileText {
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 600px) {
     display: none;
   }
 }
 
 .panel.collapsed .mobileText {
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 600px) {
     display: flex;
     writing-mode: vertical-lr;
     gap: 0.5rem;
@@ -99,7 +99,7 @@
 }
 
 .panel.collapsed .mobileText {
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 600px) {
     padding-left: 10px;
   }
 }
