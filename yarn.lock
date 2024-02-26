@@ -983,9 +983,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/edge-config@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@vercel/edge-config@npm:1.0.2"
+"@vercel/edge-config@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@vercel/edge-config@npm:1.1.0"
   dependencies:
     "@vercel/edge-config-fs": 0.1.0
     ts-essentials: 9.4.1
@@ -994,7 +994,7 @@ __metadata:
   peerDependenciesMeta:
     "@opentelemetry/api":
       optional: true
-  checksum: 97b1d9e8c01ee6d049b8aa27440b6c526b4838184dadeaf6e3e0db15d056f3a691928571ecce7d885347b2f63a6e3ae082b10a15038c8bd5010183df87efc351
+  checksum: ccf982fb3f160a5f34ddb21fcc7be0d5224c6e7e908ff2b1f3d420fc6317b535630e2049a512e14b15bbbb458fd9996852596ac9aa648e43308ef43653e66ea9
   languageName: node
   linkType: hard
 
@@ -3839,7 +3839,7 @@ __metadata:
     "@types/react": ^18.2.58
     "@types/react-dom": ^18.2.19
     "@vercel/analytics": ^1.2.2
-    "@vercel/edge-config": ^1.0.2
+    "@vercel/edge-config": ^1.1.0
     "@vercel/kv": ^1.0.1
     "@vercel/og": ^0.6.2
     "@vercel/speed-insights": ^1.0.10
