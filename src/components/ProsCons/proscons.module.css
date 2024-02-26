@@ -1,0 +1,47 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minMax(0, 1fr));
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.pros {
+  background: #cffdcf;
+  color: #133300;
+}
+
+.cons {
+  background: #ffc6c6;
+  color: #330000;
+}
+
+.panel h3 {
+  text-align: center;
+}
+
+.panel {
+  padding: 1rem 1rem 1rem 0;
+}
+
+.icon {
+  margin-right: 1rem;
+}
+
+.verdict {
+  padding: 1rem;
+}
+
+.verdict.positive {
+  background: #cffdcf;
+  color: #133300;
+}
+
+.verdict.negative {
+  background: #ffc6c6;
+  color: #330000;
+}
+
+.verdict.neutral {
+  background: #fcffd1;
+  color: #6b3900;
+}

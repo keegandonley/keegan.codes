@@ -2,11 +2,193 @@ export const title = "Reflecting on my Architecture Decisions: 1 Year Later";
 export const slug = "reflecting-architecture-decisions-1-year";
 export const tags = ["javascript"];
 export const description = "Description";
-export const cover = "cover";
+export const cover = "architecture-1-year-cover.png";
 export const published = new Date(2024, 1, 26);
 export const shortCodes = ["architecture-1"];
+import {
+  ProsConsWrapper,
+  ProsWrapper,
+  ConsWrapper,
+  VerdictWrapper,
+} from "../components/ProsCons";
+import { CMSHeader } from "../interactivePosts/ArchitectureReflection/CMSHeader.tsx";
+import { AppDirHeader } from "../interactivePosts/ArchitectureReflection/AppDirHeader.tsx";
+import { CSSModulesHeader } from "../interactivePosts/ArchitectureReflection/CSSModulesHeader.tsx";
+import { VercelHeader } from "../interactivePosts/ArchitectureReflection/VercelHeader.tsx";
+import { DBHeader } from "../interactivePosts/ArchitectureReflection/DBHeader.tsx";
 
 It's been just over a year since I completely rebuilt this blog from the ground up. I had
 to make a lot of decisions a year ago about what the architecture would look like, and now
 that I've lived with those choices for a year, I want to take a moment to evaluate where things
-stand today. What decisions do I regret? Which ones worked well? Let's dig into it!
+stand today. What decisions do I regret? Which ones worked well? Let's dig into it! I'll go
+over some major decisions I made, and how they've worked out.
+
+> When I launched this new blog, I wrote [a post about the architecture](blog/welcome-to-my-new-blog).
+> If you want more details about how certain things work, you can check that out for further reading.
+
+<CMSHeader />
+
+### 1: No CMS
+
+My blog doesn't use a CMS. I prefer to own and control access to my content as much as I can. For
+this reason, I ruled out using a cloud CMS like Contentful. I also didn't want to deal with
+hosting my own headless CMS, like Strapi or Wordpress. Instead, all my posts are written in MDX and
+directly committed to the repository.
+
+{/* prettier-ignore-start */}
+
+<ProsConsWrapper>
+  <ProsWrapper>
+    - I have complete ownership over my content, and don't rely on a proprietary storage format.
+    - MDX is highly flexible. For example, I can
+    use React components to embed custom layouts.
+    - Content is open-source like the code for my website.
+  </ProsWrapper>
+  <ConsWrapper>
+    - More difficult to update - requires a PR to the repo.
+    - Less scalable than a CMS - as my volume of content grows, markdown files will become difficult to manage.
+    - Tricker to set up with NextJS and stay efficient. I had to build some custom APIs to serve the content for single
+    blog posts in some situations.
+  </ConsWrapper>
+</ProsConsWrapper>
+<VerdictWrapper result="+">
+    Overall I've been very happy with this decision. With a CMS I wouldn't be able to do one-off unique layouts,
+    like the grid layout I'm using for this postMessage. Using MDX, I can just write a little CSS and keep most of the content in
+    markdown. I ended up building a simple API that wraps the static files, so I can still query for a single post's metadata,
+    like the number of words, reading time, description, and cover image.
+</VerdictWrapper>
+
+{/* prettier-ignore-end */}
+
+<AppDirHeader />
+
+### 2: NextJS App Directory & RSC
+
+This site is built using the NextJS app directory. I started building it right as the beta came out, so it was a bit rough
+around the edges but really stabilized substantially as I got the site built out. I'm rendering everything serverside making
+heavy use of React server components, rather that doing ISR or partial prerendering. This is primarily for handling user settings,
+like the current theme. On every request, these settings are read from a cookie to make sure there's not a flash of the wrong
+theme on the initial render.
+
+{/* prettier-ignore-start */}
+
+<ProsConsWrapper>
+  <ProsWrapper>
+    - RSC enables my markdown content solution to work. Even without static generation, I can still efficiently
+    serve the pages, along with complex image metadata for the loading blur state.
+    - Server rendering allows me to simplify logic around data fetching. For CurryingExample, the cheers and view
+    count components handle their own data and rely on suspense and RSC.
+    - I rely on many of the app directory features, like intercepted routes for the modal then opens when clicking a post link.
+    - I like building with server components.
+    - Good learning oportunity as technology evolves.
+  </ProsWrapper>
+  <ConsWrapper>
+    - The app directory and server components were a new paradigm that took time to learn
+    - Choosing to forego static generation or partial prerendering can hurt performance, especially since
+    my old blog was entirely statically generated.
+  </ConsWrapper>
+</ProsConsWrapper>
+<VerdictWrapper result="/">
+    Despite being entirely server rendered dynamically, I'm still able to get great performance from the site
+    thanks to server components. However, I do miss the simpicity of a statically generated site that doesn't require
+    so many moving parts for every request. I would probably still build things the same way given the opportuity, however
+    I have started to build some pages under the old pages directory that I want to be able to statically generate. These are
+    pages that don't need to be aware of the global user settings, like my landing pages for conferences.
+    
+    I use this blog
+    as a testing ground for new features and technologies, so don't regret some of the over-engineering that went into it.
+</VerdictWrapper>
+
+{/* prettier-ignore-end */}
+
+<CSSModulesHeader />
+
+### 3: CSS Modules
+
+I'm a big proponent of [Tailwind](https://keegan.codes/blog/tag/Tailwind) and I've written a bit about it, as well as use
+it heavily at work. However, when I started the project on this new site a year ago, I wanted to write it in vanilla CSS
+using just CSS modules. This was partially to keep my CSS skills sharp, but I also wanted the flexibility to do some complex
+things that just feel harder in Tailwind.
+
+{/* prettier-ignore-start */}
+
+<ProsConsWrapper>
+  <ProsWrapper>
+    - I get to continue using my CSS skills!
+    - I can do some complex selectors that just can't be done in Tailwind.
+    - Performance is great because I can ship a minimal amount of CSS (only what's needed for the page).
+  </ProsWrapper>
+  <ConsWrapper>
+    - Rapid prototyping is slower than with Tailwind
+    - I had to write a lot of custom code for handling the colors in my theme
+  </ConsWrapper>
+</ProsConsWrapper>
+<VerdictWrapper result="-">
+    If I could go back, I'd prefer to just use Tailwind from the beginning, and only drop into writing plain CSS
+    when I needed to do something more complicated than what Tailwind supports. I've actually started using Tailwind in the pages
+    directory when I work on pages that are static generated. I may end up doing more of the blog itself in Tailwind too as
+    time progresses.
+</VerdictWrapper>
+
+{/* prettier-ignore-end */}
+
+<VercelHeader />
+
+### 4: Vercel For (Almost) Everything
+
+My NextJS site is hosted on Vercel. My speed insights and page analytics are handled by Vercel. My edge config for feature flagging
+uses Vercel. My KV database for rate-limiting "cheers" actions use Vercel KV. Image optimization? Vercel. I think you see the pattern here. I'm pretty
+locked into Vercel. Here's how that's been going:
+
+{/* prettier-ignore-start */}
+
+<ProsConsWrapper>
+  <ProsWrapper>
+    - Tight integration with NextJS is helpful. No need to be concerned with how it runs.
+    - Performance is great. My site is running in edge functions and is fast for the majority of my readers.
+    - Speed insights are incredibly valuable for diagnosing potential issues.
+    - Build-in analytics are convenient, and protect my readers' privacy by not collecting sensitive information.
+    - Image optimization gives me a huge performance boost.
+    - Cron jobs are easy to set up and run for background cleanup tasks.
+  </ProsWrapper>
+  <ConsWrapper>
+    - Vercel is expensive. For now I'm getting by with just a Pro plan, but as I need to scale price will become a serious factor.
+    - Support is suboptimal. For non-enterprise customers (like me) I've found that getting help from support (even for major issues) can be slow.
+  </ConsWrapper>
+</ProsConsWrapper>
+<VerdictWrapper result="+">
+    I generally like owning my content as much as I can, which generally would mean I don't like locking in to one vendor. In this case,
+    Vercel makes my life so easy that I am happy to use them for the majority of my infrastructure. I don't have to pay much now,
+    and if I scale to the point it gets too expensive, there are other options for hosting a NextJS site, just none that are quite as
+    straightforward as Vercel.
+</VerdictWrapper>
+
+{/* prettier-ignore-end */}
+
+<DBHeader />
+
+### 4: Planetscale
+
+The main piece of my infrastructure not running on Vercel is the database. Vercel's offering is far too expensive for what you get,
+and with my usage it wouldn't be a reasonable choice. Instead, I'm able to host everything on the free tier with Planetscale. I use the
+database for view count tracking, cheers count tracking, management of some settings, and for my QR code scan link mappings.
+
+{/* prettier-ignore-start */}
+
+<ProsConsWrapper>
+  <ProsWrapper>
+    - My usage stays within the free tier, and probably will for a while!
+    - Excellent support for running from edge functions, so my server components are fast and responsive even when they need to make
+    database queries.
+    - Great security features - recently I accidentally leaked my database keys and they immediately detected the leak and invalidated them
+    to protect me.
+  </ProsWrapper>
+  <ConsWrapper>
+  </ConsWrapper>
+</ProsConsWrapper>
+<VerdictWrapper result="+">
+    My use-case is simple, but Planetscale has satisfied it perfectly, and I use them for the majority of my projects. I don't
+    see that changing in the future.
+</VerdictWrapper>
+
+{/* prettier-ignore-end */}
