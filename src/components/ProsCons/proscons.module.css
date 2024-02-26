@@ -3,10 +3,6 @@
   grid-template-columns: repeat(2, minMax(0, 1fr));
   gap: 1rem;
   padding-bottom: 1rem;
-
-  @media screen and (max-width: 600px) {
-    display: flex;
-  }
 }
 
 .pros {
@@ -60,46 +56,40 @@
   opacity: 0.5;
 }
 
-.panel.collapsed {
-  @media screen and (max-width: 600px) {
-    width: 40px;
-    cursor: pointer;
-  }
-}
-
-.panel.collapsed .content,
-.panel.collapsed h3 {
-  @media screen and (max-width: 600px) {
-    display: none;
-  }
-}
-
-.panel.expanded {
-  @media screen and (max-width: 600px) {
-    width: 100%;
-  }
-}
-
 .panel .mobileText {
   display: none;
 }
 
-.panel.expanded .mobileText {
-  @media screen and (max-width: 600px) {
+@media screen and (max-width: 550px) {
+  .wrapper {
+    display: flex;
+  }
+
+  .panel.collapsed {
+    width: 40px;
+    cursor: pointer;
+  }
+
+  .panel.collapsed .content,
+  .panel.collapsed h3 {
     display: none;
   }
-}
 
-.panel.collapsed .mobileText {
-  @media screen and (max-width: 600px) {
+  .panel.expanded {
+    width: 100%;
+  }
+
+  .panel.expanded .mobileText {
+    display: none;
+  }
+
+  .panel.collapsed .mobileText {
     display: flex;
     writing-mode: vertical-lr;
     gap: 0.5rem;
   }
-}
 
-.panel.collapsed .mobileText {
-  @media screen and (max-width: 600px) {
+  .panel.collapsed .mobileText {
     padding-left: 10px;
   }
 }
