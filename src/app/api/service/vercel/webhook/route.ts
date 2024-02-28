@@ -34,6 +34,7 @@ export async function POST(request: Request) {
 
   switch (json.type) {
     case "deployment.succeeded": {
+      console.log(json);
       await conn.execute(
         "INSERT INTO vercel_deployment (vercel_id, deployment_id, deployment_url, inspect_url, created_at, target) VALUES (?, ?, ?, ?, ?, ?)",
         [
