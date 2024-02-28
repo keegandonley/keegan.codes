@@ -3,14 +3,11 @@ import { Avatar } from "../Avatar";
 import { HeroBlock } from "../Hero/Block";
 import { usePathname, useSelectedLayoutSegments } from "next/navigation";
 import { MenuItem } from "./components/MenuItem";
-import { Suspense, useEffect, useMemo } from "react";
+import { Suspense, useEffect } from "react";
 import styles from "./navigation.module.css";
 import { ThemeToggle } from "../ThemeToggle";
 import { merge } from "@/util/classNames";
-import { slugs } from "../../post-slugs";
 import { Theme } from "@/types/theme";
-import { slugs as bookSlugs } from "../../book-slugs";
-import { Waves } from "../Waves";
 import dynamic from "next/dynamic";
 import { useLinkClick } from "@/hooks/useLinkClick";
 
@@ -33,28 +30,8 @@ const MainNavigation = ({
   const isHomePage = pathname === "/" || !segments.length;
   const isBlogPage = pathname?.startsWith("/blog");
   const isLibraryPage = pathname?.startsWith("/library");
-  const isASlide = pathname?.startsWith("/slides");
-
-  // const isExactlyBlogPage = isBlogPage && segments.length === 1;
-  // const isExactlyLibraryPage = isLibraryPage && segments.length === 1;
-
-  const isBlog404 = useMemo(() => {
-    if (segments[0] === "blog" && segments[1] !== "(blogMainGroup)") {
-      const slug = segments[1];
-      return Boolean(slug) && !slugs.includes(slug) && slug !== "tag";
-    } else {
-      return false;
-    }
-  }, [segments]);
-
-  const isBook404 = useMemo(() => {
-    if (segments[0] === "library") {
-      const slug = segments[1];
-      return Boolean(slug) && !bookSlugs.includes(slug) && slug !== "tag";
-    } else {
-      return false;
-    }
-  }, [segments]);
+  const isSlideshow = pathname?.startsWith("/slides");
+  const isErrorPage = pathname?.startsWith("/not-found");
 
   const isChat = segments[0] === "chat";
   const isResume = segments[0] === "resume";
@@ -80,7 +57,7 @@ const MainNavigation = ({
     });
   }, []);
 
-  if (isASlide) {
+  if (isSlideshow) {
     return null;
   }
 
@@ -88,7 +65,7 @@ const MainNavigation = ({
     <>
       <HeroBlock
         isHomePage={isHomePage}
-        sticky={!isBlog404 && !isBook404 && !isChat && !isResume && !isHi}
+        sticky={!isChat && !isResume && !isHi && !isErrorPage}
       >
         <MenuItem
           href="/"
@@ -109,7 +86,7 @@ const MainNavigation = ({
             <div
               className={merge(
                 styles.navigationBubble,
-                (isBlogPage || isLibraryPage) && !isBlog404 && !isHomePage
+                (isBlogPage || isLibraryPage) && !isHomePage
                   ? styles.shadow
                   : styles.noShadow
               )}
@@ -117,7 +94,7 @@ const MainNavigation = ({
             <div
               className={merge(
                 styles.avatarBubble,
-                (isBlogPage || isLibraryPage) && !isBlog404 && !isHomePage
+                (isBlogPage || isLibraryPage) && !isHomePage
                   ? styles.shadow
                   : styles.noShadow
               )}

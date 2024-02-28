@@ -1,11 +1,10 @@
 import { NextRequest } from "next/server";
-import { MiddlewareManager } from "./middlewareManager";
+import { MiddlewareManager } from "./middleware/middlewareManager";
 
 export async function middleware(request: NextRequest) {
-  console.log("middleware executing on", request.url);
   return new MiddlewareManager(request).execute();
 }
 
 export const config = {
-  matcher: ["/scan/:id*" /*,"/api/:path*"*/],
+  matcher: ["/scan/:id*", "/blog/:path*", "/library/:path*"],
 };

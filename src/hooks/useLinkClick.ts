@@ -9,7 +9,10 @@ export const useLinkClick = () => {
 
   const onClick = useCallback(
     (href: string) => (e: MouseEvent) => {
-      if (!href.startsWith(window.location.href)) {
+      if (
+        !href.startsWith(window.location.href) &&
+        !href.startsWith("mailto:")
+      ) {
         setLoading(true);
       }
     },
