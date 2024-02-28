@@ -13,11 +13,11 @@ import { Swoop } from "@/components/Swoop";
 import Posts from "@/posts";
 import { Post } from "@/types/post";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
 import { Fallback as BlogPreviewFallback } from "@/components/BlogPreview/Fallback";
-import { useLinkClick } from "@/hooks/useLinkClick";
 
-const DynamicBlogPreview = dynamic(() => import("@/components/BlogPreview"));
+const DynamicBlogPreview = dynamic(() => import("@/components/BlogPreview"), {
+  loading: () => <BlogPreviewFallback />,
+});
 
 export const runtime = "edge";
 
@@ -71,9 +71,7 @@ export default function Home() {
           </Link>
           .
         </Paragraph>
-        <Suspense fallback={<BlogPreviewFallback />}>
-          <DynamicBlogPreview posts={posts} />
-        </Suspense>
+        <DynamicBlogPreview posts={posts} />
         <div className={styles.blogButton}>
           <Link href="/blog" className={styles.blogButtonText}>
             Read more on my blog <FontAwesomeIcon icon={faArrowRight} />

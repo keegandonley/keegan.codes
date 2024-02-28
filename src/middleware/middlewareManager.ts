@@ -1,12 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
-import { connect } from "@planetscale/database";
-import { ScanMiddleware } from "./scanMiddleware";
-
-const psConfig = {
-  host: process.env.host,
-  username: process.env.username,
-  password: process.env.password,
-};
+import { NextRequest } from "next/server";
+import { ScanMiddleware } from "../scanMiddleware";
+import { BlogMiddleware } from "./blogMiddleware";
+import { LibraryMiddleware } from "./libraryMiddleware";
 
 export class MiddlewareManager {
   private request: NextRequest;
@@ -27,17 +22,22 @@ export class MiddlewareManager {
 
   private getMiddleware() {
     const firstSegment = this.getRouteFirstSegment();
+
     switch (firstSegment) {
       case "scan":
         return new ScanMiddleware(this.request, this.pathSplits);
+      case "blog":
+        return new BlogMiddleware(this.request, this.pathSplits);
+      case "library":
+        return new LibraryMiddleware(this.request, this.pathSplits);
     }
   }
 
   execute() {
-    const Middleware = this.getMiddleware();
+    const mw = this.getMiddleware();
 
-    if (Middleware) {
-      return Middleware.execute();
+    if (mw) {
+      return mw.execute();
     } else {
       console.log(
         `Hit on middleware for ${this.url.pathname}, but no manager has been configured`

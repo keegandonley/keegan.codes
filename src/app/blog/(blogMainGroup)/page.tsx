@@ -10,7 +10,6 @@ import { background } from "@/theme/colors";
 import { getIsLikelyMobile } from "@/util/userAgent";
 import { get } from "@vercel/edge-config";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
 import { getImageMetadata } from "@/util/image";
 
 const DynamicDynamicPosts = dynamic(
@@ -69,15 +68,13 @@ export default async function BlogPage() {
             );
           })}
 
-          <Suspense>
-            <DynamicDynamicPosts
-              previousPage={1}
-              isLikelyMobile={isLikelyMobile}
-              pageCount={pageCount}
-              postsPerPage={postsPerPage}
-              remainingPosts={allPosts.length - postsPerPage}
-            />
-          </Suspense>
+          <DynamicDynamicPosts
+            previousPage={1}
+            isLikelyMobile={isLikelyMobile}
+            pageCount={pageCount}
+            postsPerPage={postsPerPage}
+            remainingPosts={allPosts.length - postsPerPage}
+          />
           <MDXEntryRow
             key="extra-1"
             index={-1}

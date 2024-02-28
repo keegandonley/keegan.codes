@@ -1,4 +1,4 @@
-import { notFound, redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import Slides from "./content";
 import styles from "./slide.module.css";
 import { merge } from "@/util/classNames";

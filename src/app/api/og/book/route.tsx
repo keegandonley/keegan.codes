@@ -4,11 +4,7 @@ import { ImageResponse } from "@vercel/og";
 import { getComponentForKey, getKey } from "@/app/library/util";
 import { BOOK_BUCKET_URL, BUCKET_URL } from "@/util/r2";
 import { cookies } from "next/headers";
-import {
-  getBookCoverMetadata,
-  getImageMetadata,
-  parseSource,
-} from "@/util/image";
+import { getBookCoverMetadata, parseSource } from "@/util/image";
 
 export const runtime = "edge";
 

@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { Cheers } from "../Cheers";
 import { ReadingTime } from "../MDXEntryRow/components/ReadingTime";
 import { H1 } from "../Post/Heading/H1";
@@ -29,9 +28,7 @@ export const PostHeader = ({
         </div>
         <div className={styles.subItems}>
           <ReadingTime wordCount={wordCount} className={styles.readingTime} />
-          <Suspense>
-            <DynamicViewCount slug={slug} className={styles.viewCount} />
-          </Suspense>
+          <DynamicViewCount slug={slug} className={styles.viewCount} />
         </div>
       </div>
     </div>

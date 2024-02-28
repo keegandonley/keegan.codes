@@ -1,4 +1,6 @@
+import { ReactNode } from "react";
+
 export interface ElementBaseProps {
-  children?: React.ReactNode | React.ReactNode[] | string | number;
+  children?: ReactNode | ReactNode[] | string | number;
   className?: string;
 }

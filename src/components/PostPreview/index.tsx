@@ -8,6 +8,7 @@ import { formatDate } from "@/util/date";
 import Image from "next/image";
 import { BUCKET_URL } from "@/util/r2";
 import { parseToProps } from "@/util/image";
+
 const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
 
 interface PostPreviewProps {
@@ -41,13 +42,11 @@ export const PostPreviewRenderer = async (props: PostPreviewProps) => {
           </span>
           <p>{post.description}</p>
           <div className={styles.metadataWrapper}>
-            <Suspense>
-              <DynamicViewCount
-                slug={slug}
-                className={styles.viewCount}
-                fixedCount={post.viewCount}
-              />
-            </Suspense>
+            <DynamicViewCount
+              slug={slug}
+              className={styles.viewCount}
+              fixedCount={post.viewCount}
+            />
             <p className={styles.metadata}>
               {formatDate(new Date(post.published))}
             </p>
