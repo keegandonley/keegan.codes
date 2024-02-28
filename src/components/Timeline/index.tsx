@@ -70,13 +70,11 @@ const Timeline = async (props: TimelineProps) => {
       </span>
       <p>{randomPost.description}</p>
       <div className={styles.metadataWrapper}>
-        <Suspense>
-          <DynamicViewCount
-            slug={slug}
-            className={styles.viewCount}
-            fixedCount={randomPost.viewCount}
-          />
-        </Suspense>
+        <DynamicViewCount
+          slug={slug}
+          className={styles.viewCount}
+          fixedCount={randomPost.viewCount}
+        />
         <p className={styles.metadata}>
           {formatDate(new Date(randomPost.published))}
         </p>

@@ -11,7 +11,7 @@ const getValue = async (slug: string): Promise<number> => {
     const data = await fetch(
       `${
         process.env.NODE_ENV === "development"
-          ? "http://localhost:3000"
+          ? "http://localhost:3561"
           : "https://keegan.codes"
       }/api/cheers?slug=${slug}`,
       {

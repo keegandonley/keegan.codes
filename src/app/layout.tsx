@@ -16,8 +16,11 @@ import dynamic from "next/dynamic";
 import LoadingProvider from "./loadingProvider";
 import { GeistSans } from "geist/font/sans";
 
-const DynamicEventWaiter = dynamic(() =>
-  import("./event").then((m) => m.EventWaiter)
+const DynamicEventWaiter = dynamic(
+  () => import("./event").then((m) => m.EventWaiter),
+  {
+    ssr: false,
+  }
 );
 
 config.autoAddCss = false;
@@ -38,9 +41,7 @@ export default async function RootLayout({ children, postModal }: any) {
         <ThemeProvider>
           <LoadingProvider>
             {/* Display banner text from the edge config if an event is active */}
-            <Suspense>
-              <DynamicEventWaiter />
-            </Suspense>
+            <DynamicEventWaiter />
             <MainNavigation
               initialTheme={theme}
               hasChosenTheme={hasChosenTheme}
@@ -50,7 +51,7 @@ export default async function RootLayout({ children, postModal }: any) {
           </LoadingProvider>
         </ThemeProvider>
         {/* Adding suspense to try https://github.com/vercel/next.js/issues/48442#issuecomment-1519139562 */}
-        <Suspense>
+        <Suspense fallback={null}>
           <Analytics />
           <SpeedInsights />
         </Suspense>

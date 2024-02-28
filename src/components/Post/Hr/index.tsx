@@ -1,5 +1,8 @@
 import { Divider } from "@/components/Divider";
+<<<<<<< HEAD
 import { CSSProperties, ReactElement } from "react";
+=======
+>>>>>>> main
 
 interface HrProps {
   theme?: string;

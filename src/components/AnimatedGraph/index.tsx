@@ -10,7 +10,7 @@ export const AnimatedGraph = () => {
 
   const values = Array(isLikelyMobile ? 150 : 250).fill(1);
 
-  const coloredValues = values.map((_, i) => {
+  const coloredValues = values.map((_, _i) => {
     const color = Math.floor(Math.random() * 7) + 1;
     const interval = Math.floor(Math.random() * 7) + 1;
     return { color, interval };

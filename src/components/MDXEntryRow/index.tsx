@@ -3,17 +3,12 @@ import Link from "next/link";
 import styles from "./mdxEntryRow.module.css";
 import Image from "next/image";
 import { BOOK_BUCKET_URL, BUCKET_URL } from "@/util/r2";
-import {
-  getBookCoverMetadata,
-  getImageMetadata,
-  parseToProps,
-} from "@/util/image";
+import { parseToProps } from "@/util/image";
 import { merge } from "@/util/classNames";
 import { Date } from "./components/Date";
 import { Tags } from "./components/Tags";
 import { ReadingTime } from "./components/ReadingTime";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
 
 const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
 
@@ -116,13 +111,11 @@ export const MDXEntryRow = ({
               <ReadingTime wordCount={wordCount} />
             </div>
             {slug && (showViewCount || fixedViewCount) && (
-              <Suspense>
-                <DynamicViewCount
-                  slug={slug}
-                  className={styles.viewCount}
-                  fixedCount={fixedViewCount}
-                />
-              </Suspense>
+              <DynamicViewCount
+                slug={slug}
+                className={styles.viewCount}
+                fixedCount={fixedViewCount}
+              />
             )}
             {tags && tags.length > 0 ? <Tags tags={tags} /> : false}
           </div>
