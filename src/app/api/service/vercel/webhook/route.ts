@@ -43,7 +43,7 @@ export async function POST(request: Request) {
           json.payload.deployment.url,
           json.payload.deployment.inspectorUrl,
           new Date(json.createdAt).toISOString().slice(0, 19).replace("T", " "),
-          json.payload.target || "none",
+          json.payload.target || "preview",
         ]
       );
       console.log(

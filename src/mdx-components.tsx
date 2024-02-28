@@ -29,7 +29,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ul: Ul,
     li: Li,
     img: Img,
-    hr: (props) => <Hr {...props} />,
+    hr: ({ style, ...props }) => <Hr {...props} mdStyle={style} />,
     blockquote: Blockquote,
     ol: Ol,
     table: Table,
