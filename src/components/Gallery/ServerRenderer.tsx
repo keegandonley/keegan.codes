@@ -7,8 +7,6 @@ interface GalleryProps {
   gallery: string;
 }
 
-const active = 1;
-
 export default async function GalleryRenderer({ gallery }: GalleryProps) {
   const data = await fetch(
     `${

@@ -3,7 +3,7 @@ import { Avatar } from "../Avatar";
 import { HeroBlock } from "../Hero/Block";
 import { usePathname, useSelectedLayoutSegments } from "next/navigation";
 import { MenuItem } from "./components/MenuItem";
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import styles from "./navigation.module.css";
 import { ThemeToggle } from "../ThemeToggle";
 import { merge } from "@/util/classNames";
@@ -110,9 +110,7 @@ const MainNavigation = ({
           Blog
         </MenuItem>
       </HeroBlock>
-      <Suspense>
-        <DynamicWaves />
-      </Suspense>
+      <DynamicWaves />
     </>
   );
 };

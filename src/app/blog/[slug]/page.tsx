@@ -14,7 +14,6 @@ import wordCounts from "../../../post-word-counts.json";
 import { BASEURL, NAME } from "@/metadata";
 import { Track } from "@/components/Track";
 import { PostHeader } from "@/components/PostHeader";
-import { Suspense } from "react";
 import dynamic from "next/dynamic";
 
 export const runtime = "edge";
@@ -121,9 +120,7 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
           minHeight: "300px",
         }}
       >
-        <Suspense>
-          <Timeline slug={params.slug} />
-        </Suspense>
+        <Timeline slug={params.slug} />
       </footer>
     </>
   );
