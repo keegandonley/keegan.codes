@@ -41,7 +41,7 @@ export async function POST(request: Request) {
           json.payload.deployment.id,
           json.payload.deployment.url,
           json.payload.deployment.inspectorUrl,
-          json.createdAt,
+          new Date(json.createdAt).toISOString().slice(0, 19).replace("T", " "),
           json.payload.target,
         ]
       );
