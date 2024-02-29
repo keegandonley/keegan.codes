@@ -21,7 +21,13 @@ export default function NotFound() {
     allHeaders.get("x-error-type") ?? referrerUrl?.searchParams.get("type");
 
   const label =
-    type === "blog" ? "blog post" : type === "library" ? "book" : "page";
+    type === "blog"
+      ? "blog post"
+      : type === "library"
+      ? "book"
+      : type === "shortcode"
+      ? "shortcode"
+      : "page";
 
   const headerStyle = {
     fontWeight: "600",
