@@ -13,6 +13,8 @@ export const runtime = "edge";
 export default function NotFound() {
   const allHeaders = headers();
 
+  console.log("all", allHeaders);
+
   const slug = allHeaders.get("x-error-slug");
   const type = allHeaders.get("x-error-type");
 
