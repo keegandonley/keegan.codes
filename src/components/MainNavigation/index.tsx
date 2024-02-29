@@ -31,7 +31,7 @@ const MainNavigation = ({
   const isBlogPage = pathname?.startsWith("/blog");
   const isLibraryPage = pathname?.startsWith("/library");
   const isSlideshow = pathname?.startsWith("/slides");
-  const isErrorPage = pathname?.startsWith("/not-found");
+  const isErrorPage = pathname?.startsWith("/routing-error");
 
   const isChat = segments[0] === "chat";
   const isResume = segments[0] === "resume";
