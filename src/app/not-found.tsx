@@ -15,8 +15,12 @@ export default function NotFound() {
 
   console.log("all", allHeaders);
 
-  const slug = allHeaders.get("x-error-slug");
-  const type = allHeaders.get("x-error-type");
+  const referrer = allHeaders.get("referer");
+  const referrerUrl = referrer ? new URL(referrer) : null;
+  const slug =
+    allHeaders.get("x-error-slug") ?? referrerUrl?.searchParams.get("slug");
+  const type =
+    allHeaders.get("x-error-type") ?? referrerUrl?.searchParams.get("type");
 
   console.log("got slug and type", slug, type);
 
