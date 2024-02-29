@@ -27,5 +27,5 @@ export default async function ShortCodePage({
     redirect(`/blog/${foundPost.slug}`);
   }
 
-  return redirect(`/not-found?slug=${shortCode}&type=shortcode`);
+  return redirect(`/routing-error?slug=${shortCode}&type=shortcode`);
 }

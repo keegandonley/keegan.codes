@@ -5,7 +5,7 @@
 */
 
 import { headers } from "next/headers";
-import { Graphic } from "./not-found/graphic";
+import { Graphic } from "./routing-error/graphic";
 import Link from "next/link";
 
 export const runtime = "edge";

@@ -32,6 +32,7 @@ export class MiddlewareManager {
       case "library":
         return new LibraryMiddleware(this.request, this.pathSplits);
       case "not-found":
+      case "routing-error":
         return new NotFoundMiddleware(this.request, this.pathSplits);
     }
   }

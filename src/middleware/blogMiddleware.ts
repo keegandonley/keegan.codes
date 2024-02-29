@@ -10,7 +10,7 @@ export class BlogMiddleware extends Base404HandlingMiddleware {
   done(is404: boolean, slug?: string) {
     if (is404) {
       return NextResponse.redirect(
-        `${this.origin}/not-found?slug=${slug}&type=blog`
+        `${this.origin}/routing-error?slug=${slug}&type=blog`
       );
     }
 
