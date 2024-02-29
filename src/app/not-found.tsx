@@ -16,6 +16,8 @@ export default function NotFound() {
   const slug = allHeaders.get("x-error-slug");
   const type = allHeaders.get("x-error-type");
 
+  console.log("got slug and type", slug, type);
+
   const label =
     type === "blog" ? "blog post" : type === "library" ? "book" : "page";
 
