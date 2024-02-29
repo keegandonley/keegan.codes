@@ -15,8 +15,11 @@
   color: #330000;
 }
 
-.panel h3 {
+.panel .title {
   text-align: center;
+  display: block;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .panel {
@@ -33,6 +36,12 @@
   padding: 1rem;
   border-radius: 8px;
   box-shadow: var(--theme-box-shadow-small);
+}
+
+.verdict .title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  display: block;
 }
 
 .verdict.positive {
@@ -63,33 +72,10 @@
 @media screen and (max-width: 550px) {
   .wrapper {
     display: flex;
+    flex-direction: column;
   }
 
-  .panel.collapsed {
-    width: 40px;
-    cursor: pointer;
-  }
-
-  .panel.collapsed .content,
-  .panel.collapsed h3 {
-    display: none;
-  }
-
-  .panel.expanded {
-    width: 100%;
-  }
-
-  .panel.expanded .mobileText {
-    display: none;
-  }
-
-  .panel.collapsed .mobileText {
-    display: flex;
-    writing-mode: vertical-lr;
-    gap: 0.5rem;
-  }
-
-  .panel.collapsed .mobileText {
-    padding-left: 10px;
+  .verdict .title {
+    text-align: center;
   }
 }
