@@ -26,7 +26,9 @@ export class NotFoundMiddleware {
     console.log("added header type", type);
 
     return NextResponse.next({
-      headers,
+      request: {
+        headers,
+      },
     });
   }
 
