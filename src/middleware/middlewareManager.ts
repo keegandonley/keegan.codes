@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { ScanMiddleware } from "../scanMiddleware";
 import { BlogMiddleware } from "./blogMiddleware";
 import { LibraryMiddleware } from "./libraryMiddleware";
+import { NotFoundMiddleware } from "./notFoundMiddleware";
 
 export class MiddlewareManager {
   private request: NextRequest;
@@ -30,6 +31,8 @@ export class MiddlewareManager {
         return new BlogMiddleware(this.request, this.pathSplits);
       case "library":
         return new LibraryMiddleware(this.request, this.pathSplits);
+      case "not-found":
+        return new NotFoundMiddleware(this.request, this.pathSplits);
     }
   }
 
