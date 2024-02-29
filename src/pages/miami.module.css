@@ -1,0 +1,35 @@
+@keyframes pulsate {
+  100% {
+    /* Larger blur radius */
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 40px var(--color-neon-blue),
+      0 0 80px var(--color-neon-blue), 0 0 90px var(--color-neon-blue);
+  }
+  0% {
+    /* Smaller blur radius */
+    text-shadow: 0 0 2px #fff, 0 0 10px var(--color-neon-blue),
+      0 0 45px var(--color-neon-blue), 0 0 55px var(--color-neon-blue);
+  }
+}
+
+@keyframes pulsatePink {
+  100% {
+    /* Larger blur radius */
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 40px var(--color-neon-pink),
+      0 0 80px var(--color-neon-pink), 0 0 90px var(--color-neon-pink);
+  }
+  0% {
+    /* Smaller blur radius */
+    text-shadow: 0 0 2px #fff, 0 0 10px var(--color-neon-pink),
+      0 0 45px var(--color-neon-pink), 0 0 55px var(--color-neon-pink);
+  }
+}
+
+.neon {
+  color: #fff;
+  animation: pulsate 2.5s infinite alternate;
+}
+
+.neonPink {
+  color: #fff;
+  animation: pulsatePink 2.5s infinite alternate;
+}
