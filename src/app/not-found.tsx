@@ -27,7 +27,7 @@ export default function NotFound() {
             Oh no! I couldn&apos;t find a matching resource
           </h2>
         )}
-        <p>Don&apos;t worry, we&apos;ll get through this.</p>
+        <p>Don&apos;t worry, we&apos;ll get through this together.</p>
         <p>
           Please double check your URL, and if you think you&apos;re seeing this
           message in error,{" "}
