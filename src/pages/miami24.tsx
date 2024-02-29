@@ -42,7 +42,7 @@ export default function miami24() {
           <div className="h-10" />
           <h1
             className={merge(
-              `text-[13vw] font-bold`,
+              `text-[18vw] leading-[16vw] sm:leading-normal sm:text-[13vw] font-bold`,
               styles.neon,
               bungee.className
             )}
@@ -51,7 +51,7 @@ export default function miami24() {
           </h1>
           <h2
             className={merge(
-              `text-[7vw] mt-[-9vw]`,
+              `text-[12vw] sm:text-[7vw] mt-[-9vw]`,
               yellowTail.className,
               styles.neonPink
             )}
@@ -67,7 +67,11 @@ export default function miami24() {
           >
             My name is <strong>Keegan Donley</strong>, and I&apos;m currently a
             principal front-end engineer at{" "}
-            <Link href="https://kizen.com" target="_blank">
+            <Link
+              href="https://kizen.com"
+              target="_blank"
+              className="text-neon-blue"
+            >
               <strong>Kizen</strong>
             </Link>
             . I love all things React, NextJS, and performant web!
@@ -79,32 +83,7 @@ export default function miami24() {
               comfortaa.className
             )}
           >
-            I&apos;d love to connect on{" "}
-            <Link href={"/linkedin"} className="">
-              <Image
-                src={linkedIn}
-                alt="LinkedIn"
-                className="inline mb-1 grayscale"
-                height={20}
-                width={20}
-                priority
-              />{" "}
-              <strong>LinkedIn</strong>
-            </Link>{" "}
-            or{" "}
-            <Link href={"/twitter"} className="grayscale">
-              <Image
-                src={X}
-                alt="X (Twitter)"
-                className="inline mb-1"
-                height={20}
-                width={20}
-                priority
-              />
-            </Link>
-            !
-            <br />
-            <br />I also write a{" "}
+            I write a{" "}
             <Link href="/blog" className="text-neon-pink">
               <strong>blog</strong>
             </Link>{" "}
@@ -113,6 +92,38 @@ export default function miami24() {
           </p>
         </div>
         <div className="h-12" />
+        {/* <div className="fixed left-0 right-0 bottom-0">
+          <svg
+            className="absolute left-[-24px] bottom-[-8px] text-miami-pink w-[200px]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <path
+              fill="currentColor"
+              d="M112 96H62.2c0-36 38.4-96 128-96c58.4 0 95 25.5 113.5 53.2C323.6 40.6 350.2 32 384 32c89.6 0 128 60 128 96H448L416 96l-32 32H301.5c28 79.9 21.2 170.2 9.9 226.1C370.9 365.1 416 417.3 416 480v32H32V480c0-70.7 57.3-128 128-128h64c29.7-79.3 29.4-150.9 22.8-194l-98.9 98.9c-25.5-25.5-40.7-95 22.6-158.4c1.3-1.3 2.7-2.7 4.1-3.9L144 64 112 96z"
+            />
+          </svg>
+          <svg
+            className="absolute left-[-30px] bottom-[-4px] text-miami-blue w-[200px]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <path
+              fill="currentColor"
+              d="M112 96H62.2c0-36 38.4-96 128-96c58.4 0 95 25.5 113.5 53.2C323.6 40.6 350.2 32 384 32c89.6 0 128 60 128 96H448L416 96l-32 32H301.5c28 79.9 21.2 170.2 9.9 226.1C370.9 365.1 416 417.3 416 480v32H32V480c0-70.7 57.3-128 128-128h64c29.7-79.3 29.4-150.9 22.8-194l-98.9 98.9c-25.5-25.5-40.7-95 22.6-158.4c1.3-1.3 2.7-2.7 4.1-3.9L144 64 112 96z"
+            />
+          </svg>
+          <svg
+            className="absolute left-[-38px] bottom-0 text-miami-yellow w-[200px]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <path
+              fill="currentColor"
+              d="M112 96H62.2c0-36 38.4-96 128-96c58.4 0 95 25.5 113.5 53.2C323.6 40.6 350.2 32 384 32c89.6 0 128 60 128 96H448L416 96l-32 32H301.5c28 79.9 21.2 170.2 9.9 226.1C370.9 365.1 416 417.3 416 480v32H32V480c0-70.7 57.3-128 128-128h64c29.7-79.3 29.4-150.9 22.8-194l-98.9 98.9c-25.5-25.5-40.7-95 22.6-158.4c1.3-1.3 2.7-2.7 4.1-3.9L144 64 112 96z"
+            />
+          </svg>
+        </div> */}
       </div>
     </>
   );
