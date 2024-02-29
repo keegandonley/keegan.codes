@@ -22,9 +22,6 @@ export class NotFoundMiddleware {
       headers.set("x-error-type", type);
     }
 
-    console.log("added header slug", slug);
-    console.log("added header type", type);
-
     return NextResponse.next({
       request: {
         headers,
