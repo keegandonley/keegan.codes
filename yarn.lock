@@ -623,10 +623,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/api@npm:^1.7.0":
-  version: 1.7.0
-  resolution: "@opentelemetry/api@npm:1.7.0"
-  checksum: 2398cbe65f199c3a7050125b3ad9c835f789bb0a616665e9c7f4475a29ac8334b6a3c15f38db48d345b522180c41c00b04cc174cd0eeffba98eb4874a565fa7e
+"@opentelemetry/api@npm:^1.8.0":
+  version: 1.8.0
+  resolution: "@opentelemetry/api@npm:1.8.0"
+  checksum: 0e32079975f05bee6de2ad8ade097f0afdc63f462c76550150fce2444c73ab92aaf851ac85e638b6e3b269da6640ac7e63f33913a0fd7df9f9beec2e100759df
   languageName: node
   linkType: hard
 
@@ -4213,7 +4213,7 @@ __metadata:
     "@mdx-js/react": ^3.0.1
     "@next/bundle-analyzer": ^14.1.0
     "@next/mdx": ^14.1.0
-    "@opentelemetry/api": ^1.7.0
+    "@opentelemetry/api": ^1.8.0
     "@planetscale/database": ^1.16.0
     "@types/node": ^20.11.22
     "@types/react": ^18.2.60
