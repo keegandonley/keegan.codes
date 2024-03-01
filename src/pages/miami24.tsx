@@ -3,6 +3,9 @@ import "./tw.css";
 import Link from "next/link";
 import localFont from "next/font/local";
 import styles from "./miami.module.css";
+import Image from "next/image";
+import linkedIn from "./linkedin-miami.svg";
+import X from "./x-twitter-miami.svg";
 
 const yellowTail = localFont({
   src: [
@@ -39,7 +42,7 @@ export default function miami24() {
           <div className="h-10" />
           <h1
             className={merge(
-              `text-[6rem] md:text-[8rem] leading-[6rem] sm:leading-normal font-bold`,
+              `text-[5rem] md:text-[8rem] leading-[6rem] sm:leading-normal font-bold`,
               styles.neon,
               bungee.className
             )}
@@ -48,7 +51,7 @@ export default function miami24() {
           </h1>
           <h2
             className={merge(
-              `text-[4rem] md:text-[5rem] mt-[-3rem] md:mt-[-5rem]`,
+              `text-[3.5rem] md:text-[5rem] mt-[-2.5rem] md:mt-[-5rem]`,
               yellowTail.className,
               styles.neonPink
             )}
@@ -73,7 +76,30 @@ export default function miami24() {
             </Link>
             . I love all things React, NextJS, and performant web!
           </p>
-          <div className="h-12" />
+          <div className="h-8" />
+          <div className="flex gap-12">
+            <Link href={"/linkedin"}>
+              <Image
+                src={linkedIn}
+                alt="LinkedIn"
+                className="inline mb-1"
+                height={30}
+                width={30}
+                priority
+              />
+            </Link>
+            <Link href={"/twitter"}>
+              <Image
+                src={X}
+                alt="X (Twitter)"
+                className="inline mb-1"
+                height={30}
+                width={30}
+                priority
+              />
+            </Link>
+          </div>
+          <div className="h-8" />
           <p
             className={merge(
               `text-white text-xl w-4/5 border-solid border-neon-blue border-2 rounded-lg p-6`,
