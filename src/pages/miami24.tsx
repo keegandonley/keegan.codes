@@ -3,9 +3,6 @@ import "./tw.css";
 import Link from "next/link";
 import localFont from "next/font/local";
 import styles from "./miami.module.css";
-import Image from "next/image";
-import linkedIn from "./linkedin.svg";
-import X from "./x-twitter.svg";
 
 const yellowTail = localFont({
   src: [
@@ -42,7 +39,7 @@ export default function miami24() {
           <div className="h-10" />
           <h1
             className={merge(
-              `text-[18vw] leading-[16vw] sm:leading-normal sm:text-[13vw] font-bold`,
+              `text-[6rem] md:text-[8rem] leading-[6rem] sm:leading-normal font-bold`,
               styles.neon,
               bungee.className
             )}
@@ -51,7 +48,7 @@ export default function miami24() {
           </h1>
           <h2
             className={merge(
-              `text-[12vw] sm:text-[7vw] mt-[-9vw]`,
+              `text-[4rem] md:text-[5rem] mt-[-3rem] md:mt-[-5rem]`,
               yellowTail.className,
               styles.neonPink
             )}
