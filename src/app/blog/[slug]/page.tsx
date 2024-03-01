@@ -20,7 +20,7 @@ export const runtime = "edge";
 
 const Timeline = dynamic(() => import("@/components/Timeline"));
 
-interface BlogPageProps {
+export interface BlogPageProps {
   params: {
     slug: string;
   };

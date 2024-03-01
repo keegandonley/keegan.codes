@@ -10,7 +10,7 @@ export class LibraryMiddleware extends Base404HandlingMiddleware {
   done(is404: boolean, slug?: string) {
     if (is404) {
       return NextResponse.redirect(
-        `${this.origin}/not-found?slug=${slug}&type=library`
+        `${this.origin}/routing-error?slug=${slug}&type=library`
       );
     }
 
