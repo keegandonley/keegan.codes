@@ -1,1 +1,9 @@
+import { StaticMDXLayout } from "@/components/StaticMDXLayout";
+
 If you meant to reach this page, your test was successful!
+
+[Go Home](/)
+
+export default function MDXPage({ children }) {
+  return <StaticMDXLayout>{children}</StaticMDXLayout>;
+}
