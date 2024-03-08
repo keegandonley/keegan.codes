@@ -1,0 +1,25 @@
+import { StaticMDXLayout } from "@/components/StaticMDXLayout";
+
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+Paragraph
+
+> Blockquote
+
+- list 1
+- list 2
+
+1. list 1
+2. list 2
+
+export default function MDXPage({ children }) {
+  return <StaticMDXLayout>{children}</StaticMDXLayout>;
+}

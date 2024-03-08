@@ -42,6 +42,7 @@ const nextConfig = {
       skipDefaultConversion: true,
     },
   },
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   redirects: async () => {
     return [
       ...redirects.map((r) => {

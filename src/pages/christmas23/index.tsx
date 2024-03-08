@@ -8,7 +8,7 @@ import localFont from "next/font/local";
 const dosis = localFont({
   src: [
     {
-      path: "./Dosis.ttf",
+      path: "../../sharedFonts/Dosis.ttf",
       style: "normal",
     },
   ],

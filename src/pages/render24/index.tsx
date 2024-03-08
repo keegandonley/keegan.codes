@@ -1,8 +1,7 @@
 import { Avatar } from "@/components/Avatar";
-import "./tw.css";
 import Link from "next/link";
-import linkedIn from "./linkedin.svg";
-import X from "./x-twitter.svg";
+import linkedIn from "@/images/linkedin.svg";
+import X from "@/images/x-twitter.svg";
 import Image from "next/image";
 import { Hr } from "@/components/Post/Hr";
 import { BUCKET_URL } from "@/util/r2";
