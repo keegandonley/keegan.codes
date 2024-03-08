@@ -1,16 +1,16 @@
 import { merge } from "@/util/classNames";
-import "./tw.css";
 import Link from "next/link";
 import localFont from "next/font/local";
-import styles from "./miami.module.css";
+import styles from "@/pageStyles/miami24/miami.module.css";
 import Image from "next/image";
-import linkedIn from "./linkedin-miami.svg";
-import X from "./x-twitter-miami.svg";
+import linkedIn from "@/images/linkedin-miami.svg";
+import X from "@/images/x-twitter-miami.svg";
+import "@/tw.css";
 
 const yellowTail = localFont({
   src: [
     {
-      path: "./Yellowtail.ttf",
+      path: "../../sharedFonts/Yellowtail.ttf",
       style: "normal",
     },
   ],
@@ -19,7 +19,7 @@ const yellowTail = localFont({
 const bungee = localFont({
   src: [
     {
-      path: "./Bungee.ttf",
+      path: "../../sharedFonts/Bungee.ttf",
       style: "normal",
     },
   ],
@@ -28,7 +28,7 @@ const bungee = localFont({
 const comfortaa = localFont({
   src: [
     {
-      path: "./Comfortaa.ttf",
+      path: "../../sharedFonts/Comfortaa.ttf",
       style: "normal",
     },
   ],

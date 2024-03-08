@@ -1,6 +1,6 @@
-import styles from "./christmas23.module.css";
+import styles from "../../pageStyles/christmas23/christmas23.module.css";
 import { merge } from "@/util/classNames";
-import "./christmas23.css";
+import "@/pageStyles/christmas23/christmas23.css";
 import Image from "next/image";
 import girlstartlogo from "@/images/girlstart.png";
 import localFont from "next/font/local";
@@ -8,7 +8,7 @@ import localFont from "next/font/local";
 const dosis = localFont({
   src: [
     {
-      path: "./Dosis.ttf",
+      path: "../../sharedFonts/Dosis.ttf",
       style: "normal",
     },
   ],
