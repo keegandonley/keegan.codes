@@ -75,6 +75,7 @@ export const MDXEntryRow = ({
       <Parent
         href={`/${book ? "library" : "blog"}/${slug}`}
         className={merge(styles.a, loader ? styles.loader : "")}
+        scroll={false}
       >
         {cover && !loader ? (
           <div className={merge(styles.imageParent, book && styles.book)}>

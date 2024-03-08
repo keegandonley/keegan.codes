@@ -62,6 +62,7 @@ export const ClientRenderer = ({ posts }: ClientRendererProps) => {
               )}
               onMouseOver={() => setActiveIndex(postIndex)}
               href={`/blog/${post.slug}`}
+              scroll={false}
             >
               <span className={styles.text}>
                 <h1>{post.title}</h1>
