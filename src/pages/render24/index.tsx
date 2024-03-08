@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Hr } from "@/components/Post/Hr";
 import { BUCKET_URL } from "@/util/r2";
 import { HiTrack } from "@/components/Track/Hi";
+import "@/tw.css";
 
 export default function render24() {
   const skewYDeg = 0;

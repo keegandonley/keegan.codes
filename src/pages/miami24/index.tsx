@@ -1,10 +1,11 @@
 import { merge } from "@/util/classNames";
 import Link from "next/link";
 import localFont from "next/font/local";
-import styles from "./miami.module.css";
+import styles from "@/pageStyles/miami24/miami.module.css";
 import Image from "next/image";
 import linkedIn from "@/images/linkedin-miami.svg";
 import X from "@/images/x-twitter-miami.svg";
+import "@/tw.css";
 
 const yellowTail = localFont({
   src: [
