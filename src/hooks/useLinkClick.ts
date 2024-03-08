@@ -1,4 +1,4 @@
-import { LoadingContext } from "@/app/loadingProvider";
+import { LoadingContext } from "@/app/(mainLayoutOptIn)/loadingProvider";
 import { usePathname } from "next/navigation";
 import { useCallback, useContext, useEffect } from "react";
 

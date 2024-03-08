@@ -12,7 +12,7 @@ import wave7 from "./graphics/Wave 7.svg";
 import wave8 from "./graphics/Wave 8.svg";
 import Image from "next/image";
 import { useContext, useState } from "react";
-import { LoadingContext } from "@/app/loadingProvider";
+import { LoadingContext } from "@/app/(mainLayoutOptIn)/loadingProvider";
 
 interface WaveProps {
   waveCount: number;

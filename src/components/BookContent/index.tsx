@@ -1,4 +1,7 @@
-import { getComponentForKey, getKey } from "@/app/library/util";
+import {
+  getComponentForKey,
+  getKey,
+} from "@/app/(mainLayoutOptIn)/library/util";
 import { getBookCoverMetadata, parseSource, parseToProps } from "@/util/image";
 import { BOOK_BUCKET_URL } from "@/util/r2";
 import Image from "next/image";

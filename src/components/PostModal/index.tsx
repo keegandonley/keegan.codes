@@ -1,4 +1,4 @@
-import { getComponentForKey, getKey } from "@/app/blog/util";
+import { getComponentForKey, getKey } from "@/app/(mainLayoutOptIn)/blog/util";
 import styles from "./postModal.module.css";
 import { notFound } from "next/navigation";
 import { getImageMetadata, parseSource, parseToProps } from "@/util/image";

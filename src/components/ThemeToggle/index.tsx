@@ -15,7 +15,7 @@ import {
 } from "@/util/theme";
 import { Theme, ThemeChooserSize } from "@/types/theme";
 import va from "@vercel/analytics";
-import { ThemeContext } from "@/app/themeProvider";
+import { ThemeContext } from "@/app/(mainLayoutOptIn)/themeProvider";
 
 interface ThemeToggleProps {
   relative?: boolean;

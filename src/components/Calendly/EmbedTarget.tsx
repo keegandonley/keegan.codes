@@ -1,5 +1,5 @@
 "use client";
-import { ThemeContext } from "@/app/themeProvider";
+import { ThemeContext } from "@/app/(mainLayoutOptIn)/themeProvider";
 import { useContext } from "react";
 import { InlineWidget, useCalendlyEventListener } from "react-calendly";
 import va from "@vercel/analytics";
