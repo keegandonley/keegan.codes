@@ -50,6 +50,7 @@ export async function GET(request: Request) {
         viewCount:
           (results.rows[0] as Record<"views", number> | undefined)?.views ?? 0,
         metadata,
+        url: `${url.origin}/blog/${post.slug}`,
       })
     );
   }
