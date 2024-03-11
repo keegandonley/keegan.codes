@@ -23,6 +23,13 @@ export async function GET(request: Request) {
   });
 }
 
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 204,
+    headers,
+  });
+}
+
 export async function POST(request: Request) {
   const url = new URL(request.url);
   const requestUrl = url.searchParams.get("requestUrl");
