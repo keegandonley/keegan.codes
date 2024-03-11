@@ -3,6 +3,7 @@ import { ScanMiddleware } from "../scanMiddleware";
 import { BlogMiddleware } from "./blogMiddleware";
 import { LibraryMiddleware } from "./libraryMiddleware";
 import { NotFoundMiddleware } from "./notFoundMiddleware";
+import { ProxyMiddleware } from "./proxyMiddleware";
 
 export class MiddlewareManager {
   private request: NextRequest;
@@ -21,6 +22,12 @@ export class MiddlewareManager {
     return firstSegment;
   }
 
+  private getRouteSecondSegment() {
+    const [, , secondSegment] = this.pathSplits;
+
+    return secondSegment;
+  }
+
   private getMiddleware() {
     const firstSegment = this.getRouteFirstSegment();
 
@@ -34,6 +41,14 @@ export class MiddlewareManager {
       case "not-found":
       case "routing-error":
         return new NotFoundMiddleware(this.request, this.pathSplits);
+      case "api": {
+        const secondSegment = this.getRouteSecondSegment();
+
+        switch (secondSegment) {
+          case "proxy":
+            return new ProxyMiddleware(this.request);
+        }
+      }
     }
   }
 
