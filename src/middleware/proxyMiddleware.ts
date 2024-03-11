@@ -8,7 +8,11 @@ export class ProxyMiddleware {
   }
 
   private next() {
-    return NextResponse.next();
+    return NextResponse.next({
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
   }
 
   async execute() {
