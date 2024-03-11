@@ -12,10 +12,7 @@ const config = {
   password: process.env.password,
 };
 
-export async function GET(request: Request) {
-  const url = new URL(request.url);
-  const slug = url.searchParams.get("slug");
-
+const handleRequestForSlug = async (url: URL, slug?: string | null) => {
   const allPosts = Object.keys(Posts);
   const posts = allPosts
     .map((key) => {
@@ -89,4 +86,24 @@ export async function GET(request: Request) {
   }
 
   return new Response(JSON.stringify({}));
+};
+
+export async function GET(request: Request) {
+  const url = new URL(request.url);
+  const slug = url.searchParams.get("slug");
+
+  return handleRequestForSlug(url, slug);
+}
+
+export async function POST(request: Request) {
+  const url = new URL(request.url);
+
+  try {
+    const body = await request.json();
+    const slug = body.slug;
+
+    return handleRequestForSlug(url, slug);
+  } catch (ex: any) {
+    return handleRequestForSlug(url);
+  }
 }

@@ -12,5 +12,6 @@ export const config = {
     "/library/:path*",
     "/not-found",
     "/routing-error",
+    "/api/proxy",
   ],
 };
