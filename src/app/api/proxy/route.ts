@@ -3,7 +3,12 @@ export async function GET(request: Request) {
   const requestUrl = url.searchParams.get("requestUrl");
 
   if (!requestUrl) {
-    return new Response("requestUrl is required", { status: 400 });
+    return new Response("requestUrl is required", {
+      status: 400,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
   }
 
   const result = await fetch(new URL(requestUrl));

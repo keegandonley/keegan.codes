@@ -2,16 +2,18 @@ import { NextRequest, NextResponse } from "next/server";
 
 export class ProxyMiddleware {
   private request: NextRequest;
+  private headers: Record<string, string>;
 
   constructor(request: NextRequest) {
     this.request = request;
+    this.headers = {
+      "Access-Control-Allow-Origin": "*",
+    };
   }
 
-  private next() {
+  private done() {
     return NextResponse.next({
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
+      headers: this.headers,
     });
   }
 
@@ -26,7 +28,10 @@ export class ProxyMiddleware {
         requestUrl,
         "but no token was provided"
       );
-      return new Response("unauthorized", { status: 400 });
+      return new Response("unauthorized", {
+        status: 400,
+        headers: this.headers,
+      });
     }
 
     if (token !== process.env.PROXY_KEY) {
@@ -35,11 +40,17 @@ export class ProxyMiddleware {
         requestUrl,
         "but the token was invalid"
       );
-      return new Response("unauthorized", { status: 400 });
+      return new Response("unauthorized", {
+        status: 400,
+        headers: this.headers,
+      });
     }
 
     if (!requestUrl) {
-      return new Response("requestUrl is required", { status: 400 });
+      return new Response("requestUrl is required", {
+        status: 400,
+        headers: this.headers,
+      });
     }
 
     if (
@@ -53,11 +64,12 @@ export class ProxyMiddleware {
       );
       return new Response("requestUrl must be a keegan.codes URL", {
         status: 400,
+        headers: this.headers,
       });
     }
 
     console.log("Proxying request allowed to", requestUrl);
 
-    return this.next();
+    return this.done();
   }
 }
