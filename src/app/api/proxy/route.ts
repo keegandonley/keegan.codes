@@ -1,3 +1,8 @@
+const headers = {
+  "Access-Control-Allow-Headers": "*",
+  "Access-Control-Allow-Origin": "*",
+};
+
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const requestUrl = url.searchParams.get("requestUrl");
@@ -5,9 +10,7 @@ export async function GET(request: Request) {
   if (!requestUrl) {
     return new Response("requestUrl is required", {
       status: 400,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
+      headers,
     });
   }
 
@@ -16,9 +19,7 @@ export async function GET(request: Request) {
   const jsonResult = await result.json();
 
   return Response.json(jsonResult, {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
+    headers,
   });
 }
 
@@ -27,7 +28,7 @@ export async function POST(request: Request) {
   const requestUrl = url.searchParams.get("requestUrl");
 
   if (!requestUrl) {
-    return new Response("requestUrl is required", { status: 400 });
+    return new Response("requestUrl is required", { status: 400, headers });
   }
 
   let payload;
@@ -40,13 +41,12 @@ export async function POST(request: Request) {
   const result = await fetch(new URL(requestUrl), {
     method: "POST",
     body: payload ? JSON.stringify(payload) : undefined,
+    headers,
   });
 
   const jsonResult = await result.json();
 
   return Response.json(jsonResult, {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
+    headers,
   });
 }

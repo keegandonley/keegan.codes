@@ -8,6 +8,7 @@ export class ProxyMiddleware {
     this.request = request;
     this.headers = {
       "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "*",
     };
   }
 
