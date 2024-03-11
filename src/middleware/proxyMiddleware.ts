@@ -19,6 +19,10 @@ export class ProxyMiddleware {
   }
 
   async execute() {
+    if (this.request.method === "OPTIONS") {
+      return this.done();
+    }
+
     const url = new URL(this.request.url);
     const requestUrl = url.searchParams.get("requestUrl");
     const token = this.request.headers.get("x-proxy-key");
