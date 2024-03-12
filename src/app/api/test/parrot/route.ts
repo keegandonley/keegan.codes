@@ -1,8 +1,9 @@
+import { cookies } from "next/headers";
 import { NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
   const data = await request.formData();
-  const cookiesList = request.cookies;
+  const cookiesList = cookies();
 
   const result = Object.fromEntries(data);
 
