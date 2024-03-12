@@ -13,13 +13,13 @@ export const setMetaTheme = (theme: Theme) => {
 export const setHasChosenThemeCookie = () => {
   const cookieDomain =
     process.env.NODE_ENV === "development" ? "localhost" : "keegan.codes";
-  document.cookie = `chosen-theme=true; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=Lax; Secure;`;
+  document.cookie = `chosen-theme=true; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=None; Secure;`;
 };
 
 export const setThemeCookie = (theme: Theme) => {
   const cookieDomain =
     process.env.NODE_ENV === "development" ? "localhost" : "keegan.codes";
-  document.cookie = `theme=${theme}; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=Lax; Secure;`;
+  document.cookie = `theme=${theme}; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=None; Secure;`;
 };
 
 export const getMatch = () => {
