@@ -4,14 +4,17 @@ export async function POST(request: NextRequest) {
   const data = await request.formData();
   const cookiesList = request.cookies;
 
-  console.log(cookiesList);
-
-  console.log(data.values());
+  const result = Object.fromEntries(data);
 
   return Response.json(
     {
-      message: "OK",
-      redirect_url: "https://keegan.codes/test-success",
+      formData: result,
+      cookies: cookiesList.getAll().reduce((acc, curr) => {
+        return {
+          ...acc,
+          [curr.name]: curr.value,
+        };
+      }, {}),
     },
     {
       headers: {
