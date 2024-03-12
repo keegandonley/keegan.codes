@@ -11,11 +11,15 @@ export const setMetaTheme = (theme: Theme) => {
 };
 
 export const setHasChosenThemeCookie = () => {
-  document.cookie = `chosen-theme=true; path=/; expires=Tue, 19 Jan 2038 04:14:07 GMT`;
+  const cookieDomain =
+    process.env.NODE_ENV === "development" ? "localhost" : "keegan.codes";
+  document.cookie = `chosen-theme=true; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=Strict; Secure;`;
 };
 
 export const setThemeCookie = (theme: Theme) => {
-  document.cookie = `theme=${theme}; path=/; expires=Tue, 19 Jan 2038 04:14:07 GMT`;
+  const cookieDomain =
+    process.env.NODE_ENV === "development" ? "localhost" : "keegan.codes";
+  document.cookie = `theme=${theme}; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=Strict; Secure;`;
 };
 
 export const getMatch = () => {
