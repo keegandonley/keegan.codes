@@ -1,6 +1,5 @@
 import "@/tw.css";
 import { injectVariables } from "@/util/classNames";
-import { group } from "console";
 import Head from "next/head";
 
 const pi =
@@ -11,7 +10,6 @@ const summary =
 const title = "Hex Pi";
 
 export default function Pi() {
-  console.log(Array.from(pi));
   const groups = Array.from(pi)
     .filter((i) => i && i !== " ")
     .reduce(
@@ -27,8 +25,6 @@ export default function Pi() {
       },
       [""]
     );
-
-  console.log(groups);
 
   return (
     <>
