@@ -1,13 +1,11 @@
 import { cookies } from "next/headers";
 import { NextRequest } from "next/server";
 
-const headers = {
-  "Access-Control-Allow-Origin": "*",
-};
-
 export async function POST(request: NextRequest) {
   let result;
   let mode;
+
+  const host = request.headers.get("host");
 
   try {
     const data = await request.formData();
@@ -27,7 +25,9 @@ export async function POST(request: NextRequest) {
         },
         {
           status: 400,
-          headers,
+          headers: {
+            "Access-Control-Allow-Origin": host ?? "*",
+          },
         }
       );
     }
@@ -47,7 +47,9 @@ export async function POST(request: NextRequest) {
       mode,
     },
     {
-      headers,
+      headers: {
+        "Access-Control-Allow-Origin": host ?? "*",
+      },
     }
   );
 }
