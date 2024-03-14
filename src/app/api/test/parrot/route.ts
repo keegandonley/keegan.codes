@@ -5,7 +5,11 @@ export async function POST(request: NextRequest) {
   let result;
   let mode;
 
-  const host = request.headers.get("host");
+  const host = `${
+    process.env.NODE_ENV === "development" ? "http" : "https"
+  }://${request.headers.get("host")}`;
+
+  console.log(host);
 
   try {
     const data = await request.formData();
