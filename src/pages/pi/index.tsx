@@ -65,10 +65,18 @@ export default function Pi() {
           {groups.map((group: string, index: number) => {
             return (
               <div
-                className="bg-[var(--color-code)] h-12 px-2 items-center flex"
+                className="bg-[var(--color-code)] h-12 px-2 items-center flex cursor-pointer"
                 key={index}
                 style={injectVariables([["color-code", `#${group}`]])}
                 id={`section-${index}`}
+                onClick={() => {
+                  // copy to clipboard
+                  navigator.clipboard.writeText(
+                    `https://keegan.codes/pi/#section-${index}`
+                  );
+
+                  alert(`Copied URL to clipboard!`);
+                }}
               >
                 {group}
               </div>
