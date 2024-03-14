@@ -5,11 +5,9 @@ export async function POST(request: NextRequest) {
   let result;
   let mode;
 
-  const host = `${
-    process.env.NODE_ENV === "development" ? "http" : "https"
-  }://${request.headers.get("host")}`;
+  const origin = request.headers.get("origin");
 
-  console.log(host);
+  console.log(origin);
 
   try {
     const data = await request.formData();
@@ -30,7 +28,7 @@ export async function POST(request: NextRequest) {
         {
           status: 400,
           headers: {
-            "Access-Control-Allow-Origin": host ?? "*",
+            "Access-Control-Allow-Origin": origin ?? "*",
           },
         }
       );
@@ -52,7 +50,7 @@ export async function POST(request: NextRequest) {
     },
     {
       headers: {
-        "Access-Control-Allow-Origin": host ?? "*",
+        "Access-Control-Allow-Origin": origin ?? "*",
       },
     }
   );
