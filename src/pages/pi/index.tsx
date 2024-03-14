@@ -39,7 +39,7 @@ export default function Pi() {
         <meta property="og:description" content={summary} />
         <meta
           property="og:image"
-          content={`https://keegan.codes.com/pi-cover.png`}
+          content={`https://keegan.codes/pi-cover.png`}
         />
         <meta property="og:url" content="https://keegan.codes/pi" />
         <meta name="twitter:title" content={title} />
