@@ -36,6 +36,7 @@ export async function POST(request: NextRequest) {
           status: 400,
           headers: {
             "Access-Control-Allow-Origin": origin ?? "*",
+            "Access-Control-Allow-Credentials": "true",
           },
         }
       );
@@ -77,6 +78,7 @@ export async function POST(request: NextRequest) {
     {
       headers: {
         "Access-Control-Allow-Origin": origin ?? "*",
+        "Access-Control-Allow-Credentials": "true",
       },
     }
   );
