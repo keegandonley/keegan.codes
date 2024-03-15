@@ -15,9 +15,7 @@ const getValue = async (slug: string): Promise<number> => {
           : "https://keegan.codes"
       }/api/cheers?slug=${slug}`,
       {
-        next: {
-          revalidate: 0,
-        },
+        cache: "no-store",
       }
     );
 

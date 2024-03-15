@@ -14,7 +14,7 @@ const getValue = async (slug: string): Promise<number> => {
           ? "http://localhost:3561"
           : "https://keegan.codes"
       }/api/view?slug=${slug}`,
-      { next: { revalidate: 60 * 2 } }
+      { cache: "no-store" }
     );
 
     const { views } = await data.json();
