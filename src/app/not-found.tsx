@@ -19,7 +19,7 @@ export default function NotFound() {
   try {
     referrerUrl = referrer ? new URL(referrer) : null;
   } catch (e) {
-    console.log("error parsing referrer, it was", referrer, e);
+    console.log(`couldn't parse referrer, it was ${referrer}. This is fine.`);
   }
 
   const slug =

@@ -18,8 +18,6 @@ export async function GET(request: Request) {
       ["post"]
     );
 
-    console.log(res);
-
     return NextResponse.json({
       views: res?.rows?.[0]?.views ?? 0,
     });
