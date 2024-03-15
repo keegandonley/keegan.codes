@@ -14,13 +14,12 @@ export default function NotFound() {
   const allHeaders = headers();
 
   const referrer = allHeaders.get("referer");
-  console.log("not found - referrer was", referrer);
 
   let referrerUrl;
   try {
     referrerUrl = referrer ? new URL(referrer) : null;
   } catch (e) {
-    console.log("error parsing referrer", e);
+    console.log("error parsing referrer, it was", referrer, e);
   }
 
   const slug =

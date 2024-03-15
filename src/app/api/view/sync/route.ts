@@ -21,7 +21,12 @@ export async function GET() {
     let total = 0;
     await Promise.all(
       results.rows.map((row: any) => {
-        total += row.views;
+        try {
+          total += parseInt(row.views, 10);
+        } catch (ex) {
+          console.error("error logging view sync", ex);
+        }
+
         try {
           return conn.execute(
             "INSERT INTO post_page_views_aggregate (slug, views) VALUES (?, ?) ON DUPLICATE KEY UPDATE views = ?",
