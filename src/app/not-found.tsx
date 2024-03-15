@@ -15,7 +15,14 @@ export default function NotFound() {
 
   const referrer = allHeaders.get("referer");
   console.log("not found - referrer was", referrer);
-  const referrerUrl = referrer ? new URL(referrer) : null;
+
+  let referrerUrl;
+  try {
+    referrerUrl = referrer ? new URL(referrer) : null;
+  } catch (e) {
+    console.log("error parsing referrer", e);
+  }
+
   const slug =
     allHeaders.get("x-error-slug") ?? referrerUrl?.searchParams.get("slug");
   const type =
