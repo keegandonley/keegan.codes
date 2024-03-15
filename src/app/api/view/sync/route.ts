@@ -38,6 +38,15 @@ export async function GET() {
       })
     );
 
+    try {
+      conn.execute(
+        "INSERT INTO page_views_total (type, views) VALUES (?, ?) ON DUPLICATE KEY UPDATE views = ?",
+        ["post", total, total]
+      );
+    } catch (ex) {
+      console.error(ex);
+    }
+
     console.log(
       "updated",
       results.rows.length,
@@ -49,6 +58,7 @@ export async function GET() {
     return NextResponse.json({
       ok: true,
       count: results.rows.length,
+      totalViews: total,
     });
   } catch (ex) {
     console.error(ex);
