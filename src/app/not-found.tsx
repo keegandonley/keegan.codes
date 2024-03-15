@@ -84,7 +84,7 @@ export default function NotFound() {
         </p>
         <p style={pStyle}>
           Please double check your URL, and if you think you&apos;re seeing this
-          message in error,{" "}
+          message in error, please{" "}
           <Link
             href={`mailto:kd+brokenlink@keegandonley.com?subject=Broken link for ${label} at ${slug}`}
             style={{
@@ -92,8 +92,24 @@ export default function NotFound() {
               textDecoration: "none",
             }}
           >
-            please get in touch!
+            get in touch
           </Link>
+          {slug ? (
+            <>
+              {" "}
+              or{" "}
+              <Link
+                style={{
+                  color: "var(--theme-blue-2)",
+                  textDecoration: "none",
+                }}
+                href={`/${slug}`}
+              >
+                retry your request
+              </Link>
+            </>
+          ) : null}
+          !
         </p>
       </div>
     </div>
