@@ -1,8 +1,8 @@
-import { getTimelineForUser } from "@/app/api/timeline/user/route";
 import { headers } from "next/headers";
 import { TimelineEntry } from "./Entry";
 import { Suspense } from "react";
 import styles from "./timeline.module.css";
+import { getTimelineForUser } from "@/util/userData";
 
 const pageSize = 20;
 
