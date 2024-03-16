@@ -15,6 +15,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import dynamic from "next/dynamic";
 import LoadingProvider from "./loadingProvider";
 import { GeistSans } from "geist/font/sans";
+import { ClerkProvider } from "@clerk/nextjs";
+
+const AuthDisplay = dynamic(() =>
+  import("../components/AuthDisplay").then((m) => m.AuthDisplay)
+);
 
 const DynamicEventWaiter = dynamic(
   () => import("./event").then((m) => m.EventWaiter),
@@ -30,33 +35,36 @@ export default async function RootLayout({ children, postModal }: any) {
   const hasChosenTheme = getHasChosenTheme();
 
   return (
-    <html lang="en" id="fullscreen-context">
-      <body
-        className={merge(
-          GeistSans.className,
-          "preload",
-          theme === "dark" && "dark"
-        )}
-      >
-        <ThemeProvider>
-          <LoadingProvider>
-            {/* Display banner text from the edge config if an event is active */}
-            <DynamicEventWaiter />
-            <MainNavigation
-              initialTheme={theme}
-              hasChosenTheme={hasChosenTheme}
-            />
-            <main>{children}</main>
-            <ModalBoundary>{postModal}</ModalBoundary>
-          </LoadingProvider>
-        </ThemeProvider>
-        {/* Adding suspense to try https://github.com/vercel/next.js/issues/48442#issuecomment-1519139562 */}
-        <Suspense fallback={null}>
-          <Analytics />
-          <SpeedInsights />
-        </Suspense>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" id="fullscreen-context">
+        <body
+          className={merge(
+            GeistSans.className,
+            "preload",
+            theme === "dark" && "dark"
+          )}
+        >
+          <AuthDisplay />
+          <ThemeProvider>
+            <LoadingProvider>
+              {/* Display banner text from the edge config if an event is active */}
+              <DynamicEventWaiter />
+              <MainNavigation
+                initialTheme={theme}
+                hasChosenTheme={hasChosenTheme}
+              />
+              <main>{children}</main>
+              <ModalBoundary>{postModal}</ModalBoundary>
+            </LoadingProvider>
+          </ThemeProvider>
+          {/* Adding suspense to try https://github.com/vercel/next.js/issues/48442#issuecomment-1519139562 */}
+          <Suspense fallback={null}>
+            <Analytics />
+            <SpeedInsights />
+          </Suspense>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
 

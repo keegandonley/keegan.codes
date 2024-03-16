@@ -32,6 +32,8 @@ const MainNavigation = ({
   const isLibraryPage = pathname?.startsWith("/library");
   const isSlideshow = pathname?.startsWith("/slides");
   const isErrorPage = pathname?.startsWith("/routing-error");
+  const isAuthPage = pathname?.startsWith("/auth");
+  const isAccountPage = pathname?.startsWith("/account");
 
   const isChat = segments[0] === "chat";
   const isResume = segments[0] === "resume";
@@ -57,7 +59,11 @@ const MainNavigation = ({
     });
   }, []);
 
-  if (isSlideshow) {
+  if (isSlideshow || isAuthPage) {
+    return null;
+  }
+
+  if (isAccountPage) {
     return null;
   }
 
