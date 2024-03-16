@@ -1,19 +1,23 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { ScanMiddleware } from "../scanMiddleware";
 import { BlogMiddleware } from "./blogMiddleware";
 import { LibraryMiddleware } from "./libraryMiddleware";
 import { NotFoundMiddleware } from "./notFoundMiddleware";
 import { ProxyMiddleware } from "./proxyMiddleware";
+import { AccountMiddleware } from "./accountMiddleware";
+import { ClerkMiddlewareAuth } from "@clerk/nextjs/dist/types/server";
 
 export class MiddlewareManager {
   private request: NextRequest;
   private url: URL;
   private pathSplits: string[];
+  private auth: ClerkMiddlewareAuth;
 
-  constructor(req: NextRequest) {
+  constructor(req: NextRequest, auth: ClerkMiddlewareAuth) {
     this.request = req;
     this.url = new URL(req.url);
     this.pathSplits = this.url.pathname.split("/");
+    this.auth = auth;
   }
 
   private getRouteFirstSegment() {
@@ -49,6 +53,9 @@ export class MiddlewareManager {
             return new ProxyMiddleware(this.request);
         }
       }
+      case "account": {
+        return new AccountMiddleware(this.request, this.auth);
+      }
     }
   }
 
@@ -58,9 +65,8 @@ export class MiddlewareManager {
     if (mw) {
       return mw.execute();
     } else {
-      console.log(
-        `Hit on middleware for ${this.url.pathname}, but no manager has been configured`
-      );
+      console.log("skipping middleware for", this.url.pathname);
+      return NextResponse.next();
     }
   }
 }

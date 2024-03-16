@@ -1,0 +1,48 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  align-items: center;
+  color: var(--theme-text);
+}
+
+.wrapper > div {
+  width: 100%;
+}
+
+.ts {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.wrapper .preview > div > a {
+  margin-bottom: 0;
+}
+
+.node {
+  display: flex;
+  position: relative;
+  height: 100%;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.glyph {
+  margin-left: auto;
+  z-index: 1;
+  background: var(--theme-background);
+  color: var(--theme-blue-1);
+}
+
+.node::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: calc(1rem + 7px);
+  bottom: 0;
+  border-left: 3px solid var(--theme-blue-1);
+  opacity: 0.5;
+}
+
+.preview {
+  padding: 1rem 0;
+}

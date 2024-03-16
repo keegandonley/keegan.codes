@@ -1,0 +1,11 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  color: var(--theme-text);
+  padding-top: 4rem;
+}
+
+.page h1 {
+  padding-bottom: 2rem;
+  text-align: center;
+}

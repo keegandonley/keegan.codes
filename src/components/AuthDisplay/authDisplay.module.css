@@ -1,0 +1,19 @@
+.wrapper {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  border: 1px solid var(--theme-blue-0);
+  box-shadow: var(--theme-box-shadow);
+  z-index: 99;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:global(body.dark) .wrapper {
+  border: 1px solid var(--theme-blue-0);
+}

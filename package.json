@@ -15,6 +15,7 @@
     "analyze": "NODE_OPTIONS=--max-old-space-size=4096 ANALYZE=true yarn build"
   },
   "dependencies": {
+    "@clerk/nextjs": "beta",
     "@fortawesome/fontawesome-pro": "^6.5.1",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
