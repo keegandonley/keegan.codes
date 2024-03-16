@@ -26,7 +26,6 @@ export class AccountMiddleware {
   }
 
   execute() {
-    console.log(this.auth());
     return this.done(this.auth().userId);
   }
 }

@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { ScanMiddleware } from "../scanMiddleware";
 import { BlogMiddleware } from "./blogMiddleware";
 import { LibraryMiddleware } from "./libraryMiddleware";
@@ -64,6 +64,9 @@ export class MiddlewareManager {
 
     if (mw) {
       return mw.execute();
+    } else {
+      console.log("skipping middleware for", this.url.pathname);
+      return NextResponse.next();
     }
   }
 }
