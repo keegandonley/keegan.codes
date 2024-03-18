@@ -29,6 +29,8 @@ export default async function RootLayout({ children, postModal }: any) {
   const theme = userTheme();
   const hasChosenTheme = getHasChosenTheme();
 
+  console.log(process.env.NEXT_PUBLIC_VERCEL_URL, process.env.VERCEL_URL);
+
   return (
     <html lang="en" id="fullscreen-context">
       <body
