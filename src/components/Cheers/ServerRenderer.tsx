@@ -1,3 +1,4 @@
+import { getFullyQualifiedDeploymentUrl } from "@/util/deployment";
 import { CheersClientRenderer } from "./ClientRenderer";
 import styles from "./cheers.module.css";
 
@@ -9,11 +10,7 @@ interface CheersServerRendererProps {
 const getValue = async (slug: string): Promise<number> => {
   try {
     const data = await fetch(
-      `${
-        process.env.NODE_ENV === "development"
-          ? "http://localhost:3561"
-          : "https://keegan.codes"
-      }/api/cheers?slug=${slug}`,
+      getFullyQualifiedDeploymentUrl(`/api/cheers?slug=${slug}`),
       {
         cache: "no-store",
       }
