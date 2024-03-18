@@ -8,6 +8,7 @@ import { formatDate } from "@/util/date";
 import Image from "next/image";
 import { BUCKET_URL } from "@/util/r2";
 import { parseToProps } from "@/util/image";
+import { getUrlFromHost } from "@/util/deployment";
 
 const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
 
@@ -22,11 +23,7 @@ export const PostPreviewRenderer = async (props: PostPreviewProps) => {
   const host = headersList.get("host");
 
   const post = await (
-    await fetch(
-      `${
-        host?.includes("localhost") ? "http://" : "https://"
-      }${host}/api/posts/single?slug=${slug}`
-    )
+    await fetch(getUrlFromHost(host, `/api/posts/single?slug=${slug}`))
   ).json();
 
   if (!post) {

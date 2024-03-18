@@ -1,13 +1,10 @@
 import { merge } from "@/util/classNames";
+import { getFullyQualifiedDeploymentUrl } from "@/util/deployment";
 
 const getValue = async (): Promise<number> => {
   try {
     const data = await fetch(
-      `${
-        process.env.NODE_ENV === "development"
-          ? "http://localhost:3561"
-          : "https://keegan.codes"
-      }/api/view/total`,
+      getFullyQualifiedDeploymentUrl("/api/view/total"),
       { cache: "no-store" }
     );
 

@@ -1,4 +1,5 @@
 import { merge } from "@/util/classNames";
+import { getFullyQualifiedDeploymentUrl } from "@/util/deployment";
 
 interface ViewCountRendererProps {
   slug: string;
@@ -9,11 +10,7 @@ interface ViewCountRendererProps {
 const getValue = async (slug: string): Promise<number> => {
   try {
     const data = await fetch(
-      `${
-        process.env.NODE_ENV === "development"
-          ? "http://localhost:3561"
-          : "https://keegan.codes"
-      }/api/view?slug=${slug}`,
+      getFullyQualifiedDeploymentUrl(`/api/view?slug=${slug}`),
       { cache: "no-store" }
     );
 

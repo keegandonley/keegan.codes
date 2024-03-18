@@ -1,5 +1,6 @@
 import { background } from "@/theme/colors";
 import { Theme } from "@/types/theme";
+import { getCookieDomain } from "./deployment";
 
 export const setMetaTheme = (theme: Theme) => {
   document
@@ -11,14 +12,12 @@ export const setMetaTheme = (theme: Theme) => {
 };
 
 export const setHasChosenThemeCookie = () => {
-  const cookieDomain =
-    process.env.NODE_ENV === "development" ? "localhost" : "keegan.codes";
+  const cookieDomain = getCookieDomain();
   document.cookie = `chosen-theme=true; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=Lax; Secure;`;
 };
 
 export const setThemeCookie = (theme: Theme) => {
-  const cookieDomain =
-    process.env.NODE_ENV === "development" ? "localhost" : "keegan.codes";
+  const cookieDomain = getCookieDomain();
   document.cookie = `theme=${theme}; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=Lax; Secure;`;
 };
 

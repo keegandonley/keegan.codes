@@ -1,4 +1,5 @@
 import { Gallery } from "@/types/galleries";
+import { getFullyQualifiedDeploymentUrl } from "@/util/deployment";
 import dynamic from "next/dynamic";
 
 const DynamicClientRenderer = dynamic(() => import("./ClientRenderer"));
@@ -9,11 +10,7 @@ interface GalleryProps {
 
 export default async function GalleryRenderer({ gallery }: GalleryProps) {
   const data = await fetch(
-    `${
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3561"
-        : "https://keegan.codes"
-    }/api/gallery?gallery=${gallery}`,
+    getFullyQualifiedDeploymentUrl(`/api/gallery?gallery=${gallery}`),
     {
       next: {
         revalidate: 60 * 60,

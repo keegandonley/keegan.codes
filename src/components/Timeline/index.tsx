@@ -13,6 +13,7 @@ import { BUCKET_URL } from "@/util/r2";
 import { parseToProps } from "@/util/image";
 import { formatDate } from "@/util/date";
 import { headers } from "next/headers";
+import { getUrlFromHost } from "@/util/deployment";
 
 const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
 
@@ -25,25 +26,13 @@ const Timeline = async (props: TimelineProps) => {
 
   const host = headersList.get("host");
 
-  console.log("fetching further reading for host", host);
-
   const { slug } = props;
 
   const [previousPost, nextPost] = await Promise.all([
     (
-      await fetch(
-        `${
-          host?.includes("localhost") ? "http://" : "https://"
-        }${host}/api/posts/previous?slug=${slug}`
-      )
+      await fetch(getUrlFromHost(host, `/api/posts/previous?slug=${slug}`))
     ).json(),
-    (
-      await fetch(
-        `${
-          host?.includes("localhost") ? "http://" : "https://"
-        }${host}/api/posts/next?slug=${slug}`
-      )
-    ).json(),
+    (await fetch(getUrlFromHost(host, `/api/posts/next?slug=${slug}`))).json(),
   ]);
 
   const isAlone = !previousPost?.slug || !nextPost?.slug;
@@ -52,11 +41,7 @@ const Timeline = async (props: TimelineProps) => {
 
   if (isAlone) {
     randomPost = await (
-      await fetch(
-        `${
-          host?.includes("localhost") ? "http://" : "https://"
-        }${host}/api/posts/random?slug=${slug}`
-      )
+      await fetch(getUrlFromHost(host, `/api/posts/random?slug=${slug}`))
     ).json();
   }
 

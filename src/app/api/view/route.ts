@@ -20,6 +20,8 @@ export async function POST(request: Request) {
     return new Response("Error!", { status: 500 });
   }
 
+  console.log(`Successfully tracked view for ${res.slug}`);
+
   return new Response("Success!", { status: 200 });
 }
 
@@ -39,10 +41,7 @@ export async function GET(request: Request) {
   const row = results?.rows?.[0] as { views: number } | undefined;
 
   console.log(
-    "Calculated views for slug",
-    slug,
-    ":",
-    row?.views ?? "undefined"
+    `Fetched views for ${slug}, result was ${row?.views ?? "undefined"}`
   );
 
   return new Response(JSON.stringify(row ?? {}), {
