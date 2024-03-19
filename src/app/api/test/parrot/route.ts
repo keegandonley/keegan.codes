@@ -92,3 +92,17 @@ export async function PATCH(request: NextRequest) {
 export async function POST(request: NextRequest) {
   return handleRequest(request);
 }
+
+export async function OPTIONS(request: NextRequest) {
+  const origin = request.headers.get("origin");
+
+  console.log("origin was", origin);
+
+  return new Response(null, {
+    status: 204,
+    headers: {
+      "Access-Control-Allow-Origin": origin ?? "*",
+      "Access-Control-Allow-Credentials": "true",
+    },
+  });
+}
