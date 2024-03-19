@@ -1,5 +1,6 @@
 import { Connection, ExecutedQuery, connect } from "@planetscale/database";
-import { NextRequest, NextResponse } from "next/server";
+import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
+import { getMySQLDateTime } from "./util/date";
 
 const psConfig = {
   host: process.env.host,
@@ -11,11 +12,17 @@ export class ScanMiddleware {
   private db: Connection;
   private request: NextRequest;
   private pathNameSplits: string[];
+  private ctx: NextFetchEvent;
 
-  constructor(request: NextRequest, pathNameSplits: string[]) {
+  constructor(
+    request: NextRequest,
+    ctx: NextFetchEvent,
+    pathNameSplits: string[]
+  ) {
     this.db = this.getConnection();
     this.request = request;
     this.pathNameSplits = pathNameSplits;
+    this.ctx = ctx;
   }
 
   private getConnection() {
@@ -37,16 +44,26 @@ export class ScanMiddleware {
     return destination;
   }
 
-  private trackScan(code: number) {
-    return this.db.execute("INSERT INTO scan (code, scan_date) VALUES (?, ?)", [
-      code,
-      new Date(),
-    ]);
+  private async trackScan(code: number, url: string) {
+    try {
+      await this.db.execute(
+        "INSERT INTO scan (code, scan_date, url, scan_dt) VALUES (?, ?, ?, ?)",
+        [code, new Date(), url, getMySQLDateTime()]
+      );
+    } catch (ex) {
+      console.error(`Could not insert scan tracking for code ${code}`, ex);
+    } finally {
+      return true;
+    }
+  }
+
+  private getDestinationUrl(destination: ExecutedQuery<Record<string, any>>) {
+    return destination?.rows?.[0]?.destination;
   }
 
   private success(destination: ExecutedQuery<Record<string, any>>) {
     return NextResponse.redirect(
-      new URL(destination?.rows?.[0]?.destination, this.request.url)
+      new URL(this.getDestinationUrl(destination), this.request.url)
     );
   }
 
@@ -73,21 +90,15 @@ export class ScanMiddleware {
         return this.next();
       }
 
-      // If there is an error tracking the scan, we still want it to succeed
-      // on the redirect
-      try {
-        await this.trackScan(parsedCode);
-      } catch (ex) {
-        console.error(
-          `Could not insert scan tracking for code ${parsedCode}`,
-          ex
-        );
-        return this.next();
-      }
+      // We want to track the scan, but not block the user from being redirected
+      this.ctx.waitUntil(
+        this.trackScan(parsedCode, this.getDestinationUrl(destination))
+      );
 
       return this.success(destination);
     } catch (ex) {
       console.error("Could not look up scan destination", ex);
+      return this.next();
     }
   }
 }

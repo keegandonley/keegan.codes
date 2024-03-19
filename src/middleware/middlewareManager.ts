@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextFetchEvent, NextRequest } from "next/server";
 import { ScanMiddleware } from "../scanMiddleware";
 import { BlogMiddleware } from "./blogMiddleware";
 import { LibraryMiddleware } from "./libraryMiddleware";
@@ -9,11 +9,13 @@ export class MiddlewareManager {
   private request: NextRequest;
   private url: URL;
   private pathSplits: string[];
+  private ctx: NextFetchEvent;
 
-  constructor(req: NextRequest) {
+  constructor(req: NextRequest, ctx: NextFetchEvent) {
     this.request = req;
     this.url = new URL(req.url);
     this.pathSplits = this.url.pathname.split("/");
+    this.ctx = ctx;
   }
 
   private getRouteFirstSegment() {
@@ -33,7 +35,7 @@ export class MiddlewareManager {
 
     switch (firstSegment) {
       case "scan":
-        return new ScanMiddleware(this.request, this.pathSplits);
+        return new ScanMiddleware(this.request, this.ctx, this.pathSplits);
       case "blog":
         return new BlogMiddleware(this.request, this.pathSplits);
       case "library":

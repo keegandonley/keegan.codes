@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { NextRequest } from "next/server";
 import { connect } from "@planetscale/database";
+import { getMySQLDateTime } from "@/util/date";
 
 const config = {
   host: process.env.host,
@@ -62,7 +63,7 @@ export async function POST(request: NextRequest) {
         JSON.stringify(cookiesResult),
         mode,
         origin,
-        new Date().toISOString().slice(0, 19).replace("T", " "),
+        getMySQLDateTime(),
       ]
     );
   } catch (ex) {
