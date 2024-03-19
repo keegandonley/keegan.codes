@@ -8,3 +8,8 @@ export const formatDate = (date?: Date) => {
     }) ?? "";
   return result;
 };
+
+export const getMySQLDateTime = (date?: Date) => {
+  const dateObject = date ?? new Date();
+  return dateObject.toISOString().slice(0, 19).replace("T", " ");
+};
