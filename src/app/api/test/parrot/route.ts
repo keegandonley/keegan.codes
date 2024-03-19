@@ -9,13 +9,13 @@ const config = {
   password: process.env.password,
 };
 
-export async function POST(request: NextRequest) {
+const handleRequest = async (request: NextRequest) => {
   let result;
   let mode;
 
   const origin = request.headers.get("origin");
 
-  console.log(origin);
+  console.log("origin was", origin);
 
   try {
     const data = await request.formData();
@@ -83,4 +83,12 @@ export async function POST(request: NextRequest) {
       },
     }
   );
+};
+
+export async function PATCH(request: NextRequest) {
+  return handleRequest(request);
+}
+
+export async function POST(request: NextRequest) {
+  return handleRequest(request);
 }
