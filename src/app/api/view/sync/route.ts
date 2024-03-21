@@ -23,7 +23,7 @@ export async function GET() {
         []
       );
 
-    let total = 0;
+    let totalViews = 0;
     let executedCount = 0;
 
     const rowsGroups = results.rows.reduce(
@@ -46,7 +46,7 @@ export async function GET() {
         group.map((row: { slug: string; views: string }) => {
           executedCount++;
           try {
-            total += parseInt(row.views, 10);
+            totalViews += parseInt(row.views, 10);
           } catch (ex) {
             console.error("error logging view sync for", row.slug, ex);
           }
@@ -64,29 +64,32 @@ export async function GET() {
     }
 
     try {
-      conn.execute(
+      await conn.execute(
         "INSERT INTO page_views_total (type, views) VALUES (?, ?) ON DUPLICATE KEY UPDATE views = ?",
-        ["post", total, total]
+        ["post", totalViews, totalViews]
       );
     } catch (ex) {
       console.error(ex);
     }
 
+    const endTime = Date.now();
+
+    const duration = endTime - startTime;
+
     console.log(
       "updated",
       results.rows.length,
       "slugs with new view counts for a total of",
-      total,
-      "views"
+      totalViews,
+      "views in",
+      `${duration}ms`
     );
-
-    const endTime = Date.now();
 
     return NextResponse.json({
       ok: true,
-      count: executedCount,
-      totalViews: total,
-      duration: endTime - startTime,
+      executedCount,
+      totalViews,
+      duration,
     });
   } catch (ex) {
     console.error(ex);
