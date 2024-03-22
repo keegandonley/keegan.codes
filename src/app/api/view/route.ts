@@ -21,10 +21,16 @@ export async function POST(request: Request) {
   }
 
   try {
-    await conn.execute(
-      "INSERT INTO post_page_views_aggregate (slug, views) VALUES (?, 1) ON DUPLICATE KEY UPDATE views = views + 1",
-      [res.slug]
-    );
+    await Promise.all([
+      conn.execute(
+        "INSERT INTO post_page_views_aggregate (slug, views) VALUES (?, 1) ON DUPLICATE KEY UPDATE views = views + 1",
+        [res.slug]
+      ),
+      conn.execute(
+        "INSERT INTO page_views_total (type, views) VALUES (?, 1) ON DUPLICATE KEY UPDATE views = views + 1",
+        ["post"]
+      ),
+    ]);
   } catch (ex) {
     console.error(
       "Error incrementing view, this will get reconciled by the sync",
