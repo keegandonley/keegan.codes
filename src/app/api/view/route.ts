@@ -20,6 +20,18 @@ export async function POST(request: Request) {
     return new Response("Error!", { status: 500 });
   }
 
+  try {
+    await conn.execute(
+      "INSERT INTO post_page_views_aggregate (slug, views) VALUES (?, 1) ON DUPLICATE KEY UPDATE views = views + 1",
+      [res.slug]
+    );
+  } catch (ex) {
+    console.error(
+      "Error incrementing view, this will get reconciled by the sync",
+      ex
+    );
+  }
+
   console.log(`Successfully tracked view for ${res.slug}`);
 
   return new Response("Success!", { status: 200 });
