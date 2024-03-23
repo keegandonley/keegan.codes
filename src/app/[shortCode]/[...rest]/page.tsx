@@ -10,7 +10,7 @@ interface RestProps {
 }
 
 export default async function ShortCodeRest(props: RestProps) {
-  console.log("props were", props);
+  console.log("routing error props were", props);
   const fullUrl = props.params.rest?.length
     ? `${props.params.shortCode}/${props.params.rest.join("/")}`
     : props.params.shortCode;
