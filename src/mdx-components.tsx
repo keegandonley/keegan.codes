@@ -16,8 +16,10 @@ import { Table } from "./components/Post/Table";
 import { Td } from "./components/Post/Table/Td";
 import { Tr } from "./components/Post/Table/Tr";
 import { Th } from "./components/Post/Table/Th";
+import { Code } from "./components/Post/Code";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
+  console.log(components);
   return {
     h1: H1,
     h2: H2,
@@ -36,6 +38,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     td: Td,
     tr: Tr,
     th: Th,
+    code: Code,
     ...components,
   };
 }

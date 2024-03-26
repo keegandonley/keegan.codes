@@ -96,13 +96,11 @@ const Timeline = async (props: TimelineProps) => {
             </span>
             <p>{previousPost.description}</p>
             <div className={styles.metadataWrapper}>
-              <Suspense>
-                <DynamicViewCount
-                  slug={slug}
-                  className={styles.viewCount}
-                  fixedCount={previousPost.viewCount}
-                />
-              </Suspense>
+              <DynamicViewCount
+                slug={slug}
+                className={styles.viewCount}
+                fixedCount={previousPost.viewCount}
+              />
               <p className={styles.metadata}>
                 {formatDate(new Date(previousPost.published))}
               </p>
@@ -136,13 +134,11 @@ const Timeline = async (props: TimelineProps) => {
             </span>
             <p>{nextPost.description}</p>
             <div className={styles.metadataWrapper}>
-              <Suspense>
-                <DynamicViewCount
-                  slug={slug}
-                  className={styles.viewCount}
-                  fixedCount={nextPost.viewCount}
-                />
-              </Suspense>
+              <DynamicViewCount
+                slug={slug}
+                className={styles.viewCount}
+                fixedCount={nextPost.viewCount}
+              />
               <p className={styles.metadata}>
                 {formatDate(new Date(nextPost.published))}
               </p>
