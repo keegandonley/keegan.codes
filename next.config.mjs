@@ -54,6 +54,7 @@ const nextConfig = {
       }),
     ];
   },
+  transpilePackages: ["geist"],
 };
 
 const withBundleAnalyzer = addAnalyzer({
