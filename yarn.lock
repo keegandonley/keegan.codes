@@ -3207,12 +3207,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"geist@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "geist@npm:1.2.2"
+"geist@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "geist@npm:1.3.0"
   peerDependencies:
-    next: ">=13.2.0 <15"
-  checksum: beed77450b8f9041cb7b77a622cdd24b737b3d56ed5abed4ad8f98bed0960503a16b0cb2110747588ccca7cf537c6a88828ce267899f488d5b96258d56b9a053
+    next: ">=13.2.0 <15.0.0-0"
+  checksum: 4b0f5e10ef620226834cd20b8a559c075340077ae50831eca2a31c50e0000786ef717c84c2f534097204f5171ef1710ddced3ce7c513951c4de6ab0e46efd609
   languageName: node
   linkType: hard
 
@@ -4226,7 +4226,7 @@ __metadata:
     autoprefixer: ^10.4.19
     eslint: ^8.57.0
     eslint-config-next: ^14.1.4
-    geist: ^1.2.2
+    geist: ^1.3.0
     next: ^14.1.4
     postcss: ^8.4.38
     react: ^18.2.0
