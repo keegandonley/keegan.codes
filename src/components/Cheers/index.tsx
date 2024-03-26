@@ -1,8 +1,6 @@
 import { Suspense } from "react";
-import { CheersServerRenderer as _CheersServerRenderer } from "./ServerRenderer";
+import { CheersServerRenderer } from "./ServerRenderer";
 import { CheersClientRenderer } from "./ClientRenderer";
-
-const CheersServerRenderer = _CheersServerRenderer as any;
 
 interface CheersProps {
   slug: string;

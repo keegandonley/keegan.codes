@@ -1,12 +1,10 @@
-import { ViewCountRenderer as _ViewCountRenderer } from "./Renderer";
+import { ViewCountRenderer } from "./Renderer";
 import { Suspense } from "react";
 import { ViewCountFallback } from "./Fallback";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/pro-solid-svg-icons";
 import styles from "./viewcount.module.css";
 import { merge } from "@/util/classNames";
-
-const ViewCountRenderer = _ViewCountRenderer as any;
 
 interface ViewCountProps {
   slug: string;

@@ -1,0 +1,4 @@
+.parent[class*="language-"] {
+  font-family: var(--ffamily);
+  font-style: var(--fstyle);
+}

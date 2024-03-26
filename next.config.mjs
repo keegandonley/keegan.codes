@@ -54,6 +54,8 @@ const nextConfig = {
       }),
     ];
   },
+  // Support the pages router with the Geist font
+  transpilePackages: ["geist"],
 };
 
 const withBundleAnalyzer = addAnalyzer({
