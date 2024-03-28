@@ -19,12 +19,9 @@ export const runtime = "edge";
 
 const Timeline = dynamic(() => import("@/components/Timeline"));
 
-const DynamicTrack = dynamic(
-  () => import("@/components/Track").then((m) => m.Track),
-  {
-    ssr: false,
-  }
-);
+const DynamicTrack = dynamic(() => import("@/components/Track"), {
+  ssr: false,
+});
 
 export interface BlogPageProps {
   params: {

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-export const Track = ({ inModal, slug }: TrackBody) => {
+const Track = ({ inModal, slug }: TrackBody) => {
   useEffect(() => {
     if (process.env.NODE_ENV !== "development") {
       setTimeout(() =>
@@ -20,3 +20,5 @@ export const Track = ({ inModal, slug }: TrackBody) => {
 
   return null;
 };
+
+export default Track;
