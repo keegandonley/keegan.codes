@@ -19,7 +19,6 @@ import { Th } from "./components/Post/Table/Th";
 import { Code } from "./components/Post/Code";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
-  console.log(components);
   return {
     h1: H1,
     h2: H2,

@@ -5,18 +5,20 @@ export const description =
   "How to use dynamically calculated or user generated values in Tailwind";
 export const cover = "tailwind-variables-cover.png";
 export const published = new Date(2023, 10, 15);
+export const updated = new Date(2024, 2, 28);
 export const shortCodes = ["js-in-tailwind"];
 
 [Tailwind](https://tailwindcss.com/) is a CSS utility framework that provides shorthand CSS classes for rapidly composing
-designs. Instead of writing CSS rules, you simply add utility classes to your element. This blog post will be the first in a series about using Tailwind at enterprise scale and the tips and tricks
-I've developed while building a component library at [Kizen](https://keegan.codes/blog/beginning-a-new-chapter-of-my-career-with-kizen) and migrating to Tailwind from a css-in-js approach.
+designs. Instead of writing CSS rules, you simply add utility classes to your element. These pre-made classes are handy, but sometimes you'll need to use some data that's
+user-generated or only available in Javascript to generate your styles. There are a few approaches, but there's one that follows best practices most closely.
 
-Before we get started, I want to acknowledge that Tailwind can be a bit
-polarizing within the web development community. I've built many sites [using Tailwind](https://keegan.codes/blog/deciding-on-a-custom-template-for-bootstrapping-nextjs-apps),
-and [many without](https://keegan.codes/blog/welcome-to-my-new-blog), but this post isn't about whether or not you should use Tailwind - that's
-for you to decide!
+> I'll start with some context on why this problem exists, and how Tailwind works. If you don't want to read
+> that, you can [skip to the solution](#usingthestyleproptherightway) instead!
 
-With that out of the way, let's get into it! I'll start with a quick refresher on Tailwind. Take this simple element and some styling:
+This blog post is the first in a series about using Tailwind at enterprise scale. I'll cover tips and tricks
+I've developed while building a component library at [Kizen](https://keegan.codes/blog/beginning-a-new-chapter-of-my-career-with-kizen) while migrating to Tailwind from a css-in-js approach.
+
+Let's get into it! Take this simple element and some styling:
 
 ```html
 <style>
@@ -86,7 +88,7 @@ Like before, the Tailwind CLI will parse this out and generate a bundle with the
 This looks great, and works because the className is static and can be easily parsed. However, this approach starts to break down if you're using content from another
 system or storage medium, like user-defined colors.
 
-Let's look another contrived example where this exact issue comes to light. In this one,
+Let's look at another contrived example where this exact issue comes to light. In this one,
 we'll have a user-defined color stored in a variable, and we want to use that as the background:
 
 ```javascript
