@@ -6,12 +6,10 @@ export default function NavigationPage() {
   const hasChosenTheme = getHasChosenTheme();
 
   return (
-    <div>
-      <MainNavigation
-        isHomePage
-        initialTheme={theme}
-        hasChosenTheme={hasChosenTheme}
-      />
-    </div>
+    <MainNavigation
+      isHomePage
+      initialTheme={theme}
+      hasChosenTheme={hasChosenTheme}
+    />
   );
 }
