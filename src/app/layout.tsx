@@ -8,7 +8,6 @@ import { getHasChosenTheme, userTheme } from "@/util/cookies";
 import { Analytics } from "@vercel/analytics/react";
 import { Suspense } from "react";
 import { BASEURL, DESCRIPTION, NAME } from "@/metadata";
-import MainNavigation from "@/components/MainNavigation";
 import { ModalBoundary } from "@/components/ModalBoundary";
 import ThemeProvider from "./themeProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -23,9 +22,20 @@ const DynamicEventWaiter = dynamic(
   }
 );
 
+const DynamicClientInteraction = dynamic(
+  () => import("../components/ClientInteraction"),
+  {
+    ssr: false,
+  }
+);
+
 config.autoAddCss = false;
 
-export default async function RootLayout({ children, postModal }: any) {
+export default async function RootLayout({
+  children,
+  postModal,
+  navigation,
+}: any) {
   const theme = userTheme();
   const hasChosenTheme = getHasChosenTheme();
 
@@ -42,10 +52,8 @@ export default async function RootLayout({ children, postModal }: any) {
           <LoadingProvider>
             {/* Display banner text from the edge config if an event is active */}
             <DynamicEventWaiter />
-            <MainNavigation
-              initialTheme={theme}
-              hasChosenTheme={hasChosenTheme}
-            />
+            <DynamicClientInteraction />
+            {navigation}
             <main>{children}</main>
             <ModalBoundary>{postModal}</ModalBoundary>
           </LoadingProvider>
