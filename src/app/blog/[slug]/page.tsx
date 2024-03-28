@@ -12,13 +12,16 @@ import { getComponentForKey, getKey } from "../util";
 import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
 import wordCounts from "../../../post-word-counts.json";
 import { BASEURL, NAME } from "@/metadata";
-import { Track } from "@/components/Track";
 import { PostHeader } from "@/components/PostHeader";
 import dynamic from "next/dynamic";
 
 export const runtime = "edge";
 
 const Timeline = dynamic(() => import("@/components/Timeline"));
+
+const DynamicTrack = dynamic(() => import("@/components/Track"), {
+  ssr: false,
+});
 
 export interface BlogPageProps {
   params: {
@@ -113,7 +116,7 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
           wordCount={wordCount}
         />
         <Component />
-        <Track slug={params.slug} inModal={false} />
+        <DynamicTrack slug={params.slug} inModal={false} />
       </article>
       <footer
         style={{

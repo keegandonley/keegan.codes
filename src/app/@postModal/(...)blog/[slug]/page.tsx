@@ -2,7 +2,11 @@ import { Modal } from "@/components/Modal";
 import { PostModal } from "@/components/PostModal";
 import "../../../syntax-theme.css";
 import wordCounts from "../../../../post-word-counts.json";
-import { Track } from "@/components/Track";
+import dynamic from "next/dynamic";
+
+const DynamicTrack = dynamic(() => import("@/components/Track"), {
+  ssr: false,
+});
 
 export const runtime = "edge";
 
@@ -22,7 +26,7 @@ export default async function Interceptor(args: InterceptorProps) {
   return (
     <Modal>
       <PostModal slug={params.slug} wordCount={wordCount} />
-      <Track slug={params.slug} inModal />
+      <DynamicTrack slug={params.slug} inModal />
     </Modal>
   );
 }

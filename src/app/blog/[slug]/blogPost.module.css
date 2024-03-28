@@ -24,10 +24,6 @@
   padding: 14rem 2rem 2rem 2rem;
   color: var(--theme-text);
   position: relative;
-  animation-duration: 1s;
-  animation-name: fade-in;
-  animation-fill-mode: forwards;
-  opacity: 0;
 }
 
 .back {
@@ -53,10 +49,6 @@
   height: 500px;
   top: 0;
   z-index: 0;
-  animation-name: fade-in;
-  animation-duration: 0.2s;
-  animation-fill-mode: forwards;
-  opacity: 0;
 }
 
 .coverWrapper img {

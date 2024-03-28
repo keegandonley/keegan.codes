@@ -116,28 +116,6 @@ const DynamicPosts = (props: DynamicPostsProps) => {
           remainingPosts={remainingPosts - pageData.length}
         />
       ) : null}
-      {hasNextPage && !pageData ? (
-        <>
-          <MDXEntryRow
-            key="extra-1"
-            index={-1}
-            filler
-            isLikelyMobile={isLikelyMobile}
-          />
-          <MDXEntryRow
-            key="extra-2"
-            index={-1}
-            filler
-            isLikelyMobile={isLikelyMobile}
-          />
-          <MDXEntryRow
-            key="extra-3"
-            index={-1}
-            filler
-            isLikelyMobile={isLikelyMobile}
-          />
-        </>
-      ) : null}
     </>
   );
 };
