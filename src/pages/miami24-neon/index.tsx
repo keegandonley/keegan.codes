@@ -1,106 +1,130 @@
-import { Avatar } from "@/components/Avatar";
+import { merge } from "@/util/classNames";
 import Link from "next/link";
-import linkedIn from "@/images/linkedin.svg";
-import X from "@/images/x-twitter.svg";
+import localFont from "next/font/local";
+import styles from "@/pageStyles/miami24/miami.module.css";
 import Image from "next/image";
-import { Hr } from "@/components/Post/Hr";
-import { BUCKET_URL } from "@/util/r2";
-import { HiTrack } from "@/components/Track/Hi";
+import linkedIn from "@/images/linkedin-miami.svg";
+import X from "@/images/x-twitter-miami.svg";
 import "@/tw.css";
+import { BUCKET_URL } from "@/util/r2";
 
-export default function Render24() {
-  const skewYDeg = 0;
-  const skewXDeg = 0;
+const yellowTail = localFont({
+  src: [
+    {
+      path: "../../sharedFonts/Yellowtail.ttf",
+      style: "normal",
+    },
+  ],
+});
 
+const bungee = localFont({
+  src: [
+    {
+      path: "../../sharedFonts/Bungee.ttf",
+      style: "normal",
+    },
+  ],
+});
+
+const comfortaa = localFont({
+  src: [
+    {
+      path: "../../sharedFonts/Comfortaa.ttf",
+      style: "normal",
+    },
+  ],
+});
+
+export default function Miami24Neon() {
   return (
     <>
-      <div
-        className={`bg-render-bg min-h-dvh flex flex-col items-center justify-start pt-20`}
-      >
-        <div className="max-w-[1000px] flex flex-col items-center justify-center text-center px-5">
-          <Avatar
-            width={200}
-            className="skew-y-[var(--dimension-1-deg)] skew-x-[var(--dimension-2-deg)] grayscale shadow-xl"
-            style={{
-              "--dimension-1-deg": `${skewYDeg}deg`,
-              "--dimension-2-deg": `${skewXDeg}deg`,
-            }}
-            priority
-          />
+      <div className={merge(`min-h-dvh bg-black`)}>
+        <div className="max-w-[1000px] mx-auto flex flex-col items-center justify-center text-center px-5 z-50">
           <div className="h-10" />
-          <h1 className="text-render-text text-4xl font-bold font-serif">
-            Hi there! It&apos;s nice to meet you!
+          <h1
+            className={merge(
+              `text-[5rem] md:text-[8rem] leading-[6rem] sm:leading-normal font-bold`,
+              styles.neon,
+              bungee.className
+            )}
+          >
+            Hi there!
           </h1>
+          <h2
+            className={merge(
+              `text-[3.5rem] md:text-[5rem] mt-[-2.5rem] md:mt-[-5rem]`,
+              yellowTail.className,
+              styles.neonPink
+            )}
+          >
+            Nice to meet you!
+          </h2>
           <div className="h-5" />
-          <p className="text-render-text text-xl font-serif">
+          <p
+            className={merge(
+              `text-white text-xl w-4/5 border-solid border-neon-pink border-2 rounded-lg p-6`,
+              comfortaa.className
+            )}
+          >
             My name is <strong>Keegan Donley</strong>, and I&apos;m currently a
             principal front-end engineer at{" "}
             <Link
               href="https://kizen.com"
               target="_blank"
-              className="text-render-accent"
+              className="text-neon-blue"
             >
               <strong>Kizen</strong>
             </Link>
             . I love all things React, NextJS, and performant web!
           </p>
-          <div className="h-5" />
-          <p className="text-render-text text-xl font-serif">
-            I&apos;d love to connect on{" "}
-            <Link href={"/linkedin"} className="text-render-accent">
+          <div className="h-8" />
+          <div className="flex gap-12">
+            <Link href={"/linkedin"}>
               <Image
                 src={linkedIn}
                 alt="LinkedIn"
                 className="inline mb-1"
-                height={20}
-                width={20}
+                height={30}
+                width={30}
                 priority
-              />{" "}
-              <strong>LinkedIn</strong>
-            </Link>{" "}
-            or{" "}
-            <Link href={"/twitter"} className="">
+              />
+            </Link>
+            <Link href={"/twitter"}>
               <Image
                 src={X}
                 alt="X (Twitter)"
                 className="inline mb-1"
-                height={20}
-                width={20}
+                height={30}
+                width={30}
                 priority
               />
             </Link>
-            !
-          </p>
-          <div className="h-5" />
-          <p className="text-render-text text-xl font-serif">
-            I also write a{" "}
-            <Link href="/blog" className="text-render-accent">
+          </div>
+          <div className="h-8" />
+          <p
+            className={merge(
+              `text-white text-xl w-4/5 border-solid border-neon-blue border-2 rounded-lg p-6`,
+              comfortaa.className
+            )}
+          >
+            I write a{" "}
+            <Link href="/blog" className="text-neon-pink">
               <strong>blog</strong>
             </Link>{" "}
             about a number of topics, ranging from software to fitness to
             travel.
           </p>
-          <Hr
-            className="w-full"
-            style={{
-              "--theme-blue-2": "var(--color-render-accent)",
-              "--theme-background": "var(--color-render-bg)",
-            }}
-          />
-          <div className="h-5" />
-          <p className="text-render-text text-xl font-serif">
-            Want to grab a coffee? Happy hour? A bite to eat? I love meeting new
-            people at conferences like Render, so let&apos;s connect!
-          </p>
-          <div className="h-20" />
-          <h2 className="text-render-text text-xl font-serif">
+        </div>
+        <div className="h-20" />
+        <div className="px-12">
+          <h2 className="text-white text-center">
             <strong>Some of My Blog Posts:</strong>
           </h2>
           <div className="h-10" />
           <div className="grid grid-rows-3 grid-cols-1 sm:grid-cols-3 sm:grid-rows-1 w-full gap-4">
             <Link
               href="/blog/using-javascript-variables-in-tailwind?source=render24"
-              className="shadow-xl text-left rounded-lg overflow-hidden font-serif text-render-text"
+              className="shadow-xl text-left rounded-lg overflow-hidden  text-white"
             >
               <div className="h-36">
                 <Image
@@ -127,7 +151,7 @@ export default function Render24() {
             </Link>
             <Link
               href="/blog/generating-css-variables-from-a-custom-tailwind-theme?source=render24"
-              className="shadow-xl text-left rounded-lg overflow-hidden font-serif text-render-text"
+              className="shadow-xl text-left rounded-lg overflow-hidden  text-white"
             >
               <div className="h-36">
                 <Image
@@ -156,7 +180,7 @@ export default function Render24() {
             </Link>
             <Link
               href="/blog/mastering-react-component-callbacks-with-currying?source=render24"
-              className="shadow-xl text-left rounded-lg overflow-hidden font-serif text-render-text"
+              className="shadow-xl text-left rounded-lg overflow-hidden  text-white"
             >
               <div className="h-36">
                 <Image
@@ -185,17 +209,8 @@ export default function Render24() {
             </Link>
           </div>
           <div className="h-5" />
-          <Hr
-            className="w-full"
-            style={{
-              "--theme-blue-2": "var(--color-render-accent)",
-              "--theme-background": "var(--color-render-bg)",
-            }}
-          />
-          <div className="h-5" />
         </div>
       </div>
-      <HiTrack slug="render24" qrScanned={false} />
     </>
   );
 }

@@ -1,25 +1,18 @@
 import { merge } from "@/util/classNames";
-import Link from "next/link";
-import localFont from "next/font/local";
-import styles from "@/pageStyles/miami24/miami.module.css";
-import Image from "next/image";
-import linkedIn from "@/images/linkedin-miami.svg";
-import X from "@/images/x-twitter-miami.svg";
 import "@/tw.css";
+import Image from "next/image";
+import background from "../../images/miami24/background.jpg";
+import palm from "../../images/miami24/palm.png";
+import localFont from "next/font/local";
+import Link from "next/link";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/pro-solid-svg-icons";
 
 const yellowTail = localFont({
   src: [
     {
       path: "../../sharedFonts/Yellowtail.ttf",
-      style: "normal",
-    },
-  ],
-});
-
-const bungee = localFont({
-  src: [
-    {
-      path: "../../sharedFonts/Bungee.ttf",
       style: "normal",
     },
   ],
@@ -34,122 +27,175 @@ const comfortaa = localFont({
   ],
 });
 
-export default function miami24() {
+export default function Miami24() {
+  const [theme, setTheme] = useState<"day" | "night">("day");
+
+  const dayOceanClassNames = merge("");
+  const nightOceanClassNames = merge(
+    "hue-rotate-120 brightness-50 contrast-150 saturate-75"
+  );
+  const oceanClassNames =
+    theme === "day" ? dayOceanClassNames : nightOceanClassNames;
+
+  const dayOverlayClassNames = merge("bg-sand opacity-60");
+  const nightOverlayClassNames = merge("bg-gray-900 opacity-70");
+  const overlayClassNames =
+    theme === "day" ? dayOverlayClassNames : nightOverlayClassNames;
+
+  const dayBodyTextClassNames = merge("text-gray-700");
+  const nightBodyTextClassNames = merge("text-gray-200");
+  const bodyTextClassNames =
+    theme === "day" ? dayBodyTextClassNames : nightBodyTextClassNames;
+
+  const treeDayClassNames = merge("brightness-200 saturate-50");
+  const treeNightClassNames = merge("brightness-50 contrast-125");
+  const treeClassNames =
+    theme === "day" ? treeDayClassNames : treeNightClassNames;
+
+  const animationClassNames = merge("transition-all");
+
+  const bottomFadeDayClassNames = merge(
+    "bg-gradient-to-b from-transparent via-sand to-sand"
+  );
+  const bottomFadeNightClassNames = merge(
+    "bg-gradient-to-b from-transparent via-gray-900 to-gray-900"
+  );
+  const bottomFadeClassNames =
+    theme === "day" ? bottomFadeDayClassNames : bottomFadeNightClassNames;
+
+  const handleClick = () => {
+    setTheme((t) => (t === "day" ? "night" : "day"));
+  };
+
   return (
-    <>
-      <div className={merge(`min-h-dvh bg-black`)}>
-        <div className="max-w-[1000px] mx-auto flex flex-col items-center justify-center text-center px-5 z-50">
-          <div className="h-10" />
-          <h1
-            className={merge(
-              `text-[5rem] md:text-[8rem] leading-[6rem] sm:leading-normal font-bold`,
-              styles.neon,
-              bungee.className
-            )}
-          >
-            Hi there!
-          </h1>
-          <h2
-            className={merge(
-              `text-[3.5rem] md:text-[5rem] mt-[-2.5rem] md:mt-[-5rem]`,
-              yellowTail.className,
-              styles.neonPink
-            )}
-          >
-            Nice to meet you!
-          </h2>
-          <div className="h-5" />
-          <p
-            className={merge(
-              `text-white text-xl w-4/5 border-solid border-neon-pink border-2 rounded-lg p-6`,
-              comfortaa.className
-            )}
-          >
-            My name is <strong>Keegan Donley</strong>, and I&apos;m currently a
-            principal front-end engineer at{" "}
-            <Link
-              href="https://kizen.com"
-              target="_blank"
-              className="text-neon-blue"
-            >
-              <strong>Kizen</strong>
-            </Link>
-            . I love all things React, NextJS, and performant web!
-          </p>
-          <div className="h-8" />
-          <div className="flex gap-12">
-            <Link href={"/linkedin"}>
-              <Image
-                src={linkedIn}
-                alt="LinkedIn"
-                className="inline mb-1"
-                height={30}
-                width={30}
-                priority
-              />
-            </Link>
-            <Link href={"/twitter"}>
-              <Image
-                src={X}
-                alt="X (Twitter)"
-                className="inline mb-1"
-                height={30}
-                width={30}
-                priority
-              />
-            </Link>
-          </div>
-          <div className="h-8" />
-          <p
-            className={merge(
-              `text-white text-xl w-4/5 border-solid border-neon-blue border-2 rounded-lg p-6`,
-              comfortaa.className
-            )}
-          >
-            I write a{" "}
-            <Link href="/blog" className="text-neon-pink">
-              <strong>blog</strong>
-            </Link>{" "}
-            about a number of topics, ranging from software to fitness to
-            travel.
-          </p>
-        </div>
-        <div className="h-12" />
-        {/* <div className="fixed left-0 right-0 bottom-0">
-          <svg
-            className="absolute left-[-24px] bottom-[-8px] text-miami-pink w-[200px]"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <path
-              fill="currentColor"
-              d="M112 96H62.2c0-36 38.4-96 128-96c58.4 0 95 25.5 113.5 53.2C323.6 40.6 350.2 32 384 32c89.6 0 128 60 128 96H448L416 96l-32 32H301.5c28 79.9 21.2 170.2 9.9 226.1C370.9 365.1 416 417.3 416 480v32H32V480c0-70.7 57.3-128 128-128h64c29.7-79.3 29.4-150.9 22.8-194l-98.9 98.9c-25.5-25.5-40.7-95 22.6-158.4c1.3-1.3 2.7-2.7 4.1-3.9L144 64 112 96z"
-            />
-          </svg>
-          <svg
-            className="absolute left-[-30px] bottom-[-4px] text-miami-blue w-[200px]"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <path
-              fill="currentColor"
-              d="M112 96H62.2c0-36 38.4-96 128-96c58.4 0 95 25.5 113.5 53.2C323.6 40.6 350.2 32 384 32c89.6 0 128 60 128 96H448L416 96l-32 32H301.5c28 79.9 21.2 170.2 9.9 226.1C370.9 365.1 416 417.3 416 480v32H32V480c0-70.7 57.3-128 128-128h64c29.7-79.3 29.4-150.9 22.8-194l-98.9 98.9c-25.5-25.5-40.7-95 22.6-158.4c1.3-1.3 2.7-2.7 4.1-3.9L144 64 112 96z"
-            />
-          </svg>
-          <svg
-            className="absolute left-[-38px] bottom-0 text-miami-yellow w-[200px]"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <path
-              fill="currentColor"
-              d="M112 96H62.2c0-36 38.4-96 128-96c58.4 0 95 25.5 113.5 53.2C323.6 40.6 350.2 32 384 32c89.6 0 128 60 128 96H448L416 96l-32 32H301.5c28 79.9 21.2 170.2 9.9 226.1C370.9 365.1 416 417.3 416 480v32H32V480c0-70.7 57.3-128 128-128h64c29.7-79.3 29.4-150.9 22.8-194l-98.9 98.9c-25.5-25.5-40.7-95 22.6-158.4c1.3-1.3 2.7-2.7 4.1-3.9L144 64 112 96z"
-            />
-          </svg>
-        </div> */}
+    <div className={merge("min-h-dvh max-h-dvh bg-sand")}>
+      <button
+        className="fixed right-[15px] top-[15px] z-10"
+        onClick={handleClick}
+      >
+        {theme === "day" ? (
+          <FontAwesomeIcon
+            icon={faMoon}
+            className="text-gray-600 text-4xl"
+            fixedWidth
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faSun}
+            className="text-yellow-500 text-4xl"
+            fixedWidth
+          />
+        )}
+      </button>
+      <div className="fixed left-0 right-0 top-[-150px] h-[1000px] pointer-events-none">
+        <Image
+          src={background}
+          alt="Beach"
+          layout="fill"
+          className={merge(
+            "sepia-80 bg-cover bg-top",
+            animationClassNames,
+            oceanClassNames
+          )}
+        />
+        <div
+          className={merge(
+            "absolute left-0 right-0 top-0 bottom-0",
+            animationClassNames,
+            overlayClassNames
+          )}
+        ></div>
       </div>
-    </>
+      <div className="z-10 relative pt-[244px] sm:pt-[218px] pr-4 text-right flex flex-col pointer-events-none">
+        <span
+          className={merge(
+            yellowTail.className,
+            "text-[4rem] sm:text-[6rem] pr-4 text-pink-500 p-0 m-0 leading-none"
+          )}
+        >
+          Hi There!
+        </span>
+        <span
+          className={merge(
+            yellowTail.className,
+            "leading-none text-blue-600 text-[3rem] mt-[-13px] sm:mt-[-18px] pr-12 sm:pr-16"
+          )}
+        >
+          Nice to meet you!
+        </span>
+        <p
+          className={merge(
+            "w-3/4 sm:w-1/2 ml-auto pt-6 pr-6 text-2xl font-bold",
+            bodyTextClassNames,
+            animationClassNames,
+            comfortaa.className
+          )}
+        >
+          My name is Keegan Donley, and I&apos;m currently a principal font-end
+          engineer at{" "}
+          <Link href="https://kizen.com" className="text-blue-600">
+            Kizen
+          </Link>
+          .
+        </p>
+        <p
+          className={merge(
+            "w-1/2 ml-auto pt-6 pr-6 text-2xl font-bold pb-12",
+            bodyTextClassNames,
+            animationClassNames,
+            comfortaa.className
+          )}
+        >
+          I love all things React, NextJS, and performant web, and write a{" "}
+          <Link className="text-blue-600" href="/blog">
+            blog
+          </Link>{" "}
+          about a number of topics, ranging from software to fitness to travel.
+        </p>
+      </div>
+      <div
+        className={merge(
+          "fixed bottom-0 left-0 right-0 h-1/3 sm:h-1/4",
+          bottomFadeClassNames
+        )}
+      />
+      <div className="fixed left-0 bottom-0 top-0 w-[200%] pointer-events-none">
+        <div className="relative w-full h-full">
+          <div className="absolute left-[-40px] sm:left-[-20px] top-[10px] sm:top-[20px] bottom-[-10px] sm:bottom-[-20px]">
+            <Image
+              src={palm}
+              alt="Palm"
+              className={merge(
+                "h-full w-auto min-w-0 drop-shadow-lg hue-rotate-30 select-none pointer-events-none",
+                animationClassNames,
+                treeClassNames
+              )}
+            />
+          </div>
+          <div className="absolute left-[-130px] sm:left-[-70px] top-[180px] sm:top-[90px] bottom-[-180px] sm:bottom-[-90px]">
+            <Image
+              src={palm}
+              alt="Palm"
+              className={merge(
+                "h-full w-auto drop-shadow-lg hue-rotate-45 select-none pointer-events-none",
+                animationClassNames,
+                treeClassNames
+              )}
+            />
+          </div>
+          <div className="absolute left-[-120px] sm:left-[-40px] top-[400px] bottom-[-400px] sm:top-[300px] sm:bottom-[-300px]">
+            <Image
+              src={palm}
+              alt="Palm"
+              className={merge(
+                "h-full w-auto drop-shadow-lg hue-rotate-60 select-none pointer-events-none",
+                animationClassNames,
+                treeClassNames
+              )}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
-
-// bg-gradient-to-b from-miami-blue via-miami-pink to-miami-yellow

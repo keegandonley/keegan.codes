@@ -26,10 +26,10 @@
 
 .neon {
   color: #fff;
-  animation: pulsate 2.5s infinite alternate;
+  /* animation: pulsate 2.5s infinite alternate; */
 }
 
 .neonPink {
   color: #fff;
-  animation: pulsatePink 2.5s infinite alternate;
+  /* animation: pulsatePink 2.5s infinite alternate; */
 }

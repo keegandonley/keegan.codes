@@ -10,6 +10,7 @@ const colors = {
   "miami-bg": "rgb(38, 42, 104)",
   "neon-blue": "#039dfc",
   "neon-pink": "#fc03b1",
+  sand: "rgb(217, 210, 195)",
 };
 
 module.exports = {
