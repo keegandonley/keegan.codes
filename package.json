@@ -15,10 +15,10 @@
     "analyze": "NODE_OPTIONS=--max-old-space-size=4096 ANALYZE=true yarn build"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-pro": "^6.5.1",
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/free-brands-svg-icons": "^6.5.1",
-    "@fortawesome/pro-solid-svg-icons": "^6.5.1",
+    "@fortawesome/fontawesome-pro": "^6.5.2",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/pro-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
