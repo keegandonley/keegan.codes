@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import Link from "next/link";
 import { Suspense } from "react";
 import styles from "./postPreview.module.css";
@@ -8,7 +7,10 @@ import { formatDate } from "@/util/date";
 import Image from "next/image";
 import { BUCKET_URL } from "@/util/r2";
 import { parseToProps } from "@/util/image";
-import { getUrlFromHost } from "@/util/deployment";
+import {
+  getFullyQualifiedDeploymentUrl,
+  getUrlFromHost,
+} from "@/util/deployment";
 
 const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
 
@@ -18,13 +20,12 @@ interface PostPreviewProps {
 
 export const PostPreviewRenderer = async (props: PostPreviewProps) => {
   const { slug } = props;
-  const headersList = headers();
 
-  const host = headersList.get("host");
+  const { url, headers } = await getFullyQualifiedDeploymentUrl(
+    `/api/posts/single?slug=${slug}`
+  );
 
-  const post = await (
-    await fetch(getUrlFromHost(host, `/api/posts/single?slug=${slug}`))
-  ).json();
+  const post = await (await fetch(url, { headers })).json();
 
   if (!post) {
     return null;
