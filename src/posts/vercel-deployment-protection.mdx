@@ -12,6 +12,9 @@ is called **Vercel Authentication**, which allows you to restrict access to all 
 current production deployment. When enabled, you and any team members will need to log in to Vercel
 in order to access any past production deplyments, or any preview deployments.
 
+This means that your preview and non-production deployments (including API routes) will require an authentication cookie
+to grant access. This will be important later when moving to this approach from an existing Next app.
+
 This Next.js app for [keegan.codes](https://keegan.codes) was not originally built with standard protection enabled, so I had to follow Vercel's
 [migration guide](https://vercel.com/docs/security/deployment-protection#migrating-to-standard-protection) in
 order to get everything working before I could turn it on. In this post, I'm going to cover what I learned migrating to this new protection,
