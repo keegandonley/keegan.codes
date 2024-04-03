@@ -6,7 +6,7 @@ export const getFullyQualifiedDeploymentUrl = async (path: `/${string}`) => {
 
   let host = null;
 
-  if (typeof window !== "undefined") {
+  if (typeof window === "undefined") {
     const getHeaders = (await import("next/headers")).headers;
     const headersList = getHeaders();
     host = headersList.get("host") || "keegan.codes";
