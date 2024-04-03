@@ -5,14 +5,19 @@ export const getFullyQualifiedDeploymentUrl = async (path: `/${string}`) => {
   }
 
   let host = null;
+  let cookie;
 
   if (typeof window === "undefined") {
     const getHeaders = (await import("next/headers")).headers;
     const headersList = getHeaders();
     host = headersList.get("host") || "keegan.codes";
+    cookie = headersList.get("cookie");
   }
 
-  return { url: host ? getUrlFromHost(host, path) : path };
+  return {
+    url: host ? getUrlFromHost(host, path) : path,
+    headers: cookie ? { cookie } : undefined,
+  };
 };
 
 export const getUrlFromHost = (host: string | null, path?: `/${string}`) => {

@@ -13,7 +13,10 @@ import { BUCKET_URL } from "@/util/r2";
 import { parseToProps } from "@/util/image";
 import { formatDate } from "@/util/date";
 import { headers } from "next/headers";
-import { getUrlFromHost } from "@/util/deployment";
+import {
+  getFullyQualifiedDeploymentUrl,
+  getUrlFromHost,
+} from "@/util/deployment";
 
 const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
 
@@ -28,11 +31,16 @@ const Timeline = async (props: TimelineProps) => {
 
   const { slug } = props;
 
+  const [previousFetcher, nextFetcher] = await Promise.all([
+    getFullyQualifiedDeploymentUrl(`/api/posts/previous?slug=${slug}`),
+    getFullyQualifiedDeploymentUrl(`/api/posts/next?slug=${slug}`),
+  ]);
+
   const [previousPost, nextPost] = await Promise.all([
     (
-      await fetch(getUrlFromHost(host, `/api/posts/previous?slug=${slug}`))
+      await fetch(previousFetcher.url, { headers: previousFetcher.headers })
     ).json(),
-    (await fetch(getUrlFromHost(host, `/api/posts/next?slug=${slug}`))).json(),
+    (await fetch(nextFetcher.url, { headers: nextFetcher.headers })).json(),
   ]);
 
   const isAlone = !previousPost?.slug || !nextPost?.slug;
@@ -40,8 +48,11 @@ const Timeline = async (props: TimelineProps) => {
   let randomPost: any;
 
   if (isAlone) {
+    const aloneFetcher = await getFullyQualifiedDeploymentUrl(
+      `/api/posts/random?slug=${slug}`
+    );
     randomPost = await (
-      await fetch(getUrlFromHost(host, `/api/posts/random?slug=${slug}`))
+      await fetch(aloneFetcher.url, { headers: aloneFetcher.headers })
     ).json();
   }
 
