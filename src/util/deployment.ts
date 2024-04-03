@@ -14,9 +14,10 @@ export const getFullyQualifiedDeploymentUrl = async (path: `/${string}`) => {
     cookie = headersList.get("cookie");
   }
 
-  console.log(cookie);
-
-  return { url: host ? getUrlFromHost(host, path) : path };
+  return {
+    url: host ? getUrlFromHost(host, path) : path,
+    headers: cookie ? { cookie } : undefined,
+  };
 };
 
 export const getUrlFromHost = (host: string | null, path?: `/${string}`) => {

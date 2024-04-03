@@ -9,10 +9,10 @@ interface ViewCountRendererProps {
 
 const getValue = async (slug: string): Promise<number> => {
   try {
-    const { url } = await getFullyQualifiedDeploymentUrl(
+    const { url, headers } = await getFullyQualifiedDeploymentUrl(
       `/api/view?slug=${slug}`
     );
-    const data = await fetch(url, { cache: "no-store" });
+    const data = await fetch(url, { cache: "no-store", headers });
 
     const { views } = await data.json();
 

@@ -9,7 +9,7 @@ interface GalleryProps {
 }
 
 export default async function GalleryRenderer({ gallery }: GalleryProps) {
-  const { url } = await getFullyQualifiedDeploymentUrl(
+  const { url, headers } = await getFullyQualifiedDeploymentUrl(
     `/api/gallery?gallery=${gallery}`
   );
 
@@ -17,6 +17,7 @@ export default async function GalleryRenderer({ gallery }: GalleryProps) {
     next: {
       revalidate: 60 * 60,
     },
+    headers,
   });
 
   const parsed = (await data.json()) as { gallery: Gallery; bucket: string };
