@@ -41,6 +41,7 @@ import * as YearInReview2023 from "./2023-in-review.mdx";
 import * as ReactPreviousProps from "./tracking-previous-prop-values-in-FCs.mdx";
 import * as Architecture1Year from "./reflection-architecture-one-year.mdx";
 import * as ThirstyBot from "./introducing-thirsty-bot.mdx";
+import * as VercelDeploymentProtection from "./vercel-deployment-protection.mdx";
 
 const posts = {
   Welcome,
@@ -86,6 +87,7 @@ const posts = {
   ReactPreviousProps,
   Architecture1Year,
   ThirstyBot,
+  VercelDeploymentProtection,
 };
 
 export default posts;
