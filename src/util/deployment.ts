@@ -1,15 +1,18 @@
-export const getFullyQualifiedDeploymentUrl = (path: `/${string}`) => {
+export const getFullyQualifiedDeploymentUrl = async (path: `/${string}`) => {
   if (process.env.NODE_ENV === "development") {
     const port = process.env.PORT || "3561";
-    return `http://localhost:${port}${path}`;
+    return { url: `http://localhost:${port}${path}` };
   }
 
-  const url =
-    process.env.NEXT_PUBLIC_VERCEL_URL ||
-    process.env.VERCEL_URL ||
-    "keegan.codes";
+  let host = null;
 
-  return `https://${url}${path}`;
+  if (typeof window !== "undefined") {
+    const getHeaders = (await import("next/headers")).headers;
+    const headersList = getHeaders();
+    host = headersList.get("host") || "keegan.codes";
+  }
+
+  return { url: getUrlFromHost(host, path) };
 };
 
 export const getUrlFromHost = (host: string | null, path?: `/${string}`) => {
