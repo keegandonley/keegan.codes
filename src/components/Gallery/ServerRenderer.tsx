@@ -9,14 +9,15 @@ interface GalleryProps {
 }
 
 export default async function GalleryRenderer({ gallery }: GalleryProps) {
-  const data = await fetch(
-    getFullyQualifiedDeploymentUrl(`/api/gallery?gallery=${gallery}`),
-    {
-      next: {
-        revalidate: 60 * 60,
-      },
-    }
+  const { url } = await getFullyQualifiedDeploymentUrl(
+    `/api/gallery?gallery=${gallery}`
   );
+
+  const data = await fetch(url, {
+    next: {
+      revalidate: 60 * 60,
+    },
+  });
 
   const parsed = (await data.json()) as { gallery: Gallery; bucket: string };
 

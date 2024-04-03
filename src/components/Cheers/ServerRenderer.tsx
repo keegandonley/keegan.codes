@@ -9,12 +9,12 @@ interface CheersServerRendererProps {
 
 const getValue = async (slug: string): Promise<number> => {
   try {
-    const data = await fetch(
-      getFullyQualifiedDeploymentUrl(`/api/cheers?slug=${slug}`),
-      {
-        cache: "no-store",
-      }
+    const { url } = await getFullyQualifiedDeploymentUrl(
+      `/api/cheers?slug=${slug}`
     );
+    const data = await fetch(url, {
+      cache: "no-store",
+    });
 
     const { count } = await data.json();
 

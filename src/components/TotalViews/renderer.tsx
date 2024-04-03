@@ -3,10 +3,8 @@ import { getFullyQualifiedDeploymentUrl } from "@/util/deployment";
 
 const getValue = async (): Promise<number> => {
   try {
-    const data = await fetch(
-      getFullyQualifiedDeploymentUrl("/api/view/total"),
-      { cache: "no-store" }
-    );
+    const { url } = await getFullyQualifiedDeploymentUrl("/api/view/total");
+    const data = await fetch(url, { cache: "no-store" });
 
     const { views } = await data.json();
 
