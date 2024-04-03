@@ -12,7 +12,7 @@ export const getFullyQualifiedDeploymentUrl = async (path: `/${string}`) => {
     host = headersList.get("host") || "keegan.codes";
   }
 
-  return { url: getUrlFromHost(host, path) };
+  return { url: host ? getUrlFromHost(host, path) : path };
 };
 
 export const getUrlFromHost = (host: string | null, path?: `/${string}`) => {
