@@ -1,0 +1,170 @@
+export const title = "How to Use Vercel Deployment Protection with Next.js RSC";
+export const slug = "how-to-use-vercel-deployment-protection-next-rsc";
+export const tags = ["javascript"];
+export const description =
+  "A look at what's required to enable Vercel deployment protection for client & server components";
+export const cover = "vercel-deployment-protection-cover.png";
+export const published = new Date(2024, 3, 3);
+export const shortCodes = ["vercel-deployment-protection"];
+
+Vercel provides a number of ways to protect your deployments from the public internet. One of them
+is called **Vercel Authentication**, which allows you to restrict access to all deployments except for the
+current production deployment. When enabled, you and any team members will need to log in to Vercel
+in order to access any past production deplyments, or any preview deployments.
+
+This Next.js app for [keegan.codes](https://keegan.codes) was not originally built with standard protection enabled, so I had to follow Vercel's
+[migration guide](https://vercel.com/docs/security/deployment-protection#migrating-to-standard-protection) in
+order to get everything working before I could turn it on. In this post, I'm going to cover what I learned migrating to this new protection,
+so you don't have to take as much time as I did trying to get data fetching to work with both server and client components using the same code.
+
+## Why Standard Protection?
+
+Because this site is entirely [open source](https://github.com/keegandonley/keegan.codes), on the surface, protecting
+preview and past deployments doesn't seem necessary. All my code and content, including in-progress
+pull requests, are already public, which is why I didn't worry about it at first. However, something started happening recently
+where I began getting a ton of traffic to past deployment URLs. I'm not sure why; likely some bots/crawlers discovered some deployment
+URLs and started hitting them with requests.
+
+Since I cycle my database keys periodically, old deployments eventually stop working because they were built with old environment variables. This
+means that whoever was using my old deployment URLs recently started causing my error logs to fill up, potentially masking real issues and leading to error fatigue:
+
+![](vercel-deployment-protection:error-logs.png)
+
+Vercel does also have an option to only protect preview deployments, but that wouldn't solve all my issues.
+Instead, turning on **standard protection** blocks access to all my past deployments, so nobody can visit a version of the site
+with old, deactivated credentials.
+
+## Migrating
+
+In order to turn on standard protection, you can no longer use the environment variables `VERCEL_URL` or `NEXT_PUBLIC_VERCEL_URL`.
+This was my main hurdle to turning on deployment protection, because I use those variables extensively. I had a function for building
+fetch URLs that worked both server-side and on the client:
+
+```typescript
+export const getFullyQualifiedUrl = (path: `/${string}`) => {
+  if (process.env.NODE_ENV === "development") {
+    return `http://localhost:${process.env.PORT}${path}`;
+  }
+
+  const domain =
+    process.env.VERCEL_URL ||
+    process.env.NEXT_PUBLIC_VERCEL_URL ||
+    "keegan.codes";
+
+  return `https://${domain}${path}`;
+};
+```
+
+> `VERCEL_URL` is only available on the server, and `NEXT_PUBLIC_VERCEL_URL` is available on the client. This function could be called
+> either on the server or the client, and I didn't have to worry about how it was used.
+
+When using standard protection, this approach won't work. In Vercel's migration guide, they inidcate that client-side requests need to be
+relative urls, like `/api/views`, and server-side requests need to read the host from the request, and use that to build the fully qualified
+URL. Additionally, server requests need to take the request cookies and pass them through to any API calls, since users will now need to be authenticated
+in order to use the deployment.
+
+Here's a new server component request function that satisfies this for fetching from server components:
+
+```typescript
+export const makeServerRequest = (path: `/${string}`) => {
+  // Don't need anything special in local dev
+  if (process.env.NODE_ENV === "development") {
+    return fetch(`http://localhost:${process.env.PORT}${path}`);
+  }
+
+  const headersList = headers();
+  const host = headersList.get("host") || "keegan.codes";
+  const cookie = headersList.get("cookie");
+  const headers = cookie ? { cookie } : undefined;
+
+  return fetch(`https://${host}${path}`, { headers });
+};
+```
+
+> I'm getting the host from the request headers, and using that to build the request URL. This way, preview deployments
+> will request their own version of the endpoint, not the production one. If I just set the host to `https://keegan.codes` always,
+> I'd never be able to test new or updated endpoints in preview builds.
+
+Requests made client-side don't need anything special, other than switching to be relative URLs. This works fine when I know an API will be called from the client,
+but that's not always the case.
+
+## Sharing Code Between Client and Server
+
+This is all great, and works perfectly, unless you have a component that is sometimes a server
+component, and sometimes a client component. When you're viewing my [blog page](/blog), the first page
+of posts is server-rendered, and then the infinite scrolling kicks in, and subsequent pages are fetched
+client-side and rendered on the client as you scroll. Both approaches use the same component to render the view count, with the same
+call to `getFullyQualifiedUrl`. However, if I add the `headers()` call to that function, it will fail to build
+because that's only a server-side feature. How can one function to get the URL work in both situations?
+
+First, we have to know if the function is being called on the server or
+not. That's actually pretty straightforward:
+
+```javascript
+if (typeof window === "undefined") {
+  // server
+} else {
+  // client
+}
+```
+
+Using the knowledge of where the code is running, a dynamic import allows `next/headers` to only be imported on the server.
+A new function can be created, `getRequestUrl`, that works in both scenarios:
+
+```typescript
+// Just a simple helper to parse the host value
+const getUrlFromHost = (host: string | null, path?: `/${string}`) => {
+  if (host?.includes("localhost")) {
+    return `http://${host}${path}`;
+  }
+
+  return `https://${host}${path}`;
+};
+
+const getRequestUrl = async (path: `/${string}`) => {
+  // Nothing special needed in development
+  if (process.env.NODE_ENV === "development") {
+    const port = process.env.PORT || "3000";
+    return { url: `http://localhost:${port}${path}` };
+  }
+
+  let host = null;
+  let cookie;
+
+  // If on the server...
+  if (typeof window === "undefined") {
+    // Dynamically import next/headers and retrieve the required values
+    const getHeaders = (await import("next/headers")).headers;
+    const headersList = getHeaders();
+    host = headersList.get("host") || "keegan.codes";
+    cookie = headersList.get("cookie");
+  }
+
+  return {
+    // If we have a host, return a fully qualified URL, otherwise, a relative one
+    url: host ? getUrlFromHost(host, path) : path,
+    // Return a headers object if we are on the server and got cookies
+    headers: cookie ? { cookie } : undefined,
+  };
+};
+```
+
+Now, no matter if we're rendering on the server or the client, `fetch` is always called the same way:
+
+```typescript
+const { url, headers } = await getRequestUrl(`/api/do/the/thing`);
+const data = await fetch(url, {
+  headers,
+});
+```
+
+> Note that we now have to `await` the call to get our url, because it might need to dynamically import `next/headers` first.
+
+## Conclusion
+
+This solution has been working well for me, and I finally have deployment protection turned on! Hopefully this approach will save you some
+time and you won't have to spend as much time as I did understanding how server and client components need to call APIs with deployment protection
+enabled!
+
+You can read the [full documentation on Vercel](https://vercel.com/docs/security/deployment-protection) and continue learning about
+deployment protection, with how to [allow automated tests to bypass it](https://vercel.com/docs/security/deployment-protection/methods-to-bypass-deployment-protection/protection-bypass-automation).
