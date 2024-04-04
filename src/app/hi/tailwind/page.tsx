@@ -28,7 +28,7 @@ export default function TailwindPage({
         >
           <strong>Kizen</strong>
         </Link>
-        . I love all things React, NextJS, and performant web!
+        . I love all things React, Next.js, and performant web!
       </Paragraph>
       <Paragraph className={styles.paragraph}>
         I&apos;d love to connect on{" "}

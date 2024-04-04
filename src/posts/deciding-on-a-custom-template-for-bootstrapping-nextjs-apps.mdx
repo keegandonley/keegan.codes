@@ -1,20 +1,21 @@
-export const title = "Choosing a Custom Template for Bootstrapping NextJS Apps";
+export const title =
+  "Choosing a Custom Template for Bootstrapping Next.js Apps";
 export const slug =
   "deciding-on-a-custom-template-for-bootstrapping-nextjs-apps";
 export const tags = ["react", "software", "hobby", "open source", "frontend"];
 export const description =
-  "There are many different starter templates out there for NextJS, but I wanted to evaluate all my past projects and create the perfect one for bootstrapping future projects.";
+  "There are many different starter templates out there for Next.js, but I wanted to evaluate all my past projects and create the perfect one for bootstrapping future projects.";
 export const cover = "nextjs-template-leaves-cover.png";
 export const published = new Date(2021, 11, 6);
 export const shortCodes = ["bootstrapping", "nextjs-template"];
 
-# What are NextJS Examples?
+# What are Next.js Examples?
 
-[NextJS](https://nextjs.org/ "NextJS") has a great application of [project examples](https://nextjs.org/examples "NextJS Examples"), from which anyone can generate a new project. I've used a lot of different examples in the past, from Typescript starter kits, to Tailwind CSS, to turnkey examples that try to anticipate every possible need. I've also written a handful of templates, like the [changelog app template](https://github.com/pinpt/app-template "Changelog App Template") for [Pinpoint](https://pinpoint.com/ "Pinpoint"). You can think of these like project templates, and I'll be using the words `example` and `template` interchangeably throughout.
+[Next.js](https://nextjs.org/ "Next.js") has a great application of [project examples](https://nextjs.org/examples "Next.js Examples"), from which anyone can generate a new project. I've used a lot of different examples in the past, from Typescript starter kits, to Tailwind CSS, to turnkey examples that try to anticipate every possible need. I've also written a handful of templates, like the [changelog app template](https://github.com/pinpt/app-template "Changelog App Template") for [Pinpoint](https://pinpoint.com/ "Pinpoint"). You can think of these like project templates, and I'll be using the words `example` and `template` interchangeably throughout.
 
 # The Issues
 
-I've found that most of the existing examples are pretty good but fall into one of two issues for me - they either include too many dependencies because the example tries to account for too many possible use cases, or there is is too much boilerplate I need to go in and delete every time I start a new project. Needing to go in and start stripping out development tools I don't need, or start deleting api endpoints and pages defeats the purpose of a nice template in my mind. Otherwise, I still find myself doing a bunch of the same repetitive tasks on each new NextJS project I bootstrap.
+I've found that most of the existing examples are pretty good but fall into one of two issues for me - they either include too many dependencies because the example tries to account for too many possible use cases, or there is is too much boilerplate I need to go in and delete every time I start a new project. Needing to go in and start stripping out development tools I don't need, or start deleting api endpoints and pages defeats the purpose of a nice template in my mind. Otherwise, I still find myself doing a bunch of the same repetitive tasks on each new Next.js project I bootstrap.
 
 In analyzing my process for the last few projects I've started, I realized I almost always do a few specific things, in this general order:
 
@@ -26,7 +27,7 @@ In analyzing my process for the last few projects I've started, I realized I alm
 6. Add Tailwind CSS
 7. Sometimes add a custom `_document` page
 
-If I'm being honest, this isn't really that much work. However, sometimes I'll build multiple new NextJS projects in a day, or at least a few per week, and the time these tasks take adds up! I find it pretty rare that I work on a project that needs api routes, so I find myself always deleting these at first, and adding them back only if I discover I need them down the line.
+If I'm being honest, this isn't really that much work. However, sometimes I'll build multiple new Next.js projects in a day, or at least a few per week, and the time these tasks take adds up! I find it pretty rare that I work on a project that needs api routes, so I find myself always deleting these at first, and adding them back only if I discover I need them down the line.
 
 # My Perfect Template
 
@@ -39,7 +40,7 @@ const Home: NextPage = () => {
     <div classNAme="flex flex-col items-center w-screen h-screen justify-center">
       <p>
         Hello, world! This is a sample{" "}
-        <span className="font-bold">NextJS app</span> with{" "}
+        <span className="font-bold">Next.js app</span> with{" "}
         <span className="font-bold text-blue-600">TailwindCSS</span> and{" "}
         <span className="font-bold text-indigo-600">Typescript</span>.
       </p>
@@ -69,7 +70,7 @@ const Home: NextPage = () => {
 
 I find it so much more efficient to add tools as I need them, rather than add a bunch of stuff up front and then spend time going through and removing what I don't need.
 
-Ever since I spent a couple hours to really think about the most logical starting place for NextJS apps and build my perfect template, my productivity has gone way up, and it's more enjoyable than ever to spin up a quick test app to try out an idea or built a quick one-off project. It's as easy as:
+Ever since I spent a couple hours to really think about the most logical starting place for Next.js apps and build my perfect template, my productivity has gone way up, and it's more enjoyable than ever to spin up a quick test app to try out an idea or built a quick one-off project. It's as easy as:
 
     npx create-next-app@latest -e https://github.com/keegandonley/next-tailwind-barebones
 
