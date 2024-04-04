@@ -6,27 +6,27 @@ export const title = "Welcome to my New Blog!";
 export const slug = "welcome-to-my-new-blog";
 export const cover = "blog-launch-cover.png";
 export const description =
-  "How my new website is built using the latest NextJS app directory, and other bleeding-edge features";
+  "How my new website is built using the latest Next.js app directory, and other bleeding-edge features";
 export const published = new Date(2023, 4, 1);
 export const shortCodes = ["welcome", "new-blog"];
 
-This is an entirely new website built from the ground-up using many of the bleeding-edge features from [NextJS](https://beta.nextjs.org/docs) and [Vercel](https://vercel.com/).
+This is an entirely new website built from the ground-up using many of the bleeding-edge features from [Next.js](https://beta.nextjs.org/docs) and [Vercel](https://vercel.com/).
 In this post I'm going to dive into how it's built!
 
 ## Features Leveraged
 
-- [NextJS App Directory](https://beta.nextjs.org/docs/app-directory-roadmap)
-- [NextJS Image Component](https://nextjs.org/docs/api-reference/next/image)
-- [NextJS OG Image](https://vercel.com/templates/next.js/og-image-generation)
+- [Next.js App Directory](https://beta.nextjs.org/docs/app-directory-roadmap)
+- [Next.js Image Component](https://nextjs.org/docs/api-reference/next/image)
+- [Next.js OG Image](https://vercel.com/templates/next.js/og-image-generation)
 - [Vercel Edge Config](https://vercel.com/docs/concepts/edge-network/edge-config)
-- [NextJS Intercepted Routes](https://beta.nextjs.org/docs/routing/intercepting-routes)
-- [NextJS Parallel Routes](https://beta.nextjs.org/docs/routing/parallel-routes)
+- [Next.js Intercepted Routes](https://beta.nextjs.org/docs/routing/intercepting-routes)
+- [Next.js Parallel Routes](https://beta.nextjs.org/docs/routing/parallel-routes)
 - CSS Modules
 - MDX Rendering
 
-## NextJS App Directory
+## Next.js App Directory
 
-Everything you see here is built using the (still in beta) NextJS App directory. This is a new way of routing in NextJS that
+Everything you see here is built using the (still in beta) Next.js App directory. This is a new way of routing in Next.js that
 allows you to have shared layouts between routes, display multiple routes at once, and intercept route changes.
 
 Here's a pared-down version of my app file structure. All I removed are css files and some utilities/components that are not relevant to this post:
@@ -120,9 +120,9 @@ export default function BlogModalLoading() {
 
 You'll see this loader occasionally if the server takes a moment to load the post in the modal.
 
-## NextJS Image Component
+## Next.js Image Component
 
-Nothing kills performance of a website like large images, but you'll notice they're pervasive throughout my site and blog. This works thanks to the NextJS
+Nothing kills performance of a website like large images, but you'll notice they're pervasive throughout my site and blog. This works thanks to the Next.js
 Image component, which automatically optimizes images for the device size and screen resolution. It also supports lazy loading and blur-up effects, which
 I leverage nearly everywhere.
 
@@ -151,7 +151,7 @@ encoded := base64.StdEncoding.EncodeToString(buf.Bytes())
 dataURL := "data:image/jpeg;base64," + encoded
 ```
 
-## NextJS OG Image
+## Next.js OG Image
 
 "OG" images, or opengraph images, are the cards you see rendered when sharing a link on social media. I wanted to have custom OG images for each of my blog posts,
 but I didn't want to have to manually create them. I also wanted to be able to use the same image for the blog post header itself, and `@vercel/og` is perfect for this.
@@ -242,7 +242,7 @@ of flags, you may start hitting the limits early, especially on the hobby plan f
 ## MDX Rendering
 
 I use [MDX](https://mdxjs.com/) to render my blog posts. MDX is a superset of markdown that allows you to embed React components in your markdown, among other
-advanced features. In the app directory paradigm of NextJS, MDX rendering is a bit tricker than in the
+advanced features. In the app directory paradigm of Next.js, MDX rendering is a bit tricker than in the
 past, but it's still possible.
 
 Rather than MDX files being pages, they're just files in my [`/posts` directory](https://github.com/keegandonley/keegan.codes/tree/main/src/posts). I then import them into my blog and the route handler
@@ -255,10 +255,10 @@ export const title = "Welcome to my New Blog!";
 export const slug = "welcome-to-my-new-blog";
 export const cover = "blog-launch-cover.png";
 export const description =
-"How my new website is built using the latest NextJS app directory, and other bleeding-edge features";
+"How my new website is built using the latest Next.js app directory, and other bleeding-edge features";
 export const published = new Date(2023, 4, 31);
 
-This is an entirely new website built from the ground-up using many of the bleeding-edge features from [NextJS](https://beta.nextjs.org/docs) and [Vercel](https://vercel.com/).
+This is an entirely new website built from the ground-up using many of the bleeding-edge features from [Next.js](https://beta.nextjs.org/docs) and [Vercel](https://vercel.com/).
 In this post I'm going to dive into how it's built!
 ```
 

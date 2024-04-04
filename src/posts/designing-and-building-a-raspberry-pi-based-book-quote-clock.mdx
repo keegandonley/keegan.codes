@@ -49,7 +49,7 @@ I spent 80% or so of my time on the software for this device, and 20% on the res
 
 ## Interface
 
-I knew I was going to make this web-based, so I spun up a basic [Next.js](https://nextjs.org/ "NextJS") project using [a starter template I built](https://keegandonley.com/blog/deciding-on-a-custom-template-for-bootstrapping-nextjs-apps "Starter Template") a while back to include [tailwindcss](https://tailwindcss.com/ "Tailwind").
+I knew I was going to make this web-based, so I spun up a basic [Next.js](https://nextjs.org/ "Next.js") project using [a starter template I built](https://keegandonley.com/blog/deciding-on-a-custom-template-for-bootstrapping-nextjs-apps "Starter Template") a while back to include [tailwindcss](https://tailwindcss.com/ "Tailwind").
 
 ![](bookquote-post:image-1.png)
 
@@ -97,7 +97,7 @@ I always image my Raspberry Pi SD cards using [Raspberry Pi Imager](https://gith
 
 The touchscreen I ordered came with some drivers that needed to be installed in order to get the touch system to work. I also installed a number of other utilities. The [unclutter package](https://wiki.debian.org/unclutter "Unclutter") is used to hide the mouse after half a second, so it doesn't show on the display. I took bits and pieces from [this tutorial on pimylifeup.com](https://pimylifeup.com/raspberry-pi-kiosk/ "Pimylifeup Tutorial"), which is a great resource for various Raspberry Pi instructional articles. I didn't follow that guide precisely, but there were some great ideas I did use.
 
-When the Raspberry Pi boots, it automatically starts a node server to serve the NextJS app, and then launches Chromium in kiosk mode so that the web page is visible full screen automatically. The boot process is a little slow but that's not really a big deal since I don't expect it to be unplugged a lot. I'm using [pm2](https://pm2.keymetrics.io/ "PM2") to launch the node server on boot. I've found this to be the most reliable way to automatically launch a node process and keep it alive indefinitely in case of crashes.
+When the Raspberry Pi boots, it automatically starts a node server to serve the Next.js app, and then launches Chromium in kiosk mode so that the web page is visible full screen automatically. The boot process is a little slow but that's not really a big deal since I don't expect it to be unplugged a lot. I'm using [pm2](https://pm2.keymetrics.io/ "PM2") to launch the node server on boot. I've found this to be the most reliable way to automatically launch a node process and keep it alive indefinitely in case of crashes.
 
 ## Developing/Sending Updates
 

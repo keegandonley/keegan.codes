@@ -42,7 +42,7 @@ export default function render24() {
             >
               <strong>Kizen</strong>
             </Link>
-            . I love all things React, NextJS, and performant web!
+            . I love all things React, Next.js, and performant web!
           </p>
           <div className="h-5" />
           <p className="text-render-text text-xl font-serif">

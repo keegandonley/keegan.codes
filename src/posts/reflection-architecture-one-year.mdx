@@ -5,6 +5,7 @@ export const description =
   "Looking at my major architectural decisions for this website from a year ago and whether I still stand by them";
 export const cover = "blueprint-cover-updated-compressed.png";
 export const published = new Date(2024, 1, 26);
+export const updated = new Date(2024, 3, 4);
 export const shortCodes = ["architecture-1"];
 import {
   ProsConsWrapper,
@@ -52,7 +53,7 @@ directly committed to the repository.
     - More difficult to publish & update - requires a PR to the repo.
     - No web GUI to quickly make changes when away from my computer.
     - Less scalable than a CMS - as my volume of content grows, markdown files will become difficult to manage.
-    - Tricker to set up with NextJS and stay efficient. I had to build some custom APIs to serve the content for single
+    - Trickier to set up with Next.js and stay efficient. I had to build some custom APIs to serve the content for single
     blog posts in some situations.
   </ConsWrapper>
 </ProsConsWrapper>
@@ -70,9 +71,9 @@ worries about being able to solve that issue, however, when the time comes.
 
 <AppDirHeader />
 
-### 2 - NextJS App Router & RSC
+### 2 - Next.js App Router & RSC
 
-This site is built using the [NextJS app router](https://nextjs.org/docs/app). I started building it right as the beta came out, so it was a bit rough
+This site is built using the [Next.js app router](https://nextjs.org/docs/app). I started building it right as the beta came out, so it was a bit rough
 around the edges but really stabilized substantially as I got the site built out. I'm rendering everything serverside making
 heavy use of React server components, rather that doing ISR or partial prerendering. This is primarily for handling user settings,
 like the current theme. On every request, these settings are read from a cookie to make sure there's not a flash of the wrong
@@ -152,7 +153,7 @@ are 100% Tailwind for styling.
 
 ### 4 - Vercel For (Almost) Everything
 
-My NextJS site is hosted on [Vercel](https://vercel.com/). My [speed insights](https://vercel.com/docs/speed-insights) and [web analytics](https://vercel.com/docs/analytics) are handled by Vercel. My edge config for feature flagging
+My Next.js site is hosted on [Vercel](https://vercel.com/). My [speed insights](https://vercel.com/docs/speed-insights) and [web analytics](https://vercel.com/docs/analytics) are handled by Vercel. My edge config for feature flagging
 uses Vercel. My KV database for rate-limiting "cheers" actions is Vercel KV. Image optimization? Vercel. I think you see the pattern here: I'm pretty
 locked into Vercel. Here's how that's been going:
 
@@ -160,7 +161,7 @@ locked into Vercel. Here's how that's been going:
 
 <ProsConsWrapper>
   <ProsWrapper>
-    - Tight integration with NextJS is a huge benefit. No need to be concerned with how it runs.
+    - Tight integration with Next.js is a huge benefit. No need to be concerned with how it runs.
     - Performance is great. My site is running in edge functions and is fast for the majority of my readers.
     - Speed insights are incredibly valuable for diagnosing potential issues.
     - Build-in analytics are convenient, and protect my readers' privacy by not collecting sensitive information.
@@ -176,7 +177,7 @@ locked into Vercel. Here's how that's been going:
 <VerdictWrapper result="+">
     I generally like owning my content as much as I can, which usually would mean I don't like locking in to one vendor. However, in this case,
     Vercel makes my life so easy that I am happy to use them for the majority of my infrastructure. I don't have to pay much now,
-    and have some room to grow. Worst case scenario, if I scale to the point it gets too expensive, there are other options for hosting a NextJS site, just none that are quite as
+    and have some room to grow. Worst case scenario, if I scale to the point it gets too expensive, there are other options for hosting a Next.js site, just none that are quite as
     straightforward as Vercel.
 </VerdictWrapper>
 
@@ -250,7 +251,7 @@ and I don't do a lot of traffic to Cloudflare itself.
 
 After 1 year, while there are a few things I've learned and might do differently in the future,
 overall the majority of my decisions held up well, and I haven't had any major issues. It's a fairly hotly debated
-topic whether the NextJS app directory is stable enough for production use, and I can comfortably say that it is,
+topic whether the Next.js app directory is stable enough for production use, and I can comfortably say that it is,
 based on working my way through building this website in parallel with the development and growth of the framework. The various
 cloud providers I've chosen for my services have been reliable and easy to work with, and I still stand by the tools I chose
 when I embarked on this project.
