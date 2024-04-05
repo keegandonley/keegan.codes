@@ -1,5 +1,6 @@
 import "./globals.css";
 import "./theme.css";
+import "@keegancodes/foundations/dist/main.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { merge } from "@/util/classNames";
