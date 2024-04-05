@@ -7,8 +7,6 @@ const config = {
   password: process.env.password,
 };
 
-export const runtime = "edge";
-
 const BATCH_SIZE = 20;
 
 export async function GET() {
