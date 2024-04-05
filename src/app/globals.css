@@ -47,3 +47,20 @@ strong {
 .calendly-spinner {
   display: none;
 }
+
+@keyframes show {
+  from {
+    opacity: 0;
+    scale: 0.75;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.animate-viz {
+  animation: show linear both;
+  animation-timeline: view();
+  animation-range: entry 20% cover 40%;
+}

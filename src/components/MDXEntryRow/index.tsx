@@ -67,7 +67,8 @@ export const MDXEntryRow = ({
         styles.wrapper,
         filler && !loader ? styles.filler : "",
         styles[`col-${columns}`],
-        className
+        className,
+        "animate-viz"
       )}
     >
       <div className={styles.horizontalLine}></div>

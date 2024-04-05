@@ -26,7 +26,7 @@ export const ClientRenderer = ({ posts }: ClientRendererProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className={styles.outer}>
+    <div className={merge(styles.outer)}>
       <div className={styles.controls}>
         <FontAwesomeIcon
           className={styles.control}

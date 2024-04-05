@@ -14,6 +14,7 @@ import Posts from "@/posts";
 import { Post } from "@/types/post";
 import dynamic from "next/dynamic";
 import { Fallback as BlogPreviewFallback } from "@/components/BlogPreview/Fallback";
+import { merge } from "@/util/classNames";
 
 const DynamicBlogPreview = dynamic(() => import("@/components/BlogPreview"), {
   loading: () => <BlogPreviewFallback />,
@@ -72,8 +73,8 @@ export default function Home() {
           .
         </Paragraph>
         <DynamicBlogPreview posts={posts} />
-        <div className={styles.blogButton}>
-          <Link href="/blog" className={styles.blogButtonText}>
+        <div className={merge(styles.blogButton, "animate-viz")}>
+          <Link href="/blog" className={merge(styles.blogButtonText)}>
             Read more on my blog <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>
