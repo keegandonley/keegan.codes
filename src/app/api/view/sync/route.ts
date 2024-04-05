@@ -9,7 +9,7 @@ const config = {
 
 export const runtime = "edge";
 
-const BATCH_SIZE = 10;
+const BATCH_SIZE = 20;
 
 export async function GET() {
   const startTime = Date.now();
