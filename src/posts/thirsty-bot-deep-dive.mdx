@@ -1,3 +1,11 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faMicrochip,
+  faDatabase,
+  faBlockBrick,
+  faServer,
+} from '@fortawesome/pro-solid-svg-icons';
+
 export const title = 'What I Learned Building an AI App in 72 Hours';
 export const slug = 'what-i-learned-building-an-ai-app-in-72-hours';
 export const tags = ['javascript', 'React', 'Next.js'];
@@ -14,3 +22,111 @@ a deeper dive into how it all works.
 
 > If you haven't tried it out yet, give it a go at [thirsty.bot](https://thirsty.bot)! You can use the code `KEEGANCODES10` for
 > 10 free credits, in addition to the 5 credits you get just for signing up.
+
+## Architecture
+
+Before I dig into how app came together, here's a high level overview of the tools and technologies it's built on:
+
+<FontAwesomeIcon
+  icon={faDatabase}
+  style={{
+    fontSize: '4rem',
+    textAlign: 'center',
+    width: '100%',
+    paddingTop: '3rem',
+    color: 'var(--theme-blue-2)',
+  }}
+/>
+
+### Database
+
+My database is [Planetscale](https://planetscale.com/) on the smallest plan, `PS-10`. I use Planetscale for this site, so it made
+sense to me to use it for Thirsty Bot as well since it was familiar and I could build quickly. I wanted to leverage Planetscale's branching and safe
+schema changes, since I knew I'd be adjusting the database schema a lot as I iterated quickly and built the app in public.
+
+I learned a lot about how branching works on Planetscale. At first, I forgot to think about moving data from a branch to the production
+database, so I had to spend some time migrating data after I set up all the categories and options. Note to self: don't accidentally create a
+ton of data on a branch instead of the production instance.
+
+<FontAwesomeIcon
+  icon={faMicrochip}
+  style={{
+    fontSize: '4rem',
+    textAlign: 'center',
+    width: '100%',
+    paddingTop: '3rem',
+    color: 'var(--theme-blue-2)',
+  }}
+/>
+
+### AI Tools
+
+I tried quite a few different models and platforms in order to settle on how I could generate the recipes. They all had their strengths
+and weaknesses, but here was some of what I discovered:
+
+- **gpt-3.5-turbo**: The biggest problem I had with gpt-3.5-turbo is that it would make a drink with literally anything, no matter
+  how much I adjusted the prompt. If I told it I had eggs, soy sauce, and water, it would tell me I could make an egg, soy sauce, and water
+  martini. Not a great representation of what a cocktail should be. I needed it to respond that certain combinations of ingredients just
+  aren't possible.
+- **llama-2-70b**: I tried this one out through Replicate. Llama-2-70b solved my problem of creating drinks with weird ingredients, but I could
+  not coerce this model into only using the ingredients provided. It continually added ingredients that weren't provided. That's no good either.
+- **gpt-4**: This got me the closest. Gpt-4 mostly respected my rules, and would return a token "IMPOSSIBLE" when it decided the
+  ingredients couldn't go together. It also only vary rarely added ingredients. Sometimes it would add simple syrup when it wasn't included, but that
+  was rare. The biggest problem I had was that it would make things that were non-cocktails. For example, if I provided coffee beans as garnish,
+  irish cream, vodka, and espresso, it would tell me to grind the beans, brew a cup of coffee, and add cream. Not quite what I was going for.
+
+In the end, I settled on gpt-4. It's a bit more expensive, but it seemed best suited for my task. With a lot of iteration on my prompt with the
+instructions, I was able to get reliable results. I had to change my input format a lot, and write a pretty long set of instructions, but
+I was able to stop getting non-provided ingredients, stopped getting things that aren't cocktails, and was able to handle a set of ingredients
+that isn't possible.
+
+Here's the format gpt-4 receives the chosen ingredients in:
+
+```text
+(Spirits: Vodka, Rye Whiskey, Tequila)
+(Liqueurs: Triple Sec, Amaretto, Irish Cream)
+(Garnish: Espresso Beans, Lemon, Mint)
+(Mixer: Cola, Espresso, Tonic Water)
+(Wine: Champagne Wine, Red Wine)
+```
+
+**Future work:** I'd like to move down to gpt-3.5-turbo. I'm fairly confident it could work, but it would take some fine tuning of the model,
+something I'm not familiar with yet. I'm hoping to look into this down the road to save on cost, and make things faster.
+
+<FontAwesomeIcon
+  icon={faBlockBrick}
+  style={{
+    fontSize: '4rem',
+    textAlign: 'center',
+    width: '100%',
+    paddingTop: '3rem',
+    color: 'var(--theme-blue-2)',
+  }}
+/>
+
+### Application Framework
+
+I built the application with Next.js server components. This was my second project with the app router
+and React server components (the first was this blog). This time around, I definitely understood the concepts
+better, so things went a lot faster. I used some form actions and got to use the `useFormStatus` hook for the
+first time.
+
+> A side note: It's well-documented that [I don't like useEffect](https://keegan.codes/blog/reacting-to-prop-changes-in-react-functional-components).
+> With server components and form actions, I didn't have to use `useEffect` anywhere in the application!
+
+<FontAwesomeIcon
+  icon={faServer}
+  style={{
+    fontSize: '4rem',
+    textAlign: 'center',
+    width: '100%',
+    paddingTop: '3rem',
+    color: 'var(--theme-blue-2)',
+  }}
+/>
+
+### Deployment
+
+The project is deployed on Vercel.
+
+## How I Spent the 72 Hours
