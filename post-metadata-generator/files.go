@@ -49,12 +49,12 @@ func loadFilesInDir(path string) ([]string, error) {
 }
 
 func writeCountToTsFile(filename string, count int) error {
-	stringValue := "export const postCount = " + strconv.Itoa(count) + ";"
+	stringValue := "export const postCount = " + strconv.Itoa(count) + ";\n"
 	return os.WriteFile(filename, []byte(stringValue), 0644)
 }
 
 func writeSlugsToTsFile(filename string, slugs []string) error {
-	constTemplate := "export const slugs = [%s];"
+	constTemplate := "export const slugs = [%s];\n"
 	quotedSlugs := make([]string, len(slugs))
 	for i, slug := range slugs {
 		quotedSlugs[i] = fmt.Sprintf("'%s'", slug)
