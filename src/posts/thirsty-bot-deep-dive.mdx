@@ -25,8 +25,8 @@ import {
 } from '@fortawesome/pro-regular-svg-icons';
 import { Caption, Checklist } from '../interactivePosts/ThirstyBot';
 
-export const title = 'What I Learned Building an AI App in 72 Hours';
-export const slug = 'what-i-learned-building-an-ai-app-in-72-hours';
+export const title = 'Building an AI Web Application in 72 Hours';
+export const slug = 'ai-app-in-72-hours';
 export const tags = ['javascript', 'React', 'Next.js'];
 export const description =
   'A deep dive into Thirsty Bot, an AI-powered cocktail generator I built in 72 hours';
@@ -213,7 +213,7 @@ have the time to dedicate yet.
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '2rem 0 0 0',
+    padding: '4rem 0 0 0',
   }}
 >
   <FontAwesomeIcon
@@ -231,6 +231,8 @@ Phew! This has been a long one! If you need to take a break and use [Thirsty Bot
 a cocktail, this is a good stopping point. After the break, I'm going to get into the architectural
 details of the application. We'll look at some code, evaluate the tools I used, and go over some
 mistakes I made and what I learned. If that sounds interesting, keep reading!
+
+<div style={{ paddingTop: '2rem' }} />
 
 ---
 
@@ -259,6 +261,8 @@ mistakes I made and what I learned. If that sounds interesting, keep reading!
 
 ---
 
+<div style={{ paddingTop: '2rem' }} />
+
 <FontAwesomeIcon
   icon={faDatabase}
   style={{
@@ -276,11 +280,28 @@ My database is [Planetscale](https://planetscale.com/) on the smallest plan, `PS
 sense to me to use it for Thirsty Bot as well since it was familiar and I could build quickly. I wanted to leverage Planetscale's branching and safe
 schema changes as well, since I knew I'd be adjusting the database schema a lot as I iterated quickly and built the app in public.
 
-<FontAwesomeIcon icon={faGraduationCap} /> I learned a lot about how branching works
-on Planetscale. At first, I forgot to think about moving data from a branch to the
-production database, so I had to spend some time migrating data after I set up all
-the categories and options. Note to self: don't accidentally create a ton of data
-on a branch instead of the production instance.
+The [serverless driver from Planetscale](https://planetscale.com/blog/introducing-the-planetscale-serverless-driver-for-javascript) is super important,
+because it means I can execute queries using the fetch API and an HTTP connection. Connecting to the database
+from either an API route or a server component is super easy, and I don't need to worry about sharing database
+connections:
+
+```javascript
+const dbConfig = {
+  host: process.env.DATABASE_HOST,
+  username: process.env.DATABASE_USERNAME,
+  password: process.env.DATABASE_PASSWORD,
+};
+
+const conn = connect(dbConfig);
+
+await conn.execute('SHOW TABLES');
+```
+
+> <FontAwesomeIcon icon={faGraduationCap} /> I learned a lot about how branching
+> works on Planetscale. At first, I forgot to think about moving data from a branch
+> to the production database, so I had to spend some time migrating data after I
+> set up all the categories and options. Note to self: don't accidentally create
+> a ton of data on a branch instead of the production instance.
 
 <FontAwesomeIcon
   icon={faMicrochip}
@@ -298,23 +319,28 @@ on a branch instead of the production instance.
 I tried quite a few different models and platforms in order to settle on how I could generate the recipes. They all had their strengths
 and weaknesses, but here was some of what I discovered:
 
-- **gpt-3.5-turbo**: The biggest problem I had with gpt-3.5-turbo is that it would make a drink with literally anything, no matter
+- **GPT-3.5-turbo**: The biggest problem I had with gpt-3.5-turbo is that it would make a drink with literally anything, no matter
   how much I adjusted the prompt. If I told it I had eggs, soy sauce, and water, it would tell me I could make an egg, soy sauce, and water
   martini. Not a great representation of what a cocktail should be. I needed it to respond that certain combinations of ingredients just
   aren't possible.
-- **llama-2-70b**: I tried this one out through Replicate. Llama-2-70b solved my problem of creating drinks with weird ingredients, but I could
+- **Llama-2-70b-chat**: I tried this one out through Replicate. Llama-2-70b solved my problem of creating drinks with weird ingredients, but I could
   not coerce this model into only using the ingredients provided. It continually added ingredients that weren't provided. That's no good either.
-- **gpt-4**: This got me the closest. Gpt-4 mostly respected my rules, and would return a token "IMPOSSIBLE" when it decided the
+- **GPT-4**: This got me the closest. Gpt-4 mostly respected my rules, and would return a token "IMPOSSIBLE" when it decided the
   ingredients couldn't go together. It also only vary rarely added ingredients. Sometimes it would add simple syrup when it wasn't included, but that
   was rare. The biggest problem I had was that it would make things that were non-cocktails. For example, if I provided coffee beans as garnish,
-  irish cream, vodka, and espresso, it would tell me to grind the beans, brew a cup of coffee, and add cream. Not quite what I was going for.
+  irish cream, vodka, cinnamon, and espresso, it would tell me to grind the beans, brew a cup of coffee, and add cinnamon. Not quite what I was going for:
 
-In the end, I settled on gpt-4. It's a bit more expensive, but it seemed best suited for my task. With a lot of iteration on my prompt with the
+![](thirsty-bot-output:bad-coffee.png)
+
+I tried a few others as well, but they all had some of the issues presented here. In the end, I narrowed it down
+to these three, and did more extensive testing and iteration to choose one.
+
+I settled on gpt-4, which at the time of writing is still what Thirsty Bot uses. It's a bit more expensive, but it seemed best suited for my task. With a lot of iteration on my prompt with the
 instructions, I was able to get reliable results. I had to change my input format a lot, and write a pretty long set of instructions, but
 I was able to stop getting non-provided ingredients, stopped getting things that aren't cocktails, and was able to handle a set of ingredients
 that isn't possible.
 
-Here's the format gpt-4 receives the chosen ingredients in:
+Here's the format pass the chosen ingredients to GPT-4 in:
 
 ```text
 (Spirits: Vodka, Rye Whiskey, Tequila)
@@ -324,10 +350,10 @@ Here's the format gpt-4 receives the chosen ingredients in:
 (Wine: Champagne Wine, Red Wine)
 ```
 
-<FontAwesomeIcon icon={faForward} /> In the future, I'd like to move to gpt-3.5-turbo.
-I'm fairly confident it could work, but it would take some fine tuning of the model,
-something I'm not familiar with yet. I'm hoping to look into this down the road to
-save on cost, and make things faster.
+> <FontAwesomeIcon icon={faForward} /> In the future, I'd like to move to gpt-3.5-turbo.
+> I'm fairly confident it could work, but it would take some fine tuning of the model,
+> something I'm not familiar with yet. I'm hoping to look into this down the road
+> to save on cost, and make things faster.
 
 For the images to go with each recipe, I used DALL·E 3. I've been using [DALLE·2 since the beginning](https://keegan.codes/blog/a-quick-look-at-openai-dall-e-2),
 but had no experience when I started with DALL·E 3. It was surprisingly easy to take the output from gpt-4, and
@@ -341,11 +367,10 @@ Maple Old Fashioned
 
 </Caption>
 
-<FontAwesomeIcon icon={faForward} /> I'm still working on tuning how I direct DALL·E
-3. My prompt right now includes the steps to make the drink, as well as the name.
-I had better results getting a drink that matched the text this way, however it's
-difficult to make DALL·E 3 leave off text, and not show the steps themselves in the
-image:
+I'm still working on tuning how I direct DALL·E 3. My prompt right now includes the steps to make the drink, as well as the name
+and ingredients. I had better results getting a drink that matched the description
+in the recipe this way, however it's difficult to make DALL·E 3 leave off text, and
+not show the steps themselves in the image:
 
 ![](thirsty-bot:cocktail-3.png?limit)
 
@@ -355,10 +380,10 @@ Whiskey Smash
 
 </Caption>
 
-<FontAwesomeIcon icon={faGraduationCap} /> I learned that negative prompting doesn't
-work well with these models - saying something like "Do not include any steps or
-instructions" resulted in almost always having steps or instructions in the image.
-I needed to avoid the words "steps", "instructions", etc. entirely!
+> <FontAwesomeIcon icon={faGraduationCap} /> I learned that negative prompting doesn't
+> work well with these models - saying something like "Do not include any steps or
+> instructions" resulted in almost always having steps or instructions in the image.
+> I needed to avoid the words "steps", "instructions", etc. entirely!
 
 <FontAwesomeIcon
   icon={faBlockBrick}
@@ -378,8 +403,15 @@ and React server components (the first was this blog). This time around, I defin
 better, so things went a lot faster. I used some form actions and got to use the `useFormStatus` hook for the
 first time.
 
-> A side note: It's well-documented that [I don't like useEffect](https://keegan.codes/blog/reacting-to-prop-changes-in-react-functional-components).
-> With server components and form actions, I didn't have to use `useEffect` anywhere in the application! That's a big win in my book
+> It's well-documented that [I don't like useEffect](https://keegan.codes/blog/reacting-to-prop-changes-in-react-functional-components) and try to avoid it entirely.
+> With server components and form actions, I didn't have to use `useEffect` anywhere in the application! That's a big win in my book.
+
+Thirrsy Bot has a form to redeem vouchers for free credits. This way, I can give them away to friends and family
+who are testing it for me, and also on social media and product hunt, for example:
+
+![](thirsty-bot-example:redeem.png)
+
+This uses server actions to all remain server components!
 
 <FontAwesomeIcon
   icon={faServer}
