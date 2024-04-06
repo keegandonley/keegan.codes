@@ -42,6 +42,7 @@ import * as ReactPreviousProps from './tracking-previous-prop-values-in-FCs.mdx'
 import * as Architecture1Year from './reflection-architecture-one-year.mdx';
 import * as ThirstyBot from './introducing-thirsty-bot.mdx';
 import * as VercelDeploymentProtection from './vercel-deployment-protection.mdx';
+import * as ThirstyBotDeepDive from './thirsty-bot-deep-dive.mdx';
 
 const posts = {
   Welcome,
@@ -88,6 +89,7 @@ const posts = {
   Architecture1Year,
   ThirstyBot,
   VercelDeploymentProtection,
+  ThirstyBotDeepDive,
 };
 
 export default posts;
