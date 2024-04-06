@@ -1,11 +1,11 @@
-import { ElementBaseProps } from "@/types/elements";
-import { fallback, merge } from "@/util/classNames";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./animatedIcon.module.css";
+import { ElementBaseProps } from '@/types/elements';
+import { fallback, merge } from '@/util/classNames';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styles from './animatedIcon.module.css';
 
 interface AnimatedIconProps extends ElementBaseProps {
-  from: "top" | "bottom";
+  from: 'top' | 'bottom';
   icon: IconProp;
   visible: boolean;
 }
@@ -16,7 +16,7 @@ export const AnimatedIcon = ({
   className,
   visible,
 }: AnimatedIconProps) => {
-  const fromBottom = from === "bottom";
+  const fromBottom = from === 'bottom';
 
   return (
     <div
@@ -25,8 +25,8 @@ export const AnimatedIcon = ({
         merge(
           styles.animatedIcon,
           visible && styles.show,
-          fromBottom ? styles.darkModeToggle : styles.lightModeToggle
-        )
+          fromBottom ? styles.darkModeToggle : styles.lightModeToggle,
+        ),
       )}
     >
       <FontAwesomeIcon icon={icon} fixedWidth />

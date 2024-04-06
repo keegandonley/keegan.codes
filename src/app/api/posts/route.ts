@@ -1,10 +1,10 @@
-export const runtime = "edge";
-import Posts from "@/posts";
-import { Post } from "@/types/post";
-import wordCounts from "../../../post-word-counts.json";
-import { connect } from "@planetscale/database";
-import { get } from "@vercel/edge-config";
-import { getImageMetadata } from "@/util/image";
+export const runtime = 'edge';
+import Posts from '@/posts';
+import { Post } from '@/types/post';
+import wordCounts from '../../../post-word-counts.json';
+import { connect } from '@planetscale/database';
+import { get } from '@vercel/edge-config';
+import { getImageMetadata } from '@/util/image';
 
 const config = {
   host: process.env.host,
@@ -13,10 +13,10 @@ const config = {
 };
 
 export async function GET(request: Request) {
-  const postsPerPage = parseInt((await get("blogPageSize")) ?? "12");
+  const postsPerPage = parseInt((await get('blogPageSize')) ?? '12');
 
   const url = new URL(request.url);
-  const _page = url.searchParams.get("page");
+  const _page = url.searchParams.get('page');
   const pageNumber = _page ? parseInt(_page, 10) : -1;
 
   const allPosts = Object.keys(Posts);
@@ -46,7 +46,7 @@ export async function GET(request: Request) {
 
   const result = posts.slice(
     (pageNumber - 1) * postsPerPage,
-    pageNumber * postsPerPage
+    pageNumber * postsPerPage,
   );
 
   const conn = connect(config);
@@ -54,30 +54,30 @@ export async function GET(request: Request) {
   const pageViews = await Promise.all(
     result.map(async (post) => {
       const results = await conn.execute(
-        "SELECT views FROM post_page_views_aggregate WHERE slug = ?",
-        [post.slug]
+        'SELECT views FROM post_page_views_aggregate WHERE slug = ?',
+        [post.slug],
       );
 
       if (!results?.rows?.[0]) {
         console.error(
-          "No results found for slug",
+          'No results found for slug',
           post.slug,
-          "results:",
-          results
+          'results:',
+          results,
         );
       }
 
-      return results.rows[0] as Record<"views", number> | undefined;
-    })
+      return results.rows[0] as Record<'views', number> | undefined;
+    }),
   );
 
   console.log(
-    "fetched blog page",
+    'fetched blog page',
     pageNumber,
-    "of",
+    'of',
     Math.ceil(allPosts.length / postsPerPage),
-    "with page size",
-    postsPerPage
+    'with page size',
+    postsPerPage,
   );
 
   return new Response(
@@ -88,7 +88,7 @@ export async function GET(request: Request) {
           viewCount: pageViews[index]?.views ?? 0,
           imageMetadata: getImageMetadata(post.cover),
         };
-      })
-    )
+      }),
+    ),
   );
 }

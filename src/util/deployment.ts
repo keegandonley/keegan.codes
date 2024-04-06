@@ -1,17 +1,17 @@
 export const getFullyQualifiedDeploymentUrl = async (path: `/${string}`) => {
-  if (process.env.NODE_ENV === "development") {
-    const port = process.env.PORT || "3561";
+  if (process.env.NODE_ENV === 'development') {
+    const port = process.env.PORT || '3561';
     return { url: `http://localhost:${port}${path}` };
   }
 
   let host = null;
   let cookie;
 
-  if (typeof window === "undefined") {
-    const getHeaders = (await import("next/headers")).headers;
+  if (typeof window === 'undefined') {
+    const getHeaders = (await import('next/headers')).headers;
     const headersList = getHeaders();
-    host = headersList.get("host") || "keegan.codes";
-    cookie = headersList.get("cookie");
+    host = headersList.get('host') || 'keegan.codes';
+    cookie = headersList.get('cookie');
   }
 
   return {
@@ -21,7 +21,7 @@ export const getFullyQualifiedDeploymentUrl = async (path: `/${string}`) => {
 };
 
 export const getUrlFromHost = (host: string | null, path?: `/${string}`) => {
-  if (host?.includes("localhost")) {
+  if (host?.includes('localhost')) {
     return `http://${host}${path}`;
   }
 
@@ -29,5 +29,5 @@ export const getUrlFromHost = (host: string | null, path?: `/${string}`) => {
 };
 
 export const getCookieDomain = () => {
-  return process.env.NODE_ENV === "development" ? "localhost" : "keegan.codes";
+  return process.env.NODE_ENV === 'development' ? 'localhost' : 'keegan.codes';
 };

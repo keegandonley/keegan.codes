@@ -1,16 +1,16 @@
-import { ElementBaseProps } from "@/types/elements";
-import Link from "next/link";
-import styles from "./mdxEntryRow.module.css";
-import Image from "next/image";
-import { BOOK_BUCKET_URL, BUCKET_URL } from "@/util/r2";
-import { parseToProps } from "@/util/image";
-import { merge } from "@/util/classNames";
-import { Date } from "./components/Date";
-import { Tags } from "./components/Tags";
-import { ReadingTime } from "./components/ReadingTime";
-import dynamic from "next/dynamic";
+import { ElementBaseProps } from '@/types/elements';
+import Link from 'next/link';
+import styles from './mdxEntryRow.module.css';
+import Image from 'next/image';
+import { BOOK_BUCKET_URL, BUCKET_URL } from '@/util/r2';
+import { parseToProps } from '@/util/image';
+import { merge } from '@/util/classNames';
+import { Date } from './components/Date';
+import { Tags } from './components/Tags';
+import { ReadingTime } from './components/ReadingTime';
+import dynamic from 'next/dynamic';
 
-const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
+const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
 
 interface MDXEntryRowProps extends ElementBaseProps {
   title?: string;
@@ -53,7 +53,7 @@ export const MDXEntryRow = ({
 }: MDXEntryRowProps) => {
   const metadata = imageMetadata;
 
-  const Parent = slug ? Link : "div";
+  const Parent = slug ? Link : 'div';
   let resultWidth = 500;
   if (metadata) {
     const ratio = metadata.width / metadata.height;
@@ -65,17 +65,17 @@ export const MDXEntryRow = ({
     <div
       className={merge(
         styles.wrapper,
-        filler && !loader ? styles.filler : "",
+        filler && !loader ? styles.filler : '',
         styles[`col-${columns}`],
         className,
-        "animate-viz"
+        'animate-viz',
       )}
     >
       <div className={styles.horizontalLine}></div>
       <div className={styles.verticalLine}></div>
       <Parent
-        href={`/${book ? "library" : "blog"}/${slug}`}
-        className={merge(styles.a, loader ? styles.loader : "")}
+        href={`/${book ? 'library' : 'blog'}/${slug}`}
+        className={merge(styles.a, loader ? styles.loader : '')}
       >
         {cover && !loader ? (
           <div className={merge(styles.imageParent, book && styles.book)}>

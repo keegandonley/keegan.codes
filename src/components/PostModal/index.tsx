@@ -1,11 +1,11 @@
-import { getComponentForKey, getKey } from "@/app/blog/util";
-import styles from "./postModal.module.css";
-import { notFound } from "next/navigation";
-import { getImageMetadata, parseSource, parseToProps } from "@/util/image";
-import Image from "next/image";
-import { BottomFade } from "@/components/BottomFade";
-import { BUCKET_URL } from "@/util/r2";
-import { PostHeader } from "../PostHeader";
+import { getComponentForKey, getKey } from '@/app/blog/util';
+import styles from './postModal.module.css';
+import { notFound } from 'next/navigation';
+import { getImageMetadata, parseSource, parseToProps } from '@/util/image';
+import Image from 'next/image';
+import { BottomFade } from '@/components/BottomFade';
+import { BUCKET_URL } from '@/util/r2';
+import { PostHeader } from '../PostHeader';
 
 interface PostModalProps {
   slug: string;

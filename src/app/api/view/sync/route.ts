@@ -1,5 +1,5 @@
-import { ExecutedQuery, connect } from "@planetscale/database";
-import { NextResponse } from "next/server";
+import { ExecutedQuery, connect } from '@planetscale/database';
+import { NextResponse } from 'next/server';
 
 const config = {
   host: process.env.host,
@@ -12,13 +12,13 @@ const BATCH_SIZE = 20;
 export async function GET() {
   const startTime = Date.now();
   const conn = connect(config);
-  console.log("Processing views");
+  console.log('Processing views');
 
   try {
     const results: ExecutedQuery<{ slug: string; views: string }> =
       await conn.execute(
-        "SELECT slug, COUNT(*) as views FROM post_page_views GROUP BY slug",
-        []
+        'SELECT slug, COUNT(*) as views FROM post_page_views GROUP BY slug',
+        [],
       );
 
     let totalViews = 0;
@@ -36,7 +36,7 @@ export async function GET() {
 
         return acc;
       },
-      [[]] as { slug: string; views: string }[][]
+      [[]] as { slug: string; views: string }[][],
     );
 
     for (const group of rowsGroups) {
@@ -46,25 +46,25 @@ export async function GET() {
           try {
             totalViews += parseInt(row.views, 10);
           } catch (ex) {
-            console.error("error logging view sync for", row.slug, ex);
+            console.error('error logging view sync for', row.slug, ex);
           }
 
           try {
             return conn.execute(
-              "INSERT INTO post_page_views_aggregate (slug, views) VALUES (?, ?) ON DUPLICATE KEY UPDATE views = ?",
-              [row.slug, row.views, row.views]
+              'INSERT INTO post_page_views_aggregate (slug, views) VALUES (?, ?) ON DUPLICATE KEY UPDATE views = ?',
+              [row.slug, row.views, row.views],
             );
           } catch (ex) {
             console.error(ex);
           }
-        })
+        }),
       );
     }
 
     try {
       await conn.execute(
-        "INSERT INTO page_views_total (type, views) VALUES (?, ?) ON DUPLICATE KEY UPDATE views = ?",
-        ["post", totalViews, totalViews]
+        'INSERT INTO page_views_total (type, views) VALUES (?, ?) ON DUPLICATE KEY UPDATE views = ?',
+        ['post', totalViews, totalViews],
       );
     } catch (ex) {
       console.error(ex);
@@ -75,12 +75,12 @@ export async function GET() {
     const duration = endTime - startTime;
 
     console.log(
-      "updated",
+      'updated',
       results.rows.length,
-      "slugs with new view counts for a total of",
+      'slugs with new view counts for a total of',
       totalViews,
-      "views in",
-      `${duration}ms`
+      'views in',
+      `${duration}ms`,
     );
 
     return NextResponse.json({

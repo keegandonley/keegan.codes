@@ -1,5 +1,5 @@
-import { BookContent } from "../BookContent";
-import styles from "./bookModal.module.css";
+import { BookContent } from '../BookContent';
+import styles from './bookModal.module.css';
 
 interface BookModalProps {
   slug: string;

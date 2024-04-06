@@ -1,10 +1,10 @@
-import Posts from "@/posts";
-import wordCounts from "../../../../post-word-counts.json";
-import { Post } from "@/types/post";
-import { connect } from "@planetscale/database";
-import { getImageMetadata } from "@/util/image";
+import Posts from '@/posts';
+import wordCounts from '../../../../post-word-counts.json';
+import { Post } from '@/types/post';
+import { connect } from '@planetscale/database';
+import { getImageMetadata } from '@/util/image';
 
-export const runtime = "edge";
+export const runtime = 'edge';
 
 const config = {
   host: process.env.host,
@@ -39,11 +39,11 @@ const handleRequestForSlug = async (url: URL, slug?: string | null) => {
   let randomIndex = Math.floor(Math.random() * posts.length);
 
   console.log(
-    "searching",
-    "randomIndex",
+    'searching',
+    'randomIndex',
     randomIndex,
-    "against currentIndex",
-    currentIndex
+    'against currentIndex',
+    currentIndex,
   );
 
   let interations = 0;
@@ -59,15 +59,15 @@ const handleRequestForSlug = async (url: URL, slug?: string | null) => {
       const conn = connect(config);
 
       const results = await conn.execute(
-        "SELECT views FROM post_page_views_aggregate WHERE slug = ?",
-        [randomPost.slug]
+        'SELECT views FROM post_page_views_aggregate WHERE slug = ?',
+        [randomPost.slug],
       );
 
       console.log(
-        "fetched random post for",
+        'fetched random post for',
         slug,
-        "and it was",
-        randomPost.slug
+        'and it was',
+        randomPost.slug,
       );
 
       const metadata = getImageMetadata(randomPost.cover);
@@ -76,11 +76,11 @@ const handleRequestForSlug = async (url: URL, slug?: string | null) => {
         JSON.stringify({
           ...randomPost,
           viewCount:
-            (results.rows[0] as Record<"views", number> | undefined)?.views ??
+            (results.rows[0] as Record<'views', number> | undefined)?.views ??
             0,
           metadata,
           url: `${url.origin}/blog/${randomPost.slug}`,
-        })
+        }),
       );
     }
   }
@@ -90,7 +90,7 @@ const handleRequestForSlug = async (url: URL, slug?: string | null) => {
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const slug = url.searchParams.get("slug");
+  const slug = url.searchParams.get('slug');
 
   return handleRequestForSlug(url, slug);
 }

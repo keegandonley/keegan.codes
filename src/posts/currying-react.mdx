@@ -1,15 +1,15 @@
-import { CurryingExample } from "../components/Post/Interactive/Currying";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGraduationCap } from "@fortawesome/pro-solid-svg-icons";
+import { CurryingExample } from '../components/Post/Interactive/Currying';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGraduationCap } from '@fortawesome/pro-solid-svg-icons';
 
-export const title = "Mastering React Component Callbacks with Currying";
-export const slug = "mastering-react-component-callbacks-with-currying";
-export const tags = ["React", "javascript", "software"];
+export const title = 'Mastering React Component Callbacks with Currying';
+export const slug = 'mastering-react-component-callbacks-with-currying';
+export const tags = ['React', 'javascript', 'software'];
 export const description =
-  "How to use functional currying to make React callbacks more clear and maintainable";
-export const cover = "react-currying-cover.png";
+  'How to use functional currying to make React callbacks more clear and maintainable';
+export const cover = 'react-currying-cover.png';
 export const published = new Date(2023, 4, 5);
-export const shortCodes = ["currying-react"];
+export const shortCodes = ['currying-react'];
 
 Currying is a technique in functional programming to break down function call arguments.
 A function is transformed from having <em>multiple arguments</em>,
@@ -111,13 +111,13 @@ const Math = () => {
   const handleClick = (action) => {
     setHasChanged(true); // New logic that runs no matter which action is taken
 
-    if (action === "increment") {
+    if (action === 'increment') {
       return setValue((v) => v + 1);
     }
-    if (action === "decrement") {
+    if (action === 'decrement') {
       return setValue((v) => v - 1);
     }
-    if (action === "double") {
+    if (action === 'double') {
       return setValue((v) => v * 2);
     }
   };
@@ -125,9 +125,9 @@ const Math = () => {
   return (
     <>
       <p>Value is {value}</p>
-      <button onClick={() => handleClick("increment")}>Increment</button>
-      <button onClick={() => handleClick("decrement")}>Decrement</button>
-      <button onClick={() => handleClick("double")}>Double</button>
+      <button onClick={() => handleClick('increment')}>Increment</button>
+      <button onClick={() => handleClick('decrement')}>Decrement</button>
+      <button onClick={() => handleClick('double')}>Double</button>
     </>
   );
 };
@@ -151,13 +151,13 @@ const Math = () => {
     return (event) => {
       event.stopPropagation(); // New logic that runs no matter which action is taken
 
-      if (action === "increment") {
+      if (action === 'increment') {
         return setValue((v) => v + 1);
       }
-      if (action === "decrement") {
+      if (action === 'decrement') {
         return setValue((v) => v - 1);
       }
-      if (action === "double") {
+      if (action === 'double') {
         return setValue((v) => v * 2);
       }
     };
@@ -166,9 +166,9 @@ const Math = () => {
   return (
     <>
       <p>Value is {value}</p>
-      <button onClick={clickHandlerFor("increment")}>Increment</button>
-      <button onClick={clickHandlerFor("decrement")}>Decrement</button>
-      <button onClick={clickHandlerFor("double")}>Double</button>
+      <button onClick={clickHandlerFor('increment')}>Increment</button>
+      <button onClick={clickHandlerFor('decrement')}>Decrement</button>
+      <button onClick={clickHandlerFor('double')}>Double</button>
     </>
   );
 };
@@ -184,15 +184,15 @@ This works well for input components too!
 
 ```jsx
 const Form = () => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [termsAccepted, setTermsAccepted] = useState(false);
 
   const inputHandlerFor = (field) => {
     return (ev) => {
-      if (field === "name") {
+      if (field === 'name') {
         return setName(ev.target.value);
       }
-      if (field === "terms") {
+      if (field === 'terms') {
         return setTerms(ev.target.checked);
       }
     };
@@ -200,10 +200,10 @@ const Form = () => {
 
   return (
     <form>
-      <input type="text" onChange={inputHandlerFor("name")} value={name} />
+      <input type="text" onChange={inputHandlerFor('name')} value={name} />
       <input
         type="checkbox"
-        onChange={inputHandlerFor("terms")}
+        onChange={inputHandlerFor('terms')}
         checked={termsAccepted}
       />
     </form>
@@ -214,7 +214,7 @@ const Form = () => {
 > Without currying, our inputs with their callbacks would be something like this:
 >
 > ```jsx
-> <input onChange={(event) => inputHandler("name", event)} />
+> <input onChange={(event) => inputHandler('name', event)} />
 > ```
 >
 > The curried approach is far more concise and still easy to read and understand!
@@ -226,13 +226,13 @@ click handler is perfect for the job:
 
 ```jsx
 const data = [
-  { id: 1, name: "John" },
-  { id: 2, name: "Jane" },
-  { id: 3, name: "Joe" },
+  { id: 1, name: 'John' },
+  { id: 2, name: 'Jane' },
+  { id: 3, name: 'Joe' },
 ];
 
 const clickHandler = (data) => (event) => {
-  console.log("clicked on", data.id);
+  console.log('clicked on', data.id);
 };
 
 return data.map((dataItem) => {

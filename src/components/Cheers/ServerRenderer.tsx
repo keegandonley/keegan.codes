@@ -1,6 +1,6 @@
-import { getFullyQualifiedDeploymentUrl } from "@/util/deployment";
-import { CheersClientRenderer } from "./ClientRenderer";
-import styles from "./cheers.module.css";
+import { getFullyQualifiedDeploymentUrl } from '@/util/deployment';
+import { CheersClientRenderer } from './ClientRenderer';
+import styles from './cheers.module.css';
 
 interface CheersServerRendererProps {
   slug: string;
@@ -10,10 +10,10 @@ interface CheersServerRendererProps {
 const getValue = async (slug: string): Promise<number> => {
   try {
     const { url, headers } = await getFullyQualifiedDeploymentUrl(
-      `/api/cheers?slug=${slug}`
+      `/api/cheers?slug=${slug}`,
     );
     const data = await fetch(url, {
-      cache: "no-store",
+      cache: 'no-store',
       headers,
     });
 
@@ -21,7 +21,7 @@ const getValue = async (slug: string): Promise<number> => {
 
     return parseInt(count);
   } catch (ex) {
-    console.error("Error for slug when getting cheers count", slug, ex);
+    console.error('Error for slug when getting cheers count', slug, ex);
     return 0;
   }
 };

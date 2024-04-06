@@ -1,8 +1,8 @@
-import { redirect } from "next/navigation";
-import Slides from "./content";
-import styles from "./slide.module.css";
-import { merge } from "@/util/classNames";
-import "../../../syntax-theme.css";
+import { redirect } from 'next/navigation';
+import Slides from './content';
+import styles from './slide.module.css';
+import { merge } from '@/util/classNames';
+import '../../../syntax-theme.css';
 
 interface SlideProps {
   params: {
@@ -27,7 +27,7 @@ export default function Render2023SlidePage({ params: { slide } }: SlideProps) {
   const slideIndex = parseInt(slide, 10);
 
   if (!order[slideIndex]) {
-    redirect("/slides/render23/0");
+    redirect('/slides/render23/0');
   }
 
   const Slide = order[slideIndex].default;

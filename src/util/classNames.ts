@@ -3,7 +3,7 @@ import {
   merge as _merge,
   fallback as _fallback,
   injectVariables as _injectVariables,
-} from "@keegancodes/foundations";
+} from '@keegancodes/foundations';
 
 export const merge = _merge;
 

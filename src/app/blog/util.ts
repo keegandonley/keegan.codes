@@ -1,5 +1,5 @@
-import Posts from "@/posts";
-import { Post } from "@/types/post";
+import Posts from '@/posts';
+import { Post } from '@/types/post';
 
 interface GetKeyArg {
   slug: string;

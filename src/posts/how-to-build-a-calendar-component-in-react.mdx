@@ -1,19 +1,19 @@
-export const title = "How to Build a Calendar Component in React";
-export const slug = "how-to-build-a-calendar-component-in-react";
-export const tags = ["software", "tutorial", "react", "front-end"];
+export const title = 'How to Build a Calendar Component in React';
+export const slug = 'how-to-build-a-calendar-component-in-react';
+export const tags = ['software', 'tutorial', 'react', 'front-end'];
 export const description =
-  "Building a simple calendar component in React with minimal reliance on third party code";
-export const cover = "calendar-cover.png";
+  'Building a simple calendar component in React with minimal reliance on third party code';
+export const cover = 'calendar-cover.png';
 export const published = new Date(2021, 10, 12);
-export const shortCodes = ["react-calendar"];
+export const shortCodes = ['react-calendar'];
 
 Recently, I had to implement a calendar view for some complex data, but didn't want to rely on a third-party calendar library that was bloated with features I didn't need, and I really wanted to stay away from moment.js for performance reasons, which a lot of the existing libraries use.
 
 I haven't built a calendar application from scratch since my senior project in college, so I enjoyed the opportunity to write something new, now that I have a lot more experience between now and my last attempt. The underlying data structure is something I've used for calendar applications in the past and has worked really well.
 
-You can find a live demo of what I built [here on my website](https://v2.keegandonley.com/calendarDemo "Calendar Demo").
+You can find a live demo of what I built [here on my website](https://v2.keegandonley.com/calendarDemo 'Calendar Demo').
 
-> This is a full tutorial, the first one I'll be publishing on my new blog. If you'd like a quick summary instead, you can [skip to the tldr](#summaryortldr "tldr") at the bottom. Otherwise, read on!
+> This is a full tutorial, the first one I'll be publishing on my new blog. If you'd like a quick summary instead, you can [skip to the tldr](#summaryortldr 'tldr') at the bottom. Otherwise, read on!
 
 ## Designing the Data Structure
 
@@ -49,14 +49,14 @@ Now, it becomes clearer what we need to do. We need to decide at which index the
 
 We know what the end result will be for November 2021, as seen above. Let's take that knowledge and write some code to dynamically fill the matrix for whatever month is selected.
 
-We'll use [Luxon](https://moment.github.io/luxon/ "Luxon") for our localization. This could of course be done with vanilla Javascript, but when it comes to working with varying locales, I prefer to fall back on a tried and true solution. We'll select the current month for starters:
+We'll use [Luxon](https://moment.github.io/luxon/ 'Luxon') for our localization. This could of course be done with vanilla Javascript, but when it comes to working with varying locales, I prefer to fall back on a tried and true solution. We'll select the current month for starters:
 
 ```javascript
 const [monthOffset, setMonthOffset] = useState(0);
 
 const date = useMemo(
-  () => DateTime.local().startOf("month").minus({ months: monthOffset }),
-  [monthOffset]
+  () => DateTime.local().startOf('month').minus({ months: monthOffset }),
+  [monthOffset],
 );
 ```
 
@@ -133,18 +133,18 @@ That wasn't too bad! Now we have a matrix that represents a calendar, and all th
 
 ## Designing the Interface
 
-_I'm using_ [_Tailwind_](https://tailwindcss.com/ "Tailwind") _in this section to describe all the styling. I love Tailwind for its descriptive classNames that show exactly what's going on. It's particularly nice in tutorials like this as I don't need to show CSS alongside my React markup. The same effect can of course be achieved using standard CSS._
+_I'm using_ [_Tailwind_](https://tailwindcss.com/ 'Tailwind') _in this section to describe all the styling. I love Tailwind for its descriptive classNames that show exactly what's going on. It's particularly nice in tutorials like this as I don't need to show CSS alongside my React markup. The same effect can of course be achieved using standard CSS._
 
 We're going to need to know what the current day is, so we can render it differently! Let's use Luxon again, since we already have it and it makes this so simple:
 
 ```javascript
-const today = useMemo(() => DateTime.local().startOf("day"), []);
+const today = useMemo(() => DateTime.local().startOf('day'), []);
 ```
 
 Let's write some jsx! A 2-dimensional matrix tells me we're going to need a double loop; the outer loop will handle the rows, and the inner loop will handle the days.
 
 ```javascript
-<div className="flex flex-col flex-grow min-h-[700px] mb-12">
+<div className="mb-12 flex min-h-[700px] flex-grow flex-col">
   {month.map((week, weekIndex) => {
     return week.every((x) => x === null) ? (
       <Fragment key={JSON.stringify(week)} />
@@ -158,16 +158,16 @@ Let's write some jsx! A 2-dimensional matrix tells me we're going to need a doub
           return (
             <div
               key={`${JSON.stringify(week)}-${day}-${dayIndex}`}
-              className={`min-w-[200px] min-h-[100px] ${
-                day ? "bg-gray-100" : ""
-              } ${isToday ? "bg-blue-200" : ""} ${
-                weekIndex === 0 ? "border-t" : ""
-              } border-solid border-b w-full flex flex-col border-r border-gray-200 ${
-                dayIndex === 0 ? "border-l" : ""
+              className={`min-h-[100px] min-w-[200px] ${
+                day ? 'bg-gray-100' : ''
+              } ${isToday ? 'bg-blue-200' : ''} ${
+                weekIndex === 0 ? 'border-t' : ''
+              } flex w-full flex-col border-b border-r border-solid border-gray-200 ${
+                dayIndex === 0 ? 'border-l' : ''
               }`}
             >
               <div className="relative h-4">
-                <div className="absolute text-xs left-1 top-1 text-gray-500">
+                <div className="absolute left-1 top-1 text-xs text-gray-500">
                   {day}
                 </div>
               </div>
@@ -196,7 +196,7 @@ Looking good! At this point there are only two main things left - displaying the
 Let's do the month header first, along with arrows for cycling through the months:
 
 ```javascript
-<div className="text-center mb-4 text-lg">
+<div className="mb-4 text-center text-lg">
   <FontAwesomeIcon
     icon={faChevronLeft}
     className="mr-4 cursor-pointer text-gray-400 hover:text-black"
@@ -217,30 +217,30 @@ For the weekday headers, we can simply iterate over an array with the days the w
 
 ```javascript
 const weekDays = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
 ];
 ```
 
 ## Summary (or, tldr)
 
-In a few minutes we've built a calendar UI that can be a viable replacement for bulky third party calendars. You can find a demo of exactly what this tutorial resulted in [here on my website](https://v2.keegandonley.com/calendarDemo "Calendar Demo"). If you'd like to see the completed code, you can find it in a [gist on my Github](https://gist.github.com/keegandonley/cf2a5bcc04bd9e540e87351fc1ca2163 "Calendar Gist").
+In a few minutes we've built a calendar UI that can be a viable replacement for bulky third party calendars. You can find a demo of exactly what this tutorial resulted in [here on my website](https://v2.keegandonley.com/calendarDemo 'Calendar Demo'). If you'd like to see the completed code, you can find it in a [gist on my Github](https://gist.github.com/keegandonley/cf2a5bcc04bd9e540e87351fc1ca2163 'Calendar Gist').
 
 ![](calendar-post:image-2.png)
 
 ## Next Steps
 
-Once the calendar is built, it's easy to add any data you like, whether you're showing cards for events, or streaks for an activity tracking app. In the future, I'd like to add a drag-and-drop backend to this, so that items added could be rearranged. This wouldn't be too difficult with something like [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd "React Beautiful DND").
+Once the calendar is built, it's easy to add any data you like, whether you're showing cards for events, or streaks for an activity tracking app. In the future, I'd like to add a drag-and-drop backend to this, so that items added could be rearranged. This wouldn't be too difficult with something like [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd 'React Beautiful DND').
 
-I implemented something based on this approach in my work for [Pinpoint](https://pinpoint.com/ "Pinpoint"), albeit much more complicated and feature-rich. This is a great starting point, though!
+I implemented something based on this approach in my work for [Pinpoint](https://pinpoint.com/ 'Pinpoint'), albeit much more complicated and feature-rich. This is a great starting point, though!
 
-At the end of the day, this was a pretty quick implementation. I was happy to be able to avoid using a large third party library, and this can be expanded with a lot more features! Let me know what you think [over on Twitter](https://twitter.com/keegandonley "Twitter")!
+At the end of the day, this was a pretty quick implementation. I was happy to be able to avoid using a large third party library, and this can be expanded with a lot more features! Let me know what you think [over on Twitter](https://twitter.com/keegandonley 'Twitter')!
 
 ---
 
-> **Fun fact:** I took the cover photo for this blog post at the [Musée d'Orsay](https://www.musee-orsay.fr/ "Musee Orsay"), which is one of my favorite museums in Paris. If I only had time to visit one museum in the city, it would be this one every time.
+> **Fun fact:** I took the cover photo for this blog post at the [Musée d'Orsay](https://www.musee-orsay.fr/ 'Musee Orsay'), which is one of my favorite museums in Paris. If I only had time to visit one museum in the city, it would be this one every time.

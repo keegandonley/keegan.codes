@@ -1,26 +1,26 @@
-import { MetadataRoute } from "next";
-import Posts from "@/posts";
-import Books from "@/books";
-import { readFileSync } from "fs";
+import { MetadataRoute } from 'next';
+import Posts from '@/posts';
+import Books from '@/books';
+import { readFileSync } from 'fs';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const published = await readFileSync("public/published.txt", "utf-8");
+  const published = await readFileSync('public/published.txt', 'utf-8');
 
   return [
     {
-      url: "https://keegan.codes",
+      url: 'https://keegan.codes',
       lastModified: published,
     },
     {
-      url: "https://keegan.codes/resume",
+      url: 'https://keegan.codes/resume',
       lastModified: published,
     },
     {
-      url: "https://keegan.codes/blog",
+      url: 'https://keegan.codes/blog',
       lastModified: published,
     },
     {
-      url: "https://keegan.codes/pi",
+      url: 'https://keegan.codes/pi',
       lastModified: published,
     },
     ...Object.keys(Posts).map((key) => {
@@ -31,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       };
     }),
     {
-      url: "https://keegan.codes/library",
+      url: 'https://keegan.codes/library',
       lastModified: published,
     },
     ...Object.keys(Books).map((key) => {

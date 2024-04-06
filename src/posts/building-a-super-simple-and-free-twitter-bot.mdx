@@ -1,42 +1,42 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleExclamation } from "@fortawesome/pro-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleExclamation } from '@fortawesome/pro-solid-svg-icons';
 
-export const title = "Building a Super Simple (and Free!) Twitter Bot";
-export const slug = "building-a-super-simple-and-free-twitter-bot";
+export const title = 'Building a Super Simple (and Free!) Twitter Bot';
+export const slug = 'building-a-super-simple-and-free-twitter-bot';
 export const tags = [
-  "software",
-  "tutorial",
-  "open source",
-  "javascript",
-  "raspberry pi",
+  'software',
+  'tutorial',
+  'open source',
+  'javascript',
+  'raspberry pi',
 ];
 export const description =
-  "How to build a simple Twitter bot and run it for free on a Raspberry Pi";
-export const cover = "twitter-bot-cover.png";
+  'How to build a simple Twitter bot and run it for free on a Raspberry Pi';
+export const cover = 'twitter-bot-cover.png';
 export const published = new Date(2022, 7, 9);
-export const shortCodes = ["twitter-bot"];
+export const shortCodes = ['twitter-bot'];
 
 > <FontAwesomeIcon icon={faCircleExclamation} /> After the [changes to the Twitter
 > API Policy](https://twitter.com/TwitterDev/status/1641222783601631233), some things
 > are different than they were when I wrote this article. The code still works the
 > same way, but with free API access severely limited you'll need to pay for a developer
-> account to run a bot with a substantial volume of Tweets.{" "}
+> account to run a bot with a substantial volume of Tweets.{' '}
 
-Recently, I had an idea for a Twitter bot account I wanted to make. There are a handful of HTTP status codes I still don't have memorized, and I figured I'd create a fun way to casually learn the remainders. The idea I settled on is a bot account on Twitter that tweets each HTTP status code as it corresponds to the current time. For example, if the time is **4:00,** it tweets the 400 status code, a description, and a link to the spec. [My book quote clock](https://keegandonley.com/blog/designing-and-building-a-raspberry-pi-based-book-quote-clock "Book Quote Clock") somewhat inspired this idea since I like making things that use the current time uniquely.
+Recently, I had an idea for a Twitter bot account I wanted to make. There are a handful of HTTP status codes I still don't have memorized, and I figured I'd create a fun way to casually learn the remainders. The idea I settled on is a bot account on Twitter that tweets each HTTP status code as it corresponds to the current time. For example, if the time is **4:00,** it tweets the 400 status code, a description, and a link to the spec. [My book quote clock](https://keegandonley.com/blog/designing-and-building-a-raspberry-pi-based-book-quote-clock 'Book Quote Clock') somewhat inspired this idea since I like making things that use the current time uniquely.
 
-You can check out the finished product here: [@whatstatusisit](https://twitter.com/whatstatusisit "What Status is it Twitter"). Below I've embedded an example of a Tweet:
+You can check out the finished product here: [@whatstatusisit](https://twitter.com/whatstatusisit 'What Status is it Twitter'). Below I've embedded an example of a Tweet:
 
 > <FontAwesomeIcon icon={faCircleExclamation} /> Tweet embeds no longer available
 
-This was my first Twitter bot, so I had to learn a bit about the API. After that, I needed a place to host it. I have a handful of [Raspberry Pi computers at home](https://keegandonley.com/blog/my-home-network-configuration-for-speed-and-privacy#raspberrypi4 "Network Article") so I was able to easily add the program to one of those. I'll get more into that [down below](#hostingthebot "Hosting the Bot"), but I will say it was nice to not have to worry about hosting this anywhere, and really sped up the process.
+This was my first Twitter bot, so I had to learn a bit about the API. After that, I needed a place to host it. I have a handful of [Raspberry Pi computers at home](https://keegandonley.com/blog/my-home-network-configuration-for-speed-and-privacy#raspberrypi4 'Network Article') so I was able to easily add the program to one of those. I'll get more into that [down below](#hostingthebot 'Hosting the Bot'), but I will say it was nice to not have to worry about hosting this anywhere, and really sped up the process.
 
 > One final note, I built this bot with NodeJS, and it was pretty hastily thrown together. Normally for something like this I'd write in Typescript but this was simple enough I didn't take the time.
 
 ## Authenticating With Twitter
 
-First things first, I created my bot's Twitter account and signed up for the developer program, to get API access to my new account. You can join at [developer.twitter.com](https://developer.twitter.com/ "developer.twitter.com/"). You're then able to generate consumer keys and authentication tokens to grant the bot access to your account.
+First things first, I created my bot's Twitter account and signed up for the developer program, to get API access to my new account. You can join at [developer.twitter.com](https://developer.twitter.com/ 'developer.twitter.com/'). You're then able to generate consumer keys and authentication tokens to grant the bot access to your account.
 
-To manage credentials and make API calls, I used an npm package called [twitter-api-v2](https://www.npmjs.com/package/twitter-api-v2 "Twitter API V2 Package"). This made all the under-the-hood Twitter logic super simple. I simply had to generate my credentials and create a new client:
+To manage credentials and make API calls, I used an npm package called [twitter-api-v2](https://www.npmjs.com/package/twitter-api-v2 'Twitter API V2 Package'). This made all the under-the-hood Twitter logic super simple. I simply had to generate my credentials and create a new client:
 
 ```javascript
 const userClient = new TwitterApi({
@@ -47,23 +47,23 @@ const userClient = new TwitterApi({
 });
 ```
 
-The credentials are stored in a `.env` file and I used the package [dotenv](https://www.npmjs.com/package/dotenv "Dotenv | npm") to import them.
+The credentials are stored in a `.env` file and I used the package [dotenv](https://www.npmjs.com/package/dotenv 'Dotenv | npm') to import them.
 
 ## Posting a Tweet
 
 Once the API is authenticated, posting the tweet is a piece of cake:
 
 ```javascript
-await userClient.v2.tweet("Hello, world!");
+await userClient.v2.tweet('Hello, world!');
 ```
 
 ## Run on an Interval
 
-For my particular bot, I want it to tweet any time the current hour and minute matches an HTTP status code. The simplest approach is to just run the script every 60 seconds and check the time. This was pretty straightforward: First, the script runs, and then it kicks off an interval using [setInterval](https://developer.mozilla.org/en-US/docs/Web/API/setInterval "MDN - setInterval") that runs again every 60 seconds. Here's how that all looks together:
+For my particular bot, I want it to tweet any time the current hour and minute matches an HTTP status code. The simplest approach is to just run the script every 60 seconds and check the time. This was pretty straightforward: First, the script runs, and then it kicks off an interval using [setInterval](https://developer.mozilla.org/en-US/docs/Web/API/setInterval 'MDN - setInterval') that runs again every 60 seconds. Here's how that all looks together:
 
 ```javascript
-require("dotenv").config();
-const { TwitterApi } = require("twitter-api-v2");
+require('dotenv').config();
+const { TwitterApi } = require('twitter-api-v2');
 
 (() => {
   const func = async () => {
@@ -74,7 +74,7 @@ const { TwitterApi } = require("twitter-api-v2");
       appSecret: process.env.TWITTER_API_SECRET,
     });
 
-    await userClient.v2.tweet("Hello, world!");
+    await userClient.v2.tweet('Hello, world!');
   };
 
   func();
@@ -84,20 +84,20 @@ const { TwitterApi } = require("twitter-api-v2");
 
 As it stands, this program would tweet "Hello, world!" every 60 seconds (although Twitter won't allow the same text to be repeated in rapid succession like that).
 
-This is the part where you'd need to decide on what your bot does! There are all sorts of interesting bots, like ones that [track high-profile jets](https://twitter.com/ElonJet "Elon Jet"). You could make some API calls to fetch data, or pull from local information on your machine, like the current time in my case.
+This is the part where you'd need to decide on what your bot does! There are all sorts of interesting bots, like ones that [track high-profile jets](https://twitter.com/ElonJet 'Elon Jet'). You could make some API calls to fetch data, or pull from local information on your machine, like the current time in my case.
 
 To generate the data for my bot, all I need is the local time and a little bit of manipulation:
 
 ```javascript
 const def = new Date()
-  .toLocaleTimeString("default", {
-    hour: "2-digit",
-    minute: "2-digit",
+  .toLocaleTimeString('default', {
+    hour: '2-digit',
+    minute: '2-digit',
     hour12: true,
   })
-  .split(" ")[0];
+  .split(' ')[0];
 
-const splits = def.split(":");
+const splits = def.split(':');
 let hours = splits[0];
 const minutes = splits[1];
 
@@ -108,7 +108,7 @@ const minutes = splits[1];
         01:30 -> 130
         01:00 -> 100
     */
-if (hours[0] === "0") {
+if (hours[0] === '0') {
   hours = hours[1];
 }
 
@@ -121,9 +121,9 @@ The format I settled on for the tweets is: "`<random interjection>` `<short phra
 
 ```javascript
 const phrases = [
-  ", the current status is",
+  ', the current status is',
   "! That's a",
-  "! The status is",
+  '! The status is',
   ", now it's",
 ];
 const randomInteger = (min, max) =>
@@ -136,7 +136,7 @@ const startingPhrase = phrases[phraseIndex];
 // Pick a random interjection, using fakerjs
 const interjection = faker.word.interjection();
 
-const readMoreText = "Read more:";
+const readMoreText = 'Read more:';
 const link = codeData.spec_href;
 const code = codeData.code;
 const message = codeData.message;
@@ -164,7 +164,7 @@ if (remainingCharacters < description.length) {
 
 const str = `${interjection}${startingPhrase} ${code}: ${message}! (${
   sliceEnd >= 0 ? description.slice(0, sliceEnd) : description
-}${sliceEnd < 0 ? "" : "..."}) ${readMoreText} ${link}`;
+}${sliceEnd < 0 ? '' : '...'}) ${readMoreText} ${link}`;
 ```
 
 At the end of this, I have a string that will fit in a tweet, that includes all the parts of the message I want! All that's left to do is tweet it as we did above with the "Hello, world."
@@ -177,7 +177,7 @@ await userClient.v2.tweet(str);
 
 As I mentioned at the start, this is not hosted on any public server, because it doesn't need to be! I have a handful of Raspberry Pi's that handle various tasks in my house, and there were plenty of available resources to run a really simple script like this.
 
-I used a program called [pm2](https://pm2.keymetrics.io/ "Pm2") to manage the process and make sure my bot survives reboots or power losses, as I do occasionally reboot the system and didn't want to need to restart the service every time. This is a handy and powerful tool that I use extensively in my home network. To use pm2, you simply [install it globally using npm](https://www.npmjs.com/package/pm2 "pm2: npm"): \``npm install pm2 -g` and then start the program using pm2 the same way you would with node:
+I used a program called [pm2](https://pm2.keymetrics.io/ 'Pm2') to manage the process and make sure my bot survives reboots or power losses, as I do occasionally reboot the system and didn't want to need to restart the service every time. This is a handy and powerful tool that I use extensively in my home network. To use pm2, you simply [install it globally using npm](https://www.npmjs.com/package/pm2 'pm2: npm'): \``npm install pm2 -g` and then start the program using pm2 the same way you would with node:
 
 ```bash
     pm2 start index.js
@@ -204,20 +204,20 @@ There's also a command to tail the logs, using `pm2 logs` to see what's going on
 
 ## Conclusion
 
-My last step was to leverage [DALL·E 2](https://openai.com/dall-e-2/ "Dall-E 2 | OpenAI") to generate the cover image and avatar for the account, since I didn't want to take the time to make up any custom graphics. I won't get into that, but if you are curious [I've written about the system in the past](https://keegandonley.com/blog/a-quick-look-at-openai-dall-e-2 "Dall-E 2 Article").
+My last step was to leverage [DALL·E 2](https://openai.com/dall-e-2/ 'Dall-E 2 | OpenAI') to generate the cover image and avatar for the account, since I didn't want to take the time to make up any custom graphics. I won't get into that, but if you are curious [I've written about the system in the past](https://keegandonley.com/blog/a-quick-look-at-openai-dall-e-2 'Dall-E 2 Article').
 
-This bot was a fun little project to test out the Twitter api, and I like seeing the tweets go by on my timeline twice a day for each status code! Feel free to [give it a follow](https://twitter.com/whatstatusisit "What Status Is It? | Twitter") and brush up on your status codes! You can find the entire project [open-sourced on my Github](https://github.com/keegandonley/whatstatusisit "What Status Is It? | Github"), and I've reproduced the core of the code below. Let me know if you create any fun bots of your own!
+This bot was a fun little project to test out the Twitter api, and I like seeing the tweets go by on my timeline twice a day for each status code! Feel free to [give it a follow](https://twitter.com/whatstatusisit 'What Status Is It? | Twitter') and brush up on your status codes! You can find the entire project [open-sourced on my Github](https://github.com/keegandonley/whatstatusisit 'What Status Is It? | Github'), and I've reproduced the core of the code below. Let me know if you create any fun bots of your own!
 
 ```javascript
-require("dotenv").config();
-const { TwitterApi } = require("twitter-api-v2");
-const codes = require("./codes.json");
-const { faker } = require("@faker-js/faker");
+require('dotenv').config();
+const { TwitterApi } = require('twitter-api-v2');
+const codes = require('./codes.json');
+const { faker } = require('@faker-js/faker');
 
 const phrases = [
-  ", the current status is",
+  ', the current status is',
   "! That's a",
-  "! The status is",
+  '! The status is',
   ", now it's",
 ];
 
@@ -228,14 +228,14 @@ const randomInteger = (min, max) => {
 (() => {
   const func = async () => {
     const def = new Date()
-      .toLocaleTimeString("default", {
-        hour: "2-digit",
-        minute: "2-digit",
+      .toLocaleTimeString('default', {
+        hour: '2-digit',
+        minute: '2-digit',
         hour12: true,
       })
-      .split(" ")[0];
+      .split(' ')[0];
 
-    const splits = def.split(":");
+    const splits = def.split(':');
 
     let hours = splits[0];
     const minutes = splits[1];
@@ -247,8 +247,8 @@ const randomInteger = (min, max) => {
     		01:30 -> 130
     		01:00 -> 100
     	 */
-    if (hours[0] === "0") {
-      hours = hours.replace("0", "");
+    if (hours[0] === '0') {
+      hours = hours.replace('0', '');
     }
 
     const code = `${hours}${minutes}`;
@@ -266,7 +266,7 @@ const randomInteger = (min, max) => {
       const phraseIndex = randomInteger(0, phrases.length - 1);
       const startingPhrase = phrases[phraseIndex];
       const interjection = faker.word.interjection();
-      const readMoreText = "Read more:";
+      const readMoreText = 'Read more:';
       const link = found.spec_href;
       const code = found.code;
       const message = found.message;
@@ -295,11 +295,11 @@ const randomInteger = (min, max) => {
 
       const str = `${interjection}${startingPhrase} ${code}: ${message}! (${
         sliceEnd >= 0 ? description.slice(0, sliceEnd) : description
-      }${sliceEnd < 0 ? "" : "..."}) ${readMoreText} ${link}`;
+      }${sliceEnd < 0 ? '' : '...'}) ${readMoreText} ${link}`;
 
       await userClient.v2.tweet(str);
     } else {
-      console.log(code, "no match");
+      console.log(code, 'no match');
     }
   };
   func();

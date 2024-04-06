@@ -1,7 +1,7 @@
-import { BookModal } from "@/components/BookModal";
-import { Modal } from "@/components/Modal";
+import { BookModal } from '@/components/BookModal';
+import { Modal } from '@/components/Modal';
 
-export const runtime = "edge";
+export const runtime = 'edge';
 
 interface InterceptorProps {
   params: {

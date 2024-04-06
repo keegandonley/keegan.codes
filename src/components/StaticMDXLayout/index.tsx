@@ -1,6 +1,6 @@
-import { merge } from "@/util/classNames";
-import "../../app/theme.css";
-import styles from "./staticMDXLayout.module.css";
+import { merge } from '@/util/classNames';
+import '../../app/theme.css';
+import styles from './staticMDXLayout.module.css';
 
 export const StaticMDXLayout = ({
   children,

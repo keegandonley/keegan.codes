@@ -1,6 +1,6 @@
-import { merge } from "@/util/classNames";
-import { MDXComponentBaseProps } from "../types";
-import pStyles from "./p.module.css";
+import { merge } from '@/util/classNames';
+import { MDXComponentBaseProps } from '../types';
+import pStyles from './p.module.css';
 
 interface ParagraphProps extends MDXComponentBaseProps {}
 

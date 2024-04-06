@@ -1,7 +1,7 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
-const directoryPath = path.join(__dirname, "../src/posts");
+const directoryPath = path.join(__dirname, '../src/posts');
 const shortCodesRegex = /export const shortCodes = (\[[^\]]*\])/;
 
 fs.readdir(directoryPath, (err, files) => {
@@ -13,8 +13,8 @@ fs.readdir(directoryPath, (err, files) => {
 
   files.forEach((file) => {
     const filePath = path.join(directoryPath, file);
-    if (file.endsWith("mdx") && file !== "template.mdx") {
-      fs.readFile(filePath, "utf8", (err, contents) => {
+    if (file.endsWith('mdx') && file !== 'template.mdx') {
+      fs.readFile(filePath, 'utf8', (err, contents) => {
         if (err) {
           console.error(`Error reading file: ${err.message}`);
           return;
@@ -27,7 +27,7 @@ fs.readdir(directoryPath, (err, files) => {
           shortCodesArray.forEach((shortCode) => {
             if (shortcodesMap[shortCode]) {
               console.log(
-                `[DUPLOICATE]: ${file} has a duplicate shortCode: ${shortCode}`
+                `[DUPLOICATE]: ${file} has a duplicate shortCode: ${shortCode}`,
               );
               process.exit(1);
             } else {
@@ -37,7 +37,7 @@ fs.readdir(directoryPath, (err, files) => {
           });
         } else {
           console.log(
-            `[NOOP]: File ${file} does not contain the shortCodes line.`
+            `[NOOP]: File ${file} does not contain the shortCodes line.`,
           );
         }
       });

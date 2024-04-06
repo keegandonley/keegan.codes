@@ -1,4 +1,4 @@
-import { baseDiv } from "./styles";
+import { baseDiv } from './styles';
 
 interface DivProps {
   style?: React.CSSProperties;

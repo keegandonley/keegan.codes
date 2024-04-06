@@ -1,8 +1,8 @@
-import Image from "next/image";
-import avatar from "./avatar.jpg";
-import styles from "./avatar.module.css";
-import { ElementBaseProps } from "@/types/elements";
-import { merge } from "@/util/classNames";
+import Image from 'next/image';
+import avatar from './avatar.jpg';
+import styles from './avatar.module.css';
+import { ElementBaseProps } from '@/types/elements';
+import { merge } from '@/util/classNames';
 
 interface AvatarProps extends ElementBaseProps {
   width?: number;
@@ -13,11 +13,11 @@ interface AvatarProps extends ElementBaseProps {
 
 export const Avatar = ({
   width = 100,
-  alt = "A photo of Keegan Donley",
+  alt = 'A photo of Keegan Donley',
   className,
   priority = false,
   style,
-}: Omit<AvatarProps, "children">) => {
+}: Omit<AvatarProps, 'children'>) => {
   return (
     <Image
       className={merge(styles.image, className)}

@@ -1,4 +1,4 @@
-import styles from "./bottomFade.module.css";
+import styles from './bottomFade.module.css';
 
 export const BottomFade = () => {
   return <div className={styles.fade} />;

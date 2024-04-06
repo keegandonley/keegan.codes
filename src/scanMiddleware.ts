@@ -1,6 +1,6 @@
-import { Connection, ExecutedQuery, connect } from "@planetscale/database";
-import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
-import { getMySQLDateTime } from "./util/date";
+import { Connection, ExecutedQuery, connect } from '@planetscale/database';
+import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
+import { getMySQLDateTime } from './util/date';
 
 const psConfig = {
   host: process.env.host,
@@ -17,7 +17,7 @@ export class ScanMiddleware {
   constructor(
     request: NextRequest,
     ctx: NextFetchEvent,
-    pathNameSplits: string[]
+    pathNameSplits: string[],
   ) {
     this.db = this.getConnection();
     this.request = request;
@@ -37,8 +37,8 @@ export class ScanMiddleware {
 
   private async getDestination(code: number) {
     const destination = await this.db.execute(
-      "SELECT destination FROM scan_destinations WHERE code = ? LIMIT 1",
-      [code]
+      'SELECT destination FROM scan_destinations WHERE code = ? LIMIT 1',
+      [code],
     );
 
     return destination;
@@ -47,8 +47,8 @@ export class ScanMiddleware {
   private async trackScan(code: number, url: string) {
     try {
       await this.db.execute(
-        "INSERT INTO scan (code, scan_date, url, scan_dt) VALUES (?, ?, ?, ?)",
-        [code, new Date(), url, getMySQLDateTime()]
+        'INSERT INTO scan (code, scan_date, url, scan_dt) VALUES (?, ?, ?, ?)',
+        [code, new Date(), url, getMySQLDateTime()],
       );
     } catch (ex) {
       console.error(`Could not insert scan tracking for code ${code}`, ex);
@@ -63,7 +63,7 @@ export class ScanMiddleware {
 
   private success(destination: ExecutedQuery<Record<string, any>>) {
     return NextResponse.redirect(
-      new URL(this.getDestinationUrl(destination), this.request.url)
+      new URL(this.getDestinationUrl(destination), this.request.url),
     );
   }
 
@@ -72,7 +72,7 @@ export class ScanMiddleware {
 
     if (!code) {
       console.warn(
-        "No code found in request but one was expected, skipping..."
+        'No code found in request but one was expected, skipping...',
       );
       return this.next();
     }
@@ -85,19 +85,19 @@ export class ScanMiddleware {
 
       if (!destination?.rows?.[0]) {
         console.warn(
-          `No destination exists for code ${parsedCode}, skipping...`
+          `No destination exists for code ${parsedCode}, skipping...`,
         );
         return this.next();
       }
 
       // We want to track the scan, but not block the user from being redirected
       this.ctx.waitUntil(
-        this.trackScan(parsedCode, this.getDestinationUrl(destination))
+        this.trackScan(parsedCode, this.getDestinationUrl(destination)),
       );
 
       return this.success(destination);
     } catch (ex) {
-      console.error("Could not look up scan destination", ex);
+      console.error('Could not look up scan destination', ex);
       return this.next();
     }
   }

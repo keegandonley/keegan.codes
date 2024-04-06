@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { MouseEvent, useCallback } from "react";
-import styles from "./tag.module.css";
-import { useRouter } from "next/navigation";
+import { MouseEvent, useCallback } from 'react';
+import styles from './tag.module.css';
+import { useRouter } from 'next/navigation';
 
 interface TagProps {
   tag: string;
@@ -17,7 +17,7 @@ export const Tag = ({ tag }: TagProps) => {
 
       router.push(`/blog/tag/${encodeURIComponent(tag)}`);
     },
-    [router, tag]
+    [router, tag],
   );
 
   return (

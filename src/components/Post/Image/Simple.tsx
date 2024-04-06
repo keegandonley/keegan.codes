@@ -1,5 +1,5 @@
-import simpleStyles from "./simple.module.css";
-import { merge } from "@/util/classNames";
+import simpleStyles from './simple.module.css';
+import { merge } from '@/util/classNames';
 
 export const SimpleImg = ({ src, alt, height, width }: any) => {
   return (

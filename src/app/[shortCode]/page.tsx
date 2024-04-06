@@ -1,6 +1,6 @@
-import Posts from "@/posts";
-import { Post } from "@/types/post";
-import { redirect } from "next/navigation";
+import Posts from '@/posts';
+import { Post } from '@/types/post';
+import { redirect } from 'next/navigation';
 
 const posts = Object.keys(Posts).map((key) => {
   const component = (Posts as any)[key] as Post;
@@ -16,7 +16,7 @@ interface ShortCodePageProps {
   };
 }
 
-export const runtime = "edge";
+export const runtime = 'edge';
 
 export default async function ShortCodePage({
   params: { shortCode },

@@ -1,13 +1,13 @@
-import { background } from "@/theme/colors";
-import { Theme } from "@/types/theme";
-import { getCookieDomain } from "./deployment";
+import { background } from '@/theme/colors';
+import { Theme } from '@/types/theme';
+import { getCookieDomain } from './deployment';
 
 export const setMetaTheme = (theme: Theme) => {
   document
     ?.querySelector('meta[name="theme-color"]')
     ?.setAttribute(
-      "content",
-      theme === "dark" ? background.dark : background.light
+      'content',
+      theme === 'dark' ? background.dark : background.light,
     );
 };
 
@@ -22,7 +22,7 @@ export const setThemeCookie = (theme: Theme) => {
 };
 
 export const getMatch = () => {
-  return window.matchMedia("(prefers-color-scheme: dark)");
+  return window.matchMedia('(prefers-color-scheme: dark)');
 };
 
 export const getPrefersDark = () => {
@@ -30,15 +30,15 @@ export const getPrefersDark = () => {
 };
 
 export const addDarkTheme = () => {
-  document.body.classList.add("dark");
+  document.body.classList.add('dark');
 };
 
 export const removeDarkTheme = () => {
-  document.body.classList.remove("dark");
+  document.body.classList.remove('dark');
 };
 
 export const handleTheme = (theme: Theme) => {
-  if (theme === "dark") {
+  if (theme === 'dark') {
     addDarkTheme();
   } else {
     removeDarkTheme();

@@ -1,7 +1,7 @@
-import { injectVariables } from "@/util/classNames";
-import styles from "./banner.module.css";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { injectVariables } from '@/util/classNames';
+import styles from './banner.module.css';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Banner = ({
   level = 1,
@@ -15,7 +15,7 @@ export const Banner = ({
   return (
     <div
       className={styles.banner}
-      style={injectVariables([["banner-level-rems", `${level}rem`]])}
+      style={injectVariables([['banner-level-rems', `${level}rem`]])}
     >
       {icon ? (
         <div className="iconContainer">

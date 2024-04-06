@@ -1,13 +1,13 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./browsersupport.module.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styles from './browsersupport.module.css';
 import {
   faChrome,
   faEdge,
   faFirefoxBrowser,
   faInternetExplorer,
   faSafari,
-} from "@fortawesome/free-brands-svg-icons";
-import { merge } from "@/util/classNames";
+} from '@fortawesome/free-brands-svg-icons';
+import { merge } from '@/util/classNames';
 
 export enum SUPPORTLEVELS {
   FULL,
@@ -38,7 +38,7 @@ export const BrowserSupport = ({
             styles.support,
             chrome === SUPPORTLEVELS.FULL && styles.full,
             chrome === SUPPORTLEVELS.PARTIAL && styles.partial,
-            chrome === SUPPORTLEVELS.NONE && styles.none
+            chrome === SUPPORTLEVELS.NONE && styles.none,
           )}
         >
           <FontAwesomeIcon icon={faChrome} />
@@ -51,7 +51,7 @@ export const BrowserSupport = ({
             styles.support,
             firefox === SUPPORTLEVELS.FULL && styles.full,
             firefox === SUPPORTLEVELS.PARTIAL && styles.partial,
-            firefox === SUPPORTLEVELS.NONE && styles.none
+            firefox === SUPPORTLEVELS.NONE && styles.none,
           )}
         >
           <FontAwesomeIcon icon={faFirefoxBrowser} />
@@ -64,7 +64,7 @@ export const BrowserSupport = ({
             styles.support,
             safari === SUPPORTLEVELS.FULL && styles.full,
             safari === SUPPORTLEVELS.PARTIAL && styles.partial,
-            safari === SUPPORTLEVELS.NONE && styles.none
+            safari === SUPPORTLEVELS.NONE && styles.none,
           )}
         >
           <FontAwesomeIcon icon={faSafari} />
@@ -77,7 +77,7 @@ export const BrowserSupport = ({
             styles.support,
             edge === SUPPORTLEVELS.FULL && styles.full,
             edge === SUPPORTLEVELS.PARTIAL && styles.partial,
-            edge === SUPPORTLEVELS.NONE && styles.none
+            edge === SUPPORTLEVELS.NONE && styles.none,
           )}
         >
           <FontAwesomeIcon icon={faEdge} />
@@ -90,7 +90,7 @@ export const BrowserSupport = ({
             styles.support,
             ie === SUPPORTLEVELS.FULL && styles.full,
             ie === SUPPORTLEVELS.PARTIAL && styles.partial,
-            ie === SUPPORTLEVELS.NONE && styles.none
+            ie === SUPPORTLEVELS.NONE && styles.none,
           )}
         >
           <FontAwesomeIcon icon={faInternetExplorer} />

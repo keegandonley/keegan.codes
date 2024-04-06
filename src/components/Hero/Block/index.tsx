@@ -1,6 +1,6 @@
-import { ElementBaseProps } from "@/types/elements";
-import styles from "./heroBlock.module.css";
-import { fallback, merge } from "@/util/classNames";
+import { ElementBaseProps } from '@/types/elements';
+import styles from './heroBlock.module.css';
+import { fallback, merge } from '@/util/classNames';
 
 interface HeroBlockProps extends ElementBaseProps {
   isHomePage?: boolean;
@@ -24,8 +24,8 @@ export const HeroBlock = ({
           !isHomePage && styles.small,
           collapse && styles.collapse,
           sticky && styles.sticky,
-          !isHomePage && styles.fade
-        )
+          !isHomePage && styles.fade,
+        ),
       )}
     >
       {children}

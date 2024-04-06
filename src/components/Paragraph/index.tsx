@@ -1,6 +1,6 @@
-import { ElementBaseProps } from "@/types/elements";
-import styles from "./paragraph.module.css";
-import { merge } from "@/util/classNames";
+import { ElementBaseProps } from '@/types/elements';
+import styles from './paragraph.module.css';
+import { merge } from '@/util/classNames';
 
 interface ParagraphProps extends ElementBaseProps {}
 

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
 export abstract class Base404HandlingMiddleware {
   protected pathNameSplits: string[];
@@ -22,7 +22,7 @@ export abstract class Base404HandlingMiddleware {
 
     const slug = this.pathNameSplits[2];
 
-    if (slug === "tag") {
+    if (slug === 'tag') {
       return this.done(false);
     }
 

@@ -1,18 +1,17 @@
-import { merge } from "@/util/classNames";
-import { getFullyQualifiedDeploymentUrl } from "@/util/deployment";
+import { merge } from '@/util/classNames';
+import { getFullyQualifiedDeploymentUrl } from '@/util/deployment';
 
 const getValue = async (): Promise<number> => {
   try {
-    const { url, headers } = await getFullyQualifiedDeploymentUrl(
-      "/api/view/total"
-    );
-    const data = await fetch(url, { cache: "no-store", headers });
+    const { url, headers } =
+      await getFullyQualifiedDeploymentUrl('/api/view/total');
+    const data = await fetch(url, { cache: 'no-store', headers });
 
     const { views } = await data.json();
 
     return views;
   } catch (ex) {
-    console.error("Error when getting total page views", ex);
+    console.error('Error when getting total page views', ex);
     return 0;
   }
 };

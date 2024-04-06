@@ -1,25 +1,25 @@
 export const slug =
-  "filling-in-the-connected-fitness-gaps-with-apple-shortcuts";
+  'filling-in-the-connected-fitness-gaps-with-apple-shortcuts';
 export const title =
-  "Filling in the Connected Fitness Gaps with Apple Shortcuts";
+  'Filling in the Connected Fitness Gaps with Apple Shortcuts';
 export const description =
-  "How I use Apple Shortcuts to complement my current fitness and health tracking tools";
-export const tags = ["fitness", "hobby"];
-export const cover = "fitness-shortcuts-wide-cover.png";
+  'How I use Apple Shortcuts to complement my current fitness and health tracking tools';
+export const tags = ['fitness', 'hobby'];
+export const cover = 'fitness-shortcuts-wide-cover.png';
 export const published = new Date(2023, 0, 31);
-export const shortCodes = ["fitness-shortcuts"];
+export const shortCodes = ['fitness-shortcuts'];
 
-I've written pretty extensively about [my connected fitness setup](https://keegandonley.com/blog/my-approach-to-connected-fitness "Connected Fitness"), [Oura ring](https://keegandonley.com/blog/oura-ring-generation-3-first-impressions "Oura Ring"), and [Apple Health integration](https://keegandonley.com/blog/my-connected-fitness-tools-part-2 "Fitness Update"), but what I didn't talk much about is some of the manual steps I have to take in my quest to log accurate data. I focus on trying to track as many things as possible - workouts and sleep of course, but also water I drink, medications I take, and nutrients I consume. A lot of this is a manual process, but I've started to build up some [Apple Shortcuts](https://support.apple.com/guide/shortcuts/welcome/ios "Shortcuts") to help me out.
+I've written pretty extensively about [my connected fitness setup](https://keegandonley.com/blog/my-approach-to-connected-fitness 'Connected Fitness'), [Oura ring](https://keegandonley.com/blog/oura-ring-generation-3-first-impressions 'Oura Ring'), and [Apple Health integration](https://keegandonley.com/blog/my-connected-fitness-tools-part-2 'Fitness Update'), but what I didn't talk much about is some of the manual steps I have to take in my quest to log accurate data. I focus on trying to track as many things as possible - workouts and sleep of course, but also water I drink, medications I take, and nutrients I consume. A lot of this is a manual process, but I've started to build up some [Apple Shortcuts](https://support.apple.com/guide/shortcuts/welcome/ios 'Shortcuts') to help me out.
 
 ## Caffeine & Water Tracking with Ember
 
-I use an [Ember mug](https://ember.com/products/ember-mug-2?variant=30843977760853 "Ember Mug") for most of my tea (not a big coffee drinker), usually Earl Grey. Ember has an integration with Apple Health where it logs the caffeine I drink to the health database after I finish a mug. This is handy, but I also try to closely track how much water I drink, which Ember does _not_ do. I tried a few approaches to tracking this. First, I tried out some NFC tags that, when scanned, log a health sample based on which tag I scanned. This was a bit too tedious for me, and finding somewhere to put the tag that would be convenient proved difficult. The long-term solution ended up being an Apple Shortcut.
+I use an [Ember mug](https://ember.com/products/ember-mug-2?variant=30843977760853 'Ember Mug') for most of my tea (not a big coffee drinker), usually Earl Grey. Ember has an integration with Apple Health where it logs the caffeine I drink to the health database after I finish a mug. This is handy, but I also try to closely track how much water I drink, which Ember does _not_ do. I tried a few approaches to tracking this. First, I tried out some NFC tags that, when scanned, log a health sample based on which tag I scanned. This was a bit too tedious for me, and finding somewhere to put the tag that would be convenient proved difficult. The long-term solution ended up being an Apple Shortcut.
 
 The shortcut is simple on the surface: **When I close the Ember app, look for caffeine logged, and then log an equivalent amount of water.** In practice, I wanted to make sure the process was robust, so I needed to protect against duplicate data, and provide a way to make sure I could go back in time and log old records in case the shortcut doesn't run for a while. The shortcut I came up with gets caffeine records logged by Ember for the past 7 days, checks if an entry for water has been logged for that specific timestamp, and if it hasn't, record the water I drank.
 
-To store which records I've already written, I used [Data Jar](https://datajar.app/ "Data Jar"), an app by [Simon Støvring](https://twitter.com/simonbs "Simon B. Støvring Twitter"). I use this one as the backend to a lot of my shortcuts and highly recommend it.
+To store which records I've already written, I used [Data Jar](https://datajar.app/ 'Data Jar'), an app by [Simon Støvring](https://twitter.com/simonbs 'Simon B. Støvring Twitter'). I use this one as the backend to a lot of my shortcuts and highly recommend it.
 
-Now, whenever I close the Ember app, any caffeine that's been logged is automatically _also_ logged as water drank. Pretty simple! You can find this shortcut on my new [Apple Shortcuts library](https://keegandonley.com/shortcuts "Shortcuts Library").
+Now, whenever I close the Ember app, any caffeine that's been logged is automatically _also_ logged as water drank. Pretty simple! You can find this shortcut on my new [Apple Shortcuts library](https://keegandonley.com/shortcuts 'Shortcuts Library').
 
 ## Supplement/Nutrient Tracking
 
@@ -27,7 +27,7 @@ I've never been one for multivitamins, but I recently got a 30-day supply of mor
 
 These two shortcuts simply create one health sample for each nutrient in the vitamins. I was happy to see that Apple Health allows for tracking most of the vitamins included in the pills. Now, running the shortcut allows me to quickly log vitamin A, vitamin C, vitamin D, vitamin E, vitamin K, thiamin, riboflavin, niacin, vitamin B6, folate, vitamin B12, biotin, pantothenic acid, calcium, iodine, magnesium, zinc, selenium, copper, manganese, chromium, molybdenum, and vitamin K2. Whether or not taking these has any effect on me is still up in the air, but at least I'll have the data to back it up.
 
-Rather than trying to do deduping logic with a persistent state, these two shortcuts simply have a confirmation prompt before running so protect against accidental activations. You can find both the AM and PM versions of this shortcut in my [Apple Shortcuts library](https://keegandonley.com/shortcuts "Shortcuts Library").
+Rather than trying to do deduping logic with a persistent state, these two shortcuts simply have a confirmation prompt before running so protect against accidental activations. You can find both the AM and PM versions of this shortcut in my [Apple Shortcuts library](https://keegandonley.com/shortcuts 'Shortcuts Library').
 
 ## Miscellaneous Health Data
 

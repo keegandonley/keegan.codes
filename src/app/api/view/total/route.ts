@@ -1,5 +1,5 @@
-import { connect } from "@planetscale/database";
-import { NextResponse } from "next/server";
+import { connect } from '@planetscale/database';
+import { NextResponse } from 'next/server';
 
 const config = {
   host: process.env.host,
@@ -7,15 +7,15 @@ const config = {
   password: process.env.password,
 };
 
-export const runtime = "edge";
+export const runtime = 'edge';
 
 export async function GET(request: Request) {
   const conn = connect(config);
 
   try {
     const res = await conn.execute(
-      "SELECT views FROM page_views_total WHERE type = ?",
-      ["post"]
+      'SELECT views FROM page_views_total WHERE type = ?',
+      ['post'],
     );
 
     return NextResponse.json({

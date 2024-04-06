@@ -1,22 +1,22 @@
-export const title = "The Dangers of Optional Chaining Overuse";
-export const slug = "the-downside-of-optional-chaining-overuse";
-export const tags = ["javascript", "software"];
+export const title = 'The Dangers of Optional Chaining Overuse';
+export const slug = 'the-downside-of-optional-chaining-overuse';
+export const tags = ['javascript', 'software'];
 export const description =
   "Optional chaining is one of my favorite javascript operators (if such a thing exists), but it's best to avoid using it when not necessary.";
-export const cover = "optional-chaining-orange-cover.png";
+export const cover = 'optional-chaining-orange-cover.png';
 export const published = new Date(2023, 2, 16);
-export const shortCodes = ["optional-chaining", "optional-chaining-dangers"];
+export const shortCodes = ['optional-chaining', 'optional-chaining-dangers'];
 
 Optional chaining is a pattern I rely on daily to write clear, maintainable, and stable code. Before I get into the risks of over-use, here's a quick refresher:
 
 ### What is Optional Chaining?
 
-[Optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining "Optional Chaining") is an approach to accessing properties on an object in javascript, without having to first know whether the object is defined. Let's look at an example of the problem this solves:
+[Optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining 'Optional Chaining') is an approach to accessing properties on an object in javascript, without having to first know whether the object is defined. Let's look at an example of the problem this solves:
 
 ```javascript
 const handlers = {
   value: {
-    push: () => console.log("push"),
+    push: () => console.log('push'),
   },
 };
 
@@ -32,7 +32,7 @@ Let's try to fix this the old-fashioned way:
 ```javascript
 const handlers = {
   value: {
-    push: () => console.log("push"),
+    push: () => console.log('push'),
   },
 };
 
@@ -50,7 +50,7 @@ Optional chaining solves this same problem, but with a bit of syntactic sugar th
 ```javascript
 const handlers = {
   value: {
-    push: () => console.log("push"),
+    push: () => console.log('push'),
   },
 };
 
@@ -97,9 +97,7 @@ All your application knows is that `result` is `undefined`, but it can't properl
 
 Optional chaining is slower than traditional property access because there are additional checks involved.
 
-
 > `a?.b?.c?.d?.e` will be slower than `a.b.c.d.e`, so it should only be used when the existence of a value is truly unknown.
-
 
 #### Transpilation
 
@@ -111,7 +109,7 @@ First, a simple example that makes heavy use of optional chaining and nullish co
 const result = data?.methods?.fetch?.(results?.payload?.options)?.result ?? [];
 ```
 
-Kind of ugly and complex (see [Code Quality](#codequality "Code Quality")), but it gets the job done and seems very safe - there's no chance of your code crashing on the user! Let's use the [Babel repl](https://babeljs.io/repl "Babel Repl") and see what that transpiles to:
+Kind of ugly and complex (see [Code Quality](#codequality 'Code Quality')), but it gets the job done and seems very safe - there's no chance of your code crashing on the user! Let's use the [Babel repl](https://babeljs.io/repl 'Babel Repl') and see what that transpiles to:
 
 ```javascript
 var _data$methods$fetch$r,
@@ -126,21 +124,21 @@ var result =
     (_data = data) === null || _data === void 0
       ? void 0
       : (_data$methods = _data.methods) === null || _data$methods === void 0
-      ? void 0
-      : (_data$methods$fetch = _data$methods.fetch) === null ||
-        _data$methods$fetch === void 0
-      ? void 0
-      : (_data$methods$fetch$c = _data$methods$fetch.call(
-          _data$methods,
-          (_results = results) === null || _results === void 0
+        ? void 0
+        : (_data$methods$fetch = _data$methods.fetch) === null ||
+            _data$methods$fetch === void 0
+          ? void 0
+          : (_data$methods$fetch$c = _data$methods$fetch.call(
+                _data$methods,
+                (_results = results) === null || _results === void 0
+                  ? void 0
+                  : (_results$payload = _results.payload) === null ||
+                      _results$payload === void 0
+                    ? void 0
+                    : _results$payload.options,
+              )) === null || _data$methods$fetch$c === void 0
             ? void 0
-            : (_results$payload = _results.payload) === null ||
-              _results$payload === void 0
-            ? void 0
-            : _results$payload.options
-        )) === null || _data$methods$fetch$c === void 0
-      ? void 0
-      : _data$methods$fetch$c.result) !== null &&
+            : _data$methods$fetch$c.result) !== null &&
   _data$methods$fetch$r !== void 0
     ? _data$methods$fetch$r
     : [];
@@ -181,7 +179,7 @@ var result =
       (_results$payload = results.payload) === null ||
         _results$payload === void 0
         ? void 0
-        : _results$payload.options
+        : _results$payload.options,
     )) === null || _data$methods$fetch === void 0
       ? void 0
       : _data$methods$fetch.result) !== null && _data$methods$fetch$r !== void 0
@@ -197,4 +195,4 @@ Based on these examples, it should be clear that optional chaining comes with tr
 
 I still consider this one of my favorite operators (if such a thing exists), and it can really save time and make code more readable when used correctly. It's important to remember that using optional chaining without reason comes with a large cost that should be avoided.
 
-[Read more on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining "MDN Optional Chaining") if you're interested, and read further about [nullish coalescing](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing "MDN - Nullish Coalescing") and [nullish coalescing assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment "MDN - Nullish Coalescing Assignment").
+[Read more on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining 'MDN Optional Chaining') if you're interested, and read further about [nullish coalescing](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing 'MDN - Nullish Coalescing') and [nullish coalescing assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment 'MDN - Nullish Coalescing Assignment').

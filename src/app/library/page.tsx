@@ -1,17 +1,17 @@
-import Books from "@/books";
-import { AnimatedGraph } from "@/components/AnimatedGraph";
-import { Delay } from "@/components/Delay";
-import { MDXEntryRow } from "@/components/MDXEntryRow";
-import { Book } from "@/types/book";
-import styles from "./library.module.css";
-import { userTheme } from "@/util/cookies";
-import { BASEURL, NAME } from "@/metadata";
-import { postCount } from "@/book-count";
-import { background } from "@/theme/colors";
-import { getIsLikelyMobile } from "@/util/userAgent";
-import { getBookCoverMetadata } from "@/util/image";
+import Books from '@/books';
+import { AnimatedGraph } from '@/components/AnimatedGraph';
+import { Delay } from '@/components/Delay';
+import { MDXEntryRow } from '@/components/MDXEntryRow';
+import { Book } from '@/types/book';
+import styles from './library.module.css';
+import { userTheme } from '@/util/cookies';
+import { BASEURL, NAME } from '@/metadata';
+import { postCount } from '@/book-count';
+import { background } from '@/theme/colors';
+import { getIsLikelyMobile } from '@/util/userAgent';
+import { getBookCoverMetadata } from '@/util/image';
 
-export const runtime = "edge";
+export const runtime = 'edge';
 
 export default function LibraryPage() {
   const isLikelyMobile = getIsLikelyMobile();
@@ -96,7 +96,7 @@ export async function generateViewport() {
   const theme = userTheme();
 
   return {
-    themeColor: theme === "light" ? background.light : background.dark,
+    themeColor: theme === 'light' ? background.light : background.dark,
   };
 }
 
@@ -109,22 +109,22 @@ export async function generateMetadata() {
       description: `My library of ${postCount} books I've enjoyed`,
       url: `${BASEURL}/library`,
       siteName: NAME,
-      locale: "en_US",
-      authors: ["Keegan Donley"],
+      locale: 'en_US',
+      authors: ['Keegan Donley'],
       images: [
         {
           url: `/api/og/page?page=library&width=1200&height=630`,
           width: 1200,
           height: 630,
-          type: "image/png",
+          type: 'image/png',
         },
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: `Library · ${NAME}`,
       description: `My library of ${postCount} books I've enjoyed`,
-      creator: "@keegandonley",
+      creator: '@keegandonley',
       images: [`/api/og/page?page=library&width=1200&height=630`],
     },
   };

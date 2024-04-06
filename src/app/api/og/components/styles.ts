@@ -1,3 +1,3 @@
 export const baseDiv: React.CSSProperties = {
-  display: "flex",
+  display: 'flex',
 };

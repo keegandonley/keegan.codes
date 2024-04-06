@@ -1,5 +1,5 @@
-import { merge } from "@/util/classNames";
-import styles from "./swoop.module.css";
+import { merge } from '@/util/classNames';
+import styles from './swoop.module.css';
 
 interface SwoopProps {
   compact?: boolean;

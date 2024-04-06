@@ -3,5 +3,5 @@ export async function GET(request: Request) {
 
   console.log(text);
 
-  return new Response("ok", { status: 200 });
+  return new Response('ok', { status: 200 });
 }

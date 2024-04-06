@@ -1,17 +1,17 @@
 export const title =
-  "Choosing a Custom Template for Bootstrapping Next.js Apps";
+  'Choosing a Custom Template for Bootstrapping Next.js Apps';
 export const slug =
-  "deciding-on-a-custom-template-for-bootstrapping-nextjs-apps";
-export const tags = ["react", "software", "hobby", "open source", "frontend"];
+  'deciding-on-a-custom-template-for-bootstrapping-nextjs-apps';
+export const tags = ['react', 'software', 'hobby', 'open source', 'frontend'];
 export const description =
-  "There are many different starter templates out there for Next.js, but I wanted to evaluate all my past projects and create the perfect one for bootstrapping future projects.";
-export const cover = "nextjs-template-leaves-cover.png";
+  'There are many different starter templates out there for Next.js, but I wanted to evaluate all my past projects and create the perfect one for bootstrapping future projects.';
+export const cover = 'nextjs-template-leaves-cover.png';
 export const published = new Date(2021, 11, 6);
-export const shortCodes = ["bootstrapping", "nextjs-template"];
+export const shortCodes = ['bootstrapping', 'nextjs-template'];
 
 # What are Next.js Examples?
 
-[Next.js](https://nextjs.org/ "Next.js") has a great application of [project examples](https://nextjs.org/examples "Next.js Examples"), from which anyone can generate a new project. I've used a lot of different examples in the past, from Typescript starter kits, to Tailwind CSS, to turnkey examples that try to anticipate every possible need. I've also written a handful of templates, like the [changelog app template](https://github.com/pinpt/app-template "Changelog App Template") for [Pinpoint](https://pinpoint.com/ "Pinpoint"). You can think of these like project templates, and I'll be using the words `example` and `template` interchangeably throughout.
+[Next.js](https://nextjs.org/ 'Next.js') has a great application of [project examples](https://nextjs.org/examples 'Next.js Examples'), from which anyone can generate a new project. I've used a lot of different examples in the past, from Typescript starter kits, to Tailwind CSS, to turnkey examples that try to anticipate every possible need. I've also written a handful of templates, like the [changelog app template](https://github.com/pinpt/app-template 'Changelog App Template') for [Pinpoint](https://pinpoint.com/ 'Pinpoint'). You can think of these like project templates, and I'll be using the words `example` and `template` interchangeably throughout.
 
 # The Issues
 
@@ -31,7 +31,7 @@ If I'm being honest, this isn't really that much work. However, sometimes I'll b
 
 # My Perfect Template
 
-Enter my new favorite example template: [**next-tailwind-barebones**](https://github.com/keegandonley/next-tailwind-barebones "Next-Tailwind-Barebones"). (Okay, I admit I might be biased because I wrote it myself). To make this example, I took the lowest common denominator from all my projects; that is, whatever tools or features I use across all (or nearly all) of my existing work. What I found this to be was [Tailwind](https://tailwindcss.com/ "Tailwind") and its associated configuration, [Typescript](https://www.typescriptlang.org/ "Typescript"), and [Prettier](https://prettier.io/ "Prettier") for formatting. Nothing more, and nothing less.
+Enter my new favorite example template: [**next-tailwind-barebones**](https://github.com/keegandonley/next-tailwind-barebones 'Next-Tailwind-Barebones'). (Okay, I admit I might be biased because I wrote it myself). To make this example, I took the lowest common denominator from all my projects; that is, whatever tools or features I use across all (or nearly all) of my existing work. What I found this to be was [Tailwind](https://tailwindcss.com/ 'Tailwind') and its associated configuration, [Typescript](https://www.typescriptlang.org/ 'Typescript'), and [Prettier](https://prettier.io/ 'Prettier') for formatting. Nothing more, and nothing less.
 
 ```javascript
 import type { NextPage } from "next";
@@ -74,7 +74,7 @@ Ever since I spent a couple hours to really think about the most logical startin
 
     npx create-next-app@latest -e https://github.com/keegandonley/next-tailwind-barebones
 
-I designed this template with my exact needs in mind, and if it suits yours too, start using it today! It's [available on GitHub](https://github.com/keegandonley/next-tailwind-barebones "Github Repo") and I try to keep it pretty up-to-date. Now that I have a nice base built, I plan to fork it and create a few more complicated versions built on top of the same base - perhaps something with an image API pre-built, or some commonly used utilities already built out in the lib directory. I also may add a more opinionated prettier config, as the one I ship the example with tries to stay super simple:
+I designed this template with my exact needs in mind, and if it suits yours too, start using it today! It's [available on GitHub](https://github.com/keegandonley/next-tailwind-barebones 'Github Repo') and I try to keep it pretty up-to-date. Now that I have a nice base built, I plan to fork it and create a few more complicated versions built on top of the same base - perhaps something with an image API pre-built, or some commonly used utilities already built out in the lib directory. I also may add a more opinionated prettier config, as the one I ship the example with tries to stay super simple:
 
 ```json
 {
@@ -95,4 +95,4 @@ I designed this template with my exact needs in mind, and if it suits yours too,
 }
 ```
 
-> Do you have a template you use frequently for starting new projects? I'd love to hear [on Twitter](https://twitter.com/keegandonley "Twitter Link") about any cool ones you've come across! If you're on Polywork, [join me in discussion](https://www.polywork.com/keegandonley/highlights/3ccd6c2d-af95-41da-b6e3-b9ed6129bbef "Polywork Profile") over there too!
+> Do you have a template you use frequently for starting new projects? I'd love to hear [on Twitter](https://twitter.com/keegandonley 'Twitter Link') about any cool ones you've come across! If you're on Polywork, [join me in discussion](https://www.polywork.com/keegandonley/highlights/3ccd6c2d-af95-41da-b6e3-b9ed6129bbef 'Polywork Profile') over there too!

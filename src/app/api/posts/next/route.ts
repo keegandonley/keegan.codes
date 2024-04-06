@@ -1,10 +1,10 @@
-import Posts from "@/posts";
-import wordCounts from "../../../../post-word-counts.json";
-import { Post } from "@/types/post";
-import { connect } from "@planetscale/database";
-import { getImageMetadata } from "@/util/image";
+import Posts from '@/posts';
+import wordCounts from '../../../../post-word-counts.json';
+import { Post } from '@/types/post';
+import { connect } from '@planetscale/database';
+import { getImageMetadata } from '@/util/image';
 
-export const runtime = "edge";
+export const runtime = 'edge';
 
 const config = {
   host: process.env.host,
@@ -14,7 +14,7 @@ const config = {
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const slug = url.searchParams.get("slug");
+  const slug = url.searchParams.get('slug');
 
   const allPosts = Object.keys(Posts);
   const posts = allPosts
@@ -45,15 +45,15 @@ export async function GET(request: Request) {
       const conn = connect(config);
 
       const results = await conn.execute(
-        "SELECT views FROM post_page_views_aggregate WHERE slug = ?",
-        [previousPost.slug]
+        'SELECT views FROM post_page_views_aggregate WHERE slug = ?',
+        [previousPost.slug],
       );
 
       console.log(
-        "fetched previous post for",
+        'fetched previous post for',
         slug,
-        "and it was",
-        previousPost.slug
+        'and it was',
+        previousPost.slug,
       );
 
       const metadata = getImageMetadata(previousPost.cover);
@@ -62,11 +62,11 @@ export async function GET(request: Request) {
         JSON.stringify({
           ...previousPost,
           viewCount:
-            (results.rows[0] as Record<"views", number> | undefined)?.views ??
+            (results.rows[0] as Record<'views', number> | undefined)?.views ??
             0,
           metadata,
           url: `${url.origin}/blog/${previousPost.slug}`,
-        })
+        }),
       );
     }
   }

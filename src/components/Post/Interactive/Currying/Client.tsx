@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import styles from "./currying.module.css";
+import { useState } from 'react';
+import styles from './currying.module.css';
 
 export default function CurryingExampleClient() {
   const [value, setValue] = useState(1);
 
   const clickHandlerFor = (action: string) => {
     return () => {
-      if (action === "increment") {
+      if (action === 'increment') {
         return setValue((v) => v + 1);
       }
-      if (action === "decrement") {
+      if (action === 'decrement') {
         return setValue((v) => v - 1);
       }
-      if (action === "double") {
+      if (action === 'double') {
         return setValue((v) => v * 2);
       }
     };
@@ -28,17 +28,17 @@ export default function CurryingExampleClient() {
       <div className={styles.buttons}>
         <button
           className={styles.button}
-          onClick={clickHandlerFor("increment")}
+          onClick={clickHandlerFor('increment')}
         >
           Increment
         </button>
         <button
           className={styles.button}
-          onClick={clickHandlerFor("decrement")}
+          onClick={clickHandlerFor('decrement')}
         >
           Decrement
         </button>
-        <button className={styles.button} onClick={clickHandlerFor("double")}>
+        <button className={styles.button} onClick={clickHandlerFor('double')}>
           Double
         </button>
       </div>

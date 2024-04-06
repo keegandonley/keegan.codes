@@ -1,6 +1,6 @@
-import { injectVariables, merge } from "@/util/classNames";
-import { GeistMono } from "geist/font/mono";
-import styles from "./code.module.css";
+import { injectVariables, merge } from '@/util/classNames';
+import { GeistMono } from 'geist/font/mono';
+import styles from './code.module.css';
 
 interface CodeProps {
   children?: any;
@@ -12,8 +12,8 @@ export const Code = ({ children, className }: CodeProps) => {
     <code
       className={merge(className, styles.parent)}
       style={injectVariables([
-        ["ffamily", GeistMono.style.fontFamily],
-        ["fstyle", GeistMono.style.fontStyle],
+        ['ffamily', GeistMono.style.fontFamily],
+        ['fstyle', GeistMono.style.fontStyle],
       ])}
     >
       {children}

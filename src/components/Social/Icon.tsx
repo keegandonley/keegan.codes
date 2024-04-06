@@ -1,9 +1,9 @@
-import { ElementBaseProps } from "@/types/elements";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
-import styles from "./social.module.css";
-import { injectVariables } from "@/util/classNames";
+import { ElementBaseProps } from '@/types/elements';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
+import styles from './social.module.css';
+import { injectVariables } from '@/util/classNames';
 
 interface SocialIconProps extends ElementBaseProps {
   url: string;
@@ -20,7 +20,7 @@ export const Icon = ({
   color,
   darkColor,
   name,
-}: Omit<SocialIconProps, "children">) => {
+}: Omit<SocialIconProps, 'children'>) => {
   return (
     <Link
       href={url}
@@ -34,7 +34,7 @@ export const Icon = ({
         icon={icon}
         color={color}
         className={styles.icon}
-        style={injectVariables([["darkColor", darkColor]])}
+        style={injectVariables([['darkColor', darkColor]])}
       />
     </Link>
   );

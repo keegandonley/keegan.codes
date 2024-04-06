@@ -1,21 +1,21 @@
-export const title = "Visual Regression Testing with Storybook";
-export const slug = "visual-regression-testing";
+export const title = 'Visual Regression Testing with Storybook';
+export const slug = 'visual-regression-testing';
 export const tags = [
-  "typescript",
-  "testing",
-  "storybook",
-  "jest",
-  "web",
-  "javascript",
-  "software",
+  'typescript',
+  'testing',
+  'storybook',
+  'jest',
+  'web',
+  'javascript',
+  'software',
 ];
 export const description =
-  "How I derive my visual regression tests from Storybook stories for quick and effective design verification";
-export const cover = "visual-regression-cover-eye-compressed.png";
+  'How I derive my visual regression tests from Storybook stories for quick and effective design verification';
+export const cover = 'visual-regression-cover-eye-compressed.png';
 export const published = new Date(2023, 9, 18);
-export const shortCodes = ["regression-testing", "visual-regression-tests"];
+export const shortCodes = ['regression-testing', 'visual-regression-tests'];
 
-import { Cheers } from "../components/Cheers";
+import { Cheers } from '../components/Cheers';
 
 I’ve spent a lot of my time lately working on a modern new design system for [Kizen](https://kizen.com/),
 and one of my goals for this new system has been to limit the risk of component
@@ -62,12 +62,12 @@ It all starts with my story file, and a single simple story written using the [c
 ```tsx
 // Cheers.stories.tsx
 
-import { Meta, StoryObj } from "@storybook/react";
-import { Cheers } from "./components/Cheers";
+import { Meta, StoryObj } from '@storybook/react';
+import { Cheers } from './components/Cheers';
 
 const meta: Meta<typeof Cheers> = {
   component: Cheers,
-  title: "Post/Cheers",
+  title: 'Post/Cheers',
   argTypes: {},
 };
 
@@ -77,8 +77,8 @@ type Story = StoryObj<typeof Cheers>;
 export const Primary: Story = {
   args: {
     count: 30,
-    slug: "text-slug",
-    location: "blog",
+    slug: 'text-slug',
+    location: 'blog',
   },
 };
 ```
@@ -89,16 +89,16 @@ Here, I have just one story - `Primary`. We can easily add a few more:
 export const EmptyCount: Story = {
   args: {
     count: 0,
-    slug: "text-slug",
-    location: "blog",
+    slug: 'text-slug',
+    location: 'blog',
   },
 };
 
 export const OverflowValue: Story = {
   args: {
     count: 999999,
-    slug: "text-slug",
-    location: "blog",
+    slug: 'text-slug',
+    location: 'blog',
   },
 };
 ```
@@ -131,8 +131,8 @@ The first thing we need to do is read the story file in, so we can parse it:
 
 ```typescript
 const storyContent = fs.readFileSync(
-  path.join(__dirname, "Cheers.stories.tsx"),
-  "utf8"
+  path.join(__dirname, 'Cheers.stories.tsx'),
+  'utf8',
 );
 ```
 
@@ -179,18 +179,18 @@ To get the story ids, we just need to modify that a little to match the format:
 ```typescript
 const ids = storyNames.map((name) => {
   return name
-    .replace(/_/g, " ")
-    .replace(/-/g, " ")
-    .replace(/\./g, " ")
+    .replace(/_/g, ' ')
+    .replace(/-/g, ' ')
+    .replace(/\./g, ' ')
     .replace(/([^\n])([A-Z])([a-z])/g, (str2, $1, $2, $3) => `${$1} ${$2}${$3}`)
     .replace(/([a-z])([A-Z])/g, (str2, $1, $2) => `${$1} ${$2}`)
     .replace(/([a-z])([0-9])/gi, (str2, $1, $2) => `${$1} ${$2}`)
     .replace(/([0-9])([a-z])/gi, (str2, $1, $2) => `${$1} ${$2}`)
     .replace(/(\s|^)(\w)/g, (str2, $1, $2) => `${$1}${$2.toUpperCase()}`)
-    .replace(/ +/g, " ")
+    .replace(/ +/g, ' ')
     .trim()
     .toLowerCase()
-    .replace(/\s/g, "-");
+    .replace(/\s/g, '-');
 });
 ```
 
@@ -215,16 +215,16 @@ browsing and screenshotting, but any library that works with Jest that can take 
 will work.
 
 ```typescript
-import { toMatchImageSnapshot } from "jest-image-snapshot";
-import puppeteer from "puppeteer";
+import { toMatchImageSnapshot } from 'jest-image-snapshot';
+import puppeteer from 'puppeteer';
 
 expect.extend({ toMatchImageSnapshot });
 
-describe("Test Cheers Component", () => {
-  test.each(ids)("cheers-%s", (id) => {
+describe('Test Cheers Component', () => {
+  test.each(ids)('cheers-%s', (id) => {
     // initialize the browser
     const browser = await puppeteer.launch({
-      headless: "new",
+      headless: 'new',
       defaultViewport: {
         width: 200,
         height: 200,
@@ -235,11 +235,11 @@ describe("Test Cheers Component", () => {
 
     // navigate to our story, in a bare frame without any storybook UI
     await page.goto(
-      `http://localhost:6006/iframe.html?args=&id=post-cheers--${id}&viewMode=story`
+      `http://localhost:6006/iframe.html?args=&id=post-cheers--${id}&viewMode=story`,
     );
 
     // wait for the element to appear on-screen if necessary
-    await page.waitForSelector(".cheers");
+    await page.waitForSelector('.cheers');
 
     // take a screenshot
     const res = await page.screenshot();

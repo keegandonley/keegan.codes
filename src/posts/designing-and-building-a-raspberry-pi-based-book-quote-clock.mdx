@@ -1,19 +1,19 @@
 export const title =
-  "Designing and Building a Raspberry Pi Based Book Quote Clock";
+  'Designing and Building a Raspberry Pi Based Book Quote Clock';
 export const slug =
-  "designing-and-building-a-raspberry-pi-based-book-quote-clock";
-export const tags = ["hardware", "hobby", "software", "diy", "raspberry pi"];
+  'designing-and-building-a-raspberry-pi-based-book-quote-clock';
+export const tags = ['hardware', 'hobby', 'software', 'diy', 'raspberry pi'];
 export const description =
   "How I built a Raspberry Pi-based book quote clock for my girlfriend's Christmas gift this year";
-export const cover = "bookquote-cover.png";
+export const cover = 'bookquote-cover.png';
 export const published = new Date(2021, 11, 23);
-export const shortCodes = ["bookquote"];
+export const shortCodes = ['bookquote'];
 
-For Christmas this year, I wanted to take advantage of having some extra free time in my life to make a present for my girlfriend, rather than just buying something off the shelf. I came across [this article about turning a Kindle into a book quote clock](https://www.theverge.com/circuitbreaker/2018/8/4/17647614/amazon-kindle-diy-literary-quote-clock-recycle-jailbreak-hack-jaap-meijers "Verge Book Quote Article") and thought it was a perfect idea for her as an avid reader, although I didn't have a Kindle to repurpose, and I wanted something that would look a little nicer on a table.
+For Christmas this year, I wanted to take advantage of having some extra free time in my life to make a present for my girlfriend, rather than just buying something off the shelf. I came across [this article about turning a Kindle into a book quote clock](https://www.theverge.com/circuitbreaker/2018/8/4/17647614/amazon-kindle-diy-literary-quote-clock-recycle-jailbreak-hack-jaap-meijers 'Verge Book Quote Article') and thought it was a perfect idea for her as an avid reader, although I didn't have a Kindle to repurpose, and I wanted something that would look a little nicer on a table.
 
 I decided to build a similar gift from scratch, using a Raspberry Pi and a custom-built wooden housing. In this post I'm going to cover both the software and hardware side of how I designed and built a custom book quote clock!
 
-Just here for the end result? You can [skip to the end](#theendresult "End"), but you'll miss out on lots of cool details!
+Just here for the end result? You can [skip to the end](#theendresult 'End'), but you'll miss out on lots of cool details!
 
 # Shopping List
 
@@ -21,14 +21,14 @@ I needed a handful of tools and supplies. Some I already had, and many were new 
 
 ## Supplies
 
-- [Raspberry Pi 3A+](https://www.raspberrypi.com/products/raspberry-pi-3-model-a-plus/ "Raspberry Pi Shop") (Due to supply chain issues this was literally the only model I could acquire in time for Christmas. I would have preferred a more powerful model but it gets the job done)
-- [5" Raspberry Pi Touchscreen](https://amzn.to/3y54Y46 "Touchscreen - Amazon")
-- [Micro SD Card](https://amzn.to/3GrHTM8 "Micro SD Card - Amazon") (for the Raspberry Pi boot disk)
-- [Flush Mount USB-C Port](https://amzn.to/3oA4Ma5 "Flush-Mount USB - Amazon")
-- [USB-C to Micro-USB Adapter](https://amzn.to/3dx4ryt "USB Adapter - Amazon")
-- [Micro-USB right-angle adapter](https://amzn.to/335Y9Ux "USB right-angle")
+- [Raspberry Pi 3A+](https://www.raspberrypi.com/products/raspberry-pi-3-model-a-plus/ 'Raspberry Pi Shop') (Due to supply chain issues this was literally the only model I could acquire in time for Christmas. I would have preferred a more powerful model but it gets the job done)
+- [5" Raspberry Pi Touchscreen](https://amzn.to/3y54Y46 'Touchscreen - Amazon')
+- [Micro SD Card](https://amzn.to/3GrHTM8 'Micro SD Card - Amazon') (for the Raspberry Pi boot disk)
+- [Flush Mount USB-C Port](https://amzn.to/3oA4Ma5 'Flush-Mount USB - Amazon')
+- [USB-C to Micro-USB Adapter](https://amzn.to/3dx4ryt 'USB Adapter - Amazon')
+- [Micro-USB right-angle adapter](https://amzn.to/335Y9Ux 'USB right-angle')
 - Poplar wood pieces
-- [Wood Glue](https://amzn.to/3IpoBZs "Wood Glue")
+- [Wood Glue](https://amzn.to/3IpoBZs 'Wood Glue')
 - 2 colors of wood stain
 - Super glue or other strong adhesive
 
@@ -36,7 +36,7 @@ I needed a handful of tools and supplies. Some I already had, and many were new 
 
 ## Tools
 
-- Miter saw (I have a power miter saw but the number of cuts are few enough you could probably get by with a miter box like [this](https://www.homedepot.com/p/Stanley-14-5-in-Deluxe-Clamping-Miter-Box-with-14-in-Saw-20-600D/100034395 "Miter Box"))
+- Miter saw (I have a power miter saw but the number of cuts are few enough you could probably get by with a miter box like [this](https://www.homedepot.com/p/Stanley-14-5-in-Deluxe-Clamping-Miter-Box-with-14-in-Saw-20-600D/100034395 'Miter Box'))
 - Various clamps (for while gluing the wooden casing)
 - Drill (and a large drill bit)
 - Hot Glue Gun & glue
@@ -49,7 +49,7 @@ I spent 80% or so of my time on the software for this device, and 20% on the res
 
 ## Interface
 
-I knew I was going to make this web-based, so I spun up a basic [Next.js](https://nextjs.org/ "Next.js") project using [a starter template I built](https://keegandonley.com/blog/deciding-on-a-custom-template-for-bootstrapping-nextjs-apps "Starter Template") a while back to include [tailwindcss](https://tailwindcss.com/ "Tailwind").
+I knew I was going to make this web-based, so I spun up a basic [Next.js](https://nextjs.org/ 'Next.js') project using [a starter template I built](https://keegandonley.com/blog/deciding-on-a-custom-template-for-bootstrapping-nextjs-apps 'Starter Template') a while back to include [tailwindcss](https://tailwindcss.com/ 'Tailwind').
 
 ![](bookquote-post:image-1.png)
 
@@ -59,7 +59,7 @@ The UI is fairly simple - it evolved slightly from this first prototype, but wha
 
 The clock tells time in the 12-hour format. This means that there are 720 unique minutes that I needed to find a quote for. In addition, I wanted to have the quote correspond to the time of day as much as possible. For example, I didn't want a quote that said "the time was three forty-five in the morning" to appear during the afternoon, and vice-versa. I also wanted as many choices as possible for each time, so it could be randomized such that the same time of day wasn't always the same quote. This is no small ask; if I want just 2 quotes for the morning and afternoon for each time, that's 2,880 quotes I need to come up with. I needed to find a way to automate finding these quotes.
 
-Thankfully, I was able to use Project Gutenberg as my content source. I downloaded a large plaintext subset of the library, containing about 60,000 books at a size of around 16 gigabytes. The [gutenberg-dammit repository on GitHub](https://github.com/aparrish/gutenberg-dammit "gutenberg-dammit") was a huge help by providing plaintext copies of Project Gutenberg through 2016. Now, I needed to find the quotes I cared about. Let's break down a particular time, say, 3:37. There are many ways to represent this time in the English language:
+Thankfully, I was able to use Project Gutenberg as my content source. I downloaded a large plaintext subset of the library, containing about 60,000 books at a size of around 16 gigabytes. The [gutenberg-dammit repository on GitHub](https://github.com/aparrish/gutenberg-dammit 'gutenberg-dammit') was a huge help by providing plaintext copies of Project Gutenberg through 2016. Now, I needed to find the quotes I cared about. Let's break down a particular time, say, 3:37. There are many ways to represent this time in the English language:
 
 - 3:37
 - 3:37 PM
@@ -91,13 +91,13 @@ It's almost 2022, and I refuse to make anything that doesn't work with USB-C. I 
 
 ## Configuring the Raspberry Pi
 
-I always image my Raspberry Pi SD cards using [Raspberry Pi Imager](https://github.com/raspberrypi/rpi-imager "Imager"). This little open-source tool does an amazing job of simplifying the process of formatting and imaging a card to boot a Raspberry Pi from.
+I always image my Raspberry Pi SD cards using [Raspberry Pi Imager](https://github.com/raspberrypi/rpi-imager 'Imager'). This little open-source tool does an amazing job of simplifying the process of formatting and imaging a card to boot a Raspberry Pi from.
 
 ![](bookquote-post:image-4.png)
 
-The touchscreen I ordered came with some drivers that needed to be installed in order to get the touch system to work. I also installed a number of other utilities. The [unclutter package](https://wiki.debian.org/unclutter "Unclutter") is used to hide the mouse after half a second, so it doesn't show on the display. I took bits and pieces from [this tutorial on pimylifeup.com](https://pimylifeup.com/raspberry-pi-kiosk/ "Pimylifeup Tutorial"), which is a great resource for various Raspberry Pi instructional articles. I didn't follow that guide precisely, but there were some great ideas I did use.
+The touchscreen I ordered came with some drivers that needed to be installed in order to get the touch system to work. I also installed a number of other utilities. The [unclutter package](https://wiki.debian.org/unclutter 'Unclutter') is used to hide the mouse after half a second, so it doesn't show on the display. I took bits and pieces from [this tutorial on pimylifeup.com](https://pimylifeup.com/raspberry-pi-kiosk/ 'Pimylifeup Tutorial'), which is a great resource for various Raspberry Pi instructional articles. I didn't follow that guide precisely, but there were some great ideas I did use.
 
-When the Raspberry Pi boots, it automatically starts a node server to serve the Next.js app, and then launches Chromium in kiosk mode so that the web page is visible full screen automatically. The boot process is a little slow but that's not really a big deal since I don't expect it to be unplugged a lot. I'm using [pm2](https://pm2.keymetrics.io/ "PM2") to launch the node server on boot. I've found this to be the most reliable way to automatically launch a node process and keep it alive indefinitely in case of crashes.
+When the Raspberry Pi boots, it automatically starts a node server to serve the Next.js app, and then launches Chromium in kiosk mode so that the web page is visible full screen automatically. The boot process is a little slow but that's not really a big deal since I don't expect it to be unplugged a lot. I'm using [pm2](https://pm2.keymetrics.io/ 'PM2') to launch the node server on boot. I've found this to be the most reliable way to automatically launch a node process and keep it alive indefinitely in case of crashes.
 
 ## Developing/Sending Updates
 
@@ -147,7 +147,7 @@ Even though the hardest part was over, I was still not looking forward to mounti
 
 When attaching the back, the USB port was a little too large to fit with the Raspberry Pi in the case. I took a Dremel tool to the backside of the port and removed all the excess plastic so it was thin enough it fit inside without putting too much pressure on the cords.
 
-Finally, I could screw the back on and attach some little feet to the bottom to protect whatever surface it sits on. I happened to have a spare set of rubber feet with adhesive backs, but [something like this](https://amzn.to/3GP3Chk "Rubber Feet - Amazon") would work well too.
+Finally, I could screw the back on and attach some little feet to the bottom to protect whatever surface it sits on. I happened to have a spare set of rubber feet with adhesive backs, but [something like this](https://amzn.to/3GP3Chk 'Rubber Feet - Amazon') would work well too.
 
 # The End Result
 
@@ -155,6 +155,6 @@ I ended up really happy with how this all turned out. After many hours of work, 
 
 ![](bookquote-post:image-9.png)
 
-I hope you enjoyed reading my step-by-step guide to how I put together this unique gift, and best of luck to you if you try to create one for yourself! Let me know what you think of the book quote clock, and if you do try it for yourself I'd love to hear how it goes and see the end result [over on Twitter](https://twitter.com/keegandonley "Twitter Profile")!
+I hope you enjoyed reading my step-by-step guide to how I put together this unique gift, and best of luck to you if you try to create one for yourself! Let me know what you think of the book quote clock, and if you do try it for yourself I'd love to hear how it goes and see the end result [over on Twitter](https://twitter.com/keegandonley 'Twitter Profile')!
 
 > Happy holidays, and I'm looking forward to creating more content here in the new year!

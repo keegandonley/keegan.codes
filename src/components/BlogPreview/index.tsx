@@ -1,6 +1,6 @@
-import { Post } from "@/types/post";
-import { ClientRenderer } from "./ClientRenderer";
-import { getImageMetadata } from "@/util/image";
+import { Post } from '@/types/post';
+import { ClientRenderer } from './ClientRenderer';
+import { getImageMetadata } from '@/util/image';
 
 interface BlogPreviewProps {
   posts: Post[];

@@ -1,17 +1,17 @@
-import { merge } from "@/util/classNames";
-import Link from "next/link";
-import localFont from "next/font/local";
-import styles from "@/pageStyles/miami24/miami.module.css";
-import Image from "next/image";
-import linkedIn from "@/images/linkedin-miami.svg";
-import X from "@/images/x-twitter-miami.svg";
-import "@/tw.css";
+import { merge } from '@/util/classNames';
+import Link from 'next/link';
+import localFont from 'next/font/local';
+import styles from '@/pageStyles/miami24/miami.module.css';
+import Image from 'next/image';
+import linkedIn from '@/images/linkedin-miami.svg';
+import X from '@/images/x-twitter-miami.svg';
+import '@/tw.css';
 
 const yellowTail = localFont({
   src: [
     {
-      path: "../../sharedFonts/Yellowtail.ttf",
-      style: "normal",
+      path: '../../sharedFonts/Yellowtail.ttf',
+      style: 'normal',
     },
   ],
 });
@@ -19,8 +19,8 @@ const yellowTail = localFont({
 const bungee = localFont({
   src: [
     {
-      path: "../../sharedFonts/Bungee.ttf",
-      style: "normal",
+      path: '../../sharedFonts/Bungee.ttf',
+      style: 'normal',
     },
   ],
 });
@@ -28,8 +28,8 @@ const bungee = localFont({
 const comfortaa = localFont({
   src: [
     {
-      path: "../../sharedFonts/Comfortaa.ttf",
-      style: "normal",
+      path: '../../sharedFonts/Comfortaa.ttf',
+      style: 'normal',
     },
   ],
 });
@@ -38,22 +38,22 @@ export default function Miami24Neon() {
   return (
     <>
       <div className={merge(`min-h-dvh bg-black`)}>
-        <div className="max-w-[1000px] mx-auto flex flex-col items-center justify-center text-center px-5 z-50">
+        <div className="z-50 mx-auto flex max-w-[1000px] flex-col items-center justify-center px-5 text-center">
           <div className="h-10" />
           <h1
             className={merge(
-              `text-[5rem] md:text-[8rem] leading-[6rem] sm:leading-normal font-bold`,
+              `text-[5rem] font-bold leading-[6rem] sm:leading-normal md:text-[8rem]`,
               styles.neon,
-              bungee.className
+              bungee.className,
             )}
           >
             Hi there!
           </h1>
           <h2
             className={merge(
-              `text-[3.5rem] md:text-[5rem] mt-[-2.5rem] md:mt-[-5rem]`,
+              `mt-[-2.5rem] text-[3.5rem] md:mt-[-5rem] md:text-[5rem]`,
               yellowTail.className,
-              styles.neonPink
+              styles.neonPink,
             )}
           >
             Nice to meet you!
@@ -61,12 +61,12 @@ export default function Miami24Neon() {
           <div className="h-5" />
           <p
             className={merge(
-              `text-white text-xl w-4/5 border-solid border-neon-pink border-2 rounded-lg p-6`,
-              comfortaa.className
+              `w-4/5 rounded-lg border-2 border-solid border-neon-pink p-6 text-xl text-white`,
+              comfortaa.className,
             )}
           >
             My name is <strong>Keegan Donley</strong>, and I&apos;m currently a
-            principal front-end engineer at{" "}
+            principal front-end engineer at{' '}
             <Link
               href="https://kizen.com"
               target="_blank"
@@ -78,21 +78,21 @@ export default function Miami24Neon() {
           </p>
           <div className="h-8" />
           <div className="flex gap-12">
-            <Link href={"/linkedin"}>
+            <Link href={'/linkedin'}>
               <Image
                 src={linkedIn}
                 alt="LinkedIn"
-                className="inline mb-1"
+                className="mb-1 inline"
                 height={30}
                 width={30}
                 priority
               />
             </Link>
-            <Link href={"/twitter"}>
+            <Link href={'/twitter'}>
               <Image
                 src={X}
                 alt="X (Twitter)"
-                className="inline mb-1"
+                className="mb-1 inline"
                 height={30}
                 width={30}
                 priority
@@ -102,14 +102,14 @@ export default function Miami24Neon() {
           <div className="h-8" />
           <p
             className={merge(
-              `text-white text-xl w-4/5 border-solid border-neon-blue border-2 rounded-lg p-6`,
-              comfortaa.className
+              `w-4/5 rounded-lg border-2 border-solid border-neon-blue p-6 text-xl text-white`,
+              comfortaa.className,
             )}
           >
-            I write a{" "}
+            I write a{' '}
             <Link href="/blog" className="text-neon-pink">
               <strong>blog</strong>
-            </Link>{" "}
+            </Link>{' '}
             about a number of topics, ranging from software to fitness to
             travel.
           </p>

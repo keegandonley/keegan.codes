@@ -1,7 +1,7 @@
-import { cookies } from "next/headers";
-import { NextRequest } from "next/server";
-import { connect } from "@planetscale/database";
-import { getMySQLDateTime } from "@/util/date";
+import { cookies } from 'next/headers';
+import { NextRequest } from 'next/server';
+import { connect } from '@planetscale/database';
+import { getMySQLDateTime } from '@/util/date';
 
 const config = {
   host: process.env.host,
@@ -13,21 +13,21 @@ const handleRequest = async (request: NextRequest) => {
   let result;
   let mode;
 
-  const origin = request.headers.get("origin");
+  const origin = request.headers.get('origin');
 
-  console.log("origin was", origin);
+  console.log('origin was', origin);
 
   try {
     const data = await request.formData();
     result = Object.fromEntries(data);
 
-    mode = "formData";
+    mode = 'formData';
   } catch (ex) {
     console.log("Couldn't parse form data, trying json...");
     try {
       const data = await request.json();
       result = data;
-      mode = "json";
+      mode = 'json';
     } catch (ex) {
       return Response.json(
         {
@@ -36,10 +36,10 @@ const handleRequest = async (request: NextRequest) => {
         {
           status: 400,
           headers: {
-            "Access-Control-Allow-Origin": origin ?? "*",
-            "Access-Control-Allow-Credentials": "true",
+            'Access-Control-Allow-Origin': origin ?? '*',
+            'Access-Control-Allow-Credentials': 'true',
           },
-        }
+        },
       );
     }
   }
@@ -57,17 +57,17 @@ const handleRequest = async (request: NextRequest) => {
 
   try {
     await conn.execute(
-      "INSERT INTO parrot_requests (payload, cookies, mode, origin, created_at) VALUES (?, ?, ?, ?, ?)",
+      'INSERT INTO parrot_requests (payload, cookies, mode, origin, created_at) VALUES (?, ?, ?, ?, ?)',
       [
         JSON.stringify(result),
         JSON.stringify(cookiesResult),
         mode,
         origin,
         getMySQLDateTime(),
-      ]
+      ],
     );
   } catch (ex) {
-    console.error("Failed to insert request", ex);
+    console.error('Failed to insert request', ex);
   }
 
   return Response.json(
@@ -78,10 +78,10 @@ const handleRequest = async (request: NextRequest) => {
     },
     {
       headers: {
-        "Access-Control-Allow-Origin": origin ?? "*",
-        "Access-Control-Allow-Credentials": "true",
+        'Access-Control-Allow-Origin': origin ?? '*',
+        'Access-Control-Allow-Credentials': 'true',
       },
-    }
+    },
   );
 };
 
@@ -94,16 +94,16 @@ export async function POST(request: NextRequest) {
 }
 
 export async function OPTIONS(request: NextRequest) {
-  const origin = request.headers.get("origin");
+  const origin = request.headers.get('origin');
 
-  console.log("origin was", origin);
+  console.log('origin was', origin);
 
   return new Response(null, {
     status: 204,
     headers: {
-      "Access-Control-Allow-Origin": origin ?? "*",
-      "Access-Control-Allow-Credentials": "true",
-      "Access-Control-Allow-Methods": "PATCH, POST, OPTIONS",
+      'Access-Control-Allow-Origin': origin ?? '*',
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Methods': 'PATCH, POST, OPTIONS',
     },
   });
 }

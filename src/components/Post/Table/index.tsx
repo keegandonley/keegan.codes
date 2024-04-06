@@ -1,6 +1,6 @@
-import { merge } from "@/util/classNames";
-import { MDXComponentBaseProps } from "../types";
-import styles from "./table.module.css";
+import { merge } from '@/util/classNames';
+import { MDXComponentBaseProps } from '../types';
+import styles from './table.module.css';
 
 interface TableProps extends MDXComponentBaseProps {}
 

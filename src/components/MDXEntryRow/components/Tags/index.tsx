@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Tag } from "../Tag";
-import styles from "./tags.module.css";
-import { faCircle } from "@fortawesome/pro-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Tag } from '../Tag';
+import styles from './tags.module.css';
+import { faCircle } from '@fortawesome/pro-solid-svg-icons';
 
 interface TagsProps {
   tags: string[];

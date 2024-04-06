@@ -1,14 +1,14 @@
-import { merge } from "@/util/classNames";
-import { MDXComponentBaseProps } from "../types";
-import aStyles from "./a.module.css";
-import Link from "next/link";
+import { merge } from '@/util/classNames';
+import { MDXComponentBaseProps } from '../types';
+import aStyles from './a.module.css';
+import Link from 'next/link';
 
 interface AnchorProps extends MDXComponentBaseProps {
   href?: string;
 }
 
 export const Anchor = ({ children, className, href }: AnchorProps) => {
-  if (href?.startsWith("/")) {
+  if (href?.startsWith('/')) {
     return (
       <Link className={merge(aStyles.a, className)} href={href}>
         {children}
@@ -16,7 +16,7 @@ export const Anchor = ({ children, className, href }: AnchorProps) => {
     );
   }
 
-  if (href?.startsWith("#")) {
+  if (href?.startsWith('#')) {
     return (
       <a className={merge(aStyles.a, className)} href={href}>
         {children}

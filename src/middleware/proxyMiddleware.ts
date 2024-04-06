@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
 export class ProxyMiddleware {
   private request: NextRequest;
@@ -7,8 +7,8 @@ export class ProxyMiddleware {
   constructor(request: NextRequest) {
     this.request = request;
     this.headers = {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "*",
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
     };
   }
 
@@ -19,21 +19,21 @@ export class ProxyMiddleware {
   }
 
   async execute() {
-    if (this.request.method === "OPTIONS") {
+    if (this.request.method === 'OPTIONS') {
       return this.done();
     }
 
     const url = new URL(this.request.url);
-    const requestUrl = url.searchParams.get("requestUrl");
-    const token = this.request.headers.get("x-proxy-key");
+    const requestUrl = url.searchParams.get('requestUrl');
+    const token = this.request.headers.get('x-proxy-key');
 
     if (!token) {
       console.warn(
-        "Tried to proxy url",
+        'Tried to proxy url',
         requestUrl,
-        "but no token was provided"
+        'but no token was provided',
       );
-      return new Response("unauthorized", {
+      return new Response('unauthorized', {
         status: 400,
         headers: this.headers,
       });
@@ -41,39 +41,39 @@ export class ProxyMiddleware {
 
     if (token !== process.env.PROXY_KEY) {
       console.warn(
-        "Tried to proxy url",
+        'Tried to proxy url',
         requestUrl,
-        "but the token was invalid"
+        'but the token was invalid',
       );
-      return new Response("unauthorized", {
+      return new Response('unauthorized', {
         status: 400,
         headers: this.headers,
       });
     }
 
     if (!requestUrl) {
-      return new Response("requestUrl is required", {
+      return new Response('requestUrl is required', {
         status: 400,
         headers: this.headers,
       });
     }
 
     if (
-      !requestUrl?.startsWith("https://keegan.codes/") &&
-      !requestUrl?.startsWith("http://localhost:3561/")
+      !requestUrl?.startsWith('https://keegan.codes/') &&
+      !requestUrl?.startsWith('http://localhost:3561/')
     ) {
       console.warn(
-        "Tried to proxy url",
+        'Tried to proxy url',
         requestUrl,
-        "but it was not a keegan.codes URL"
+        'but it was not a keegan.codes URL',
       );
-      return new Response("requestUrl must be a keegan.codes URL", {
+      return new Response('requestUrl must be a keegan.codes URL', {
         status: 400,
         headers: this.headers,
       });
     }
 
-    console.log("Proxying request allowed to", requestUrl);
+    console.log('Proxying request allowed to', requestUrl);
 
     return this.done();
   }

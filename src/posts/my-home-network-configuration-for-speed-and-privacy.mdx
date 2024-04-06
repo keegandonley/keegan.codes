@@ -1,20 +1,20 @@
-export const title = "My Home Network Configuration for Speed and Privacy";
-export const slug = "my-home-network-configuration-for-speed-and-privacy";
-export const tags = ["networking", "software", "hobby", "home", "raspberry pi"];
+export const title = 'My Home Network Configuration for Speed and Privacy';
+export const slug = 'my-home-network-configuration-for-speed-and-privacy';
+export const tags = ['networking', 'software', 'hobby', 'home', 'raspberry pi'];
 export const description =
-  "I show you how my home network works, what hardware I use, and my tools to keep my connection fast and private!";
-export const cover = "network-cover.png";
+  'I show you how my home network works, what hardware I use, and my tools to keep my connection fast and private!';
+export const cover = 'network-cover.png';
 export const published = new Date(2021, 10, 5);
-export const shortCodes = ["home-net", "network", "home-network"];
+export const shortCodes = ['home-net', 'network', 'home-network'];
 
 As a software engineer, I spend a substantial amount of time on the internet. Whether I'm pushing and pulling code, watching tutorials, reading news, or just relaxing, there's little that frustrates me more than a poorly functioning internet connection. Not to mention that working from home, a poor connection also inhibits my ability to work effectively. My first apartment when I moved to Austin was the first time I had a place with CAT-6 wiring in every room, and it was a game changer. However, once I moved to a larger space I decided there was more I wanted to do to optimize the experience.
 
 There are four key aspects I paid attention to when designing my home network:
 
-- [**Service Provider**](#serviceprovider "Service Provider") - There's nothing I can do if my service is terrible, so this was an important starting place.
-- [**Network Hardware**](#networkhardware "Network Hardware") - I knew the modem from my ISP wasn't going to cut it, and upgrades were necessary.
-- [**Software**](#software "Software") - It wasn't just about the hardware - I also wanted network-wide ad blocking and remote access to my home network.
-- [**Peripheral Support**](#peripherals "Peripherals") - One of my main goals was to have reliable whole-home audio, among other smart home devices.
+- [**Service Provider**](#serviceprovider 'Service Provider') - There's nothing I can do if my service is terrible, so this was an important starting place.
+- [**Network Hardware**](#networkhardware 'Network Hardware') - I knew the modem from my ISP wasn't going to cut it, and upgrades were necessary.
+- [**Software**](#software 'Software') - It wasn't just about the hardware - I also wanted network-wide ad blocking and remote access to my home network.
+- [**Peripheral Support**](#peripherals 'Peripherals') - One of my main goals was to have reliable whole-home audio, among other smart home devices.
 
 ## Service Provider
 
@@ -26,9 +26,9 @@ There's not a lot to say here as options are limited to begin with, but I got pr
 
 ## Network Hardware
 
-I love a cool new piece of tech. I haven't tried as many options as I did for [my connected health set up](https://keegandonley.com/blog/my-approach-to-connected-fitness "Connected Health"), but I do like the choices I've made for the time being.
+I love a cool new piece of tech. I haven't tried as many options as I did for [my connected health set up](https://keegandonley.com/blog/my-approach-to-connected-fitness 'Connected Health'), but I do like the choices I've made for the time being.
 
-- [**Eeero 6**](#eero6 "Eero 6") - Eero is a mesh wifi system owned by Amazon. I have 3 wifi 6 nodes spread around the house for wide coverage, including the entire front yard and back yard (Why do I need this? Who knows...).
+- [**Eeero 6**](#eero6 'Eero 6') - Eero is a mesh wifi system owned by Amazon. I have 3 wifi 6 nodes spread around the house for wide coverage, including the entire front yard and back yard (Why do I need this? Who knows...).
 - **Raspberry Pi 4** - I have 2 of these, one runs my DNS server, and one runs my VPN server (more on these below)
 - **Raspberry Pi 1B** - This is an old Raspberry Pi I dragged out of the garage and back to life so act as a media server that our smart TVs can stream from
 - **Raspberry Pi Zero** - This one is super lightweight and serves as a small web server. It only serves content on my local network so I didn't need something so powerful as the more expensive units.
@@ -72,7 +72,7 @@ I decided to build out my own little dashboard for managing my home network. Thi
 
 ### Wireguard and PiVPN
 
-I run [Wireguard](https://www.wireguard.com/ "Wireguard") on my VPN server, so that I can access my home network from my phone or other devices when I'm away. I installed Wireguard using a tool called PiVPN, which makes it super easy to get up and running!
+I run [Wireguard](https://www.wireguard.com/ 'Wireguard') on my VPN server, so that I can access my home network from my phone or other devices when I'm away. I installed Wireguard using a tool called PiVPN, which makes it super easy to get up and running!
 
 ![](network-post:image-5.png)
 
@@ -86,7 +86,7 @@ I run [Wireguard](https://www.wireguard.com/ "Wireguard") on my VPN server, so t
 
 The Wireguard app is also great, and it allows the tunnel to be connected dynamically, based on my network. This way, whenever I'm on cellular or another wifi network, it activates automatically. Bonus points because it works exactly the same on my iPad and my laptop.
 
-The last thing I needed was an address at which to access my VPN server. Rather than pay for Eeero's dynamic DNS service, I opted for the free [DuckDNS](https://www.duckdns.org/ "Duck DNS"). It's super simple - I have a subdomain like `keeganshouse.duckdns.org`, and My Raspberry Pi runs a cron job every 5 minutes to update DuckDNS with my current public ip address. A service like this is necessary since my public ip address can change at any time.
+The last thing I needed was an address at which to access my VPN server. Rather than pay for Eeero's dynamic DNS service, I opted for the free [DuckDNS](https://www.duckdns.org/ 'Duck DNS'). It's super simple - I have a subdomain like `keeganshouse.duckdns.org`, and My Raspberry Pi runs a cron job every 5 minutes to update DuckDNS with my current public ip address. A service like this is necessary since my public ip address can change at any time.
 
 ## Peripherals
 
@@ -98,7 +98,7 @@ Probably my absolute favorite upgrade to my home has been whole-home audio with 
 
 ![](network-post:image-7.png)
 
-> **Pro Tip:** While I have 2 Sonos Ones and a Sonos Beam, I also have 2 of the dramatically cheaper [Symfonisk Sonos speakers from IKEA](https://www.ikea.com/us/en/p/symfonisk-wifi-bookshelf-speaker-white-80435211/ "Symfonisk Link"). They work fantastically, and support Airplay 2 just like the Sonos branded speakers.
+> **Pro Tip:** While I have 2 Sonos Ones and a Sonos Beam, I also have 2 of the dramatically cheaper [Symfonisk Sonos speakers from IKEA](https://www.ikea.com/us/en/p/symfonisk-wifi-bookshelf-speaker-white-80435211/ 'Symfonisk Link'). They work fantastically, and support Airplay 2 just like the Sonos branded speakers.
 
 Two of these speakers have direct ethernet connections, and the rest are over wifi spread over around 3,000 square feet. I love that I can play to even the farthest away speakers with ease.
 
@@ -110,4 +110,4 @@ I have a ton of smart home devices - nearly two dozen wifi light bulbs, as well 
 
 I had a lot of fun setting this up! I learned a lot about how DNS and VPNs work, and now I have a setup that I feel is a good balance of privacy and convenience, and also has strong security, even when I'm away from home.
 
-Down the road, look for more on my home network! I may talk more in depth about my different services running on the network, or devices I use! For now, [connect with me on Twitter](https://twitter.com/keegandonley "Twitter") if you have any thoughts about my setup, or input on what you want to hear more about!
+Down the road, look for more on my home network! I may talk more in depth about my different services running on the network, or devices I use! For now, [connect with me on Twitter](https://twitter.com/keegandonley 'Twitter') if you have any thoughts about my setup, or input on what you want to hear more about!

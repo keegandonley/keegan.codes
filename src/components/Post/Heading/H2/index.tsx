@@ -1,8 +1,8 @@
-import { merge } from "@/util/classNames";
-import { MDXComponentBaseProps } from "../../types";
-import h2Styles from "./h2.module.css";
-import hStyles from "../h.module.css";
-import { getId } from "../util";
+import { merge } from '@/util/classNames';
+import { MDXComponentBaseProps } from '../../types';
+import h2Styles from './h2.module.css';
+import hStyles from '../h.module.css';
+import { getId } from '../util';
 
 interface H2Props extends MDXComponentBaseProps {}
 

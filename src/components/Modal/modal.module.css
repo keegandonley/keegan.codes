@@ -23,7 +23,9 @@
   position: relative;
   transform: translateY(100vh);
   opacity: 0;
-  transition: transform var(--animation), opacity var(--animation);
+  transition:
+    transform var(--animation),
+    opacity var(--animation);
   transition-delay: 10ms;
   border-radius: 18px;
   overflow: hidden;

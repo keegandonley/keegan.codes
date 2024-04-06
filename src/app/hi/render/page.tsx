@@ -1,19 +1,19 @@
-import { Paragraph } from "@/components/Paragraph";
-import renderLogo from "./render-logo.svg";
-import Image from "next/image";
-import styles from "./render.module.css";
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { URLS } from "@/components/Social/socials";
-import { merge } from "@/util/classNames";
-import { faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { Hr } from "@/components/Post/Hr";
-import { HiTrack } from "@/components/Track/Hi";
-import dynamic from "next/dynamic";
+import { Paragraph } from '@/components/Paragraph';
+import renderLogo from './render-logo.svg';
+import Image from 'next/image';
+import styles from './render.module.css';
+import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { URLS } from '@/components/Social/socials';
+import { merge } from '@/util/classNames';
+import { faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { Hr } from '@/components/Post/Hr';
+import { HiTrack } from '@/components/Track/Hi';
+import dynamic from 'next/dynamic';
 
-const DynamicEmbed = dynamic(() => import("@/components/Calendly/EmbedTarget"));
+const DynamicEmbed = dynamic(() => import('@/components/Calendly/EmbedTarget'));
 
-export const runtime = "edge";
+export const runtime = 'edge';
 
 export default function RenderPage({
   searchParams,
@@ -24,7 +24,7 @@ export default function RenderPage({
     <div className={styles.wrapper}>
       <Paragraph className={merge(styles.firstParagraph, styles.paragraph)}>
         My name is Keegan Donley, and I&apos;m currently a principal font-end
-        engineer at{" "}
+        engineer at{' '}
         <Link
           href="https://kizen.com"
           target="_blank"
@@ -35,13 +35,13 @@ export default function RenderPage({
         . I love all things React, Next.js, and performant web!
       </Paragraph>
       <Paragraph className={styles.paragraph}>
-        I&apos;d love to connect on{" "}
+        I&apos;d love to connect on{' '}
         <Link href={URLS.linkedIn} target="_blank" rel="noopener noreferrer">
           <strong>
             <FontAwesomeIcon icon={faLinkedin} /> LinkedIn
           </strong>
-        </Link>{" "}
-        and on{" "}
+        </Link>{' '}
+        and on{' '}
         <Link href={URLS.twitter} target="_blank" rel="noopener noreferrer">
           <strong>
             <FontAwesomeIcon icon={faTwitter} /> Twitter
@@ -50,10 +50,10 @@ export default function RenderPage({
         !
       </Paragraph>
       <Paragraph className={styles.paragraph}>
-        I also write a{" "}
+        I also write a{' '}
         <Link href="/blog">
           <strong>blog</strong>
-        </Link>{" "}
+        </Link>{' '}
         about a number of topics, ranging from software to fitness to travel.
       </Paragraph>
 
@@ -65,7 +65,7 @@ export default function RenderPage({
       </Paragraph>
       <DynamicEmbed
         meeting="render"
-        primaryColor={{ light: "ff88df", dark: "ff88df" }}
+        primaryColor={{ light: 'ff88df', dark: 'ff88df' }}
       />
       <div className={styles.renderLogoContainer}>
         <Image
@@ -74,7 +74,7 @@ export default function RenderPage({
           className={styles.renderLogo}
         />
       </div>
-      <HiTrack slug="render" qrScanned={searchParams?.scan === "true"} />
+      <HiTrack slug="render" qrScanned={searchParams?.scan === 'true'} />
     </div>
   );
 }

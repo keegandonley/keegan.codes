@@ -1,11 +1,11 @@
-import { ElementBaseProps } from "@/types/elements";
+import { ElementBaseProps } from '@/types/elements';
 
-import styles from "./interactiveContent.module.css";
+import styles from './interactiveContent.module.css';
 
 interface InteractiveContentProps extends ElementBaseProps {}
 
 export const InteractiveContent = ({
   children,
-}: Omit<InteractiveContentProps, "className">) => {
+}: Omit<InteractiveContentProps, 'className'>) => {
   return <span className={styles.wrapper}>{children}</span>;
 };

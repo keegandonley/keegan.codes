@@ -1,18 +1,18 @@
-"use client";
-import { Post } from "@/types/post";
-import { merge } from "@/util/classNames";
-import { useState } from "react";
-import styles from "./blogPreview.module.css";
-import Image from "next/image";
-import { BUCKET_URL } from "@/util/r2";
-import { parseToProps } from "@/util/image";
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+'use client';
+import { Post } from '@/types/post';
+import { merge } from '@/util/classNames';
+import { useState } from 'react';
+import styles from './blogPreview.module.css';
+import Image from 'next/image';
+import { BUCKET_URL } from '@/util/r2';
+import { parseToProps } from '@/util/image';
+import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowCircleLeft,
   faArrowCircleRight,
-} from "@fortawesome/pro-solid-svg-icons";
-import { formatDate } from "@/util/date";
+} from '@fortawesome/pro-solid-svg-icons';
+import { formatDate } from '@/util/date';
 
 interface PostWithMetadata extends Post {
   metadata?: ImageMetadata;
@@ -58,7 +58,7 @@ export const ClientRenderer = ({ posts }: ClientRendererProps) => {
               key={post.slug}
               className={merge(
                 styles.imageParent,
-                postIndex === activeIndex && styles.active
+                postIndex === activeIndex && styles.active,
               )}
               onMouseOver={() => setActiveIndex(postIndex)}
               href={`/blog/${post.slug}`}

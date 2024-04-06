@@ -7,10 +7,10 @@ import {
   redditOrange,
   xGrey,
   xGreyLight,
-} from "@/theme/brandColors";
-import styles from "./social.module.css";
-import { URLS } from "./socials";
-import { Icon } from "./Icon";
+} from '@/theme/brandColors';
+import styles from './social.module.css';
+import { URLS } from './socials';
+import { Icon } from './Icon';
 import {
   faGithub,
   faInstagram,
@@ -18,7 +18,7 @@ import {
   faReddit,
   faXTwitter,
   faBluesky,
-} from "@fortawesome/free-brands-svg-icons";
+} from '@fortawesome/free-brands-svg-icons';
 
 export const Social = () => {
   return (

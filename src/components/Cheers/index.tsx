@@ -1,6 +1,6 @@
-import { Suspense } from "react";
-import { CheersServerRenderer } from "./ServerRenderer";
-import { CheersClientRenderer } from "./ClientRenderer";
+import { Suspense } from 'react';
+import { CheersServerRenderer } from './ServerRenderer';
+import { CheersClientRenderer } from './ClientRenderer';
 
 interface CheersProps {
   slug: string;

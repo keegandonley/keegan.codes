@@ -1,4 +1,4 @@
-import styles from "./calendly.module.css";
+import styles from './calendly.module.css';
 
 export const Body = ({ children }: { children: any }) => {
   return <p className={styles.text}>{children}</p>;

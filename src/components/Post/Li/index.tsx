@@ -1,6 +1,6 @@
-import { merge } from "@/util/classNames";
-import { MDXComponentBaseProps } from "../types";
-import liStyles from "./li.module.css";
+import { merge } from '@/util/classNames';
+import { MDXComponentBaseProps } from '../types';
+import liStyles from './li.module.css';
 
 interface LiProps extends MDXComponentBaseProps {}
 
