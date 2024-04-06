@@ -1,10 +1,10 @@
-"use client";
-import { merge } from "@/util/classNames";
-import { useCallback, useContext, useEffect, useState } from "react";
-import styles from "./themeToggle.module.css";
-import { AnimatedIcon } from "../AnimatedIcon";
-import { faMoon, faSunBright } from "@fortawesome/pro-solid-svg-icons";
-import { usePathname } from "next/navigation";
+'use client';
+import { merge } from '@/util/classNames';
+import { useCallback, useContext, useEffect, useState } from 'react';
+import styles from './themeToggle.module.css';
+import { AnimatedIcon } from '../AnimatedIcon';
+import { faMoon, faSunBright } from '@fortawesome/pro-solid-svg-icons';
+import { usePathname } from 'next/navigation';
 import {
   getMatch,
   getPrefersDark,
@@ -12,10 +12,10 @@ import {
   setHasChosenThemeCookie,
   setMetaTheme,
   setThemeCookie,
-} from "@/util/theme";
-import { Theme, ThemeChooserSize } from "@/types/theme";
-import va from "@vercel/analytics";
-import { ThemeContext } from "@/app/themeProvider";
+} from '@/util/theme';
+import { Theme, ThemeChooserSize } from '@/types/theme';
+import va from '@vercel/analytics';
+import { ThemeContext } from '@/app/themeProvider';
 
 interface ThemeToggleProps {
   relative?: boolean;
@@ -27,12 +27,12 @@ interface ThemeToggleProps {
 
 export const ThemeToggle = ({
   relative,
-  size = "large",
+  size = 'large',
   initialTheme,
   hasChosenTheme,
   ignoreGlobalState = false,
 }: ThemeToggleProps) => {
-  const [theme, setTheme] = useState<Theme>(() => initialTheme ?? "light");
+  const [theme, setTheme] = useState<Theme>(() => initialTheme ?? 'light');
   const { setTheme: ctxSetTheme } = useContext(ThemeContext);
 
   useEffect(() => {
@@ -53,20 +53,20 @@ export const ThemeToggle = ({
       setHasChosenThemeCookie();
     }
 
-    va.track("Toggle Theme", {
-      theme: theme === "light" ? "dark" : "light",
+    va.track('Toggle Theme', {
+      theme: theme === 'light' ? 'dark' : 'light',
       ignoreGlobalState: ignoreGlobalState,
     });
 
-    setTheme((theme) => (theme === "light" ? "dark" : "light"));
+    setTheme((theme) => (theme === 'light' ? 'dark' : 'light'));
   }, [ignoreGlobalState, theme]);
 
   const handleMatch = useCallback((prefersDark: boolean) => {
-    va.track("Theme Match", {
+    va.track('Theme Match', {
       prefersDark,
     });
 
-    setTheme(prefersDark ? "dark" : "light");
+    setTheme(prefersDark ? 'dark' : 'light');
   }, []);
 
   useEffect(() => {
@@ -89,19 +89,19 @@ export const ThemeToggle = ({
         handleMatch(event.matches);
       }
     },
-    [handleMatch, hasChosenTheme, ignoreGlobalState]
+    [handleMatch, hasChosenTheme, ignoreGlobalState],
   );
 
   useEffect(() => {
-    getMatch().addEventListener("change", handleColorSchemeChange);
+    getMatch().addEventListener('change', handleColorSchemeChange);
 
     return () => {
-      getMatch().removeEventListener("change", handleColorSchemeChange);
+      getMatch().removeEventListener('change', handleColorSchemeChange);
     };
   }, [handleColorSchemeChange]);
 
-  const isLight = theme === "light";
-  const isSmall = size === "small";
+  const isLight = theme === 'light';
+  const isSmall = size === 'small';
 
   return (
     <button
@@ -109,7 +109,7 @@ export const ThemeToggle = ({
         styles.themeWrapper,
         isLight && styles.dark,
         relative && styles.relative,
-        isSmall && styles.small
+        isSmall && styles.small,
       )}
       onClick={toggleTheme}
       title="Toggle Theme"

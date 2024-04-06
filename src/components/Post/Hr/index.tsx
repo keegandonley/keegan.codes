@@ -1,5 +1,5 @@
-import { Divider } from "@/components/Divider";
-import { CSSProperties } from "react";
+import { Divider } from '@/components/Divider';
+import { CSSProperties } from 'react';
 
 interface HrProps {
   theme?: string;

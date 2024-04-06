@@ -1,15 +1,15 @@
-import { Cheers } from "../Cheers";
-import { ReadingTime } from "../MDXEntryRow/components/ReadingTime";
-import { H1 } from "../Post/Heading/H1";
-import styles from "./postHeader.module.css";
-import dynamic from "next/dynamic";
+import { Cheers } from '../Cheers';
+import { ReadingTime } from '../MDXEntryRow/components/ReadingTime';
+import { H1 } from '../Post/Heading/H1';
+import styles from './postHeader.module.css';
+import dynamic from 'next/dynamic';
 
-const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
+const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
 
 interface PostHeaderProps {
   title: string;
   slug: string;
-  location: "modal" | "blog";
+  location: 'modal' | 'blog';
   wordCount: number;
 }
 

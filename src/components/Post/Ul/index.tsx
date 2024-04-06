@@ -1,6 +1,6 @@
-import { merge } from "@/util/classNames";
-import { MDXComponentBaseProps } from "../types";
-import ulStyles from "./ul.module.css";
+import { merge } from '@/util/classNames';
+import { MDXComponentBaseProps } from '../types';
+import ulStyles from './ul.module.css';
 
 interface UlProps extends MDXComponentBaseProps {}
 

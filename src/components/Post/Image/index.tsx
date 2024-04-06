@@ -1,8 +1,8 @@
-import { injectVariables, merge } from "@/util/classNames";
-import imageStyles from "./image.module.css";
-import Image from "next/image";
-import { BUCKET_URL } from "@/util/r2";
-import { getImageMetadata, parseSource } from "@/util/image";
+import { injectVariables, merge } from '@/util/classNames';
+import imageStyles from './image.module.css';
+import Image from 'next/image';
+import { BUCKET_URL } from '@/util/r2';
+import { getImageMetadata, parseSource } from '@/util/image';
 
 const getAspectRatio = (metadata?: ImageMetadata) => {
   if (!metadata) return 1;
@@ -17,22 +17,22 @@ export const Img = ({ src, className, alt }: any) => {
   const metadata = getImageMetadata(imgUrl);
   const cssAspectRatio = getAspectRatio(metadata);
 
-  const shouldHideShadow = flags.includes("hideShadow");
-  const isTableMode = flags.includes("tableMode");
+  const shouldHideShadow = flags.includes('hideShadow');
+  const isTableMode = flags.includes('tableMode');
 
   if (metadata) {
     return (
       <span
         className={merge(
           imageStyles.imageParent,
-          isTableMode && imageStyles.tableMode
+          isTableMode && imageStyles.tableMode,
         )}
         data-ratio={cssAspectRatio}
-        data-flags={flags.join(",")}
+        data-flags={flags.join(',')}
         data-width={metadata.width}
         data-height={metadata.height}
         data-file={imgUrl}
-        style={injectVariables([["aspect-ratio", String(cssAspectRatio)]])}
+        style={injectVariables([['aspect-ratio', String(cssAspectRatio)]])}
       >
         <Image
           src={`${BUCKET_URL}/${imgUrl}`}
@@ -41,8 +41,8 @@ export const Img = ({ src, className, alt }: any) => {
           className={merge(imageStyles.img, className)}
           style={{
             filter: shouldHideShadow
-              ? "none"
-              : "drop-shadow(0 0 0.5rem var(--shadow-color))",
+              ? 'none'
+              : 'drop-shadow(0 0 0.5rem var(--shadow-color))',
           }}
           placeholder="blur"
           blurDataURL={metadata.dataUrl}

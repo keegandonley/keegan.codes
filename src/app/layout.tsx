@@ -1,26 +1,27 @@
-import "./globals.css";
-import "./theme.css";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-import { config } from "@fortawesome/fontawesome-svg-core";
-import { merge } from "@/util/classNames";
-import { background } from "@/theme/colors";
-import { getHasChosenTheme, userTheme } from "@/util/cookies";
-import { Analytics } from "@vercel/analytics/react";
-import { Suspense } from "react";
-import { BASEURL, DESCRIPTION, NAME } from "@/metadata";
-import MainNavigation from "@/components/MainNavigation";
-import { ModalBoundary } from "@/components/ModalBoundary";
-import ThemeProvider from "./themeProvider";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import dynamic from "next/dynamic";
-import LoadingProvider from "./loadingProvider";
-import { GeistSans } from "geist/font/sans";
+import './globals.css';
+import './theme.css';
+import '@keegancodes/foundations/dist/main.css';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
+import { merge } from '@/util/classNames';
+import { background } from '@/theme/colors';
+import { getHasChosenTheme, userTheme } from '@/util/cookies';
+import { Analytics } from '@vercel/analytics/react';
+import { Suspense } from 'react';
+import { BASEURL, DESCRIPTION, NAME } from '@/metadata';
+import MainNavigation from '@/components/MainNavigation';
+import { ModalBoundary } from '@/components/ModalBoundary';
+import ThemeProvider from './themeProvider';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import dynamic from 'next/dynamic';
+import LoadingProvider from './loadingProvider';
+import { GeistSans } from 'geist/font/sans';
 
 const DynamicEventWaiter = dynamic(
-  () => import("./event").then((m) => m.EventWaiter),
+  () => import('./event').then((m) => m.EventWaiter),
   {
     ssr: false,
-  }
+  },
 );
 
 config.autoAddCss = false;
@@ -34,8 +35,8 @@ export default async function RootLayout({ children, postModal }: any) {
       <body
         className={merge(
           GeistSans.className,
-          "preload",
-          theme === "dark" && "dark"
+          'preload',
+          theme === 'dark' && 'dark',
         )}
       >
         <ThemeProvider>
@@ -64,13 +65,13 @@ export async function generateViewport() {
   const theme = userTheme();
 
   return {
-    themeColor: theme === "light" ? background.light : background.dark,
+    themeColor: theme === 'light' ? background.light : background.dark,
   };
 }
 
 export async function generateMetadata() {
   return {
-    metadataBase: new URL("https://keegan.codes"),
+    metadataBase: new URL('https://keegan.codes'),
     title: NAME,
     description: DESCRIPTION,
     openGraph: {
@@ -78,22 +79,22 @@ export async function generateMetadata() {
       description: DESCRIPTION,
       url: `${BASEURL}`,
       siteName: NAME,
-      locale: "en_US",
-      authors: ["Keegan Donley"],
+      locale: 'en_US',
+      authors: ['Keegan Donley'],
       images: [
         {
           url: `/api/og/page?page=home&width=1200&height=630`,
           width: 1200,
           height: 630,
-          type: "image/png",
+          type: 'image/png',
         },
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: NAME,
       description: DESCRIPTION,
-      creator: "@keegandonley",
+      creator: '@keegandonley',
       images: [`/api/og/page?page=home&width=1200&height=630`],
     },
   };

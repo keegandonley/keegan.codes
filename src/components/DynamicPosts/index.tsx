@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Post } from "@/types/post";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { MDXEntryRow } from "../MDXEntryRow";
+import { Post } from '@/types/post';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { MDXEntryRow } from '../MDXEntryRow';
 
 interface DynamicPostsProps {
   previousPage: number;
@@ -32,7 +32,7 @@ const DynamicPosts = (props: DynamicPostsProps) => {
   const hasNextPage = nextPage <= pageCount;
 
   const observer = useMemo(() => {
-    if (typeof window !== "undefined" && "IntersectionObserver" in window) {
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
       return new IntersectionObserver(
         (entries) => {
           if (entries[0].isIntersecting) {
@@ -41,14 +41,14 @@ const DynamicPosts = (props: DynamicPostsProps) => {
         },
         {
           threshold: 0,
-        }
+        },
       );
     }
   }, []);
 
   useEffect(() => {
     const element = document.getElementsByClassName(
-      `last-element-page-${previousPage}`
+      `last-element-page-${previousPage}`,
     )[0];
     if (element) {
       observer?.observe(element);
@@ -85,7 +85,7 @@ const DynamicPosts = (props: DynamicPostsProps) => {
             className={
               index === pageData.length - 1
                 ? `last-element-page-${currentPage}`
-                : ""
+                : ''
             }
             fixedViewCount={post.viewCount}
             imageMetadata={post.imageMetadata}

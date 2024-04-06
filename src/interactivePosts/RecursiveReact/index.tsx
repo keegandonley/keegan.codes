@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import styles from "./recursive.module.css";
-import { merge } from "@/util/classNames";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFile, faFolderOpen } from "@fortawesome/pro-solid-svg-icons";
+import { useState } from 'react';
+import styles from './recursive.module.css';
+import { merge } from '@/util/classNames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFile, faFolderOpen } from '@fortawesome/pro-solid-svg-icons';
 
 const RocketLaunchComponent = (props: { interval: number; count: number }) => {
   if (props.count <= 0) {
-    return "liftoff!";
+    return 'liftoff!';
   }
 
   return (
@@ -51,18 +51,18 @@ export const RocketLaunch = ({ interval = 1 }: { interval: number }) => {
 };
 
 const FileTreeComponent = (props: any) => {
-  const path = `${props.path ?? ""}/${props.node.name}`;
+  const path = `${props.path ?? ''}/${props.node.name}`;
   return (
     <div
       style={{
-        paddingLeft: "15px",
+        paddingLeft: '15px',
       }}
     >
       <div
         style={{
-          display: "flex",
-          paddingBottom: "5px",
-          columnGap: "5px",
+          display: 'flex',
+          paddingBottom: '5px',
+          columnGap: '5px',
         }}
       >
         {props.node.children ? (
@@ -91,41 +91,41 @@ export const FileTree = () => {
   return (
     <FileTreeComponent
       node={{
-        name: "site",
+        name: 'site',
         children: [
           {
-            name: "home",
+            name: 'home',
             children: [
               {
-                name: "index.html",
+                name: 'index.html',
               },
               {
-                name: "index.css",
+                name: 'index.css',
               },
             ],
           },
           {
-            name: "about",
+            name: 'about',
             children: [
               {
-                name: "resume",
+                name: 'resume',
                 children: [
                   {
-                    name: "index.html",
+                    name: 'index.html',
                   },
                 ],
               },
               {
-                name: "contact",
+                name: 'contact',
                 children: [
                   {
-                    name: "company",
+                    name: 'company',
                     children: [
                       {
-                        name: "index.html",
+                        name: 'index.html',
                       },
                       {
-                        name: "index.js",
+                        name: 'index.js',
                       },
                     ],
                   },

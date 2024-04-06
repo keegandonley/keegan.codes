@@ -1,25 +1,25 @@
-import { MDXEntryRow } from "@/components/MDXEntryRow";
-import Posts from "@/posts";
-import styles from "./blog.module.css";
-import wordCounts from "../../../post-word-counts.json";
-import { Post } from "@/types/post";
-import { userTheme } from "@/util/cookies";
-import { BASEURL, NAME } from "@/metadata";
-import { postCount } from "@/post-count";
-import { background } from "@/theme/colors";
-import { getIsLikelyMobile } from "@/util/userAgent";
-import { get } from "@vercel/edge-config";
-import dynamic from "next/dynamic";
-import { getImageMetadata } from "@/util/image";
+import { MDXEntryRow } from '@/components/MDXEntryRow';
+import Posts from '@/posts';
+import styles from './blog.module.css';
+import wordCounts from '../../../post-word-counts.json';
+import { Post } from '@/types/post';
+import { userTheme } from '@/util/cookies';
+import { BASEURL, NAME } from '@/metadata';
+import { postCount } from '@/post-count';
+import { background } from '@/theme/colors';
+import { getIsLikelyMobile } from '@/util/userAgent';
+import { get } from '@vercel/edge-config';
+import dynamic from 'next/dynamic';
+import { getImageMetadata } from '@/util/image';
 
 const DynamicDynamicPosts = dynamic(
-  () => import("@/components/DynamicPosts/index")
+  () => import('@/components/DynamicPosts/index'),
 );
 
-export const runtime = "edge";
+export const runtime = 'edge';
 
 export default async function BlogPage() {
-  const postsPerPage = parseInt((await get("blogPageSize")) ?? "12");
+  const postsPerPage = parseInt((await get('blogPageSize')) ?? '12');
 
   const allPosts = Object.keys(Posts);
   const posts = allPosts
@@ -60,7 +60,7 @@ export default async function BlogPage() {
                 index={index}
                 isLikelyMobile={isLikelyMobile}
                 className={
-                  index === posts.length - 1 ? "last-element-page-1" : ""
+                  index === posts.length - 1 ? 'last-element-page-1' : ''
                 }
                 imageMetadata={metadata}
                 {...post}
@@ -103,7 +103,7 @@ export async function generateViewport() {
   const theme = userTheme();
 
   return {
-    themeColor: theme === "light" ? background.light : background.dark,
+    themeColor: theme === 'light' ? background.light : background.dark,
   };
 }
 
@@ -116,22 +116,22 @@ export async function generateMetadata() {
       description: `My blog with ${postCount} posts and counting!`,
       url: `${BASEURL}/blog`,
       siteName: NAME,
-      locale: "en_US",
-      authors: ["Keegan Donley"],
+      locale: 'en_US',
+      authors: ['Keegan Donley'],
       images: [
         {
           url: `/api/og/page?page=blog&width=1200&height=630`,
           width: 1200,
           height: 630,
-          type: "image/png",
+          type: 'image/png',
         },
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: `Blog · ${NAME}`,
       description: `My blog with ${postCount} posts and counting!`,
-      creator: "@keegandonley",
+      creator: '@keegandonley',
       images: [`/api/og/page?page=blog&width=1200&height=630`],
     },
   };

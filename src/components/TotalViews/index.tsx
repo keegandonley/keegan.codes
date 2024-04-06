@@ -1,8 +1,8 @@
-import { merge } from "@/util/classNames";
-import styles from "./totalViews.module.css";
-import { Suspense } from "react";
-import { ViewCountFallback } from "../ViewCount/Fallback";
-import { ViewCountRenderer } from "./renderer";
+import { merge } from '@/util/classNames';
+import styles from './totalViews.module.css';
+import { Suspense } from 'react';
+import { ViewCountFallback } from '../ViewCount/Fallback';
+import { ViewCountRenderer } from './renderer';
 
 interface TotalViewsProps {
   className?: string;

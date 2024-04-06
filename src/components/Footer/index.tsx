@@ -1,8 +1,8 @@
-import { merge } from "@/util/classNames";
-import styles from "./footer.module.css";
-import Link from "next/link";
-import { Avatar } from "../Avatar";
-import { TotalViews } from "../TotalViews";
+import { merge } from '@/util/classNames';
+import styles from './footer.module.css';
+import Link from 'next/link';
+import { Avatar } from '../Avatar';
+import { TotalViews } from '../TotalViews';
 
 interface FooterProps {
   className?: string;

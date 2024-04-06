@@ -1,11 +1,11 @@
-export const title = "How to Use Vercel Deployment Protection with Next.js RSC";
-export const slug = "how-to-use-vercel-deployment-protection-next-rsc";
-export const tags = ["javascript"];
+export const title = 'How to Use Vercel Deployment Protection with Next.js RSC';
+export const slug = 'how-to-use-vercel-deployment-protection-next-rsc';
+export const tags = ['javascript'];
 export const description =
   "A look at what's required to enable Vercel deployment protection for client & server components";
-export const cover = "vercel-deployment-protection-cover.png";
+export const cover = 'vercel-deployment-protection-cover.png';
 export const published = new Date(2024, 3, 3);
-export const shortCodes = ["vercel-deployment-protection"];
+export const shortCodes = ['vercel-deployment-protection'];
 
 Vercel provides a number of ways to protect your deployments from the public internet. One of them
 is called **Vercel Authentication**, which allows you to restrict access to all deployments except for the
@@ -45,14 +45,14 @@ fetch URLs that worked both server-side and on the client:
 
 ```typescript
 export const getFullyQualifiedUrl = (path: `/${string}`) => {
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === 'development') {
     return `http://localhost:${process.env.PORT}${path}`;
   }
 
   const domain =
     process.env.VERCEL_URL ||
     process.env.NEXT_PUBLIC_VERCEL_URL ||
-    "keegan.codes";
+    'keegan.codes';
 
   return `https://${domain}${path}`;
 };
@@ -71,13 +71,13 @@ Here's a new server component request function that satisfies this for fetching 
 ```typescript
 export const makeServerRequest = (path: `/${string}`) => {
   // Don't need anything special in local dev
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === 'development') {
     return fetch(`http://localhost:${process.env.PORT}${path}`);
   }
 
   const headersList = headers();
-  const host = headersList.get("host") || "keegan.codes";
-  const cookie = headersList.get("cookie");
+  const host = headersList.get('host') || 'keegan.codes';
+  const cookie = headersList.get('cookie');
   const headers = cookie ? { cookie } : undefined;
 
   return fetch(`https://${host}${path}`, { headers });
@@ -104,7 +104,7 @@ First, we have to know if the function is being called on the server or
 not. That's actually pretty straightforward:
 
 ```javascript
-if (typeof window === "undefined") {
+if (typeof window === 'undefined') {
   // server
 } else {
   // client
@@ -117,7 +117,7 @@ A new function can be created, `getRequestUrl`, that works in both scenarios:
 ```typescript
 // Just a simple helper to parse the host value
 const getUrlFromHost = (host: string | null, path?: `/${string}`) => {
-  if (host?.includes("localhost")) {
+  if (host?.includes('localhost')) {
     return `http://${host}${path}`;
   }
 
@@ -126,8 +126,8 @@ const getUrlFromHost = (host: string | null, path?: `/${string}`) => {
 
 const getRequestUrl = async (path: `/${string}`) => {
   // Nothing special needed in development
-  if (process.env.NODE_ENV === "development") {
-    const port = process.env.PORT || "3000";
+  if (process.env.NODE_ENV === 'development') {
+    const port = process.env.PORT || '3000';
     return { url: `http://localhost:${port}${path}` };
   }
 
@@ -135,12 +135,12 @@ const getRequestUrl = async (path: `/${string}`) => {
   let cookie;
 
   // If on the server...
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     // Dynamically import next/headers and retrieve the required values
-    const getHeaders = (await import("next/headers")).headers;
+    const getHeaders = (await import('next/headers')).headers;
     const headersList = getHeaders();
-    host = headersList.get("host") || "keegan.codes";
-    cookie = headersList.get("cookie");
+    host = headersList.get('host') || 'keegan.codes';
+    cookie = headersList.get('cookie');
   }
 
   return {

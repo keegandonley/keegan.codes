@@ -1,17 +1,17 @@
-export const title = "Creating Large-Format Digital Art with DALL·E 2";
-export const slug = "building-large-format-graphics-with-openai-s-dall-e-2";
-export const tags = ["software", "ai", "DALL-E 2", "tutorial"];
+export const title = 'Creating Large-Format Digital Art with DALL·E 2';
+export const slug = 'building-large-format-graphics-with-openai-s-dall-e-2';
+export const tags = ['software', 'ai', 'DALL-E 2', 'tutorial'];
 export const description =
-  "How to use inpainting to generate giant pieces of digital art with DALL·E 2";
-export const cover = "inpainting-cover.png";
+  'How to use inpainting to generate giant pieces of digital art with DALL·E 2';
+export const cover = 'inpainting-cover.png';
 export const published = new Date(2022, 5, 22);
-export const shortCodes = ["large-dalle"];
+export const shortCodes = ['large-dalle'];
 
-[DALL·E 2](https://openai.com/dall-e-2/ "DALL·E 2") is a fantastic text-to-image generation tool, but it is constrained by how small the images are - they're all squares of 1024x1024 pixels. However, thanks to the inpainting feature, it is possible to generate much larger, more detailed images. In this post, I'll detail my process for creating medium-sized images for my blog covers, and also really large images that would be suitable for printing, phone wallpapers, and whatever else you can imagine!
+[DALL·E 2](https://openai.com/dall-e-2/ 'DALL·E 2') is a fantastic text-to-image generation tool, but it is constrained by how small the images are - they're all squares of 1024x1024 pixels. However, thanks to the inpainting feature, it is possible to generate much larger, more detailed images. In this post, I'll detail my process for creating medium-sized images for my blog covers, and also really large images that would be suitable for printing, phone wallpapers, and whatever else you can imagine!
 
-> If you're not familiar with DALL·E 2, I recommend checking out [my first blog post about the system](https://keegandonley.com/blog/a-quick-look-at-openai-dall-e-2 "DALL·E 2 first look") before proceeding.
+> If you're not familiar with DALL·E 2, I recommend checking out [my first blog post about the system](https://keegandonley.com/blog/a-quick-look-at-openai-dall-e-2 'DALL·E 2 first look') before proceeding.
 
-**This is a tutorial for how my process works - if you just want to see the results, feel free to** [**skip to the end**](#anexample "Final Example") **(but you'll be missing out!)**
+**This is a tutorial for how my process works - if you just want to see the results, feel free to** [**skip to the end**](#anexample 'Final Example') **(but you'll be missing out!)**
 
 # Overview - Inpainting
 
@@ -19,7 +19,7 @@ Before we get started, it will be helpful to have a basic understanding of inpai
 
 Here's a fun example - I took a photo of myself and erased everything but my face and hair, and gave the prompt "A man in various Halloween costumes."
 
-![5 photos side by side of a male dressed in (from left to right) a blue boa, a skeleton outfit, royal clothes, a shirt covered in small stones, and a cape with ears](inpainting-post:image-1.png "A man in various Halloween costumes")
+![5 photos side by side of a male dressed in (from left to right) a blue boa, a skeleton outfit, royal clothes, a shirt covered in small stones, and a cape with ears](inpainting-post:image-1.png 'A man in various Halloween costumes')
 
 Pretty powerful stuff, even for a silly use case! Keep in mind that OpenAI's terms prohibit using a photo of a person without their permission, so don't go uploading random photos. I've always experimented by using only photos of myself.
 
@@ -31,19 +31,19 @@ The first half of the post will follow how I make the cover images for my blog -
 
 ### Step 1 - Create the initial prompt
 
-![A screenshot showing the 6 dall-e results for the prompt ](inpainting-post:image-2.png?hideShadow "Step 1")
+![A screenshot showing the 6 dall-e results for the prompt ](inpainting-post:image-2.png?hideShadow 'Step 1')
 
 Nothing new here - you just need to run your prompt through and get the first set of outputs.
 
 ### Step 2 - Choose an option and download it
 
-![A screenshot of DALL·E 2 showing a single image that's an orange mushroom-like shape surrounded by abstract photos and connected like a blueprint](inpainting-post:image-3.png?hideShadow "Step 2")
+![A screenshot of DALL·E 2 showing a single image that's an orange mushroom-like shape surrounded by abstract photos and connected like a blueprint](inpainting-post:image-3.png?hideShadow 'Step 2')
 
 This image will be the launching point of the process. I typically use this as the center image and work outward. In choosing a variation to use, I look for space to expand around the edges. If one edge of the image is empty space, expanding out won't work as well as one with lots of detail, like the above image.
 
 ### Step 3 - Widen the image by 100%
 
-![A screenshot of Figma showing the square image and an equally sized transparent area next to it](inpainting-post:image-4.png?hideShadow "Step 3")
+![A screenshot of Figma showing the square image and an equally sized transparent area next to it](inpainting-post:image-4.png?hideShadow 'Step 3')
 
 There are many ways to do this, but the end result needs to be an image that's transparent on one half and is exactly twice as wide as the original image. This will make cropping and aligning easier down the road.
 
@@ -51,43 +51,43 @@ Export the image to get ready for the next step, and make sure the transparent p
 
 ### Step 4 - Re-upload the widened image
 
-![A screnshot of the DALL·E 2 upload UI allowing the user to crop an image](inpainting-post:image-5.png?hideShadow "Step 4")
+![A screnshot of the DALL·E 2 upload UI allowing the user to crop an image](inpainting-post:image-5.png?hideShadow 'Step 4')
 
 After uploading the image, DALL·E 2 will automatically suggest a cropping region in the center. This is why it's important to get the dimensions correct on the uploaded image. If everything went well, you should be able to just leave the crop area as-is in the middle and click Done.
 
 ### Step 5 - Run the prompt again
 
-![A screenshot of DALL·E 2 showing the editor with half a tile filled out, with the content from the previous run](inpainting-post:image-6.png?hideShadow "Step 5")
+![A screenshot of DALL·E 2 showing the editor with half a tile filled out, with the content from the previous run](inpainting-post:image-6.png?hideShadow 'Step 5')
 
 DALL·E 2 treats transparent areas as the portions to replace, which is why we leave the additional space transparent. You still may need to click once in the transparent space to convince the system you've made a change, but you shouldn't need to do any actual erasing at this point. You need to run the exact same prompt every time if you want a uniform image, but you could totally experiment with changing the prompt for each tile to get an even more dynamic result. This is something I haven't tried much yet as I've been focused on large, single-prompt images.
 
 ### Step 6 - Choose a result you like
 
-![A screenshot showing 5 new outputs from DALL·E 2 that all resemble the original blueprint image](inpainting-post:image-7.png?hideShadow "Step 6")
+![A screenshot showing 5 new outputs from DALL·E 2 that all resemble the original blueprint image](inpainting-post:image-7.png?hideShadow 'Step 6')
 
 DALL·E 2 will present you with 5 additional options. Pick one, keeping in mind the direction you intend to expand the canvas, and where the detail is.
 
 ### Step 7 - Align the new tile with the original one
 
-![A screenshot of Figma showing the two tiles overlapping and aligned precisely](inpainting-post:image-8.png?hideShadow "Step 7")
+![A screenshot of Figma showing the two tiles overlapping and aligned precisely](inpainting-post:image-8.png?hideShadow 'Step 7')
 
 Now, it's time to align the two images. If the dimensions were all done properly, you should be able to snap the image to the grid at exactly 50% of the width of the original item. That leaves a transparent area that's 50% of the width of the original tile. You can either export the whole thing and re-upload it to get that last piece or move the spacer.
 
 ### Step 8 - Adjust the spacer if necessary
 
-![A screenshot of Figma showing the spacer moved from the left to the right hand side of the image](inpainting-post:image-9.png?hideShadow "Step 8")
+![A screenshot of Figma showing the spacer moved from the left to the right hand side of the image](inpainting-post:image-9.png?hideShadow 'Step 8')
 
 Now, the spacer can be moved to generate the next partial tile for DALL·E 2. Remember, the overlap amount needs to always be 50% of the previous tile if you want it to be super easy to align the tiles after.
 
 ### Step 9 - Re-upload again, and fill in the missing space
 
-![The upload UI for DALL·E 2 again showing the newly uploaded image](inpainting-post:image-10.png?hideShadow "Step 9")
+![The upload UI for DALL·E 2 again showing the newly uploaded image](inpainting-post:image-10.png?hideShadow 'Step 9')
 
 Now, the space to be filled in via inpainting is at the end. You can simply drag the crop area to the side as far as possible, and you should get perfect alignment with the previously downloaded images.
 
 ### Step 10 - Repeat as necessary, creating spacers and re-uploading to fill in holes
 
-![A screenshot of the DALL·E editing UI with part of the image transparent, and a small part erased where the color bands used to be](inpainting-post:image-11.png?hideShadow "Step 10")
+![A screenshot of the DALL·E editing UI with part of the image transparent, and a small part erased where the color bands used to be](inpainting-post:image-11.png?hideShadow 'Step 10')
 
 If you upload an image with the DALL·E 2 color banding _(see the disclaimer at the top of this post for an example),_ erase it first before generating the next tile. With this method, you'll always have the required indicator in the bottom right corner, but not scattered throughout your image. You will still need to adjust the final result by cropping the tiles to cover up the extraneous indicators, however, you don't want to upload an image that includes it because the system will try to use those colors and patterns in generating the next piece.
 
@@ -97,7 +97,7 @@ Expanding on one direction is easy, but adding a second introduces some complexi
 
 ### Step 1 - Crop the First Vertical Section
 
-![A screenshot of the DALL·E 2 upload UI, but with an image that is taller than it is wide](inpainting-post:image-12.png?hideShadow "Step 1")
+![A screenshot of the DALL·E 2 upload UI, but with an image that is taller than it is wide](inpainting-post:image-12.png?hideShadow 'Step 1')
 
 To obtain this uploaded image, I took the left-most square of a row and added a spacer above it. You can also do the same for the other side of the image, but joining them in the middle is the part that requires some masking and clever cropping.
 
@@ -109,15 +109,15 @@ Now, for the tricky part. We need to process an image where the output depends o
 
 Your mask should be 2048x1024 pixels - one output square high, and two squares wide. This will allow the next output to be the expected resolution. At this step, we are only generating 1/4 of a tile in each run, rather than 1/2.
 
-![A screenshot of Figma showing how to create a mask of an image with a shape](inpainting-post:image-13.png?hideShadow "Step 2a")
+![A screenshot of Figma showing how to create a mask of an image with a shape](inpainting-post:image-13.png?hideShadow 'Step 2a')
 
-![A screenshot of figma showing the resulting, smaller, masked image](inpainting-post:image-14.png?hideShadow "Step 2b")
+![A screenshot of figma showing the resulting, smaller, masked image](inpainting-post:image-14.png?hideShadow 'Step 2b')
 
 Depending on how you go through this process, you may end up with a varying number of "tricky" tiles like this, and they may be in different places. The technique of masking and filling in 1/4 of a tile at a time still applies.
 
 ### Step 3 - Use the Editor to Generate the Missing Piece
 
-![A screenshot of the DALL·E 2 upload UI indicating a new crop zone based on the uploaded image](inpainting-post:image-15.png?hideShadow "Step 3")
+![A screenshot of the DALL·E 2 upload UI indicating a new crop zone based on the uploaded image](inpainting-post:image-15.png?hideShadow 'Step 3')
 
 As before, you can now export and upload the image, then adjust the cropping to generate the last missing piece. If you worked from left to right, everything will line up easily. However, if you moved in from both edges simultaneously, there will likely be one tile you have to manually align because it doesn't use an even offset from the previous tiles.
 
@@ -125,16 +125,16 @@ As before, you can now export and upload the image, then adjust the cropping to 
 
 The cover image for this post is a good example of a simple horizontal expansion, but expanding in both directions (vertically and horizontally) can yield even more impressive results. Here's one I worked on, and it took 23 different runs stitched together to generate. There is much more detail here, and much like a real Salvador Dalí painting, there is a lot to discover.
 
-![A painting, in the style of Salvador Dalí, that shows a large number of planets and spacecraft above the surface of a yellow planet, with a bridge over water and strange buildings reflected in the pool](inpainting-post:image-16.png?giant "A futuristic society in outer space, painted by Salvador Dalí")
+![A painting, in the style of Salvador Dalí, that shows a large number of planets and spacecraft above the surface of a yellow planet, with a bridge over water and strange buildings reflected in the pool](inpainting-post:image-16.png?giant 'A futuristic society in outer space, painted by Salvador Dalí')
 
 > The prompt here was **"a futuristic society in outer space, painted by Salvador Dalí"**
 
 One important note is that **order matters** when deciding which tile to generate next. You can see the GIF below of the order in which I generated these tiles. This order was specific to preserve certain details. For example, if I'd worked down starting from the top right, the city wouldn't have extended all the way across the bottom, because the planets and dark sky would have taken over the entire right-hand portion.
 
-![An animated image showing the tiles that make up the large Dalí-style painting being added one by one in the order they were generated](inpainting-post:image-17.gif?hideShadow?giant "The making of A futuristic society in outer space, painted by Salvador Dalí")
+![An animated image showing the tiles that make up the large Dalí-style painting being added one by one in the order they were generated](inpainting-post:image-17.gif?hideShadow?giant 'The making of A futuristic society in outer space, painted by Salvador Dalí')
 
 It takes time to get the hang of what the system might do given specific inputs, so don't be afraid to employ a lot of trial and error! Since this image took 23 iterations, I'd be able to generate two images of this size per day (before hitting the 50 runs daily limit) with space for 4 "mistakes" or re-runs. I'd recommend at the start attempting to only make one of these composites in a day because that gives plenty of buffer for experimentation.
 
 ---
 
-This has been a really powerful technique to allow me to expand how I use DALL·E 2. If you have access to the system, I'd love to see some of the large-format creations you generate! Either way, I love to talk about DALL·E 2 and all things software and technology [over on Twitter,](https://twitter.com/keegandonley/status/1539627715334135820 "Twitter") so come say hello!
+This has been a really powerful technique to allow me to expand how I use DALL·E 2. If you have access to the system, I'd love to see some of the large-format creations you generate! Either way, I love to talk about DALL·E 2 and all things software and technology [over on Twitter,](https://twitter.com/keegandonley/status/1539627715334135820 'Twitter') so come say hello!

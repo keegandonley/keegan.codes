@@ -1,6 +1,6 @@
-"use client";
-import { merge } from "@/util/classNames";
-import styles from "./slideControls.module.css";
+'use client';
+import { merge } from '@/util/classNames';
+import styles from './slideControls.module.css';
 import {
   faBackwardFast,
   faChevronLeft,
@@ -8,17 +8,17 @@ import {
   faExpand,
   faFlagCheckered,
   faPipe,
-} from "@fortawesome/pro-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCallback, useEffect } from "react";
-import { useParams, usePathname, useRouter } from "next/navigation";
+} from '@fortawesome/pro-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useCallback, useEffect } from 'react';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 
 export const SlideControls = () => {
   const params = useParams();
   const { slide } = params ?? {};
-  const slideIndex = parseInt((slide as string) ?? "0", 10);
+  const slideIndex = parseInt((slide as string) ?? '0', 10);
   const pathname = usePathname();
-  const slideName = pathname?.split("/")[2];
+  const slideName = pathname?.split('/')[2];
   const router = useRouter();
 
   const handleGoBack = useCallback(() => {
@@ -37,20 +37,20 @@ export const SlideControls = () => {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") {
+      if (e.key === 'ArrowLeft') {
         handleGoBack();
-      } else if (e.key === "ArrowRight") {
+      } else if (e.key === 'ArrowRight') {
         handleGoForward();
       }
     };
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [handleGoBack, handleGoForward]);
 
   const enterFullScreen = useCallback(() => {
-    const element = document.getElementById("fullscreen-context");
+    const element = document.getElementById('fullscreen-context');
     if (element?.requestFullscreen) {
       element.requestFullscreen();
     }

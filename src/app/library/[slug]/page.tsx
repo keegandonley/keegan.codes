@@ -1,9 +1,9 @@
-import { BookContent } from "@/components/BookContent";
-import { Metadata } from "next";
-import { getComponentForKey, getKey } from "../util";
-import { BASEURL, NAME } from "@/metadata";
+import { BookContent } from '@/components/BookContent';
+import { Metadata } from 'next';
+import { getComponentForKey, getKey } from '../util';
+import { BASEURL, NAME } from '@/metadata';
 
-export const runtime = "edge";
+export const runtime = 'edge';
 
 interface LibraryPageProps {
   params: {
@@ -26,22 +26,22 @@ export async function generateMetadata({
         description: found.description,
         url: `${BASEURL}/library/${params.slug}`,
         siteName: NAME,
-        locale: "en_US",
-        authors: ["Keegan Donley"],
+        locale: 'en_US',
+        authors: ['Keegan Donley'],
         images: [
           {
             url: `/api/og/book?slug=${params.slug}&width=1200&height=630`,
             width: 1200,
             height: 630,
-            type: "image/png",
+            type: 'image/png',
           },
         ],
       },
       twitter: {
-        card: "summary_large_image",
+        card: 'summary_large_image',
         title: found.title,
         description: found.description,
-        creator: "@keegandonley",
+        creator: '@keegandonley',
         images: [`/api/og/book?slug=${params.slug}&width=1200&height=630`],
       },
     };

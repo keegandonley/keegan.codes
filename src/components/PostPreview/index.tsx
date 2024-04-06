@@ -1,18 +1,18 @@
-import Link from "next/link";
-import { Suspense } from "react";
-import styles from "./postPreview.module.css";
-import { merge } from "@/util/classNames";
-import dynamic from "next/dynamic";
-import { formatDate } from "@/util/date";
-import Image from "next/image";
-import { BUCKET_URL } from "@/util/r2";
-import { parseToProps } from "@/util/image";
+import Link from 'next/link';
+import { Suspense } from 'react';
+import styles from './postPreview.module.css';
+import { merge } from '@/util/classNames';
+import dynamic from 'next/dynamic';
+import { formatDate } from '@/util/date';
+import Image from 'next/image';
+import { BUCKET_URL } from '@/util/r2';
+import { parseToProps } from '@/util/image';
 import {
   getFullyQualifiedDeploymentUrl,
   getUrlFromHost,
-} from "@/util/deployment";
+} from '@/util/deployment';
 
-const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
+const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
 
 interface PostPreviewProps {
   slug: string;
@@ -22,7 +22,7 @@ export const PostPreviewRenderer = async (props: PostPreviewProps) => {
   const { slug } = props;
 
   const { url, headers } = await getFullyQualifiedDeploymentUrl(
-    `/api/posts/single?slug=${slug}`
+    `/api/posts/single?slug=${slug}`,
   );
 
   const post = await (await fetch(url, { headers })).json();
@@ -67,9 +67,9 @@ export const PostPreview = (props: PostPreviewProps) => {
       fallback={
         <div
           style={{
-            width: "100%",
-            height: "140px",
-            marginBottom: "2rem",
+            width: '100%',
+            height: '140px',
+            marginBottom: '2rem',
           }}
         />
       }

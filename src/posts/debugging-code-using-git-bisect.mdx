@@ -1,11 +1,11 @@
-export const title = "Debugging Code Using Git Bisect";
-export const slug = "debugging-code-using-git-bisect";
-export const tags = ["software", "tutorial", "debugging"];
+export const title = 'Debugging Code Using Git Bisect';
+export const slug = 'debugging-code-using-git-bisect';
+export const tags = ['software', 'tutorial', 'debugging'];
 export const description =
-  "A step-by-step guide to one of my favorite tools in my debugging toolkit";
-export const cover = "git-bisect-cover.png";
+  'A step-by-step guide to one of my favorite tools in my debugging toolkit';
+export const cover = 'git-bisect-cover.png';
 export const published = new Date(2022, 4, 9);
-export const shortCodes = ["bisect", "git-bisect", "debugging-superpower"];
+export const shortCodes = ['bisect', 'git-bisect', 'debugging-superpower'];
 
 Imagine this situation: A part of a large application you haven't looked at in a while has a regression - maybe it's something minor like a drop-down that no longer works. You're sure it _used_ to work, but there have been hundreds or thousands of commits to the project by various developers since then. How do you go about tracking down when the bug was introduced? If it wasn't caught in regression testing the moment it was broken, this can be a daunting task!
 
@@ -23,7 +23,7 @@ The nature of logarithmic time means that even as we double the number of commit
 
 > `⌊log₂(2000) + 1⌋ = 11`
 
-If you want to, you can pause here and [read in more detail how binary search works](https://en.wikipedia.org/wiki/Binary_search_algorithm "Binary Search - Wikipedia"). However, you don't need to know every detail of the implementation to use git bisect effectively.
+If you want to, you can pause here and [read in more detail how binary search works](https://en.wikipedia.org/wiki/Binary_search_algorithm 'Binary Search - Wikipedia'). However, you don't need to know every detail of the implementation to use git bisect effectively.
 
 ## Using Git Bisect in Practice
 
@@ -50,4 +50,4 @@ Another potentially useful command is `git bisect skip` - if you can't test a re
 
 Git bisect is one of my favorite debugging methods in my toolkit, and it has saved me so much time. It's actually one of the big upsides in my opinion of monorepo development. If the backend and frontend are version-controlled with the same git history, git-bisect becomes a powerful tool for tracking down full-stack bugs that involve interaction between and back-end and front-end. It is also most effective when commits are kept small and with good, useful messages.
 
-Do you rely on git-bisect to solve problems in your codebase? Do you have other great methods in your debugging toolkit? I love to discuss debugging and all things software over on [Twitter](https://twitter.com/keegandonley "Twitter") and [LinkedIn](https://www.linkedin.com/in/keegan-donley-2202a873/ "LinkedIn - Keegan")!
+Do you rely on git-bisect to solve problems in your codebase? Do you have other great methods in your debugging toolkit? I love to discuss debugging and all things software over on [Twitter](https://twitter.com/keegandonley 'Twitter') and [LinkedIn](https://www.linkedin.com/in/keegan-donley-2202a873/ 'LinkedIn - Keegan')!

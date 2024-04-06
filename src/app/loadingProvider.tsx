@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react';
 
 export const LoadingContext = createContext({
   loading: false,

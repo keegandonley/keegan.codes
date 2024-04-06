@@ -1,14 +1,14 @@
-import { Modal } from "@/components/Modal";
-import { PostModal } from "@/components/PostModal";
-import "../../../syntax-theme.css";
-import wordCounts from "../../../../post-word-counts.json";
-import dynamic from "next/dynamic";
+import { Modal } from '@/components/Modal';
+import { PostModal } from '@/components/PostModal';
+import '../../../syntax-theme.css';
+import wordCounts from '../../../../post-word-counts.json';
+import dynamic from 'next/dynamic';
 
-const DynamicTrack = dynamic(() => import("@/components/Track"), {
+const DynamicTrack = dynamic(() => import('@/components/Track'), {
   ssr: false,
 });
 
-export const runtime = "edge";
+export const runtime = 'edge';
 
 interface InterceptorProps {
   params: {

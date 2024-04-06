@@ -1,4 +1,4 @@
-import { headers } from "next/headers";
+import { headers } from 'next/headers';
 
 const toMatch = [
   /Android/i,
@@ -16,7 +16,7 @@ const toMatch = [
 // such as a mobile menu. That way, if we get it wrong, it's not a big deal.
 export const getIsLikelyMobile = () => {
   const h = headers();
-  const userAgent = h.get("User-Agent");
+  const userAgent = h.get('User-Agent');
 
   return toMatch.some((toMatchItem) => {
     return userAgent ? userAgent.match(toMatchItem) : false;

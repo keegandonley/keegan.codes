@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./cheers.module.css";
-import { faChampagneGlass } from "@fortawesome/pro-solid-svg-icons";
-import { merge } from "@/util/classNames";
-import { useCallback, useRef, useState } from "react";
-import va from "@vercel/analytics";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styles from './cheers.module.css';
+import { faChampagneGlass } from '@fortawesome/pro-solid-svg-icons';
+import { merge } from '@/util/classNames';
+import { useCallback, useRef, useState } from 'react';
+import va from '@vercel/analytics';
 
 interface CheersClientRendererProps {
   slug: string;
@@ -34,18 +34,18 @@ export const CheersClientRenderer = ({
 
       setCheersCount((c) => c + 1);
       setCheersing(true);
-      let id = localStorage.getItem("cheers-id");
+      let id = localStorage.getItem('cheers-id');
       timerRef.current = setTimeout(() => {
         setCheersing(false);
       }, 700);
 
       if (!id) {
-        id = Date.now() + "-" + Math.random().toString();
-        localStorage.setItem("cheers-id", id);
+        id = Date.now() + '-' + Math.random().toString();
+        localStorage.setItem('cheers-id', id);
       }
 
-      fetch("/api/cheers", {
-        method: "POST",
+      fetch('/api/cheers', {
+        method: 'POST',
         body: JSON.stringify({
           slug: slug,
           location,
@@ -53,20 +53,20 @@ export const CheersClientRenderer = ({
         } as CheersBody),
       });
 
-      va.track("Cheers Click", {
+      va.track('Cheers Click', {
         slug,
         location,
       });
 
       return false;
     },
-    [slug, location]
+    [slug, location],
   );
 
   return (
     <>
       <span className={styles.text}>
-        <strong>{loading ? "--" : cheersCount}</strong> cheers
+        <strong>{loading ? '--' : cheersCount}</strong> cheers
       </span>
       <button
         className={merge(styles.wrapper, cheersing && styles.cheersing)}

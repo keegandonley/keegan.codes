@@ -1,15 +1,15 @@
-import styles from "../../pageStyles/christmas23/christmas23.module.css";
-import { merge } from "@/util/classNames";
-import "@/pageStyles/christmas23/christmas23.css";
-import Image from "next/image";
-import girlstartlogo from "@/images/girlstart.png";
-import localFont from "next/font/local";
+import styles from '../../pageStyles/christmas23/christmas23.module.css';
+import { merge } from '@/util/classNames';
+import '@/pageStyles/christmas23/christmas23.css';
+import Image from 'next/image';
+import girlstartlogo from '@/images/girlstart.png';
+import localFont from 'next/font/local';
 
 const dosis = localFont({
   src: [
     {
-      path: "../../sharedFonts/Dosis.ttf",
-      style: "normal",
+      path: '../../sharedFonts/Dosis.ttf',
+      style: 'normal',
     },
   ],
 });
@@ -23,13 +23,13 @@ export default function Christmas23() {
       <article className={merge(styles.content)}>
         <p>We&apos;re so happy you could join us this evening!</p>
         <p>
-          This year, we are raising money for a non-profit called{" "}
+          This year, we are raising money for a non-profit called{' '}
           <strong>GirlStart</strong>. This is a great organization that supports
           young girls in STEM by offering year-round after-school programs.
         </p>
         <p>
           We ask this year that if you&apos;re able, please consider joining us
-          in supporting this organization through our{" "}
+          in supporting this organization through our{' '}
           <a href="/girlstart" target="_blank" rel="noopener noreferrer">
             fundraiser for this event
           </a>

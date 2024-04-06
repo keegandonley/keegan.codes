@@ -1,5 +1,5 @@
-import Books from "@/books";
-import { Book } from "@/types/book";
+import Books from '@/books';
+import { Book } from '@/types/book';
 
 interface GetKeyArg {
   slug: string;

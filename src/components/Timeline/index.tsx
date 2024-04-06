@@ -1,24 +1,24 @@
-import Link from "next/link";
-import styles from "./timeline.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from 'next/link';
+import styles from './timeline.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowLeftLong,
   faArrowRightLong,
-} from "@fortawesome/pro-solid-svg-icons";
-import { merge } from "@/util/classNames";
-import { Suspense } from "react";
-import dynamic from "next/dynamic";
-import Image from "next/image";
-import { BUCKET_URL } from "@/util/r2";
-import { parseToProps } from "@/util/image";
-import { formatDate } from "@/util/date";
-import { headers } from "next/headers";
+} from '@fortawesome/pro-solid-svg-icons';
+import { merge } from '@/util/classNames';
+import { Suspense } from 'react';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import { BUCKET_URL } from '@/util/r2';
+import { parseToProps } from '@/util/image';
+import { formatDate } from '@/util/date';
+import { headers } from 'next/headers';
 import {
   getFullyQualifiedDeploymentUrl,
   getUrlFromHost,
-} from "@/util/deployment";
+} from '@/util/deployment';
 
-const DynamicViewCount = dynamic(() => import("@/components/ViewCount"));
+const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
 
 interface TimelineProps {
   slug: string;
@@ -27,7 +27,7 @@ interface TimelineProps {
 const Timeline = async (props: TimelineProps) => {
   const headersList = headers();
 
-  const host = headersList.get("host");
+  const host = headersList.get('host');
 
   const { slug } = props;
 
@@ -49,7 +49,7 @@ const Timeline = async (props: TimelineProps) => {
 
   if (isAlone) {
     const aloneFetcher = await getFullyQualifiedDeploymentUrl(
-      `/api/posts/random?slug=${slug}`
+      `/api/posts/random?slug=${slug}`,
     );
     randomPost = await (
       await fetch(aloneFetcher.url, { headers: aloneFetcher.headers })
@@ -58,7 +58,7 @@ const Timeline = async (props: TimelineProps) => {
 
   const remainder = randomPost ? (
     <Link
-      className={merge(styles.post, isAlone ? styles.single : "")}
+      className={merge(styles.post, isAlone ? styles.single : '')}
       href={randomPost.slug}
     >
       <span className={merge(styles.postTitle, styles.random)}>
@@ -95,7 +95,7 @@ const Timeline = async (props: TimelineProps) => {
       <div className={styles.timelineWrapper}>
         {previousPost?.slug ? (
           <Link
-            className={merge(styles.post, isAlone ? styles.single : "")}
+            className={merge(styles.post, isAlone ? styles.single : '')}
             href={previousPost.slug}
           >
             <span className={styles.postTitle}>
@@ -133,7 +133,7 @@ const Timeline = async (props: TimelineProps) => {
         )}
         {nextPost?.slug ? (
           <Link
-            className={merge(styles.post, isAlone ? styles.single : "")}
+            className={merge(styles.post, isAlone ? styles.single : '')}
             href={nextPost.slug}
           >
             <span className={styles.postTitle}>

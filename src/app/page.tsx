@@ -1,25 +1,26 @@
-import { HeroText } from "@/components/Hero/Text";
-import { HeroBlock } from "@/components/Hero/Block";
-import { Social } from "@/components/Social";
-import { Paragraph } from "@/components/Paragraph";
-import Link from "next/link";
-import styles from "./home.module.css";
-import { postCount } from "../post-count";
-import { postCount as bookCount } from "../book-count";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/pro-solid-svg-icons";
-import { Footer } from "@/components/Footer";
-import { Swoop } from "@/components/Swoop";
-import Posts from "@/posts";
-import { Post } from "@/types/post";
-import dynamic from "next/dynamic";
-import { Fallback as BlogPreviewFallback } from "@/components/BlogPreview/Fallback";
+import { HeroText } from '@/components/Hero/Text';
+import { HeroBlock } from '@/components/Hero/Block';
+import { Social } from '@/components/Social';
+import { Paragraph } from '@/components/Paragraph';
+import Link from 'next/link';
+import styles from './home.module.css';
+import { postCount } from '../post-count';
+import { postCount as bookCount } from '../book-count';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/pro-solid-svg-icons';
+import { Footer } from '@/components/Footer';
+import { Swoop } from '@/components/Swoop';
+import Posts from '@/posts';
+import { Post } from '@/types/post';
+import dynamic from 'next/dynamic';
+import { Fallback as BlogPreviewFallback } from '@/components/BlogPreview/Fallback';
+import { merge } from '@/util/classNames';
 
-const DynamicBlogPreview = dynamic(() => import("@/components/BlogPreview"), {
+const DynamicBlogPreview = dynamic(() => import('@/components/BlogPreview'), {
   loading: () => <BlogPreviewFallback />,
 });
 
-export const runtime = "edge";
+export const runtime = 'edge';
 
 export default function Home() {
   const posts = Object.keys(Posts)
@@ -64,16 +65,16 @@ export default function Home() {
           applications that are performant, accessible, and easy to use.
         </Paragraph>
         <Paragraph className={styles.paragraph}>
-          I&apos;m currently working as a{" "}
-          <strong>principal front-end engineer</strong> at{" "}
+          I&apos;m currently working as a{' '}
+          <strong>principal front-end engineer</strong> at{' '}
           <Link href="https://kizen.com">
             <strong>Kizen</strong>
           </Link>
           .
         </Paragraph>
         <DynamicBlogPreview posts={posts} />
-        <div className={styles.blogButton}>
-          <Link href="/blog" className={styles.blogButtonText}>
+        <div className={merge(styles.blogButton, 'animate-viz')}>
+          <Link href="/blog" className={merge(styles.blogButtonText)}>
             Read more on my blog <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>
@@ -84,7 +85,7 @@ export default function Home() {
           hardware, hobby electronics, and more!
         </Paragraph>
         <Paragraph className={styles.paragraph}>
-          To that end, I currently have {postCount} posts on{" "}
+          To that end, I currently have {postCount} posts on{' '}
           <Link href="/blog">
             <strong>my blog</strong>
           </Link>
@@ -93,7 +94,7 @@ export default function Home() {
           along as I work to build a better web!
         </Paragraph>
         <Paragraph className={styles.paragraph}>
-          I also have {bookCount} books on{" "}
+          I also have {bookCount} books on{' '}
           <Link href="/library">
             <strong>my reading list</strong>
           </Link>

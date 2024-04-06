@@ -1,8 +1,8 @@
-import { Gallery } from "@/types/galleries";
-import { getFullyQualifiedDeploymentUrl } from "@/util/deployment";
-import dynamic from "next/dynamic";
+import { Gallery } from '@/types/galleries';
+import { getFullyQualifiedDeploymentUrl } from '@/util/deployment';
+import dynamic from 'next/dynamic';
 
-const DynamicClientRenderer = dynamic(() => import("./ClientRenderer"));
+const DynamicClientRenderer = dynamic(() => import('./ClientRenderer'));
 
 interface GalleryProps {
   gallery: string;
@@ -10,7 +10,7 @@ interface GalleryProps {
 
 export default async function GalleryRenderer({ gallery }: GalleryProps) {
   const { url, headers } = await getFullyQualifiedDeploymentUrl(
-    `/api/gallery?gallery=${gallery}`
+    `/api/gallery?gallery=${gallery}`,
   );
 
   const data = await fetch(url, {

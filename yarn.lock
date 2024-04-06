@@ -414,6 +414,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@keegancodes/foundations@npm:1.0.11":
+  version: 1.0.11
+  resolution: "@keegancodes/foundations@npm:1.0.11"
+  checksum: 44e6bd65138fd0d48a29895a555241b3275a83c429191b58b12083889b5ae96883736542e796af7311461b764769fbcece76ea886eb16d0200349e2006136d76
+  languageName: node
+  linkType: hard
+
 "@mdx-js/loader@npm:^3.0.1":
   version: 3.0.1
   resolution: "@mdx-js/loader@npm:3.0.1"
@@ -841,12 +848,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.12.4":
-  version: 20.12.4
-  resolution: "@types/node@npm:20.12.4"
+"@types/node@npm:^20.12.5":
+  version: 20.12.5
+  resolution: "@types/node@npm:20.12.5"
   dependencies:
     undici-types: ~5.26.4
-  checksum: c29879642bd4f1f35ffc6e2356121c5ffdb6530d41db1e6ac013c6fbd1dfa4b213b9529a1213cf1f320f801423d00301176ffb41689f790b0cd8c1e82fe3ee74
+  checksum: 38358c091392bb3def1136772ada4ccd39a9429d459160b5ab728b690d2f15f2212eafd9e65ce716e270f70a4e6927ebffccfefc08dabdf68f4016c1fc8a7938
   languageName: node
   linkType: hard
 
@@ -4208,13 +4215,14 @@ __metadata:
     "@fortawesome/free-brands-svg-icons": ^6.5.2
     "@fortawesome/pro-solid-svg-icons": ^6.5.2
     "@fortawesome/react-fontawesome": ^0.2.0
+    "@keegancodes/foundations": 1.0.11
     "@mdx-js/loader": ^3.0.1
     "@mdx-js/react": ^3.0.1
     "@next/bundle-analyzer": ^14.1.4
     "@next/mdx": ^14.1.4
     "@opentelemetry/api": ^1.8.0
     "@planetscale/database": ^1.16.0
-    "@types/node": ^20.12.4
+    "@types/node": ^20.12.5
     "@types/react": ^18.2.74
     "@types/react-dom": ^18.2.24
     "@vercel/analytics": ^1.2.2
@@ -4228,6 +4236,8 @@ __metadata:
     geist: ^1.3.0
     next: ^14.1.4
     postcss: ^8.4.38
+    prettier: ^3.2.5
+    prettier-plugin-tailwindcss: ^0.5.13
     react: ^18.2.0
     react-calendly: ^4.3.0
     react-dom: ^18.2.0
@@ -5866,6 +5876,70 @@ __metadata:
   version: 1.1.2
   resolution: "prelude-ls@npm:1.1.2"
   checksum: c4867c87488e4a0c233e158e4d0d5565b609b105d75e4c05dc760840475f06b731332eb93cc8c9cecb840aa8ec323ca3c9a56ad7820ad2e63f0261dadcb154e4
+  languageName: node
+  linkType: hard
+
+"prettier-plugin-tailwindcss@npm:^0.5.13":
+  version: 0.5.13
+  resolution: "prettier-plugin-tailwindcss@npm:0.5.13"
+  peerDependencies:
+    "@ianvs/prettier-plugin-sort-imports": "*"
+    "@prettier/plugin-pug": "*"
+    "@shopify/prettier-plugin-liquid": "*"
+    "@trivago/prettier-plugin-sort-imports": "*"
+    "@zackad/prettier-plugin-twig-melody": "*"
+    prettier: ^3.0
+    prettier-plugin-astro: "*"
+    prettier-plugin-css-order: "*"
+    prettier-plugin-import-sort: "*"
+    prettier-plugin-jsdoc: "*"
+    prettier-plugin-marko: "*"
+    prettier-plugin-organize-attributes: "*"
+    prettier-plugin-organize-imports: "*"
+    prettier-plugin-sort-imports: "*"
+    prettier-plugin-style-order: "*"
+    prettier-plugin-svelte: "*"
+  peerDependenciesMeta:
+    "@ianvs/prettier-plugin-sort-imports":
+      optional: true
+    "@prettier/plugin-pug":
+      optional: true
+    "@shopify/prettier-plugin-liquid":
+      optional: true
+    "@trivago/prettier-plugin-sort-imports":
+      optional: true
+    "@zackad/prettier-plugin-twig-melody":
+      optional: true
+    prettier-plugin-astro:
+      optional: true
+    prettier-plugin-css-order:
+      optional: true
+    prettier-plugin-import-sort:
+      optional: true
+    prettier-plugin-jsdoc:
+      optional: true
+    prettier-plugin-marko:
+      optional: true
+    prettier-plugin-organize-attributes:
+      optional: true
+    prettier-plugin-organize-imports:
+      optional: true
+    prettier-plugin-sort-imports:
+      optional: true
+    prettier-plugin-style-order:
+      optional: true
+    prettier-plugin-svelte:
+      optional: true
+  checksum: f79a6353c813f871c7f5c2d7bbbe77d8e1477fc448ec20d337688659c8ffb454dda1d841b92cb809d171d6128e4dd55acfd02a945bca7d0aa3eb02411a5cd439
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3.2.5":
+  version: 3.2.5
+  resolution: "prettier@npm:3.2.5"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 2ee4e1417572372afb7a13bb446b34f20f1bf1747db77cf6ccaf57a9be005f2f15c40f903d41a6b79eec3f57fff14d32a20fb6dee1f126da48908926fe43c311
   languageName: node
   linkType: hard
 

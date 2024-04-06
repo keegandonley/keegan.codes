@@ -1,14 +1,14 @@
-import { merge } from "@/util/classNames";
-import localFont from "next/font/local";
-import "@/tw.css";
-import Link from "next/link";
-import { Avatar } from "@/components/Avatar";
+import { merge } from '@/util/classNames';
+import localFont from 'next/font/local';
+import '@/tw.css';
+import Link from 'next/link';
+import { Avatar } from '@/components/Avatar';
 
 const yellowTail = localFont({
   src: [
     {
-      path: "../../sharedFonts/Yellowtail.ttf",
-      style: "normal",
+      path: '../../sharedFonts/Yellowtail.ttf',
+      style: 'normal',
     },
   ],
 });
@@ -16,8 +16,8 @@ const yellowTail = localFont({
 const comfortaa = localFont({
   src: [
     {
-      path: "../../sharedFonts/Comfortaa.ttf",
-      style: "normal",
+      path: '../../sharedFonts/Comfortaa.ttf',
+      style: 'normal',
     },
   ],
 });
@@ -25,13 +25,13 @@ const comfortaa = localFont({
 export default function Miami24() {
   return (
     <div
-      className={merge("min-h-dvh w-full flex justify-center bg-sand pt-12")}
+      className={merge('flex min-h-dvh w-full justify-center bg-sand pt-12')}
     >
-      <div className="max-w-[800px] flex flex-col justify-center">
+      <div className="flex max-w-[800px] flex-col justify-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 576 512"
-          className="w-32 mx-auto"
+          className="mx-auto w-32"
         >
           <path
             className="fa-secondary fill-pink"
@@ -45,8 +45,8 @@ export default function Miami24() {
         </svg>
         <h1
           className={merge(
-            "text-teal text-6xl pt-6 font-extrabold text-center px-6 pb-6",
-            yellowTail.className
+            'px-6 pb-6 pt-6 text-center text-6xl font-extrabold text-teal',
+            yellowTail.className,
           )}
         >
           Nice to meet you!
@@ -54,11 +54,11 @@ export default function Miami24() {
         <p
           className={merge(
             comfortaa.className,
-            "pt-6 px-4 text-center text-2xl text-gray-800"
+            'px-4 pt-6 text-center text-2xl text-gray-800',
           )}
         >
           My name is Keegan Donley, and I&apos;m currently a principal front-end
-          engineer at{" "}
+          engineer at{' '}
           <Link className="text-pink" href="https://kizen.com" target="blank">
             Kizen
           </Link>
@@ -67,27 +67,27 @@ export default function Miami24() {
         <p
           className={merge(
             comfortaa.className,
-            "pt-6 px-4 text-center text-2xl"
+            'px-4 pt-6 text-center text-2xl',
           )}
         >
-          I&apos;d love to connect on{" "}
+          I&apos;d love to connect on{' '}
           <Link className="text-pink" href="/linkedin" target="_blank">
             LinkedIn
-          </Link>{" "}
-          or{" "}
+          </Link>{' '}
+          or{' '}
           <Link className="text-pink" href="/twitter" target="blank">
             Twitter
           </Link>
-          ! I also write a{" "}
+          ! I also write a{' '}
           <Link className="text-pink" href="/blog" target="blank">
             blog
-          </Link>{" "}
+          </Link>{' '}
           about a number of topics, ranging from software to fitness to travel.
         </p>
         <div className="pb-12">
           <Avatar
             width={150}
-            className="sepia-[.45] pt-12 select-none pointer-events-none"
+            className="pointer-events-none select-none pt-12 sepia-[.45]"
             priority
           />
         </div>

@@ -1,5 +1,5 @@
-import { Suspense } from "react";
-import GalleryRenderer from "./ServerRenderer";
+import { Suspense } from 'react';
+import GalleryRenderer from './ServerRenderer';
 
 interface GalleryProps {
   gallery: string;

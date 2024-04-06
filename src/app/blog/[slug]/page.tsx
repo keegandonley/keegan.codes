@@ -1,25 +1,25 @@
-import styles from "./blogPost.module.css";
-import "../../syntax-theme.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
-import { BottomFade } from "@/components/BottomFade";
-import Image from "next/image";
-import { getImageMetadata, parseSource, parseToProps } from "@/util/image";
-import { BUCKET_URL } from "@/util/r2";
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import { getComponentForKey, getKey } from "../util";
-import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
-import wordCounts from "../../../post-word-counts.json";
-import { BASEURL, NAME } from "@/metadata";
-import { PostHeader } from "@/components/PostHeader";
-import dynamic from "next/dynamic";
+import styles from './blogPost.module.css';
+import '../../syntax-theme.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
+import { BottomFade } from '@/components/BottomFade';
+import Image from 'next/image';
+import { getImageMetadata, parseSource, parseToProps } from '@/util/image';
+import { BUCKET_URL } from '@/util/r2';
+import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
+import { getComponentForKey, getKey } from '../util';
+import { faArrowLeft } from '@fortawesome/pro-solid-svg-icons';
+import wordCounts from '../../../post-word-counts.json';
+import { BASEURL, NAME } from '@/metadata';
+import { PostHeader } from '@/components/PostHeader';
+import dynamic from 'next/dynamic';
 
-export const runtime = "edge";
+export const runtime = 'edge';
 
-const Timeline = dynamic(() => import("@/components/Timeline"));
+const Timeline = dynamic(() => import('@/components/Timeline'));
 
-const DynamicTrack = dynamic(() => import("@/components/Track"), {
+const DynamicTrack = dynamic(() => import('@/components/Track'), {
   ssr: false,
 });
 
@@ -45,22 +45,22 @@ export async function generateMetadata({
         description: found.description,
         url: `${BASEURL}/blog/${params.slug}`,
         siteName: NAME,
-        locale: "en_US",
-        authors: ["Keegan Donley"],
+        locale: 'en_US',
+        authors: ['Keegan Donley'],
         images: [
           {
             url: `/api/og/post?slug=${params.slug}&width=1200&height=630`,
             width: 1200,
             height: 630,
-            type: "image/png",
+            type: 'image/png',
           },
         ],
       },
       twitter: {
-        card: "summary_large_image",
+        card: 'summary_large_image',
         title: found.title,
         description: found.description,
-        creator: "@keegandonley",
+        creator: '@keegandonley',
         images: [`/api/og/post?slug=${params.slug}&width=1200&height=630`],
       },
     };
@@ -120,7 +120,7 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
       </article>
       <footer
         style={{
-          minHeight: "300px",
+          minHeight: '300px',
         }}
       >
         <Timeline slug={params.slug} />

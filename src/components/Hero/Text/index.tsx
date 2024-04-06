@@ -1,6 +1,6 @@
-import { ElementBaseProps } from "@/types/elements";
-import styles from "./herotext.module.css";
-import { merge } from "@/util/classNames";
+import { ElementBaseProps } from '@/types/elements';
+import styles from './herotext.module.css';
+import { merge } from '@/util/classNames';
 
 interface HeroTextProps extends ElementBaseProps {}
 

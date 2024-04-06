@@ -1,33 +1,12 @@
-import { VariablesToInject } from "@/types/theme";
+// For now, not refactoring so just re-exporting
+import {
+  merge as _merge,
+  fallback as _fallback,
+  injectVariables as _injectVariables,
+} from '@keegancodes/foundations';
 
-type possibleClassName = string | undefined | null | false;
+export const merge = _merge;
 
-export const merge = (...classNames: possibleClassName[]) => {
-  return classNames.filter(Boolean).join(" ");
-};
+export const fallback = _fallback;
 
-export const fallback = (
-  defaultClassName?: string,
-  fallbackClassName?: string
-) => {
-  return defaultClassName || fallbackClassName;
-};
-
-export const injectVariables = (
-  variables: VariablesToInject = [],
-  styles = {}
-): Record<string, string> => {
-  const filtered = variables.filter(([, value]) => value !== undefined);
-  if (filtered.length === 0) styles;
-
-  return {
-    ...styles,
-    ...filtered.reduce(
-      (acc, [variable, value]) => ({
-        ...acc,
-        [`--${variable}`]: value,
-      }),
-      {}
-    ),
-  } as Record<string, string>;
-};
+export const injectVariables = _injectVariables;

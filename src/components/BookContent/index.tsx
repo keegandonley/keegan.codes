@@ -1,13 +1,13 @@
-import { getComponentForKey, getKey } from "@/app/library/util";
-import { getBookCoverMetadata, parseSource, parseToProps } from "@/util/image";
-import { BOOK_BUCKET_URL } from "@/util/r2";
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import { BottomFade } from "../BottomFade";
-import styles from "./bookContent.module.css";
-import { H1 } from "../Post/Heading/H1";
-import { H2 } from "../Post/Heading/H2";
-import { merge } from "@/util/classNames";
+import { getComponentForKey, getKey } from '@/app/library/util';
+import { getBookCoverMetadata, parseSource, parseToProps } from '@/util/image';
+import { BOOK_BUCKET_URL } from '@/util/r2';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import { BottomFade } from '../BottomFade';
+import styles from './bookContent.module.css';
+import { H1 } from '../Post/Heading/H1';
+import { H2 } from '../Post/Heading/H2';
+import { merge } from '@/util/classNames';
 
 interface BookContentProps {
   slug: string;

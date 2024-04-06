@@ -1,9 +1,9 @@
-import { merge } from "@/util/classNames";
-import styles from "./animatedGraph.module.css";
-import { BottomFade } from "../BottomFade";
-import { getIsLikelyMobile } from "@/util/userAgent";
-import { RadialFade } from "../RadialFade";
-import { TopFade } from "../TopFade";
+import { merge } from '@/util/classNames';
+import styles from './animatedGraph.module.css';
+import { BottomFade } from '../BottomFade';
+import { getIsLikelyMobile } from '@/util/userAgent';
+import { RadialFade } from '../RadialFade';
+import { TopFade } from '../TopFade';
 
 export const AnimatedGraph = () => {
   const isLikelyMobile = getIsLikelyMobile();
@@ -26,7 +26,7 @@ export const AnimatedGraph = () => {
               className={merge(
                 styles.square,
                 styles[`color-${color}`],
-                styles[`animate-${interval}`]
+                styles[`animate-${interval}`],
               )}
             ></div>
           );

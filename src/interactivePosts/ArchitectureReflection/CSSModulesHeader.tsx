@@ -1,5 +1,5 @@
-import { merge } from "@/util/classNames";
-import styles from "./graphic.module.css";
+import { merge } from '@/util/classNames';
+import styles from './graphic.module.css';
 
 export const CSSModulesHeader = () => {
   return (

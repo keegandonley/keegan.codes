@@ -21,7 +21,7 @@
   right: -25rem;
   left: -25rem;
   top: -10rem;
-  content: "";
+  content: '';
   bottom: 5rem;
   box-shadow: var(--theme-box-shadow-small);
 }

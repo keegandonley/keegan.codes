@@ -1,6 +1,6 @@
-import { merge } from "@/util/classNames";
-import { MDXComponentBaseProps } from "../../types";
-import styles from "./tr.module.css";
+import { merge } from '@/util/classNames';
+import { MDXComponentBaseProps } from '../../types';
+import styles from './tr.module.css';
 
 interface TrProps extends MDXComponentBaseProps {}
 

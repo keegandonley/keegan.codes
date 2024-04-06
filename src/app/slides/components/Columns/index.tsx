@@ -1,5 +1,5 @@
-import { injectVariables } from "@/util/classNames";
-import styles from "./columns.module.css";
+import { injectVariables } from '@/util/classNames';
+import styles from './columns.module.css';
 
 export const Columns = ({
   children,
@@ -11,7 +11,7 @@ export const Columns = ({
   return (
     <div
       className={styles.wrapper}
-      style={injectVariables([["columns", String(count)]])}
+      style={injectVariables([['columns', String(count)]])}
     >
       {children}
     </div>

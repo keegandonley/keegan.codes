@@ -1,26 +1,26 @@
-export const title = "Building a Static Generated Blog with Next.js";
-export const slug = "building-a-static-generated-blog-with-next-js";
-export const tags = ["software", "frontend", "nextjs"];
+export const title = 'Building a Static Generated Blog with Next.js';
+export const slug = 'building-a-static-generated-blog-with-next-js';
+export const tags = ['software', 'frontend', 'nextjs'];
 export const description =
   " In this post I'm going to cover how I built this website, and how my statically generated blog works!";
-export const cover = "static-blog-cover.png";
+export const cover = 'static-blog-cover.png';
 export const published = new Date(2021, 9, 30);
-export const shortCodes = ["static-blog"];
+export const shortCodes = ['static-blog'];
 
 When I set out to rebuild my personal website, I had 2 criteria - it needed to be performant and fast, and I wanted it to be as simple as possible, meaning no complicated backend. In this post I'm going to go over how I built this website and how it works under the hood - from the javascript frameworks I use, to performance optimization, to SEO. I'll include examples and walk through how I did things, but this is meant to be more of a reflection on web optimization and not a step-by-step tutorial.
 
-- [**Javascript Frameworks**](#javascriptframeworks "Javascript Frameworks")- Third-party frameworks I rely on for the functioning of my website.
-- [**Content Management**](#contentmanagement "Content Management")- Where I write blog posts and how I organize media content.
-- [**Deployment**](#deployment "Deployment") - Hosting my website on vercel, and how new content gets deployed.
-- [**Performance and SEO**](#performanceandseo "Performance and SEO") - The steps I took to make my website as fast as possible, and discoverable publicly.
+- [**Javascript Frameworks**](#javascriptframeworks 'Javascript Frameworks')- Third-party frameworks I rely on for the functioning of my website.
+- [**Content Management**](#contentmanagement 'Content Management')- Where I write blog posts and how I organize media content.
+- [**Deployment**](#deployment 'Deployment') - Hosting my website on vercel, and how new content gets deployed.
+- [**Performance and SEO**](#performanceandseo 'Performance and SEO') - The steps I took to make my website as fast as possible, and discoverable publicly.
 
 ## Javascript Frameworks
 
-This website is built using [Next.js](https://nextjs.org/ "Next.js ") and hosted on [Vercel](https://vercel.com/ "Vercel"). I've been using Next.js since its inception for a number of reasons, but the biggest is the ease with which I can set up statically generated pages - meaning each blog post of mine is pre-generated, and has 0 api calls on the client side to fetch the data.
+This website is built using [Next.js](https://nextjs.org/ 'Next.js ') and hosted on [Vercel](https://vercel.com/ 'Vercel'). I've been using Next.js since its inception for a number of reasons, but the biggest is the ease with which I can set up statically generated pages - meaning each blog post of mine is pre-generated, and has 0 api calls on the client side to fetch the data.
 
 ![](static-blog-post:image-1.png)
 
-Next.js works hand-in-hand with [React](https://reactjs.org/ "React"), so I didn't need to learn any additional frameworks. My site is all built with Typescript, which Next.js supports out of the box. I can't image building a website with vanilla javascript any more after getting comfortable with Typescript and the safety it provides. Getting started with Next.js is super easy, so I love using it for quickly throwing together projects, and I know it will scale as my project does.
+Next.js works hand-in-hand with [React](https://reactjs.org/ 'React'), so I didn't need to learn any additional frameworks. My site is all built with Typescript, which Next.js supports out of the box. I can't image building a website with vanilla javascript any more after getting comfortable with Typescript and the safety it provides. Getting started with Next.js is super easy, so I love using it for quickly throwing together projects, and I know it will scale as my project does.
 
 ```bash
     npx create-next-app@latest --typescript
@@ -50,7 +50,7 @@ tags:
 live: true
 title: A Look Into My Connected Fitness Tools
 summary: How I spent the last 2 years building a fitness regimen around "smart" fitness technology
-cover_image: "/uploads/dsc05878.JPG"
+cover_image: '/uploads/dsc05878.JPG'
 
 ---
 In early 2020, right as things started to shut down due to COVID-19, I decided I wanted
@@ -58,9 +58,9 @@ to get back into shape and figured with all the lockdowns it was a good time to 
 ## The Ecosystem
 ```
 
-> Here's an example markdown blog post from [my previous piece on connected fitness](https://keegandonley.com/blog/my-approach-to-connected-fitness "My Approach to Connected Fitness").
+> Here's an example markdown blog post from [my previous piece on connected fitness](https://keegandonley.com/blog/my-approach-to-connected-fitness 'My Approach to Connected Fitness').
 
-Of course, I want to edit these with a WYSWYG editor, not my code editor. I also want to be able to edit the documents from anywhere, not just when I'm on my laptop with my blog repo cloned. This is where I use [Forestry](https://forestry.io "Forestry"). Forestry is able to take my markdown files, and present them in a nice structured editor, and it manages my media too!
+Of course, I want to edit these with a WYSWYG editor, not my code editor. I also want to be able to edit the documents from anywhere, not just when I'm on my laptop with my blog repo cloned. This is where I use [Forestry](https://forestry.io 'Forestry'). Forestry is able to take my markdown files, and present them in a nice structured editor, and it manages my media too!
 
 ![](static-blog-post:image-3.png)
 
@@ -88,7 +88,7 @@ I didn't get to a performance score of 100 without a little work (although Next.
 
 Images really hurt performance, but my blog is pretty image heavy, because nobody wants to read just a wall of text. This means I need to be extra careful that my images are as small as possible, but I don't want to sacrifice quality. This website uses two approaches.
 
-First, I use the `next/image` component as much as possible. This is [a component provided by Next.js](https://nextjs.org/docs/api-reference/next/image "next/link") that does a ton of image optimization. It leverages the ability of Next.js to manage both front and backend code. Essentially, this component creates an image API for my site that takes the image I give it, and processes it into `webp` or `avif` images. I have this site set to use `avif`. However, I can't use this fancy component for my actual blog content, since I render it by converting markdown into html. I could go through node by node and convert the html to React nodes, but that would require a lot more complexity (not to mention maintenance) than I would like.
+First, I use the `next/image` component as much as possible. This is [a component provided by Next.js](https://nextjs.org/docs/api-reference/next/image 'next/link') that does a ton of image optimization. It leverages the ability of Next.js to manage both front and backend code. Essentially, this component creates an image API for my site that takes the image I give it, and processes it into `webp` or `avif` images. I have this site set to use `avif`. However, I can't use this fancy component for my actual blog content, since I render it by converting markdown into html. I could go through node by node and convert the html to React nodes, but that would require a lot more complexity (not to mention maintenance) than I would like.
 
 That leads to my second image optimization, using `<picture>` tags to serve more efficient `webp` images. This tag can have multiple sources, which allows me to serve `webp` images to browsers that support it, or fall back on a more common `png` or `jpg` when needed (looking at you Safari). To do this, I do a bit of preprocessing on the article html. Note that this is done on the server when the site is generated, so it has absolutely no impact on performance to the user.
 
@@ -134,7 +134,7 @@ export const convertImageForExtension = (
 </picture>
 ```
 
-But wait! Where do the webp images come from? I'm glad you asked! I have a Github action that handles all my image optimization on commit. It takes any large images (> 2000px wide) and scales them down, and then converts them to webp files and commits them to the repository. In this way, all the files necessary to generate the site are right there in my repo! You can see the full Github action I use [in this Github Gist](https://gist.github.com/keegandonley/ddbb42448c650fc1b42ff22b1482fc70 "Github Image Action").
+But wait! Where do the webp images come from? I'm glad you asked! I have a Github action that handles all my image optimization on commit. It takes any large images (> 2000px wide) and scales them down, and then converts them to webp files and commits them to the repository. In this way, all the files necessary to generate the site are right there in my repo! You can see the full Github action I use [in this Github Gist](https://gist.github.com/keegandonley/ddbb42448c650fc1b42ff22b1482fc70 'Github Image Action').
 
 ### Search Engine Optimization
 
@@ -148,4 +148,4 @@ When I built the site, I had this blog in mind. I wanted to start writing more c
 
 It was a fun challenge to try to build the most performant website I could! I learned a lot about techniques for optimizing page loading, serving modern image formats, and continuous performance monitoring.
 
-Let me know any thoughts or questions you have over on [Twitter](https://twitter.com/keegandonley "Twitter Profile"), and thanks for reading!
+Let me know any thoughts or questions you have over on [Twitter](https://twitter.com/keegandonley 'Twitter Profile'), and thanks for reading!

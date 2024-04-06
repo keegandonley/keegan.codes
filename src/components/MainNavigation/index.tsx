@@ -1,21 +1,21 @@
-"use client";
-import { Avatar } from "../Avatar";
-import { HeroBlock } from "../Hero/Block";
-import { usePathname, useSelectedLayoutSegments } from "next/navigation";
-import { MenuItem } from "./components/MenuItem";
-import { useEffect } from "react";
-import styles from "./navigation.module.css";
-import { ThemeToggle } from "../ThemeToggle";
-import { merge } from "@/util/classNames";
-import { Theme } from "@/types/theme";
-import dynamic from "next/dynamic";
-import { useLinkClick } from "@/hooks/useLinkClick";
+'use client';
+import { Avatar } from '../Avatar';
+import { HeroBlock } from '../Hero/Block';
+import { usePathname, useSelectedLayoutSegments } from 'next/navigation';
+import { MenuItem } from './components/MenuItem';
+import { useEffect } from 'react';
+import styles from './navigation.module.css';
+import { ThemeToggle } from '../ThemeToggle';
+import { merge } from '@/util/classNames';
+import { Theme } from '@/types/theme';
+import dynamic from 'next/dynamic';
+import { useLinkClick } from '@/hooks/useLinkClick';
 
 const DynamicWaves = dynamic(
-  () => import("../Waves").then((mod) => mod.Waves),
+  () => import('../Waves').then((mod) => mod.Waves),
   {
     ssr: false,
-  }
+  },
 );
 
 const MainNavigation = ({
@@ -27,18 +27,18 @@ const MainNavigation = ({
 }) => {
   const pathname = usePathname();
   const segments = useSelectedLayoutSegments();
-  const isHomePage = pathname === "/" || !segments.length;
-  const isBlogPage = pathname?.startsWith("/blog");
-  const isLibraryPage = pathname?.startsWith("/library");
-  const isSlideshow = pathname?.startsWith("/slides");
-  const isErrorPage = pathname?.startsWith("/routing-error");
+  const isHomePage = pathname === '/' || !segments.length;
+  const isBlogPage = pathname?.startsWith('/blog');
+  const isLibraryPage = pathname?.startsWith('/library');
+  const isSlideshow = pathname?.startsWith('/slides');
+  const isErrorPage = pathname?.startsWith('/routing-error');
 
-  const isChat = segments[0] === "chat";
-  const isResume = segments[0] === "resume";
-  const isHi = segments[0] === "hi";
+  const isChat = segments[0] === 'chat';
+  const isResume = segments[0] === 'resume';
+  const isHi = segments[0] === 'hi';
 
   useEffect(() => {
-    document.body.classList.remove("preload");
+    document.body.classList.remove('preload');
   }, [pathname]);
 
   useLinkClick();
@@ -47,12 +47,12 @@ const MainNavigation = ({
   // so scrolling works. Otherwise, this is handled by the clicks on the modal
   // component
   useEffect(() => {
-    window.addEventListener("popstate", function () {
+    window.addEventListener('popstate', function () {
       if (
-        window.location.pathname.startsWith("/blog") ||
-        window.location.pathname.startsWith("/library")
+        window.location.pathname.startsWith('/blog') ||
+        window.location.pathname.startsWith('/library')
       ) {
-        document.body.classList.remove("lockScroll");
+        document.body.classList.remove('lockScroll');
       }
     });
   }, []);
@@ -78,7 +78,7 @@ const MainNavigation = ({
         <div className={styles.avatarWrapper}>
           <Avatar width={isHomePage ? 150 : 75} priority />
           <ThemeToggle
-            size={isHomePage ? "large" : "small"}
+            size={isHomePage ? 'large' : 'small'}
             initialTheme={initialTheme}
             hasChosenTheme={hasChosenTheme}
           />
@@ -88,7 +88,7 @@ const MainNavigation = ({
                 styles.navigationBubble,
                 (isBlogPage || isLibraryPage) && !isHomePage
                   ? styles.shadow
-                  : styles.noShadow
+                  : styles.noShadow,
               )}
             ></div>
             <div
@@ -96,7 +96,7 @@ const MainNavigation = ({
                 styles.avatarBubble,
                 (isBlogPage || isLibraryPage) && !isHomePage
                   ? styles.shadow
-                  : styles.noShadow
+                  : styles.noShadow,
               )}
             ></div>
           </div>

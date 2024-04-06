@@ -1,18 +1,18 @@
-import { MDXEntryRow } from "@/components/MDXEntryRow";
-import Posts from "@/posts";
-import styles from "../../blog.module.css";
-import { AnimatedGraph } from "@/components/AnimatedGraph";
-import { Delay } from "@/components/Delay";
-import wordCounts from "../../../../../post-word-counts.json";
-import { Post } from "@/types/post";
-import tagPageStyles from "./tagPage.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/pro-solid-svg-icons";
-import Link from "next/link";
-import { getIsLikelyMobile } from "@/util/userAgent";
-import { getImageMetadata } from "@/util/image";
+import { MDXEntryRow } from '@/components/MDXEntryRow';
+import Posts from '@/posts';
+import styles from '../../blog.module.css';
+import { AnimatedGraph } from '@/components/AnimatedGraph';
+import { Delay } from '@/components/Delay';
+import wordCounts from '../../../../../post-word-counts.json';
+import { Post } from '@/types/post';
+import tagPageStyles from './tagPage.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/pro-solid-svg-icons';
+import Link from 'next/link';
+import { getIsLikelyMobile } from '@/util/userAgent';
+import { getImageMetadata } from '@/util/image';
 
-export const runtime = "edge";
+export const runtime = 'edge';
 
 interface BlogTagPageProps {
   params: {

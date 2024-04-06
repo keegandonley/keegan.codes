@@ -1,7 +1,7 @@
-import { merge } from "@/util/classNames";
-import { MDXComponentBaseProps } from "../../types";
-import styles from "./td.module.css";
-import tableStyles from "../table.module.css";
+import { merge } from '@/util/classNames';
+import { MDXComponentBaseProps } from '../../types';
+import styles from './td.module.css';
+import tableStyles from '../table.module.css';
 
 interface TdProps extends MDXComponentBaseProps {
   rowSpan?: number;

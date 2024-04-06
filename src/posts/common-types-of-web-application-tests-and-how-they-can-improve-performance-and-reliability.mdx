@@ -1,24 +1,24 @@
 export const title =
-  "Common Types of Web Application Tests and How They Can Improve Performance and Reliability";
+  'Common Types of Web Application Tests and How They Can Improve Performance and Reliability';
 export const slug =
-  "common-types-of-web-application-tests-and-how-they-can-improve-performance-and-reliability";
-export const tags = ["software", "testing", "monitoring", "web"];
+  'common-types-of-web-application-tests-and-how-they-can-improve-performance-and-reliability';
+export const tags = ['software', 'testing', 'monitoring', 'web'];
 export const description =
-  "Testing web applications is a crucial part of the development process, but it can be daunting at first. I break down the different types of web application testing I rely on, and how they can be useful to you!";
-export const cover = "testing-code-cover.png";
+  'Testing web applications is a crucial part of the development process, but it can be daunting at first. I break down the different types of web application testing I rely on, and how they can be useful to you!';
+export const cover = 'testing-code-cover.png';
 export const published = new Date(2022, 8, 22);
-export const shortCodes = ["testing", "web-app-testing", "app-testing"];
+export const shortCodes = ['testing', 'web-app-testing', 'app-testing'];
 
 Testing web applications is a crucial part of the development process, but it can be daunting at first. There are so many terms to learn! What's an end-to-end test? A unit test? What's synthetic monitoring? Do I even need to do all of these?
 
-I'm currently spending a lot of time on testing and monitoring, both in my work at [Kizen](https://kizen.com/ "Kizen") and for my personal projects. In this post, I'm going to break down the definitions of the different kinds of testing and monitoring, and explain their benefits and limitations.
+I'm currently spending a lot of time on testing and monitoring, both in my work at [Kizen](https://kizen.com/ 'Kizen') and for my personal projects. In this post, I'm going to break down the definitions of the different kinds of testing and monitoring, and explain their benefits and limitations.
 
 I'll approach testing in this post in four parts:
 
-1. [Definitions](#whatdoallthesewordsmean "Definitions")
-2. [Reasoning & Benefits](#whyshoulditestatall "Reasoning & Benefits")
-3. [Testing Strategies](#strategiesfortesting "Strategies")
-4. [Summary](#summary "Summary")
+1. [Definitions](#whatdoallthesewordsmean 'Definitions')
+2. [Reasoning & Benefits](#whyshoulditestatall 'Reasoning & Benefits')
+3. [Testing Strategies](#strategiesfortesting 'Strategies')
+4. [Summary](#summary 'Summary')
 
 # Definitions: What do All These Words Mean?
 
@@ -30,19 +30,19 @@ End-to-end testing, sometimes abbreviated as E2E, is the highest level of testin
 
 ## Unit Tests
 
-Unit testing is in many ways the opposite of [end-to-end](#endtoendtests "End-to-End") testing. Its aim is to test the _smallest_ possible component of a codebase. This class of tests should evaluate whether a small piece of the code is behaving as expected, in isolation. Rather than test the entire login and dashboard user flow from the example above, there may be hundreds of unit tests ensuring each smaller piece works. For example, a unit test could validate that a currency formatter is working correctly. The test could take the input `1748.20` and ensure that the output of the formatter is as expected, for example, `$1.75k`.
+Unit testing is in many ways the opposite of [end-to-end](#endtoendtests 'End-to-End') testing. Its aim is to test the _smallest_ possible component of a codebase. This class of tests should evaluate whether a small piece of the code is behaving as expected, in isolation. Rather than test the entire login and dashboard user flow from the example above, there may be hundreds of unit tests ensuring each smaller piece works. For example, a unit test could validate that a currency formatter is working correctly. The test could take the input `1748.20` and ensure that the output of the formatter is as expected, for example, `$1.75k`.
 
 ## Integration Tests
 
-I like to think of integration testing as the intersection of [unit](#unittests "Unit Tests") and [end-to-end](#endtoendtests "End-to-End") tests. They don't go so far as to test the entire application from a user's perspective, however, a key component of integration tests is to test how well multiple modules work together; how well they _integrate_. For example, let's say I have a function that sums up a user's expenses for the month. A very simple integration test would be, "Can I get the user's total spending, and display it?" This combines the simple function from above, formatting the dollar value to be displayed, and compounds it with the action of calculating the value to be formatted.
+I like to think of integration testing as the intersection of [unit](#unittests 'Unit Tests') and [end-to-end](#endtoendtests 'End-to-End') tests. They don't go so far as to test the entire application from a user's perspective, however, a key component of integration tests is to test how well multiple modules work together; how well they _integrate_. For example, let's say I have a function that sums up a user's expenses for the month. A very simple integration test would be, "Can I get the user's total spending, and display it?" This combines the simple function from above, formatting the dollar value to be displayed, and compounds it with the action of calculating the value to be formatted.
 
 ## Performance Tests
 
-Performance tests don't check the validity of the system output, but rather they monitor how efficiently actions are performed. These benchmarks can be run under a variety of circumstances. For example, in the application from my previous examples, a performance test could be used to verify that the application doesn't slow down when the user scales from having only 10 transactions to, say, 100,000 transactions. In the case of web applications, I also rely on performance tests to ensure that my [core web vitals](https://web.dev/vitals/ "Web.Dev Vitals") are good. These tests measure LCP, FID, and CIS to name a few. I won't get into these metrics too much right now; I'll save those for another time. For now, you can read on [web.dev](https://web.dev/vitals/ "Core Vitals") if you're interested in more information.
+Performance tests don't check the validity of the system output, but rather they monitor how efficiently actions are performed. These benchmarks can be run under a variety of circumstances. For example, in the application from my previous examples, a performance test could be used to verify that the application doesn't slow down when the user scales from having only 10 transactions to, say, 100,000 transactions. In the case of web applications, I also rely on performance tests to ensure that my [core web vitals](https://web.dev/vitals/ 'Web.Dev Vitals') are good. These tests measure LCP, FID, and CIS to name a few. I won't get into these metrics too much right now; I'll save those for another time. For now, you can read on [web.dev](https://web.dev/vitals/ 'Core Vitals') if you're interested in more information.
 
 ## Visual Tests
 
-Visual tests are less widely used than the others listed here, however, I have found value in them in the past. You may also hear these referred to as "screenshot tests." Essentially, visual tests spin up an application, and do some action (in a way somewhat similar to [end-to-end](#endtoendtests "End-to-End") tests), but rather than verify some data output or result, instead, they compare the resulting state _visually_ to how it looked in the original version. These tests often will take a screenshot and compare it to the reference screenshot. Visual tests are good for catching issues with the UI, such as a button being the wrong color, the wrong font being applied, or the spacing/layout being in a broken state.
+Visual tests are less widely used than the others listed here, however, I have found value in them in the past. You may also hear these referred to as "screenshot tests." Essentially, visual tests spin up an application, and do some action (in a way somewhat similar to [end-to-end](#endtoendtests 'End-to-End') tests), but rather than verify some data output or result, instead, they compare the resulting state _visually_ to how it looked in the original version. These tests often will take a screenshot and compare it to the reference screenshot. Visual tests are good for catching issues with the UI, such as a button being the wrong color, the wrong font being applied, or the spacing/layout being in a broken state.
 
 ## Smoke Tests
 
@@ -60,7 +60,7 @@ Keeping track of all the features in a medium or large-sized application can bec
 
 ### Improving User Experience
 
-Sometimes, it's easy to miss a performance regression when working in development. When using test data, an application may seem performant, but in the real world, that may not be the case at all. Rather than wait for user reports to flood in that your app is slow, [**performance tests**](#visualtests "Performance") could catch the issue before it becomes a problem.
+Sometimes, it's easy to miss a performance regression when working in development. When using test data, an application may seem performant, but in the real world, that may not be the case at all. Rather than wait for user reports to flood in that your app is slow, [**performance tests**](#visualtests 'Performance') could catch the issue before it becomes a problem.
 
 I rely on performance testing to ensure that this blog is a smooth reading experience and that I don't accidentally slow it down by adding new features.
 
@@ -74,23 +74,23 @@ Having tests surrounding security is very important. Verifying your authenticati
 
 There are many ways to test your code, and your use cases will determine exactly which approach you take. That said, I feel that there are five generally important points in the software lifecycle at which I try to employ various testing strategies on my own code:
 
-1. [During Development](#1duringdevelopment "During Development")
+1. [During Development](#1duringdevelopment 'During Development')
 2. [Before Merging](#2beforemerging)
-3. [After Deployment](#3afterdeployment "After Deployment")
-4. [Scheduled Runs](#4scheduledruns "Scheduled Runs")
-5. [Production Monitoring](#5productionmonitoring "Production Monitoring")
+3. [After Deployment](#3afterdeployment 'After Deployment')
+4. [Scheduled Runs](#4scheduledruns 'Scheduled Runs')
+5. [Production Monitoring](#5productionmonitoring 'Production Monitoring')
 
 This is not an exhaustive list of all the situations where you can test your code, but these are the ones I rely on. I'll also recommend the frameworks and platforms that I use, but keep in mind there are myriad good choices out there.
 
 ## 1. During Development
 
-Having tests available to run at will during development is critical to helping prevent regressions. As I mentioned, this can be a huge help in [reducing the burden on developers](#reducingdeveloperburden "Reducing Burden"). While working on changes to critical components, I find it incredibly valuable to be able to run a suite of tests to verify that I haven't broken anything elsewhere in the app.
+Having tests available to run at will during development is critical to helping prevent regressions. As I mentioned, this can be a huge help in [reducing the burden on developers](#reducingdeveloperburden 'Reducing Burden'). While working on changes to critical components, I find it incredibly valuable to be able to run a suite of tests to verify that I haven't broken anything elsewhere in the app.
 
 |                        |                                                                                                               |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------- |
-| Recommended Tool       | [Playwright](https://playwright.dev/ "Playwright"), [Jest](https://jestjs.io/ "Jest")                         |
-| Recommended Platform   | Local ([NodeJS](https://nodejs.org/en/ "NodeJS"))                                                             |
-| Recommended Test Types | [E2E](#endtoendtests "End-to-end"), [Unit](#unittests "Unit"), [Integration](#integrationtests "Integration") |
+| Recommended Tool       | [Playwright](https://playwright.dev/ 'Playwright'), [Jest](https://jestjs.io/ 'Jest')                         |
+| Recommended Platform   | Local ([NodeJS](https://nodejs.org/en/ 'NodeJS'))                                                             |
+| Recommended Test Types | [E2E](#endtoendtests 'End-to-end'), [Unit](#unittests 'Unit'), [Integration](#integrationtests 'Integration') |
 
 ## 2. Before Merging
 
@@ -98,19 +98,19 @@ After development is done, the next step in my workflow is to open a pull reques
 
 |                        |                                                                                                                                    |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Recommended Tool       | [Playwright](https://playwright.dev/ "Playwright"), [Mocha](https://mochajs.org/ "Mocha")                                          |
-| Recommended Platform   | CI platform ([Jenkins](https://www.jenkins.io/ "Jenkins"), [Github Actions](https://github.com/features/actions "Github Actions")) |
-| Recommended Test Types | [Unit](#unittests "Unit"), [Performance](#performancetests "Performance")                                                          |
+| Recommended Tool       | [Playwright](https://playwright.dev/ 'Playwright'), [Mocha](https://mochajs.org/ 'Mocha')                                          |
+| Recommended Platform   | CI platform ([Jenkins](https://www.jenkins.io/ 'Jenkins'), [Github Actions](https://github.com/features/actions 'Github Actions')) |
+| Recommended Test Types | [Unit](#unittests 'Unit'), [Performance](#performancetests 'Performance')                                                          |
 
 ## 3. After Deployment
 
-Once you've finished building a PR and merged it, you have another opportunity to run some tests! Ideally, before rolling out to production, you would have the ability to run some [smoke tests](#smoketests "Smoke Tests") to ensure that everything is up and running before you direct traffic over to the newly deployed version. These can be as simple as "is the CDN working?" and "can a user log in?"
+Once you've finished building a PR and merged it, you have another opportunity to run some tests! Ideally, before rolling out to production, you would have the ability to run some [smoke tests](#smoketests 'Smoke Tests') to ensure that everything is up and running before you direct traffic over to the newly deployed version. These can be as simple as "is the CDN working?" and "can a user log in?"
 
 |                        |                                                                                                                                    |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Recommended Tool       | [Playwright](https://playwright.dev/ "Playwright"), [Mocha](https://mochajs.org/ "Mocha")                                          |
-| Recommended Platform   | CI platform ([Jenkins](https://www.jenkins.io/ "Jenkins"), [Github Actions](https://github.com/features/actions "Github Actions")) |
-| Recommended Test Types | [Smoke](#smoketests "Smoke Tests"), [Visual](#visualtests "Visual Tests")                                                          |
+| Recommended Tool       | [Playwright](https://playwright.dev/ 'Playwright'), [Mocha](https://mochajs.org/ 'Mocha')                                          |
+| Recommended Platform   | CI platform ([Jenkins](https://www.jenkins.io/ 'Jenkins'), [Github Actions](https://github.com/features/actions 'Github Actions')) |
+| Recommended Test Types | [Smoke](#smoketests 'Smoke Tests'), [Visual](#visualtests 'Visual Tests')                                                          |
 
 ## 4. Scheduled Runs
 
@@ -118,9 +118,9 @@ Having tests run periodically can be valuable to catch major regressions or othe
 
 |                        |                                                                                                                                    |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Recommended Tool       | [Playwright](https://playwright.dev/ "Playwright"), [Mocha](https://mochajs.org/ "Mocha")                                          |
-| Recommended Platform   | CI platform ([Jenkins](https://www.jenkins.io/ "Jenkins"), [Github Actions](https://github.com/features/actions "Github Actions")) |
-| Recommended Test Types | [E2E](#endtoendtests "End-to-end"), [Integration](#integrationtests "Integration")                                                 |
+| Recommended Tool       | [Playwright](https://playwright.dev/ 'Playwright'), [Mocha](https://mochajs.org/ 'Mocha')                                          |
+| Recommended Platform   | CI platform ([Jenkins](https://www.jenkins.io/ 'Jenkins'), [Github Actions](https://github.com/features/actions 'Github Actions')) |
+| Recommended Test Types | [E2E](#endtoendtests 'End-to-end'), [Integration](#integrationtests 'Integration')                                                 |
 
 ## 5. Production Monitoring
 
@@ -132,7 +132,7 @@ Organic monitoring is an approach to monitoring your application in production b
 
 ![](testing-post:image-1.png?hideShadow)
 
-There are also other monitoring tools out there, like [Sentry](https://sentry.io "Sentry"), that can alert when users encounter errors or other exception conditions while using the app. Crucially, this type of monitoring relies on people using your app and only catches issues after they've occurred. Useful, but not the whole picture.
+There are also other monitoring tools out there, like [Sentry](https://sentry.io 'Sentry'), that can alert when users encounter errors or other exception conditions while using the app. Crucially, this type of monitoring relies on people using your app and only catches issues after they've occurred. Useful, but not the whole picture.
 
 ### Synthetic Monitoring
 
@@ -140,13 +140,13 @@ Synthetic monitoring can look for all the same types of issues as organic monito
 
 ![](testing-post:image-2.png?hideShadow)
 
-[Checkly](https://www.checklyhq.com/ "Checkly HQ") is a platform I use both for synthetic monitoring on personal projects and for my day-to-day job. I am able to write tests using [Playwright](https://playwright.dev/ "Playwright") in the same way I would write end-to-end tests, so it makes it easy to set up multiple types of testing and monitoring based on the same codebase. Typically, synthetic tests will be closer to smoke tests or integration tests rather than full-blown end-to-end tests, to make sure they aren't prohibitively expensive as you want these to run frequently to alert you to any production issues (every 5-15 minutes or so depending on how critical of a system you are testing).
+[Checkly](https://www.checklyhq.com/ 'Checkly HQ') is a platform I use both for synthetic monitoring on personal projects and for my day-to-day job. I am able to write tests using [Playwright](https://playwright.dev/ 'Playwright') in the same way I would write end-to-end tests, so it makes it easy to set up multiple types of testing and monitoring based on the same codebase. Typically, synthetic tests will be closer to smoke tests or integration tests rather than full-blown end-to-end tests, to make sure they aren't prohibitively expensive as you want these to run frequently to alert you to any production issues (every 5-15 minutes or so depending on how critical of a system you are testing).
 
 |                        |                                                                              |
 | ---------------------- | ---------------------------------------------------------------------------- |
-| Recommended Tool       | [Playwright](https://playwright.dev/ "Playwright")                           |
-| Recommended Platform   | [Checkly](https://www.checklyhq.com/ "Checkly HQ")                           |
-| Recommended Test Types | [Smoke](#smoketests "Smoke"), [Integration](#integrationtests "Integration") |
+| Recommended Tool       | [Playwright](https://playwright.dev/ 'Playwright')                           |
+| Recommended Platform   | [Checkly](https://www.checklyhq.com/ 'Checkly HQ')                           |
+| Recommended Test Types | [Smoke](#smoketests 'Smoke'), [Integration](#integrationtests 'Integration') |
 
 ![](/uploads/summary_compressed.png)
 
@@ -165,4 +165,4 @@ To recap, here are my recommendations for testing:
 | Visual Tests           | Tests that check whether the application appears visually as expected                                                 | Run during development and before merging new code                    |
 | Smoke Tests            | Fast, efficient tests that ensure your application is running and accessible. Can be performed quickly and frequently | Run after deployment and during production monitoring                 |
 
-> In my spare time I do some consulting on determining a testing/monitoring strategy and getting it set up for your specific application. If you're interested, [shoot me an email](mailto:kd+testing@keegandonley.com?subject=Application%20Testing%20Consulting "Email Me") and together we can get your application tested and monitored!
+> In my spare time I do some consulting on determining a testing/monitoring strategy and getting it set up for your specific application. If you're interested, [shoot me an email](mailto:kd+testing@keegandonley.com?subject=Application%20Testing%20Consulting 'Email Me') and together we can get your application tested and monitored!

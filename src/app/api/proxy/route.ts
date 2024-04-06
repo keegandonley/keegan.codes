@@ -1,14 +1,14 @@
 const headers = {
-  "Access-Control-Allow-Headers": "*",
-  "Access-Control-Allow-Origin": "*",
+  'Access-Control-Allow-Headers': '*',
+  'Access-Control-Allow-Origin': '*',
 };
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const requestUrl = url.searchParams.get("requestUrl");
+  const requestUrl = url.searchParams.get('requestUrl');
 
   if (!requestUrl) {
-    return new Response("requestUrl is required", {
+    return new Response('requestUrl is required', {
       status: 400,
       headers,
     });
@@ -32,10 +32,10 @@ export async function OPTIONS() {
 
 export async function POST(request: Request) {
   const url = new URL(request.url);
-  const requestUrl = url.searchParams.get("requestUrl");
+  const requestUrl = url.searchParams.get('requestUrl');
 
   if (!requestUrl) {
-    return new Response("requestUrl is required", { status: 400, headers });
+    return new Response('requestUrl is required', { status: 400, headers });
   }
 
   let payload;
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
   }
 
   const result = await fetch(new URL(requestUrl), {
-    method: "POST",
+    method: 'POST',
     body: payload ? JSON.stringify(payload) : undefined,
     headers,
   });

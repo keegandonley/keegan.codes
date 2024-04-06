@@ -1,6 +1,6 @@
-import { merge } from "@/util/classNames";
-import styles from "./blockquote.module.css";
-import { MDXComponentBaseProps } from "../types";
+import { merge } from '@/util/classNames';
+import styles from './blockquote.module.css';
+import { MDXComponentBaseProps } from '../types';
 
 interface BlockquoteProps extends MDXComponentBaseProps {}
 

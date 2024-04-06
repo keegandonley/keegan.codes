@@ -34,7 +34,7 @@
   opacity: 0;
   background-color: var(--theme-background);
   display: block;
-  content: ".";
+  content: '.';
   font-size: 0;
   width: 16rem;
   position: absolute;

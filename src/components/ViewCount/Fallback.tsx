@@ -1,4 +1,4 @@
-import { merge } from "@/util/classNames";
+import { merge } from '@/util/classNames';
 
 interface ViewCountFallbackProps {
   className?: string;

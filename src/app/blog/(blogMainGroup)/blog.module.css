@@ -58,7 +58,9 @@
   max-width: calc(33% - 8px);
   box-shadow: var(--theme-box-shadow-small);
   background: var(--theme-background);
-  transition: min-width var(--animation), max-width var(--animation);
+  transition:
+    min-width var(--animation),
+    max-width var(--animation);
   border-radius: 1rem;
   overflow: hidden;
   z-index: 99;

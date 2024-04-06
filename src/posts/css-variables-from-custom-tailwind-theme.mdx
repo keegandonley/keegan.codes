@@ -1,11 +1,11 @@
-export const title = "Generating CSS Variables From a Custom Tailwind Theme";
-export const slug = "generating-css-variables-from-a-custom-tailwind-theme";
-export const tags = ["Tailwind", "css", "web", "design", "software"];
+export const title = 'Generating CSS Variables From a Custom Tailwind Theme';
+export const slug = 'generating-css-variables-from-a-custom-tailwind-theme';
+export const tags = ['Tailwind', 'css', 'web', 'design', 'software'];
 export const description =
   "How to access a custom Tailwind theme as CSS variables, and why it's a useful pattern";
-export const cover = "tailwind-css-variables-post-cover.png";
+export const cover = 'tailwind-css-variables-post-cover.png';
 export const published = new Date(2023, 11, 11);
-export const shortCodes = ["tailwind-variables", "css-variables"];
+export const shortCodes = ['tailwind-variables', 'css-variables'];
 
 Introducing Tailwind to an existing project for the first time can be a major challenge. Whether the existing
 app is written using CSS modules, CSS-in-JS, or some other approach, Tailwind is a big change. On large projects,
@@ -33,9 +33,9 @@ Here's an example of the global theme used by the css-in-js components:
 ```javascript
 export const colors = {
   greens: {
-    tea: "#D0F1BF",
-    teaLight: "#D0F1BF54",
-    dark: "#284D00",
+    tea: '#D0F1BF',
+    teaLight: '#D0F1BF54',
+    dark: '#284D00',
   },
 };
 ```
@@ -44,8 +44,8 @@ The component that needs to use the color imports the `colors` object from the t
 it in the template for the various color names:
 
 ```jsx
-import { colors } from "@theme";
-import { styled } from "emotion";
+import { colors } from '@theme';
+import { styled } from 'emotion';
 
 const WrapperComponent = styled.div`
   background-color: ${theme.greens.tea};
@@ -65,9 +65,9 @@ The result is an element like this:
 
 <div
   style={{
-    color: "#284D00",
-    background: "rgb(208, 241, 191)",
-    padding: "0 1rem",
+    color: '#284D00',
+    background: 'rgb(208, 241, 191)',
+    padding: '0 1rem',
   }}
 >
   This is a line of green text on a green background
@@ -117,9 +117,9 @@ and we also don’t need to modify any of the existing styled components.
 ```javascript
 export const colors = {
   greens: {
-    tea: "var(--color-green-tea)",
-    teaLight: "#D0F1BF54",
-    dark: "#284D00",
+    tea: 'var(--color-green-tea)',
+    teaLight: '#D0F1BF54',
+    dark: '#284D00',
   },
 };
 ```
@@ -139,11 +139,11 @@ There's a simple color palette defined in a `theme.js` file.
 
 ```javascript
 export const greens = {
-  tea: "rgb(208, 241, 191)",
-  mint: "rgb(182, 215, 185)",
-  vine: "rgb(154, 189, 151)",
-  moss: "rgb(100, 101, 54)",
-  drab: "rgb(72, 61, 3)",
+  tea: 'rgb(208, 241, 191)',
+  mint: 'rgb(182, 215, 185)',
+  vine: 'rgb(154, 189, 151)',
+  moss: 'rgb(100, 101, 54)',
+  drab: 'rgb(72, 61, 3)',
 };
 ```
 
@@ -152,10 +152,10 @@ export const greens = {
 The color family is imported and used in our Tailwind config:
 
 ```javascript
-const { greens } = require("./theme");
+const { greens } = require('./theme');
 
 module.exports = {
-  content: ["./**/*.html"],
+  content: ['./**/*.html'],
   theme: {
     colors: {
       ...greens,
@@ -180,9 +180,9 @@ When we put that all together, we get the following displayed in the browser:
 
 <div
   style={{
-    color: "rgb(100, 101, 54)",
-    background: "rgb(208, 241, 191)",
-    padding: "0 1rem",
+    color: 'rgb(100, 101, 54)',
+    background: 'rgb(208, 241, 191)',
+    padding: '0 1rem',
   }}
 >
   This is a line of green text on a green background
@@ -217,10 +217,10 @@ We can inline a simple plugin that will generate CSS variables for each color in
 part of the `:root` selector, and will be available anywhere in the application.
 
 ```javascript
-const { greens } = require("./theme");
+const { greens } = require('./theme');
 
 module.exports = {
-  content: ["./**/*.html"],
+  content: ['./**/*.html'],
   theme: {
     extend: {},
     colors: {
@@ -230,7 +230,7 @@ module.exports = {
   plugins: [
     function ({ addUtilities }) {
       addUtilities({
-        ":root": Object.entries(greens).reduce((acc, [name, value]) => {
+        ':root': Object.entries(greens).reduce((acc, [name, value]) => {
           return {
             ...acc,
             [`--color-green-${name}`]: value,
@@ -270,9 +270,9 @@ Here's a refresher on what we were working towards:
 ```javascript
 export const colors = {
   greens: {
-    tea: "var(--color-green-tea)",
-    teaLight: "#D0F1BF54",
-    dark: "#284D00",
+    tea: 'var(--color-green-tea)',
+    teaLight: '#D0F1BF54',
+    dark: '#284D00',
   },
 };
 ```
@@ -286,12 +286,12 @@ Let's go back and update our Tailwind CLI plugin to allow customizing the opacit
 ```javascript
 function plugin({ addUtilities }) {
   addUtilities({
-    ":root": Object.entries(greens).reduce((acc, [name, value]) => {
+    ':root': Object.entries(greens).reduce((acc, [name, value]) => {
       const colorParts = value.match(/\d+/g);
 
       return {
         ...acc,
-        [`--color-green-${name}-partial`]: colorParts.join(", "),
+        [`--color-green-${name}-partial`]: colorParts.join(', '),
         [`--color-green-${name}`]: `rgb(var(--color-green-${name}-partial), var(--opacity, 1))`,
       };
     }, {}),
@@ -335,9 +335,9 @@ Now, we can revisit our legacy theme one more time:
 ```javascript
 export const colors = {
   greens: {
-    tea: "var(--color-green-tea)",
-    teaLight: "rgb(var(--color-green-tea-partial), 45)",
-    dark: "#284D00",
+    tea: 'var(--color-green-tea)',
+    teaLight: 'rgb(var(--color-green-tea-partial), 45)',
+    dark: '#284D00',
   },
 };
 ```
@@ -360,15 +360,15 @@ because as we change our design system, we can swap out one color for another gl
 These semantic names look something like this in the Tailwind config:
 
 ```javascript
-const { greens } = require("./theme");
+const { greens } = require('./theme');
 
 const semantics = {
-  "alert-primary-background": "var(--color-green-mint)",
-  "alert-primary-text": "var(--color-green-moss)",
+  'alert-primary-background': 'var(--color-green-mint)',
+  'alert-primary-text': 'var(--color-green-moss)',
 };
 
 module.exports = {
-  content: ["./**/*.html"],
+  content: ['./**/*.html'],
   theme: {
     extend: {},
     colors: {
@@ -429,13 +429,13 @@ and this is a great example of how that can be useful.
 Above, I simplified a bit about why I didn't want to import the Tailwind theme file into the legacy theme, like this:
 
 ```javascript
-import { greens } from "@design-system/theme.js";
+import { greens } from '@design-system/theme.js';
 
 export const colors = {
   greens: {
     tea: greens.tea,
-    teaLight: "#D0F1BF54",
-    dark: "#284D00",
+    teaLight: '#D0F1BF54',
+    dark: '#284D00',
   },
 };
 ```

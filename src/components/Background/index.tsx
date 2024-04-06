@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import styles from "./background.module.css";
-import { merge } from "@/util/classNames";
-import { useBlogRouter } from "@/hooks/useBlogRouter";
+import styles from './background.module.css';
+import { merge } from '@/util/classNames';
+import { useBlogRouter } from '@/hooks/useBlogRouter';
 
 export const Background = () => {
   const isExactlyBlogPage = useBlogRouter();

@@ -1,23 +1,23 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleExclamation } from "@fortawesome/pro-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleExclamation } from '@fortawesome/pro-solid-svg-icons';
 
 export const title =
-  "Statically Generating Twitter Embeds and Sharing for a Performance Boost";
+  'Statically Generating Twitter Embeds and Sharing for a Performance Boost';
 export const slug =
-  "statically-generating-twitter-embeds-and-sharing-for-a-performance-boost";
+  'statically-generating-twitter-embeds-and-sharing-for-a-performance-boost';
 export const tags = [
-  "software",
-  "tutorial",
-  "blog",
-  "react",
-  "front-end",
-  "nextjs",
+  'software',
+  'tutorial',
+  'blog',
+  'react',
+  'front-end',
+  'nextjs',
 ];
 export const description =
-  "Embedded Tweets and share buttons were bogging down my blog, so I wrote custom UI that is statically generated using the Twitter API to speed things back up";
-export const cover = "twitter-api-cover.png";
+  'Embedded Tweets and share buttons were bogging down my blog, so I wrote custom UI that is statically generated using the Twitter API to speed things back up';
+export const cover = 'twitter-api-cover.png';
 export const published = new Date(2022, 9, 11);
-export const shortCodes = ["static-twitter"];
+export const shortCodes = ['static-twitter'];
 
 > <FontAwesomeIcon icon={faCircleExclamation} /> After the [changes to the Twitter
 > API Policy](https://twitter.com/TwitterDev/status/1641222783601631233), this post
@@ -30,9 +30,9 @@ My blog historically had minimal integration with Twitter. At the top and bottom
 
 ![](twitter-bot-post:image-1.png)
 
-This worked well enough, though I did have the occasional performance issue or FOUC from deferring loading the CSS. However, once I wrote [_Building a Super Simple (and Free!) Twitter Bot_](https://keegandonley.com/blog/building-a-super-simple-and-free-twitter-bot "Building a Super Simple (and Free!) Twitter Bot"), I wanted to have an embedded Tweet to show the end result. I used Twitter's basic embed API and it worked fine, however it was slow to load, difficult to style, and I had to write a bunch of custom code to get it to play nice with my automatic dark/light mode switching. Not to mention I was having to load Twitter's third-party javascript, something I really try to avoid here. You can see [the old version deployed here](https://website-2-0-8w63ssplg-kdonley.vercel.app/blog/building-a-super-simple-and-free-twitter-bot "Preview Link - Old Twitter Embed") through a Vercel preview link if you'd like to compare.
+This worked well enough, though I did have the occasional performance issue or FOUC from deferring loading the CSS. However, once I wrote [_Building a Super Simple (and Free!) Twitter Bot_](https://keegandonley.com/blog/building-a-super-simple-and-free-twitter-bot 'Building a Super Simple (and Free!) Twitter Bot'), I wanted to have an embedded Tweet to show the end result. I used Twitter's basic embed API and it worked fine, however it was slow to load, difficult to style, and I had to write a bunch of custom code to get it to play nice with my automatic dark/light mode switching. Not to mention I was having to load Twitter's third-party javascript, something I really try to avoid here. You can see [the old version deployed here](https://website-2-0-8w63ssplg-kdonley.vercel.app/blog/building-a-super-simple-and-free-twitter-bot 'Preview Link - Old Twitter Embed') through a Vercel preview link if you'd like to compare.
 
-I really wasn't okay with the performance hit, and showing a few Tweets is simple enough, right? Because my blog is [statically generated](https://keegandonley.com/blog/building-a-static-generated-blog-with-next-js "Static Generation") and deployed with Vercel, I decided the best approach was to build the UI components myself and use the Twitter API to fetch the relevant Tweet.
+I really wasn't okay with the performance hit, and showing a few Tweets is simple enough, right? Because my blog is [statically generated](https://keegandonley.com/blog/building-a-static-generated-blog-with-next-js 'Static Generation') and deployed with Vercel, I decided the best approach was to build the UI components myself and use the Twitter API to fetch the relevant Tweet.
 
 ## Getting the Tweet Data
 
@@ -62,11 +62,11 @@ export async function getStaticProps({ params }) {
   const dom = new JSDOM(html);
   const virtualDocument = dom.window.document;
 
-  const elems = virtualDocument.querySelectorAll(".twitter-embed");
+  const elems = virtualDocument.querySelectorAll('.twitter-embed');
 
   elems.forEach((tweetContainer) => {
-    const tweet = tweetContainer.getAttribute("data-tweet");
-    const tweetId = tweet?.split("/").pop();
+    const tweet = tweetContainer.getAttribute('data-tweet');
+    const tweetId = tweet?.split('/').pop();
 
     // Now, you have a tweetId to use with the API!
   });
@@ -82,7 +82,7 @@ const data = await fetch(
     headers: {
       Authorization: `Bearer ${process.env.TWITTER_API_BEARER_TOKEN}`,
     },
-  }
+  },
 );
 const tweetData = await data.json();
 ```
@@ -93,9 +93,9 @@ My blog uses a custom replacement mechanism to add dynamic content to the static
 
 ```jsx
 const res = ReactDOMServer.renderToString(
-  <div className="border-gray-200 border-1 rounded-lg shadow max-w-[500px] mx-auto p-4 mb-12 bg-white dark:bg-gray-800 text-black dark:text-white">
+  <div className="border-1 mx-auto mb-12 max-w-[500px] rounded-lg border-gray-200 bg-white p-4 text-black shadow dark:bg-gray-800 dark:text-white">
     <div className="flex">
-      <div className="w-12 h-12">
+      <div className="h-12 w-12">
         <img
           src={tweetData?.includes?.users?.[0]?.profile_image_url}
           alt="Profile Image"
@@ -123,17 +123,17 @@ const res = ReactDOMServer.renderToString(
         {tweetData?.data?.public_metrics?.like_count ?? 0}
       </div>
     </div>
-    <div className="mt-4 w-full flex !text-blue-400">
+    <div className="mt-4 flex w-full !text-blue-400">
       <a
         href={tweet}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-grow w-full border border-blue-400 rounded-full text-center py-1 !text-blue-400 hover:bg-blue-400 hover:!text-white transition-all no-underline cursor-pointer twitter"
+        className="twitter w-full flex-grow cursor-pointer rounded-full border border-blue-400 py-1 text-center !text-blue-400 no-underline transition-all hover:bg-blue-400 hover:!text-white"
       >
         Read more on Twitter
       </a>
     </div>
-  </div>
+  </div>,
 );
 ```
 

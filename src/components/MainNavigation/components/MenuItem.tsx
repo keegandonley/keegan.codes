@@ -1,11 +1,11 @@
-import { ElementBaseProps } from "@/types/elements";
-import Link from "next/link";
-import styles from "./menuitem.module.css";
-import { fallback, merge } from "@/util/classNames";
+import { ElementBaseProps } from '@/types/elements';
+import Link from 'next/link';
+import styles from './menuitem.module.css';
+import { fallback, merge } from '@/util/classNames';
 
 interface MenuItemProps extends ElementBaseProps {
   href: string;
-  side: "left" | "right";
+  side: 'left' | 'right';
   visible?: boolean;
   active?: boolean;
 }
@@ -18,7 +18,7 @@ export const MenuItem = ({
   visible,
   active,
 }: MenuItemProps) => {
-  const isLeft = side === "left";
+  const isLeft = side === 'left';
   return (
     <span
       className={fallback(
@@ -27,8 +27,8 @@ export const MenuItem = ({
           styles.item,
           isLeft ? styles.left : styles.right,
           visible && styles.visible,
-          active && styles.active
-        )
+          active && styles.active,
+        ),
       )}
     >
       <Link href={href}>{children}</Link>

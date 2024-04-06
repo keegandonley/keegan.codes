@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./pagination.module.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styles from './pagination.module.css';
 import {
   faArrowCircleLeft,
   faArrowCircleRight,
-} from "@fortawesome/pro-solid-svg-icons";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
-import { merge } from "@/util/classNames";
-import { useBlogRouter } from "@/hooks/useBlogRouter";
+} from '@fortawesome/pro-solid-svg-icons';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useCallback } from 'react';
+import { merge } from '@/util/classNames';
+import { useBlogRouter } from '@/hooks/useBlogRouter';
 
 interface PaginationProps {
   pageCount: number;
@@ -21,7 +21,7 @@ export default function Pagination({ pageCount }: PaginationProps) {
   const queryParams = useSearchParams();
   const isExactlyBlogPage = useBlogRouter();
 
-  const pageNumber = parseInt(queryParams?.get("page") ?? "1", 10);
+  const pageNumber = parseInt(queryParams?.get('page') ?? '1', 10);
   const hasNextPage = pageNumber < pageCount;
   const hasPreviousPage = pageNumber > 1;
 
@@ -54,7 +54,7 @@ export default function Pagination({ pageCount }: PaginationProps) {
         </button>
 
         <p className={styles.label}>
-          page{" "}
+          page{' '}
           <pre>
             {pageNumber}/{pageCount}
           </pre>

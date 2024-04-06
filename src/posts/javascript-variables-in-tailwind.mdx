@@ -1,12 +1,12 @@
-export const title = "Using Javascript Variables in Tailwind";
-export const slug = "using-javascript-variables-in-tailwind";
-export const tags = ["javascript", "css", "Tailwind", "web", "software"];
+export const title = 'Using Javascript Variables in Tailwind';
+export const slug = 'using-javascript-variables-in-tailwind';
+export const tags = ['javascript', 'css', 'Tailwind', 'web', 'software'];
 export const description =
-  "How to use dynamically calculated or user generated values in Tailwind";
-export const cover = "tailwind-variables-cover.png";
+  'How to use dynamically calculated or user generated values in Tailwind';
+export const cover = 'tailwind-variables-cover.png';
 export const published = new Date(2023, 10, 15);
 export const updated = new Date(2024, 2, 28);
-export const shortCodes = ["js-in-tailwind"];
+export const shortCodes = ['js-in-tailwind'];
 
 [Tailwind](https://tailwindcss.com/) is a CSS utility framework that provides shorthand CSS classes for rapidly composing
 designs. Instead of writing CSS rules, you simply add utility classes to your element. These pre-made classes are handy, but sometimes you'll need to use some data that's
@@ -35,16 +35,16 @@ Let's get into it! Take this simple element and some styling:
 In Tailwind, using the shorthand utility classes, the same element can be written as:
 
 ```html
-<div class="w-14 h-14 bg-red-500"></div>
+<div class="h-14 w-14 bg-red-500"></div>
 ```
 
 For reference, here's how that element looks using either approach:
 
 <div
   style={{
-    width: "3.5rem",
-    height: "3.5rem",
-    backgroundColor: "rgb(239, 68, 68)",
+    width: '3.5rem',
+    height: '3.5rem',
+    backgroundColor: 'rgb(239, 68, 68)',
   }}
 />
 
@@ -92,7 +92,7 @@ Let's look at another contrived example where this exact issue comes to light. I
 we'll have a user-defined color stored in a variable, and we want to use that as the background:
 
 ```javascript
-const color = "rgb(239, 68, 68)";
+const color = 'rgb(239, 68, 68)';
 ```
 
 Can we simply build the className dynamically, like this?
@@ -110,7 +110,7 @@ One of the most common solutions I've seen is to use the `style` attribute inste
 
 ```jsx
 <div
-  className="w-14 h-14"
+  className="h-14 w-14"
   style={{
     backgroundColor: color,
   }}
@@ -131,9 +131,9 @@ variable, that we can then access from Tailwind.
 
 ```jsx
 <div
-  className="w-14 h-14 bg-[var(--user-color)]"
+  className="h-14 w-14 bg-[var(--user-color)]"
   style={{
-    "--user-color": color,
+    '--user-color': color,
   }}
 />
 ```

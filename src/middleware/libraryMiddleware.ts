@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
-import { slugs } from "../book-slugs";
-import { Base404HandlingMiddleware } from "./404HandlingMiddleware";
+import { NextRequest, NextResponse } from 'next/server';
+import { slugs } from '../book-slugs';
+import { Base404HandlingMiddleware } from './404HandlingMiddleware';
 
 export class LibraryMiddleware extends Base404HandlingMiddleware {
   constructor(request: NextRequest, pathNameSplits: string[]) {
@@ -10,7 +10,7 @@ export class LibraryMiddleware extends Base404HandlingMiddleware {
   done(is404: boolean, slug?: string) {
     if (is404) {
       return NextResponse.redirect(
-        `${this.origin}/routing-error?slug=${slug}&type=library`
+        `${this.origin}/routing-error?slug=${slug}&type=library`,
       );
     }
 

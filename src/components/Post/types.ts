@@ -1,3 +1,3 @@
-import { ElementBaseProps } from "@/types/elements";
+import { ElementBaseProps } from '@/types/elements';
 
 export interface MDXComponentBaseProps extends ElementBaseProps {}

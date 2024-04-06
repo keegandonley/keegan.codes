@@ -1,6 +1,6 @@
-import { LoadingContext } from "@/app/loadingProvider";
-import { usePathname } from "next/navigation";
-import { useCallback, useContext, useEffect } from "react";
+import { LoadingContext } from '@/app/loadingProvider';
+import { usePathname } from 'next/navigation';
+import { useCallback, useContext, useEffect } from 'react';
 
 export const useLinkClick = () => {
   const ctx = useContext(LoadingContext);
@@ -11,19 +11,19 @@ export const useLinkClick = () => {
     (href: string) => (_e: MouseEvent) => {
       if (
         !href.startsWith(window.location.href) &&
-        !href.startsWith("mailto:")
+        !href.startsWith('mailto:')
       ) {
         setLoading(true);
       }
     },
-    [setLoading]
+    [setLoading],
   );
 
   const getLinks = useCallback(() => {
     setTimeout(() => {
-      const links = Array.from(document.getElementsByTagName("a"));
+      const links = Array.from(document.getElementsByTagName('a'));
       for (const link of links) {
-        if (link.target !== "_blank") {
+        if (link.target !== '_blank') {
           link.onmouseup = onClick(link.href);
         }
       }
