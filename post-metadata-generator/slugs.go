@@ -9,7 +9,7 @@ func getSlugs(contents []string) []string {
 	var slugs []string
 	for _, content := range contents {
 		if strings.Contains(content, "export const slug =") {
-			r := regexp.MustCompile(`(?s)export const slug\s*=\s*"([^"]+)";`)
+			r := regexp.MustCompile(`(?s)export const slug\s*=\s*'([^']+)';`)
 			matches := r.FindStringSubmatch(content)
 
 			if len(matches) > 1 {

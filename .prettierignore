@@ -1,1 +1,10 @@
 .yarn/
+
+# Generated data
+src/book-cover-metadata.json
+src/book-slugs.ts
+src/book-word-counts.json
+src/galleries/barcelona/image-metadata.json
+src/image-metadata.json
+src/post-slugs.ts
+src/post-word-counts.json
