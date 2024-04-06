@@ -414,10 +414,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keegancodes/foundations@npm:1.0.5":
-  version: 1.0.5
-  resolution: "@keegancodes/foundations@npm:1.0.5"
-  checksum: 41ecb620d4a61e52fc556801353ce71a37bab5fda2737ec7790ce7e3b3ccbc508bee4fe27d29932d6a54df80e686d3c924c98c9691692420799b341069d5c33f
+"@keegancodes/foundations@npm:1.0.9":
+  version: 1.0.9
+  resolution: "@keegancodes/foundations@npm:1.0.9"
+  checksum: ac68a9215ded60e19e81e7b4dccbaaf745fa759602139f05bc6ade8ac49b2c8e264c68b092f2c5f8325a91d0cab96e6bb5de110ba27f063b567439a29445066b
   languageName: node
   linkType: hard
 
@@ -4215,7 +4215,7 @@ __metadata:
     "@fortawesome/free-brands-svg-icons": ^6.5.2
     "@fortawesome/pro-solid-svg-icons": ^6.5.2
     "@fortawesome/react-fontawesome": ^0.2.0
-    "@keegancodes/foundations": 1.0.5
+    "@keegancodes/foundations": 1.0.9
     "@mdx-js/loader": ^3.0.1
     "@mdx-js/react": ^3.0.1
     "@next/bundle-analyzer": ^14.1.4
