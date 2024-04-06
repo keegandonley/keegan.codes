@@ -5,7 +5,16 @@ import {
   faBlockBrick,
   faServer,
   faMartiniGlass,
+  faBadgeCheck,
 } from '@fortawesome/pro-solid-svg-icons';
+import {
+  faBadge,
+  faBadgePercent,
+  faClockSevenThirty,
+  faClockNineThirty,
+  faClockSixThirty,
+} from '@fortawesome/pro-regular-svg-icons';
+import { Caption, Checklist } from '../interactivePosts/ThirstyBot';
 
 export const title = 'What I Learned Building an AI App in 72 Hours';
 export const slug = 'what-i-learned-building-an-ai-app-in-72-hours';
@@ -47,21 +56,129 @@ a deeper dive into how it all works.
 I wanted the design to be reminiscent of an art-deco bar.
 I really like some bars around town that use deep green and gold, so that's what I went with:
 
-![](thirsty-bot-deep-dive:landing.png?hideShadow)
+![](thirsty-bot-deep-dive:landing-frameless.png)
 
-![](thirsty-bot-deep-dive:build.png?hideShadow)
+<Caption>
+  The hompage has a series of arched bars with various bottles on the shelves.
+  They're randomly generated on each load for some variety.
+</Caption>
 
-![](thirsty-bot-deep-dive:modal.png?hideShadow)
+![](thirsty-bot-deep-dive:build-frameless.png)
+
+<Caption>
+  The builder has an ingredient list, and some icons to indicate your
+  selections. Over time, I've added a few unique icons as fun easter eggs.
+</Caption>
+
+![](thirsty-bot-deep-dive:modal-frameless.png)
+
+<Caption>
+  A few simple modals are used for status changes, modeled after menu cards.
+</Caption>
+
+### Main Features
+
+The following was my list of features I wanted to build in the first weekend. I've
+indicated which ones I finished during the weekend (<FontAwesomeIcon icon={faBadgeCheck} />),
+which ones I finished after (<FontAwesomeIcon icon={faBadgePercent} />), and which
+ones I haven't done yet (<FontAwesomeIcon icon={faBadge} />):
+
+<Checklist>
+<FontAwesomeIcon icon={faBadgeCheck} /> User Auth
+
+<FontAwesomeIcon icon={faBadgeCheck} /> Recipe Generation
+
+<FontAwesomeIcon icon={faBadgeCheck} /> Image Generation
+
+<FontAwesomeIcon icon={faBadgeCheck} /> Saved Creations
+
+<FontAwesomeIcon icon={faBadgeCheck} /> Credit System
+
+<FontAwesomeIcon icon={faBadgeCheck} /> Billing Integration
+
+<FontAwesomeIcon icon={faBadgeCheck} /> Mobile Design
+
+<FontAwesomeIcon icon={faBadgePercent} /> Voucher System
+
+<FontAwesomeIcon icon={faBadgePercent} /> Polished Design (Animations, etc)
+
+<FontAwesomeIcon icon={faBadge} /> Public Recipe Sharing
+
+<FontAwesomeIcon icon={faBadge} /> Custom Ingredients
+</Checklist>
+
+> I'm still actively working on the application and improving it over time. This table is
+> accurate as of April 6, 2024.
 
 ## My Build Process
 
-I built the app in a weekend, over approximately 72 hours.
+I built the app in a weekend, over approximately 72 hours. I wanted to treat this like my
+days participating in hackathons, but just a bit longer. Each day, I set myself some goals
+and tracked how much time I spent on the project.
 
 ### Day 1
 
+<FontAwesomeIcon icon={faClockSevenThirty} /> 7h 40m
+
+On the first day, I finished my day job around 4pm and I started on Thirsty Bot by creating a basic Next.js app. I did some basic styling with
+Tailwind, and then started on auth. I wanted to build in auth early, so it wouldn't be a major
+lift later.
+
+By the end of the day, I had an early iteration of my prompt working, a backend that could return a recipe
+and an image, and the ability to see your finished product. No loading states yet, and the selection of available
+ingredients was tiny.
+
+<video
+  width="100%"
+  height="auto"
+  controls
+  preload="none"
+  style={{
+    paddingBottom: '1rem',
+  }}
+>
+  <source
+    src="https://video.static.donley.xyz/thirsty-bot-demo_day-1.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag.
+</video>
+
+<Caption>
+
+    Here's a video demo of where things stood at the end of day 1
+
+</Caption>
+
 ### Day 2
 
+<FontAwesomeIcon icon={faClockNineThirty} /> 9h 39m
+
+<video
+  width="100%"
+  height="auto"
+  controls
+  preload="none"
+  style={{
+    paddingBottom: '1rem',
+  }}
+>
+  <source
+    src="https://video.static.donley.xyz/thirsty-bot-demo_day-2.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag.
+</video>
+
+<Caption>
+
+    Here's a video demo of where things stood at the end of day 2
+
+</Caption>
+
 ### Day 3
+
+<FontAwesomeIcon icon={faClockSixThirty} /> 6h 21m
 
 ## Architecture
 
