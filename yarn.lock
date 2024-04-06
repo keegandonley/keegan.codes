@@ -414,10 +414,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keegancodes/foundations@npm:1.0.9":
-  version: 1.0.9
-  resolution: "@keegancodes/foundations@npm:1.0.9"
-  checksum: ac68a9215ded60e19e81e7b4dccbaaf745fa759602139f05bc6ade8ac49b2c8e264c68b092f2c5f8325a91d0cab96e6bb5de110ba27f063b567439a29445066b
+"@keegancodes/foundations@npm:1.0.11":
+  version: 1.0.11
+  resolution: "@keegancodes/foundations@npm:1.0.11"
+  checksum: 44e6bd65138fd0d48a29895a555241b3275a83c429191b58b12083889b5ae96883736542e796af7311461b764769fbcece76ea886eb16d0200349e2006136d76
   languageName: node
   linkType: hard
 
@@ -848,12 +848,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.12.4":
-  version: 20.12.4
-  resolution: "@types/node@npm:20.12.4"
+"@types/node@npm:^20.12.5":
+  version: 20.12.5
+  resolution: "@types/node@npm:20.12.5"
   dependencies:
     undici-types: ~5.26.4
-  checksum: c29879642bd4f1f35ffc6e2356121c5ffdb6530d41db1e6ac013c6fbd1dfa4b213b9529a1213cf1f320f801423d00301176ffb41689f790b0cd8c1e82fe3ee74
+  checksum: 38358c091392bb3def1136772ada4ccd39a9429d459160b5ab728b690d2f15f2212eafd9e65ce716e270f70a4e6927ebffccfefc08dabdf68f4016c1fc8a7938
   languageName: node
   linkType: hard
 
@@ -4215,14 +4215,14 @@ __metadata:
     "@fortawesome/free-brands-svg-icons": ^6.5.2
     "@fortawesome/pro-solid-svg-icons": ^6.5.2
     "@fortawesome/react-fontawesome": ^0.2.0
-    "@keegancodes/foundations": 1.0.9
+    "@keegancodes/foundations": 1.0.11
     "@mdx-js/loader": ^3.0.1
     "@mdx-js/react": ^3.0.1
     "@next/bundle-analyzer": ^14.1.4
     "@next/mdx": ^14.1.4
     "@opentelemetry/api": ^1.8.0
     "@planetscale/database": ^1.16.0
-    "@types/node": ^20.12.4
+    "@types/node": ^20.12.5
     "@types/react": ^18.2.74
     "@types/react-dom": ^18.2.24
     "@vercel/analytics": ^1.2.2
