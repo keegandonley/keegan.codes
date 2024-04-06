@@ -1,15 +1,8 @@
-export const formatDate = (date?: Date) => {
-  const result =
-    date?.toLocaleString('en-US', {
-      timeZone: 'UTC',
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-    }) ?? '';
-  return result;
-};
+import {
+  formatDate as __formatDate,
+  getMySQLDateTime as __getMySQLDateTime,
+} from '@keegancodes/foundations';
 
-export const getMySQLDateTime = (date?: Date) => {
-  const dateObject = date ?? new Date();
-  return dateObject.toISOString().slice(0, 19).replace('T', ' ');
-};
+export const formatDate = __formatDate;
+
+export const getMySQLDateTime = __getMySQLDateTime;

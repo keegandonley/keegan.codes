@@ -37,6 +37,10 @@ const nextConfig = {
       transform: '@fortawesome/pro-solid-svg-icons/{{member}}',
       skipDefaultConversion: true,
     },
+    '@fortawesome/pro-regular-svg-icons': {
+      transform: '@fortawesome/pro-regular-svg-icons/{{member}}',
+      skipDefaultConversion: true,
+    },
     '@fortawesome/free-brands-svg-icons': {
       transform: '@fortawesome/free-brands-svg-icons/{{member}}',
       skipDefaultConversion: true,
