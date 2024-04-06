@@ -19,6 +19,7 @@ export const Img = ({ src, className, alt }: any) => {
 
   const shouldHideShadow = flags.includes('hideShadow');
   const isTableMode = flags.includes('tableMode');
+  const isLimited = flags.includes('limit');
 
   if (metadata) {
     return (
@@ -26,6 +27,7 @@ export const Img = ({ src, className, alt }: any) => {
         className={merge(
           imageStyles.imageParent,
           isTableMode && imageStyles.tableMode,
+          isLimited && imageStyles.limited,
         )}
         data-ratio={cssAspectRatio}
         data-flags={flags.join(',')}

@@ -6,6 +6,15 @@ import {
   faServer,
   faMartiniGlass,
   faBadgeCheck,
+  faWhiskeyGlassIce,
+  faWineGlass,
+  faBeerFoam,
+  faMartiniGlassCitrus,
+  faChampagneGlasses,
+  faWhiskeyGlass,
+  faGraduationCap,
+  faThoughtBubble,
+  faForward,
 } from '@fortawesome/pro-solid-svg-icons';
 import {
   faBadge,
@@ -132,9 +141,10 @@ ingredients was tiny.
   width="100%"
   height="auto"
   controls
-  preload="none"
+  preload="metadata"
   style={{
     paddingBottom: '1rem',
+    paddingTop: '1rem',
   }}
 >
   <source
@@ -154,13 +164,24 @@ ingredients was tiny.
 
 <FontAwesomeIcon icon={faClockNineThirty} /> 9h 39m
 
+Day 2 was my main building day. I had the MVP/proof of concept done, and sent to a couple friends
+overnight to get some early testing done. The day was focused on details - adding a lot more ingredients
+to the database, supporting mobile screen sizes, adding loading states and intersitial modals, things like
+that. I also added the ability to see your list of past generations.
+
+The second half of my demo video below shows the mobile experience.
+
+The second day is also when I cut over from the development instance of my authentication with Clerk. I also
+merged by development branch on Planetscale into production. "Going live" took a good chunk of my time.
+
 <video
   width="100%"
   height="auto"
   controls
-  preload="none"
+  preload="metadata"
   style={{
     paddingBottom: '1rem',
+    paddingTop: '1rem',
   }}
 >
   <source
@@ -180,9 +201,63 @@ ingredients was tiny.
 
 <FontAwesomeIcon icon={faClockSixThirty} /> 6h 21m
 
-## Architecture
+The third day, I had everything working smoothly, except no ability to add additional credits to your
+account. I spent the majority of the morning working on integration with Stripe using payment links. I went
+with the no-code solution since I didn't need the integration to be very complex. Through Stripe, I was able to
+handle discount codes to act as vouchers for credits. I wanted to build a first-party voucher system, but didn't
+have the time to dedicate yet.
 
-For those interested, here's a high level overview of the tools and technologies it's built on:
+<div
+  style={{
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '2rem 0 0 0',
+  }}
+>
+  <FontAwesomeIcon
+    icon={faWhiskeyGlassIce}
+    style={{
+      fontSize: '4rem',
+      color: 'var(--thirsty-bot-yellow)',
+    }}
+  />
+</div>
+
+## Further Reading: Application Architecture
+
+Phew! This has been a long one! If you need to take a break and use [Thirsty Bot](https://thirsty.bot) to recommend
+a cocktail, this is a good stopping point. After the break, I'm going to get into the architectural
+details of the application. We'll look at some code, evaluate the tools I used, and go over some
+mistakes I made and what I learned. If that sounds interesting, keep reading!
+
+---
+
+<div
+    style={{
+        display: "flex",
+        justifyContent: "space-around",
+        fontSize: "2rem",
+        paddingTop: '10px',
+        gap: '1rem',
+        opacity: "0.8"
+    }}
+>
+
+    <FontAwesomeIcon icon={faWineGlass} />
+
+    <FontAwesomeIcon icon={faBeerFoam} />
+
+    <FontAwesomeIcon icon={faMartiniGlassCitrus} />
+
+    <FontAwesomeIcon icon={faChampagneGlasses} />
+
+    <FontAwesomeIcon icon={faWhiskeyGlass} />
+
+</div>
+
+---
 
 <FontAwesomeIcon
   icon={faDatabase}
@@ -197,13 +272,15 @@ For those interested, here's a high level overview of the tools and technologies
 
 ### Database
 
-My database is [Planetscale](https://planetscale.com/) on the smallest plan, `PS-10`. I use Planetscale for this site, so it made
+My database is [Planetscale](https://planetscale.com/) on the smallest plan, `PS-10`. I use Planetscale for this site (keegan.codes), so it made
 sense to me to use it for Thirsty Bot as well since it was familiar and I could build quickly. I wanted to leverage Planetscale's branching and safe
-schema changes, since I knew I'd be adjusting the database schema a lot as I iterated quickly and built the app in public.
+schema changes as well, since I knew I'd be adjusting the database schema a lot as I iterated quickly and built the app in public.
 
-I learned a lot about how branching works on Planetscale. At first, I forgot to think about moving data from a branch to the production
-database, so I had to spend some time migrating data after I set up all the categories and options. Note to self: don't accidentally create a
-ton of data on a branch instead of the production instance.
+<FontAwesomeIcon icon={faGraduationCap} /> I learned a lot about how branching works
+on Planetscale. At first, I forgot to think about moving data from a branch to the
+production database, so I had to spend some time migrating data after I set up all
+the categories and options. Note to self: don't accidentally create a ton of data
+on a branch instead of the production instance.
 
 <FontAwesomeIcon
   icon={faMicrochip}
@@ -247,8 +324,41 @@ Here's the format gpt-4 receives the chosen ingredients in:
 (Wine: Champagne Wine, Red Wine)
 ```
 
-**Future work:** I'd like to move down to gpt-3.5-turbo. I'm fairly confident it could work, but it would take some fine tuning of the model,
-something I'm not familiar with yet. I'm hoping to look into this down the road to save on cost, and make things faster.
+<FontAwesomeIcon icon={faForward} /> In the future, I'd like to move to gpt-3.5-turbo.
+I'm fairly confident it could work, but it would take some fine tuning of the model,
+something I'm not familiar with yet. I'm hoping to look into this down the road to
+save on cost, and make things faster.
+
+For the images to go with each recipe, I used DALL·E 3. I've been using [DALLE·2 since the beginning](https://keegan.codes/blog/a-quick-look-at-openai-dall-e-2),
+but had no experience when I started with DALL·E 3. It was surprisingly easy to take the output from gpt-4, and
+use it to generate a prompt for an image. Here's one I really like:
+
+![](thirsty-bot:cocktail-1.png?limit)
+
+<Caption>
+
+Maple Old Fashioned
+
+</Caption>
+
+<FontAwesomeIcon icon={faForward} /> I'm still working on tuning how I direct DALL·E
+3. My prompt right now includes the steps to make the drink, as well as the name.
+I had better results getting a drink that matched the text this way, however it's
+difficult to make DALL·E 3 leave off text, and not show the steps themselves in the
+image:
+
+![](thirsty-bot:cocktail-3.png?limit)
+
+<Caption>
+
+Whiskey Smash
+
+</Caption>
+
+<FontAwesomeIcon icon={faGraduationCap} /> I learned that negative prompting doesn't
+work well with these models - saying something like "Do not include any steps or
+instructions" resulted in almost always having steps or instructions in the image.
+I needed to avoid the words "steps", "instructions", etc. entirely!
 
 <FontAwesomeIcon
   icon={faBlockBrick}
@@ -269,7 +379,7 @@ better, so things went a lot faster. I used some form actions and got to use the
 first time.
 
 > A side note: It's well-documented that [I don't like useEffect](https://keegan.codes/blog/reacting-to-prop-changes-in-react-functional-components).
-> With server components and form actions, I didn't have to use `useEffect` anywhere in the application!
+> With server components and form actions, I didn't have to use `useEffect` anywhere in the application! That's a big win in my book
 
 <FontAwesomeIcon
   icon={faServer}
@@ -286,4 +396,4 @@ first time.
 
 The project is deployed on Vercel.
 
-## How I Spent the 72 Hours
+## Key Takeaways
