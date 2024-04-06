@@ -4,6 +4,7 @@ import {
   faDatabase,
   faBlockBrick,
   faServer,
+  faMartiniGlass,
 } from '@fortawesome/pro-solid-svg-icons';
 
 export const title = 'What I Learned Building an AI App in 72 Hours';
@@ -20,12 +21,51 @@ that helps you find cocktail recipes based on the ingredients you have at home. 
 litle personal "hackathon", and I learned a lot in the process. In this post, I'll share some of what I learned, and do
 a deeper dive into how it all works.
 
-> If you haven't tried it out yet, give it a go at [thirsty.bot](https://thirsty.bot)! You can use the code `KEEGANCODES10` for
+> If you haven't tried it out yet, I recommend you give it a go at [thirsty.bot](https://thirsty.bot)! You can use the code `KEEGANCODES10` for
 > 10 free credits, in addition to the 5 credits you get just for signing up.
+
+<div
+  style={{
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '2rem 0 0 0',
+  }}
+>
+  <FontAwesomeIcon
+    icon={faMartiniGlass}
+    style={{
+      fontSize: '4rem',
+      color: 'var(--thirsty-bot-yellow)',
+    }}
+  />
+</div>
+
+## Thirsty Bot
+
+I wanted the design to be reminiscent of an art-deco bar.
+I really like some bars around town that use deep green and gold, so that's what I went with:
+
+![](thirsty-bot-deep-dive:landing.png?hideShadow)
+
+![](thirsty-bot-deep-dive:build.png?hideShadow)
+
+![](thirsty-bot-deep-dive:modal.png?hideShadow)
+
+## My Build Process
+
+I built the app in a weekend, over approximately 72 hours.
+
+### Day 1
+
+### Day 2
+
+### Day 3
 
 ## Architecture
 
-Before I dig into how app came together, here's a high level overview of the tools and technologies it's built on:
+For those interested, here's a high level overview of the tools and technologies it's built on:
 
 <FontAwesomeIcon
   icon={faDatabase}
@@ -34,7 +74,7 @@ Before I dig into how app came together, here's a high level overview of the too
     textAlign: 'center',
     width: '100%',
     paddingTop: '3rem',
-    color: 'var(--theme-blue-2)',
+    color: 'var(--thirsty-bot-yellow)',
   }}
 />
 
@@ -55,7 +95,7 @@ ton of data on a branch instead of the production instance.
     textAlign: 'center',
     width: '100%',
     paddingTop: '3rem',
-    color: 'var(--theme-blue-2)',
+    color: 'var(--thirsty-bot-yellow)',
   }}
 />
 
@@ -100,7 +140,7 @@ something I'm not familiar with yet. I'm hoping to look into this down the road 
     textAlign: 'center',
     width: '100%',
     paddingTop: '3rem',
-    color: 'var(--theme-blue-2)',
+    color: 'var(--thirsty-bot-yellow)',
   }}
 />
 
@@ -121,7 +161,7 @@ first time.
     textAlign: 'center',
     width: '100%',
     paddingTop: '3rem',
-    color: 'var(--theme-blue-2)',
+    color: 'var(--thirsty-bot-yellow)',
   }}
 />
 

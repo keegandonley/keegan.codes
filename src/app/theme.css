@@ -45,6 +45,8 @@
   --theme-pill: var(--theme-grid-line-color);
 
   --tiny-border-radius: 3px;
+
+  --thirsty-bot-yellow: rgb(202 138 4);
 }
 
 body.dark {
