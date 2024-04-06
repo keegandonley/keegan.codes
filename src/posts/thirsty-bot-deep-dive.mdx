@@ -411,7 +411,87 @@ who are testing it for me, and also on social media and product hunt, for exampl
 
 ![](thirsty-bot-example:redeem.png)
 
-This uses server actions to all remain server components!
+This uses server actions to sumit your code, validate it, and give you the credits! No need for any client-side logic!
+The button itself is a client component that uses the `useFormState` hook in order to show the disabled state while it's pending:.
+
+Here's the server component:
+
+```tsx
+const handleRedeemAction = async (data: FormData) => {
+  'use server';
+  const voucher: string = data.get('voucher');
+
+  // Handle the form data
+};
+
+const Redeem = () => {
+  return (
+    <form className="mx-auto flex gap-x-2" action={handleRedeemAction}>
+      <RedeemForm />
+    </form>
+  );
+};
+```
+
+And the client component, `RedeemForm`:
+
+```tsx
+const RedeemForm = () => {
+  const { pending } = useFormStatus();
+
+  return (
+    <>
+      <input type="text" placeholder="Enter Voucher Code" name="voucher" />
+      <button type="submit" disabled={pending}>
+        Redeem
+      </button>
+    </>
+  );
+};
+```
+
+The API is also built with Next.js. I have APIs for the builder and fetching options, generating cocktails,
+and webhooks for handling Stripe billing events and Clerk user management events. I like building with Next.js API
+routes, however I did run into some trouble decoding and parsing Stripe webhook responses.
+
+There's not a lot of clear advice or information on how to do this with Next.js, so with a little trial and error
+I got it working:
+
+```typescript
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: '2023-10-16',
+});
+
+export const POST = async (req: NextRequest) => {
+  // Get the signing signature so we can verify the event
+  const sig = headers().get('Stripe-Signature') as string;
+
+  // Get the body as a string. This wasn't intuitive and was kind of odd.
+  // Doing req.json() got the event payload, but because of the Next.js body parser,
+  // the stripe SDK couldn't parse it and verify the signature correcly.
+  const bodyString = await req.text();
+
+  const webhookSecret = process.env.STRIPE_BILLING_WEBHOOK_SECRET!;
+  let event: Stripe.Event;
+
+  try {
+    if (!sig || !webhookSecret) {
+      return new Response('Webhook Error: Invalid signature', { status: 500 });
+    }
+
+    // Use the Stripe SDK to get the event
+    event = stripe.webhooks.constructEvent(bodyString, sig, webhookSecret);
+  } catch (err: any) {
+    return new Response(`Webhook Error: ${err.message}`, { status: 400 });
+  }
+
+  const { type, data } = event;
+
+  // Handle the event
+};
+```
+
+Everything else is pretty by the books for Next.js! Styling is all done with Tailwind (and a small amount of CSS for animations)
 
 <FontAwesomeIcon
   icon={faServer}
@@ -424,8 +504,8 @@ This uses server actions to all remain server components!
   }}
 />
 
-### Deployment
+### Hosting Infrastructure
 
-The project is deployed on Vercel.
+The application runs on Vercel, and generated images are served out of Cloudflare R2.
 
 ## Key Takeaways
