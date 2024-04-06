@@ -23,7 +23,9 @@ fs.readdir(directoryPath, (err, files) => {
         const shortCodesMatch = contents.match(shortCodesRegex);
 
         if (shortCodesMatch) {
-          const shortCodesArray = JSON.parse(shortCodesMatch[1]);
+          const shortCodesArray = JSON.parse(
+            shortCodesMatch[1].replace(/'/g, '"'),
+          );
           shortCodesArray.forEach((shortCode) => {
             if (shortcodesMap[shortCode]) {
               console.log(
