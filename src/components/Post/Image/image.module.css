@@ -15,3 +15,8 @@
 .imageParent img {
   object-fit: contain;
 }
+
+.imageParent.limited {
+  max-width: 500px;
+  margin: 0 auto;
+}
