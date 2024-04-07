@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Run commands
+yarn metadata && yarn blurhash
+
+# Check if there are any changes after running yarn metadata
+git diff --quiet --exit-code
+if [ $? -ne 0 ]; then
+    # Add changes to the staged changes
+    git add .
+
+    # Inform the user about the added changes
+    echo "Changes detected after running 'yarn metadata'. Automatically adding changes to the staged area."
+fi
+
+# Exit successfully
+exit 0
