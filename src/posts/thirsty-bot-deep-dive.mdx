@@ -15,6 +15,9 @@ import {
   faGraduationCap,
   faThoughtBubble,
   faForward,
+  faLightbulb,
+  faUserLock,
+  faPhotoFilm,
 } from '@fortawesome/pro-solid-svg-icons';
 import {
   faBadge,
@@ -35,11 +38,14 @@ export const published = new Date(2024, 3, 8);
 export const shortCodes = ['thirsty-bot-deep-dive', 'ai-app'];
 
 A few days ago I [introduced Thirsty Bot](https://keegan.codes/blog/introducing-thirsty-bot), an AI-powered app
-that helps you find cocktail recipes based on the ingredients you have at home. I built the app in 72 hours as part of a
-litle personal "hackathon", and I learned a lot in the process. In this post, I'll share some of what I learned, and do
+that helps you find cocktail recipes based on the ingredients you have at home. I built the app in 72
+hours as part of a
+litle personal "hackathon", and I learned a lot in the process. In this post, I'll share some of what I
+learned, and do
 a deeper dive into how it all works.
 
-> If you haven't tried it out yet, I recommend you give it a go at [thirsty.bot](https://thirsty.bot)! You can use the code `KEEGANCODES10` for
+> If you haven't tried it out yet, I recommend you give it a go at [thirsty.bot](https://thirsty.bot)! You can
+> use the code `KEEGANCODES10` for
 > 10 free credits, in addition to the 5 credits you get just for signing up.
 
 <div
@@ -125,11 +131,12 @@ I built the app in a weekend, over approximately 72 hours. I wanted to treat thi
 days participating in hackathons, but just a bit longer. Each day, I set myself some goals
 and tracked how much time I spent on the project.
 
-### Day 1
+### Day 1 - MVP and Proof of Concept
 
-<FontAwesomeIcon icon={faClockSevenThirty} /> 7h 40m
+<FontAwesomeIcon icon={faClockSevenThirty} /> **7h 40m** development time
 
-On the first day, I finished my day job around 4pm and I started on Thirsty Bot by creating a basic Next.js app. I did some basic styling with
+On the first day, I finished my day job around 4pm. During lunch, I had bootstrapped a Next.js app,
+so I hit the ground running and did some basic styling with
 Tailwind, and then started on auth. I wanted to build in auth early, so it wouldn't be a major
 lift later.
 
@@ -160,9 +167,9 @@ ingredients was tiny.
 
 </Caption>
 
-### Day 2
+### Day 2 - Mobile Support & Polish; Final Features
 
-<FontAwesomeIcon icon={faClockNineThirty} /> 9h 39m
+<FontAwesomeIcon icon={faClockNineThirty} /> **9h 39m** development time
 
 Day 2 was my main building day. I had the MVP/proof of concept done, and sent to a couple friends
 overnight to get some early testing done. The day was focused on details - adding a lot more ingredients
@@ -197,33 +204,34 @@ merged by development branch on Planetscale into production. "Going live" took a
 
 </Caption>
 
-### Day 3
+### Day 3 - Billing; Final Go-Live Plan
 
-<FontAwesomeIcon icon={faClockSixThirty} /> 6h 21m
+<FontAwesomeIcon icon={faClockSixThirty} /> **6h 21m** development time
 
-The third day, I had everything working smoothly, except no ability to add additional credits to your
+At the start of the third day, I had everything working smoothly, except no ability to add additional credits to your
 account. I spent the majority of the morning working on integration with Stripe using payment links. I went
 with the no-code solution since I didn't need the integration to be very complex. Through Stripe, I was able to
 handle discount codes to act as vouchers for credits. I wanted to build a first-party voucher system, but didn't
 have the time to dedicate yet.
 
-<div
-  style={{
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '4rem 0 0 0',
-  }}
->
-  <FontAwesomeIcon
-    icon={faWhiskeyGlassIce}
-    style={{
-      fontSize: '4rem',
-      color: 'var(--thirsty-bot-yellow)',
-    }}
-  />
-</div>
+### Follow-up Tasks
+
+After the weekend, I launched the app on my Twitter, LinkedIn, and to some more friends and coworkers. I continued
+working on improvements, and completed a few of the important tasks that I didn't have time for during the
+original hack weekend.
+
+I added a better first-party voucher system, so nobody has to go through Stripe in order to redeem a code. This system
+is more robust than what Stripe offers with payment links, and allows me to have more fine-grained control over how
+codes are created and redeemed. I also added some more visual polish over the following week, spending more time on
+small layout details and animations.
+
+Finally, I continue to take feedback on my list of ingredients, adding more as people remind me of their
+favorite ingredients that I left off the list.
+
+> <FontAwesomeIcon icon={faForward} /> I'd like to eventually allow creating custom
+> ingredients, so users aren't limited to the ones I've pre-defined. If you continue
+> reading into my architecture discussion, I cover a bit about the challenges associated
+> with that.
 
 ## Further Reading: Application Architecture
 
@@ -276,11 +284,15 @@ mistakes I made and what I learned. If that sounds interesting, keep reading!
 
 ### Database
 
-My database is [Planetscale](https://planetscale.com/) on the smallest plan, `PS-10`. I use Planetscale for this site (keegan.codes), so it made
-sense to me to use it for Thirsty Bot as well since it was familiar and I could build quickly. I wanted to leverage Planetscale's branching and safe
-schema changes as well, since I knew I'd be adjusting the database schema a lot as I iterated quickly and built the app in public.
+My database is [Planetscale](https://planetscale.com/) on the smallest plan, `PS-10`. I use Planetscale
+for this site (keegan.codes), so it made
+sense to me to use it for Thirsty Bot as well since it was familiar and I could build quickly. I wanted
+to leverage Planetscale's branching and safe
+schema changes as well, since I knew I'd be adjusting the database schema a lot as I iterated quickly and
+built the app in public.
 
-The [serverless driver from Planetscale](https://planetscale.com/blog/introducing-the-planetscale-serverless-driver-for-javascript) is super important,
+The [serverless driver from Planetscale](https://planetscale.com/blog/introducing-the-planetscale-serverless-driver-for-javascript)
+is important,
 because it means I can execute queries using the fetch API and an HTTP connection. Connecting to the database
 from either an API route or a server component is super easy, and I don't need to worry about sharing database
 connections:
@@ -314,30 +326,43 @@ await conn.execute('SHOW TABLES');
   }}
 />
 
-### AI Tools
+### AI Recipe Generation
 
-I tried quite a few different models and platforms in order to settle on how I could generate the recipes. They all had their strengths
+I tried quite a few different models and platforms in order to settle on how I could generate the recipes.
+They all had their strengths
 and weaknesses, but here was some of what I discovered:
 
-- **GPT-3.5-turbo**: The biggest problem I had with gpt-3.5-turbo is that it would make a drink with literally anything, no matter
-  how much I adjusted the prompt. If I told it I had eggs, soy sauce, and water, it would tell me I could make an egg, soy sauce, and water
-  martini. Not a great representation of what a cocktail should be. I needed it to respond that certain combinations of ingredients just
+- **GPT-3.5-turbo**: The biggest problem I had with gpt-3.5-turbo is that it would make a drink
+  with literally anything, no matter
+  how much I adjusted the prompt. If I told it I had eggs, soy sauce, and water, it would tell
+  me I could make an egg, soy sauce, and water
+  martini. Not a great representation of what a cocktail should be. I needed it to respond that
+  certain combinations of ingredients just
   aren't possible.
-- **Llama-2-70b-chat**: I tried this one out through Replicate. Llama-2-70b solved my problem of creating drinks with weird ingredients, but I could
-  not coerce this model into only using the ingredients provided. It continually added ingredients that weren't provided. That's no good either.
-- **GPT-4**: This got me the closest. Gpt-4 mostly respected my rules, and would return a token "IMPOSSIBLE" when it decided the
-  ingredients couldn't go together. It also only vary rarely added ingredients. Sometimes it would add simple syrup when it wasn't included, but that
-  was rare. The biggest problem I had was that it would make things that were non-cocktails. For example, if I provided coffee beans as garnish,
-  irish cream, vodka, cinnamon, and espresso, it would tell me to grind the beans, brew a cup of coffee, and add cinnamon. Not quite what I was going for:
+- **Llama-2-70b-chat**: I tried this one out through Replicate. Llama-2-70b solved my problem of
+  creating drinks with weird ingredients, but I could
+  not coerce this model into only using the ingredients provided. It continually added ingredients
+  that weren't provided. That's no good either.
+- **GPT-4**: This got me the closest. Gpt-4 mostly respected my rules, and would return a token
+  "IMPOSSIBLE" when it decided the
+  ingredients couldn't go together. It also only vary rarely added ingredients. Sometimes it would add simple
+  syrup when it wasn't included, but that
+  was rare. The biggest problem I had was that it would make things that were non-cocktails.
+  For example, if I provided coffee beans as garnish,
+  irish cream, vodka, cinnamon, and espresso, it would tell me to grind the beans, brew a cup of
+  coffee, and add cinnamon. Not quite what I was going for:
 
 ![](thirsty-bot-output:bad-coffee.png)
 
 I tried a few others as well, but they all had some of the issues presented here. In the end, I narrowed it down
 to these three, and did more extensive testing and iteration to choose one.
 
-I settled on gpt-4, which at the time of writing is still what Thirsty Bot uses. It's a bit more expensive, but it seemed best suited for my task. With a lot of iteration on my prompt with the
-instructions, I was able to get reliable results. I had to change my input format a lot, and write a pretty long set of instructions, but
-I was able to stop getting non-provided ingredients, stopped getting things that aren't cocktails, and was able to handle a set of ingredients
+I settled on gpt-4, which at the time of writing is still what Thirsty Bot uses. It's a bit more
+expensive, but it seemed best suited for my task. With a lot of iteration on my prompt with the
+instructions, I was able to get reliable results. I had to change my input format a lot, and write
+a pretty long set of instructions, but
+I was able to stop getting non-provided ingredients, stopped getting things that aren't
+cocktails, and was able to handle a set of ingredients
 that isn't possible.
 
 Here's the format pass the chosen ingredients to GPT-4 in:
@@ -355,8 +380,42 @@ Here's the format pass the chosen ingredients to GPT-4 in:
 > something I'm not familiar with yet. I'm hoping to look into this down the road
 > to save on cost, and make things faster.
 
-For the images to go with each recipe, I used DALL·E 3. I've been using [DALLE·2 since the beginning](https://keegan.codes/blog/a-quick-look-at-openai-dall-e-2),
-but had no experience when I started with DALL·E 3. It was surprisingly easy to take the output from gpt-4, and
+#### Why a Pre-Defined Ingredients List?
+
+I decided to go with a pre-defined list of ingredients rather than my original plan to allow the user
+to input their own ingredients. I had two reasons behind this:
+
+1. **Security**: With free-form content, prompt injection is a risk. Users could construct the content
+   of their ingredient list in such a way that the LLM responds in unexpected and unintended ways.
+   There isn't a risk to customer data in the sense of a traditional security risk,
+   but I still didn't want users trying to break out of the intended use-case of the system.
+2. **Predictability/Simplicity**: Having a list of ingredients means I have precise control over how
+   content is passed to the LLM, and I don't have to worry about users adding _too_ weird of ingredients (see my
+   soy sauce example from my model investigation).
+
+> <FontAwesomeIcon icon={faForward} /> I'm still hopeful that I can get custom content
+> working in a strightforward way, so users aren't limited to only the ingredients
+> I've come up with. I might toy with the idea of pre-processing the custom ingredients
+> with a model that's cheaper to run, or make the system more flexible in how it
+> returns drink recipes. Regardless, that's an improvement for another day.
+
+<FontAwesomeIcon
+  icon={faPhotoFilm}
+  style={{
+    fontSize: '4rem',
+    textAlign: 'center',
+    width: '100%',
+    paddingTop: '3rem',
+    color: 'var(--thirsty-bot-yellow)',
+  }}
+/>
+
+### AI Image Generation
+
+For the images to go with each recipe, I used DALL·E 3. I've been using its predecessor
+[DALLE·2 since the beginning](https://keegan.codes/blog/a-quick-look-at-openai-dall-e-2),
+and was excited to work with the improved DALL·E 3 for the first time. It was surprisingly easy to
+take the output from gpt-4, and
 use it to generate a prompt for an image. Here's one I really like:
 
 ![](thirsty-bot:cocktail-1.png?limit)
@@ -367,7 +426,8 @@ Maple Old Fashioned
 
 </Caption>
 
-I'm still working on tuning how I direct DALL·E 3. My prompt right now includes the steps to make the drink, as well as the name
+I'm still working on tuning how I direct DALL·E 3. My prompt right now includes the steps to make the
+drink, as well as the name
 and ingredients. I had better results getting a drink that matched the description
 in the recipe this way, however it's difficult to make DALL·E 3 leave off text, and
 not show the steps themselves in the image:
@@ -403,8 +463,10 @@ and React server components (the first was this blog). This time around, I defin
 better, so things went a lot faster. I used some form actions and got to use the `useFormStatus` hook for the
 first time.
 
-> It's well-documented that [I don't like useEffect](https://keegan.codes/blog/reacting-to-prop-changes-in-react-functional-components) and try to avoid it entirely.
-> With server components and form actions, I didn't have to use `useEffect` anywhere in the application! That's a big win in my book.
+> It's well-documented that [I don't like useEffect](https://keegan.codes/blog/reacting-to-prop-changes-in-react-functional-components)
+> and try to avoid it entirely.
+> With server components and form actions, I didn't have to use `useEffect` anywhere in
+> the application! That's a big win in my book.
 
 Thirrsy Bot has a form to redeem vouchers for free credits. This way, I can give them away to friends and family
 who are testing it for me, and also on social media and product hunt, for example:
@@ -412,7 +474,8 @@ who are testing it for me, and also on social media and product hunt, for exampl
 ![](thirsty-bot-example:redeem.png)
 
 This uses server actions to sumit your code, validate it, and give you the credits! No need for any client-side logic!
-The button itself is a client component that uses the `useFormState` hook in order to show the disabled state while it's pending:.
+The button itself is a client component that uses the `useFormState` hook in order to show the
+disabled state while it's pending:.
 
 Here's the server component:
 
@@ -491,7 +554,43 @@ export const POST = async (req: NextRequest) => {
 };
 ```
 
-Everything else is pretty by the books for Next.js! Styling is all done with Tailwind (and a small amount of CSS for animations)
+Everything else is pretty by the books for Next.js! Styling is all done with Tailwind (and a small
+amount of plain CSS for animations). I moved some
+utilities and styles into a new [foundations library](https://github.com/keegandonley/foundations) of
+shared code I use
+on many of my projects. This has been a big time saver for bootstrapping new projects!
+
+<FontAwesomeIcon
+  icon={faUserLock}
+  style={{
+    fontSize: '4rem',
+    textAlign: 'center',
+    width: '100%',
+    paddingTop: '3rem',
+    color: 'var(--thirsty-bot-yellow)',
+  }}
+/>
+
+### Authentication
+
+I looked at a number of options for authentication. Some people recommended like next-auth, others like Supabase auth.
+In the end, I went with Clerk. The integration was super simple, and I was able to get login working within a matter of
+minutes, not hours or days. It's an almost entirely no-code solution, with just a few default UI components,
+route handlers, and edge middleware. I also have a couple webhook handlers that can react to Clerk's user events,
+like user creations to add free credits to each new account.
+
+![](thirsty-bot:clerk.png)
+
+<Caption>
+  Clerk's pre-built UI is good enough that I didn't need to spend time building
+  one myself
+</Caption>
+
+> <FontAwesomeIcon icon={faGraduationCap} /> I had to re-learn a bit about creating
+> OAuth apps with Github and Google Cloud. It's been a while since I worked on building
+> auth flows! I also underestimated the amount of work it would be to cut over from
+> Clerk development mode to production, and spent a lot of time getting everything
+> to work again once I moved to production mode.
 
 <FontAwesomeIcon
   icon={faServer}
@@ -506,6 +605,59 @@ Everything else is pretty by the books for Next.js! Styling is all done with Tai
 
 ### Hosting Infrastructure
 
-The application runs on Vercel, and generated images are served out of Cloudflare R2.
+The application runs on Vercel. I already had a pro team for [keegan.codes](https://keegan.codes), so
+I didn't have any additional cost
+associated with the project. I'm mostly running on serverless functions, which is a bit different
+from this website, which
+runs on edge functions. Overall I haven't noticed too many issues with cold starts, although it's definitely
+more noticeable compared to the things I run on the edge.
+
+![](thirsty-bot:build-vercel.png)
+
+<Caption>
+  The whole application builds and deploys in about a minute, which was great
+  for rapidly iterating on the app as it came together, all while I had people
+  using it
+</Caption>
+
+After an image is generated by DALL·E, the download link is only valid for a short period. So, immediately after
+generation, my application downloads the image and uploads it to
+[Cloudflare R2](https://www.cloudflare.com/developer-platform/r2/). They have
+no egress fee for bandwidth, so it's ideal for hosting assets like these. I also use Next.js
+image optimization which reduces how many requests
+are made to the source file in R2.
+
+<FontAwesomeIcon
+  icon={faLightbulb}
+  style={{
+    fontSize: '4rem',
+    textAlign: 'center',
+    width: '100%',
+    paddingTop: '3rem',
+    color: 'var(--thirsty-bot-yellow)',
+  }}
+/>
 
 ## Key Takeaways
+
+This was a really fun project to build, and I hope you've had a chance to try it out and
+find it useful too! I set out to build the app so I could practice with server components, and keep
+my full-stack skills sharp. Building an entire application in a matter of days made me miss my
+time participating in hackathons, but I also won't be pulling
+another weekend like that for a while.
+
+It's somewhat rare that I have the time and motivation to follow through with a side project to completion,
+so I'm happy this project made it all the way to launch.
+
+Here's what I learned in summary while working on this project:
+
+1. Prompt engineering is an art! I read a lot of advice and had to iterate a lot when prompting GPT-4 in order
+   to get reliable results I was happy with.
+2. Writing data fetching and mutation logic directly in React components is odd at first, but I quickly got
+   the hang of it. Good composition of code was important to make sure things didn't get too confusing.
+3. Cost optimization is difficult when working with large models. The app is still more expensive to run
+   than I would like, but I am working to improve on that.
+
+> If you haven't tried it yet and this post got you interested, you can sign up for free at [thirsty.bot](https://thirsty.bot)!
+> Don't forget to use the code `KEEGANCODES10` for 10 free credits, in addition to the 5 credits you get
+> just for signing up.
