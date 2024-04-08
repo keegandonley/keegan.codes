@@ -11,6 +11,15 @@
   z-index: 1;
 }
 
+.noPointer {
+  pointer-events: none;
+}
+
+.noPointer a,
+.noPointer button {
+  pointer-events: all;
+}
+
 .small {
   padding-top: 2rem;
   top: -2rem;

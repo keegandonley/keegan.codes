@@ -1,7 +1,16 @@
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .banner {
-  position: absolute;
+  position: fixed;
   top: calc((var(--banner-level-rems) - 1rem) * 2.2);
-  background: var(--theme-text);
+  background: var(--theme-inverted-background-overlay);
   z-index: 100;
   color: var(--theme-inverted-text);
   padding: 0 1rem;
@@ -12,6 +21,9 @@
   left: 0;
   right: 0;
   z-index: 99;
+  opacity: 0;
+  animation: fade 0.5s forwards;
+  backdrop-filter: blur(10px);
 }
 
 @media only screen and (max-width: 500px) {
@@ -27,5 +39,5 @@
 
 .banner a {
   text-decoration: none;
-  color: var(--theme-blue-1);
+  color: var(--theme-blue-2);
 }

@@ -14,15 +14,20 @@ export const Banner = ({
 }) => {
   return (
     <div
-      className={styles.banner}
-      style={injectVariables([['banner-level-rems', `${level}rem`]])}
+      className={styles.wrapper}
+      style={injectVariables([['background-opacity', '0.5']])}
     >
-      {icon ? (
-        <div className="iconContainer">
-          <FontAwesomeIcon icon={icon} />
-        </div>
-      ) : null}
-      {children}
+      <div
+        className={styles.banner}
+        style={injectVariables([['banner-level-rems', `${level}rem`]])}
+      >
+        {icon ? (
+          <div className="iconContainer">
+            <FontAwesomeIcon icon={icon} />
+          </div>
+        ) : null}
+        {children}
+      </div>
     </div>
   );
 };

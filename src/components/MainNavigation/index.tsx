@@ -66,6 +66,7 @@ const MainNavigation = ({
       <HeroBlock
         isHomePage={isHomePage}
         sticky={!isChat && !isResume && !isHi && !isErrorPage}
+        noPointer
       >
         <MenuItem
           href="/"

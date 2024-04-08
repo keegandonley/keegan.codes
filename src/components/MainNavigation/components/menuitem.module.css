@@ -27,7 +27,6 @@
 .visible {
   opacity: 1;
   transform: translateY(0) translateX(0);
-  pointer-events: all;
 }
 
 .active {
