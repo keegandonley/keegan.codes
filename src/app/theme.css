@@ -20,6 +20,7 @@
   --code-color: var(--theme-inverted-text);
   --shadow-color: rgb(164, 164, 164);
   --theme-inverted-background: rgba(10, 9, 53, var(--background-opacity, 1));
+  --theme-inverted-background-overlay: rgba(10, 9, 53, 0.8);
 
   /* Theme animation */
   --animation: 0.5s ease-in-out;
@@ -69,6 +70,8 @@ body.dark {
     255,
     var(--background-opacity, 1)
   );
+  --theme-inverted-background-overlay: rgba(255, 255, 255, 0.9);
+
   --theme-transparent: rgba(0, 0, 0, 0);
   --code-background: rgba(40, 42, 54, 1);
   --code-color: var(--theme-text);

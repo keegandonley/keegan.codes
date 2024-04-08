@@ -10,7 +10,7 @@
 .banner {
   position: fixed;
   top: calc((var(--banner-level-rems) - 1rem) * 2.2);
-  background: var(--theme-inverted-background);
+  background: var(--theme-inverted-background-overlay);
   z-index: 100;
   color: var(--theme-inverted-text);
   padding: 0 1rem;
@@ -23,6 +23,7 @@
   z-index: 99;
   opacity: 0;
   animation: fade 0.5s forwards;
+  backdrop-filter: blur(10px);
 }
 
 @media only screen and (max-width: 500px) {
