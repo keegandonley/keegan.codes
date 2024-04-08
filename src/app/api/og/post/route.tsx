@@ -100,7 +100,7 @@ export async function GET(request: Request) {
             display: 'flex',
             position: 'absolute',
             left: '10%',
-            bottom: '100px',
+            bottom: '10%',
             alignItems: 'center',
           }}
         >
