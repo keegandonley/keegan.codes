@@ -6,6 +6,7 @@ interface HeroBlockProps extends ElementBaseProps {
   isHomePage?: boolean;
   collapse?: boolean;
   sticky?: boolean;
+  noPointer?: boolean;
 }
 
 export const HeroBlock = ({
@@ -14,6 +15,7 @@ export const HeroBlock = ({
   className,
   collapse,
   sticky,
+  noPointer,
 }: HeroBlockProps) => {
   return (
     <div
@@ -25,6 +27,7 @@ export const HeroBlock = ({
           collapse && styles.collapse,
           sticky && styles.sticky,
           !isHomePage && styles.fade,
+          noPointer && styles.noPointer,
         ),
       )}
     >
