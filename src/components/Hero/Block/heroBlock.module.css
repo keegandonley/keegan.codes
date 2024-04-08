@@ -15,12 +15,9 @@
   pointer-events: none;
 }
 
-.noPointer * {
+.noPointer a,
+.noPointer button {
   pointer-events: all;
-}
-
-.noPointer img {
-  pointer-events: none;
 }
 
 .small {
