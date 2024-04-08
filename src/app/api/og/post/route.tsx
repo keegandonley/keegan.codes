@@ -3,23 +3,22 @@
 import { ImageResponse } from '@vercel/og';
 import { getComponentForKey, getKey } from '@/app/blog/util';
 import { BUCKET_URL } from '@/util/r2';
-import { cookies } from 'next/headers';
 
 export const runtime = 'edge';
 
-const darkBackground = 'rgba(32, 65, 123, 1)';
-
 export async function GET(request: Request) {
-  const allCookies = cookies();
-
-  const theme = allCookies.get('theme');
-
-  const darkMode = theme?.value === 'dark';
-
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get('slug');
   const width = searchParams.get('width') ?? '800';
   const height = searchParams.get('height') ?? '418';
+
+  const oswaldData = await fetch(
+    new URL('../../../fonts/Oswald.ttf', import.meta.url),
+  ).then((res) => res.arrayBuffer());
+
+  const oswaldLightData = await fetch(
+    new URL('../../../fonts/Oswald-Light.ttf', import.meta.url),
+  ).then((res) => res.arrayBuffer());
 
   if (!slug) {
     console.error('Missing slug at', request.url);
@@ -50,67 +49,89 @@ export async function GET(request: Request) {
             minWidth: '110%',
             minHeight: '100%',
             width: '110%',
+            filter: 'blur(3px)',
           }}
         />
         <div
           style={{
             position: 'absolute',
-            bottom: 20,
-            left: 20,
-            right: 20,
-            background: darkMode ? darkBackground : 'white',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
             display: 'flex',
             flexDirection: 'column',
-            borderRadius: 10,
-            boxShadow: '7px 7px 17px rgba(0, 0, 0, 0.6)',
+            justifyContent: 'center',
+            backgroundImage: 'linear-gradient(45deg, black, transparent)',
+          }}
+        ></div>
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            background: 'rgba(0, 0, 0, 0.4)',
+            paddingBottom: '8%',
           }}
         >
           <h1
             style={{
               paddingLeft: 20,
-              fontSize: 50,
+              fontSize: 60,
               paddingBottom: 0,
               marginBottom: 0,
-              color: darkMode ? 'white' : darkBackground,
-              width: '85%',
-              paddingTop: 5,
+              color: 'white',
+              padding: '5px 10% 0 10%',
+              fontWeight: 'bold',
+              fontFamily: '"Raleway"',
             }}
           >
             {found.title}
           </h1>
-          <p
+        </div>
+        <div
+          style={{
+            padding: '120px 0 0 0',
+            display: 'flex',
+            position: 'absolute',
+            left: '10%',
+            bottom: '10%',
+            alignItems: 'center',
+          }}
+        >
+          <img
             style={{
-              paddingLeft: 20,
-              fontSize: 25,
-              color: darkMode ? 'lightgray' : 'gray',
-              marginTop: 10,
-              width: '85%',
-              paddingBottom: 10,
+              width: 50,
+              height: 50,
+              borderRadius: 50,
+              marginRight: 20,
+              boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.6)',
+              border: '2px solid white',
             }}
-          >
-            {found.description}
-          </p>
+            src={`${BUCKET_URL}/avatar.jpg`}
+          />
           <div
             style={{
-              position: 'absolute',
-              right: 0,
-              bottom: 0,
-              top: 0,
               display: 'flex',
-              alignItems: 'center',
+              color: 'white',
+              flexDirection: 'column',
+              fontSize: 20,
             }}
           >
-            <img
+            <span>Keegan Donley</span>
+            <span
               style={{
-                width: 100,
-                height: 100,
-                borderRadius: 50,
-                marginRight: 20,
-                boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.6)',
-                border: '2px solid white',
+                fontFamily: '"OswaldLight"',
+                color: 'lightGray',
               }}
-              src={`${BUCKET_URL}/avatar.jpg`}
-            />
+            >
+              keegan.codes
+            </span>
           </div>
         </div>
       </div>
@@ -118,6 +139,18 @@ export async function GET(request: Request) {
     {
       width: parseInt(width),
       height: parseInt(height),
+      fonts: [
+        {
+          name: 'Oswald',
+          data: oswaldData,
+          style: 'normal',
+        },
+        {
+          name: 'OswaldLight',
+          data: oswaldLightData,
+          style: 'normal',
+        },
+      ],
     },
   );
 }
