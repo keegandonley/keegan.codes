@@ -10,9 +10,9 @@
     "blurhash": "cd blurhash-generator && go run .",
     "metadata": "cd post-metadata-generator && go run .",
     "serve": "cd img-serve && go run . && cd - || cd -",
-    "process": "yarn blurhash && yarn metadata",
+    "process": "pnpm blurhash && pnpm metadata",
     "validate-shortcodes": "node ./validate/validateShortcodes.js",
-    "analyze": "NODE_OPTIONS=--max-old-space-size=4096 ANALYZE=true yarn build"
+    "analyze": "NODE_OPTIONS=--max-old-space-size=4096 ANALYZE=true pnpm build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
