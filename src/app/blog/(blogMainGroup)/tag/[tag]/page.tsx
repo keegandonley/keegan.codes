@@ -7,7 +7,7 @@ import wordCounts from '../../../../../post-word-counts.json';
 import { Post } from '@/types/post';
 import tagPageStyles from './tagPage.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/pro-solid-svg-icons';
+import { faTimes } from '@keegandonley/pro-solid-svg-icons';
 import Link from 'next/link';
 import { getIsLikelyMobile } from '@/util/userAgent';
 import { getImageMetadata } from '@/util/image';

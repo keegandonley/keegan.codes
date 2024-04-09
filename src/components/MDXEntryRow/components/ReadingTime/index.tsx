@@ -1,7 +1,7 @@
 import { getReadingTime } from '@/util/content';
 import styles from './readingtime.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStopwatch } from '@fortawesome/pro-solid-svg-icons';
+import { faStopwatch } from '@keegandonley/pro-solid-svg-icons';
 import { merge } from '@/util/classNames';
 
 interface ReadingTimeProps {

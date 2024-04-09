@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowCircleLeft,
   faArrowCircleRight,
-} from '@fortawesome/pro-solid-svg-icons';
+} from '@keegandonley/pro-solid-svg-icons';
 import { formatDate } from '@/util/date';
 
 interface PostWithMetadata extends Post {

@@ -8,7 +8,7 @@ import {
   faExpand,
   faFlagCheckered,
   faPipe,
-} from '@fortawesome/pro-solid-svg-icons';
+} from '@keegandonley/pro-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCallback, useEffect } from 'react';
 import { useParams, usePathname, useRouter } from 'next/navigation';

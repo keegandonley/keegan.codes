@@ -2,7 +2,7 @@ import { ViewCountRenderer } from './Renderer';
 import { Suspense } from 'react';
 import { ViewCountFallback } from './Fallback';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye } from '@fortawesome/pro-solid-svg-icons';
+import { faEye } from '@keegandonley/pro-solid-svg-icons';
 import styles from './viewcount.module.css';
 import { merge } from '@/util/classNames';
 

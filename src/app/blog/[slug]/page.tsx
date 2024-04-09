@@ -9,7 +9,7 @@ import { BUCKET_URL } from '@/util/r2';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getComponentForKey, getKey } from '../util';
-import { faArrowLeft } from '@fortawesome/pro-solid-svg-icons';
+import { faArrowLeft } from '@keegandonley/pro-solid-svg-icons';
 import wordCounts from '../../../post-word-counts.json';
 import { BASEURL, NAME } from '@/metadata';
 import { PostHeader } from '@/components/PostHeader';

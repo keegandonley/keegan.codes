@@ -7,7 +7,7 @@ import {
   faScaleUnbalanced,
   faThumbsDown,
   faThumbsUp,
-} from '@fortawesome/pro-solid-svg-icons';
+} from '@keegandonley/pro-solid-svg-icons';
 
 interface ProsConsProps {
   children: any;

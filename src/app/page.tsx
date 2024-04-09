@@ -7,7 +7,7 @@ import styles from './home.module.css';
 import { postCount } from '../post-count';
 import { postCount as bookCount } from '../book-count';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/pro-solid-svg-icons';
+import { faArrowRight } from '@keegandonley/pro-solid-svg-icons';
 import { Footer } from '@/components/Footer';
 import { Swoop } from '@/components/Swoop';
 import Posts from '@/posts';

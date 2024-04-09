@@ -1,4 +1,4 @@
-import { faSpinnerThird } from '@fortawesome/pro-solid-svg-icons';
+import { faSpinnerThird } from '@keegandonley/pro-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './loader.module.css';
 

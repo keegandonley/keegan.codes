@@ -2,7 +2,7 @@
 import styles from './clientBackButton.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { merge } from '@/util/classNames';
-import { faArrowLeft } from '@fortawesome/pro-solid-svg-icons';
+import { faArrowLeft } from '@keegandonley/pro-solid-svg-icons';
 
 interface ClientBackButtonProps {
   onClick?: () => void;

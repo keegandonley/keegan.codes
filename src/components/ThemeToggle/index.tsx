@@ -3,7 +3,7 @@ import { merge } from '@/util/classNames';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import styles from './themeToggle.module.css';
 import { AnimatedIcon } from '../AnimatedIcon';
-import { faMoon, faSunBright } from '@fortawesome/pro-solid-svg-icons';
+import { faMoon, faSunBright } from '@keegandonley/pro-solid-svg-icons';
 import { usePathname } from 'next/navigation';
 import {
   getMatch,

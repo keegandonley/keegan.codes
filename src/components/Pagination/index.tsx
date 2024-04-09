@@ -5,7 +5,7 @@ import styles from './pagination.module.css';
 import {
   faArrowCircleLeft,
   faArrowCircleRight,
-} from '@fortawesome/pro-solid-svg-icons';
+} from '@keegandonley/pro-solid-svg-icons';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 import { merge } from '@/util/classNames';

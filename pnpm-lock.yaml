@@ -11,18 +11,18 @@ dependencies:
   '@fortawesome/free-brands-svg-icons':
     specifier: ^6.5.2
     version: 6.5.2
-  '@fortawesome/pro-regular-svg-icons':
-    specifier: git+https://$GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/keegandonley/pro-regular-svg-icons.git
-    version: git@github.com+keegandonley/pro-regular-svg-icons/b4590dfe32016fb06787b3f287e7b510363f608e
-  '@fortawesome/pro-solid-svg-icons':
-    specifier: git+https://$GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/keegandonley/pro-solid-svg-icons.git
-    version: git/github.com+keegandonley/pro-solid-svg-icons/1d96c344e4c05c1deb8b6c12029f04f2a6b2e605
   '@fortawesome/react-fontawesome':
     specifier: ^0.2.0
     version: 0.2.0(@fortawesome/fontawesome-svg-core@6.5.2)(react@18.2.0)
   '@keegancodes/foundations':
     specifier: ^1.0.20
     version: 1.0.20
+  '@keegandonley/pro-regular-svg-icons':
+    specifier: ^6.5.2
+    version: 6.5.2
+  '@keegandonley/pro-solid-svg-icons':
+    specifier: ^6.5.2
+    version: 6.5.2
   '@mdx-js/loader':
     specifier: ^3.0.1
     version: 3.0.1(webpack@5.91.0)
@@ -477,6 +477,22 @@ packages:
 
   /@keegancodes/foundations@1.0.20:
     resolution: {integrity: sha512-QEoiUjQRIA6gQrk10CB3sxA+84jy6oK9ssvlfRKlKIcgA643F8aT0bh2TjYwzIhc7semWjpirR295JLfi5lopQ==}
+    dev: false
+
+  /@keegandonley/pro-regular-svg-icons@6.5.2:
+    resolution: {integrity: sha512-ldyXARMm+nLtPoAPdfVye8ENIYd7+NSOlsdzB2mXVZe7BF6ksoq6vXZgEjpPJgBXAUvpI51ejTdckNb2jcia9w==}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 6.5.2
+    dev: false
+
+  /@keegandonley/pro-solid-svg-icons@6.5.2:
+    resolution: {integrity: sha512-yqVEv5LOZcHdR7QmK6HC+CIuBLf2nxvopcHe0vglwPsWPWhAmKokGf/0DfFopuvghGGJSX5dvgkThv6lc9wLug==}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 6.5.2
     dev: false
 
   /@mdx-js/loader@3.0.1(webpack@5.91.0):
@@ -5430,24 +5446,4 @@ packages:
 
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
-    dev: false
-
-  git/github.com+keegandonley/pro-solid-svg-icons/1d96c344e4c05c1deb8b6c12029f04f2a6b2e605:
-    resolution: {commit: 1d96c344e4c05c1deb8b6c12029f04f2a6b2e605, repo: git@github.com:keegandonley/pro-solid-svg-icons.git, type: git}
-    name: '@fortawesome/pro-solid-svg-icons'
-    version: 6.5.2
-    engines: {node: '>=6'}
-    requiresBuild: true
-    dependencies:
-      '@fortawesome/fontawesome-common-types': 6.5.2
-    dev: false
-
-  git@github.com+keegandonley/pro-regular-svg-icons/b4590dfe32016fb06787b3f287e7b510363f608e:
-    resolution: {commit: b4590dfe32016fb06787b3f287e7b510363f608e, repo: git@github.com:keegandonley/pro-regular-svg-icons.git, type: git}
-    name: '@fortawesome/pro-regular-svg-icons'
-    version: 6.5.2
-    engines: {node: '>=6'}
-    requiresBuild: true
-    dependencies:
-      '@fortawesome/fontawesome-common-types': 6.5.2
     dev: false
