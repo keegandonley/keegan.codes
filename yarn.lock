@@ -28,15 +28,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.21.0":
-  version: 7.23.4
-  resolution: "@babel/runtime@npm:7.23.4"
-  dependencies:
-    regenerator-runtime: ^0.14.0
-  checksum: 8eb6a6b2367f7d60e7f7dd83f477cc2e2fdb169e5460694d7614ce5c730e83324bcf29251b70940068e757ad1ee56ff8073a372260d90cad55f18a825caf97cd
-  languageName: node
-  linkType: hard
-
 "@discoveryjs/json-ext@npm:0.5.7":
   version: 0.5.7
   resolution: "@discoveryjs/json-ext@npm:0.5.7"
@@ -857,12 +848,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.12.5":
-  version: 20.12.5
-  resolution: "@types/node@npm:20.12.5"
+"@types/node@npm:^20.12.6":
+  version: 20.12.6
+  resolution: "@types/node@npm:20.12.6"
   dependencies:
     undici-types: ~5.26.4
-  checksum: 38358c091392bb3def1136772ada4ccd39a9429d459160b5ab728b690d2f15f2212eafd9e65ce716e270f70a4e6927ebffccfefc08dabdf68f4016c1fc8a7938
+  checksum: d16272276349244b1b6f15b0a23ce380efe3dfe46ace1ae37d58e791a8e53d832a2dc72d1afe01d7e5bb0ec1fba70ddd58b1da87921ec913e600331b3b906be9
   languageName: node
   linkType: hard
 
@@ -893,13 +884,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.2.74":
-  version: 18.2.74
-  resolution: "@types/react@npm:18.2.74"
+"@types/react@npm:^18.2.75":
+  version: 18.2.75
+  resolution: "@types/react@npm:18.2.75"
   dependencies:
     "@types/prop-types": "*"
     csstype: ^3.0.2
-  checksum: 093c0e350552e61393e2ba30169aa620e2e64c1e2d0ff38efd2a7549ded689b6ab6bffb65fe0f7ef9e143174de54442d942bd70c014649f464c52465701208d8
+  checksum: f77322720744beba6650462c0d75ccc0be27c176bd7b2aff32039ea30e498a78fe6dbce4a1c3fdbf592ccc01286059f332a294a3b6975dbb0d8d5999718ece38
   languageName: node
   linkType: hard
 
@@ -2111,15 +2102,6 @@ __metadata:
     whatwg-mimetype: ^2.3.0
     whatwg-url: ^8.0.0
   checksum: 97caf828aac25e25e04ba6869db0f99c75e6859bb5b424ada28d3e7841941ebf08ddff3c1b1bb4585986bd507a5d54c2a716853ea6cb98af877400e637393e71
-  languageName: node
-  linkType: hard
-
-"date-fns@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "date-fns@npm:2.30.0"
-  dependencies:
-    "@babel/runtime": ^7.21.0
-  checksum: f7be01523282e9bb06c0cd2693d34f245247a29098527d4420628966a2d9aad154bd0e90a6b1cf66d37adcb769cd108cf8a7bd49d76db0fb119af5cdd13644f4
   languageName: node
   linkType: hard
 
@@ -4232,8 +4214,8 @@ __metadata:
     "@next/mdx": ^14.1.4
     "@opentelemetry/api": ^1.8.0
     "@planetscale/database": ^1.16.0
-    "@types/node": ^20.12.5
-    "@types/react": ^18.2.74
+    "@types/node": ^20.12.6
+    "@types/react": ^18.2.75
     "@types/react-dom": ^18.2.24
     "@vercel/analytics": ^1.2.2
     "@vercel/edge-config": ^1.1.0
@@ -4251,7 +4233,7 @@ __metadata:
     react: ^18.2.0
     react-calendly: ^4.3.0
     react-dom: ^18.2.0
-    react-tweet: ^3.2.0
+    react-tweet: ^3.2.1
     remark-gfm: ^4.0.0
     remark-prism: ^1.3.6
     sharp: ^0.33.3
@@ -6061,18 +6043,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-tweet@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "react-tweet@npm:3.2.0"
+"react-tweet@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "react-tweet@npm:3.2.1"
   dependencies:
     "@swc/helpers": ^0.5.3
     clsx: ^2.0.0
-    date-fns: ^2.30.0
     swr: ^2.2.4
   peerDependencies:
     react: ">= 18.0.0"
     react-dom: ">= 18.0.0"
-  checksum: 55e95d231fc70381ab0a08b87a164f1ad206674cd1ff45528d15ed72620e878d9c2a4275c83369dee4cc41913c74475edd75196aea2f962c9bb520e2fa030966
+  checksum: 072625a9561913f653a9d2c86dd8b96cf7c67d48f684e2e3404533d675558ba482cf8a62e62135e2c876c70396df23d1ac8bf7a2b1dd705e85a483d22266da16
   languageName: node
   linkType: hard
 
@@ -6121,13 +6102,6 @@ __metadata:
   version: 0.13.11
   resolution: "regenerator-runtime@npm:0.13.11"
   checksum: 27481628d22a1c4e3ff551096a683b424242a216fee44685467307f14d58020af1e19660bf2e26064de946bad7eff28950eae9f8209d55723e2d9351e632bbb4
-  languageName: node
-  linkType: hard
-
-"regenerator-runtime@npm:^0.14.0":
-  version: 0.14.0
-  resolution: "regenerator-runtime@npm:0.14.0"
-  checksum: 1c977ad82a82a4412e4f639d65d22be376d3ebdd30da2c003eeafdaaacd03fc00c2320f18120007ee700900979284fc78a9f00da7fb593f6e6eeebc673fba9a3
   languageName: node
   linkType: hard
 
