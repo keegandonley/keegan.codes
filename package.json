@@ -17,8 +17,8 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
-    "@fortawesome/pro-regular-svg-icons": "git+https://keegandonley:GITHUB_ACCESS_TOKEN_READ_ONLY_FA_MIRROR@github.com/keegandonley/pro-regular-svg-icons.git",
-    "@fortawesome/pro-solid-svg-icons": "git+https://keegandonley:GITHUB_ACCESS_TOKEN_READ_ONLY_FA_MIRROR@github.com/keegandonley/pro-solid-svg-icons.git",
+    "@fortawesome/pro-regular-svg-icons": "git+https://keegandonley:$GITHUB_ACCESS_TOKEN_READ_ONLY_FA_MIRROR@github.com/keegandonley/pro-regular-svg-icons.git",
+    "@fortawesome/pro-solid-svg-icons": "git+https://keegandonley:$GITHUB_ACCESS_TOKEN_READ_ONLY_FA_MIRROR@github.com/keegandonley/pro-solid-svg-icons.git",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@keegancodes/foundations": "^1.0.20",
     "@mdx-js/loader": "^3.0.1",
