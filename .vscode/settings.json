@@ -4,5 +4,6 @@
   "prettier.configPath": "./.prettierrc",
   "prettier.enableDebugLogs": true,
   "prettier.singleQuote": true,
-  "prettier.prettierPath": "./node_modules/prettier"
+  "prettier.prettierPath": "./node_modules/prettier",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

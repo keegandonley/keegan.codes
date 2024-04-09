@@ -4,7 +4,7 @@ import { useState } from 'react';
 import styles from './recursive.module.css';
 import { merge } from '@/util/classNames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFile, faFolderOpen } from '@fortawesome/pro-solid-svg-icons';
+import { faFile, faFolderOpen } from '@keegandonley/pro-solid-svg-icons';
 
 const RocketLaunchComponent = (props: { interval: number; count: number }) => {
   if (props.count <= 0) {

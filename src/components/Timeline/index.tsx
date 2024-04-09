@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowLeftLong,
   faArrowRightLong,
-} from '@fortawesome/pro-solid-svg-icons';
+} from '@keegandonley/pro-solid-svg-icons';
 import { merge } from '@/util/classNames';
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';

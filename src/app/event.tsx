@@ -1,5 +1,5 @@
 import { Banner } from '@/components/Banner';
-import { faMartiniGlass } from '@fortawesome/pro-solid-svg-icons';
+import { faMartiniGlass } from '@keegandonley/pro-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { get } from '@vercel/edge-config';
 

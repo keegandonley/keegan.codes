@@ -1,4 +1,4 @@
-import { faCalendar } from '@fortawesome/pro-solid-svg-icons';
+import { faCalendar } from '@keegandonley/pro-solid-svg-icons';
 import styles from './date.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { formatDate } from '@/util/date';

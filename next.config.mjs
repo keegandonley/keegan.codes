@@ -33,12 +33,12 @@ const nextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 90,
   },
   modularizeImports: {
-    '@fortawesome/pro-solid-svg-icons': {
-      transform: '@fortawesome/pro-solid-svg-icons/{{member}}',
+    '@keegandonley/pro-solid-svg-icons': {
+      transform: '@keegandonley/pro-solid-svg-icons/{{member}}',
       skipDefaultConversion: true,
     },
-    '@fortawesome/pro-regular-svg-icons': {
-      transform: '@fortawesome/pro-regular-svg-icons/{{member}}',
+    '@keegandonley/pro-regular-svg-icons': {
+      transform: '@keegandonley/pro-regular-svg-icons/{{member}}',
       skipDefaultConversion: true,
     },
     '@fortawesome/free-brands-svg-icons': {
