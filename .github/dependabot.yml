@@ -9,3 +9,10 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
+    registries:
+      - npm
+registries:
+  npm:
+    type: npm-registry
+    url: https://registry.npmjs.org
+    token: ${{secrets.DEP_NPM_TOKEN}}
