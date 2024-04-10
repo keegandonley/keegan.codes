@@ -15,6 +15,7 @@ import { Post } from '@/types/post';
 import dynamic from 'next/dynamic';
 import { Fallback as BlogPreviewFallback } from '@/components/BlogPreview/Fallback';
 import { merge } from '@/util/classNames';
+import { faCode } from '@keegandonley/pro-solid-svg-icons';
 
 const DynamicBlogPreview = dynamic(() => import('@/components/BlogPreview'), {
   loading: () => <BlogPreviewFallback />,
@@ -60,7 +61,9 @@ export default function Home() {
       </div>
 
       <section className={styles.content}>
-        {/* <h1 className={styles.sectionHeader}>Hi There, I&apos;m Keegan!</h1> */}
+        {/* <h1 className={styles.sectionHeader}>
+          <FontAwesomeIcon icon={faCode} />
+        </h1> */}
         <Paragraph className={styles.paragraph}>
           I&apos;m a <strong>full-stack engineer</strong> located in Austin,
           Texas.
@@ -83,11 +86,13 @@ export default function Home() {
             Read more on my blog <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>
-        <h1 className={styles.sectionHeader}>Always Learning</h1>
+        {/* <h1 className={styles.sectionHeader}>
+          <FontAwesomeIcon icon={faBrainCircuit} />
+        </h1> */}
         <Paragraph className={styles.paragraph}>
-          I strive to be always learning, and will share as much as I can about
-          my passions here on my website. My favorite projects combine software,
-          hardware, hobby electronics, and more!
+          I strive to be always learning, and share a lot about my passions here
+          on my website. My favorite projects combine software, hardware, hobby
+          electronics, and more!
         </Paragraph>
         <Paragraph className={styles.paragraph}>
           To that end, I currently have {postCount} posts on{' '}

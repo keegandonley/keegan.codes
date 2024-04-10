@@ -23,16 +23,17 @@
 }
 
 .sectionHeader {
-  text-align: left;
+  text-align: center;
   max-width: 1000px;
   padding-left: 2rem;
   padding-right: 2rem;
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: 900;
-  padding-top: 8rem;
-  padding-bottom: 2rem;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
   margin: 0 auto;
   color: var(--theme-text);
+  color: var(--theme-yellow);
 }
 
 @keyframes textGradient {
@@ -77,6 +78,7 @@
   text-align: center;
   margin-top: 4rem;
   display: flex;
+  margin-bottom: 4rem;
 }
 
 .blogButtonText {
