@@ -44,15 +44,17 @@ export const PostModal = ({ slug, wordCount }: PostModalProps) => {
         ) : null}
         <BottomFade />
       </div>
-      <article className={styles.article}>
-        <PostHeader
-          slug={slug}
-          title={title}
-          location="modal"
-          wordCount={wordCount}
-        />
-        <Component />
-      </article>
+      <div className={styles.bg}>
+        <article className={styles.article}>
+          <PostHeader
+            slug={slug}
+            title={title}
+            location="modal"
+            wordCount={wordCount}
+          />
+          <Component />
+        </article>
+      </div>
     </>
   );
 };
