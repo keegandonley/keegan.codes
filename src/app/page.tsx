@@ -48,14 +48,19 @@ export default function Home() {
       <HeroBlock isHomePage collapse>
         <HeroText className={styles.name}>Keegan Donley</HeroText>
       </HeroBlock>
-      <Social />
       <div className={styles.cta}>
         <div className={styles.menu}>
           Developer, maker, and lifelong learner
         </div>
       </div>
+      <div className={styles.socialOuter}></div>
+
+      <div className={styles.social}>
+        <Social />
+      </div>
+
       <section className={styles.content}>
-        <h1 className={styles.sectionHeader}>Hi There, I&apos;m Keegan!</h1>
+        {/* <h1 className={styles.sectionHeader}>Hi There, I&apos;m Keegan!</h1> */}
         <Paragraph className={styles.paragraph}>
           I&apos;m a <strong>full-stack engineer</strong> located in Austin,
           Texas.

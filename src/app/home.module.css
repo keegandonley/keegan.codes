@@ -1,6 +1,6 @@
 .content {
   padding-bottom: 6rem;
-  padding-top: 5rem;
+  padding-top: 12rem;
   z-index: 1;
 }
 
@@ -17,9 +17,9 @@
   max-width: 1000px;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-bottom: 1.2rem;
-  font-size: 1.4rem;
-  line-height: 2.2rem;
+  padding-bottom: 2rem;
+  font-size: 1.6rem;
+  line-height: 2.7rem;
 }
 
 .sectionHeader {
@@ -104,9 +104,10 @@
 
 .cta {
   display: flex;
-  padding-top: 4rem;
+  padding: 0 2rem;
   z-index: 1;
   position: relative;
+  text-align: center;
 }
 
 .menu {
@@ -121,4 +122,14 @@
 .menu a {
   text-decoration: none;
   color: var(--theme-text);
+}
+
+.social {
+  /* position: sticky; */
+  top: 0.2rem;
+  z-index: 99;
+}
+
+.socialOuter {
+  padding-top: 4rem;
 }

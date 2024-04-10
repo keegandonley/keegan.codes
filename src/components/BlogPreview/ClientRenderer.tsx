@@ -64,9 +64,13 @@ export const ClientRenderer = ({ posts }: ClientRendererProps) => {
               href={`/blog/${post.slug}`}
             >
               <span className={styles.text}>
-                <h1>{post.title}</h1>
-                <p className={styles.metadata}>{formatDate(post.published)}</p>
-                <p>{post.description}</p>
+                <div className={styles.inner}>
+                  <h1>{post.title}</h1>
+                  <p className={styles.metadata}>
+                    {formatDate(post.published)}
+                  </p>
+                  <p className={styles.description}>{post.description}</p>
+                </div>
               </span>
               <Image
                 src={`${BUCKET_URL}/${post.cover}`}
