@@ -48,14 +48,18 @@ export default function Home() {
       <HeroBlock isHomePage collapse>
         <HeroText className={styles.name}>Keegan Donley</HeroText>
       </HeroBlock>
-      <Social />
       <div className={styles.cta}>
         <div className={styles.menu}>
           Developer, maker, and lifelong learner
         </div>
       </div>
+      <div className={styles.socialOuter}></div>
+
+      <div className={styles.social}>
+        <Social />
+      </div>
+
       <section className={styles.content}>
-        <h1 className={styles.sectionHeader}>Hi There, I&apos;m Keegan!</h1>
         <Paragraph className={styles.paragraph}>
           I&apos;m a <strong>full-stack engineer</strong> located in Austin,
           Texas.
@@ -78,11 +82,10 @@ export default function Home() {
             Read more on my blog <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>
-        <h1 className={styles.sectionHeader}>Always Learning</h1>
         <Paragraph className={styles.paragraph}>
-          I strive to be always learning, and will share as much as I can about
-          my passions here on my website. My favorite projects combine software,
-          hardware, hobby electronics, and more!
+          I strive to be always learning, and share a lot about my passions here
+          on my website. My favorite projects combine software, hardware, hobby
+          electronics, and more!
         </Paragraph>
         <Paragraph className={styles.paragraph}>
           To that end, I currently have {postCount} posts on{' '}

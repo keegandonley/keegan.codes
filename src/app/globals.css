@@ -22,6 +22,10 @@ body {
   scrollbar-gutter: stable;
 }
 
+html {
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape while allowing user zoom */
+}
+
 body {
   min-height: 100vh;
   min-height: 100dvh;

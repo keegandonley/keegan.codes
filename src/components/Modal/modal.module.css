@@ -14,7 +14,6 @@
 }
 
 .inner {
-  background: var(--theme-background);
   width: 80%;
   max-width: 900px;
   margin: 0 auto;
@@ -31,14 +30,6 @@
   overflow: hidden;
 }
 
-@media only screen and (max-width: 700px) {
-  .inner {
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
-  }
-}
-
 .inner.fadeIn {
   transform: translateY(0);
   opacity: 1;
@@ -48,14 +39,22 @@
   position: absolute;
   z-index: 9;
   padding: 1rem 1.5rem;
-  background: var(--theme-dark-blue);
-  opacity: 1;
+  background: rgba(97, 97, 97, 0.3);
+  backdrop-filter: blur(5px);
   color: white;
   border-bottom-right-radius: 18px;
   border-top-left-radius: 18px;
-  border-top-right-radius: 6px;
-  border-bottom-left-radius: 6px;
-  box-shadow: 1px 1px 40px 1px var(--shadow-color);
-  left: 10px;
-  top: 10px;
+  opacity: 1;
+}
+
+@media only screen and (max-width: 700px) {
+  .inner {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .backButton {
+    border-top-left-radius: 0;
+  }
 }

@@ -19,3 +19,8 @@
   color: var(--theme-text);
   position: relative;
 }
+
+.bg {
+  background: var(--theme-background);
+  margin-top: 1rem;
+}
