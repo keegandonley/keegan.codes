@@ -58,26 +58,28 @@ export const BookContent = ({
           <BottomFade />
         </div>
       ) : null}
-      <div className={merge(styles.wrapper, wrapperClassName)}>
-        <aside className={styles.metadata}>
-          <div className={merge(styles.coverWrapper, coverWrapperClassName)}>
-            {cover ? (
-              <Image
-                src={`${BOOK_BUCKET_URL}/${cover}`}
-                alt="todo"
-                fill
-                priority
-                {...parseToProps(metadata)}
-                sizes="500px"
-              />
-            ) : null}
-          </div>
-        </aside>
-        <article className={styles.article}>
-          <H1 className={styles.title}>{title}</H1>
-          <H2 className={styles.author}>{author}</H2>
-          <Component />
-        </article>
+      <div className={styles.bg}>
+        <div className={merge(styles.wrapper, wrapperClassName)}>
+          <aside className={styles.metadata}>
+            <div className={merge(styles.coverWrapper, coverWrapperClassName)}>
+              {cover ? (
+                <Image
+                  src={`${BOOK_BUCKET_URL}/${cover}`}
+                  alt="todo"
+                  fill
+                  priority
+                  {...parseToProps(metadata)}
+                  sizes="500px"
+                />
+              ) : null}
+            </div>
+          </aside>
+          <article className={styles.article}>
+            <H1 className={styles.title}>{title}</H1>
+            <H2 className={styles.author}>{author}</H2>
+            <Component />
+          </article>
+        </div>
       </div>
     </>
   );

@@ -69,3 +69,8 @@
     margin: 0 auto;
   }
 }
+
+.bg {
+  background: var(--theme-background);
+  margin-top: 1rem;
+}
