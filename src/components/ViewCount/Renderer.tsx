@@ -1,5 +1,6 @@
 import { merge } from '@/util/classNames';
 import { getFullyQualifiedDeploymentUrl } from '@/util/deployment';
+import { formatNumber } from '@keegancodes/foundations';
 
 interface ViewCountRendererProps {
   slug: string;
@@ -29,5 +30,5 @@ export const ViewCountRenderer = async ({
 }: ViewCountRendererProps) => {
   const views = await getValue(slug);
 
-  return <span className={merge(className)}>{views}</span>;
+  return <span className={merge(className)}>{formatNumber(views)}</span>;
 };

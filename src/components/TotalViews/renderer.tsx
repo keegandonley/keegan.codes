@@ -1,5 +1,6 @@
 import { merge } from '@/util/classNames';
 import { getFullyQualifiedDeploymentUrl } from '@/util/deployment';
+import { formatNumber } from '@keegancodes/foundations';
 
 const getValue = async (): Promise<number> => {
   try {
@@ -24,5 +25,5 @@ export const ViewCountRenderer = async ({
   className,
 }: ViewCountRendererProps) => {
   const views = await getValue();
-  return <span className={merge(className)}>{views.toLocaleString()}</span>;
+  return <span className={merge(className)}>{formatNumber(views)}</span>;
 };
