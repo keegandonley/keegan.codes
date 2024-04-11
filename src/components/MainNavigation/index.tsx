@@ -27,15 +27,15 @@ const MainNavigation = ({
 }) => {
   const pathname = usePathname();
   const segments = useSelectedLayoutSegments();
-  const isHomePage = pathname === '/' || !segments.length;
+  const isHomePage = pathname === '/' || !segments?.length;
   const isBlogPage = pathname?.startsWith('/blog');
   const isLibraryPage = pathname?.startsWith('/library');
   const isSlideshow = pathname?.startsWith('/slides');
   const isErrorPage = pathname?.startsWith('/routing-error');
 
-  const isChat = segments[0] === 'chat';
-  const isResume = segments[0] === 'resume';
-  const isHi = segments[0] === 'hi';
+  const isChat = segments?.[0] === 'chat';
+  const isResume = segments?.[0] === 'resume';
+  const isHi = segments?.[0] === 'hi';
 
   useEffect(() => {
     document.body.classList.remove('preload');
