@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@keegandonley/pro-solid-svg-icons';
 import styles from './viewcount.module.css';
 import { merge } from '@/util/classNames';
+import { formatNumber } from '@keegancodes/foundations';
 
 interface ViewCountProps {
   slug: string;
@@ -21,7 +22,7 @@ export default function ViewCount({
     <span className={merge(className, styles.wrapper)}>
       <FontAwesomeIcon icon={faEye} fixedWidth />
       {fixedCount ? (
-        <span>{fixedCount}</span>
+        <span>{formatNumber(fixedCount)}</span>
       ) : (
         <Suspense fallback={<ViewCountFallback />}>
           <ViewCountRenderer slug={slug} />
