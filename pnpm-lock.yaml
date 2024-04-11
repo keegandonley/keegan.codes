@@ -15,8 +15,8 @@ dependencies:
     specifier: ^0.2.0
     version: 0.2.0(@fortawesome/fontawesome-svg-core@6.5.2)(react@18.2.0)
   '@keegancodes/foundations':
-    specifier: ^1.0.20
-    version: 1.0.20
+    specifier: ^1.0.21
+    version: 1.0.21
   '@keegandonley/pro-regular-svg-icons':
     specifier: ^6.5.2
     version: 6.5.2
@@ -478,8 +478,8 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@keegancodes/foundations@1.0.20:
-    resolution: {integrity: sha512-QEoiUjQRIA6gQrk10CB3sxA+84jy6oK9ssvlfRKlKIcgA643F8aT0bh2TjYwzIhc7semWjpirR295JLfi5lopQ==}
+  /@keegancodes/foundations@1.0.21:
+    resolution: {integrity: sha512-g2MnXcdxlCwJlMYvmyT6Vkv/GB+B24LPbFdnDFUqo0p7wuQrz006Kvp78S+1QdhGrwNaTINEY6UulCVzxkTcFQ==}
     dev: false
 
   /@keegandonley/pro-regular-svg-icons@6.5.2:
