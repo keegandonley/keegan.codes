@@ -17,6 +17,9 @@ dependencies:
   '@keegancodes/foundations':
     specifier: ^1.0.21
     version: 1.0.21
+  '@keegancodes/foundations-react':
+    specifier: ^1.0.27
+    version: 1.0.27(@keegancodes/foundations@1.0.21)(@types/react@18.2.75)(react@18.2.0)
   '@keegandonley/pro-regular-svg-icons':
     specifier: ^6.5.2
     version: 6.5.2
@@ -477,6 +480,18 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  /@keegancodes/foundations-react@1.0.27(@keegancodes/foundations@1.0.21)(@types/react@18.2.75)(react@18.2.0):
+    resolution: {integrity: sha512-eaR0nmgFIH5wawK7OmsoD1Yb6B7LEl+5Vw87jmoUXw3zoDzyxG0AgVhLngnkeAw2eSFskrDRZldGggHJfhX3Zg==}
+    peerDependencies:
+      '@keegancodes/foundations': ^1.0.21
+      '@types/react': ^18.2.77
+      react: ^18.2.0
+    dependencies:
+      '@keegancodes/foundations': 1.0.21
+      '@types/react': 18.2.75
+      react: 18.2.0
+    dev: false
 
   /@keegancodes/foundations@1.0.21:
     resolution: {integrity: sha512-g2MnXcdxlCwJlMYvmyT6Vkv/GB+B24LPbFdnDFUqo0p7wuQrz006Kvp78S+1QdhGrwNaTINEY6UulCVzxkTcFQ==}
