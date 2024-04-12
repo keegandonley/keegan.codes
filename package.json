@@ -26,7 +26,7 @@
     "@next/bundle-analyzer": "^14.1.4",
     "@next/mdx": "^14.1.4",
     "@planetscale/database": "^1.16.0",
-    "@types/mdx": "^2.0.12",
+    "@types/mdx": "^2.0.13",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.75",
     "@types/react-dom": "^18.2.24",
