@@ -5,6 +5,5 @@
   padding: 1rem;
   overflow-x: auto;
   border-radius: var(--rounded-block);
-  filter: drop-shadow(0 0 0.2rem var(--shadow-color));
   border-left: 3px solid var(--theme-blue-2);
 }
