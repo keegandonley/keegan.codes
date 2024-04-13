@@ -213,8 +213,8 @@ const Form = () => {
 
 > Without currying, our inputs with their callbacks would be something like this:
 >
-> ```jsx
-> <input onChange={(event) => inputHandler('name', event)} />
+> ```javascript
+> const Form = <input onChange={(event) => inputHandler('name', event)} />;
 > ```
 >
 > The curried approach is far more concise and still easy to read and understand!

@@ -5,7 +5,7 @@
   margin: 2rem 0 1rem 0;
   padding: 0 1rem;
   border-radius: var(--rounded-block);
-  filter: drop-shadow(0 0 0.2rem var(--shadow-color));
+  filter: drop-shadow(0 0 0.1rem var(--shadow-color));
 }
 
 .bq :global(.svg-inline--fa) {
@@ -16,10 +16,7 @@
   font-size: 1rem;
 }
 
-.bq code {
-  background: var(--theme-blue-1);
-  border-left: 2px solid var(--theme-blue-2);
-
+.bq > p > code {
   color: var(--theme-text);
   padding: 0.1rem 0.3rem;
   box-shadow: var(--theme-box-shadow-tiny);
@@ -28,15 +25,30 @@
   word-break: break-word;
 }
 
-.bq pre code {
-  color: inherit;
+.bq.bq > p > code {
+  background: var(--theme-blue-1);
+  border-left: 2px solid var(--theme-blue-3);
+  color: var(--theme-blue-3);
 }
 
-:global(body.dark) .bq code {
+.bq pre code {
+  background: var(--background);
+}
+
+:global(body.dark) .bq.bq > p > code {
   background: var(--theme-blue-3);
+  color: var(--theme-inverted-text);
+  border-left: 2px solid var(--theme-inverted-text);
+}
+
+:global(body.dark) .bq.bq pre code {
+  background: var(--background);
+  color: var(--foreground);
+  border-left: 3px solid var(--theme-blue-2);
 }
 
 .bq.bq pre code {
-  background: none;
-  border: none;
+  color: var(--foreground);
+  background: var(--background);
+  border-left: 3px solid var(--theme-blue-2);
 }
