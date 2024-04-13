@@ -19,7 +19,7 @@ dependencies:
     version: 1.0.21
   '@keegancodes/foundations-react':
     specifier: ^1.0.27
-    version: 1.0.27(@keegancodes/foundations@1.0.21)(@types/react@18.2.76)(react@18.2.0)
+    version: 1.0.27(@keegancodes/foundations@1.0.21)(@types/react@18.2.77)(react@18.2.0)
   '@keegandonley/pro-regular-svg-icons':
     specifier: ^6.5.2
     version: 6.5.2
@@ -31,7 +31,7 @@ dependencies:
     version: 3.0.1(webpack@5.91.0)
   '@mdx-js/react':
     specifier: ^3.0.1
-    version: 3.0.1(@types/react@18.2.76)(react@18.2.0)
+    version: 3.0.1(@types/react@18.2.77)(react@18.2.0)
   '@next/bundle-analyzer':
     specifier: ^14.2.0
     version: 14.2.0
@@ -48,8 +48,8 @@ dependencies:
     specifier: ^20.12.7
     version: 20.12.7
   '@types/react':
-    specifier: ^18.2.76
-    version: 18.2.76
+    specifier: ^18.2.77
+    version: 18.2.77
   '@types/react-dom':
     specifier: ^18.2.25
     version: 18.2.25
@@ -481,7 +481,7 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@keegancodes/foundations-react@1.0.27(@keegancodes/foundations@1.0.21)(@types/react@18.2.76)(react@18.2.0):
+  /@keegancodes/foundations-react@1.0.27(@keegancodes/foundations@1.0.21)(@types/react@18.2.77)(react@18.2.0):
     resolution: {integrity: sha512-eaR0nmgFIH5wawK7OmsoD1Yb6B7LEl+5Vw87jmoUXw3zoDzyxG0AgVhLngnkeAw2eSFskrDRZldGggHJfhX3Zg==}
     peerDependencies:
       '@keegancodes/foundations': ^1.0.21
@@ -489,7 +489,7 @@ packages:
       react: ^18.2.0
     dependencies:
       '@keegancodes/foundations': 1.0.21
-      '@types/react': 18.2.76
+      '@types/react': 18.2.77
       react: 18.2.0
     dev: false
 
@@ -555,14 +555,14 @@ packages:
       - supports-color
     dev: false
 
-  /@mdx-js/react@3.0.1(@types/react@18.2.76)(react@18.2.0):
+  /@mdx-js/react@3.0.1(@types/react@18.2.77)(react@18.2.0):
     resolution: {integrity: sha512-9ZrPIU4MGf6et1m1ov3zKf+q9+deetI51zprKB1D/z3NOb+rUxxtEl3mCjW5wTGh6VhRdwPueh1oRzi6ezkA8A==}
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
     dependencies:
       '@types/mdx': 2.0.13
-      '@types/react': 18.2.76
+      '@types/react': 18.2.77
       react: 18.2.0
     dev: false
 
@@ -597,7 +597,7 @@ packages:
         optional: true
     dependencies:
       '@mdx-js/loader': 3.0.1(webpack@5.91.0)
-      '@mdx-js/react': 3.0.1(@types/react@18.2.76)(react@18.2.0)
+      '@mdx-js/react': 3.0.1(@types/react@18.2.77)(react@18.2.0)
       source-map: 0.7.4
     dev: false
 
@@ -841,11 +841,11 @@ packages:
   /@types/react-dom@18.2.25:
     resolution: {integrity: sha512-o/V48vf4MQh7juIKZU2QGDfli6p1+OOi5oXx36Hffpc9adsHeXjVp8rHuPkjd8VT8sOJ2Zp05HR7CdpGTIUFUA==}
     dependencies:
-      '@types/react': 18.2.76
+      '@types/react': 18.2.77
     dev: false
 
-  /@types/react@18.2.76:
-    resolution: {integrity: sha512-T6z/v7YxpswDM61Vq5KoSPTJqCkroJfsDIsvXCr4+qOY6gik5Ju4w0jf67cpC5z7ydOnp/E0V0W08pDRy8u9Xw==}
+  /@types/react@18.2.77:
+    resolution: {integrity: sha512-CUT9KUUF+HytDM7WiXKLF9qUSg4tGImwy4FXTlfEDPEkkNUzJ7rVFolYweJ9fS1ljoIaP7M7Rdjc5eUm/Yu5AA==}
     dependencies:
       '@types/prop-types': 15.7.12
       csstype: 3.1.3
