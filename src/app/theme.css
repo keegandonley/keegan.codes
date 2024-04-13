@@ -47,6 +47,7 @@
   --theme-pill: var(--theme-grid-line-color);
 
   --tiny-border-radius: 3px;
+  --rounded-block: 6px;
 
   --thirsty-bot-yellow: rgb(202 138 4);
 }
@@ -75,7 +76,7 @@ body.dark {
   --theme-transparent: rgba(0, 0, 0, 0);
   --code-background: rgba(40, 42, 54, 1);
   --code-color: var(--theme-text);
-  --shadow-color: rgb(28, 28, 75);
+  --shadow-color: rgb(52, 52, 94);
 
   /* Theme animation */
   --animation: 0.5s ease-in-out;

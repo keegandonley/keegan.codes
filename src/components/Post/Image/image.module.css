@@ -14,6 +14,7 @@
 
 .imageParent img {
   object-fit: contain;
+  border-radius: var(--rounded-block);
 }
 
 .imageParent.limited {
