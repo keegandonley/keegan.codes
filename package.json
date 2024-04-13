@@ -19,6 +19,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@keegancodes/foundations": "^1.0.21",
+    "@keegancodes/foundations-next": "^1.0.29",
     "@keegancodes/foundations-react": "^1.0.27",
     "@keegandonley/pro-regular-svg-icons": "^6.5.2",
     "@keegandonley/pro-solid-svg-icons": "^6.5.2",

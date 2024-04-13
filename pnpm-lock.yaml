@@ -17,6 +17,9 @@ dependencies:
   '@keegancodes/foundations':
     specifier: ^1.0.21
     version: 1.0.21
+  '@keegancodes/foundations-next':
+    specifier: ^1.0.29
+    version: 1.0.29(@keegancodes/foundations@1.0.21)(next@14.2.1-canary.2)(react-dom@18.2.0)(react@18.2.0)
   '@keegancodes/foundations-react':
     specifier: ^1.0.27
     version: 1.0.27(@keegancodes/foundations@1.0.21)(@types/react@18.2.76)(react@18.2.0)
@@ -480,6 +483,20 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  /@keegancodes/foundations-next@1.0.29(@keegancodes/foundations@1.0.21)(next@14.2.1-canary.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-idVqLF8LwP9utXGS0TRy8RGAkPgEOyu++Q58lkyu0R+bDq/MsIpigRq5eOEW4WeC6qlcoTFf9Zyu5760FHDzUw==}
+    peerDependencies:
+      '@keegancodes/foundations': ^1.0.21
+      next: ^14.2.1
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    dependencies:
+      '@keegancodes/foundations': 1.0.21
+      next: 14.2.1-canary.2(@opentelemetry/api@1.8.0)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /@keegancodes/foundations-react@1.0.27(@keegancodes/foundations@1.0.21)(@types/react@18.2.76)(react@18.2.0):
     resolution: {integrity: sha512-eaR0nmgFIH5wawK7OmsoD1Yb6B7LEl+5Vw87jmoUXw3zoDzyxG0AgVhLngnkeAw2eSFskrDRZldGggHJfhX3Zg==}

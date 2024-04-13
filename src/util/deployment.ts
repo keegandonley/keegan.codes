@@ -3,17 +3,10 @@ import {
   getUrlFromHost as __getUrlFromHost,
   getCookieDomain as __getCookieDomain,
 } from '@keegancodes/foundations';
+import { getFullyQualifiedDeploymentUrl as __int } from '@keegancodes/foundations-next';
 
 export const getFullyQualifiedDeploymentUrl = async (path: `/${string}`) => {
-  return __getFullyQualifiedDeploymentUrl(
-    path,
-    async () => {
-      const headers = (await import('next/headers')).headers;
-
-      return headers;
-    },
-    '3561',
-  );
+  return __int(path);
 };
 
 export const getUrlFromHost = __getUrlFromHost;
