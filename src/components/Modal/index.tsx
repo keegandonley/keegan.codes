@@ -1,9 +1,9 @@
 'use client';
 import { useCallback, useEffect, useState } from 'react';
+import { ClientBackButton } from '../ClientBackButton';
 import styles from './modal.module.css';
 import { merge } from '@/util/classNames';
 import { useRouter } from 'next/navigation';
-import { ClientBackButton } from '../ClientBackButton';
 
 const stopEvent = (e: any) => {
   e.stopPropagation();
