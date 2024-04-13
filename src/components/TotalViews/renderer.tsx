@@ -1,6 +1,6 @@
 import { merge } from '@/util/classNames';
-import { getFullyQualifiedDeploymentUrl } from '@/util/deployment';
 import { formatNumber } from '@keegancodes/foundations';
+import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
 
 const getValue = async (): Promise<number> => {
   try {

@@ -1,6 +1,6 @@
 import { merge } from '@/util/classNames';
-import { getFullyQualifiedDeploymentUrl } from '@/util/deployment';
 import { formatNumber } from '@keegancodes/foundations';
+import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
 
 interface ViewCountRendererProps {
   slug: string;

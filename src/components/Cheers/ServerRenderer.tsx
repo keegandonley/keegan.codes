@@ -1,4 +1,4 @@
-import { getFullyQualifiedDeploymentUrl } from '@/util/deployment';
+import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
 import { CheersClientRenderer } from './ClientRenderer';
 import styles from './cheers.module.css';
 
