@@ -15,14 +15,14 @@ dependencies:
     specifier: ^0.2.0
     version: 0.2.0(@fortawesome/fontawesome-svg-core@6.5.2)(react@18.2.0)
   '@keegancodes/foundations':
-    specifier: ^1.0.21
-    version: 1.0.21
+    specifier: ^1.1.1
+    version: 1.1.1
   '@keegancodes/foundations-next':
     specifier: ^1.0.31
-    version: 1.0.31(@keegancodes/foundations@1.0.21)(next@14.2.1-canary.3)(react-dom@18.2.0)(react@18.2.0)
+    version: 1.0.31(@keegancodes/foundations@1.1.1)(next@14.2.1-canary.3)(react-dom@18.2.0)(react@18.2.0)
   '@keegancodes/foundations-react':
     specifier: ^1.0.30
-    version: 1.0.30(@keegancodes/foundations@1.0.21)(@types/react@18.2.78)(react@18.2.0)
+    version: 1.0.30(@keegancodes/foundations@1.1.1)(@types/react@18.2.78)(react@18.2.0)
   '@keegandonley/pro-regular-svg-icons':
     specifier: ^6.5.2
     version: 6.5.2
@@ -84,7 +84,7 @@ dependencies:
     specifier: ^1.3.0
     version: 1.3.0(next@14.2.1-canary.3)
   next:
-    specifier: v14.2.1-canary.3
+    specifier: 14.2.1-canary.3
     version: 14.2.1-canary.3(@opentelemetry/api@1.8.0)(react-dom@18.2.0)(react@18.2.0)
   postcss:
     specifier: ^8.4.38
@@ -484,7 +484,7 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@keegancodes/foundations-next@1.0.31(@keegancodes/foundations@1.0.21)(next@14.2.1-canary.3)(react-dom@18.2.0)(react@18.2.0):
+  /@keegancodes/foundations-next@1.0.31(@keegancodes/foundations@1.1.1)(next@14.2.1-canary.3)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-JGPUVHnTxvclcq+/TiO4tehUdacTXvGHDZpe1kJIUIx6fdX3bKKkMUEbPJ4dLHkqVrry7jE+WY/6twedvZjQAw==}
     peerDependencies:
       '@keegancodes/foundations': ^1.0.21
@@ -492,26 +492,26 @@ packages:
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@keegancodes/foundations': 1.0.21
+      '@keegancodes/foundations': 1.1.1
       next: 14.2.1-canary.3(@opentelemetry/api@1.8.0)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@keegancodes/foundations-react@1.0.30(@keegancodes/foundations@1.0.21)(@types/react@18.2.78)(react@18.2.0):
+  /@keegancodes/foundations-react@1.0.30(@keegancodes/foundations@1.1.1)(@types/react@18.2.78)(react@18.2.0):
     resolution: {integrity: sha512-HtUIqt93MziRKIejgPmQiABTHLqhkIXJc/mhYFrqUq3l5oB8JBbSD/gC4/psbMs4VRQn+4HQX+y4Mez27YFY5g==}
     peerDependencies:
       '@keegancodes/foundations': ^1.0.21
       '@types/react': ^18.2.77
       react: ^18.2.0
     dependencies:
-      '@keegancodes/foundations': 1.0.21
+      '@keegancodes/foundations': 1.1.1
       '@types/react': 18.2.78
       react: 18.2.0
     dev: false
 
-  /@keegancodes/foundations@1.0.21:
-    resolution: {integrity: sha512-g2MnXcdxlCwJlMYvmyT6Vkv/GB+B24LPbFdnDFUqo0p7wuQrz006Kvp78S+1QdhGrwNaTINEY6UulCVzxkTcFQ==}
+  /@keegancodes/foundations@1.1.1:
+    resolution: {integrity: sha512-vkIUUcrBUocULlbytcZgHra0Yp2Jh2mBS2ZPZw+mfeXAAqA9upBWI/sFyYKA292UVbPovhcbTqiDKGk0FF9kog==}
     dev: false
 
   /@keegandonley/pro-regular-svg-icons@6.5.2:
