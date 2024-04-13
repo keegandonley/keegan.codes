@@ -51,3 +51,9 @@ strong {
 .calendly-spinner {
   display: none;
 }
+
+.remark-highlight.remark-highlight > pre {
+  background: none;
+  margin: 1rem 0;
+  padding: 0;
+}

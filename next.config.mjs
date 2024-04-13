@@ -1,9 +1,8 @@
 import addMdx from '@next/mdx';
+import remarkPrism from 'remark-prism';
 import remarkGfm from 'remark-gfm';
 import redirects from './redirects.js';
 import addAnalyzer from '@next/bundle-analyzer';
-import rehypeHighlight from 'rehype-highlight';
-import { common } from 'lowlight';
 
 const nextConfig = {
   reactStrictMode: true,
@@ -69,8 +68,7 @@ const withBundleAnalyzer = addAnalyzer({
 
 const withMDX = addMdx({
   options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypeHighlight.bind(null, { languages: { ...common } })],
+    remarkPlugins: [remarkPrism, remarkGfm],
   },
 });
 
