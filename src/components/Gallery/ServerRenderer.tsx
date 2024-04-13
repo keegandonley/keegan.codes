@@ -1,5 +1,5 @@
 import { Gallery } from '@/types/galleries';
-import { getFullyQualifiedDeploymentUrl } from '@/util/deployment';
+import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
 import dynamic from 'next/dynamic';
 
 const DynamicClientRenderer = dynamic(() => import('./ClientRenderer'));

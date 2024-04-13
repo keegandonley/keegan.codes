@@ -7,7 +7,7 @@ import { formatDate } from '@/util/date';
 import Image from 'next/image';
 import { BUCKET_URL } from '@/util/r2';
 import { parseToProps } from '@/util/image';
-import { getFullyQualifiedDeploymentUrl } from '@/util/deployment';
+import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
 
 const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
 

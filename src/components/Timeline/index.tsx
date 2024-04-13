@@ -6,17 +6,13 @@ import {
   faArrowRightLong,
 } from '@keegandonley/pro-solid-svg-icons';
 import { merge } from '@/util/classNames';
-import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { BUCKET_URL } from '@/util/r2';
 import { parseToProps } from '@/util/image';
 import { formatDate } from '@/util/date';
 import { headers } from 'next/headers';
-import {
-  getFullyQualifiedDeploymentUrl,
-  getUrlFromHost,
-} from '@/util/deployment';
+import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
 
 const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
 
