@@ -1,4 +1,9 @@
 .parent[class*='language-'] {
   font-family: var(--ffamily);
   font-style: var(--fstyle);
+  display: block;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: var(--rounded-block);
+  border-left: 3px solid var(--theme-blue-2);
 }

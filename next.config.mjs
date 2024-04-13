@@ -1,6 +1,6 @@
 import addMdx from '@next/mdx';
-import remarkGfm from 'remark-gfm';
 import remarkPrism from 'remark-prism';
+import remarkGfm from 'remark-gfm';
 import redirects from './redirects.js';
 import addAnalyzer from '@next/bundle-analyzer';
 

@@ -20,6 +20,13 @@
   position: relative;
 }
 
+.article video {
+  border-radius: var(--rounded-block);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 0.5rem var(--shadow-color));
+}
+
 .bg {
   background: var(--theme-background);
   margin-top: 1rem;
