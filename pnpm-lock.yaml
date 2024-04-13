@@ -21,8 +21,8 @@ dependencies:
     specifier: ^1.0.31
     version: 1.0.31(@keegancodes/foundations@1.0.21)(next@14.2.1)(react-dom@18.2.0)(react@18.2.0)
   '@keegancodes/foundations-react':
-    specifier: ^1.0.28
-    version: 1.0.28(@keegancodes/foundations@1.0.21)(@types/react@18.2.78)(react@18.2.0)
+    specifier: ^1.0.30
+    version: 1.0.30(@keegancodes/foundations@1.0.21)(@types/react@18.2.78)(react@18.2.0)
   '@keegandonley/pro-regular-svg-icons':
     specifier: ^6.5.2
     version: 6.5.2
@@ -498,8 +498,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@keegancodes/foundations-react@1.0.28(@keegancodes/foundations@1.0.21)(@types/react@18.2.78)(react@18.2.0):
-    resolution: {integrity: sha512-hviB+Y+yVMzWArJG1OhiK2WZihTBDo0MMg9LsBuPNcyeuvL0kPYR7YgnTjsOISuOvmuHc/nIeIMJCLzTFjLmuA==}
+  /@keegancodes/foundations-react@1.0.30(@keegancodes/foundations@1.0.21)(@types/react@18.2.78)(react@18.2.0):
+    resolution: {integrity: sha512-HtUIqt93MziRKIejgPmQiABTHLqhkIXJc/mhYFrqUq3l5oB8JBbSD/gC4/psbMs4VRQn+4HQX+y4Mez27YFY5g==}
     peerDependencies:
       '@keegancodes/foundations': ^1.0.21
       '@types/react': ^18.2.77
