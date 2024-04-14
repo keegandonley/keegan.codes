@@ -18,13 +18,18 @@ export const Code = ({ children, className }: CodeProps) => {
   const { ref, onClick, pending } = useCopyElementText();
 
   return (
-    <code
-      className={merge(className, styles.parent)}
-      style={injectVariables([
-        ['ffamily', GeistMono.style.fontFamily],
-        ['fstyle', GeistMono.style.fontStyle],
-      ])}
-    >
+    <>
+      <code
+        className={merge(className, styles.parent)}
+        style={injectVariables([
+          ['ffamily', GeistMono.style.fontFamily],
+          ['fstyle', GeistMono.style.fontStyle],
+        ])}
+      >
+        <span ref={ref} className={language ? styles.text : ''}>
+          {children}
+        </span>
+      </code>
       {language ? (
         <span className={merge(styles.header)}>
           <span className={styles.langText}>{language}</span>
@@ -45,9 +50,6 @@ export const Code = ({ children, className }: CodeProps) => {
           </button>
         </span>
       ) : null}
-      <span ref={ref} className={language ? styles.text : ''}>
-        {children}
-      </span>
-    </code>
+    </>
   );
 };

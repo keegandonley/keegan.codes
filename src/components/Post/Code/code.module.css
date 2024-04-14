@@ -8,10 +8,11 @@
   border-left: 3px solid var(--theme-blue-2);
   position: relative;
   -webkit-overflow-scrolling: touch;
+  padding-top: 30px;
 }
 
 .header {
-  position: sticky;
+  position: absolute;
   left: 0;
   top: 0;
   right: 0;
