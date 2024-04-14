@@ -52,7 +52,7 @@
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
   .wrapper {
     min-width: calc(50% - 8px);
     max-width: calc(50% - 8px);
@@ -62,7 +62,7 @@
   }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 700px) {
   .wrapper {
     min-width: 100%;
     max-width: 100%;
