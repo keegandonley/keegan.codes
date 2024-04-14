@@ -3,10 +3,11 @@
   font-style: var(--fstyle);
   display: block;
   padding: 0;
-  overflow-x: auto;
+  overflow-x: scroll;
   border-radius: var(--rounded-block);
   border-left: 3px solid var(--theme-blue-2);
   position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 
 .header {
