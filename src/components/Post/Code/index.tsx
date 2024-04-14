@@ -45,7 +45,9 @@ export const Code = ({ children, className }: CodeProps) => {
           </button>
         </span>
       ) : null}
-      <span ref={ref}>{children}</span>
+      <span ref={ref} className={language ? styles.text : ''}>
+        {children}
+      </span>
     </code>
   );
 };

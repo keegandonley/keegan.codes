@@ -2,16 +2,15 @@
   font-family: var(--ffamily);
   font-style: var(--fstyle);
   display: block;
-  padding: 1rem;
+  padding: 0;
   overflow-x: auto;
   border-radius: var(--rounded-block);
   border-left: 3px solid var(--theme-blue-2);
   position: relative;
-  padding-top: calc(30px + 1rem);
 }
 
 .header {
-  position: absolute;
+  position: sticky;
   left: 0;
   top: 0;
   right: 0;
@@ -60,4 +59,9 @@
 
 .langText {
   opacity: 0.5;
+}
+
+.text {
+  display: block;
+  padding: 1rem;
 }
