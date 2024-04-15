@@ -5,7 +5,7 @@
   margin: 2rem 0 1rem 0;
   padding: 0 1rem;
   border-radius: var(--rounded-block);
-  filter: drop-shadow(0 0 0.1rem var(--shadow-color));
+  box-shadow: 0 0 0.2rem var(--shadow-color);
 }
 
 .bq :global(.svg-inline--fa) {
