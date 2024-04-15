@@ -77,8 +77,8 @@ export default function Home() {
           .
         </Paragraph>
         <DynamicBlogPreview posts={posts} />
-        <div className={merge(styles.blogButton, 'animate-viz')}>
-          <Link href="/blog" className={merge(styles.blogButtonText)}>
+        <div className={merge(styles.blogButton)}>
+          <Link href="/blog" scroll className={merge(styles.blogButtonText)}>
             Read more on my blog <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>

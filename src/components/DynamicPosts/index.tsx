@@ -35,7 +35,10 @@ const DynamicPosts = (props: DynamicPostsProps) => {
     if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
       return new IntersectionObserver(
         (entries) => {
-          if (entries[0].isIntersecting) {
+          if (
+            entries[0].isIntersecting ||
+            entries[0].boundingClientRect.top < 0
+          ) {
             setIsVisible(true);
           }
         },
@@ -50,6 +53,7 @@ const DynamicPosts = (props: DynamicPostsProps) => {
     const element = document.getElementsByClassName(
       `last-element-page-${previousPage}`,
     )[0];
+
     if (element) {
       observer?.observe(element);
     }
@@ -92,21 +96,19 @@ const DynamicPosts = (props: DynamicPostsProps) => {
           />
         );
       }) ??
-        (isVisibile
-          ? Array(remainingPosts)
-              .fill(null)
-              .map((_, index) => {
-                return (
-                  <MDXEntryRow
-                    key={`loader-${currentPage}-${index}`}
-                    index={index + previousPage * postsPerPage}
-                    isLikelyMobile={isLikelyMobile}
-                    filler
-                    loader
-                  />
-                );
-              })
-          : null)}
+        Array(remainingPosts)
+          .fill(null)
+          .map((_, index) => {
+            return (
+              <MDXEntryRow
+                key={`loader-${currentPage}-${index}`}
+                index={index + previousPage * postsPerPage}
+                isLikelyMobile={isLikelyMobile}
+                filler
+                loader
+              />
+            );
+          })}
       {hasNextPage && pageData ? (
         <DynamicPosts
           previousPage={currentPage}

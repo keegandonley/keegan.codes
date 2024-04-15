@@ -69,6 +69,7 @@ export const MDXEntryRow = ({
         styles[`col-${columns}`],
         className,
         'animate-viz',
+        loader ? styles.wrapperLoading : '',
       )}
     >
       <div className={styles.horizontalLine}></div>
@@ -123,7 +124,7 @@ export const MDXEntryRow = ({
         ) : loader ? (
           <div className={styles.content}>
             <h1 className={merge(styles.h1, styles.placeholder)}>
-              We&apos;ll be Right Back
+              I&apos;ll be Right There
             </h1>
             <p className={styles.description}>
               Hang tight while this awesome blog post is downloaded!

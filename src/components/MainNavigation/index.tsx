@@ -63,6 +63,7 @@ const MainNavigation = ({
 
   return (
     <>
+      <div />
       <HeroBlock
         isHomePage={isHomePage}
         sticky={!isChat && !isResume && !isHi && !isErrorPage}
