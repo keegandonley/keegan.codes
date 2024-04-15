@@ -44,10 +44,10 @@ export default async function RootLayout({ children, postModal }: any) {
           <LoadingProvider>
             {/* Display banner text from the edge config if an event is active */}
             <DynamicEventWaiter />
-            {/* <MainNavigation
+            <MainNavigation
               initialTheme={theme}
               hasChosenTheme={hasChosenTheme}
-            /> */}
+            />
             <main>{children}</main>
             <ModalBoundary>{postModal}</ModalBoundary>
           </LoadingProvider>
