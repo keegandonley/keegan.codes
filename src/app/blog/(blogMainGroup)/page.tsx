@@ -68,7 +68,7 @@ export default async function BlogPage() {
             );
           })}
 
-          <DynamicDynamicPosts
+          {/* <DynamicDynamicPosts
             previousPage={1}
             isLikelyMobile={isLikelyMobile}
             pageCount={pageCount}
@@ -92,7 +92,7 @@ export default async function BlogPage() {
             index={-1}
             filler
             isLikelyMobile={isLikelyMobile}
-          />
+          /> */}
         </div>
       </section>
     </>
