@@ -68,31 +68,13 @@ export default async function BlogPage() {
             );
           })}
 
-          {/* <DynamicDynamicPosts
+          <DynamicDynamicPosts
             previousPage={1}
             isLikelyMobile={isLikelyMobile}
             pageCount={pageCount}
             postsPerPage={postsPerPage}
             remainingPosts={allPosts.length - postsPerPage}
           />
-          <MDXEntryRow
-            key="extra-1"
-            index={-1}
-            filler
-            isLikelyMobile={isLikelyMobile}
-          />
-          <MDXEntryRow
-            key="extra-2"
-            index={-1}
-            filler
-            isLikelyMobile={isLikelyMobile}
-          />
-          <MDXEntryRow
-            key="extra-3"
-            index={-1}
-            filler
-            isLikelyMobile={isLikelyMobile}
-          /> */}
         </div>
       </section>
     </>

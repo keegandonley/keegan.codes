@@ -116,9 +116,6 @@
   display: flex;
   flex-direction: column;
   padding-left: 2rem;
-}
-
-.loader {
   width: 100%;
 }
 
@@ -203,4 +200,12 @@
   .wrapper:hover .description {
     filter: brightness(1.3);
   }
+}
+
+.loader {
+  width: 100%;
+}
+
+.wrapperLoading {
+  pointer-events: none;
 }
