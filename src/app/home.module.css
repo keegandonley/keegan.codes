@@ -100,13 +100,15 @@
   transition: transform 0.3s;
 }
 
-.blogButtonText:hover .blogInner {
-  background: transparent;
-  color: white;
-}
+@media (hover: hover) {
+  .blogButtonText:hover .blogInner {
+    background: transparent;
+    color: white;
+  }
 
-.blogButtonText:hover .buttonIcon {
-  transform: translateX(1.5rem);
+  .blogButtonText:hover .buttonIcon {
+    transform: translateX(1.5rem);
+  }
 }
 
 .blogButtonText {
