@@ -100,7 +100,7 @@
   transition: transform 0.3s;
 }
 
-@media (hover: none) {
+@media (hover: hover) {
   .blogButtonText:hover .blogInner {
     background: transparent;
     color: white;
