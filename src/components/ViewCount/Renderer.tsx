@@ -30,5 +30,5 @@ export const ViewCountRenderer = async ({
 }: ViewCountRendererProps) => {
   const views = await getValue(slug);
 
-  return <span className={merge(className)}>{formatNumber(views)}</span>;
+  return <span className={merge(className)}>{formatNumber(views ?? 0)}</span>;
 };

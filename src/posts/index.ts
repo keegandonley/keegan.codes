@@ -43,6 +43,7 @@ import * as Architecture1Year from './reflection-architecture-one-year.mdx';
 import * as ThirstyBot from './introducing-thirsty-bot.mdx';
 import * as VercelDeploymentProtection from './vercel-deployment-protection.mdx';
 import * as ThirstyBotDeepDive from './thirsty-bot-deep-dive.mdx';
+import * as CSSTouchscreen from './touchscreen-css.mdx';
 
 const posts = {
   Welcome,
@@ -90,6 +91,7 @@ const posts = {
   ThirstyBot,
   VercelDeploymentProtection,
   ThirstyBotDeepDive,
+  CSSTouchscreen,
 };
 
 export default posts;
