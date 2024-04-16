@@ -1,0 +1,52 @@
+export const title = 'Using CSS Media Queries to Handle Touchscreen Devices';
+export const slug = 'using-css-media-queries-to-handle-touchscreen-devices';
+export const tags = ['CSS'];
+export const description = 'Description';
+export const cover = 'css-touch-cover-compressed.png';
+export const published = new Date(2024, 3, 16);
+export const shortCodes = ['css-touch'];
+
+CSS hover effects are a nice way to add some polish to a web application.
+Hover actions are also frequently used to display additional information
+for a piece of content. However, the hover action is either not available
+entirely, or doesn't work well on most touchscreen devices.
+
+Touch devices are primarily mobile devices, and building a poor mobile
+experience isn't an option: [over half of internet traffic comes from mobile
+devices](https://www.consumeraffairs.com/cell_phones/cell-phone-statistics.html#mobile-shopping).
+Let's look at how to use CSS to adjust our app's behavior.
+
+## Detecting Hover State Availability
+
+We can use an `@media` query to detect if hover is available:
+
+```css
+@media (hover: hover) {
+  a:hover {
+    background: transparent;
+    color: white;
+  }
+}
+```
+
+The hover style will only be applied if the device's primary input mechanism
+supports hover events. But what does that mean exactly?
+
+According to the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover),
+the `hover` feature gets the value `hover` when "The primary input mechanism can conveniently
+hover over elements." The word _conveniently_ is doing a lot of work here, but it's a bit
+ambiguous. While the iPhone, for example, does trigger hover events after an awkward
+longer-than-normal press, it's not a convenient interaction, so the `hover` feature value
+is `none`. Other times the value is `none` are when
+the primary input mechanism cannot hover at all, or there is no pointing mechanism (i.e. a mouse).
+
+If you want to target this state, you can queck the `hover` feature again:
+
+```css
+@media (hover: none) {
+  a {
+    background: lightgreen;
+    color: black;
+  }
+}
+```
