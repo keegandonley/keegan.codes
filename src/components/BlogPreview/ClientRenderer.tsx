@@ -59,6 +59,7 @@ export const ClientRenderer = ({ posts }: ClientRendererProps) => {
               className={merge(
                 styles.imageParent,
                 postIndex === activeIndex && styles.active,
+                styles.sliderElement,
               )}
               onMouseOver={() => setActiveIndex(postIndex)}
               href={`/blog/${post.slug}`}

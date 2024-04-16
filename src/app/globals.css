@@ -56,6 +56,6 @@ strong {
   background: none;
   margin: 1rem 0;
   padding: 0;
-  filter: drop-shadow(0 0 0.2rem var(--shadow-color));
+  box-shadow: 0 0 0.5rem var(--shadow-color);
   position: relative;
 }

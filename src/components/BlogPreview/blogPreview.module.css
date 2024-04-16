@@ -151,6 +151,11 @@
   margin-right: 0.5rem;
 }
 
+.sliderElement {
+  box-shadow: 0 0 0.8rem var(--shadow-color);
+  z-index: 1;
+}
+
 @media only screen and (max-width: 1000px) {
   .wrapper {
     flex-direction: column;

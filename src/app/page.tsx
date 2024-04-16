@@ -79,7 +79,13 @@ export default function Home() {
         <DynamicBlogPreview posts={posts} />
         <div className={merge(styles.blogButton)}>
           <Link href="/blog" scroll className={merge(styles.blogButtonText)}>
-            Read more on my blog <FontAwesomeIcon icon={faArrowRight} />
+            <span className={styles.blogInner}>
+              More Blog Posts{' '}
+              <FontAwesomeIcon
+                icon={faArrowRight}
+                className={styles.buttonIcon}
+              />
+            </span>
           </Link>
         </div>
         <Paragraph className={styles.paragraph}>

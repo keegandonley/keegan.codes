@@ -42,9 +42,9 @@ export const Img = ({ src, className, alt }: any) => {
           fill
           className={merge(imageStyles.img, className)}
           style={{
-            filter: shouldHideShadow
+            boxShadow: shouldHideShadow
               ? 'none'
-              : 'drop-shadow(0 0 0.5rem var(--shadow-color))',
+              : '0 0 0.5rem var(--shadow-color)',
           }}
           placeholder="blur"
           blurDataURL={metadata.dataUrl}
