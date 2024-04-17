@@ -4,7 +4,10 @@
   position: relative;
 
   z-index: 99;
-  height: 400px;
+  --block-height: 400px;
+  height: var(--block-height);
+  min-height: var(--block-height);
+  max-height: var(--block-height);
 }
 
 .col-3 {
@@ -54,21 +57,17 @@
 
 @media only screen and (max-width: 1000px) {
   .wrapper {
+    --block-height: 400px;
     min-width: calc(50% - 8px);
     max-width: calc(50% - 8px);
-    height: 700px;
-    min-height: 700px;
-    max-height: 700px;
   }
 }
 
 @media only screen and (max-width: 700px) {
   .wrapper {
+    --block-height: 300px;
     min-width: 100%;
     max-width: 100%;
-    height: 600px;
-    min-height: 600px;
-    max-height: 600px;
   }
 }
 
@@ -125,10 +124,8 @@
 
 .h1 {
   margin-bottom: 1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-right: 1rem;
   font-weight: 600;
-  border-left: 3px solid var(--theme-text);
   z-index: 99;
   line-height: 1.8rem;
   font-size: 1.4rem;
@@ -146,7 +143,7 @@
 
 .description {
   line-height: 1.4rem;
-  padding-left: 2rem;
+  padding-left: 0;
   padding-right: 2rem;
   opacity: 0.8;
   font-weight: 200;
@@ -159,16 +156,15 @@
 .metadata {
   display: flex;
   align-items: center;
-  padding-top: 0.5rem;
-  padding-right: 2rem;
+  padding-top: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
 }
 
 .viewCount {
   font-size: 0.8rem;
-  padding-top: 1rem;
-  padding-left: 2rem;
   margin-right: auto;
-
   display: flex;
   text-align: center;
   align-items: center;
@@ -202,7 +198,7 @@
 }
 
 .blurred {
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   background: transparent;
   padding: 1rem;
   border-radius: 10px;

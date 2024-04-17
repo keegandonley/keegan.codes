@@ -40,7 +40,6 @@ export const MDXEntryRow = ({
   cover,
   published,
   index,
-  filler,
   wordCount,
   book,
   columns = 3,
@@ -48,8 +47,9 @@ export const MDXEntryRow = ({
   isLikelyMobile,
   className,
   fixedViewCount,
-  loader,
   imageMetadata,
+  filler,
+  loader,
 }: MDXEntryRowProps) => {
   const metadata = imageMetadata;
 
@@ -110,27 +110,31 @@ export const MDXEntryRow = ({
                 <div className={styles.metadata}>
                   {published ? <Date date={published} /> : false}
                   <ReadingTime wordCount={wordCount} />
+                  {slug && (showViewCount || fixedViewCount) && (
+                    <DynamicViewCount
+                      slug={slug}
+                      className={styles.viewCount}
+                      fixedCount={fixedViewCount}
+                    />
+                  )}
                 </div>
-                {slug && (showViewCount || fixedViewCount) && (
-                  <DynamicViewCount
-                    slug={slug}
-                    className={styles.viewCount}
-                    fixedCount={fixedViewCount}
-                  />
-                )}
               </div>
             </div>
             {tags && tags.length > 0 ? <Tags tags={tags} /> : false}
           </div>
         ) : loader ? (
           <div className={styles.content}>
-            <h1 className={merge(styles.h1, styles.placeholder)}>
-              I&apos;ll be Right There
-            </h1>
-            <p className={styles.description}>
-              Hang tight while this awesome blog post is downloaded!
-              Shouldn&apos;t be long now...
-            </p>
+            <div className={styles.blurredOuter}>
+              <div className={styles.blurred}>
+                <h1 className={merge(styles.h1, styles.placeholder)}>
+                  I&apos;ll be Right There
+                </h1>
+                <p className={styles.description}>
+                  Hang tight while this awesome blog post is downloaded!
+                  Shouldn&apos;t be long now...
+                </p>
+              </div>
+            </div>
           </div>
         ) : null}
       </Parent>

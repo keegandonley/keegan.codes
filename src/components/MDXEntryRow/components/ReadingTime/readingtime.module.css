@@ -1,9 +1,6 @@
 .readingTime {
   font-size: 0.8rem;
-  padding-top: 1rem;
-  padding-left: 2rem;
   margin-left: auto;
-
   display: flex;
   flex-direction: row-reverse;
   text-align: center;
