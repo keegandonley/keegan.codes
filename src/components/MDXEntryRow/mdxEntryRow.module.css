@@ -8,16 +8,7 @@
   height: var(--block-height);
   min-height: var(--block-height);
   max-height: var(--block-height);
-}
-
-.col-3 {
-  min-width: calc(33% - 8px);
-  max-width: calc(33% - 8px);
-}
-
-.col-4 {
-  min-width: calc(25% - 12px);
-  max-width: calc(25% - 12px);
+  width: 100%;
 }
 
 .wrapper.filler {
@@ -48,26 +39,15 @@
   );
 }
 
-@media only screen and (max-width: 1100px) {
-  .col-4 {
-    min-width: calc(33% - 8px);
-    max-width: calc(33% - 8px);
-  }
-}
-
 @media only screen and (max-width: 1000px) {
   .wrapper {
     --block-height: 400px;
-    min-width: calc(50% - 8px);
-    max-width: calc(50% - 8px);
   }
 }
 
 @media only screen and (max-width: 700px) {
   .wrapper {
-    --block-height: 300px;
-    min-width: 100%;
-    max-width: 100%;
+    --block-height: 450px;
   }
 }
 

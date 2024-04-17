@@ -3,9 +3,8 @@
   column-gap: 0.8rem;
   row-gap: 0.7rem;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: start;
   position: relative;
-  padding-left: 2rem;
   margin-top: auto;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);

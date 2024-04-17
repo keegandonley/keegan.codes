@@ -104,17 +104,22 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
           />
         ) : null}
         <BottomFade />
+        <div className={styles.sideFade} />
+        <div className={styles.diag1Fade} />
+        <div className={styles.diag2Fade} />
       </div>
       <article className={styles.article}>
-        <Link href="/blog" className={styles.back}>
-          <FontAwesomeIcon icon={faArrowLeft} /> back
-        </Link>
-        <PostHeader
-          slug={params.slug}
-          title={title}
-          location="blog"
-          wordCount={wordCount}
-        />
+        <span className={styles.headWrapper}>
+          <Link href="/blog" className={styles.back}>
+            <FontAwesomeIcon icon={faArrowLeft} /> back
+          </Link>
+          <PostHeader
+            slug={params.slug}
+            title={title}
+            location="blog"
+            wordCount={wordCount}
+          />
+        </span>
         <Component />
         <DynamicTrack slug={params.slug} inModal={false} />
       </article>
