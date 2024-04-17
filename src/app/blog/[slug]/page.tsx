@@ -101,6 +101,7 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
             priority
             {...parseToProps(metadata)}
             quality={80}
+            sizes={`(max-width: 1400px) 100vw, 1400px`}
           />
         ) : null}
         <BottomFade />
@@ -110,9 +111,6 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
       </div>
       <article className={styles.article}>
         <span className={styles.headWrapper}>
-          <Link href="/blog" className={styles.back}>
-            <FontAwesomeIcon icon={faArrowLeft} /> back
-          </Link>
           <PostHeader
             slug={params.slug}
             title={title}
@@ -120,7 +118,9 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
             wordCount={wordCount}
           />
         </span>
-        <Component />
+        <div className={styles.bodyText}>
+          <Component />
+        </div>
         <DynamicTrack slug={params.slug} inModal={false} />
       </article>
       <footer

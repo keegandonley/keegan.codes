@@ -87,8 +87,8 @@
   flex-grow: 1;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0.2) 100%
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.3) 100%
   );
   z-index: 1;
   width: 100%;
@@ -108,7 +108,7 @@
   font-weight: 600;
   z-index: 99;
   line-height: 1.8rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -126,7 +126,7 @@
   padding-left: 0;
   padding-right: 2rem;
   opacity: 0.8;
-  font-weight: 200;
+  font-weight: 400;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
