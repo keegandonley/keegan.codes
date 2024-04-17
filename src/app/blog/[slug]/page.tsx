@@ -109,20 +109,22 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
         <div className={styles.diag1Fade} />
         <div className={styles.diag2Fade} />
       </div>
-      <article className={styles.article}>
-        <span className={styles.headWrapper}>
-          <PostHeader
-            slug={params.slug}
-            title={title}
-            location="blog"
-            wordCount={wordCount}
-          />
-        </span>
-        <div className={styles.bodyText}>
-          <Component />
-        </div>
-        <DynamicTrack slug={params.slug} inModal={false} />
-      </article>
+      <div className={styles.clip}>
+        <article className={styles.article}>
+          <span className={styles.headWrapper}>
+            <PostHeader
+              slug={params.slug}
+              title={title}
+              location="blog"
+              wordCount={wordCount}
+            />
+          </span>
+          <div className={styles.bodyText}>
+            <Component />
+          </div>
+          <DynamicTrack slug={params.slug} inModal={false} />
+        </article>
+      </div>
       <footer
         style={{
           minHeight: '300px',

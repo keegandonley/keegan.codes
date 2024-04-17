@@ -142,6 +142,10 @@
   position: relative;
 }
 
+.clip {
+  overflow-x: hidden;
+}
+
 @container (max-width: 1300px) {
   .sideFade,
   .diag1Fade,
