@@ -4,8 +4,6 @@
   padding-left: 2rem;
   margin-left: auto;
 
-  color: var(--theme-text-secondary);
-
   display: flex;
   flex-direction: row-reverse;
   text-align: center;

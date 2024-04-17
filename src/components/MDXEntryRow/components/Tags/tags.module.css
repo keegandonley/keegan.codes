@@ -1,15 +1,15 @@
 .tags {
-  padding-top: 2rem;
   display: flex;
   column-gap: 0.8rem;
   row-gap: 0.7rem;
   flex-wrap: wrap;
   justify-content: flex-end;
-  border-bottom: var(--grid-line);
-  padding-bottom: 1rem;
   position: relative;
   padding-left: 2rem;
-  opacity: 0.4;
+  margin-top: auto;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
 }
 
 .icon {
@@ -19,17 +19,4 @@
   font-size: 5px;
   color: var(--theme-grid-line-color);
   opacity: 1;
-}
-
-.borderFade {
-  position: absolute;
-  height: 5px;
-  right: -2px;
-  bottom: -3px;
-  width: 100%;
-  background: linear-gradient(
-    90deg,
-    var(--theme-transparent) 0%,
-    var(--theme-background) 100%
-  );
 }
