@@ -3,6 +3,14 @@ import localFont from 'next/font/local';
 import '@/tw.css';
 import Link from 'next/link';
 import { Avatar } from '@/components/Avatar';
+import Image from 'next/image';
+import linkedIn from '@/images/linkedin-miami.svg';
+import X from '@/images/x-twitter-miami.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@keegandonley/pro-solid-svg-icons';
+import styles from '@/pageStyles/miami24/miami.module.css';
+import '@/app/globals.css';
+import '@/app/theme.css';
 
 const yellowTail = localFont({
   src: [
@@ -25,7 +33,9 @@ const comfortaa = localFont({
 export default function Miami24() {
   return (
     <div
-      className={merge('flex min-h-dvh w-full justify-center bg-sand pt-12')}
+      className={merge(
+        'flex min-h-dvh w-full justify-center bg-sand px-2 pt-12',
+      )}
     >
       <div className="flex max-w-[800px] flex-col justify-center">
         <svg
@@ -45,7 +55,7 @@ export default function Miami24() {
         </svg>
         <h1
           className={merge(
-            'px-6 pb-6 pt-6 text-center text-6xl font-extrabold text-teal',
+            'text-balance px-6 pb-6 pt-6 text-center text-6xl font-extrabold text-teal',
             yellowTail.className,
           )}
         >
@@ -54,11 +64,11 @@ export default function Miami24() {
         <p
           className={merge(
             comfortaa.className,
-            'px-4 pt-6 text-center text-2xl text-gray-800',
+            'text-balance px-4 pt-6 text-center text-2xl leading-[1.7] text-gray-800',
           )}
         >
-          My name is Keegan Donley, and I&apos;m currently a principal front-end
-          engineer at{' '}
+          My name is <strong>Keegan Donley</strong>, and I&apos;m currently a{' '}
+          <strong>principal front-end engineer</strong> at{' '}
           <Link className="text-pink" href="https://kizen.com" target="blank">
             Kizen
           </Link>
@@ -67,27 +77,43 @@ export default function Miami24() {
         <p
           className={merge(
             comfortaa.className,
-            'px-4 pt-6 text-center text-2xl',
+            'flex w-full items-center justify-center gap-12 px-4 pt-8',
           )}
         >
-          I&apos;d love to connect on{' '}
-          <Link className="text-pink" href="/linkedin" target="_blank">
-            LinkedIn
-          </Link>{' '}
-          or{' '}
-          <Link className="text-pink" href="/twitter" target="blank">
-            Twitter
+          <Link href={'/linkedin'}>
+            <Image
+              src={linkedIn}
+              alt="LinkedIn"
+              className="mb-1 inline"
+              height={50}
+              width={50}
+              priority
+            />
           </Link>
-          ! I also write a{' '}
-          <Link className="text-pink" href="/blog" target="blank">
-            blog
-          </Link>{' '}
-          about a number of topics, ranging from software to fitness to travel.
+          <Link href={'/twitter'}>
+            <Image
+              src={X}
+              alt="X (Twitter)"
+              className="mb-1 inline"
+              height={50}
+              width={50}
+              priority
+            />
+          </Link>
         </p>
-        <div className="pb-12">
+        <div>
+          <div className={merge(styles.blogButton)}>
+            <Link href="/blog" scroll className={merge(styles.blogButtonText)}>
+              <span className={merge(styles.blogInner, comfortaa.className)}>
+                My Blog
+              </span>
+            </Link>
+          </div>
+        </div>
+        <div className="pb-20 pt-6">
           <Avatar
             width={150}
-            className="pointer-events-none select-none pt-12 sepia-[.45]"
+            className="pointer-events-none select-none sepia-[.45]"
             priority
           />
         </div>
