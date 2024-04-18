@@ -40,7 +40,6 @@ export const MDXEntryRow = ({
   cover,
   published,
   index,
-  filler,
   wordCount,
   book,
   columns = 3,
@@ -48,8 +47,9 @@ export const MDXEntryRow = ({
   isLikelyMobile,
   className,
   fixedViewCount,
-  loader,
   imageMetadata,
+  filler,
+  loader,
 }: MDXEntryRowProps) => {
   const metadata = imageMetadata;
 
@@ -68,15 +68,12 @@ export const MDXEntryRow = ({
         filler && !loader ? styles.filler : '',
         styles[`col-${columns}`],
         className,
-        'animate-viz',
         loader ? styles.wrapperLoading : '',
       )}
     >
-      <div className={styles.horizontalLine}></div>
-      <div className={styles.verticalLine}></div>
       <Parent
         href={`/${book ? 'library' : 'blog'}/${slug}`}
-        className={merge(styles.a, loader ? styles.loader : '')}
+        className={merge(styles.parent, styles.a, loader ? styles.loader : '')}
       >
         {cover && !loader ? (
           <div className={merge(styles.imageParent, book && styles.book)}>
@@ -106,34 +103,41 @@ export const MDXEntryRow = ({
         )}
         {!filler ? (
           <div className={styles.content}>
-            <h1 className={styles.h1}>{title}</h1>
-            <p className={styles.description}>{description}</p>
-            <div className={styles.metadata}>
-              {published ? <Date date={published} /> : false}
-              <ReadingTime wordCount={wordCount} />
+            <div className={styles.blurredOuter}>
+              <div className={styles.blurred}>
+                <h1 className={styles.h1}>{title}</h1>
+                <p className={styles.description}>{description}</p>
+                <div className={styles.metadata}>
+                  {published ? <Date date={published} /> : false}
+                  <ReadingTime wordCount={wordCount} />
+                  {slug && (showViewCount || fixedViewCount) && (
+                    <DynamicViewCount
+                      slug={slug}
+                      className={styles.viewCount}
+                      fixedCount={fixedViewCount}
+                    />
+                  )}
+                </div>
+              </div>
             </div>
-            {slug && (showViewCount || fixedViewCount) && (
-              <DynamicViewCount
-                slug={slug}
-                className={styles.viewCount}
-                fixedCount={fixedViewCount}
-              />
-            )}
             {tags && tags.length > 0 ? <Tags tags={tags} /> : false}
           </div>
         ) : loader ? (
           <div className={styles.content}>
-            <h1 className={merge(styles.h1, styles.placeholder)}>
-              I&apos;ll be Right There
-            </h1>
-            <p className={styles.description}>
-              Hang tight while this awesome blog post is downloaded!
-              Shouldn&apos;t be long now...
-            </p>
+            <div className={styles.blurredOuter}>
+              <div className={styles.blurred}>
+                <h1 className={merge(styles.h1, styles.placeholder)}>
+                  I&apos;ll be Right There
+                </h1>
+                <p className={styles.description}>
+                  Hang tight while this awesome blog post is downloaded!
+                  Shouldn&apos;t be long now...
+                </p>
+              </div>
+            </div>
           </div>
         ) : null}
       </Parent>
-      {filler ? <div className={styles.borderFade} /> : false}
     </div>
   );
 };

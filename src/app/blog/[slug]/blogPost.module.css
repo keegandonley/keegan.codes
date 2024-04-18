@@ -11,7 +11,7 @@
 .article {
   max-width: 900px;
   margin: 0 auto;
-  padding: 14rem 2rem 2rem 2rem;
+  padding: 8rem 2rem 2rem 2rem;
   color: var(--theme-text);
   position: relative;
 }
@@ -24,7 +24,7 @@
 }
 
 .back {
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-decoration: none;
   color: var(--theme-text);
   transition: opacity var(--animation);
@@ -48,8 +48,89 @@
   height: 500px;
   top: 0;
   z-index: 0;
+  display: flex;
+  container-type: inline-size;
 }
 
 .coverWrapper img {
   object-fit: cover;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sideFade {
+  pointer-events: none;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    var(--theme-background) 0%,
+    transparent 20%,
+    transparent 80%,
+    var(--theme-background) 100%
+  );
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.diag1Fade {
+  pointer-events: none;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to top right,
+    var(--theme-background) 0%,
+    transparent 30%,
+    transparent 100%
+  );
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.diag2Fade {
+  pointer-events: none;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to top left,
+    var(--theme-background) 0%,
+    transparent 30%,
+    transparent 100%
+  );
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.bodyText {
+  position: relative;
+}
+
+.clip {
+  overflow-x: hidden;
+}
+
+@container (max-width: 1300px) {
+  .sideFade,
+  .diag1Fade,
+  .diag2Fade {
+    opacity: 0;
+  }
 }

@@ -4,7 +4,7 @@
   align-items: flex-start;
   column-gap: 1rem;
   justify-content: space-between;
-  padding-top: 1rem;
+  padding-top: 4rem;
   padding-bottom: 2rem;
   position: relative;
 }
@@ -50,7 +50,7 @@
   padding-left: 2rem;
   margin-right: auto;
 
-  color: var(--theme-text-secondary);
+  color: var(--theme-text);
 
   display: flex;
   flex-direction: row-reverse;
@@ -61,7 +61,7 @@
 }
 
 .viewCount svg {
-  opacity: 0.5;
+  color: var(--theme-text-secondary);
 }
 
 @media screen and (max-width: 800px) {

@@ -1,10 +1,5 @@
 .date {
   font-size: 0.8rem;
-  padding-top: 1rem;
-  padding-left: 2rem;
-
-  color: var(--theme-text-secondary);
-
   display: flex;
   text-align: center;
   align-items: center;
