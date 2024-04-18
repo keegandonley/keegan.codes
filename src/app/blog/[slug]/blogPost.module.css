@@ -8,24 +8,6 @@
   }
 }
 
-.headWrapper {
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(0, 0, 0, 0.02) 85%,
-    transparent 95%,
-    transparent 100%
-  );
-  display: block;
-  backdrop-filter: blur(20px);
-  padding: 2rem 4rem 2rem 4rem;
-  border-radius: 10px;
-  box-shadow: 0 0 60px 3px var(--theme-background);
-  margin-left: -4rem;
-  margin-right: -4rem;
-  /* border: 1px solid var(--theme-background); */
-}
-
 .article {
   max-width: 900px;
   margin: 0 auto;
@@ -138,7 +120,6 @@
 }
 
 .bodyText {
-  margin-top: -2rem;
   position: relative;
 }
 
