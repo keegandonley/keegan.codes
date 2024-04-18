@@ -39,7 +39,7 @@
     "@vercel/speed-insights": "^1.0.10",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.1",
+    "eslint-config-next": "^14.2.2",
     "geist": "^1.3.0",
     "next": "14.3.0-canary.7",
     "postcss": "^8.4.38",
