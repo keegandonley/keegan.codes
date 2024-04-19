@@ -2,9 +2,9 @@
   z-index: 9;
   position: relative;
   margin: 2rem auto 0 auto;
-  background: var(--theme-text);
-  color: var(--theme-inverted-text);
-  border: none;
+  background: var(--theme-background);
+  border: 2px solid var(--theme-text);
+  color: var(--theme-text);
   cursor: pointer;
   border-radius: 20px;
   display: flex;
@@ -23,7 +23,7 @@
 }
 
 .iconWrapper {
-  border-left: 1px solid var(--theme-inverted-text);
+  border-left: 2px solid var(--theme-text);
   height: 100%;
   display: block;
   display: flex;
