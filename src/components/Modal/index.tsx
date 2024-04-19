@@ -28,6 +28,19 @@ export const Modal = ({ children }: ModalProps) => {
     setTimeout(router.back, 400);
   }, [router]);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        handleBack();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  });
+
   return (
     <div
       className={merge(styles.wrapper, fadedIn ? styles.fadeIn : '')}
