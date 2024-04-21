@@ -20,7 +20,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@keegancodes/foundations": "^1.1.1",
     "@keegancodes/foundations-next": "^1.0.31",
-    "@keegancodes/foundations-react": "2.0.0",
+    "@keegancodes/foundations-react": "2.0.1",
     "@keegandonley/pro-regular-svg-icons": "^6.5.2",
     "@keegandonley/pro-solid-svg-icons": "^6.5.2",
     "@mdx-js/loader": "^3.0.1",
