@@ -1,0 +1,50 @@
+import { Tweet } from '../components/Tweet';
+
+export const title = 'React Miami 2024: Recap';
+export const slug = 'react-miami-2024-recap';
+export const tags = ['javascript'];
+export const description = 'A recap of React Miami 2024';
+export const cover = 'react-miami-recap:cover-warm.png';
+export const published = new Date(2024, 3, 31);
+export const shortCodes = ['miami-24-recap'];
+
+I love attending developer conferences. They're an amazing opportunity to network, learn from others,
+get re-energized about our industry, be insipired by what people are working on, and discover what cool
+new things are possible.
+
+I just got back a few days ago from [React Miami](https://www.reactmiami.com/) and I'm still processing
+all of the great conversations I had and people I met. The conference was amazing, and I'll be adding
+it to my schedule for future years. A huge thanks to the sponsors, volunteers, and the organizers
+[Michelle Bakels](https://twitter.com/michellebakels), [Gabe Greenberg](https://twitter.com/gabe_g2i),
+and [Jos Gerards](https://twitter.com/josgerards88). Conferences like this are not easy to put on by any means,
+and I appreciate all the work that goes into them every year.
+
+## The Talks
+
+The conference talks at events like this are usually one of the prime attractions. Between CSS tips from [Una](https://twitter.com/Una),
+advice from [Kent C. Dodds](https://twitter.com/kentcdodds) about how to stop lying to your users, or
+[Christopher "Vjeux" Chedeau](https://twitter.com/Vjeux)'s dive into how to succeed at open source, there was a lot to take in!
+I can't easily pick favorites, but here's a sampling of some of what was presented during the weekend:
+
+### What's New in CSS?
+
+Or, how can we replace JavaScript with CSS?
+
+Are you familiar with the [popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)? Think about the last time you
+had to build a modal UI. Probably lot's of Javascript, right? [Una](https://twitter.com/Una)'s talk focused on what's coming
+to the browser (or in this case, already supported!) to help us write less Javascript. One of these powerful tools is the `popover`
+API. Instead of needing a bunch of Javascript to handle modals, why not just do it with HTML?
+
+```html
+<button popovertarget="mypopover">Toggle the popover</button>
+<div id="mypopover" popover>Popover content</div>
+```
+
+Popovers handle many of the concerns of a modal for us, without having to code anything at all!
+
+- Provides promotion to the top layer (no more z-index fighting)
+- Light-dismiss functionality built in (i.e. click outside/escape to close)
+- Focus management
+- Keyboard accessibility built in
+- Semantically connected to its trigger
+- Can be animated in Chromium
