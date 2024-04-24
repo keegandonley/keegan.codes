@@ -9,6 +9,9 @@
   min-height: var(--block-height);
   max-height: var(--block-height);
   width: 100%;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .wrapper.filler {
@@ -53,8 +56,6 @@
 
 .parent {
   position: relative;
-  border-radius: 10px;
-  overflow: hidden;
 }
 
 .imageParent {
@@ -87,8 +88,8 @@
   flex-grow: 1;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.3) 100%
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.7) 100%
   );
   z-index: 1;
   width: 100%;
@@ -179,7 +180,7 @@
 
 .blurred {
   backdrop-filter: blur(20px);
-  background: transparent;
+  background: rgba(150, 150, 150, 0.1);
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
