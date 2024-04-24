@@ -48,3 +48,51 @@ Popovers handle many of the concerns of a modal for us, without having to code a
 - Keyboard accessibility built in
 - Semantically connected to its trigger
 - Can be animated in Chromium
+
+### Use The Web!
+
+[Kent C. Dodds](https://twitter.com/kentcdodds) talked about lying to users - and not in the way you might think!
+
+The "lie" we often tell our users is that our site is ready for them to start interacting, even if maybe that's not quite
+the case. For example, images that "pop in" causing layout shift after the rest of the page has loaded, or a form
+that looks ready, but can't be submitted because javascript hasn't been loaded yet.
+
+Many forms rely on client-side Javascript when it's not really necessary at all! Kent recommends (and I strongly agree!) to "use the web"
+the way it was designed, and stop relying on so much Javascript to run a simple search form.
+
+```html
+<form action="/search" method="get">
+  <label for="search">Search:</label>
+  <input type="text" id="search" name="query" />
+  <button type="submit">Search</button>
+</form>
+```
+
+> No Javascript here, and it's interactive and functional as soon as the UI is rendered!
+
+Images popping in and causing layout shift is a lie too! Your blog post was not ready for the user, and they
+may have started reading and scrolling, only to have the page move around and lose their place. This is a
+problem I had to solve here on my blog! Take a look at these inline images:
+
+![](react-miami-recap:popups.png)
+![](react-miami-recap:beach.png)
+
+Notice how they first load with a placeholder that matches the exact size, then become the real image when it's
+ready? This is thanks to some pre-processing to calculate the image's dimensions, and then a handy CSS property:
+`aspect-ratio`.
+
+```css
+.imageParent {
+  --aspect-ratio: 2.5835;
+
+  display: block;
+  position: relative;
+  width: 100%;
+  z-index: 0;
+  margin: 1rem 0;
+  aspect-ratio: var(--aspect-ratio);
+}
+```
+
+> Using `aspect-ratio` ensures that the placeholder takes up the exact amount of space as the final
+> image, and no shifting happens after it's loaded!
