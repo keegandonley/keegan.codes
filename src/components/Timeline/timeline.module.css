@@ -14,21 +14,38 @@
   justify-content: space-between;
 }
 
+.blurContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  backdrop-filter: blur(3px);
+}
+
 .post {
   display: flex;
   flex-direction: column;
   max-width: 45%;
-  color: var(--theme-text);
+  color: white;
   text-decoration: none;
-  box-shadow: var(--theme-box-shadow-small);
+  box-shadow: 0 0 0.5rem var(--shadow-color);
   padding: 1rem;
   row-gap: 0.5rem;
   position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
 }
 
-.post:hover img {
-  filter: grayscale(0);
-  opacity: 0.3;
+@media screen and (hover: hover) {
+  .post:hover img {
+    opacity: 0.6;
+  }
 }
 
 .post * {
@@ -38,11 +55,8 @@
 
 .post img {
   object-fit: cover;
-  border-radius: 0.5rem;
   object-position: center;
   z-index: 0;
-  filter: grayscale(0.3);
-  opacity: 0.2;
   transition: all 0.2s;
 }
 
@@ -78,7 +92,7 @@
 .viewCount {
   font-size: 0.8rem;
 
-  color: var(--theme-text-secondary);
+  color: white;
 
   display: flex;
   text-align: center;

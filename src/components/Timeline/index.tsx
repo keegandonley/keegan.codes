@@ -57,6 +57,7 @@ const Timeline = async (props: TimelineProps) => {
       className={merge(styles.post, isAlone ? styles.single : '')}
       href={randomPost.slug}
     >
+      <div className={styles.blurContainer} />
       <span className={merge(styles.postTitle, styles.random)}>
         <h4>{randomPost.title}</h4>
       </span>
@@ -94,6 +95,7 @@ const Timeline = async (props: TimelineProps) => {
             className={merge(styles.post, isAlone ? styles.single : '')}
             href={previousPost.slug}
           >
+            <div className={styles.blurContainer} />
             <span className={styles.postTitle}>
               <FontAwesomeIcon
                 icon={faArrowLeftLong}
@@ -132,6 +134,7 @@ const Timeline = async (props: TimelineProps) => {
             className={merge(styles.post, isAlone ? styles.single : '')}
             href={nextPost.slug}
           >
+            <div className={styles.blurContainer} />
             <span className={styles.postTitle}>
               <h4>{nextPost.title}</h4>
               <FontAwesomeIcon
