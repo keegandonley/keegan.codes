@@ -13,7 +13,7 @@ get re-energized about our industry, be insipired by what people are working on,
 new things are possible.
 
 I just got back a few days ago from [React Miami](https://www.reactmiami.com/) and I'm still processing
-all of the great conversations I had and people I met. The conference was amazing, and I'll be adding
+all of the great conversations I had and people I met. The conference was amazing, and I'll absolutely be adding
 it to my schedule for future years. A huge thanks to the sponsors, volunteers, and the organizers
 [Michelle Bakels](https://twitter.com/michellebakels), [Gabe Greenberg](https://twitter.com/gabe_g2i),
 and [Jos Gerards](https://twitter.com/josgerards88). Conferences like this are not easy to put on by any means,
@@ -23,7 +23,7 @@ and I appreciate all the work that goes into them every year.
 
 The conference talks at events like this are usually one of the prime attractions. Between CSS tips from [Una](https://twitter.com/Una),
 advice from [Kent C. Dodds](https://twitter.com/kentcdodds) about how to stop lying to your users, or
-[Christopher "Vjeux" Chedeau](https://twitter.com/Vjeux)'s dive into how to succeed at open source, there was a lot to take in!
+[Christopher "Vjeux" Chedeau's](https://twitter.com/Vjeux) dive into how to succeed at open source, there was a lot to take in!
 I can't easily pick favorites, but here's a sampling of some of what was presented during the weekend:
 
 ### What's New in CSS?
@@ -31,7 +31,7 @@ I can't easily pick favorites, but here's a sampling of some of what was present
 Or, how can we replace JavaScript with CSS?
 
 Are you familiar with the [popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)? Think about the last time you
-had to build a modal UI. Probably lot's of Javascript, right? [Una](https://twitter.com/Una)'s talk focused on what's coming
+had to build a modal UI. Probably lots of Javascript, right? [Una](https://twitter.com/Una)'s talk focused on what's coming
 to the browser (or in this case, already supported!) to help us write less Javascript. One of these powerful tools is the `popover`
 API. Instead of needing a bunch of Javascript to handle modals, why not just do it with HTML?
 
@@ -40,16 +40,16 @@ API. Instead of needing a bunch of Javascript to handle modals, why not just do 
 <div id="mypopover" popover>Popover content</div>
 ```
 
-Popovers handle many of the concerns of a modal for us, without having to code anything at all!
+Popovers handle many of the concerns of a modal for us, without having to code all the behaviors and interactions by hand!
 
 - Provides promotion to the top layer (no more z-index fighting)
 - Light-dismiss functionality built in (i.e. click outside/escape to close)
 - Focus management
 - Keyboard accessibility built in
 - Semantically connected to its trigger
-- Can be animated in Chromium
+- Can be animated in Chromium (more browsers coming soon 🤞)
 
-### Use The Web!
+### Don't Lie to Users, and Use The Web!
 
 [Kent C. Dodds](https://twitter.com/kentcdodds) talked about lying to users - and not in the way you might think!
 
@@ -78,7 +78,8 @@ problem I had to solve here on my blog! Take a look at these inline images:
 ![](react-miami-recap:beach.png)
 
 Notice how they first load with a placeholder that matches the exact size, then become the real image when it's
-ready? This is thanks to some pre-processing to calculate the image's dimensions, and then a handy CSS property:
+ready? Even though they aren't the same dimensions, each one still fits perfectly in its place.
+This is thanks to some pre-processing to calculate the image's dimensions, and then a handy CSS property:
 `aspect-ratio`.
 
 ```css
@@ -97,4 +98,52 @@ ready? This is thanks to some pre-processing to calculate the image's dimensions
 > Using `aspect-ratio` ensures that the placeholder takes up the exact amount of space as the final
 > image, and no shifting happens after it's loaded!
 
+### On Over-Engineering
+
+[Tony Casparro](https://www.linkedin.com/in/casparro/) gave some insight into over-engineering: why we do it, and
+how we can avoid it. In his talk, he posited that we tend to over-engineer for a few reasons:
+
+- We're anticipating future needs (that may never arise)
+- We're generalizing prematurely (a generalization that may never be used)
+- We're trying to avoid future costs (that may never come)
+
+We have to weigh the probability of these situations arising, and inform decision making based on that analysis.
+
+What's the better path? Build small, avoid pre-optimization, and deliver then iterate. Focusing on what's valuable (like
+tests) and favoring shipping over perfection allows you to avoid the trap of overcompensating for future needs.
+
 ## More Than Talks
+
+The talks at these conferences are great, and I always learn something new. However, I also put
+a huge emphasis on networking and talking to other engineers, and sometimes that can be even
+more valuable than attending another talk! I've never regretted missing a talk or workshop
+because I was engaged in an interesting conversation. [I've written about this approach
+before](https://keegan.codes/blog/getting-the-most-out-of-in-person-tech-conferences), and it still held true
+at React Miami.
+
+The second day of the conference was centered around workshops, and a floor of sponsor booths with spaces
+to sit and work, chat, and [have a cup of coffee](https://www.terminal.shop/about) or a beer together.
+
+I got interesting demos from companies like [Codeium](https://codeium.com/) and [Beeps](https://www.beeps.co/), and got
+to participate in a live episode of [Syntax.fm](https://syntax.fm/), one of the premier web development podcasts.
+
+For every conference I go to, I build a small landing page that I can generate a QR code to link to. This was my landing
+page for React Miami:
+
+![](react-miami-page.png?limit)
+
+Being able to easily share my socials as well as the content I write here on my blog was convenient, and I made some great
+new connections this way. I always try to match the conference's branding too, so it ties nicely with the theme.
+
+## Looking Forward
+
+I'll certainly be attending React Miami in the coming years if I have the opportunity to. These kind of events always
+refresh my excitement for our industry, and reset my focus on building cool things. I got to share a lot about
+how I built my [Thirsty Bot app](https://keegan.codes/blog/ai-app-in-72-hours) with other developers, and came away
+excited with ways I can improve it, especially on the AI front.
+
+If you missed the conference, make sure to check out the [React Miami Replay](https://www.linkedin.com/events/7188937798203191297/about/) on
+May 3rd!
+
+The next conference I'll be at is [Render Atlanta](https://www.renderatl.com/) in June. You won't want to miss this one, and hopefully I'll
+see you there!
