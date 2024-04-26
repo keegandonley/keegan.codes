@@ -25,8 +25,11 @@
     #e8e8e8 20px
   );
   box-shadow: 0 0 0.5rem var(--shadow-color);
-  border-radius: 8px;
+  border-radius: var(--rounded-block);
   padding: 1rem;
+  overflow: auto;
+  height: 400px;
+  width: 100%;
 }
 
 .input {

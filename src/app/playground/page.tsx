@@ -82,6 +82,7 @@ export default function PlaygroundPage() {
                 ...sanitizeHtml.defaults.allowedAttributes,
                 '*': ['class', 'id', 'style', 'width', 'height'],
               },
+              allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
             }),
           }}
         />
