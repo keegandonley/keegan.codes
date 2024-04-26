@@ -10,6 +10,10 @@ import sanitizeHtml from 'sanitize-html';
 
 export const runtime = 'edge';
 
+const cleanQuotes = (str: string) => {
+  return str.replace(/“/g, '"').replace(/”/g, '"');
+};
+
 export default function PlaygroundPage() {
   const urlQuery = useSearchParams();
   const hasTracked = useRef(false);
@@ -18,10 +22,14 @@ export default function PlaygroundPage() {
   const cssParam = urlQuery?.get('css');
 
   const [cssContent, setCssContent] = useState(() =>
-    cssParam ? decodeURIComponent(atob(decodeURIComponent(cssParam))) : '',
+    cssParam
+      ? cleanQuotes(decodeURIComponent(atob(decodeURIComponent(cssParam))))
+      : '',
   );
   const [htmlContent, setHtmlContent] = useState(() =>
-    htmlParam ? decodeURIComponent(atob(decodeURIComponent(htmlParam))) : '',
+    htmlParam
+      ? cleanQuotes(decodeURIComponent(atob(decodeURIComponent(htmlParam))))
+      : '',
   );
 
   const htmlBase64 = encodeURIComponent(btoa(encodeURIComponent(htmlContent)));
@@ -43,11 +51,11 @@ export default function PlaygroundPage() {
   }
 
   const handleSetCSS = (value: string) => {
-    setCssContent(value);
+    setCssContent(cleanQuotes(value));
   };
 
   const handleSetHTML = (value: string) => {
-    setHtmlContent(value);
+    setHtmlContent(cleanQuotes(value));
   };
 
   const handleKeyPress = (type: 'css' | 'html') => (e: KeyboardEvent<any>) => {
