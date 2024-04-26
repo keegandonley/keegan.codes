@@ -18,22 +18,22 @@ export default function PlaygroundPage() {
   const cssParam = urlQuery?.get('css');
 
   const [cssContent, setCssContent] = useState(() =>
-    cssParam ? atob(decodeURIComponent(cssParam)) : '',
+    cssParam ? decodeURIComponent(atob(decodeURIComponent(cssParam))) : '',
   );
   const [htmlContent, setHtmlContent] = useState(() =>
-    htmlParam ? atob(decodeURIComponent(htmlParam)) : '',
+    htmlParam ? decodeURIComponent(atob(decodeURIComponent(htmlParam))) : '',
   );
 
-  const htmlBase64 = btoa(htmlContent);
-  const cssBase64 = btoa(cssContent);
+  const htmlBase64 = encodeURIComponent(btoa(encodeURIComponent(htmlContent)));
+  const cssBase64 = encodeURIComponent(btoa(encodeURIComponent(cssContent)));
 
   if (htmlBase64 !== htmlParam || cssBase64 !== cssParam) {
     window.history.pushState(
       {
-        path: `?html=${encodeURIComponent(htmlBase64)}&css=${encodeURIComponent(cssBase64)}`,
+        path: `?html=${htmlBase64}&css=${cssBase64}`,
       },
       '',
-      `?html=${encodeURIComponent(htmlBase64)}&css=${encodeURIComponent(cssBase64)}`,
+      `?html=${htmlBase64}&css=${cssBase64}`,
     );
   }
 
