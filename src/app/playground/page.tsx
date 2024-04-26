@@ -132,16 +132,14 @@ export default function PlaygroundPage() {
         </div>
       </div>
       {frameless === 'true' ? (
-        <Link
-          className={styles.framelessFooter}
-          href="https://keegan.codes"
-          target="_blank"
-        >
-          <div>
-            <Avatar width={40} />
-          </div>
-          Keegan Donley | keegan.codes
-        </Link>
+        <div className={styles.framelessFooter}>
+          <Link href="https://keegan.codes" target="_blank">
+            <div>
+              <Avatar width={40} />
+            </div>
+            Keegan Donley | keegan.codes
+          </Link>
+        </div>
       ) : null}
       <style>{cssContent}</style>
     </div>

@@ -87,13 +87,16 @@
 }
 
 .framelessFooter {
+  padding-top: 2rem;
   display: flex;
-  width: 100%;
+}
+
+.framelessFooter a {
+  display: flex;
   align-items: center;
   gap: 1rem;
-  color: var(--theme-text);
-  padding-top: 2rem;
   text-decoration: none;
+  color: var(--theme-text);
 }
 
 @media screen and (max-width: 768px) {
