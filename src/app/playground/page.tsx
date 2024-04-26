@@ -3,14 +3,13 @@
 import { injectVariables, merge } from '@keegancodes/foundations';
 import styles from './playground.module.css';
 import { GeistMono } from 'geist/font/mono';
-import { KeyboardEvent, useState } from 'react';
+import { KeyboardEvent, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { useCopyElementText } from '@keegancodes/foundations-react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faCopy } from '@keegandonley/pro-solid-svg-icons';
+import { track } from '@vercel/analytics/server';
 
 export default function PlaygroundPage() {
   const urlQuery = useSearchParams();
+  const hasTracked = useRef(false);
 
   const htmlParam = urlQuery?.get('html');
   const cssParam = urlQuery?.get('css');
@@ -33,6 +32,11 @@ export default function PlaygroundPage() {
       '',
       `?html=${encodeURIComponent(htmlBase64)}&css=${encodeURIComponent(cssBase64)}`,
     );
+  }
+
+  if (!hasTracked.current) {
+    hasTracked.current = true;
+    track('View Playground');
   }
 
   const handleSetCSS = (value: string) => {
