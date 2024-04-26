@@ -10,6 +10,7 @@ import sanitizeHtml from 'sanitize-html';
 
 export const runtime = 'edge';
 
+// This is invalid: <div id=“test”>Hello</div>
 const cleanQuotes = (str: string) => {
   return str.replace(/“/g, '"').replace(/”/g, '"');
 };
