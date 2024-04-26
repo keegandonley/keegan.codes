@@ -8,6 +8,8 @@ import { useSearchParams } from 'next/navigation';
 import { track } from '@vercel/analytics/server';
 import sanitizeHtml from 'sanitize-html';
 
+export const runtime = 'edge';
+
 export default function PlaygroundPage() {
   const urlQuery = useSearchParams();
   const hasTracked = useRef(false);
