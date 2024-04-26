@@ -7,6 +7,8 @@ import { KeyboardEvent, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { track } from '@vercel/analytics/server';
 import sanitizeHtml from 'sanitize-html';
+import { Avatar } from '@/components/Avatar';
+import Link from 'next/link';
 
 export const runtime = 'edge';
 
@@ -21,6 +23,7 @@ export default function PlaygroundPage() {
 
   const htmlParam = urlQuery?.get('html');
   const cssParam = urlQuery?.get('css');
+  const frameless = urlQuery?.get('frameless') || 'false';
 
   const [cssContent, setCssContent] = useState(() =>
     cssParam
@@ -39,10 +42,10 @@ export default function PlaygroundPage() {
   if (htmlBase64 !== htmlParam || cssBase64 !== cssParam) {
     window.history.pushState(
       {
-        path: `?html=${htmlBase64}&css=${cssBase64}`,
+        path: `?html=${htmlBase64}&css=${cssBase64}&frameless=${frameless}`,
       },
       '',
-      `?html=${htmlBase64}&css=${cssBase64}`,
+      `?html=${htmlBase64}&css=${cssBase64}&frameless=${frameless}`,
     );
   }
 
@@ -128,6 +131,18 @@ export default function PlaygroundPage() {
           />
         </div>
       </div>
+      {frameless === 'true' ? (
+        <Link
+          className={styles.framelessFooter}
+          href="https://keegan.codes"
+          target="_blank"
+        >
+          <div>
+            <Avatar width={40} />
+          </div>
+          Keegan Donley | keegan.codes
+        </Link>
+      ) : null}
       <style>{cssContent}</style>
     </div>
   );

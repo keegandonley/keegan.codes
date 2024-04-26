@@ -86,6 +86,16 @@
   gap: 1rem;
 }
 
+.framelessFooter {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 1rem;
+  color: var(--theme-text);
+  padding-top: 2rem;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 768px) {
   .inputs {
     flex-direction: column;

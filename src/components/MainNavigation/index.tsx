@@ -1,7 +1,11 @@
 'use client';
 import { Avatar } from '../Avatar';
 import { HeroBlock } from '../Hero/Block';
-import { usePathname, useSelectedLayoutSegments } from 'next/navigation';
+import {
+  usePathname,
+  useSearchParams,
+  useSelectedLayoutSegments,
+} from 'next/navigation';
 import { MenuItem } from './components/MenuItem';
 import { useEffect } from 'react';
 import styles from './navigation.module.css';
@@ -25,6 +29,9 @@ const MainNavigation = ({
   initialTheme?: Theme;
   hasChosenTheme?: boolean;
 }) => {
+  const urlQuery = useSearchParams();
+  const frameless = urlQuery?.get('frameless') === 'true';
+
   const pathname = usePathname();
   const segments = useSelectedLayoutSegments();
   const isHomePage = pathname === '/' || !segments?.length;
@@ -58,7 +65,7 @@ const MainNavigation = ({
     });
   }, []);
 
-  if (isSlideshow) {
+  if (isSlideshow || (isPlaygroundPage && frameless)) {
     return null;
   }
 
