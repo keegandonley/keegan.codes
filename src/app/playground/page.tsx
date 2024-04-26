@@ -6,6 +6,7 @@ import { GeistMono } from 'geist/font/mono';
 import { KeyboardEvent, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { track } from '@vercel/analytics/server';
+import sanitizeHtml from 'sanitize-html';
 
 export default function PlaygroundPage() {
   const urlQuery = useSearchParams();
@@ -72,7 +73,16 @@ export default function PlaygroundPage() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.output}>
-        <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+        <div
+          dangerouslySetInnerHTML={{
+            __html: sanitizeHtml(htmlContent, {
+              allowedAttributes: {
+                ...sanitizeHtml.defaults.allowedAttributes,
+                '*': ['class', 'id', 'style', 'width', 'height'],
+              },
+            }),
+          }}
+        />
       </div>
       <div className={styles.inputs}>
         <div className={merge(styles.input, styles.html)}>
