@@ -3,9 +3,8 @@
 import { injectVariables, merge } from '@keegancodes/foundations';
 import styles from './playground.module.css';
 import { GeistMono } from 'geist/font/mono';
-import { KeyboardEvent, useRef, useState } from 'react';
+import { KeyboardEvent, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { track } from '@vercel/analytics/server';
 import sanitizeHtml from 'sanitize-html';
 import { Avatar } from '@/components/Avatar';
 import Link from 'next/link';
