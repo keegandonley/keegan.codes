@@ -9,6 +9,9 @@ import { track } from '@vercel/analytics/server';
 import sanitizeHtml from 'sanitize-html';
 import { Avatar } from '@/components/Avatar';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faCopy } from '@keegandonley/pro-solid-svg-icons';
+import { useCopyElementText } from '@keegancodes/foundations-react';
 
 export const runtime = 'edge';
 
@@ -19,11 +22,13 @@ const cleanQuotes = (str: string) => {
 
 export default function PlaygroundPage() {
   const urlQuery = useSearchParams();
-  const hasTracked = useRef(false);
 
   const htmlParam = urlQuery?.get('html');
   const cssParam = urlQuery?.get('css');
   const frameless = urlQuery?.get('frameless') || 'false';
+  const isFrameless = frameless === 'true';
+  const nameParam = urlQuery?.get('name') || 'Playground';
+  const decodedNameParam = decodeURIComponent(nameParam);
 
   const [cssContent, setCssContent] = useState(() =>
     cssParam
@@ -35,23 +40,29 @@ export default function PlaygroundPage() {
       ? cleanQuotes(decodeURIComponent(atob(decodeURIComponent(htmlParam))))
       : '',
   );
+  const [name, setName] = useState(decodedNameParam);
 
   const htmlBase64 = encodeURIComponent(btoa(encodeURIComponent(htmlContent)));
   const cssBase64 = encodeURIComponent(btoa(encodeURIComponent(cssContent)));
 
-  if (htmlBase64 !== htmlParam || cssBase64 !== cssParam) {
-    window.history.pushState(
+  const { onClick: onClickCopyHTML, pending: pendingCopyHTML } =
+    useCopyElementText(htmlContent);
+  const { onClick: onClickCopyCSS, pending: pendingCopyCSS } =
+    useCopyElementText(cssContent);
+
+  if (
+    htmlBase64 !== htmlParam ||
+    cssBase64 !== cssParam ||
+    decodedNameParam !== name
+  ) {
+    const url = `?html=${htmlBase64}&css=${cssBase64}&frameless=${frameless}&name=${encodeURIComponent(name)}`;
+    window.history.replaceState(
       {
-        path: `?html=${htmlBase64}&css=${cssBase64}&frameless=${frameless}`,
+        path: url,
       },
       '',
-      `?html=${htmlBase64}&css=${cssBase64}&frameless=${frameless}`,
+      url,
     );
-  }
-
-  if (!hasTracked.current) {
-    hasTracked.current = true;
-    track('View Playground');
   }
 
   const handleSetCSS = (value: string) => {
@@ -86,6 +97,16 @@ export default function PlaygroundPage() {
 
   return (
     <div className={styles.wrapper}>
+      {isFrameless ? null : (
+        <h1 className={merge(styles.heading, GeistMono.className)}>
+          <input
+            placeholder="Playground"
+            value={name}
+            onChange={(e) => setName(e.currentTarget.value)}
+            className={merge(styles.field, styles.name, GeistMono.className)}
+          />
+        </h1>
+      )}
       <div className={styles.output}>
         <div
           dangerouslySetInnerHTML={{
@@ -102,7 +123,24 @@ export default function PlaygroundPage() {
       <div className={styles.inputs}>
         <div className={merge(styles.input, styles.html)}>
           <span className={merge(styles.header)}>
-            <span className={styles.langText}>html</span>
+            <span className={merge(styles.langText, GeistMono.className)}>
+              html
+            </span>
+            <button
+              className={styles.button}
+              onClick={onClickCopyHTML}
+              disabled={pendingCopyHTML}
+            >
+              <div
+                className={merge(
+                  styles.clicker,
+                  pendingCopyHTML ? styles.clicked : styles.copy,
+                )}
+              >
+                <FontAwesomeIcon icon={faCheck} />
+                <FontAwesomeIcon icon={faCopy} />
+              </div>
+            </button>
           </span>
           <textarea
             className={merge(styles.htmlBlock, styles.codeBlock)}
@@ -117,7 +155,24 @@ export default function PlaygroundPage() {
         </div>
         <div className={merge(styles.input, styles.css)}>
           <span className={merge(styles.header)}>
-            <span className={styles.langText}>css</span>
+            <span className={merge(styles.langText, GeistMono.className)}>
+              css
+            </span>
+            <button
+              className={styles.button}
+              onClick={onClickCopyCSS}
+              disabled={pendingCopyCSS}
+            >
+              <div
+                className={merge(
+                  styles.clicker,
+                  pendingCopyCSS ? styles.clicked : styles.copy,
+                )}
+              >
+                <FontAwesomeIcon icon={faCheck} />
+                <FontAwesomeIcon icon={faCopy} />
+              </div>
+            </button>
           </span>
           <textarea
             className={merge(styles.styleBlock, styles.codeBlock)}

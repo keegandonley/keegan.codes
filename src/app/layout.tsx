@@ -6,7 +6,7 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import { merge } from '@/util/classNames';
 import { background } from '@/theme/colors';
 import { getHasChosenTheme, userTheme } from '@/util/cookies';
-import {} from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/react';
 import { Suspense } from 'react';
 import { BASEURL, DESCRIPTION, NAME } from '@/metadata';
 import MainNavigation from '@/components/MainNavigation';
@@ -17,7 +17,6 @@ import dynamic from 'next/dynamic';
 import LoadingProvider from './loadingProvider';
 import { GeistSans } from 'geist/font/sans';
 import { TailwindDebugger } from '@keegancodes/foundations-react/client';
-import { ClientAnalytics } from '@/components/ClientAnalytics';
 
 const DynamicEventWaiter = dynamic(
   () => import('./event').then((m) => m.EventWaiter),
@@ -55,7 +54,7 @@ export default async function RootLayout({ children, postModal }: any) {
         </ThemeProvider>
         {/* Adding suspense to try https://github.com/vercel/next.js/issues/48442#issuecomment-1519139562 */}
         <Suspense fallback={null}>
-          <ClientAnalytics />
+          <Analytics />
           <SpeedInsights />
         </Suspense>
         {process.env.NODE_ENV === 'development' ? <TailwindDebugger /> : null}
