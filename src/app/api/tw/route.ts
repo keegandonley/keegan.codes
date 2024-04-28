@@ -15,7 +15,9 @@ export async function POST(request: NextRequest) {
     tailwindcss({
       content: [{ raw: html, extension: 'html' }],
     }),
-  ]).process(`@tailwind components;@tailwind utilities; .__{}`);
+  ]).process(`@tailwind components;@tailwind utilities; .__{}`, {
+    from: 'api',
+  });
 
   return Response.json({ css: result.css });
 }

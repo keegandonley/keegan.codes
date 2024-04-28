@@ -13,6 +13,7 @@ import {
   faCheck,
   faCopy,
   faSpinnerThird,
+  faTimes,
 } from '@keegandonley/pro-solid-svg-icons';
 import { useCopyElementText } from '@keegancodes/foundations-react';
 
@@ -34,6 +35,7 @@ export default function PlaygroundPage() {
   const decodedNameParam = decodeURIComponent(nameParam);
   const [twStyles, setTwStyles] = useState('');
   const [twLoading, setTwLoading] = useState(false);
+  const [twError, setTwError] = useState(false);
 
   const [cssContent, setCssContent] = useState(() =>
     cssParam
@@ -102,17 +104,24 @@ export default function PlaygroundPage() {
   };
 
   const handleGetTailwind = useCallback(async (content: string) => {
-    const res = await fetch('/api/tw', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ html: content }),
-    });
-    const data = await res.json();
+    try {
+      setTwError(false);
+      const res = await fetch('/api/tw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ html: content }),
+      });
+      const data = await res.json();
 
-    setTwStyles(data.css);
-    setTwLoading(false);
+      setTwStyles(data.css);
+    } catch (error) {
+      setTwStyles('.__error {}');
+      setTwError(true);
+    } finally {
+      setTwLoading(false);
+    }
   }, []);
 
   const hasRunOnce = useRef(false);
@@ -176,7 +185,10 @@ export default function PlaygroundPage() {
               {twLoading ? (
                 <FontAwesomeIcon icon={faSpinnerThird} spin fixedWidth />
               ) : (
-                <FontAwesomeIcon icon={faCheck} fixedWidth />
+                <FontAwesomeIcon
+                  icon={twError ? faTimes : faCheck}
+                  fixedWidth
+                />
               )}
             </div>
             <button
