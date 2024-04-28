@@ -30,6 +30,12 @@
   overflow: auto;
   height: 400px;
   width: 100%;
+  filter: blur(0px);
+  transition: filter 0.5s;
+}
+
+.output.loading {
+  filter: blur(6px);
 }
 
 :global(.dark) .output {

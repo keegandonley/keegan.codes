@@ -11,8 +11,6 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCheck,
-  faCheckCircle,
-  faCheckDouble,
   faCopy,
   faSpinnerThird,
 } from '@keegandonley/pro-solid-svg-icons';
@@ -149,7 +147,7 @@ export default function PlaygroundPage() {
           />
         </h1>
       )}
-      <div className={styles.output}>
+      <div className={merge(styles.output, !twStyles ? styles.loading : '')}>
         <div
           dangerouslySetInnerHTML={{
             __html: sanitizeHtml(htmlContent, {
@@ -251,10 +249,12 @@ export default function PlaygroundPage() {
           </Link>
         </div>
       ) : null}
-      <style>
-        {twStyles}
-        {cssContent}
-      </style>
+      {!twStyles ? null : (
+        <style>
+          {cssContent}
+          {twStyles}
+        </style>
+      )}
     </div>
   );
 }
