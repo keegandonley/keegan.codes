@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server';
 import tailwindcss from 'tailwindcss';
 import postcss from 'postcss';
+import 'tailwindcss/lib/css/preflight.css';
 
 export async function POST(request: NextRequest) {
   const res: { html?: string } = await request.json();
