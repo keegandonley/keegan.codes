@@ -135,6 +135,10 @@
   overflow: hidden;
 }
 
+.button.inline {
+  margin-left: 0;
+}
+
 .clicker {
   position: absolute;
   left: 0;
@@ -153,6 +157,26 @@
 
 .clicker.clicked {
   transform: translateY(0.4rem);
+}
+
+.twLoading {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.8;
+}
+
+.twLoadingText {
+  font-size: 0.8rem;
+}
+
+.description {
+  font-size: 0.8rem;
+  color: var(--theme-text);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 768px) {

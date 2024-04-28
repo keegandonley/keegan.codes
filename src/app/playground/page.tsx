@@ -3,13 +3,19 @@
 import { injectVariables, merge } from '@keegancodes/foundations';
 import styles from './playground.module.css';
 import { GeistMono } from 'geist/font/mono';
-import { KeyboardEvent, useState } from 'react';
+import { KeyboardEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import sanitizeHtml from 'sanitize-html';
 import { Avatar } from '@/components/Avatar';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faCopy } from '@keegandonley/pro-solid-svg-icons';
+import {
+  faCheck,
+  faCheckCircle,
+  faCheckDouble,
+  faCopy,
+  faSpinnerThird,
+} from '@keegandonley/pro-solid-svg-icons';
 import { useCopyElementText } from '@keegancodes/foundations-react';
 
 export const runtime = 'edge';
@@ -28,6 +34,8 @@ export default function PlaygroundPage() {
   const isFrameless = frameless === 'true';
   const nameParam = urlQuery?.get('name') || 'Playground';
   const decodedNameParam = decodeURIComponent(nameParam);
+  const [twStyles, setTwStyles] = useState('');
+  const [twLoading, setTwLoading] = useState(false);
 
   const [cssContent, setCssContent] = useState(() =>
     cssParam
@@ -50,9 +58,10 @@ export default function PlaygroundPage() {
     useCopyElementText(cssContent);
 
   if (
-    htmlBase64 !== htmlParam ||
-    cssBase64 !== cssParam ||
-    decodedNameParam !== name
+    (htmlBase64 !== htmlParam ||
+      cssBase64 !== cssParam ||
+      decodedNameParam !== name) &&
+    typeof window !== 'undefined'
   ) {
     const url = `?html=${htmlBase64}&css=${cssBase64}&frameless=${frameless}&name=${encodeURIComponent(name)}`;
     window.history.replaceState(
@@ -94,6 +103,40 @@ export default function PlaygroundPage() {
     }
   };
 
+  const handleGetTailwind = useCallback(async (content: string) => {
+    const res = await fetch('/api/tw', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ html: content }),
+    });
+    const data = await res.json();
+
+    setTwStyles(data.css);
+    setTwLoading(false);
+  }, []);
+
+  const hasRunOnce = useRef(false);
+  useEffect(() => {
+    setTwLoading(true);
+
+    // debounce the getTailwind function
+    const timer = setTimeout(
+      () => {
+        if (htmlContent) {
+          handleGetTailwind(htmlContent);
+        } else {
+          setTwLoading(false);
+        }
+        hasRunOnce.current = true;
+      },
+      hasRunOnce.current ? 1000 : 0,
+    );
+
+    return () => clearTimeout(timer);
+  }, [handleGetTailwind, htmlContent]);
+
   return (
     <div className={styles.wrapper}>
       {isFrameless ? null : (
@@ -119,14 +162,27 @@ export default function PlaygroundPage() {
           }}
         />
       </div>
+      <p className={merge(styles.description, GeistMono.className)}>
+        Edit the following HTML and CSS to experiement in real-time! You&apos;ll
+        see the results in the preview above. Tailwind classes are supported and
+        generated on the fly.
+      </p>
       <div className={styles.inputs}>
         <div className={merge(styles.input, styles.html)}>
           <span className={merge(styles.header)}>
             <span className={merge(styles.langText, GeistMono.className)}>
               html
             </span>
+            <div className={merge(styles.twLoading, GeistMono.className)}>
+              <span className={merge(styles.twLoadingText)}>Tailwind:</span>
+              {twLoading ? (
+                <FontAwesomeIcon icon={faSpinnerThird} spin fixedWidth />
+              ) : (
+                <FontAwesomeIcon icon={faCheck} fixedWidth />
+              )}
+            </div>
             <button
-              className={styles.button}
+              className={merge(styles.button, styles.inline)}
               onClick={onClickCopyHTML}
               disabled={pendingCopyHTML}
             >
@@ -195,7 +251,10 @@ export default function PlaygroundPage() {
           </Link>
         </div>
       ) : null}
-      <style>{cssContent}</style>
+      <style>
+        {twStyles}
+        {cssContent}
+      </style>
     </div>
   );
 }
