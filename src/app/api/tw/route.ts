@@ -1,7 +1,6 @@
 import { NextRequest } from 'next/server';
 import tailwindcss from 'tailwindcss';
 import postcss from 'postcss';
-import 'tailwindcss/lib/css/preflight.css';
 
 export async function POST(request: NextRequest) {
   const res: { html?: string } = await request.json();
@@ -15,6 +14,7 @@ export async function POST(request: NextRequest) {
   const result = await postcss([
     tailwindcss({
       content: [{ raw: html, extension: 'html' }],
+      corePlugins: { preflight: false },
     }),
   ]).process(`@tailwind components;@tailwind utilities; .__{}`, {
     from: 'api',
