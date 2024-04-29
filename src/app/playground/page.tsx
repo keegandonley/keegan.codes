@@ -115,6 +115,8 @@ export default function PlaygroundPage() {
       });
       const data = await res.json();
 
+      console.log(data);
+
       setTwStyles(data.css);
     } catch (error) {
       setTwStyles('.__error {}');
@@ -128,18 +130,19 @@ export default function PlaygroundPage() {
   useEffect(() => {
     setTwLoading(true);
 
+    if (!hasRunOnce.current) {
+      hasRunOnce.current = true;
+      handleGetTailwind(htmlContent);
+    }
+
     // debounce the getTailwind function
-    const timer = setTimeout(
-      () => {
-        if (htmlContent) {
-          handleGetTailwind(htmlContent);
-        } else {
-          setTwLoading(false);
-        }
-        hasRunOnce.current = true;
-      },
-      hasRunOnce.current ? 1000 : 0,
-    );
+    const timer = setTimeout(() => {
+      if (htmlContent) {
+        handleGetTailwind(htmlContent);
+      } else {
+        setTwLoading(false);
+      }
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [handleGetTailwind, htmlContent]);
@@ -156,7 +159,12 @@ export default function PlaygroundPage() {
           />
         </h1>
       )}
-      <div className={merge(styles.output, !twStyles ? styles.loading : '')}>
+      <div
+        className={merge(
+          styles.output,
+          !twStyles && htmlContent ? styles.loading : '',
+        )}
+      >
         <div
           dangerouslySetInnerHTML={{
             __html: sanitizeHtml(htmlContent, {

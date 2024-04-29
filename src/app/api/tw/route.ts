@@ -2,13 +2,15 @@ import { NextRequest } from 'next/server';
 import tailwindcss from 'tailwindcss';
 import postcss from 'postcss';
 
+const defaultCSS = '.__{}';
+
 export async function POST(request: NextRequest) {
   const res: { html?: string } = await request.json();
 
   const html = res.html;
 
   if (!html) {
-    return new Response('Error! Missing html', { status: 400 });
+    return Response.json({ css: defaultCSS });
   }
 
   const result = await postcss([
@@ -16,7 +18,7 @@ export async function POST(request: NextRequest) {
       content: [{ raw: html, extension: 'html' }],
       corePlugins: { preflight: false },
     }),
-  ]).process(`@tailwind components;@tailwind utilities; .__{}`, {
+  ]).process(`@tailwind components;@tailwind utilities; ${defaultCSS}`, {
     from: 'api',
   });
 
