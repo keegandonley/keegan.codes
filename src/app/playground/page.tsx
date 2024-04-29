@@ -146,7 +146,7 @@ export default function PlaygroundPage() {
   }, [handleGetTailwind, htmlContent]);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={merge(styles.wrapper, isFrameless ? styles.frameless : '')}>
       {isFrameless ? null : (
         <h1 className={merge(styles.heading, GeistMono.className)}>
           <input
