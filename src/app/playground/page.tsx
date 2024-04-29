@@ -115,8 +115,6 @@ export default function PlaygroundPage() {
       });
       const data = await res.json();
 
-      console.log(data);
-
       setTwStyles(data.css);
     } catch (error) {
       setTwStyles('.__error {}');
