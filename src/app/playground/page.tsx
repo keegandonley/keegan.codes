@@ -263,8 +263,12 @@ export default function PlaygroundPage() {
       ) : null}
       {!twStyles ? null : (
         <style>
-          {cssContent}
-          {twStyles}
+          {`
+            @scope {
+                ${cssContent}
+                ${twStyles}
+            }
+            `}
         </style>
       )}
     </div>
