@@ -5,7 +5,7 @@ import styles from './playground.module.css';
 import { GeistMono } from 'geist/font/mono';
 import { KeyboardEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { sanitize } from 'dompurify';
+import sanitizeHtml from 'sanitize-html';
 import { Avatar } from '@/components/Avatar';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -165,7 +165,13 @@ export default function PlaygroundPage() {
       >
         <div
           dangerouslySetInnerHTML={{
-            __html: sanitize(htmlContent),
+            __html: sanitizeHtml(htmlContent, {
+              allowedAttributes: {
+                ...sanitizeHtml.defaults.allowedAttributes,
+                '*': ['class', 'id', 'style', 'width', 'height'],
+              },
+              allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
+            }),
           }}
         />
       </div>
