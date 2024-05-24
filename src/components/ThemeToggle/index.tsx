@@ -1,6 +1,6 @@
 'use client';
 import { merge } from '@/util/classNames';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, use, useEffect, useState } from 'react';
 import styles from './themeToggle.module.css';
 import { AnimatedIcon } from '../AnimatedIcon';
 import { faMoon, faSunBright } from '@keegandonley/pro-solid-svg-icons';
@@ -33,7 +33,7 @@ export const ThemeToggle = ({
   ignoreGlobalState = false,
 }: ThemeToggleProps) => {
   const [theme, setTheme] = useState<Theme>(() => initialTheme ?? 'light');
-  const { setTheme: ctxSetTheme } = useContext(ThemeContext);
+  const { setTheme: ctxSetTheme } = use(ThemeContext);
 
   useEffect(() => {
     ctxSetTheme(theme);
