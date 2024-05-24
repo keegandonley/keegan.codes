@@ -1,23 +1,26 @@
 import { LoadingContext } from '@/app/loadingProvider';
 import { usePathname } from 'next/navigation';
-import { use, useEffect } from 'react';
+import { use, useCallback, useEffect } from 'react';
 
 export const useLinkClick = () => {
   const ctx = use(LoadingContext);
   const path = usePathname();
   const { setLoading } = ctx;
 
-  const onClick = (href: string) => (e: MouseEvent) => {
-    if (
-      !href.startsWith(window.location.href) &&
-      !href.startsWith('mailto:') &&
-      !e.metaKey
-    ) {
-      setLoading(true);
-    }
-  };
+  const onClick = useCallback(
+    (href: string) => (e: MouseEvent) => {
+      if (
+        !href.startsWith(window.location.href) &&
+        !href.startsWith('mailto:') &&
+        !e.metaKey
+      ) {
+        setLoading(true);
+      }
+    },
+    [setLoading],
+  );
 
-  const getLinks = () => {
+  const getLinks = useCallback(() => {
     setTimeout(() => {
       const links = Array.from(document.getElementsByTagName('a'));
       for (const link of links) {
@@ -26,7 +29,7 @@ export const useLinkClick = () => {
         }
       }
     }, 1);
-  };
+  }, [onClick]);
 
   useEffect(() => {
     const observer = new MutationObserver(getLinks);
