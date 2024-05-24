@@ -1,13 +1,12 @@
 import { useRouter } from 'next/navigation';
-import { useCallback } from 'react';
 
 export const useBackToBlog = () => {
   const router = useRouter();
 
-  const handleBack = useCallback(() => {
+  const handleBack = () => {
     document.body.classList.remove('lockScroll');
     router.back();
-  }, [router]);
+  };
 
   return handleBack;
 };

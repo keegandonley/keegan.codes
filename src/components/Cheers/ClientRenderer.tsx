@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './cheers.module.css';
 import { faChampagneGlass } from '@keegandonley/pro-solid-svg-icons';
 import { merge } from '@/util/classNames';
-import { useCallback, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import va from '@vercel/analytics';
 
 interface CheersClientRendererProps {
@@ -20,48 +20,45 @@ export const CheersClientRenderer = ({
 }: CheersClientRendererProps) => {
   const [cheersCount, setCheersCount] = useState(count);
   const [cheersing, setCheersing] = useState(false);
-  const timerRef = useRef<NodeJS.Timeout>();
+  const timerRef = useRef<NodeJS.Timeout>(null);
   const loading = count === -1;
 
-  const handleClickCheers = useCallback(
-    (e: React.MouseEvent) => {
-      e.stopPropagation();
-      e.preventDefault();
+  const handleClickCheers = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
 
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
 
-      setCheersCount((c) => c + 1);
-      setCheersing(true);
-      let id = localStorage.getItem('cheers-id');
-      timerRef.current = setTimeout(() => {
-        setCheersing(false);
-      }, 700);
+    setCheersCount((c) => c + 1);
+    setCheersing(true);
+    let id = localStorage.getItem('cheers-id');
+    timerRef.current = setTimeout(() => {
+      setCheersing(false);
+    }, 700);
 
-      if (!id) {
-        id = Date.now() + '-' + Math.random().toString();
-        localStorage.setItem('cheers-id', id);
-      }
+    if (!id) {
+      id = Date.now() + '-' + Math.random().toString();
+      localStorage.setItem('cheers-id', id);
+    }
 
-      fetch('/api/cheers', {
-        method: 'POST',
-        body: JSON.stringify({
-          slug: slug,
-          location,
-          id,
-        } as CheersBody),
-      });
-
-      va.track('Cheers Click', {
-        slug,
+    fetch('/api/cheers', {
+      method: 'POST',
+      body: JSON.stringify({
+        slug: slug,
         location,
-      });
+        id,
+      } as CheersBody),
+    });
 
-      return false;
-    },
-    [slug, location],
-  );
+    va.track('Cheers Click', {
+      slug,
+      location,
+    });
+
+    return false;
+  };
 
   return (
     <>

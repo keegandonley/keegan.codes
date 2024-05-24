@@ -1,6 +1,6 @@
 'use client';
 import { merge } from '@/util/classNames';
-import { useCallback, use, useEffect, useState } from 'react';
+import { use, useCallback, useEffect, useState } from 'react';
 import styles from './themeToggle.module.css';
 import { AnimatedIcon } from '../AnimatedIcon';
 import { faMoon, faSunBright } from '@keegandonley/pro-solid-svg-icons';
@@ -47,7 +47,7 @@ export const ThemeToggle = ({
     }
   }, [route, theme, ignoreGlobalState, initialTheme]);
 
-  const toggleTheme = useCallback(() => {
+  const toggleTheme = () => {
     if (!ignoreGlobalState) {
       // TODO - set this to false to allow the fallback on system default
       setHasChosenThemeCookie();
@@ -59,7 +59,7 @@ export const ThemeToggle = ({
     });
 
     setTheme((theme) => (theme === 'light' ? 'dark' : 'light'));
-  }, [ignoreGlobalState, theme]);
+  };
 
   const handleMatch = useCallback((prefersDark: boolean) => {
     va.track('Theme Match', {

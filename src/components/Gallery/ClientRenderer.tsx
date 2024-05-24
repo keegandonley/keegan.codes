@@ -1,5 +1,4 @@
 'use client';
-import { useCallback } from 'react';
 import { Gallery } from '@/types/galleries';
 import styles from './gallery.module.css';
 import { merge } from '@/util/classNames';
@@ -19,16 +18,13 @@ export default function ClientRenderer({
 }: ClientRendererProps) {
   const [active, setActive] = useState(1);
 
-  const handleGalleryClick = useCallback(
-    (index: number) => {
-      setActive(index);
-      va.track('Click Gallery Image', {
-        bucket,
-        index,
-      });
-    },
-    [bucket],
-  );
+  const handleGalleryClick = (index: number) => {
+    setActive(index);
+    va.track('Click Gallery Image', {
+      bucket,
+      index,
+    });
+  };
 
   return (
     <div className={styles.wrapper}>

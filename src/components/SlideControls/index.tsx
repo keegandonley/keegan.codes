@@ -29,11 +29,11 @@ export const SlideControls = () => {
 
   const handleGoForward = useCallback(() => {
     router.push(`/slides/${slideName}/${slideIndex + 1}`);
-  }, [router, slideIndex, slideName]);
+  }, [slideName, slideIndex, router]);
 
-  const goToStart = useCallback(() => {
+  const goToStart = () => {
     router.push(`/slides/${slideName}/0`);
-  }, [router, slideName]);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -49,12 +49,12 @@ export const SlideControls = () => {
     };
   }, [handleGoBack, handleGoForward]);
 
-  const enterFullScreen = useCallback(() => {
+  const enterFullScreen = () => {
     const element = document.getElementById('fullscreen-context');
     if (element?.requestFullscreen) {
       element.requestFullscreen();
     }
-  }, []);
+  };
 
   return (
     <div className={styles.wrapper}>

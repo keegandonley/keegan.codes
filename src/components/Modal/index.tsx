@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ClientBackButton } from '../ClientBackButton';
 import styles from './modal.module.css';
 import { merge } from '@/util/classNames';
@@ -22,11 +22,11 @@ export const Modal = ({ children }: ModalProps) => {
     setFadedIn(true);
   }, []);
 
-  const handleBack = useCallback(() => {
+  const handleBack = () => {
     document.body.classList.remove('lockScroll');
     setFadedIn(false);
     setTimeout(router.back, 400);
-  }, [router]);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
