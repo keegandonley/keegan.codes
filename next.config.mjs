@@ -66,6 +66,9 @@ const nextConfig = {
   },
   // Support the pages router with the Geist font
   transpilePackages: ['geist'],
+  experimental: {
+    reactCompiler: true,
+  },
 };
 
 const withBundleAnalyzer = addAnalyzer({
