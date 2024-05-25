@@ -13,7 +13,6 @@ const getValue = async (slug: string): Promise<number> => {
       `/api/cheers?slug=${slug}`,
     );
     const data = await fetch(url, {
-      cache: 'no-store',
       headers,
     });
 
