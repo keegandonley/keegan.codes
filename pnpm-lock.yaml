@@ -25,11 +25,11 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1
       '@keegancodes/foundations-next':
-        specifier: ^1.0.31
-        version: 1.0.31(@keegancodes/foundations@1.1.1)(next@15.0.0-rc.0(@babel/core@7.24.6)(@opentelemetry/api@1.8.0)(babel-plugin-react-compiler@0.0.0-experimental-592953e-20240517)(react-dom@19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522))(react@19.0.0-rc-f994737d14-20240522))(react-dom@19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522))(react@19.0.0-rc-f994737d14-20240522)
+        specifier: 2.0.0-rc.0
+        version: 2.0.0-rc.0(@keegancodes/foundations@1.1.1)(next@15.0.0-rc.0(@babel/core@7.24.6)(@opentelemetry/api@1.8.0)(babel-plugin-react-compiler@0.0.0-experimental-592953e-20240517)(react-dom@19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522))(react@19.0.0-rc-f994737d14-20240522))(react-dom@19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522))(react@19.0.0-rc-f994737d14-20240522)
       '@keegancodes/foundations-react':
-        specifier: 2.0.2
-        version: 2.0.2(@keegancodes/foundations@1.1.1)(react@19.0.0-rc-f994737d14-20240522)(types-react@19.0.0-rc.0)
+        specifier: 3.0.0-rc.1
+        version: 3.0.0-rc.1(@keegancodes/foundations@1.1.1)(react@19.0.0-rc-f994737d14-20240522)
       '@keegandonley/pro-regular-svg-icons':
         specifier: ^6.5.2
         version: 6.5.2
@@ -488,20 +488,19 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@keegancodes/foundations-next@1.0.31':
-    resolution: {integrity: sha512-JGPUVHnTxvclcq+/TiO4tehUdacTXvGHDZpe1kJIUIx6fdX3bKKkMUEbPJ4dLHkqVrry7jE+WY/6twedvZjQAw==}
+  '@keegancodes/foundations-next@2.0.0-rc.0':
+    resolution: {integrity: sha512-3BZtBTrX2X7WrmKrU7vI3fdQ+9Eb9oFEmTVW+305Mg0SFb0vWYyFEmMsZsLnXrJDG5TAWpSSvZ0669+WxG4fCA==}
     peerDependencies:
       '@keegancodes/foundations': ^1.0.21
-      next: ^14.2.1
-      react: ^18.2.0
-      react-dom: ^18.2.0
+      next: 15.0.0-rc.0
+      react: 19.0.0-rc-f994737d14-20240522
+      react-dom: 19.0.0-rc-f994737d14-20240522
 
-  '@keegancodes/foundations-react@2.0.2':
-    resolution: {integrity: sha512-UxE43K4QlLz6wnGcRxtvxAP10z3YB5gzRxybp/SMQDXOhbtVKmK2Cfhe6apQMgq/e0sgCl33Qqs1//RNa5I1Sg==}
+  '@keegancodes/foundations-react@3.0.0-rc.1':
+    resolution: {integrity: sha512-GoBVJXGKimlgtC/M91JTCRXpQSPyFcVZbMWYJrnf+0Ita1tPHX1DgUTMiDxPJLmkVESdMP0opwI8CiNNC05+vw==}
     peerDependencies:
       '@keegancodes/foundations': ^1.0.21
-      '@types/react': npm:types-react@rc
-      react: ^18.2.0
+      react: 19.0.0-rc-f994737d14-20240522
 
   '@keegancodes/foundations@1.1.1':
     resolution: {integrity: sha512-vkIUUcrBUocULlbytcZgHra0Yp2Jh2mBS2ZPZw+mfeXAAqA9upBWI/sFyYKA292UVbPovhcbTqiDKGk0FF9kog==}
@@ -1315,8 +1314,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.4.782:
-    resolution: {integrity: sha512-JUfU61e8tr+i5Y1FKXcKs+Xe+rJ+CEqm4cgv1kMihPE2EvYHmYyVr3Im/+1+Z5B29Be2EEGCZCwAc6Tazdl1Yg==}
+  electron-to-chromium@1.4.783:
+    resolution: {integrity: sha512-bT0jEz/Xz1fahQpbZ1D7LgmPYZ3iHVY39NcWWro1+hA2IvjiPeaXtfSqrQ+nXjApMvQRE2ASt1itSLRrebHMRQ==}
 
   emoji-regex@10.3.0:
     resolution: {integrity: sha512-QpLs9D9v9kArv4lfDEgg1X/gN5XLnf/A6l9cs8SPZLRZR3ZkY9+kwIQTxm+fsSej5UMYGE8fdoaZVIBlqG0XTw==}
@@ -3553,17 +3552,16 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@keegancodes/foundations-next@1.0.31(@keegancodes/foundations@1.1.1)(next@15.0.0-rc.0(@babel/core@7.24.6)(@opentelemetry/api@1.8.0)(babel-plugin-react-compiler@0.0.0-experimental-592953e-20240517)(react-dom@19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522))(react@19.0.0-rc-f994737d14-20240522))(react-dom@19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522))(react@19.0.0-rc-f994737d14-20240522)':
+  '@keegancodes/foundations-next@2.0.0-rc.0(@keegancodes/foundations@1.1.1)(next@15.0.0-rc.0(@babel/core@7.24.6)(@opentelemetry/api@1.8.0)(babel-plugin-react-compiler@0.0.0-experimental-592953e-20240517)(react-dom@19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522))(react@19.0.0-rc-f994737d14-20240522))(react-dom@19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522))(react@19.0.0-rc-f994737d14-20240522)':
     dependencies:
       '@keegancodes/foundations': 1.1.1
       next: 15.0.0-rc.0(@babel/core@7.24.6)(@opentelemetry/api@1.8.0)(babel-plugin-react-compiler@0.0.0-experimental-592953e-20240517)(react-dom@19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522))(react@19.0.0-rc-f994737d14-20240522)
       react: 19.0.0-rc-f994737d14-20240522
       react-dom: 19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522)
 
-  '@keegancodes/foundations-react@2.0.2(@keegancodes/foundations@1.1.1)(react@19.0.0-rc-f994737d14-20240522)(types-react@19.0.0-rc.0)':
+  '@keegancodes/foundations-react@3.0.0-rc.1(@keegancodes/foundations@1.1.1)(react@19.0.0-rc-f994737d14-20240522)':
     dependencies:
       '@keegancodes/foundations': 1.1.1
-      '@types/react': types-react@19.0.0-rc.0
       react: 19.0.0-rc-f994737d14-20240522
 
   '@keegancodes/foundations@1.1.1': {}
@@ -4140,7 +4138,7 @@ snapshots:
   browserslist@4.23.0:
     dependencies:
       caniuse-lite: 1.0.30001621
-      electron-to-chromium: 1.4.782
+      electron-to-chromium: 1.4.783
       node-releases: 2.0.14
       update-browserslist-db: 1.0.16(browserslist@4.23.0)
 
@@ -4391,7 +4389,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.4.782: {}
+  electron-to-chromium@1.4.783: {}
 
   emoji-regex@10.3.0: {}
 
