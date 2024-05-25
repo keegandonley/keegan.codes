@@ -11,7 +11,7 @@ import wave6 from './graphics/Wave6.svg';
 import wave7 from './graphics/Wave7.svg';
 import wave8 from './graphics/Wave8.svg';
 import Image from 'next/image';
-import { useContext, useState } from 'react';
+import { use, useState } from 'react';
 import { LoadingContext } from '@/app/loadingProvider';
 
 interface WaveProps {
@@ -63,7 +63,7 @@ export const Waves = () => {
 
   const waveWidth = 500;
   const waveCount = Math.ceil(forcedDocumentWidth / waveWidth) * 3;
-  const { loading } = useContext(LoadingContext);
+  const { loading } = use(LoadingContext);
   const [previousLoading, setPreviousLoading] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
 

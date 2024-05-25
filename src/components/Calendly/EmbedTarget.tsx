@@ -1,6 +1,6 @@
 'use client';
 import { ThemeContext } from '@/app/themeProvider';
-import { useContext } from 'react';
+import { use } from 'react';
 import { InlineWidget, useCalendlyEventListener } from 'react-calendly';
 import va from '@vercel/analytics';
 
@@ -10,7 +10,7 @@ const EmbedTarget = ({
   textColor = { light: '20417B', dark: 'D0D6E3' },
   primaryColor = { light: '00465f', dark: '4BB9E5' },
 }) => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = use(ThemeContext);
 
   useCalendlyEventListener({
     onProfilePageViewed: () => va.track('Profile Page Viewed', { meeting }),

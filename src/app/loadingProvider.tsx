@@ -11,8 +11,6 @@ export default function LoadingProvider({ children }: any) {
   const [loading, setLoading] = useState(false);
 
   return (
-    <LoadingContext.Provider value={{ loading, setLoading }}>
-      {children}
-    </LoadingContext.Provider>
+    <LoadingContext value={{ loading, setLoading }}>{children}</LoadingContext>
   );
 }

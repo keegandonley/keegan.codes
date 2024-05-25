@@ -1,9 +1,9 @@
 import { LoadingContext } from '@/app/loadingProvider';
 import { usePathname } from 'next/navigation';
-import { useCallback, useContext, useEffect } from 'react';
+import { use, useCallback, useEffect } from 'react';
 
 export const useLinkClick = () => {
-  const ctx = useContext(LoadingContext);
+  const ctx = use(LoadingContext);
   const path = usePathname();
   const { setLoading } = ctx;
 

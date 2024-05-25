@@ -6,7 +6,7 @@ const getValue = async (): Promise<number> => {
   try {
     const { url, headers } =
       await getFullyQualifiedDeploymentUrl('/api/view/total');
-    const data = await fetch(url, { cache: 'no-store', headers });
+    const data = await fetch(url, { headers });
 
     const { views } = await data.json();
 
