@@ -14,7 +14,17 @@ export default function FrameTestPage() {
   useEffect(() => {
     interval.current = setInterval(() => {
       console.log('sending tick');
-      window.parent.postMessage('keegan_frame_test_tick', '*');
+      window.parent.postMessage(
+        {
+          type: 'keegan_frame_test_tick',
+          payload: {
+            time: Date.now(),
+            width: window.innerWidth,
+            height: window.innerHeight,
+          },
+        },
+        '*',
+      );
     }, 2000);
 
     return () => clearInterval(interval.current);
