@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Bender from '../../../images/bender.jpg';
 import '@/tw.css';
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 export default function FrameTestPage() {
   useEffect(() => {
@@ -39,6 +39,15 @@ export default function FrameTestPage() {
 
     return () => clearInterval(interval.current);
   });
+
+  const handleMessage = useCallback((ev: any) => {
+    console.log('ev', ev);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [handleMessage]);
 
   return (
     <div className="flex w-full flex-col items-center pt-12">
