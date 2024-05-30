@@ -6,7 +6,17 @@ import { useEffect, useRef } from 'react';
 export default function FrameTestPage() {
   useEffect(() => {
     console.log('sending init');
-    window.parent.postMessage('keegan_frame_test_init', '*');
+    window.parent.postMessage(
+      {
+        type: 'keegan_frame_test_init',
+        payload: {
+          time: Date.now(),
+          width: window.innerWidth,
+          height: window.innerHeight,
+        },
+      },
+      '*',
+    );
   }, []);
 
   const interval = useRef<any>(null);
