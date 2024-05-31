@@ -60,7 +60,7 @@
     "@opentelemetry/api": "^1.8.0",
     "@types/sanitize-html": "^2.11.0",
     "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.14",
+    "prettier-plugin-tailwindcss": "^0.6.0",
     "webpack": "^5.91.0"
   },
   "pnpm": {
