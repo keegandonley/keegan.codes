@@ -103,8 +103,8 @@ dependencies:
     specifier: 19.0.0-rc-f994737d14-20240522
     version: 19.0.0-rc-f994737d14-20240522
   react-calendly:
-    specifier: ^4.3.0
-    version: 4.3.0(react-dom@19.0.0-rc-f994737d14-20240522)(react@19.0.0-rc-f994737d14-20240522)
+    specifier: ^4.3.1
+    version: 4.3.1(react-dom@19.0.0-rc-f994737d14-20240522)(react@19.0.0-rc-f994737d14-20240522)
   react-dom:
     specifier: 19.0.0-rc-f994737d14-20240522
     version: 19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522)
@@ -4786,8 +4786,8 @@ packages:
     dependencies:
       safe-buffer: 5.2.1
 
-  /react-calendly@4.3.0(react-dom@19.0.0-rc-f994737d14-20240522)(react@19.0.0-rc-f994737d14-20240522):
-    resolution: {integrity: sha512-JFZzYhyJBaoZDseB3UqzeOx1rbzCK24nr5pqH/6zJEh7CZ/pn5R49rkIJ0g5E7j5WQ3K7xBSgBD7WgM36v3gZw==}
+  /react-calendly@4.3.1(react-dom@19.0.0-rc-f994737d14-20240522)(react@19.0.0-rc-f994737d14-20240522):
+    resolution: {integrity: sha512-poyUH3NOUOlsotr8ho5WzbsbPuRAppaY+Jvu+C/PkwTP6WT807pNFI8+HrbbuRknXZbd75zpzysOJQvcu3P8Pg==}
     engines: {node: '>=8', npm: '>=5'}
     peerDependencies:
       react: '>=16.8.0 || 19.0.0-rc-f994737d14-20240522'
