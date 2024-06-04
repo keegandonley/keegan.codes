@@ -12,7 +12,6 @@ import { BASEURL, DESCRIPTION, NAME } from '@/metadata';
 import MainNavigation from '@/components/MainNavigation';
 import { ModalBoundary } from '@/components/ModalBoundary';
 import ThemeProvider from './themeProvider';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import dynamic from 'next/dynamic';
 import LoadingProvider from './loadingProvider';
 import { GeistSans } from 'geist/font/sans';
@@ -55,7 +54,6 @@ export default async function RootLayout({ children, postModal }: any) {
         {/* Adding suspense to try https://github.com/vercel/next.js/issues/48442#issuecomment-1519139562 */}
         <Suspense fallback={null}>
           <Analytics />
-          <SpeedInsights />
         </Suspense>
         {process.env.NODE_ENV === 'development' ? <TailwindDebugger /> : null}
       </body>
