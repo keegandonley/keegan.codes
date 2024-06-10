@@ -19,6 +19,7 @@ const DynamicWaves = dynamic(
   () => import('../Waves').then((mod) => mod.Waves),
   {
     ssr: false,
+    loading: () => null,
   },
 );
 
