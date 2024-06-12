@@ -85,7 +85,7 @@ export default function Render24() {
               <strong>LinkedIn</strong>
             </Link>{' '}
             or{' '}
-            <Link href={'/twitter'} className="">
+            <Link href={'/twitter'} className="text-nowrap">
               <Image
                 src={X}
                 alt="X (Twitter)"
