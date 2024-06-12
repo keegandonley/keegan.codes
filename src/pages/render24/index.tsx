@@ -67,8 +67,8 @@ export default function Render24() {
             >
               <strong>Kizen</strong>
             </Link>{' '}
-            in Austin, Texas 🌵. I love all things React, Next.js, and
-            performant web!
+            in Austin, Texas. I love all things React, Next.js, and performant
+            web!
           </p>
           <div className="h-5" />
           <p className="font-serif text-xl text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200">
@@ -103,8 +103,8 @@ export default function Render24() {
             <Link href="/blog" className="text-render-accent">
               <strong>blog</strong>
             </Link>{' '}
-            about a number of topics, ranging from software to fitness to
-            travel.
+            about a number of topics, ranging from software to connected fitness
+            and travel.
           </p>
           <Hr
             className="w-full motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200"
