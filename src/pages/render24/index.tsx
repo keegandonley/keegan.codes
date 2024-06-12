@@ -18,7 +18,7 @@ export default function Render24() {
         <div className="flex max-w-[1000px] flex-col items-center justify-center px-5 text-center">
           <Avatar
             width={200}
-            className="skew-x-[var(--dimension-2-deg)] skew-y-[var(--dimension-1-deg)] shadow-xl grayscale motion-safe:opacity-0 motion-safe:animate-fadeIn"
+            className="skew-x-[var(--dimension-2-deg)] skew-y-[var(--dimension-1-deg)] shadow-xl grayscale motion-safe:animate-fadeIn motion-safe:opacity-0"
             style={{
               '--dimension-1-deg': `${skewYDeg}deg`,
               '--dimension-2-deg': `${skewXDeg}deg`,
@@ -26,11 +26,11 @@ export default function Render24() {
             priority
           />
           <div className="h-10" />
-          <h1 className="font-serif text-4xl font-bold text-render-text motion-safe:opacity-0 motion-safe:animate-fadeIn motion-safe:animation-delay-100">
+          <h1 className="font-serif text-4xl font-bold text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-100">
             Hi there! It&apos;s nice to meet you!
           </h1>
           <div className="h-5" />
-          <p className="font-serif text-xl text-render-text motion-safe:opacity-0 motion-safe:animate-fadeIn motion-safe:animation-delay-200">
+          <p className="font-serif text-xl text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200">
             My name is <strong>Keegan Donley</strong>, and I&apos;m currently a
             principal front-end engineer at{' '}
             <Link
@@ -43,7 +43,7 @@ export default function Render24() {
             . I love all things React, Next.js, and performant web!
           </p>
           <div className="h-5" />
-          <p className="font-serif text-xl text-render-text motion-safe:opacity-0 motion-safe:animate-fadeIn motion-safe:animation-delay-200">
+          <p className="font-serif text-xl text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200">
             I&apos;d love to connect on{' '}
             <Link href={'/linkedin'} className="text-render-accent">
               <Image
@@ -70,7 +70,7 @@ export default function Render24() {
             !
           </p>
           <div className="h-5" />
-          <p className="font-serif text-xl text-render-text motion-safe:opacity-0 motion-safe:animate-fadeIn motion-safe:animation-delay-200">
+          <p className="font-serif text-xl text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200">
             I also write a{' '}
             <Link href="/blog" className="text-render-accent">
               <strong>blog</strong>
@@ -79,24 +79,24 @@ export default function Render24() {
             travel.
           </p>
           <Hr
-            className="w-full motion-safe:opacity-0 motion-safe:animate-fadeIn motion-safe:animation-delay-200"
+            className="w-full motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200"
             style={{
               '--theme-blue-2': 'var(--color-render-accent)',
               '--theme-background': 'var(--color-render-bg)',
             }}
           />
           <div className="h-5" />
-          <p className="font-serif text-xl text-render-text motion-safe:opacity-0 motion-safe:animate-fadeIn motion-safe:animation-delay-200">
+          <p className="font-serif text-xl text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200">
             Want to grab a coffee? Happy hour? A bite to eat? I love meeting new
             people at conferences like Render, so let&apos;s connect!
           </p>
           <div className="h-20" />
-          <h2 className="font-serif text-xl text-render-text motion-safe:opacity-0 motion-safe:animate-fadeIn motion-safe:animation-delay-200">
+          <h2 className="font-serif text-xl text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200">
             <strong>Some of My Blog Posts:</strong>
           </h2>
           <div className="h-10" />
-          <div className="grid w-full grid-cols-1 grid-rows-3 gap-4 sm:grid-cols-3 sm:grid-rows-1 motion-safe:opacity-0 motion-safe:animate-fadeIn motion-safe:animation-delay-400">
-          <Link
+          <div className="motion-safe:animation-delay-400 grid w-full grid-cols-1 grid-rows-3 gap-4 motion-safe:animate-fadeIn motion-safe:opacity-0 sm:grid-cols-3 sm:grid-rows-1">
+            <Link
               href="/blog/ai-app-in-72-hours?source=render24"
               className="overflow-hidden rounded-lg text-left font-serif text-render-text shadow-xl"
             >
@@ -115,12 +115,13 @@ export default function Render24() {
               <div className="p-4">
                 <h3>
                   <strong>
-                  Building an AI-Powered Web Application in 72 Hours
+                    Building an AI-Powered Web Application in 72 Hours
                   </strong>
                 </h3>
                 <div className="h-2" />
                 <p className="text-justify">
-                  A technical deep dive into Thirsty Bot, an AI-powered cocktail generator I built over a weekend
+                  A technical deep dive into Thirsty Bot, an AI-powered cocktail
+                  generator I built over a weekend
                 </p>
               </div>
             </Link>
