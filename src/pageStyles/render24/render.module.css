@@ -1,0 +1,60 @@
+.blogButton {
+  text-align: center;
+  margin-top: 2rem;
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.blogInner {
+  background: var(--color-render-bg);
+  color: var(--theme-text);
+  border-radius: 10rem;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+.buttonIcon {
+  transform: translateX(0);
+  transition: transform 0.3s;
+}
+
+@media (hover: hover) {
+  .blogButtonText:hover .blogInner {
+    background: transparent;
+    color: white;
+  }
+
+  .blogButtonText:hover .buttonIcon {
+    transform: translateX(1.5rem);
+  }
+}
+
+.blogButtonText {
+  background: linear-gradient(
+    90deg,
+    var(--theme-blue-1),
+    var(--theme-blue-3),
+    var(--theme-yellow),
+    var(--theme-blue-2)
+  );
+  margin: 0 auto;
+  border-radius: 10rem;
+  color: white;
+  animation: textGradient 15s ease infinite;
+  background-size: 400% 400%;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 3px;
+  box-shadow: 0 0 0.2rem var(--shadow-color);
+  font-weight: 500;
+}
+
+.blogButtonText svg {
+  margin-left: 0.5rem;
+}

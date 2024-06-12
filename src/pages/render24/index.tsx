@@ -7,6 +7,11 @@ import { Hr } from '@/components/Post/Hr';
 import { BUCKET_URL } from '@/util/r2';
 import { HiTrack } from '@/components/Track/Hi';
 import '@/tw.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { merge } from '@keegancodes/foundations';
+import { faArrowRight } from '@keegandonley/pro-solid-svg-icons';
+import styles from '../../pageStyles/render24/render.module.css';
+import '../../app/theme.css';
 
 export default function Render24() {
   const skewYDeg = 0;
@@ -29,7 +34,29 @@ export default function Render24() {
           <h1 className="font-serif text-4xl font-bold text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-100">
             Hi there! It&apos;s nice to meet you!
           </h1>
-          <div className="h-5" />
+          <div className="flex gap-8 pt-8 motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-500">
+            <Link href={'/linkedin'} className="text-render-accent">
+              <Image
+                src={linkedIn}
+                alt="LinkedIn"
+                className="mb-1 inline"
+                height={40}
+                width={40}
+                priority
+              />
+            </Link>
+            <Link href={'/twitter'} className="">
+              <Image
+                src={X}
+                alt="X (Twitter)"
+                className="mb-1 inline"
+                height={40}
+                width={40}
+                priority
+              />
+            </Link>
+          </div>
+          <div className="h-8" />
           <p className="font-serif text-xl text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200">
             My name is <strong>Keegan Donley</strong>, and I&apos;m currently a
             principal front-end engineer at{' '}
@@ -191,6 +218,22 @@ export default function Render24() {
               '--theme-background': 'var(--color-render-bg)',
             }}
           />
+          <div
+            className={merge(
+              styles.blogButton,
+              'motion-safe:animate-fadeIn motion-safe:opacity-0',
+            )}
+          >
+            <Link href="/blog" scroll className={merge(styles.blogButtonText)}>
+              <span className={styles.blogInner}>
+                More Blog Posts{' '}
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  className={styles.buttonIcon}
+                />
+              </span>
+            </Link>
+          </div>
           <div className="h-5" />
         </div>
       </div>
