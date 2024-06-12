@@ -39,8 +39,9 @@ export default function Render24() {
               className="text-render-accent"
             >
               <strong>Kizen</strong>
-            </Link>
-            . I love all things React, Next.js, and performant web!
+            </Link>{' '}
+            in Austin, Texas 🌵. I love all things React, Next.js, and
+            performant web!
           </p>
           <div className="h-5" />
           <p className="font-serif text-xl text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200">
