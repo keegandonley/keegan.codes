@@ -20,6 +20,15 @@ module.exports = {
   theme: {
     extend: {
       colors,
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        }
+      },
+      animation: {
+        fadeIn: 'fadeIn 0.6s linear forwards',
+      }
     },
   },
   plugins: [
@@ -32,6 +41,20 @@ module.exports = {
           };
         }, {}),
       });
+    },
+    function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          "animation-delay": (value) => {
+            return {
+              "animation-delay": value,
+            };
+          },
+        },
+        {
+          values: theme("transitionDelay"),
+        }
+      );
     },
   ],
 };

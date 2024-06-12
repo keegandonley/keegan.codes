@@ -8,7 +8,7 @@ import { BUCKET_URL } from '@/util/r2';
 import { HiTrack } from '@/components/Track/Hi';
 import '@/tw.css';
 
-export default function render24() {
+export default function Render24() {
   const skewYDeg = 0;
   const skewXDeg = 0;
 
@@ -18,7 +18,7 @@ export default function render24() {
         <div className="flex max-w-[1000px] flex-col items-center justify-center px-5 text-center">
           <Avatar
             width={200}
-            className="skew-x-[var(--dimension-2-deg)] skew-y-[var(--dimension-1-deg)] shadow-xl grayscale"
+            className="skew-x-[var(--dimension-2-deg)] skew-y-[var(--dimension-1-deg)] shadow-xl grayscale motion-safe:animate-fadeIn motion-safe:opacity-0"
             style={{
               '--dimension-1-deg': `${skewYDeg}deg`,
               '--dimension-2-deg': `${skewXDeg}deg`,
@@ -26,11 +26,11 @@ export default function render24() {
             priority
           />
           <div className="h-10" />
-          <h1 className="font-serif text-4xl font-bold text-render-text">
+          <h1 className="font-serif text-4xl font-bold text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-100">
             Hi there! It&apos;s nice to meet you!
           </h1>
           <div className="h-5" />
-          <p className="font-serif text-xl text-render-text">
+          <p className="font-serif text-xl text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200">
             My name is <strong>Keegan Donley</strong>, and I&apos;m currently a
             principal front-end engineer at{' '}
             <Link
@@ -43,7 +43,7 @@ export default function render24() {
             . I love all things React, Next.js, and performant web!
           </p>
           <div className="h-5" />
-          <p className="font-serif text-xl text-render-text">
+          <p className="font-serif text-xl text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200">
             I&apos;d love to connect on{' '}
             <Link href={'/linkedin'} className="text-render-accent">
               <Image
@@ -70,7 +70,7 @@ export default function render24() {
             !
           </p>
           <div className="h-5" />
-          <p className="font-serif text-xl text-render-text">
+          <p className="font-serif text-xl text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200">
             I also write a{' '}
             <Link href="/blog" className="text-render-accent">
               <strong>blog</strong>
@@ -79,23 +79,52 @@ export default function render24() {
             travel.
           </p>
           <Hr
-            className="w-full"
+            className="w-full motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200"
             style={{
               '--theme-blue-2': 'var(--color-render-accent)',
               '--theme-background': 'var(--color-render-bg)',
             }}
           />
           <div className="h-5" />
-          <p className="font-serif text-xl text-render-text">
+          <p className="font-serif text-xl text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200">
             Want to grab a coffee? Happy hour? A bite to eat? I love meeting new
             people at conferences like Render, so let&apos;s connect!
           </p>
           <div className="h-20" />
-          <h2 className="font-serif text-xl text-render-text">
+          <h2 className="font-serif text-xl text-render-text motion-safe:animate-fadeIn motion-safe:opacity-0 motion-safe:animation-delay-200">
             <strong>Some of My Blog Posts:</strong>
           </h2>
           <div className="h-10" />
-          <div className="grid w-full grid-cols-1 grid-rows-3 gap-4 sm:grid-cols-3 sm:grid-rows-1">
+          <div className="motion-safe:animation-delay-400 grid w-full grid-cols-1 grid-rows-3 gap-4 motion-safe:animate-fadeIn motion-safe:opacity-0 sm:grid-cols-3 sm:grid-rows-1">
+            <Link
+              href="/blog/ai-app-in-72-hours?source=render24"
+              className="overflow-hidden rounded-lg text-left font-serif text-render-text shadow-xl"
+            >
+              <div className="h-36">
+                <Image
+                  src={`${BUCKET_URL}/thirsty-bot-deep-dive-cover.png`}
+                  alt="Cover"
+                  width={2752}
+                  height={1024}
+                  blurDataURL="data:image/jpeg;base64,/9j/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIABEAMgMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AOYl07CVAthgcVee6UxDJ5qAXK46181eRx3kZdzaEvirNtYgKKhuboebwat210uBk1pJy5S5OXKQ3FgMZIp9nZZU4FT3N2mzinWV4gQjvUc0uUjmnylNrVgx570n2ZvWpXnJduO9J5x9K194fNMil6VD2NTS9Kh7GktjUpS/6z8asRdKry/6z8asRdK1lsN7DpOlPtvvUyTpT7b71R0F0LJ60UHrRXQZn//Z"
+                  className="h-full object-cover"
+                  placeholder="blur"
+                  sizes={`(max-width: 550px) 100vw, 310px`}
+                />
+              </div>
+              <div className="p-4">
+                <h3>
+                  <strong>
+                    Building an AI-Powered Web Application in 72 Hours
+                  </strong>
+                </h3>
+                <div className="h-2" />
+                <p className="text-justify">
+                  A technical deep dive into Thirsty Bot, an AI-powered cocktail
+                  generator I built over a weekend
+                </p>
+              </div>
+            </Link>
             <Link
               href="/blog/using-javascript-variables-in-tailwind?source=render24"
               className="overflow-hidden rounded-lg text-left font-serif text-render-text shadow-xl"
@@ -120,35 +149,6 @@ export default function render24() {
                 <p className="text-justify">
                   How to use dynamically calculated or user generated values in
                   Tailwind
-                </p>
-              </div>
-            </Link>
-            <Link
-              href="/blog/generating-css-variables-from-a-custom-tailwind-theme?source=render24"
-              className="overflow-hidden rounded-lg text-left font-serif text-render-text shadow-xl"
-            >
-              <div className="h-36">
-                <Image
-                  src={`${BUCKET_URL}/tailwind-css-variables-post-cover.png`}
-                  alt="Cover"
-                  width={2752}
-                  height={1024}
-                  blurDataURL="data:image/jpeg;base64,/9j/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIABMAMgMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AOCisUF6fM5Jq0ZZLC4Gw4FVBK8kyyKMmtaSzkuolfHNaU43jqcrZ1vh7UzeQ4c/MBUWqXjCVkY8Cs7RQNPzJI2BWVr+ri4nZYT19KUoJRsjN7jNS1VpMwxniqBljtbRnfG4io0t5I4jM9YeoXbSkrnisZU0lZG9KF3cia9y7H3pPttUc+1GfanZHXynX6KS5G7mt9pXVcBsCuf0PqK3n6Gt4fCcM9yleTSeUfnNY8RLXK555rVvP9UayYP+PlfrWcDNbmxq5K6cNvHFcKSWuME55rudZ/5Bw+lcMP8Aj5/GsY7s76GxrLbxbR8g6UfZ4v7gqRfuj6Uteikh3P/Z"
-                  className="h-full object-cover"
-                  placeholder="blur"
-                  sizes={`(max-width: 550px) 100vw, 310px`}
-                />
-              </div>
-              <div className="p-4">
-                <h3>
-                  <strong>
-                    Generating CSS Variables From a Custom Tailwind Theme
-                  </strong>
-                </h3>
-                <div className="h-2" />
-                <p className="text-justify">
-                  How to access a custom Tailwind theme as CSS variables, and
-                  why it&apos;s a useful pattern
                 </p>
               </div>
             </Link>
