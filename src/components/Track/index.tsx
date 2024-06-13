@@ -1,22 +1,28 @@
-'use client';
+import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
+import { waitUntil } from '@vercel/functions';
 
-import { useEffect } from 'react';
+const trackView = async (slug: string, inModal: boolean) => {
+  if (process.env.NODE_ENV !== 'development') {
+    const { url, headers } = await getFullyQualifiedDeploymentUrl(`/api/view`);
+    await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        slug: slug,
+        inModal: inModal,
+      } as TrackBody),
+      priority: 'low',
+      headers,
+    });
+  } else {
+    console.log('Skipping tracking in local dev, event would be', {
+      slug,
+      inModal,
+    });
+  }
+};
 
 const Track = ({ inModal, slug }: TrackBody) => {
-  useEffect(() => {
-    if (process.env.NODE_ENV !== 'development') {
-      setTimeout(() =>
-        fetch('/api/view', {
-          method: 'POST',
-          body: JSON.stringify({
-            slug: slug,
-            inModal: inModal,
-          } as TrackBody),
-          priority: 'low',
-        }),
-      );
-    }
-  }, [inModal, slug]);
+  waitUntil(trackView(slug, inModal));
 
   return null;
 };

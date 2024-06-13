@@ -93,4 +93,5 @@ export default withSentryConfig(withBundleAnalyzer(withMDX(nextConfig)), {
   automaticVercelMonitors: true,
   telemetry: false,
   enabled: process.env.NODE_ENV === 'production',
+  disableLogger: true,
 });

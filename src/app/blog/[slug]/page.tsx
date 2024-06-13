@@ -1,7 +1,6 @@
 import styles from './blogPost.module.css';
 import '../../syntax-theme.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Link from 'next/link';
 import { BottomFade } from '@/components/BottomFade';
 import Image from 'next/image';
 import { getImageMetadata, parseSource, parseToProps } from '@/util/image';
@@ -9,19 +8,15 @@ import { BUCKET_URL } from '@/util/r2';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getComponentForKey, getKey } from '../util';
-import { faArrowLeft } from '@keegandonley/pro-solid-svg-icons';
 import wordCounts from '../../../post-word-counts.json';
 import { BASEURL, NAME } from '@/metadata';
 import { PostHeader } from '@/components/PostHeader';
 import dynamic from 'next/dynamic';
+import Track from '@/components/Track';
 
 export const runtime = 'edge';
 
 const Timeline = dynamic(() => import('@/components/Timeline'));
-
-const DynamicTrack = dynamic(() => import('@/components/Track'), {
-  ssr: false,
-});
 
 export interface BlogPageProps {
   params: {
@@ -122,7 +117,6 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
           <div className={styles.bodyText}>
             <Component />
           </div>
-          <DynamicTrack slug={params.slug} inModal={false} />
         </article>
       </div>
       <footer
@@ -132,6 +126,7 @@ export default function BlogSlugPage({ params }: BlogPageProps) {
       >
         <Timeline slug={params.slug} />
       </footer>
+      <Track slug={params.slug} inModal={false} />
     </>
   );
 }
