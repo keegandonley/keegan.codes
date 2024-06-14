@@ -1,22 +1,36 @@
-'use client';
+import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
+import { waitUntil } from '@vercel/functions';
 
-import { useEffect } from 'react';
+const trackView = async (slug: string, qrScanned: boolean) => {
+  if (process.env.NODE_ENV !== 'development') {
+    try {
+      const { url, headers } =
+        await getFullyQualifiedDeploymentUrl(`/api/view/hi`);
+
+      await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          slug: slug,
+          qrScanned: qrScanned,
+        } as HiTrackBody),
+        priority: 'low',
+        headers,
+      });
+    } catch (ex) {
+      // swallow error
+    }
+  } else {
+    console.log('Skipping tracking in local dev, event would be', {
+      slug,
+      qrScanned,
+    });
+  }
+};
 
 export const HiTrack = ({ qrScanned, slug }: HiTrackBody) => {
-  useEffect(() => {
-    if (process.env.NODE_ENV !== 'development') {
-      setTimeout(() =>
-        fetch('/api/view/hi', {
-          method: 'POST',
-          body: JSON.stringify({
-            slug: slug,
-            qrScanned,
-          } as HiTrackBody),
-          priority: 'low',
-        }),
-      );
-    }
-  }, [qrScanned, slug]);
+  waitUntil(trackView(slug, qrScanned));
+
+  return null;
 
   return null;
 };
