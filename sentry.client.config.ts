@@ -6,11 +6,14 @@ Sentry.init({
   debug: false,
   replaysOnErrorSampleRate: 1.0,
   replaysSessionSampleRate: 0.5,
-  integrations: [
-    Sentry.replayIntegration({
-      // Additional Replay configuration goes in here, for example:
+  integrations: [],
+});
+
+import('@sentry/nextjs').then((lazyLoadedSentry) => {
+  Sentry.addIntegration(
+    lazyLoadedSentry.replayIntegration({
       maskAllText: false,
       blockAllMedia: false,
     }),
-  ],
+  );
 });
