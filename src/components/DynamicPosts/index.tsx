@@ -3,6 +3,7 @@
 import { Post } from '@/types/post';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { MDXEntryRow } from '../MDXEntryRow';
+import { captureException } from '@sentry/nextjs';
 
 interface DynamicPostsProps {
   previousPage: number;
@@ -66,8 +67,12 @@ const DynamicPosts = (props: DynamicPostsProps) => {
   }, [observer, previousPage]);
 
   const getPostData = useCallback(async () => {
-    const result = await fetch(`/api/posts?page=${currentPage}`);
-    setPageData(await result.json());
+    try {
+      const result = await fetch(`/api/posts?page=${currentPage}`);
+      setPageData(await result.json());
+    } catch (ex) {
+      captureException(ex);
+    }
   }, [currentPage]);
 
   useEffect(() => {

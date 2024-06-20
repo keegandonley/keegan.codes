@@ -1,6 +1,6 @@
 import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
 import { waitUntil } from '@vercel/functions';
-import * as Sentry from '@sentry/nextjs';
+import { captureException } from '@sentry/nextjs';
 
 const trackView = async (slug: string, qrScanned: boolean) => {
   if (process.env.NODE_ENV !== 'development') {
@@ -18,7 +18,7 @@ const trackView = async (slug: string, qrScanned: boolean) => {
         headers,
       });
     } catch (ex) {
-      Sentry.captureException(ex);
+      captureException(ex);
     }
   } else {
     console.log('Skipping tracking in local dev, event would be', {
@@ -30,8 +30,6 @@ const trackView = async (slug: string, qrScanned: boolean) => {
 
 export const HiTrack = ({ qrScanned, slug }: HiTrackBody) => {
   waitUntil(trackView(slug, qrScanned));
-
-  return null;
 
   return null;
 };

@@ -1,6 +1,7 @@
 import { merge } from '@/util/classNames';
 import { formatNumber } from '@keegancodes/foundations';
 import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
+import { captureException } from '@sentry/nextjs';
 
 interface ViewCountRendererProps {
   slug: string;
@@ -19,6 +20,7 @@ const getValue = async (slug: string): Promise<number> => {
 
     return views;
   } catch (ex) {
+    captureException(ex);
     console.error('Error for slug when getting page views', slug, ex);
     return 0;
   }
