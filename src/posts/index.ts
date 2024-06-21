@@ -45,6 +45,7 @@ import * as VercelDeploymentProtection from './vercel-deployment-protection.mdx'
 import * as ThirstyBotDeepDive from './thirsty-bot-deep-dive.mdx';
 import * as CSSTouchscreen from './touchscreen-css.mdx';
 import * as ReactMiami24Recap from './react-miami-2024-recap.mdx';
+import * as Render2024 from './render-2024-recap.mdx';
 
 const posts = {
   Welcome,
@@ -94,6 +95,7 @@ const posts = {
   ThirstyBotDeepDive,
   CSSTouchscreen,
   ReactMiami24Recap,
+  Render2024,
 };
 
 export default posts;
