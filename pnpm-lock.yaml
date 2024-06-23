@@ -35,7 +35,7 @@ dependencies:
     version: 6.5.2
   '@mdx-js/loader':
     specifier: ^3.0.1
-    version: 3.0.1(webpack@5.92.0)
+    version: 3.0.1(webpack@5.92.1)
   '@mdx-js/react':
     specifier: ^3.0.1
     version: 3.0.1(react@19.0.0-rc-f994737d14-20240522)(types-react@19.0.0-rc.1)
@@ -50,7 +50,7 @@ dependencies:
     version: 1.18.0
   '@sentry/nextjs':
     specifier: ^8.9.2
-    version: 8.9.2(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.25.0)(@opentelemetry/instrumentation@0.52.0)(@opentelemetry/sdk-trace-base@1.25.0)(@opentelemetry/semantic-conventions@1.25.0)(next@15.0.0-rc.0)(react@19.0.0-rc-f994737d14-20240522)(webpack@5.92.0)
+    version: 8.9.2(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.25.0)(@opentelemetry/instrumentation@0.52.0)(@opentelemetry/sdk-trace-base@1.25.0)(@opentelemetry/semantic-conventions@1.25.0)(next@15.0.0-rc.0)(react@19.0.0-rc-f994737d14-20240522)(webpack@5.92.1)
   '@types/mdx':
     specifier: ^2.0.13
     version: 2.0.13
@@ -147,8 +147,8 @@ devDependencies:
     specifier: ^0.6.5
     version: 0.6.5(prettier@3.3.2)
   webpack:
-    specifier: ^5.92.0
-    version: 5.92.0
+    specifier: ^5.92.1
+    version: 5.92.1
 
 packages:
 
@@ -857,14 +857,14 @@ packages:
       '@fortawesome/fontawesome-common-types': 6.5.2
     dev: false
 
-  /@mdx-js/loader@3.0.1(webpack@5.92.0):
+  /@mdx-js/loader@3.0.1(webpack@5.92.1):
     resolution: {integrity: sha512-YbYUt7YyEOdFxhyuCWmLKf5vKhID/hJAojEUnheJk4D8iYVLFQw+BAoBWru/dHGch1omtmZOPstsmKPyBF68Tw==}
     peerDependencies:
       webpack: '>=5'
     dependencies:
       '@mdx-js/mdx': 3.0.1
       source-map: 0.7.4
-      webpack: 5.92.0
+      webpack: 5.92.1
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -940,7 +940,7 @@ packages:
       '@mdx-js/react':
         optional: true
     dependencies:
-      '@mdx-js/loader': 3.0.1(webpack@5.92.0)
+      '@mdx-js/loader': 3.0.1(webpack@5.92.1)
       '@mdx-js/react': 3.0.1(react@19.0.0-rc-f994737d14-20240522)(types-react@19.0.0-rc.1)
       source-map: 0.7.4
     dev: false
@@ -1639,7 +1639,7 @@ packages:
       '@sentry/utils': 8.9.2
     dev: false
 
-  /@sentry/nextjs@8.9.2(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.25.0)(@opentelemetry/instrumentation@0.52.0)(@opentelemetry/sdk-trace-base@1.25.0)(@opentelemetry/semantic-conventions@1.25.0)(next@15.0.0-rc.0)(react@19.0.0-rc-f994737d14-20240522)(webpack@5.92.0):
+  /@sentry/nextjs@8.9.2(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.25.0)(@opentelemetry/instrumentation@0.52.0)(@opentelemetry/sdk-trace-base@1.25.0)(@opentelemetry/semantic-conventions@1.25.0)(next@15.0.0-rc.0)(react@19.0.0-rc-f994737d14-20240522)(webpack@5.92.1):
     resolution: {integrity: sha512-Bj1A5Ao2otOi9YG6Kc1JVY9+meVK5MqmKZauBb8ZmGKZbdOtpyqHbD7RiVEect/AyIw94f9xGUpPp1mCo4Q/4Q==}
     engines: {node: '>=14.18'}
     peerDependencies:
@@ -1659,14 +1659,14 @@ packages:
       '@sentry/types': 8.9.2
       '@sentry/utils': 8.9.2
       '@sentry/vercel-edge': 8.9.2
-      '@sentry/webpack-plugin': 2.18.0(webpack@5.92.0)
+      '@sentry/webpack-plugin': 2.18.0(webpack@5.92.1)
       chalk: 3.0.0
       next: 15.0.0-rc.0(@babel/core@7.24.7)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-592953e-20240517)(react-dom@19.0.0-rc-f994737d14-20240522)(react@19.0.0-rc-f994737d14-20240522)
       react: 19.0.0-rc-f994737d14-20240522
       resolve: 1.22.8
       rollup: 3.29.4
       stacktrace-parser: 0.1.10
-      webpack: 5.92.0
+      webpack: 5.92.1
     transitivePeerDependencies:
       - '@opentelemetry/api'
       - '@opentelemetry/core'
@@ -1769,7 +1769,7 @@ packages:
       '@sentry/utils': 8.9.2
     dev: false
 
-  /@sentry/webpack-plugin@2.18.0(webpack@5.92.0):
+  /@sentry/webpack-plugin@2.18.0(webpack@5.92.1):
     resolution: {integrity: sha512-iQ5OCvuoaIanbq4GRqj4Azay86mVpa64pP9Oi3EJpaURGZNLqwE7bWq9tkr1Dr7zBPBZN7QBmLD3OOeOSzbHuA==}
     engines: {node: '>= 14'}
     peerDependencies:
@@ -1778,7 +1778,7 @@ packages:
       '@sentry/bundler-plugin-core': 2.18.0
       unplugin: 1.0.1
       uuid: 9.0.1
-      webpack: 5.92.0
+      webpack: 5.92.1
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -6526,7 +6526,7 @@ packages:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
 
-  /terser-webpack-plugin@5.3.10(webpack@5.92.0):
+  /terser-webpack-plugin@5.3.10(webpack@5.92.1):
     resolution: {integrity: sha512-BKFPWlPDndPs+NGGCr1U59t0XScL5317Y0UReNrHaw9/FwhPENlq6bfgs+4yPfyP51vqC1bQ4rp1EfXW5ZSH9w==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -6547,7 +6547,7 @@ packages:
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.31.1
-      webpack: 5.92.0
+      webpack: 5.92.1
 
   /terser@5.31.1:
     resolution: {integrity: sha512-37upzU1+viGvuFtBo9NPufCb9dwM0+l9hMxYyWfBA+fbwrPqNJAhbZ6W47bBFnZHKHTUBnMvi87434qq+qnxOg==}
@@ -6954,8 +6954,8 @@ packages:
     resolution: {integrity: sha512-kyDivFZ7ZM0BVOUteVbDFhlRt7Ah/CSPwJdi8hBpkK7QLumUqdLtVfm/PX/hkcnrvr0i77fO5+TjZ94Pe+C9iw==}
     dev: false
 
-  /webpack@5.92.0:
-    resolution: {integrity: sha512-Bsw2X39MYIgxouNATyVpCNVWBCuUwDgWtN78g6lSdPJRLaQ/PUVm/oXcaRAyY/sMFoKFQrsPeqvTizWtq7QPCA==}
+  /webpack@5.92.1:
+    resolution: {integrity: sha512-JECQ7IwJb+7fgUFBlrJzbyu3GEuNBcdqr1LD7IbSzwkSmIevTm8PF+wej3Oxuz/JFBUZ6O1o43zsPkwm1C4TmA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -6985,7 +6985,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(webpack@5.92.0)
+      terser-webpack-plugin: 5.3.10(webpack@5.92.1)
       watchpack: 2.4.1
       webpack-sources: 3.2.3
     transitivePeerDependencies:
