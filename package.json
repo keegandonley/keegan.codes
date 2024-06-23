@@ -62,7 +62,7 @@
     "@types/sanitize-html": "^2.11.0",
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.5",
-    "webpack": "^5.92.0"
+    "webpack": "^5.92.1"
   },
   "pnpm": {
     "overrides": {
