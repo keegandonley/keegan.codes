@@ -4,8 +4,74 @@ export const tags = ['javascript'];
 export const description =
   "This was my third year at Render Atlanta! This conference never fails to impress, and here's a bit about what it's all about!";
 export const cover = 'atlanta-cartoon.png';
-export const published = new Date(2024, 5, 24);
-export const shortCodes = ['renderrecap'];
+export const published = new Date(2024, 6, 1);
+export const shortCodes = ['render24recap'];
 
 It seems like just yesterday I was at [React Miami](/blog/react-miami-2024-recap), and now here I
-have another conference recap for you!
+have another conference recap for you! Last month, I attended Render in Atlanta, Georgia and had
+a great time! The networking opportunities were great, the talks were engaging, and there
+were plenty of happy hours to go around. 
+
+![Drone show on opening night](drone-show.png)
+
+> Every year kicks off with a rooftop party at [Ponce City Market](https://poncecityroof.com/) - this year we got a drone
+> show too!
+
+## Favorite Talks
+
+I always start these posts talking about some of my favorite talks. Since I'm working on building
+an integration platform at Kizen, as well as a design system, I decided to focus on talks around
+design systems and Javascript security.
+
+### Building Successful Design Systems
+
+Working on an internal design system has taught me that a lot of thought goes into building the perfect system
+for your organization's needs. A talk by [Dan Mall](https://danmall.com/) got into the details of what makes a successful
+design system.
+
+### CSS: From the Creator Himself
+
+We got to hear from [Håkon Wium Lie](https://www.wiumlie.no/en), who created the first version of CSS back in 1994.
+He told a lot of stories of his time at CERN and how the language, and the web at large, came to be.
+
+![Håkon Wium Lie on the Render stage](hakon-render.png)
+
+To celebrate the 30th birthday of CSS, we went through the history of web technologies and browser
+support for different features, and heard some stories about trying to get browser vendors to pass
+the [Acid2 Test](https://www.webstandards.org/files/acid2/test.html#top).
+
+It was great to hear from Håkon directly about how things got started, and what it took to get to
+where we are now!
+
+### Hostile Javascript
+
+I've been working on an integration platform for Kizen for a while now, and it's essentially a way
+to run Javascript plugins that can interact with our app, to integrate with third parties (like a dialer platform).
+Security has been at the forefront of that project. Introducing an arbitrary code execution engine on purpose
+means I had to be very careful with our approach, and learning about historical attacks and the vectors they used
+is crucial to inform my decisions building this project!
+
+[Todd Gardner](https://www.linkedin.com/in/toddhgardner/) talked about some of the classic exploits, and how they worked.
+
+We learned about platforms like [Coinimp](https://www.coinimp.com/), a Javascript framework for mining crypocurrency
+on users' computers while they browse your site. You really shouldn't do this on your own site, but if it's injected into
+a site you don't own through a supply chain or XSS attack, it becomes an exploit. 
+
+> __Thinking about my integration platform__: A good code review process for new integrations can prevent developers from writing a malicious
+> plugin that's only goal is to mine crypo in the background.
+
+Todd talked about keylogging attacks, like [Magecart](https://www.akamai.com/glossary/what-is-magecart), a web skimmer
+that was injected into over 70,000 online stores at one point, stealing credit card and other sensitive information via a
+keylogger.
+
+> __Thinking about my integration platform__: The Javascript for a plugin runs in a dedicated worker. Every function for each plugin
+> creates a new worker to execute in, so plugin code can't do things like attach global event handlers or mutate the DOM.
+
+## Networking
+
+This year, as always, I had a strong focus on meeting new people and networking. I always build
+a custom webpage for each conference I go to. This year was [keegan.codes/render24](https://keegan.codes/render24).
+I took it a step further this time, and printed some stickers with a QR code to this page, via
+my link tracking service so I could track how many scans I got throughout the day.
+
+{/* Photo here  */}
