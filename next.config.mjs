@@ -85,7 +85,7 @@ const withMDX = addMdx({
 export default withSentryConfig(withBundleAnalyzer(withMDX(nextConfig)), {
   org: 'keegancodes',
   project: 'keegancodes',
-  silent: !process.env.CI,
+  silent: true,
   widenClientFileUpload: true,
   tunnelRoute: '/monitoring',
   hideSourceMaps: true,
