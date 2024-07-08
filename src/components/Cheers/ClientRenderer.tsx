@@ -6,6 +6,7 @@ import { faChampagneGlass } from '@keegandonley/pro-solid-svg-icons';
 import { merge } from '@/util/classNames';
 import { useRef, useState } from 'react';
 import va from '@vercel/analytics';
+import { captureException } from '@sentry/nextjs';
 
 interface CheersClientRendererProps {
   slug: string;
@@ -42,15 +43,18 @@ export const CheersClientRenderer = ({
       id = Date.now() + '-' + Math.random().toString();
       localStorage.setItem('cheers-id', id);
     }
-
-    fetch('/api/cheers', {
-      method: 'POST',
-      body: JSON.stringify({
-        slug: slug,
-        location,
-        id,
-      } as CheersBody),
-    });
+    try {
+      fetch('/api/cheers', {
+        method: 'POST',
+        body: JSON.stringify({
+          slug: slug,
+          location,
+          id,
+        } as CheersBody),
+      });
+    } catch (ex) {
+      captureException(ex);
+    }
 
     va.track('Cheers Click', {
       slug,

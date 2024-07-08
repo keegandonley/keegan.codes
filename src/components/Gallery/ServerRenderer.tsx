@@ -1,5 +1,6 @@
 import { Gallery } from '@/types/galleries';
 import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
+import { captureException } from '@sentry/nextjs';
 import dynamic from 'next/dynamic';
 
 const DynamicClientRenderer = dynamic(() => import('./ClientRenderer'));
@@ -13,19 +14,26 @@ export default async function GalleryRenderer({ gallery }: GalleryProps) {
     `/api/gallery?gallery=${gallery}`,
   );
 
-  const data = await fetch(url, {
-    next: {
-      revalidate: 60 * 60,
-    },
-    headers,
-  });
+  try {
+    const data = await fetch(url, {
+      next: {
+        revalidate: 60 * 60,
+      },
+      headers,
+    });
 
-  const parsed = (await data.json()) as { gallery: Gallery; bucket: string };
+    const parsed = (await data.json()) as { gallery: Gallery; bucket: string };
 
-  return (
-    <DynamicClientRenderer
-      parsedGallery={parsed.gallery}
-      bucket={parsed.bucket}
-    />
-  );
+    return (
+      <DynamicClientRenderer
+        parsedGallery={parsed.gallery}
+        bucket={parsed.bucket}
+      />
+    );
+  } catch (ex) {
+    captureException(ex);
+    console.error('Error for gallery when getting gallery', gallery, ex);
+  }
+
+  return null;
 }

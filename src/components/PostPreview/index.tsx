@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { BUCKET_URL } from '@/util/r2';
 import { parseToProps } from '@/util/image';
 import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
+import { captureException } from '@sentry/nextjs';
 
 const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
 
@@ -22,7 +23,13 @@ export const PostPreviewRenderer = async (props: PostPreviewProps) => {
     `/api/posts/single?slug=${slug}`,
   );
 
-  const post = await (await fetch(url, { headers })).json();
+  let post;
+
+  try {
+    post = await (await fetch(url, { headers })).json();
+  } catch (ex) {
+    captureException(ex);
+  }
 
   if (!post) {
     return null;

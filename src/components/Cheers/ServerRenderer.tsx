@@ -1,6 +1,7 @@
 import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
 import { CheersClientRenderer } from './ClientRenderer';
 import styles from './cheers.module.css';
+import { captureException } from '@sentry/nextjs';
 
 interface CheersServerRendererProps {
   slug: string;
@@ -21,6 +22,7 @@ const getValue = async (slug: string): Promise<number> => {
     return parseInt(count);
   } catch (ex) {
     console.error('Error for slug when getting cheers count', slug, ex);
+    captureException(ex);
     return 0;
   }
 };

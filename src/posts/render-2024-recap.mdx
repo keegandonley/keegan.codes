@@ -1,0 +1,109 @@
+export const title = 'Recapping Render 2024';
+export const slug = 'recap-render-24';
+export const tags = ['opinion', 'conference'];
+export const description =
+  "2024 was my third year at Render Atlanta! This conference never fails to impress, and here's a bit about what it's all about!";
+export const cover = 'atlanta-cartoon.png';
+export const published = new Date(2024, 6, 8);
+export const shortCodes = ['render24recap'];
+
+It seems like just yesterday I was at [React Miami](/blog/react-miami-2024-recap), and now here I
+have another conference recap for you! Last month, I attended [Render in Atlanta, Georgia](https://www.renderatl.com/) and had
+a fantastic time! The networking opportunities were great, the talks were engaging, and there
+were plenty of happy hours to go around.
+
+![Drone show on opening night](drone-show.png)
+
+> Every year kicks off with a rooftop party at [Ponce City Market](https://poncecityroof.com/) - this year we got a drone
+> show too!
+
+## Favorite Talks
+
+I always start these posts talking about some of my favorite talks. Since I'm working on building
+an integration platform at [Kizen](https://kizen.com), as well as a design system, I decided to focus on talks around
+design systems and Javascript security.
+
+### Building Successful Design Systems
+
+Working on an internal design system has taught me that a lot of thought goes into building the perfect system
+for your organization's needs. A talk by [Dan Mall](https://danmall.com/) got into the details of what makes a successful
+design system.
+
+Dan talked about creating _your_ design system, not just _a_ design system. Sometimes, it can be valuable
+and useful to mimic existing solutions, but your design system should be tailored to your organization's needs.
+What works for one organization might not work for you.
+
+Gall's Law came up too, which states that _"All complex systems that work evolved from simpler systems that worked"_. In short,
+don't complicate things too early. If you start with a simple system that works well, you can let it evolve over
+time as needs changed and new complexity is warranted.
+
+We also learned about picking a system that gets your organization excited. Maybe that's a component library in Storybook,
+or maybe it's a simple set of design guidelines. Maybe it's even as simple as a defined process for design -
+like Jira templates or a pipeline for reviewing and approving design changes.
+
+The most important thing I took away is to **show examples of what can be made with the system**. Rather than only a bunch
+of disjointed components like icons, buttons, and grid containers, I want to create examples of how our various foundational components
+can fit together in order to make a useful UI. The more examples I can build, the more clear it will be how our
+various components can work together.
+
+### CSS: From the Creator Himself
+
+We got to hear from [Håkon Wium Lie](https://www.wiumlie.no/en), who created the first version of CSS back in 1994.
+He told a lot of stories of his time at CERN and how the language, and the web at large, came to be.
+
+![Håkon Wium Lie on the Render stage](hakon-render.png)
+
+To celebrate the 30th birthday of CSS, we went through the history of web technologies and browser
+support for different features, and heard some stories about trying to get browser vendors to pass
+the [Acid2 Test](https://www.webstandards.org/files/acid2/test.html#top).
+
+It was great to hear from Håkon directly about how things got started, and what it took to get to
+where we are now!
+
+### Hostile Javascript
+
+I've been working on an integration platform for Kizen for a while now, and it's essentially a way
+to run Javascript plugins that can interact with our app, to integrate with third parties (like a dialer platform).
+Security has been at the forefront of that project. Introducing an arbitrary code execution engine to the app
+means I had to be very careful with our approach, and learning about historical attacks and the vectors they used
+is crucial to inform my decisions building this project!
+
+[Todd Gardner](https://www.linkedin.com/in/toddhgardner/) talked about some of the classic exploits, and how they worked:
+
+We learned about platforms like [Coinimp](https://www.coinimp.com/), a Javascript framework for mining crypocurrency
+on users' computers while they browse your site. You really shouldn't do this even on your own site, but if it's injected into
+a site by an unaffiliated party through a supply chain or XSS attack, it becomes an exploit.
+
+> **Thinking about my integration platform example**: A good code review process for new integrations can prevent developers from writing a malicious
+> plugin that's only goal is to mine crypo in the background. Some static code analysis can help prevent this as well.
+
+Todd talked about keylogging attacks, like [Magecart](https://www.akamai.com/glossary/what-is-magecart), a web skimmer
+that was injected into over 70,000 online stores at one point, stealing credit card and other sensitive information via a
+keylogger.
+
+> **Thinking about my integration platform example**: The Javascript for a plugin runs in a dedicated worker. Every function for each plugin
+> creates a new worker to execute in, so plugin code can't do things like attach global event handlers or mutate the DOM.
+
+After hearing some of the common ways major sites have been attacked in the past, I now have a good sense of how to mitigate those
+risks going forward.
+
+## Networking
+
+This year, as always, I had a strong focus on meeting new people and networking. I always build
+a custom webpage for each conference I go to. This year was [keegan.codes/render24](https://keegan.codes/render24).
+I took it a step further this time, and printed some stickers with a QR code to this page, via
+my custom link tracking service so I could track how many scans I got throughout the day.
+
+![My badge with a QR code](badge.png)
+
+> Sticking a QR code on the back of my badge meant I always had it accessible and ready to scan! I also
+> had one on the back of my phone in case I went to an evening event without my badge.
+
+## Wrapping Up
+
+Render is a great opportunity for people of all skill levels. There are great opportunities and talks for juniors,
+but plenty of engaging conversations for senior+ folks as well! I plan to continue going back every year, and [tickets are
+already on sale](https://www.renderatl.com/) for June 2025. Hopefully I'll see you there!
+
+If you do plan to go next year, give me a shout on [Twitter](https://twitter.com/keegandonley) or anywhere else you can find me
+online!
