@@ -29,7 +29,9 @@ const trackView = async (slug: string, inModal: boolean) => {
 };
 
 const Track = ({ inModal, slug }: TrackBody) => {
-  waitUntil(trackView(slug, inModal));
+  if (typeof window === "undefined") {
+    waitUntil(trackView(slug, inModal));
+  }
 
   return null;
 };
