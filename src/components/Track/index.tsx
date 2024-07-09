@@ -16,6 +16,8 @@ const Track = ({ inModal, slug }: TrackBody) => {
       );
     }
   }, [inModal, slug]);
+
+  return null;
 };
 
 export default Track;
