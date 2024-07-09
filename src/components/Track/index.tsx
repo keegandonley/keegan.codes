@@ -30,6 +30,7 @@ const trackView = async (slug: string, inModal: boolean) => {
 
 const Track = ({ inModal, slug }: TrackBody) => {
   if (typeof window === "undefined") {
+    console.warn('Calling track', Date.now());
     waitUntil(trackView(slug, inModal));
   }
 
