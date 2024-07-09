@@ -4,6 +4,7 @@ import { captureException } from '@sentry/nextjs';
 
 const trackView = async (slug: string, inModal: boolean) => {
   if (process.env.NODE_ENV !== 'development') {
+    console.warn('trackView called for', slug);
     try {
       const { url, headers } =
         await getFullyQualifiedDeploymentUrl(`/api/view`);
