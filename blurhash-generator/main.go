@@ -79,7 +79,7 @@ func executeBucket(file string, bucket string, bucketURL string) {
 			}
 
 			hashes[*fileName] = metadata
-		}(fileName, !ok && !strings.Contains(*fileName, ".svg"))
+		}(fileName, !ok && !strings.Contains(*fileName, ".svg") && !strings.Contains(*fileName, ".zip"))
 	}
 
 	wg.Wait()
