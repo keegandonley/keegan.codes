@@ -73,8 +73,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0(@opentelemetry/api@1.9.0)
       '@vercel/functions':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.4.0
+        version: 1.4.0
       '@vercel/kv':
         specifier: ^2.0.0
         version: 2.0.0
@@ -1140,9 +1140,14 @@ packages:
       '@opentelemetry/api':
         optional: true
 
-  '@vercel/functions@1.1.0':
-    resolution: {integrity: sha512-mwiXdj0DT6AdxzVVfeeJGPSQ2vAPePehi6EwQaBxrUUUbdBVtJRolmNcGrCHBkVf0gbbyBsKeJeYVzDWXCmocQ==}
+  '@vercel/functions@1.4.0':
+    resolution: {integrity: sha512-Ln6SpIkms1UJg306X2kbEMyG9ol+mjDr2xx389cvsBxgFyFMI9Bm+LYOG4N3TSik4FI59MECyyc4oz7AIAYmqQ==}
     engines: {node: '>= 16'}
+    peerDependencies:
+      '@aws-sdk/credential-provider-web-identity': '*'
+    peerDependenciesMeta:
+      '@aws-sdk/credential-provider-web-identity':
+        optional: true
 
   '@vercel/kv@2.0.0':
     resolution: {integrity: sha512-zdVrhbzZBYo5d1Hfn4bKtqCeKf0FuzW8rSHauzQVMUgv1+1JOwof2mWcBuI+YMJy8s0G0oqAUfQ7HgUDzb8EbA==}
@@ -4895,7 +4900,7 @@ snapshots:
     optionalDependencies:
       '@opentelemetry/api': 1.9.0
 
-  '@vercel/functions@1.1.0': {}
+  '@vercel/functions@1.4.0': {}
 
   '@vercel/kv@2.0.0':
     dependencies:
