@@ -12,7 +12,8 @@ import wordCounts from '../../../post-word-counts.json';
 import { BASEURL, NAME } from '@/metadata';
 import { PostHeader } from '@/components/PostHeader';
 import dynamic from 'next/dynamic';
-import Track from '@/components/Track';
+
+const Track = dynamic(() => import('@/components/Track'));
 
 export const runtime = 'edge';
 

@@ -2,7 +2,9 @@ import { Modal } from '@/components/Modal';
 import { PostModal } from '@/components/PostModal';
 import '../../../syntax-theme.css';
 import wordCounts from '../../../../post-word-counts.json';
-import Track from '@/components/Track';
+import dynamic from 'next/dynamic';
+
+const Track = dynamic(() => import('@/components/Track'));
 
 export const runtime = 'edge';
 
