@@ -1,4 +1,5 @@
 import { connect } from '@planetscale/database';
+import type { NextRequest } from 'next/server';
 
 const config = {
   host: process.env.host,
@@ -8,12 +9,18 @@ const config = {
 
 export const runtime = 'edge';
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   const res: TrackBody = await request.json();
   const conn = connect(config);
+  const geo = request.geo;
+  const country = geo?.country;
+  const city = geo?.city;
+  const region = geo?.region;
+  const ip = request.ip;
+
   const results = await conn.execute(
-    'INSERT INTO post_page_views (slug, view_date, in_modal) VALUES (?, ?, ?)',
-    [res.slug, new Date(), res.inModal],
+    'INSERT INTO post_page_views (slug, view_date, in_modal, ip, country_code, city, region) VALUES (?, ?, ?, ?, ?, ?, ?)',
+    [res.slug, new Date(), res.inModal, ip, country, city, region],
   );
 
   if (results.rowsAffected !== 1) {
@@ -30,6 +37,11 @@ export async function POST(request: Request) {
         'INSERT INTO page_views_total (type, views) VALUES (?, 1) ON DUPLICATE KEY UPDATE views = views + 1',
         ['post'],
       ),
+      Boolean(country) &&
+        conn.execute(
+          'INSERT INTO location_page_views (code, views) VALUES (?, 1) ON DUPLICATE KEY UPDATE views = views + 1',
+          [country],
+        ),
     ]);
   } catch (ex) {
     console.error(
