@@ -2,7 +2,7 @@ import { merge } from '@/util/classNames';
 import { formatNumber } from '@keegancodes/foundations';
 import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
 
-const getValue = async (): Promise<number> => {
+export const getValue = async (): Promise<number> => {
   try {
     const { url, headers } =
       await getFullyQualifiedDeploymentUrl('/api/view/total');

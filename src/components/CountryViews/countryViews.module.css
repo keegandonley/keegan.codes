@@ -1,0 +1,41 @@
+.countries {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 0.9em;
+  padding-top: 1rem;
+  gap: 0.2rem;
+}
+
+.country {
+  width: 80px;
+  display: flex;
+  text-align: right;
+  position: relative;
+  padding: 0 4px;
+}
+
+.views {
+  text-align: right;
+  flex-grow: 1;
+  opacity: 0.6;
+}
+
+.flag {
+  z-index: 1;
+}
+
+.flag.hidden {
+  opacity: 0;
+}
+
+.bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: var(--percentage);
+  top: 0;
+  background-color: var(--theme-blue-2);
+  opacity: 0.2;
+  border-radius: 4px;
+}
