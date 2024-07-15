@@ -16,7 +16,7 @@ export async function generateViewport() {
 
 export async function generateMetadata() {
   return {
-    title: "Keegan Donley's Résumé",
+    title: "Keegan Donley's Resume",
     description: 'Principal Front-End Engineer at Kizen',
   };
 }
