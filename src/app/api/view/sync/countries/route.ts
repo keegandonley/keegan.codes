@@ -7,8 +7,6 @@ const config = {
   password: process.env.password,
 };
 
-const BATCH_SIZE = 20;
-
 export async function GET() {
   const startTime = Date.now();
   const conn = connect(config);
