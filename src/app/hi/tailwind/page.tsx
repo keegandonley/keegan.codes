@@ -5,9 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { URLS } from '@/components/Social/socials';
 import { merge } from '@/util/classNames';
 import { faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { HiTrack } from '@/components/Track/Hi';
 import Image from 'next/image';
 import tailwindLogo from './tailwind.png';
+import dynamic from 'next/dynamic';
+
+const HiTrack = dynamic(() => import('@/components/Track/Hi'));
 
 export const runtime = 'edge';
 
