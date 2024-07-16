@@ -8,8 +8,9 @@ import { URLS } from '@/components/Social/socials';
 import { merge } from '@/util/classNames';
 import { faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { Hr } from '@/components/Post/Hr';
-import { HiTrack } from '@/components/Track/Hi';
 import dynamic from 'next/dynamic';
+
+const HiTrack = dynamic(() => import('@/components/Track/Hi'));
 
 const DynamicEmbed = dynamic(() => import('@/components/Calendly/EmbedTarget'));
 

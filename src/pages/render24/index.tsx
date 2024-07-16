@@ -5,13 +5,15 @@ import X from '@/images/x-twitter.svg';
 import Image from 'next/image';
 import { Hr } from '@/components/Post/Hr';
 import { BUCKET_URL } from '@/util/r2';
-import { HiTrack } from '@/components/Track/Hi';
 import '@/tw.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { merge } from '@keegancodes/foundations';
 import { faArrowRight } from '@keegandonley/pro-solid-svg-icons';
 import styles from '../../pageStyles/render24/render.module.css';
 import '../../app/theme.css';
+import dynamic from 'next/dynamic';
+
+const HiTrack = dynamic(() => import('@/components/Track/Hi'));
 
 export default function Render24() {
   const skewYDeg = 0;
