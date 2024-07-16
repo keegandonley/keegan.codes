@@ -3,6 +3,10 @@
     {
       "path": "/api/view/sync",
       "schedule": "*/2 * * * *"
+    },
+    {
+      "path": "/api/view/sync/countries",
+      "schedule": "0 0 * * *"
     }
   ]
 }
