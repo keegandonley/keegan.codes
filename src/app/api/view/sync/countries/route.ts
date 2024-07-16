@@ -52,6 +52,9 @@ export async function GET() {
         'INSERT INTO slug_top_countries (slug, country_code) VALUES (?, ?) on duplicate key update country_code = ?',
         [slug, max.country_code, max.country_code],
       );
+
+      // Wait a bit
+      await new Promise((resolve) => setTimeout(resolve, 500));
     }
 
     const endTime = Date.now();
