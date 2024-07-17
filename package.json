@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
-    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@keegancodes/foundations": "^1.1.2",
     "@keegancodes/foundations-next": "2.0.0-rc.0",
