@@ -24,7 +24,7 @@ export const CheersClientRenderer = ({
   const timerRef = useRef<NodeJS.Timeout>(null);
   const loading = count === -1;
 
-  const handleClickCheers = (e: React.MouseEvent) => {
+  const handleClickCheers = async (e: React.MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
 
@@ -44,7 +44,7 @@ export const CheersClientRenderer = ({
       localStorage.setItem('cheers-id', id);
     }
     try {
-      fetch('/api/cheers', {
+      await fetch('/api/cheers', {
         method: 'POST',
         body: JSON.stringify({
           slug: slug,

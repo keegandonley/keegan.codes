@@ -5,9 +5,9 @@ import { useEffect } from 'react';
 const Track = ({ inModal, slug }: TrackBody) => {
   useEffect(() => {
     if (process.env.NODE_ENV !== 'development') {
-      setTimeout(() => {
+      setTimeout(async () => {
         try {
-          fetch('/api/view', {
+          await fetch('/api/view', {
             method: 'POST',
             body: JSON.stringify({
               slug: slug,
