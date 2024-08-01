@@ -5,9 +5,9 @@ import { useEffect } from 'react';
 const HiTrack = ({ qrScanned, slug }: HiTrackBody) => {
   useEffect(() => {
     if (process.env.NODE_ENV !== 'development') {
-      setTimeout(() => {
+      setTimeout(async () => {
         try {
-          fetch('/api/view/hi', {
+          await fetch('/api/view/hi', {
             method: 'POST',
             body: JSON.stringify({
               slug: slug,
