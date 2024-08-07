@@ -28,7 +28,7 @@
     "@next/bundle-analyzer": "^14.2.5",
     "@next/mdx": "^14.2.5",
     "@planetscale/database": "^1.18.0",
-    "@sentry/nextjs": "^8.22.0",
+    "@sentry/nextjs": "^8.24.0",
     "@types/mdx": "^2.0.13",
     "@types/node": "^22.1.0",
     "@types/react": "npm:types-react@rc",
