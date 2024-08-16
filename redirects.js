@@ -33,4 +33,5 @@ module.exports = [
   ['/v2', v2Domain],
   ['/girlstart', 'https://give.girlstart.org/team/542895'],
   ['/reddit', 'https://www.reddit.com/user/keegancodes'],
+  ['/strava', 'https://www.strava.com/athletes/17351940'],
 ];

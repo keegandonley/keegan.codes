@@ -5,4 +5,5 @@ export const URLS = {
   github: '/github',
   bluesky: '/bsky',
   reddit: '/reddit',
+  strava: '/strava',
 };

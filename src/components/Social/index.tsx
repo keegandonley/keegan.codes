@@ -18,12 +18,19 @@ import {
   faReddit,
   faXTwitter,
   faBluesky,
+  faStrava,
 } from '@fortawesome/free-brands-svg-icons';
 
 export const Social = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.icons}>
+        <Icon
+          icon={faStrava}
+          color={redditOrange}
+          url={URLS.strava}
+          name="Strava"
+        />
         <Icon
           icon={faBluesky}
           color={blueSkyBlue}
