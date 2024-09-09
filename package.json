@@ -39,7 +39,7 @@
     "@vercel/kv": "^2.0.0",
     "@vercel/og": "^0.6.2",
     "autoprefixer": "^10.4.20",
-    "babel-plugin-react-compiler": "0.0.0-experimental-592953e-20240517",
+    "babel-plugin-react-compiler": "0.0.0-experimental-7449567-20240905",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.8",
     "eslint-plugin-react-compiler": "0.0.0-experimental-56229e1-20240813",
