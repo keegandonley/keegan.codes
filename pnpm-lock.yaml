@@ -43,8 +43,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1(react@19.0.0-rc-f994737d14-20240522)(types-react@19.0.0-rc.1)
       '@next/bundle-analyzer':
-        specifier: ^14.2.9
-        version: 14.2.9
+        specifier: ^14.2.11
+        version: 14.2.11
       '@next/mdx':
         specifier: ^14.2.8
         version: 14.2.8(@mdx-js/loader@3.0.1(webpack@5.94.0))(@mdx-js/react@3.0.1(react@19.0.0-rc-f994737d14-20240522)(types-react@19.0.0-rc.1))
@@ -511,8 +511,8 @@ packages:
       '@types/react': npm:types-react@rc
       react: '>=16'
 
-  '@next/bundle-analyzer@14.2.9':
-    resolution: {integrity: sha512-r+h5vdrx3+tZoMysJmDsfy3OXPqwuTTiQYytCPl5qfngHqeusV3im8Bjbmm4ZsOsIcqh/BQrChO8u7wFXavHKA==}
+  '@next/bundle-analyzer@14.2.11':
+    resolution: {integrity: sha512-wFPjuXVlLkheng8BTG/K8UN8lRg93E5ZdE9gSmxpRP0XwC58w1B8wITXWeTD/Js4ObxyhxhiCrZzt2X+QJrrMw==}
 
   '@next/env@15.0.0-rc.0':
     resolution: {integrity: sha512-6W0ndQvHR9sXcqcKeR/inD2UTRCs9+VkSK3lfaGmEuZs7EjwwXMO2BPYjz9oBrtfPL3xuTjtXsHKSsalYQ5l1Q==}
@@ -4094,7 +4094,7 @@ snapshots:
       '@types/react': types-react@19.0.0-rc.1
       react: 19.0.0-rc-f994737d14-20240522
 
-  '@next/bundle-analyzer@14.2.9':
+  '@next/bundle-analyzer@14.2.11':
     dependencies:
       webpack-bundle-analyzer: 4.10.1
     transitivePeerDependencies:

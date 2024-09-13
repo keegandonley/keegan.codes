@@ -25,7 +25,7 @@
     "@keegandonley/pro-solid-svg-icons": "^6.5.2",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
-    "@next/bundle-analyzer": "^14.2.9",
+    "@next/bundle-analyzer": "^14.2.11",
     "@next/mdx": "^14.2.8",
     "@planetscale/database": "^1.19.0",
     "@sentry/nextjs": "^8.28.0",
