@@ -30,7 +30,7 @@
     "@planetscale/database": "^1.19.0",
     "@sentry/nextjs": "^8.30.0",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.5.4",
+    "@types/node": "^22.7.0",
     "@types/react": "npm:types-react@rc",
     "@types/react-dom": "npm:types-react-dom@rc",
     "@vercel/analytics": "^1.3.1",
