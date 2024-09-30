@@ -26,7 +26,7 @@
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/bundle-analyzer": "^14.2.9",
-    "@next/mdx": "^14.2.8",
+    "@next/mdx": "^14.2.13",
     "@planetscale/database": "^1.19.0",
     "@sentry/nextjs": "^8.30.0",
     "@types/mdx": "^2.0.13",
