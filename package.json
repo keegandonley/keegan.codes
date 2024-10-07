@@ -37,7 +37,7 @@
     "@vercel/edge-config": "^1.2.1",
     "@vercel/functions": "^1.4.1",
     "@vercel/kv": "^2.0.0",
-    "@vercel/og": "^0.6.2",
+    "@vercel/og": "^0.6.3",
     "autoprefixer": "^10.4.20",
     "babel-plugin-react-compiler": "0.0.0-experimental-7449567-20240905",
     "eslint": "^8.57.0",
