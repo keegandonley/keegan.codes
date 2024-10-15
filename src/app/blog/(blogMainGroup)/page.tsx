@@ -44,7 +44,7 @@ export default async function BlogPage() {
     .slice(0, postsPerPage);
 
   const pageCount = Math.ceil(allPosts.length / postsPerPage);
-  const isLikelyMobile = getIsLikelyMobile();
+  const isLikelyMobile = await getIsLikelyMobile();
 
   return (
     <>
@@ -82,7 +82,7 @@ export default async function BlogPage() {
 }
 
 export async function generateViewport() {
-  const theme = userTheme();
+  const theme = await userTheme();
 
   return {
     themeColor: theme === 'light' ? background.light : background.dark,

@@ -5,9 +5,9 @@ const DeferredGraph = dynamic(
     import('@/app/blog/(blogMainGroup)/DeferredGraph').then(
       (mod) => mod.DeferredGraph,
     ),
-  {
-    ssr: false,
-  },
+  // {
+  //   ssr: false,
+  // },
 );
 
 export default function BlogLayout({ children }: any) {

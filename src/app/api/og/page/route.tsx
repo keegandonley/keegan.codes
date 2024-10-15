@@ -34,7 +34,7 @@ const getMetadata = (page: string) => {
 };
 
 export async function GET(request: Request) {
-  const allCookies = cookies();
+  const allCookies = await cookies();
 
   const theme = allCookies.get('theme');
 

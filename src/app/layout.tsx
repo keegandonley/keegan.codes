@@ -19,16 +19,16 @@ import { TailwindDebugger } from '@keegancodes/foundations-react/client';
 
 const DynamicEventWaiter = dynamic(
   () => import('./event').then((m) => m.EventWaiter),
-  {
-    ssr: false,
-  },
+  // {
+  //   ssr: false,
+  // },
 );
 
 config.autoAddCss = false;
 
 export default async function RootLayout({ children, postModal }: any) {
-  const theme = userTheme();
-  const hasChosenTheme = getHasChosenTheme();
+  const theme = await userTheme();
+  const hasChosenTheme = await getHasChosenTheme();
 
   return (
     <html lang="en" id="fullscreen-context">
@@ -62,7 +62,7 @@ export default async function RootLayout({ children, postModal }: any) {
 }
 
 export async function generateViewport() {
-  const theme = userTheme();
+  const theme = await userTheme();
 
   return {
     themeColor: theme === 'light' ? background.light : background.dark,

@@ -11,7 +11,6 @@ import Image from 'next/image';
 import { BUCKET_URL } from '@/util/r2';
 import { parseToProps } from '@/util/image';
 import { formatDate } from '@/util/date';
-import { headers } from 'next/headers';
 import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
 
 const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
@@ -21,10 +20,6 @@ interface TimelineProps {
 }
 
 const Timeline = async (props: TimelineProps) => {
-  const headersList = headers();
-
-  const host = headersList.get('host');
-
   const { slug } = props;
 
   const [previousFetcher, nextFetcher] = await Promise.all([

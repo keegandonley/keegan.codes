@@ -22,7 +22,7 @@ interface BlogTagPageProps {
 
 export default async function BlogTagPage({ params }: BlogTagPageProps) {
   const decodedTag = decodeURIComponent(params.tag);
-  const isLikelyMobile = getIsLikelyMobile();
+  const isLikelyMobile = await getIsLikelyMobile();
 
   const posts = Object.keys(Posts)
     .map((key) => {

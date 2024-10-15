@@ -7,7 +7,7 @@ import { background } from '@/theme/colors';
 export const runtime = 'edge';
 
 export async function generateViewport() {
-  const theme = userTheme();
+  const theme = await userTheme();
 
   return {
     themeColor: theme === 'light' ? background.light : background.dark,

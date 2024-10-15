@@ -13,8 +13,8 @@ import { getBookCoverMetadata } from '@/util/image';
 
 export const runtime = 'edge';
 
-export default function LibraryPage() {
-  const isLikelyMobile = getIsLikelyMobile();
+export default async function LibraryPage() {
+  const isLikelyMobile = await getIsLikelyMobile();
 
   const books = Object.keys(Books).map((key) => {
     const component = (Books as any)[key] as Book;
@@ -93,7 +93,7 @@ export default function LibraryPage() {
 }
 
 export async function generateViewport() {
-  const theme = userTheme();
+  const theme = await userTheme();
 
   return {
     themeColor: theme === 'light' ? background.light : background.dark,
