@@ -11,21 +11,23 @@ const posts = Object.keys(Posts).map((key) => {
 });
 
 interface ShortCodePageProps {
-  params: {
+  params: Promise<{
     shortCode: string;
-  };
+  }>;
 }
 
 export const runtime = 'edge';
 
-export default async function ShortCodePage({
-  params: { shortCode },
-}: ShortCodePageProps) {
-  const foundPost = posts.find((post) => post.shortCodes?.includes(shortCode));
+export default async function ShortCodePage(props: ShortCodePageProps) {
+  const params = await props.params;
+
+  const foundPost = posts.find((post) =>
+    post.shortCodes?.includes(params.shortCode),
+  );
 
   if (foundPost?.slug) {
     redirect(`/blog/${foundPost.slug}`);
   }
 
-  return redirect(`/routing-error?slug=${shortCode}&type=shortcode`);
+  return redirect(`/routing-error?slug=${params.shortCode}&type=shortcode`);
 }

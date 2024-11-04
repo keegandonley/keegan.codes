@@ -15,12 +15,14 @@ import { getImageMetadata } from '@/util/image';
 export const runtime = 'edge';
 
 interface BlogTagPageProps {
-  params: {
+  params: Promise<{
     tag: string;
-  };
+  }>;
 }
 
-export default async function BlogTagPage({ params }: BlogTagPageProps) {
+export default async function BlogTagPage(props: BlogTagPageProps) {
+  const params = await props.params;
+
   const decodedTag = decodeURIComponent(params.tag);
   const isLikelyMobile = await getIsLikelyMobile();
 

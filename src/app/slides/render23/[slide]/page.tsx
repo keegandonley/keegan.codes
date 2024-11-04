@@ -5,9 +5,9 @@ import { merge } from '@/util/classNames';
 import '../../../syntax-theme.css';
 
 interface SlideProps {
-  params: {
+  params: Promise<{
     slide: string;
-  };
+  }>;
 }
 
 const order = [
@@ -23,8 +23,10 @@ const order = [
   Slides.Intro,
 ];
 
-export default function Render2023SlidePage({ params: { slide } }: SlideProps) {
-  const slideIndex = parseInt(slide, 10);
+export default async function Render2023SlidePage(props: SlideProps) {
+  const params = await props.params;
+
+  const slideIndex = parseInt(params.slide, 10);
 
   if (!order[slideIndex]) {
     redirect('/slides/render23/0');

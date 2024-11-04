@@ -13,11 +13,13 @@ const HiTrack = dynamic(() => import('@/components/Track/Hi'));
 
 export const runtime = 'edge';
 
-export default function TailwindPage({
-  searchParams,
-}: {
-  searchParams: { scan: string };
-}) {
+interface TailwindProps {
+  searchParams: Promise<{ scan: string }>;
+}
+
+export default async function TailwindPage(props: TailwindProps) {
+  const searchParams = await props.searchParams;
+
   return (
     <div className={styles.wrapper}>
       <Paragraph className={merge(styles.firstParagraph, styles.paragraph)}>

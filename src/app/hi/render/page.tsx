@@ -16,11 +16,13 @@ const DynamicEmbed = dynamic(() => import('@/components/Calendly/EmbedTarget'));
 
 export const runtime = 'edge';
 
-export default function RenderPage({
-  searchParams,
-}: {
-  searchParams: { scan: string };
-}) {
+interface RenderPageProps {
+  searchParams: Promise<{ scan: string }>;
+}
+
+export default async function RenderPage(props: RenderPageProps) {
+  const searchParams = await props.searchParams;
+
   return (
     <div className={styles.wrapper}>
       <Paragraph className={merge(styles.firstParagraph, styles.paragraph)}>
