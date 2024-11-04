@@ -1,6 +1,8 @@
 import { connect } from '@planetscale/database';
 import type { NextRequest } from 'next/server';
 
+import { geolocation, ipAddress } from "@vercel/functions";
+
 const config = {
   host: process.env.host,
   username: process.env.username,
@@ -12,11 +14,11 @@ export const runtime = 'edge';
 export async function POST(request: NextRequest) {
   const res: TrackBody = await request.json();
   const conn = connect(config);
-  const geo = request.geo;
+  const geo = geolocation(request);
   const country = geo?.country;
   const city = geo?.city;
   const region = geo?.region;
-  const ip = request.ip;
+  const ip = ipAddress(request);
 
   const results = await conn.execute(
     'INSERT INTO post_page_views (slug, view_date, in_modal, ip, country_code, city, region) VALUES (?, ?, ?, ?, ?, ?, ?)',
