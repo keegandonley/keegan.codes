@@ -6,14 +6,16 @@ import { BASEURL, NAME } from '@/metadata';
 export const runtime = 'edge';
 
 interface LibraryPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export async function generateMetadata({
-  params,
-}: LibraryPageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: LibraryPageProps,
+): Promise<Metadata> {
+  const params = await props.params;
+
   const componentKey = getKey({ slug: params.slug });
   if (componentKey) {
     const found = getComponentForKey({ key: componentKey });
@@ -52,6 +54,8 @@ export async function generateMetadata({
   };
 }
 
-export default function LibrarySlugPage({ params }: LibraryPageProps) {
+export default async function LibrarySlugPage(props: LibraryPageProps) {
+  const params = await props.params;
+
   return <BookContent slug={params.slug} />;
 }

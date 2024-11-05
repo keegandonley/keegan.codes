@@ -10,8 +10,8 @@ import Link from 'next/link';
 
 export const runtime = 'edge';
 
-export default function NotFound() {
-  const allHeaders = headers();
+export default async function NotFound() {
+  const allHeaders = await headers();
 
   const referrer = allHeaders.get('referer');
 

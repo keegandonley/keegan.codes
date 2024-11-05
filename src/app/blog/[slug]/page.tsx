@@ -20,14 +20,16 @@ export const runtime = 'edge';
 const Timeline = dynamic(() => import('@/components/Timeline'));
 
 export interface BlogPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export async function generateMetadata({
-  params,
-}: BlogPageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: BlogPageProps,
+): Promise<Metadata> {
+  const params = await props.params;
+
   const componentKey = getKey({ slug: params.slug });
 
   if (componentKey) {
@@ -67,7 +69,9 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogSlugPage({ params }: BlogPageProps) {
+export default async function BlogSlugPage(props: BlogPageProps) {
+  const params = await props.params;
+
   const componentKey = getKey({ slug: params.slug });
 
   if (!componentKey) {

@@ -44,7 +44,7 @@ const handleRequest = async (request: NextRequest) => {
     }
   }
 
-  const cookiesList = cookies();
+  const cookiesList = await cookies();
 
   const conn = connect(config);
 

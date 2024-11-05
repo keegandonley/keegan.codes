@@ -5,8 +5,8 @@ import { getIsLikelyMobile } from '@/util/userAgent';
 import { RadialFade } from '../RadialFade';
 import { TopFade } from '../TopFade';
 
-export const AnimatedGraph = () => {
-  const isLikelyMobile = getIsLikelyMobile();
+export const AnimatedGraph = async () => {
+  const isLikelyMobile = await getIsLikelyMobile();
 
   const values = Array(isLikelyMobile ? 150 : 250).fill(1);
 

@@ -10,7 +10,7 @@ const darkBackground = 'rgba(32, 65, 123, 1)';
 const lightBackground = 'rgba(227, 229, 240, 1)';
 
 export async function GET(request: Request) {
-  const allCookies = cookies();
+  const allCookies = await cookies();
 
   const theme = allCookies.get('theme');
 
