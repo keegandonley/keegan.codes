@@ -4,8 +4,8 @@ import styles from './countryViews.module.css';
 export const CountryViewsPlaceholder = async () => {
   return (
     <div className={merge(styles.countries)}>
-      {[-1, -1, -1, -1, -1].map((v) => (
-        <span key={v} className={merge(styles.country)}>
+      {[-1, -1, -1, -1, -1].map((v, i) => (
+        <span key={`${v}-${i}`} className={merge(styles.country)}>
           <span className={merge(styles.flag, styles.hidden)}>
             {getFlagEmoji('US')}
           </span>
