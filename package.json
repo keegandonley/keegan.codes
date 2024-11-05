@@ -23,7 +23,7 @@
     "@keegancodes/foundations-react": "3.0.0-rc.1",
     "@keegandonley/pro-regular-svg-icons": "^6.5.2",
     "@keegandonley/pro-solid-svg-icons": "^6.5.2",
-    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/bundle-analyzer": "15.0.2",
     "@next/mdx": "15.0.2",
