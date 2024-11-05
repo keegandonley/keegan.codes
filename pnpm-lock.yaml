@@ -25,11 +25,11 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2
       '@keegancodes/foundations-next':
-        specifier: 2.0.0-rc.0
-        version: 2.0.0-rc.0(@keegancodes/foundations@1.1.2)(next@15.0.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-7449567-20240905)(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028))(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
+        specifier: 3.0.1
+        version: 3.0.1(@keegancodes/foundations@1.1.2)(next@15.0.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-7449567-20240905)(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028))(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
       '@keegancodes/foundations-react':
-        specifier: 3.0.0-rc.1
-        version: 3.0.0-rc.1(@keegancodes/foundations@1.1.2)(react@19.0.0-rc-02c0e824-20241028)
+        specifier: 3.0.1
+        version: 3.0.1(@keegancodes/foundations@1.1.2)(react@19.0.0-rc-02c0e824-20241028)
       '@keegandonley/pro-regular-svg-icons':
         specifier: ^6.5.2
         version: 6.5.2
@@ -54,6 +54,9 @@ importers:
       '@sentry/nextjs':
         specifier: ^8.37.0
         version: 8.37.0(@opentelemetry/core@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.54.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.26.0(@opentelemetry/api@1.9.0))(next@15.0.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-7449567-20240905)(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)(webpack@5.96.1)
+      '@tailwindcss/line-clamp':
+        specifier: ^0.4.4
+        version: 0.4.4(tailwindcss@3.4.14)
       '@types/mdx':
         specifier: ^2.0.13
         version: 2.0.13
@@ -81,6 +84,9 @@ importers:
       '@vercel/og':
         specifier: ^0.6.3
         version: 0.6.3
+      '@vercel/speed-insights':
+        specifier: ^1.0.14
+        version: 1.0.14(next@15.0.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-7449567-20240905)(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
@@ -472,19 +478,19 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@keegancodes/foundations-next@2.0.0-rc.0':
-    resolution: {integrity: sha512-3BZtBTrX2X7WrmKrU7vI3fdQ+9Eb9oFEmTVW+305Mg0SFb0vWYyFEmMsZsLnXrJDG5TAWpSSvZ0669+WxG4fCA==}
+  '@keegancodes/foundations-next@3.0.1':
+    resolution: {integrity: sha512-+dAePwGkaYgOhINZCMWQTr+YGTHPaLwFvoWrqbaw2Abudnb5J427Ok/bqawdauz/1M+2UwEkSW9JrnQaszq5XA==}
     peerDependencies:
       '@keegancodes/foundations': ^1.0.21
-      next: 15.0.0-rc.0
-      react: 19.0.0-rc-f994737d14-20240522
-      react-dom: 19.0.0-rc-f994737d14-20240522
+      next: ^15.0.2
+      react: 19.0.0-rc-02c0e824-20241028
+      react-dom: 19.0.0-rc-02c0e824-20241028
 
-  '@keegancodes/foundations-react@3.0.0-rc.1':
-    resolution: {integrity: sha512-GoBVJXGKimlgtC/M91JTCRXpQSPyFcVZbMWYJrnf+0Ita1tPHX1DgUTMiDxPJLmkVESdMP0opwI8CiNNC05+vw==}
+  '@keegancodes/foundations-react@3.0.1':
+    resolution: {integrity: sha512-zfudvX/DIuI0rP0NCpcigyTkFOlP58aeIILpvQ2rZHyB64px5hLsLnjivuJ7oOGP3VvoRJrTOgULz6lA9z64VA==}
     peerDependencies:
       '@keegancodes/foundations': ^1.0.21
-      react: 19.0.0-rc-f994737d14-20240522
+      react: 19.0.0-rc-02c0e824-20241028
 
   '@keegancodes/foundations@1.1.2':
     resolution: {integrity: sha512-cTACbeILVNk/6ZceMm2rWFnDJOZPM8WBwBeRsdCG5Al1zEfs6dMDQmJCMZf0vokitsCE31G2OZWGVU6Byo/rRA==}
@@ -976,6 +982,11 @@ packages:
   '@swc/helpers@0.5.13':
     resolution: {integrity: sha512-UoKGxQ3r5kYI9dALKJapMmuK+1zWM/H17Z1+iwnNmzcJRnfFuevZs375TA5rW31pu4BS4NoSy1fRsexDXfWn5w==}
 
+  '@tailwindcss/line-clamp@0.4.4':
+    resolution: {integrity: sha512-5U6SY5z8N42VtrCrKlsTAA35gy2VSyYtHWCsg1H87NU1SXnEfekTVlrga9fzUDrrHcGi2Lb5KenUWb4lRQT5/g==}
+    peerDependencies:
+      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
+
   '@tootallnate/once@1.1.2':
     resolution: {integrity: sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==}
     engines: {node: '>= 6'}
@@ -1170,6 +1181,29 @@ packages:
   '@vercel/og@0.6.3':
     resolution: {integrity: sha512-aoCrC9FqkeA+WEEb9CwSmjD0rGlFeNqbUsI41JPmKWR9Hx6FFn86tvH96O5HZMF6VAXTGHxa3nPH3BokROpdgA==}
     engines: {node: '>=16'}
+
+  '@vercel/speed-insights@1.0.14':
+    resolution: {integrity: sha512-env1BkPddz1UaEZwBL4GmfRksMi2LbiYaKuoxMQjfLk83aEh7kkWMukkUhpQVs717NE6nnD+1+KO85GZHOZ4nQ==}
+    peerDependencies:
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
 
   '@webassemblyjs/ast@1.12.1':
     resolution: {integrity: sha512-EKfMUOPRRUTy5UII4qJDGPpqfwjOmZ5jeGFwid9mnoqIFK+e0vqoi1qH56JpmZSzEL53jKnNzScdmftJyG5xWg==}
@@ -4105,14 +4139,14 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@keegancodes/foundations-next@2.0.0-rc.0(@keegancodes/foundations@1.1.2)(next@15.0.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-7449567-20240905)(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028))(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)':
+  '@keegancodes/foundations-next@3.0.1(@keegancodes/foundations@1.1.2)(next@15.0.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-7449567-20240905)(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028))(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)':
     dependencies:
       '@keegancodes/foundations': 1.1.2
       next: 15.0.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-7449567-20240905)(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
       react: 19.0.0-rc-02c0e824-20241028
       react-dom: 19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028)
 
-  '@keegancodes/foundations-react@3.0.0-rc.1(@keegancodes/foundations@1.1.2)(react@19.0.0-rc-02c0e824-20241028)':
+  '@keegancodes/foundations-react@3.0.1(@keegancodes/foundations@1.1.2)(react@19.0.0-rc-02c0e824-20241028)':
     dependencies:
       '@keegancodes/foundations': 1.1.2
       react: 19.0.0-rc-02c0e824-20241028
@@ -4760,6 +4794,10 @@ snapshots:
     dependencies:
       tslib: 2.6.3
 
+  '@tailwindcss/line-clamp@0.4.4(tailwindcss@3.4.14)':
+    dependencies:
+      tailwindcss: 3.4.14
+
   '@tootallnate/once@1.1.2': {}
 
   '@types/acorn@4.0.6':
@@ -4977,6 +5015,11 @@ snapshots:
       '@resvg/resvg-wasm': 2.4.0
       satori: 0.10.9
       yoga-wasm-web: 0.3.3
+
+  '@vercel/speed-insights@1.0.14(next@15.0.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-7449567-20240905)(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)':
+    optionalDependencies:
+      next: 15.0.2(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-7449567-20240905)(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
+      react: 19.0.0-rc-02c0e824-20241028
 
   '@webassemblyjs/ast@1.12.1':
     dependencies:
