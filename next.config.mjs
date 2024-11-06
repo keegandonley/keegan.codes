@@ -70,6 +70,13 @@ const nextConfig = {
   experimental: {
     reactCompiler: true,
   },
+  webpack: (config, { isServer }) => {
+    // Ignore the warning for tailwind's dynamic requires
+    if (isServer) {
+      config.ignoreWarnings = [{ module: /node_modules\/tailwindcss/ }];
+    }
+    return config;
+  },
 };
 
 const withBundleAnalyzer = addAnalyzer({
