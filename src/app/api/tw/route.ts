@@ -1,7 +1,6 @@
 import { NextRequest } from 'next/server';
 import tailwindcss from 'tailwindcss';
 import postcss from 'postcss';
-import resolveConfig from 'tailwindcss/resolveConfig';
 
 const defaultCSS = '.__{}';
 
