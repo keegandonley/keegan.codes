@@ -20,9 +20,9 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const DynamicEventWaiter = dynamic(
   () => import('./event').then((m) => m.EventWaiter),
-  // {
-  //   ssr: false,
-  // },
+  {
+    loading: () => null,
+  },
 );
 
 config.autoAddCss = false;
