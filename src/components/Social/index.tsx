@@ -5,8 +5,6 @@ import {
   instagramOrange,
   linkedInBlue,
   redditOrange,
-  xGrey,
-  xGreyLight,
 } from '@/theme/brandColors';
 import styles from './social.module.css';
 import { URLS } from './socials';
@@ -16,7 +14,6 @@ import {
   faInstagram,
   faLinkedin,
   faReddit,
-  faXTwitter,
   faBluesky,
   faStrava,
 } from '@fortawesome/free-brands-svg-icons';
@@ -26,16 +23,16 @@ export const Social = () => {
     <div className={styles.wrapper}>
       <div className={styles.icons}>
         <Icon
-          icon={faStrava}
-          color={redditOrange}
-          url={URLS.strava}
-          name="Strava"
-        />
-        <Icon
           icon={faBluesky}
           color={blueSkyBlue}
           url={URLS.bluesky}
           name="Bluesky"
+        />
+        <Icon
+          icon={faStrava}
+          color={redditOrange}
+          url={URLS.strava}
+          name="Strava"
         />
         <Icon
           icon={faGithub}
@@ -55,13 +52,6 @@ export const Social = () => {
           color={instagramOrange}
           url={URLS.instagram}
           name="Instagram"
-        />
-        <Icon
-          icon={faXTwitter}
-          color={xGrey}
-          darkColor={xGreyLight}
-          url={URLS.twitter}
-          name="X"
         />
         <Icon
           icon={faReddit}

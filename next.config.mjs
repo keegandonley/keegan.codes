@@ -39,11 +39,6 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60 * 60 * 24 * 90,
   },
-  optimizePackageImports: [
-    '@keegandonley/pro-solid-svg-icons',
-    '@keegandonley/pro-regular-svg-icons',
-    '@fortawesome/free-brands-svg-icons',
-  ],
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   redirects: async () => {
     return [
@@ -60,6 +55,11 @@ const nextConfig = {
   transpilePackages: ['geist'],
   experimental: {
     reactCompiler: true,
+    optimizePackageImports: [
+      '@keegandonley/pro-solid-svg-icons',
+      '@keegandonley/pro-regular-svg-icons',
+      '@fortawesome/free-brands-svg-icons',
+    ],
   },
   webpack: (config, { isServer }) => {
     // Ignore the warning for tailwind's dynamic requires
