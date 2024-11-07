@@ -100,7 +100,6 @@ export default async function BlogSlugPage(props: BlogPageProps) {
             src={`${BUCKET_URL}/${cover}`}
             alt="todo"
             fill
-            priority
             {...parseToProps(metadata)}
             quality={80}
             sizes={`(max-width: 1400px) 100vw, 1400px`}
