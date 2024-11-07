@@ -39,20 +39,11 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60 * 60 * 24 * 90,
   },
-  modularizeImports: {
-    '@keegandonley/pro-solid-svg-icons': {
-      transform: '@keegandonley/pro-solid-svg-icons/{{member}}',
-      skipDefaultConversion: true,
-    },
-    '@keegandonley/pro-regular-svg-icons': {
-      transform: '@keegandonley/pro-regular-svg-icons/{{member}}',
-      skipDefaultConversion: true,
-    },
-    '@fortawesome/free-brands-svg-icons': {
-      transform: '@fortawesome/free-brands-svg-icons/{{member}}',
-      skipDefaultConversion: true,
-    },
-  },
+  optimizePackageImports: [
+    '@keegandonley/pro-solid-svg-icons',
+    '@keegandonley/pro-regular-svg-icons',
+    '@fortawesome/free-brands-svg-icons',
+  ],
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   redirects: async () => {
     return [
@@ -69,6 +60,13 @@ const nextConfig = {
   transpilePackages: ['geist'],
   experimental: {
     reactCompiler: true,
+  },
+  webpack: (config, { isServer }) => {
+    // Ignore the warning for tailwind's dynamic requires
+    if (isServer) {
+      config.ignoreWarnings = [{ module: /node_modules\/tailwindcss/ }];
+    }
+    return config;
   },
 };
 
