@@ -15,8 +15,8 @@
     "analyze": "NODE_OPTIONS=--max-old-space-size=4096 ANALYZE=true pnpm build"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.6.0",
-    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/fontawesome-svg-core": "6.6.0",
+    "@fortawesome/free-brands-svg-icons": "6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@keegancodes/foundations": "^1.1.2",
     "@keegancodes/foundations-next": "3.0.1",
