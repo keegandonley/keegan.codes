@@ -30,7 +30,7 @@
     "@sentry/nextjs": "^8.39.0",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.9.0",
+    "@types/node": "^22.9.1",
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "@vercel/analytics": "^1.4.1",
