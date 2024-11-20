@@ -38,8 +38,8 @@ else that I do, I have come to rely heavily on third parties. Strava is one of t
 both to share my rides with fellow enthusiasts, or to keep track of my training over time, and just look back
 on it for fun! This works fine, but given my thoughts on data ownership, it always bothered me that I didn't have
 more control over how I presented that data. Originally, I had started building a side project that used the Strava API
-to render server components of my activities so that I could embed them here on my blog. Then, I got an email a
-couple days ago:
+to display my activities and embed them here on my blog. Then, I got an email a
+couple days ago (emphasis mine):
 
 > Hello Keegan
 >
@@ -47,20 +47,22 @@ couple days ago:
 > certain information. This update, effective on November 11th, is part of our commitment to privacy and transparency
 > across all connected apps and devices.
 >
-> Third-party apps will now only be allowed to display Strava activity data related to a specific user to that user.
+> Third-party apps will now **only be allowed to display Strava activity data related to a specific user to that user**.
 > Partners will be required to update their app within 30 days of November 11th to align with this new standard.
 
 They expanded a bit on the changes in a [press release](https://press.strava.com/articles/updates-to-stravas-api-agreement), but
 this severely limits what developers are allowed to do with Strava data, including projects like the one I was working on.
+This change left me feeling bad, and got me thinking about fitness data ownership. I'm the one who dragged my ass up a mountain
+on my bike, and I'd like to do what I please with the data I collected and uploaded to Strava.
 
 ## Taking Back Ownership
 
-Now, I'm not saying that Strava is holding my data hostage or not letting me analyze it, but this change
+Now, I'm not necessarily saying that Strava is holding my data hostage or not letting me analyze it, but I don't like it, and this change
 was the push I needed to finally work on applying my same philosophy of data ownership to my fitness data. My
 first focus has been on presenting ride and hike data here on my site. I could use Strava's embed code, but
 that's still putting all the control in Strava's hands. If a month from now, or 5 years from now, they decide to
 disable embeds, all my old content will be broken, and these recent changes (especially with the short notice period)
-don't give me confidence in that regard. So, I built a server component that can take my raw workout data and embed
+don't give me confidence in that regard. So, I built a library and component that can take my raw workout data and embed
 it here on the site!
 
 <WorkoutGrid>
@@ -84,10 +86,11 @@ Strava, or anyone else, to display or calulate the data. The only service I rely
 out for a different mapping service if needed.
 
 I was even able to add some features I think have been missing, like showing the virtual map for Zwift indoor rides,
-rather that overlaying the GPS track in the ocean. This project will continue to evolve over time as I expand the features,
+rather than overlaying the GPS track in the ocean. This project will continue to evolve over time as I expand the features,
 support more workout types, and improve automation for getting things uploaded and stored on my own infrastructure. The end goal
 is to be able to have a feed of activities here much like Strava, but that I own and control. With video and photo embeds,
-I'm confident I can deliver an even richer and more flexible experience than many of the big platforms offer.
+I'm confident I can deliver an even richer and more flexible experience than many of the big platforms offer. At least I
+can build it to precisely support my needs and desires.
 
 Zwift, the virtual training platform I use when I can't ride outside, lets me record videos and photos during the ride.
 Here's an example:
@@ -103,3 +106,14 @@ Here's an example:
 I have big plans for this new integration with my raw fitness data, including map overlays, data graphs,
 and rich media like photos and videos. Having full control has always been my goal, but recent developments
 just encouraged me to finally do the work, or at least get started.
+
+## Final Thoughts
+
+Strava has made a strange decision in my opinion with these new API restrictions and the tight deadline to comply.
+Maybe we'll see them launch a new AI-based training platform soon, which I think would explain some of the changes.
+The reason doesn't matter though, because Strava is not unique. These kind of changes can happen, and will happen,
+when control of your data is in the hands of a company seeking to maximize profit. If anything, I'm reassured
+that I'm on the right path with the level of ownership I take in my content. It's more work, but worth it in the long run.
+
+How do you feel about data ownership? I'd love to hear about the lengths you've gone to own your data, be it
+fitness data, blog posts, or anything else! [Come find me on Bluesky](https://bsky.app/profile/keegan.codes) and let's connect!
