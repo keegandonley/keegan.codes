@@ -1,0 +1,41 @@
+import { Workout } from '@keegandonley/fitness-embed';
+import WorkoutGrid from '../components/WorkoutGrid';
+
+export const title = 'When Hobbies and Career Intersect';
+export const slug = 'hobbies-and-career';
+export const tags = ['opinion', 'software'];
+export const description = 'Hobby stuff';
+export const cover = 'tree-leaves-cover.jpg';
+export const published = new Date(2024, 10, 21);
+export const shortCodes = ['hobby'];
+
+I often find myself blurring the lines between my hobbies and my career. I certainly consider software engineering a hobby, and many of my side projects
+are engineering explorations or experiments that I later apply to my day-to-day work, and vice-versa. Recently, some work I was doing for a project
+to allow promises to be serialized and sent back-and-forth between web workers became the foundation for the plugin
+engine I built at [Kizen](https://kizen.com/). This "collaboration" so to speak between my hobby code and my work code
+has been super valuable time and time again. With that in mind, I decided to take a look at some of my other hobbies and see
+if they fit into my career in any way.
+
+## So What Do I Like To Do?
+
+People who know me, know that I don't half-ass anything. I like this characterization of myself, because it's completely accurate.
+I tend to get sucked into hobbies that I enjoy, and I'm always on the lookout for new things to try. When something "clicks" with me,
+I go all-in.
+
+<WorkoutGrid>
+  <Workout
+    distanceFeet={92822.4}
+    elevationFeet={3343}
+    gpxUrl="https://fitness.static.donley.xyz/tour-of-watopia-stage-4.gpx"
+    watopia
+  />
+  <Workout
+    distanceFeet={328891.2}
+    timeSeconds={14607}
+    elevationFeet={3343}
+    gpxUrl="https://fitness.static.donley.xyz/realale2024.gpx"
+  />
+</WorkoutGrid>
+
+I built these visualizations for my bike rides, because I prefer to have
+control over how they look, rather than embedding them from a third party.
