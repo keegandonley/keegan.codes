@@ -10,7 +10,7 @@ export const cover = 'trail-cover.jpg';
 export const published = new Date(2024, 10, 20);
 export const shortCodes = ['my-data'];
 
-I've never like giving up control of my data, and how it's presented. You can see that philosophy
+I've never like giving up control of my data and how it's presented. You can see that philosophy
 in how I run this blog, and how I design most of my projects. From the beginning, I knew I wanted
 a place where I could share my thoughts, ideas, and projects, and I knew it wasn't going to be
 something like Medium or Substack. It's important to me that my corner of the internet can live on
@@ -20,7 +20,7 @@ place. I host it on Vercel and built this version with Next.js, but platforms an
 come and go. My content is all written in Markdown and it's pretty portable if I need to rebuild
 my site. In fact, I've done it a few times before.
 
-Most of the content here I have complete control over as well. Images are served from Cloudflare R2
+I have complete control over most of the content and media here as well. Images are served from Cloudflare R2
 for now, but I can always move to a different storage platform. Videos are served from my own infrastructure
 as well. I've avoided embedding YouTube videos or other external content, since I don't control what happens
 to my videos, and whatever provider I'm using could deactivate my account or change how it works, breaking
@@ -28,10 +28,10 @@ tons of historical content.
 
 I have had one gap in my strategy though, and it's a pretty big one in my opinion.
 
-## I Don't Own My Fitness Data
+## I Don't Own My Fitness Data... But I Should
 
 For a long time now, I've been excited about [connected fitness](https://keegan.codes/blog/my-connected-fitness-tools-part-2).
-I've also recently redeveloped a love for cycling an got pretty into road biking.
+I've also recently redeveloped a love for cycling and gotten pretty into road biking.
 
 In order to visualize, share, and otherwise analyze the results of my workouts, rides, hikes, or anything
 else that I do, I have come to rely heavily on third parties. Strava is one of the main platforms that I use,
@@ -48,7 +48,7 @@ couple days ago (emphasis mine):
 > across all connected apps and devices.
 >
 > Third-party apps will now **only be allowed to display Strava activity data related to a specific user to that user**.
-> Partners will be required to update their app within 30 days of November 11th to align with this new standard.
+> Partners will be required to update their app **within 30 days of November 11th** to align with this new standard.
 
 They expanded a bit on the changes in a [press release](https://press.strava.com/articles/updates-to-stravas-api-agreement), but
 this severely limits what developers are allowed to do with Strava data, including projects like the one I was working on.
@@ -57,7 +57,7 @@ on my bike, and I'd like to do what I please with the data I collected and uploa
 
 ## Taking Back Ownership
 
-Now, I'm not necessarily saying that Strava is holding my data hostage or not letting me analyze it, but I don't like it, and this change
+Now, I'm not necessarily saying that Strava is holding my data hostage or not letting me analyze it, but I don't like the level of control they do have, and this change
 was the push I needed to finally work on applying my same philosophy of data ownership to my fitness data. My
 first focus has been on presenting ride and hike data here on my site. I could use Strava's embed code, but
 that's still putting all the control in Strava's hands. If a month from now, or 5 years from now, they decide to
@@ -85,8 +85,8 @@ elevation, heart rate, cycling power, and more. I can host these files myself, a
 Strava, or anyone else, to display or calulate the data. The only service I rely on is Mapbox, but I can always swap them
 out for a different mapping service if needed.
 
-I was even able to add some features I think have been missing, like showing the virtual map for Zwift indoor rides,
-rather than overlaying the GPS track in the ocean. This project will continue to evolve over time as I expand the features,
+I was even able to add some features I've been longing for, like showing the virtual map of Watopia for [Zwift](https://www.zwift.com/) indoor rides,
+rather than overlaying the GPS track in the ocean like Strava does. This project will continue to evolve over time as I expand the features,
 support more workout types, and improve automation for getting things uploaded and stored on my own infrastructure. The end goal
 is to be able to have a feed of activities here much like Strava, but that I own and control. With video and photo embeds,
 I'm confident I can deliver an even richer and more flexible experience than many of the big platforms offer. At least I
