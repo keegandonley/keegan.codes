@@ -1,0 +1,105 @@
+import { Workout } from '@keegandonley/fitness-embed';
+import WorkoutGrid from '../components/WorkoutGrid';
+
+export const title = 'I Own My Data';
+export const slug = 'i-own-my-data';
+export const tags = ['software', 'opinion'];
+export const description =
+  'My philosophy of data ownership, this blog, and recent changes to platforms I rely on.';
+export const cover = 'trail-cover.jpg';
+export const published = new Date(2024, 10, 20);
+export const shortCodes = ['my-data'];
+
+I've never like giving up control of my data, and how it's presented. You can see that philosophy
+in how I run this blog, and how I design most of my projects. From the beginning, I knew I wanted
+a place where I could share my thoughts, ideas, and projects, and I knew it wasn't going to be
+something like Medium or Substack. It's important to me that my corner of the internet can live on
+with very little control from any platform, company, or person. Even if this iteration of my site
+is eventualy upgraded, replaced, migrated, or otherwise changed, it's always going to be in the same
+place. I host it on Vercel and built this version with Next.js, but platforms and frameworks can
+come and go. My content is all written in Markdown and it's pretty portable if I need to rebuild
+my site. In fact, I've done it a few times before.
+
+Most of the content here I have complete control over as well. Images are served from Cloudflare R2
+for now, but I can always move to a different storage platform. Videos are served from my own infrastructure
+as well. I've avoided embedding YouTube videos or other external content, since I don't control what happens
+to my videos, and whatever provider I'm using could deactivate my account or change how it works, breaking
+tons of historical content.
+
+I have had one gap in my strategy though, and it's a pretty big one in my opinion.
+
+## I Don't Own My Fitness Data
+
+For a long time now, I've been excited about [connected fitness](https://keegan.codes/blog/my-connected-fitness-tools-part-2).
+I've also recently redeveloped a love for cycling an got pretty into road biking.
+
+In order to visualize, share, and otherwise analyze the results of my workouts, rides, hikes, or anything
+else that I do, I have come to rely heavily on third parties. Strava is one of the main platforms that I use,
+both to share my rides with fellow enthusiasts, or to keep track of my training over time, and just look back
+on it for fun! This works fine, but given my thoughts on data ownership, it always bothered me that I didn't have
+more control over how I presented that data. Originally, I had started building a side project that used the Strava API
+to render server components of my activities so that I could embed them here on my blog. Then, I got an email a
+couple days ago:
+
+> Hello Keegan
+>
+> We’re reaching out to inform you of a change that affects how third-party apps connected to Strava may display
+> certain information. This update, effective on November 11th, is part of our commitment to privacy and transparency
+> across all connected apps and devices.
+>
+> Third-party apps will now only be allowed to display Strava activity data related to a specific user to that user.
+> Partners will be required to update their app within 30 days of November 11th to align with this new standard.
+
+They expanded a bit on the changes in a [press release](https://press.strava.com/articles/updates-to-stravas-api-agreement), but
+this severely limits what developers are allowed to do with Strava data, including projects like the one I was working on.
+
+## Taking Back Ownership
+
+Now, I'm not saying that Strava is holding my data hostage or not letting me analyze it, but this change
+was the push I needed to finally work on applying my same philosophy of data ownership to my fitness data. My
+first focus has been on presenting ride and hike data here on my site. I could use Strava's embed code, but
+that's still putting all the control in Strava's hands. If a month from now, or 5 years from now, they decide to
+disable embeds, all my old content will be broken, and these recent changes (especially with the short notice period)
+don't give me confidence in that regard. So, I built a server component that can take my raw workout data and embed
+it here on the site!
+
+<WorkoutGrid>
+  <Workout
+    distanceFeet={92822.4}
+    elevationFeet={3343}
+    gpxUrl="https://fitness.static.donley.xyz/tour-of-watopia-stage-4.gpx"
+    watopia
+  />
+  <Workout
+    distanceFeet={328891.2}
+    timeSeconds={14607}
+    elevationFeet={3343}
+    gpxUrl="https://fitness.static.donley.xyz/realale2024.gpx"
+  />
+</WorkoutGrid>
+
+The component works by downloading and parsing a GPX file, a format used for storing workout route data, including GPS location,
+elevation, heart rate, cycling power, and more. I can host these files myself, and the component doesn't rely on
+Strava, or anyone else, to display or calulate the data. The only service I rely on is Mapbox, but I can always swap them
+out for a different mapping service if needed.
+
+I was even able to add some features I think have been missing, like showing the virtual map for Zwift indoor rides,
+rather that overlaying the GPS track in the ocean. This project will continue to evolve over time as I expand the features,
+support more workout types, and improve automation for getting things uploaded and stored on my own infrastructure. The end goal
+is to be able to have a feed of activities here much like Strava, but that I own and control. With video and photo embeds,
+I'm confident I can deliver an even richer and more flexible experience than many of the big platforms offer.
+
+Zwift, the virtual training platform I use when I can't ride outside, lets me record videos and photos during the ride.
+Here's an example:
+
+<video width="100%" height="auto" controls preload="metadata">
+  <source
+    src="https://video.static.donley.xyz/zwift-sprint.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag.
+</video>
+
+I have big plans for this new integration with my raw fitness data, including map overlays, data graphs,
+and rich media like photos and videos. Having full control has always been my goal, but recent developments
+just encouraged me to finally do the work, or at least get started.
