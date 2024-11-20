@@ -47,6 +47,7 @@ import * as CSSTouchscreen from './touchscreen-css.mdx';
 import * as ReactMiami24Recap from './react-miami-2024-recap.mdx';
 import * as Render2024 from './render-2024-recap.mdx';
 import * as SASW2024 from './sasw-2024.mdx';
+import * as Hobbies from './when-hobbies-and-career-intersect.mdx';
 
 const posts = {
   Welcome,
@@ -98,6 +99,7 @@ const posts = {
   ReactMiami24Recap,
   Render2024,
   SASW2024,
+  Hobbies,
 };
 
 export default posts;

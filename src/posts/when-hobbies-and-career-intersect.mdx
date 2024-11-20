@@ -1,0 +1,30 @@
+import { Workout } from '@keegandonley/fitness-embed';
+import WorkoutGrid from '../components/WorkoutGrid';
+
+export const title = 'When Hobbies and Career Intersect';
+export const slug = 'hobbies-and-career';
+export const tags = ['opinion', 'software'];
+export const description = 'Hobby stuff';
+export const cover = 'tree-leaves-cover.jpg';
+export const published = new Date(2024, 10, 21);
+export const shortCodes = ['hobby'];
+
+I often find myself blurring the lines between my hobbies and my careers.
+
+<WorkoutGrid>
+  <Workout
+    distanceFeet={103646.4}
+    elevationFeet={3343}
+    gpxUrl="https://fitness.static.donley.xyz/tour-of-watopia-stage-5.gpx"
+    watopia
+  />
+  <Workout
+    distanceFeet={328891.2}
+    timeSeconds={14607}
+    elevationFeet={3343}
+    gpxUrl="https://fitness.static.donley.xyz/realale2024.gpx"
+  />
+</WorkoutGrid>
+
+I built these visualizations for my bike rides, because I prefer to have
+control over how they look, rather than embedding them from a third party.
