@@ -6,6 +6,13 @@
   padding-bottom: 2rem;
 }
 
+.fallback {
+  height: 450px;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  width: 100%;
+}
+
 .wrapper > * {
   box-shadow: var(--theme-box-shadow-small);
 }

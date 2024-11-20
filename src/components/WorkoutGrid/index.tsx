@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import styles from './workoutGrid.module.css';
 
 type WorkoutGridProps = {
@@ -7,5 +8,11 @@ type WorkoutGridProps = {
 export default function WorkoutGrid(props: WorkoutGridProps) {
   const { children } = props;
 
-  return <div className={styles.wrapper}>{children}</div>;
+  return (
+    <div className={styles.wrapper}>
+      <Suspense fallback={<div className={styles.fallback} />}>
+        {children}
+      </Suspense>
+    </div>
+  );
 }
