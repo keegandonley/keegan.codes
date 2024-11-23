@@ -2,9 +2,14 @@ import { MetadataRoute } from 'next';
 import Posts from '@/posts';
 import Books from '@/books';
 import { readFileSync } from 'fs';
+import { listObjects } from '@/util/r2';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const published = await readFileSync('public/published.txt', 'utf-8');
+
+  const watchContent = await listObjects({
+    Bucket: process.env.R2_WATCH_BUCKET!,
+  });
 
   return [
     {
@@ -50,5 +55,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.5,
       };
     }),
+    ...(watchContent?.map((object) => {
+      return {
+        url: `https://keegan.codes/watch/${object.Key}`,
+        lastModified: object.LastModified,
+        priority: 0.3,
+      };
+    }) ?? []),
   ];
 }
