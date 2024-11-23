@@ -9,6 +9,14 @@ export default function WatchPage({
   id: string;
   contentType: string;
 }) {
+  if (!id) {
+    return (
+      <div className="flex min-h-screen w-full flex-col items-center bg-gray-900 text-gray-400">
+        <div className="my-auto text-4xl">{':('}</div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-gray-900">
       <div className="my-auto">
@@ -44,9 +52,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
   }
 
   return {
-    redirect: {
-      destination: '/routing-error?slug=' + params.id + '&type=watch',
-    },
+    props: {},
   };
 }
 
