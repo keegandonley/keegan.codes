@@ -7,4 +7,5 @@ export interface Post {
   published: Date;
   default: any;
   shortCodes?: string[];
+  bskyThreadId?: string;
 }
