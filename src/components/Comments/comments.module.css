@@ -57,3 +57,9 @@
   border-radius: 6px;
   color: var(--theme-dark);
 }
+
+.likes {
+  font-size: 0.9em;
+  opacity: 0.8;
+  margin: -0.5rem 0;
+}

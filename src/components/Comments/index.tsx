@@ -5,7 +5,8 @@ import styles from './comments.module.css';
 import { injectVariables } from '@keegancodes/foundations';
 import { Hr } from '../Post/Hr';
 import Link from 'next/link';
-import { author } from '@/books/to-pixar-and-beyond.mdx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp } from '@keegandonley/pro-solid-svg-icons';
 
 const authorDid = 'did:plc:qu7mp3zsk6r5eoairedflnsm';
 
@@ -46,6 +47,9 @@ const Comment = (props: CommentProps) => {
         ) : null}
       </div>
       <span>{(post.post.record as any).text}</span>
+      <span className={styles.likes}>
+        <FontAwesomeIcon icon={faThumbsUp} /> {post.post.likeCount ?? 0}
+      </span>
       <div className={styles.subCommentsWrapper}>
         {post.replies?.map((reply) => (
           <Comment key={reply.uri as string} post={reply as ThreadViewPost} />
