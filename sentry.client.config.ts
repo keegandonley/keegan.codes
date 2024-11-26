@@ -7,6 +7,7 @@ Sentry.init({
   replaysOnErrorSampleRate: 1,
   replaysSessionSampleRate: 0,
   integrations: [],
+  enabled: process.env.NODE_ENV === 'production',
 });
 
 import('@sentry/nextjs').then((lazyLoadedSentry) => {

@@ -11,6 +11,12 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'cdn.bsky.app',
+        port: '',
+        pathname: '/img/avatar/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'static.donley.xyz',
         port: '',
         pathname: '/**',

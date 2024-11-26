@@ -18,8 +18,27 @@ const Track = dynamic(() => import('@/components/Track'));
 export const runtime = 'edge';
 
 const Timeline = dynamic(() => import('@/components/Timeline'), {
-  loading: () => null,
+  loading: () => (
+    <div
+      style={{
+        height: '300px',
+      }}
+    />
+  ),
 });
+
+const Comments = dynamic(
+  () => import('@/components/Comments').then((mod) => mod.Comments),
+  {
+    loading: () => (
+      <div
+        style={{
+          height: '300px',
+        }}
+      />
+    ),
+  },
+);
 
 export interface BlogPageProps {
   params: Promise<{
@@ -87,6 +106,7 @@ export default async function BlogSlugPage(props: BlogPageProps) {
   const cover = found.cover;
   const metadata = getImageMetadata(parseSource(cover)[0]);
   const wordCount = (wordCounts as Record<string, number>)[found.slug];
+  const bskyThreadId = found.bskyThreadId;
 
   if (!Component) {
     notFound();
@@ -131,6 +151,7 @@ export default async function BlogSlugPage(props: BlogPageProps) {
           minHeight: '300px',
         }}
       >
+        <Comments threadId={bskyThreadId} />
         <Timeline slug={params.slug} />
       </footer>
       <Track slug={params.slug} inModal={false} />
