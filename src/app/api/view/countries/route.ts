@@ -1,3 +1,4 @@
+import { getCountriesViews } from '@/util/db';
 import { connect } from '@planetscale/database';
 import { NextResponse } from 'next/server';
 
@@ -14,24 +15,11 @@ export async function GET(request: Request) {
   const limit = url.searchParams.get('limit') ?? '3';
   let parsed = parseInt(limit, 10);
 
-  if (parsed > 20) {
-    parsed = 20;
-  }
-
-  const conn = connect(config);
-
   try {
-    const res = await conn.execute(
-      'SELECT code, views FROM location_page_views ORDER BY views DESC LIMIT ?',
-      [parsed],
-    );
+    const countries = await getCountriesViews(parsed);
 
     return NextResponse.json({
-      countries:
-        res?.rows?.map((row) => ({
-          code: row.code,
-          views: parseInt(row.views, 10),
-        })) ?? [],
+      countries,
     });
   } catch (ex) {
     console.error(ex);
