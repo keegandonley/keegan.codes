@@ -17,12 +17,14 @@ const getValue = async (slug: string): Promise<number> => {
       headers,
     });
 
-    const { count, ...rest } = await data.json();
+    let count = '0';
 
-    console.log({
-      ...rest,
-      count,
-    });
+    try {
+      const jsonResult = await data.json();
+      count = jsonResult.count;
+    } catch (ex) {
+      // this is weird, why is there an error?
+    }
 
     return parseInt(count);
   } catch (ex) {
