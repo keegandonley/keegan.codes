@@ -62,7 +62,5 @@ export async function GET(request: Request) {
     [slug],
   );
 
-  console.log(results);
-
   return new Response(JSON.stringify(results.rows[0]), { status: 200 });
 }
