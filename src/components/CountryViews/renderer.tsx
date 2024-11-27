@@ -4,47 +4,8 @@ import {
   formatNumber,
   injectVariables,
 } from '@keegancodes/foundations';
-import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
 import styles from './countryViews.module.css';
-import { getValue } from '../TotalViews/renderer';
-import { captureException } from '@sentry/nextjs';
-
-const getCountries = async (): Promise<
-  Array<{ code: string; views: number }>
-> => {
-  try {
-    const { url, headers } = await getFullyQualifiedDeploymentUrl(
-      '/api/view/countries?limit=5',
-    );
-    const data = await fetch(url, { headers });
-
-    if (!data.ok) {
-      console.warn('Data not ok', url, data.status, data.statusText);
-      return [];
-    }
-
-    let countries = [];
-    try {
-      const jsonResult = await data.json();
-      countries = jsonResult.countries;
-    } catch (ex) {
-      // this is weird, why is there an error?
-      try {
-        const text = await data.text();
-        console.log('text', text);
-      } catch (ex) {
-        // noop
-      }
-    }
-
-    return countries;
-  } catch (ex) {
-    captureException(ex);
-    console.error('Error when getting country page views', ex);
-  }
-
-  return [];
-};
+import { getCountriesViews, getTotalViews } from '@/util/db';
 
 interface CountriesRendererProps {
   className?: string;
@@ -53,7 +14,10 @@ interface CountriesRendererProps {
 export const CountriesRenderer = async ({
   className,
 }: CountriesRendererProps) => {
-  const [countries, total] = await Promise.all([getCountries(), getValue()]);
+  const [countries, total] = await Promise.all([
+    getCountriesViews(5),
+    getTotalViews(),
+  ]);
   return (
     <div className={merge(className, styles.countries)}>
       {countries.map(({ code, views }) => {

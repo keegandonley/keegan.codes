@@ -2,6 +2,7 @@ import { connect } from '@planetscale/database';
 import type { NextRequest } from 'next/server';
 
 import { geolocation, ipAddress } from '@vercel/functions';
+import { getViewCountForSlug } from '@/util/db';
 
 const config = {
   host: process.env.host,
@@ -58,27 +59,12 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: Request) {
-  console.log('getting views');
   try {
     const url = new URL(request.url);
     const slug = url.searchParams.get('slug');
-    const conn = connect(config);
-    const results = await conn.execute(
-      'SELECT views FROM post_page_views_aggregate WHERE slug = ?',
-      [slug],
-    );
+    const row = await getViewCountForSlug(slug);
 
-    if (!results?.rows?.[0]) {
-      console.error('No results found for slug', slug, 'results:', results);
-    }
-
-    const row = results?.rows?.[0] as { views: number } | undefined;
-
-    console.log(
-      `Fetched views for ${slug}, result was ${row?.views ?? 'undefined'}`,
-    );
-
-    return new Response(JSON.stringify(row ?? {}), {
+    return new Response(JSON.stringify(row), {
       status: 200,
     });
   } catch (ex) {

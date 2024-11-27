@@ -1,6 +1,7 @@
 import { connect } from '@planetscale/database';
 import { kv } from '@vercel/kv';
 import { get } from '@vercel/edge-config';
+import { getCheersCountForSlug } from '@/util/db';
 
 const config = {
   host: process.env.host,
@@ -56,11 +57,8 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const slug = url.searchParams.get('slug');
-  const conn = connect(config);
-  const results = await conn.execute(
-    'SELECT count(*) as count FROM post_cheers WHERE slug = ?',
-    [slug],
-  );
 
-  return new Response(JSON.stringify(results.rows[0]), { status: 200 });
+  const count = await getCheersCountForSlug(slug);
+
+  return new Response(JSON.stringify({ count }), { status: 200 });
 }
