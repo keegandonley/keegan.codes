@@ -10,7 +10,7 @@ export const getValue = async (): Promise<number> => {
     const data = await fetch(url, { headers });
 
     if (!data.ok) {
-      console.warn('Data not ok', url);
+      console.warn('Data not ok', url, data.status, data.statusText);
       return 0;
     }
 

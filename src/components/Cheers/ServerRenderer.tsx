@@ -18,7 +18,7 @@ const getValue = async (slug: string): Promise<number> => {
     });
 
     if (!data.ok) {
-      console.warn('Data not ok', url);
+      console.warn('Data not ok', url, data.status, data.statusText);
       return 0;
     }
 
