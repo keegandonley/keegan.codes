@@ -17,6 +17,11 @@ const getValue = async (slug: string): Promise<number> => {
       headers,
     });
 
+    if (!data.ok) {
+      console.warn('Data not ok', url);
+      return 0;
+    }
+
     let count = '0';
 
     try {
@@ -36,8 +41,9 @@ const getValue = async (slug: string): Promise<number> => {
   } catch (ex) {
     console.error('Error for slug when getting cheers count', slug, ex);
     captureException(ex);
-    return 0;
   }
+
+  return 0;
 };
 
 export const CheersServerRenderer = async ({

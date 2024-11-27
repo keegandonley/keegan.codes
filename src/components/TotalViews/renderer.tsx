@@ -1,6 +1,7 @@
 import { merge } from '@/util/classNames';
 import { formatNumber } from '@keegancodes/foundations';
 import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
+import { captureException } from '@sentry/nextjs';
 
 export const getValue = async (): Promise<number> => {
   try {
@@ -8,7 +9,13 @@ export const getValue = async (): Promise<number> => {
       await getFullyQualifiedDeploymentUrl('/api/view/total');
     const data = await fetch(url, { headers });
 
+    if (!data.ok) {
+      console.warn('Data not ok', url);
+      return 0;
+    }
+
     let views;
+
     try {
       const jsonResult = await data.json();
       views = jsonResult.views;
@@ -24,9 +31,11 @@ export const getValue = async (): Promise<number> => {
 
     return views;
   } catch (ex) {
+    captureException(ex);
     console.error('Error when getting total page views', ex);
-    return 0;
   }
+
+  return 0;
 };
 
 interface ViewCountRendererProps {

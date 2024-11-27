@@ -17,6 +17,11 @@ const getValue = async (slug: string): Promise<number> => {
 
     const data = await fetch(url, { headers });
 
+    if (!data.ok) {
+      console.warn('Data not ok', url);
+      return 0;
+    }
+
     let views;
 
     try {
@@ -36,8 +41,9 @@ const getValue = async (slug: string): Promise<number> => {
   } catch (ex) {
     captureException(ex);
     console.error('Error for slug when getting page views', slug, ex);
-    return 0;
   }
+
+  return 0;
 };
 
 export const ViewCountRenderer = async ({

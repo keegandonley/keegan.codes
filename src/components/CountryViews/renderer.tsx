@@ -7,6 +7,7 @@ import {
 import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
 import styles from './countryViews.module.css';
 import { getValue } from '../TotalViews/renderer';
+import { captureException } from '@sentry/nextjs';
 
 const getCountries = async (): Promise<
   Array<{ code: string; views: number }>
@@ -16,6 +17,11 @@ const getCountries = async (): Promise<
       '/api/view/countries?limit=5',
     );
     const data = await fetch(url, { headers });
+
+    if (!data.ok) {
+      console.warn('Data not ok', url);
+      return [];
+    }
 
     let countries = [];
     try {
@@ -33,9 +39,11 @@ const getCountries = async (): Promise<
 
     return countries;
   } catch (ex) {
+    captureException(ex);
     console.error('Error when getting country page views', ex);
-    return [];
   }
+
+  return [];
 };
 
 interface CountriesRendererProps {
