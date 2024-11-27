@@ -109,8 +109,6 @@ export const Comments = async (props: CommentsProps) => {
     return null;
   }
 
-  console.log(threadData);
-
   return (
     <div className={styles.commentsWrapper}>
       <Hr />

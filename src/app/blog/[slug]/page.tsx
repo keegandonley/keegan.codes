@@ -1,6 +1,5 @@
 import styles from './blogPost.module.css';
 import '../../syntax-theme.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { BottomFade } from '@/components/BottomFade';
 import Image from 'next/image';
 import { getImageMetadata, parseSource, parseToProps } from '@/util/image';
@@ -146,12 +145,8 @@ export default async function BlogSlugPage(props: BlogPageProps) {
           </div>
         </article>
       </div>
-      <footer
-        style={{
-          minHeight: '300px',
-        }}
-      >
-        <Comments threadId={bskyThreadId} />
+      <Comments threadId={bskyThreadId} />
+      <footer>
         <Timeline slug={params.slug} />
       </footer>
       <Track slug={params.slug} inModal={false} />
