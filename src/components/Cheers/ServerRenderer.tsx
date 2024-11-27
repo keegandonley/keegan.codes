@@ -24,6 +24,12 @@ const getValue = async (slug: string): Promise<number> => {
       count = jsonResult.count;
     } catch (ex) {
       // this is weird, why is there an error?
+      try {
+        const text = await data.text();
+        console.log('text', text);
+      } catch (ex) {
+        // noop
+      }
     }
 
     return parseInt(count);

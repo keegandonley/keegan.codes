@@ -17,7 +17,19 @@ const getCountries = async (): Promise<
     );
     const data = await fetch(url, { headers });
 
-    const { countries } = await data.json();
+    let countries = [];
+    try {
+      const jsonResult = await data.json();
+      countries = jsonResult.countries;
+    } catch (ex) {
+      // this is weird, why is there an error?
+      try {
+        const text = await data.text();
+        console.log('text', text);
+      } catch (ex) {
+        // noop
+      }
+    }
 
     return countries;
   } catch (ex) {
