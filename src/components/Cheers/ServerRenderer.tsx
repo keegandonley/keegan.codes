@@ -17,7 +17,12 @@ const getValue = async (slug: string): Promise<number> => {
       headers,
     });
 
-    const { count } = await data.json();
+    const { count, ...rest } = await data.json();
+
+    console.log({
+      ...rest,
+      count,
+    });
 
     return parseInt(count);
   } catch (ex) {

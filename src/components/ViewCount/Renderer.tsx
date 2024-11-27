@@ -14,6 +14,9 @@ const getValue = async (slug: string): Promise<number> => {
     const { url, headers } = await getFullyQualifiedDeploymentUrl(
       `/api/view?slug=${slug}`,
     );
+
+    console.log('url is', url);
+
     const data = await fetch(url, { headers });
 
     const { views } = await data.json();
