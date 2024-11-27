@@ -15,11 +15,16 @@ const getValue = async (slug: string): Promise<number> => {
       `/api/view?slug=${slug}`,
     );
 
-    console.log('url is', url);
-
     const data = await fetch(url, { headers });
 
-    const { views } = await data.json();
+    let views;
+
+    try {
+      const jsonResult = await data.json();
+      views = jsonResult.views;
+    } catch (ex) {
+      // this is weird, why is there an error?
+    }
 
     return views;
   } catch (ex) {
