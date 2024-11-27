@@ -3,6 +3,7 @@ import wordCounts from '../../../../post-word-counts.json';
 import { Post } from '@/types/post';
 import { connect } from '@planetscale/database';
 import { getImageMetadata } from '@/util/image';
+import { getRandomPostForSlug } from '@/util/post';
 
 export const runtime = 'edge';
 
@@ -92,7 +93,11 @@ export async function GET(request: Request) {
   const url = new URL(request.url);
   const slug = url.searchParams.get('slug');
 
-  return handleRequestForSlug(url, slug);
+  const post = await getRandomPostForSlug(slug, url.origin);
+
+  console.log(post);
+
+  return new Response(JSON.stringify(post));
 }
 
 export async function POST(request: Request) {
@@ -102,8 +107,10 @@ export async function POST(request: Request) {
     const body = await request.json();
     const slug = body.slug;
 
-    return handleRequestForSlug(url, slug);
+    const post = await getRandomPostForSlug(slug, url.origin);
+    return new Response(JSON.stringify(post));
   } catch (ex: any) {
-    return handleRequestForSlug(url);
+    const post = await getRandomPostForSlug(null, url.origin);
+    return new Response(JSON.stringify(post));
   }
 }
