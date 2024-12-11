@@ -26,7 +26,7 @@
     "@keegandonley/fitness-embed": "^0.0.26",
     "@keegandonley/pro-regular-svg-icons": "^6.5.2",
     "@keegandonley/pro-solid-svg-icons": "^6.5.2",
-    "@next/bundle-analyzer": "^15.0.3",
+    "@next/bundle-analyzer": "^15.1.0",
     "@next/mdx": "^15.0.3",
     "@planetscale/database": "^1.19.0",
     "@sentry/nextjs": "^8.42.0",
