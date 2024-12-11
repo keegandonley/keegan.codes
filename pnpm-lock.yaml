@@ -49,8 +49,8 @@ importers:
         specifier: ^15.0.3
         version: 15.0.3
       '@next/mdx':
-        specifier: ^15.0.3
-        version: 15.0.3(@mdx-js/loader@3.1.0(acorn@8.14.0)(webpack@5.97.1))(@mdx-js/react@3.1.0(react@19.0.0-rc-02c0e824-20241028)(types-react@19.0.0-rc.1))
+        specifier: ^15.1.0
+        version: 15.1.0(@mdx-js/loader@3.1.0(acorn@8.14.0)(webpack@5.97.1))(@mdx-js/react@3.1.0(react@19.0.0-rc-02c0e824-20241028)(types-react@19.0.0-rc.1))
       '@planetscale/database':
         specifier: ^1.19.0
         version: 1.19.0
@@ -756,8 +756,8 @@ packages:
   '@next/eslint-plugin-next@15.0.3':
     resolution: {integrity: sha512-3Ln/nHq2V+v8uIaxCR6YfYo7ceRgZNXfTd3yW1ukTaFbO+/I8jNakrjYWODvG9BuR2v5kgVtH/C8r0i11quOgw==}
 
-  '@next/mdx@15.0.3':
-    resolution: {integrity: sha512-EwCJKDeJqfbHbsS7rIdWpKDOZsOPsif9AX4PaIhy5ghSMsZvi+/vIZVc07pZT7BdwCIoL9XM1KZMd/vzxCxF5A==}
+  '@next/mdx@15.1.0':
+    resolution: {integrity: sha512-1USYedy2yRmPdIvQC1b2MBVwiJYrcZnCSHHZZETEuV1rAxjjXedbHmo43kwAv6DL3f9AgDHnl1/s1cqI7xhXdA==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '>=0.15.0'
@@ -5295,7 +5295,7 @@ snapshots:
     dependencies:
       fast-glob: 3.3.1
 
-  '@next/mdx@15.0.3(@mdx-js/loader@3.1.0(acorn@8.14.0)(webpack@5.97.1))(@mdx-js/react@3.1.0(react@19.0.0-rc-02c0e824-20241028)(types-react@19.0.0-rc.1))':
+  '@next/mdx@15.1.0(@mdx-js/loader@3.1.0(acorn@8.14.0)(webpack@5.97.1))(@mdx-js/react@3.1.0(react@19.0.0-rc-02c0e824-20241028)(types-react@19.0.0-rc.1))':
     dependencies:
       source-map: 0.7.4
     optionalDependencies:
