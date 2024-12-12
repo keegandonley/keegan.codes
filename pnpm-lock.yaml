@@ -31,14 +31,14 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2
       '@keegancodes/foundations-next':
-        specifier: 3.0.5
-        version: 3.0.5(@keegancodes/foundations@1.1.2)(next@15.1.0(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.0.0-beta-63b359f-20241101)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 4.0.1
+        version: 4.0.1(@keegancodes/foundations@1.1.2)(next@15.1.0(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.0.0-beta-63b359f-20241101)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@keegancodes/foundations-react':
-        specifier: 3.0.1
-        version: 3.0.1(@keegancodes/foundations@1.1.2)(react@19.0.0)
+        specifier: 3.0.2
+        version: 3.0.2(@keegancodes/foundations@1.1.2)(react@19.0.0)
       '@keegandonley/fitness-embed':
-        specifier: ^0.0.26
-        version: 0.0.26(@keegancodes/foundations@1.1.2)(@types/mapbox-gl@3.4.1)(fast-xml-parser@4.5.0)(mapbox-gl@3.8.0)(next@15.1.0(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.0.0-beta-63b359f-20241101)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-map-gl@7.1.7(mapbox-gl@3.8.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        specifier: ^0.0.27
+        version: 0.0.27(@keegancodes/foundations@1.1.2)(@types/mapbox-gl@3.4.1)(fast-xml-parser@4.5.0)(mapbox-gl@3.8.0)(next@15.1.0(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.0.0-beta-63b359f-20241101)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react-map-gl@7.1.7(mapbox-gl@3.8.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@keegandonley/pro-regular-svg-icons':
         specifier: ^6.5.2
         version: 6.5.2
@@ -667,32 +667,33 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@keegancodes/foundations-next@3.0.5':
-    resolution: {integrity: sha512-jc6+Tx0WE6QFMUbG3PKltT5PVby9ckXNVPUZBSWpqMJPaOsKPrU3OCYGIdCIl0qRKsS5sHrylgD+4UI+venQxA==}
+  '@keegancodes/foundations-next@4.0.1':
+    resolution: {integrity: sha512-F5mFr4mHr6pQ0iLRZbW7qOloqfQP7PYPeyYRVRkrluDqWCwLDUKpITOnzi35RKCeKgm3nDzg65CxFBYw8ViaxA==}
     peerDependencies:
       '@keegancodes/foundations': ^1.0.21
-      next: ^15.0.2
-      react: 19.0.0-rc-02c0e824-20241028
-      react-dom: 19.0.0-rc-02c0e824-20241028
+      next: 15.1.0
+      react: 19.0.0
+      react-dom: 19.0.0
 
-  '@keegancodes/foundations-react@3.0.1':
-    resolution: {integrity: sha512-zfudvX/DIuI0rP0NCpcigyTkFOlP58aeIILpvQ2rZHyB64px5hLsLnjivuJ7oOGP3VvoRJrTOgULz6lA9z64VA==}
+  '@keegancodes/foundations-react@3.0.2':
+    resolution: {integrity: sha512-3slm1DTi/fPTpCfrOpaS/wG2lNdqOxQkuHQp+XcPNX0F3wxN0OJOsRi7eJvNRjBgHvTjA2xLe7NhtH9zvK5jvA==}
     peerDependencies:
       '@keegancodes/foundations': ^1.0.21
-      react: 19.0.0-rc-02c0e824-20241028
+      react: 19.0.0
 
   '@keegancodes/foundations@1.1.2':
     resolution: {integrity: sha512-cTACbeILVNk/6ZceMm2rWFnDJOZPM8WBwBeRsdCG5Al1zEfs6dMDQmJCMZf0vokitsCE31G2OZWGVU6Byo/rRA==}
 
-  '@keegandonley/fitness-embed@0.0.26':
-    resolution: {integrity: sha512-aOJd5Vk+P170AAGVv8M4cdGiq3Y7lblHilhZryTI1thld3LIL/hjbn5DdiJLYIsswAhgblChnJfyNY6T6FNSow==}
+  '@keegandonley/fitness-embed@0.0.27':
+    resolution: {integrity: sha512-zjj7IMJShgeETu6VX9naGNVyqlSNEahN49xxKtSuRb0JAzQoQniiaIrVSdTHJPZqiVkrLAuTvo1u1NUNiy3G/Q==}
     peerDependencies:
       '@keegancodes/foundations': ^1.0.21
       '@types/mapbox-gl': ^3.4.1
       fast-xml-parser: ^4.5.0
       mapbox-gl: ^3.8.0
-      next: 15.0.3
-      react: 19.0.0-rc-02c0e824-20241028
+      next: 15.1.0
+      react: 19.0.0
+      react-dom: 19.0.0
       react-map-gl: ^7.1.7
 
   '@keegandonley/pro-regular-svg-icons@6.5.2':
@@ -5175,21 +5176,21 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@keegancodes/foundations-next@3.0.5(@keegancodes/foundations@1.1.2)(next@15.1.0(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.0.0-beta-63b359f-20241101)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@keegancodes/foundations-next@4.0.1(@keegancodes/foundations@1.1.2)(next@15.1.0(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.0.0-beta-63b359f-20241101)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@keegancodes/foundations': 1.1.2
       next: 15.1.0(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.0.0-beta-63b359f-20241101)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
-  '@keegancodes/foundations-react@3.0.1(@keegancodes/foundations@1.1.2)(react@19.0.0)':
+  '@keegancodes/foundations-react@3.0.2(@keegancodes/foundations@1.1.2)(react@19.0.0)':
     dependencies:
       '@keegancodes/foundations': 1.1.2
       react: 19.0.0
 
   '@keegancodes/foundations@1.1.2': {}
 
-  '@keegandonley/fitness-embed@0.0.26(@keegancodes/foundations@1.1.2)(@types/mapbox-gl@3.4.1)(fast-xml-parser@4.5.0)(mapbox-gl@3.8.0)(next@15.1.0(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.0.0-beta-63b359f-20241101)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-map-gl@7.1.7(mapbox-gl@3.8.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
+  '@keegandonley/fitness-embed@0.0.27(@keegancodes/foundations@1.1.2)(@types/mapbox-gl@3.4.1)(fast-xml-parser@4.5.0)(mapbox-gl@3.8.0)(next@15.1.0(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.0.0-beta-63b359f-20241101)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react-map-gl@7.1.7(mapbox-gl@3.8.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@keegancodes/foundations': 1.1.2
       '@types/mapbox-gl': 3.4.1
@@ -5197,6 +5198,7 @@ snapshots:
       mapbox-gl: 3.8.0
       next: 15.1.0(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.0.0-beta-63b359f-20241101)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
       react-map-gl: 7.1.7(mapbox-gl@3.8.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   '@keegandonley/pro-regular-svg-icons@6.5.2':
