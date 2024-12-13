@@ -15,7 +15,7 @@
     "analyze": "NODE_OPTIONS=--max-old-space-size=4096 ANALYZE=true pnpm build"
   },
   "dependencies": {
-    "@atproto/api": "^0.13.19",
+    "@atproto/api": "^0.13.20",
     "@aws-sdk/client-s3": "^3.705.0",
     "@fortawesome/fontawesome-svg-core": "6.6.0",
     "@fortawesome/free-brands-svg-icons": "6.6.0",
