@@ -79,8 +79,8 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0(@opentelemetry/api@1.9.0)
       '@vercel/functions':
-        specifier: ^1.5.1
-        version: 1.5.1(@aws-sdk/credential-provider-web-identity@3.696.0(@aws-sdk/client-sts@3.699.0))
+        specifier: ^1.5.2
+        version: 1.5.2(@aws-sdk/credential-provider-web-identity@3.696.0(@aws-sdk/client-sts@3.699.0))
       '@vercel/kv':
         specifier: ^3.0.0
         version: 3.0.0
@@ -1625,8 +1625,8 @@ packages:
       '@opentelemetry/api':
         optional: true
 
-  '@vercel/functions@1.5.1':
-    resolution: {integrity: sha512-cCdrWa4sUkNE8WjZu9ODA4Q3d92Y333bCL3zebvQ8XCOH0MCy37q3rQ02sJU93mn7BuZyEk5hWBnEtfOb6Sr2Q==}
+  '@vercel/functions@1.5.2':
+    resolution: {integrity: sha512-9XuynFoM/J1X+LSahgjhuAZCbZ96vm9mpXapCkSS1MX890U7zLh7n2RW/2KLNuxsXt8u8h2dOCw+Njtg+7pXgQ==}
     engines: {node: '>= 16'}
     peerDependencies:
       '@aws-sdk/credential-provider-web-identity': '*'
@@ -6394,7 +6394,7 @@ snapshots:
     optionalDependencies:
       '@opentelemetry/api': 1.9.0
 
-  '@vercel/functions@1.5.1(@aws-sdk/credential-provider-web-identity@3.696.0(@aws-sdk/client-sts@3.699.0))':
+  '@vercel/functions@1.5.2(@aws-sdk/credential-provider-web-identity@3.696.0(@aws-sdk/client-sts@3.699.0))':
     optionalDependencies:
       '@aws-sdk/credential-provider-web-identity': 3.696.0(@aws-sdk/client-sts@3.699.0)
 
@@ -7128,7 +7128,7 @@ snapshots:
       debug: 4.3.7
       enhanced-resolve: 5.17.1
       eslint: 9.16.0(jiti@1.21.6)
-      eslint-module-utils: 2.12.0(@typescript-eslint/parser@8.15.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@8.15.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0)(eslint@9.16.0(jiti@1.21.6)))(eslint@9.16.0(jiti@1.21.6))
+      eslint-module-utils: 2.12.0(@typescript-eslint/parser@8.15.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3)(eslint@9.16.0(jiti@1.21.6))
       fast-glob: 3.3.2
       get-tsconfig: 4.8.1
       is-bun-module: 1.2.1
@@ -7141,7 +7141,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-module-utils@2.12.0(@typescript-eslint/parser@8.15.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@8.15.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0)(eslint@9.16.0(jiti@1.21.6)))(eslint@9.16.0(jiti@1.21.6)):
+  eslint-module-utils@2.12.0(@typescript-eslint/parser@8.15.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3)(eslint@9.16.0(jiti@1.21.6)):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -7163,7 +7163,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.16.0(jiti@1.21.6)
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.0(@typescript-eslint/parser@8.15.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@8.15.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0)(eslint@9.16.0(jiti@1.21.6)))(eslint@9.16.0(jiti@1.21.6))
+      eslint-module-utils: 2.12.0(@typescript-eslint/parser@8.15.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3)(eslint@9.16.0(jiti@1.21.6))
       hasown: 2.0.2
       is-core-module: 2.15.1
       is-glob: 4.0.3
