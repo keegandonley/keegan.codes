@@ -42,7 +42,7 @@
     "@vercel/og": "^0.6.4",
     "@vercel/speed-insights": "^1.1.0",
     "autoprefixer": "^10.4.20",
-    "babel-plugin-react-compiler": "19.0.0-beta-63b359f-20241101",
+    "babel-plugin-react-compiler": "19.0.0-beta-201e55d-20241215",
     "eslint": "^9.17.0",
     "eslint-config-next": "15.1.0",
     "eslint-plugin-react-compiler": "19.0.0-beta-63b359f-20241101",
