@@ -59,7 +59,7 @@ export async function GET(request: Request) {
       );
 
       if (!results?.rows?.[0]) {
-        console.error(
+        console.warn(
           'No results found for slug',
           post.slug,
           'results:',
