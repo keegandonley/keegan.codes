@@ -67,7 +67,7 @@ export const getViewCountForSlug = async (slug: string | null) => {
   );
 
   if (!results?.rows?.[0]) {
-    console.error('No results found for slug', slug, 'results:', results);
+    console.warn('No results found for slug', slug, 'results:', results);
   }
 
   const row = results?.rows?.[0] as { views: number } | undefined;

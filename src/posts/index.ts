@@ -49,6 +49,7 @@ import * as Render2024 from './render-2024-recap.mdx';
 import * as SASW2024 from './sasw-2024.mdx';
 import * as Hobbies from './when-hobbies-and-career-intersect.mdx';
 import * as MyData from './i-own-my-data.mdx';
+import * as YearInReview2024 from './2024-in-review.mdx';
 
 const posts = {
   Welcome,
@@ -102,6 +103,7 @@ const posts = {
   SASW2024,
   // Hobbies,
   MyData,
+  YearInReview2024,
 };
 
 export default posts;
