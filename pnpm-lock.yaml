@@ -46,8 +46,8 @@ importers:
         specifier: ^6.5.2
         version: 6.5.2
       '@next/bundle-analyzer':
-        specifier: 15.1.2
-        version: 15.1.2
+        specifier: 15.1.3
+        version: 15.1.3
       '@next/mdx':
         specifier: 15.1.0
         version: 15.1.0(@mdx-js/loader@3.1.0(acorn@8.14.0)(webpack@5.97.1))(@mdx-js/react@3.1.0(@types/react@19.0.1)(react@19.0.0))
@@ -748,8 +748,8 @@ packages:
       '@types/react': 19.0.1
       react: '>=16'
 
-  '@next/bundle-analyzer@15.1.2':
-    resolution: {integrity: sha512-LuQkM4HSipn+kP8ChckPYL+w0qzx331QfSYY3lU5cutf7Gvk069sK+wH4GfVRdFq+DXSaCiy5IPzAcuXq6G+7g==}
+  '@next/bundle-analyzer@15.1.3':
+    resolution: {integrity: sha512-dh5i2KBONWVhQzJnL10sv9+ImsKgGtOHHeA1dWp/H3MXphWBt1uGjXCwPCcitwimvNncHBmxaOyTm2FwfOLRSA==}
 
   '@next/env@15.1.2':
     resolution: {integrity: sha512-Hm3jIGsoUl6RLB1vzY+dZeqb+/kWPZ+h34yiWxW0dV87l8Im/eMOwpOA+a0L78U0HM04syEjXuRlCozqpwuojQ==}
@@ -5274,7 +5274,7 @@ snapshots:
       react: 19.0.0
     optional: true
 
-  '@next/bundle-analyzer@15.1.2':
+  '@next/bundle-analyzer@15.1.3':
     dependencies:
       webpack-bundle-analyzer: 4.10.1
     transitivePeerDependencies:
