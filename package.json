@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@atproto/api": "^0.13.28",
-    "@aws-sdk/client-s3": "^3.730.0",
+    "@aws-sdk/client-s3": "^3.732.0",
     "@fortawesome/fontawesome-svg-core": "6.6.0",
     "@fortawesome/free-brands-svg-icons": "6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
