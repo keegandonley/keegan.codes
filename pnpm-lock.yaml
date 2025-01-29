@@ -79,8 +79,8 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0(@opentelemetry/api@1.9.0)
       '@vercel/functions':
-        specifier: ^1.5.2
-        version: 1.5.2(@aws-sdk/credential-provider-web-identity@3.734.0)
+        specifier: ^1.6.0
+        version: 1.6.0(@aws-sdk/credential-provider-web-identity@3.734.0)
       '@vercel/kv':
         specifier: ^3.0.0
         version: 3.0.0
@@ -1608,8 +1608,8 @@ packages:
       '@opentelemetry/api':
         optional: true
 
-  '@vercel/functions@1.5.2':
-    resolution: {integrity: sha512-9XuynFoM/J1X+LSahgjhuAZCbZ96vm9mpXapCkSS1MX890U7zLh7n2RW/2KLNuxsXt8u8h2dOCw+Njtg+7pXgQ==}
+  '@vercel/functions@1.6.0':
+    resolution: {integrity: sha512-R6FKQrYT5MZs5IE1SqeCJWxMuBdHawFcCZboKKw8p7s+6/mcd55Gx6tWmyKnQTyrSEA04NH73Tc9CbqpEle8RA==}
     engines: {node: '>= 16'}
     peerDependencies:
       '@aws-sdk/credential-provider-web-identity': '*'
@@ -6403,7 +6403,7 @@ snapshots:
     optionalDependencies:
       '@opentelemetry/api': 1.9.0
 
-  '@vercel/functions@1.5.2(@aws-sdk/credential-provider-web-identity@3.734.0)':
+  '@vercel/functions@1.6.0(@aws-sdk/credential-provider-web-identity@3.734.0)':
     optionalDependencies:
       '@aws-sdk/credential-provider-web-identity': 3.734.0
 
