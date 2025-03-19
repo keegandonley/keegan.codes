@@ -75,16 +75,16 @@
 
 .text {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
+  bottom: -5px;
+  right: -5px;
+  left: -5px;
+  top: -5px;
   z-index: 999999;
   font-weight: 900;
   color: var(--theme-off-white);
-  backdrop-filter: blur(2px);
+  /* backdrop-filter: blur(2px); */
   background-color: rgba(0, 0, 0, 0.2);
-  padding: 1.4rem;
+  padding: calc(1.4rem + 5px);
   overflow: hidden;
   min-width: 532px;
   display: flex;
@@ -152,7 +152,8 @@
 }
 
 .sliderElement {
-  box-shadow: 0 0 0.8rem var(--shadow-color);
+  /* box-shadow: 0 0 0.8rem var(--shadow-color); */
+  /* box-shadow: 0 0 0.2rem var(--shadow-color); */
   z-index: 1;
 }
 
