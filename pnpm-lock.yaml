@@ -6,7 +6,7 @@ settings:
 
 overrides:
   '@types/react': 19.0.1
-  '@types/react-dom': 19.0.3
+  '@types/react-dom': 19.0.4
 
 importers:
 
@@ -70,8 +70,8 @@ importers:
         specifier: 19.0.1
         version: 19.0.1
       '@types/react-dom':
-        specifier: 19.0.3
-        version: 19.0.3(@types/react@19.0.1)
+        specifier: 19.0.4
+        version: 19.0.4(@types/react@19.0.1)
       '@vercel/analytics':
         specifier: ^1.5.0
         version: 1.5.0(next@15.1.6(@babel/core@7.26.7)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.0.0-beta-714736e-20250131)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
@@ -1513,8 +1513,8 @@ packages:
   '@types/pg@8.6.1':
     resolution: {integrity: sha512-1Kc4oAGzAl7uqUStZCDvaLFqZrW9qWSjXOmBfdgyBP5La7Us6Mg4GBvRlSoaZMhQF/zSj1C8CtKMBkoiT8eL8w==}
 
-  '@types/react-dom@19.0.3':
-    resolution: {integrity: sha512-0Knk+HJiMP/qOZgMyNFamlIjw9OFCsyC2ZbigmEEyXXixgre6IQpm/4V+r3qH4GC1JPvRJKInw+on2rV6YZLeA==}
+  '@types/react-dom@19.0.4':
+    resolution: {integrity: sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==}
     peerDependencies:
       '@types/react': 19.0.1
 
@@ -6422,7 +6422,7 @@ snapshots:
       pg-protocol: 1.7.0
       pg-types: 2.2.0
 
-  '@types/react-dom@19.0.3(@types/react@19.0.1)':
+  '@types/react-dom@19.0.4(@types/react@19.0.1)':
     dependencies:
       '@types/react': 19.0.1
 
