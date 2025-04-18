@@ -82,8 +82,12 @@
       }
     },
     "onlyBuiltDependencies": [
+      "@fortawesome/fontawesome-common-types",
+      "@keegandonley/pro-regular-svg-icons",
+      "@keegandonley/pro-solid-svg-icons",
       "@sentry/cli",
-      "@vercel/speed-insights"
+      "@vercel/speed-insights",
+      "sharp"
     ]
   }
 }
