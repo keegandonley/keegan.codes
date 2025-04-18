@@ -48,6 +48,8 @@ export const Img = ({ src, className, alt }: any) => {
           }}
           placeholder="blur"
           blurDataURL={metadata.dataUrl}
+          // quality={80}
+          sizes={`(max-width: 1400px) 100vw, 900px`}
         />
       </span>
     );
