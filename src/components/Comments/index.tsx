@@ -67,7 +67,7 @@ const Comment = (props: CommentProps) => {
       </span>
       <div className={styles.subCommentsWrapper}>
         {sortRepliesByLikes(post.replies as ThreadViewPost[]).map((reply) => (
-          <Comment key={reply.uri as string} post={reply as ThreadViewPost} />
+          <Comment key={reply.post.uri as string} post={reply} />
         ))}
       </div>
     </div>
