@@ -23,19 +23,55 @@
   padding: 4rem 2rem 4rem 2rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem;
+  gap: 3rem;
   flex-wrap: wrap;
+}
+
+.wrapper > :nth-child(1) {
+  grid-column: span 2;
+}
+
+.wrapper > :nth-child(4) {
+  grid-column: span 2;
+}
+
+.wrapper > :nth-child(5) {
+  grid-column: span 2;
 }
 
 @media only screen and (max-width: 1000px) {
   .wrapper {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .wrapper > :nth-child(1) {
+    grid-column: span 1;
+  }
+
+  .wrapper > :nth-child(4) {
+    grid-column: span 1;
+  }
+
+  .wrapper > :nth-child(5) {
+    grid-column: span 1;
+  }
 }
 
 @media only screen and (max-width: 700px) {
   .wrapper {
     grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .wrapper > :nth-child(1) {
+    grid-column: span 1;
+  }
+
+  .wrapper > :nth-child(4) {
+    grid-column: span 1;
+  }
+
+  .wrapper > :nth-child(5) {
+    grid-column: span 1;
   }
 }
 
