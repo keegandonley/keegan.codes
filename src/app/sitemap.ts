@@ -29,6 +29,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly',
     },
     {
+      url: 'https://keegan.codes/links',
+      lastModified: published,
+      priority: 0.6,
+    },
+    {
       url: 'https://keegan.codes/pi',
       lastModified: published,
       priority: 0.3,
