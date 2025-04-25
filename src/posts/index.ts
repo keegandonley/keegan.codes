@@ -50,6 +50,7 @@ import * as SASW2024 from './sasw-2024.mdx';
 import * as Hobbies from './when-hobbies-and-career-intersect.mdx';
 import * as MyData from './i-own-my-data.mdx';
 import * as YearInReview2024 from './2024-in-review.mdx';
+import * as ProductFocused from './product-focused-software-engineer.mdx';
 
 const posts = {
   Welcome,
@@ -104,6 +105,7 @@ const posts = {
   // Hobbies,
   MyData,
   YearInReview2024,
+  ProductFocused,
 };
 
 export default posts;
