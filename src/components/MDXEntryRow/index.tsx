@@ -9,6 +9,8 @@ import { Date } from './components/Date';
 import { Tags } from './components/Tags';
 import { ReadingTime } from './components/ReadingTime';
 import dynamic from 'next/dynamic';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHourglassHalf } from '@keegandonley/pro-solid-svg-icons';
 
 const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
 
@@ -61,14 +63,29 @@ export const MDXEntryRow = ({
     resultWidth = desiredHeight * ratio;
   }
 
+  if (loader) {
+    return (
+      <div
+        className={merge(
+          styles.wrapper,
+          styles[`col-${columns}`],
+          className,
+          styles.wrapperLoading,
+          styles.shimmer,
+        )}
+      >
+        <FontAwesomeIcon icon={faHourglassHalf} />
+      </div>
+    );
+  }
+
   return (
     <div
       className={merge(
         styles.wrapper,
-        filler && !loader ? styles.filler : '',
+        filler ? styles.filler : '',
         styles[`col-${columns}`],
         className,
-        loader ? styles.wrapperLoading : '',
       )}
     >
       <Parent
