@@ -52,6 +52,7 @@ export async function GET(request: Request) {
   const height = searchParams.get('height') ?? '418';
   const page = searchParams.get('page') ?? 'home';
   const backgroundOverride = searchParams.get('background');
+  const textOverride = searchParams.get('text');
 
   const metadata = getMetadata(page);
 
@@ -99,7 +100,7 @@ export async function GET(request: Request) {
             <h1
               style={{
                 fontSize: '50px',
-                color: darkMode ? 'white' : darkBackground,
+                color: textOverride ?? (darkMode ? 'white' : darkBackground),
               }}
             >
               {metadata.title}
@@ -107,7 +108,7 @@ export async function GET(request: Request) {
             <span
               style={{
                 fontSize: '25px',
-                color: darkMode ? 'lightGray' : 'gray',
+                color: textOverride ?? (darkMode ? 'lightGray' : 'gray'),
               }}
             >
               {metadata.description}

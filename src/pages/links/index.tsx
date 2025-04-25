@@ -5,7 +5,7 @@ import Head from 'next/head';
 
 const imageHeight = 630;
 const imageWidth = 1200;
-const imageUrl = `/api/og/page?page=links&width=${imageWidth}&height=${imageHeight}?background=black`;
+const imageUrl = `/api/og/page?page=links&width=${imageWidth}&height=${imageHeight}&background=black&text=white`;
 
 export default function Links() {
   return (
