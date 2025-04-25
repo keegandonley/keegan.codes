@@ -31,6 +31,13 @@ const getMetadata = (page: string) => {
       description: `A collection of ${bookCount} books I've enjoyed`,
     };
   }
+
+  if (page === 'links') {
+    return {
+      title: 'Links · ' + NAME,
+      description: 'A collection of links to useful resources',
+    };
+  }
 };
 
 export async function GET(request: Request) {
@@ -44,6 +51,7 @@ export async function GET(request: Request) {
   const width = searchParams.get('width') ?? '800';
   const height = searchParams.get('height') ?? '418';
   const page = searchParams.get('page') ?? 'home';
+  const backgroundOverride = searchParams.get('background');
 
   const metadata = getMetadata(page);
 
@@ -59,7 +67,8 @@ export async function GET(request: Request) {
           width: '100%',
           height: '100%',
           flexDirection: 'row',
-          background: darkMode ? darkBackground : 'white',
+          background:
+            backgroundOverride ?? (darkMode ? darkBackground : 'white'),
           alignItems: 'center',
         }}
       >
