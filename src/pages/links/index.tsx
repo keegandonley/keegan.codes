@@ -13,11 +13,11 @@ export default function Links() {
       <Head>
         <title>Keegan&apos;s Links</title>
         <meta property="og:image" content={imageUrl} />
-        <meta property="og:image:type" content={imageUrl} />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content={`${imageWidth}px`} />
         <meta property="og:image:height" content={`${imageHeight}px`} />
         <meta name="twitter:image" content={imageUrl} />
-        <meta name="twitter:image:type" content={imageUrl} />
+        <meta name="twitter:image:type" content="image/png" />
         <meta name="twitter:image:width" content={`${imageWidth}px`} />
         <meta name="twitter:image:height" content={`${imageHeight}px`} />
       </Head>
