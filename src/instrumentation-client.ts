@@ -12,6 +12,6 @@ Sentry.init({
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
 
-import('@sentry/browser').then((lazyLoadedSentry: any) => {
+import('@sentry/nextjs').then((lazyLoadedSentry) => {
   Sentry.addIntegration(lazyLoadedSentry.replayIntegration());
 });
