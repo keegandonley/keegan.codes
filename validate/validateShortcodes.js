@@ -29,7 +29,7 @@ fs.readdir(directoryPath, (err, files) => {
           shortCodesArray.forEach((shortCode) => {
             if (shortcodesMap[shortCode]) {
               console.log(
-                `[DUPLOICATE]: ${file} has a duplicate shortCode: ${shortCode}`,
+                `[DUPLICATE]: ${file} has a duplicate shortCode: ${shortCode}`,
               );
               process.exit(1);
             } else {

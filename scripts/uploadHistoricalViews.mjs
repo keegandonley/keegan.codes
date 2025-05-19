@@ -9,13 +9,9 @@ const config = {
   password: process.env.password,
 };
 
-console.log(process.env);
-
 const conn = connect(config);
 
 const __dirname = path.resolve();
-
-console.log(__dirname);
 
 const content = fs.readFileSync(
   path.join(__dirname, 'scripts', 'countries.csv'),
