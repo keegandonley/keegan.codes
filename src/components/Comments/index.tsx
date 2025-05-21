@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@keegandonley/pro-solid-svg-icons';
 import { captureException } from '@sentry/nextjs';
+import { replaceFacets } from './facet';
 
 const authorDid = 'did:plc:qu7mp3zsk6r5eoairedflnsm';
 
@@ -39,6 +40,11 @@ const Comment = (props: CommentProps) => {
     return null;
   }
 
+  const postContent = replaceFacets(
+    (post.post.record as any).text,
+    (post.post.record as any).facets,
+  );
+
   return (
     <div className={styles.postWrapper}>
       <div className={styles.header}>
@@ -56,12 +62,19 @@ const Comment = (props: CommentProps) => {
           </div>
         ) : null}
         <span>{post.post.author.displayName}</span>
-        <span className={styles.handle}>@{post.post.author.handle}</span>
+        <Link
+          key={post.post.author.did}
+          href={`https://bsky.app/profile/${post.post.author.did}`}
+          target="_blank"
+          className={styles.handle}
+        >
+          @{post.post.author.handle}
+        </Link>
         {post.post.author.did === authorDid ? (
           <span className={styles.authorBadge}>author</span>
         ) : null}
       </div>
-      <span>{(post.post.record as any).text}</span>
+      <span>{postContent}</span>
       <span className={styles.likes}>
         <FontAwesomeIcon icon={faThumbsUp} /> {post.post.likeCount ?? 0}
       </span>
