@@ -33,7 +33,7 @@
     "@tailwindcss/line-clamp": "^0.4.4",
     "@types/mdx": "^2.0.13",
     "@types/node": "^22.15.19",
-    "@types/react": "19.1.4",
+    "@types/react": "19.1.5",
     "@types/react-dom": "19.1.5",
     "@vercel/analytics": "^1.5.0",
     "@vercel/edge-config": "^1.4.0",
