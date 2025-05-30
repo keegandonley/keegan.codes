@@ -13,5 +13,10 @@ Sentry.init({
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
 
 import('@sentry/nextjs').then((lazyLoadedSentry) => {
-  Sentry.addIntegration(lazyLoadedSentry.replayIntegration());
+  Sentry.addIntegration(
+    lazyLoadedSentry.replayIntegration({
+      maskAllText: false,
+      blockAllMedia: false,
+    }),
+  );
 });
