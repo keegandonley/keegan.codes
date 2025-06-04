@@ -31,6 +31,13 @@ const getMetadata = (page: string) => {
       description: `A collection of ${bookCount} books I've enjoyed`,
     };
   }
+
+  if (page === 'links') {
+    return {
+      title: 'Links · ' + NAME,
+      description: 'A collection of links to useful resources',
+    };
+  }
 };
 
 export async function GET(request: Request) {
@@ -44,6 +51,8 @@ export async function GET(request: Request) {
   const width = searchParams.get('width') ?? '800';
   const height = searchParams.get('height') ?? '418';
   const page = searchParams.get('page') ?? 'home';
+  const backgroundOverride = searchParams.get('background');
+  const textOverride = searchParams.get('text');
 
   const metadata = getMetadata(page);
 
@@ -59,7 +68,8 @@ export async function GET(request: Request) {
           width: '100%',
           height: '100%',
           flexDirection: 'row',
-          background: darkMode ? darkBackground : 'white',
+          background:
+            backgroundOverride ?? (darkMode ? darkBackground : 'white'),
           alignItems: 'center',
         }}
       >
@@ -90,7 +100,7 @@ export async function GET(request: Request) {
             <h1
               style={{
                 fontSize: '50px',
-                color: darkMode ? 'white' : darkBackground,
+                color: textOverride ?? (darkMode ? 'white' : darkBackground),
               }}
             >
               {metadata.title}
@@ -98,7 +108,7 @@ export async function GET(request: Request) {
             <span
               style={{
                 fontSize: '25px',
-                color: darkMode ? 'lightGray' : 'gray',
+                color: textOverride ?? (darkMode ? 'lightGray' : 'gray'),
               }}
             >
               {metadata.description}

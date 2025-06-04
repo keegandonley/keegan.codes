@@ -14,15 +14,15 @@ export const Footer = ({ className, children }: FooterProps) => {
   return (
     <footer className={merge(styles.footer, className)}>
       <div className={styles.content}>
-        <div className={styles.column}>
+        <div className={merge(styles.column, styles.first)}>
           <strong>Keegan Donley</strong>
           <Link href="/blog">Blog</Link>
           <Link href="/library">Reading List</Link>
           <Link href="/resume">Resume</Link>
           <br />
         </div>
-        <div className={styles.column}>{children}</div>
-        <div className={styles.column}>
+        <div className={merge(styles.column, styles.second)}>{children}</div>
+        <div className={merge(styles.column, styles.third)}>
           <div className={styles.avatar}>
             <Avatar width={50} />
           </div>

@@ -23,13 +23,7 @@ const DynamicWaves = dynamic(
   },
 );
 
-const MainNavigation = ({
-  initialTheme,
-  hasChosenTheme,
-}: {
-  initialTheme?: Theme;
-  hasChosenTheme?: boolean;
-}) => {
+const MainNavigation = ({ currentTheme }: { currentTheme: Theme }) => {
   const urlQuery = useSearchParams();
   const frameless = urlQuery?.get('frameless') === 'true';
 
@@ -92,8 +86,7 @@ const MainNavigation = ({
           <Avatar width={isHomePage ? 150 : 75} priority />
           <ThemeToggle
             size={isHomePage ? 'large' : 'small'}
-            initialTheme={initialTheme}
-            hasChosenTheme={hasChosenTheme}
+            currentTheme={currentTheme}
           />
           <div className={merge(styles.shadowGroup)}>
             <div

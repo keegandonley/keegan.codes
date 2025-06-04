@@ -3,19 +3,15 @@
 import { ImageResponse } from '@vercel/og';
 import { getComponentForKey, getKey } from '@/app/library/util';
 import { BOOK_BUCKET_URL, BUCKET_URL } from '@/util/r2';
-import { cookies } from 'next/headers';
 import { getBookCoverMetadata, parseSource } from '@/util/image';
+import { isDarkMode } from '@/util/cookies';
 
 export const runtime = 'edge';
 
 const darkBackground = 'rgba(32, 65, 123, 1)';
 
 export async function GET(request: Request) {
-  const allCookies = await cookies();
-
-  const theme = allCookies.get('theme');
-
-  const darkMode = theme?.value === 'dark';
+  const darkMode = await isDarkMode();
 
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get('slug');

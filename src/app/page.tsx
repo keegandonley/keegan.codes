@@ -5,7 +5,7 @@ import { Paragraph } from '@/components/Paragraph';
 import Link from 'next/link';
 import styles from './home.module.css';
 import { postCount } from '../post-count';
-import { postCount as bookCount } from '../book-count';
+// import { postCount as bookCount } from '../book-count';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@keegandonley/pro-solid-svg-icons';
 import { Footer } from '@/components/Footer';
@@ -45,7 +45,7 @@ export default function Home() {
   return (
     <>
       <Swoop />
-      <HeroBlock isHomePage collapse>
+      <HeroBlock isHomePage collapse inline>
         <HeroText className={styles.name}>Keegan Donley</HeroText>
       </HeroBlock>
       <div className={styles.cta}>
@@ -60,6 +60,7 @@ export default function Home() {
       </div>
 
       <section className={styles.content}>
+        <Paragraph className={styles.paragraph}>Hi! I&apos;m Keegan!</Paragraph>
         <Paragraph className={styles.paragraph}>
           I&apos;m a <strong>product-focused software engineer</strong> located
           in Austin, Texas.
@@ -102,14 +103,14 @@ export default function Home() {
           electronics, connected fitness and travel. Come join me and follow
           along as I work to build a better web!
         </Paragraph>
-        <Paragraph className={styles.paragraph}>
+        {/* <Paragraph className={styles.paragraph}>
           I also have {bookCount} books on{' '}
           <Link href="/library">
             <strong>my reading list</strong>
           </Link>
           . Books I read range anywhere from business and software to fantasy
           and fiction.
-        </Paragraph>
+        </Paragraph> */}
       </section>
       <Footer />
     </>

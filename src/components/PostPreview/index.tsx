@@ -7,8 +7,8 @@ import { formatDate } from '@/util/date';
 import Image from 'next/image';
 import { BUCKET_URL } from '@/util/r2';
 import { parseToProps } from '@/util/image';
-import { getFullyQualifiedDeploymentUrl } from '@keegancodes/foundations-next';
 import { captureException } from '@sentry/nextjs';
+import { getPostForSlug } from '@/util/post';
 
 const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
 
@@ -19,14 +19,10 @@ interface PostPreviewProps {
 export const PostPreviewRenderer = async (props: PostPreviewProps) => {
   const { slug } = props;
 
-  const { url, headers } = await getFullyQualifiedDeploymentUrl(
-    `/api/posts/single?slug=${slug}`,
-  );
-
   let post;
 
   try {
-    post = await (await fetch(url, { headers })).json();
+    post = await getPostForSlug(slug);
   } catch (ex) {
     captureException(ex);
   }

@@ -37,7 +37,6 @@ interface MDXEntryRowProps extends ElementBaseProps {
 export const MDXEntryRow = ({
   title,
   slug,
-  tags,
   description,
   cover,
   published,
@@ -94,6 +93,11 @@ export const MDXEntryRow = ({
       >
         {cover && !loader ? (
           <div className={merge(styles.imageParent, book && styles.book)}>
+            <div className={styles.fieldWrapper}>
+              <div className={styles.field}>
+                <ReadingTime wordCount={wordCount} />
+              </div>
+            </div>
             <Image
               src={`${book ? BOOK_BUCKET_URL : BUCKET_URL}/${cover}`}
               alt="todo"
@@ -120,38 +124,30 @@ export const MDXEntryRow = ({
         )}
         {!filler ? (
           <div className={styles.content}>
-            <div className={styles.blurredOuter}>
-              <div className={styles.blurred}>
-                <h1 className={styles.h1}>{title}</h1>
-                <p className={styles.description}>{description}</p>
-                <div className={styles.metadata}>
-                  {published ? <Date date={published} /> : false}
-                  <ReadingTime wordCount={wordCount} />
-                  {slug && (showViewCount || fixedViewCount) && (
-                    <DynamicViewCount
-                      slug={slug}
-                      className={styles.viewCount}
-                      fixedCount={fixedViewCount}
-                    />
-                  )}
+            <h1 className={styles.h1}>{title}</h1>
+            <p className={styles.description}>{description}</p>
+            <div className={styles.metadata}>
+              {slug && (showViewCount || fixedViewCount) && (
+                <div>
+                  <DynamicViewCount
+                    slug={slug}
+                    className={styles.viewCount}
+                    fixedCount={fixedViewCount}
+                  />
                 </div>
-              </div>
+              )}
+              {published ? <Date date={published} /> : false}
             </div>
-            {tags && tags.length > 0 ? <Tags tags={tags} /> : false}
           </div>
         ) : loader ? (
           <div className={styles.content}>
-            <div className={styles.blurredOuter}>
-              <div className={styles.blurred}>
-                <h1 className={merge(styles.h1, styles.placeholder)}>
-                  I&apos;ll be Right There
-                </h1>
-                <p className={styles.description}>
-                  Hang tight while this awesome blog post is downloaded!
-                  Shouldn&apos;t be long now...
-                </p>
-              </div>
-            </div>
+            <h1 className={merge(styles.h1, styles.placeholder)}>
+              I&apos;ll be Right There
+            </h1>
+            <p className={styles.description}>
+              Hang tight while this awesome blog post is downloaded!
+              Shouldn&apos;t be long now...
+            </p>
           </div>
         ) : null}
       </Parent>

@@ -1,6 +1,7 @@
 import { background } from '@/theme/colors';
 import { Theme } from '@/types/theme';
 import { getCookieDomain } from './deployment';
+import { captureException } from '@sentry/nextjs';
 
 export const setMetaTheme = (theme: Theme) => {
   document
@@ -11,22 +12,14 @@ export const setMetaTheme = (theme: Theme) => {
     );
 };
 
-export const setHasChosenThemeCookie = () => {
-  const cookieDomain = getCookieDomain();
-  document.cookie = `chosen-theme=true; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=Lax; Secure;`;
-};
-
 export const setThemeCookie = (theme: Theme) => {
   const cookieDomain = getCookieDomain();
-  document.cookie = `theme=${theme}; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=Lax; Secure;`;
-};
-
-export const getMatch = () => {
-  return window.matchMedia('(prefers-color-scheme: dark)');
-};
-
-export const getPrefersDark = () => {
-  return getMatch().matches;
+  try {
+    document.cookie = `theme=${theme}; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=Lax; Secure;`;
+  } catch (e) {
+    console.warn('Cookie was not set due to browser permissions');
+    captureException(e);
+  }
 };
 
 export const addDarkTheme = () => {

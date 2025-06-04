@@ -40,6 +40,8 @@
   position: relative;
   overflow: hidden;
   border-radius: 0.5rem;
+  mask-image: radial-gradient(white, black);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 @media screen and (hover: hover) {
