@@ -15,8 +15,8 @@
     "analyze": "NODE_OPTIONS=--max-old-space-size=4096 ANALYZE=true pnpm build"
   },
   "dependencies": {
-    "@atproto/api": "^0.15.7",
-    "@aws-sdk/client-s3": "^3.812.0",
+    "@atproto/api": "^0.15.12",
+    "@aws-sdk/client-s3": "^3.823.0",
     "@fortawesome/fontawesome-svg-core": "6.7.2",
     "@fortawesome/free-brands-svg-icons": "6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
@@ -29,10 +29,10 @@
     "@next/bundle-analyzer": "15.3.2",
     "@next/mdx": "15.3.2",
     "@planetscale/database": "^1.19.0",
-    "@sentry/nextjs": "^9.20.0",
+    "@sentry/nextjs": "^9.26.0",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.15.19",
+    "@types/node": "^22.15.29",
     "@types/react": "19.1.4",
     "@types/react-dom": "19.1.5",
     "@vercel/analytics": "^1.5.0",
@@ -43,21 +43,21 @@
     "@vercel/speed-insights": "^1.2.0",
     "autoprefixer": "^10.4.21",
     "babel-plugin-react-compiler": "19.1.0-rc.2",
-    "eslint": "^9.27.0",
+    "eslint": "^9.28.0",
     "eslint-config-next": "15.3.2",
     "eslint-plugin-react-compiler": "19.1.0-rc.2",
     "geist": "^1.4.2",
     "next": "15.3.2",
-    "postcss": "^8.5.3",
+    "postcss": "^8.5.4",
     "react": "19.1.0",
-    "react-calendly": "^4.3.1",
+    "react-calendly": "^4.4.0",
     "react-dom": "19.1.0",
     "react-tweet": "^3.2.2",
     "react@latest": "link:@@types/react@latest",
     "remark-gfm": "^4.0.1",
     "remark-prism": "^1.3.6",
     "sanitize-html": "^2.17.0",
-    "sharp": "^0.34.1",
+    "sharp": "^0.34.2",
     "tailwindcss": "3.4.17",
     "typescript": "^5.8.3"
   },
@@ -66,8 +66,8 @@
     "@types/sanitize-html": "^2.16.0",
     "csv-parse": "^5.6.0",
     "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "webpack": "^5.99.8"
+    "prettier-plugin-tailwindcss": "^0.6.12",
+    "webpack": "^5.99.9"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -85,5 +85,5 @@
       ]
     }
   },
-  "packageManager": "pnpm@10.11.0+sha256.a69e9cb077da419d47d18f1dd52e207245b29cac6e076acedbeb8be3b1a67bd7"
+  "packageManager": "pnpm@10.11.1+sha256.211e9990148495c9fc30b7e58396f7eeda83d9243eb75407ea4f8650fb161f7c"
 }
