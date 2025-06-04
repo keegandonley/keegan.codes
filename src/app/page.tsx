@@ -45,7 +45,7 @@ export default function Home() {
   return (
     <>
       <Swoop />
-      <HeroBlock isHomePage collapse>
+      <HeroBlock isHomePage collapse inline>
         <HeroText className={styles.name}>Keegan Donley</HeroText>
       </HeroBlock>
       <div className={styles.cta}>

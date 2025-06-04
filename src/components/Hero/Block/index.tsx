@@ -7,6 +7,7 @@ interface HeroBlockProps extends ElementBaseProps {
   collapse?: boolean;
   sticky?: boolean;
   noPointer?: boolean;
+  inline?: boolean;
 }
 
 export const HeroBlock = ({
@@ -16,6 +17,7 @@ export const HeroBlock = ({
   collapse,
   sticky,
   noPointer,
+  inline,
 }: HeroBlockProps) => {
   return (
     <div
@@ -28,6 +30,8 @@ export const HeroBlock = ({
           sticky && styles.sticky,
           !isHomePage && styles.fade,
           noPointer && styles.noPointer,
+          isHomePage && !inline && styles.floating,
+          isHomePage && inline && styles.gap,
         ),
       )}
     >
