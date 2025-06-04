@@ -22,7 +22,7 @@
   max-width: 1000px;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-bottom: 1rem;
+  padding-bottom: rem;
   font-size: 1.5rem;
   line-height: 2.6rem;
 
@@ -70,7 +70,7 @@
   -webkit-text-fill-color: transparent;
   font-size: 4rem;
   font-weight: 900;
-  animation: textGradient 15s ease infinite;
+  /* animation: textGradient 15s ease infinite; */
   background-size: 400% 400%;
 }
 
