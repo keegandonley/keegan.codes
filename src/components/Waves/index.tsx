@@ -35,9 +35,6 @@ export const Waves = () => {
       >
         <div className={styles.barInner} key={`loading-${isLoading}`} />
       </div>
-      <div
-        className={merge(styles.gradient, isLoading ? styles.visible : '')}
-      ></div>
     </>
   );
 };

@@ -2,22 +2,6 @@
   opacity: 1;
 }
 
-.gradient.visible {
-  opacity: 0.8;
-}
-
-.gradient {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, var(--theme-background), transparent);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 999998;
-}
-
 .barWrapper {
   height: 5px;
   position: fixed;
