@@ -9,7 +9,7 @@ import {
   getMatch,
   getPrefersDark,
   handleTheme,
-  setHasChosenThemeCookie,
+  setUseSystemThemeCookie,
   setMetaTheme,
   setThemeCookie,
 } from '@/util/theme';
@@ -20,19 +20,17 @@ import { ThemeContext } from '@/app/themeProvider';
 interface ThemeToggleProps {
   relative?: boolean;
   size?: ThemeChooserSize;
-  initialTheme?: Theme;
-  hasChosenTheme?: boolean;
-  ignoreGlobalState?: boolean;
+  currentTheme: Theme;
+  usesSystemTheme: boolean;
 }
 
 export const ThemeToggle = ({
   relative,
   size = 'large',
-  initialTheme,
-  hasChosenTheme,
-  ignoreGlobalState = false,
+  currentTheme,
+  usesSystemTheme,
 }: ThemeToggleProps) => {
-  const [theme, setTheme] = useState<Theme>(() => initialTheme ?? 'light');
+  const [theme, setTheme] = useState<Theme>(currentTheme);
   const { setTheme: ctxSetTheme } = use(ThemeContext);
 
   useEffect(() => {
@@ -42,20 +40,12 @@ export const ThemeToggle = ({
   const route = usePathname();
 
   useEffect(() => {
-    if (!ignoreGlobalState) {
-      setMetaTheme(theme);
-    }
-  }, [route, theme, ignoreGlobalState, initialTheme]);
+    setMetaTheme(theme);
+  }, [route, theme]);
 
   const toggleTheme = () => {
-    if (!ignoreGlobalState) {
-      // TODO - set this to false to allow the fallback on system default
-      setHasChosenThemeCookie();
-    }
-
     va.track('Toggle Theme', {
       theme: theme === 'light' ? 'dark' : 'light',
-      ignoreGlobalState: ignoreGlobalState,
     });
 
     setTheme((theme) => (theme === 'light' ? 'dark' : 'light'));
@@ -70,26 +60,23 @@ export const ThemeToggle = ({
   }, []);
 
   useEffect(() => {
-    if (!hasChosenTheme && !ignoreGlobalState) {
+    if (usesSystemTheme) {
       handleMatch(getPrefersDark());
     }
-  }, [handleMatch, hasChosenTheme, ignoreGlobalState]);
+  }, [handleMatch, usesSystemTheme]);
 
   useEffect(() => {
-    if (!ignoreGlobalState) {
-      setMetaTheme(theme);
-      setThemeCookie(theme);
-      handleTheme(theme);
-    }
-  }, [theme, ignoreGlobalState]);
+    setThemeCookie(theme);
+    handleTheme(theme);
+  }, [theme]);
 
   const handleColorSchemeChange = useCallback(
     (event: MediaQueryListEvent) => {
-      if (!hasChosenTheme && !ignoreGlobalState) {
+      if (usesSystemTheme) {
         handleMatch(event.matches);
       }
     },
-    [handleMatch, hasChosenTheme, ignoreGlobalState],
+    [handleMatch, usesSystemTheme],
   );
 
   useEffect(() => {

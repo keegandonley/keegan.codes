@@ -12,10 +12,20 @@ export const setMetaTheme = (theme: Theme) => {
     );
 };
 
-export const setHasChosenThemeCookie = () => {
+export const setUseSystemThemeCookie = () => {
   const cookieDomain = getCookieDomain();
   try {
-    document.cookie = `chosen-theme=true; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=Lax; Secure;`;
+    document.cookie = `use-system-theme=true; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=Lax; Secure;`;
+  } catch (e) {
+    console.warn('Cookie was not set due to browser permissions');
+    captureException(e);
+  }
+};
+
+export const unsetUseSystemThemeCookie = () => {
+  const cookieDomain = getCookieDomain();
+  try {
+    document.cookie = `use-system-theme=false; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=Lax; Secure;`;
   } catch (e) {
     console.warn('Cookie was not set due to browser permissions');
     captureException(e);
