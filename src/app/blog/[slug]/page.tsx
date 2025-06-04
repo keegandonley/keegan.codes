@@ -11,6 +11,7 @@ import wordCounts from '../../../post-word-counts.json';
 import { BASEURL, NAME } from '@/metadata';
 import { PostHeader } from '@/components/PostHeader';
 import dynamic from 'next/dynamic';
+import { Footer } from '@/components/Footer';
 
 const Track = dynamic(() => import('@/components/Track'));
 
@@ -148,6 +149,7 @@ export default async function BlogSlugPage(props: BlogPageProps) {
       <Comments threadId={bskyThreadId} />
       <footer>
         <Timeline slug={params.slug} />
+        <Footer />
       </footer>
       <Track slug={params.slug} inModal={false} />
     </>
