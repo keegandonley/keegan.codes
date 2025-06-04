@@ -4,18 +4,18 @@
   position: relative;
 
   z-index: 99;
-  --block-height: 400px;
+  --block-height: 450px;
   height: var(--block-height);
   min-height: var(--block-height);
   max-height: var(--block-height);
   width: 100%;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
+  border-radius: 1rem;
   overflow: hidden;
-  filter: grayscale(0.5);
   transition:
     filter 0.2s ease-in-out,
     transform 0.2s ease-in-out;
+  background-color: var(--theme-card-background);
 }
 
 .wrapper.filler {
@@ -60,14 +60,33 @@
 
 .parent {
   position: relative;
+  padding: 0.75rem;
+  display: flex;
 }
 
 .imageParent {
+  height: 200px;
+  min-height: 200px;
+  max-height: 200px;
+  position: relative;
+}
+
+.fieldWrapper {
   position: absolute;
-  top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  top: -2px;
+  display: flex;
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.field {
+  background: var(--theme-card-background);
+  padding: 2px 1rem 4px 1rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .imageParent.book {
@@ -76,9 +95,8 @@
 
 .imageParent img {
   object-fit: cover;
-  /* Tiny border radius still makes a differnece */
-  /* border-radius: 18px;
-  box-shadow: 1px 1px 20px 1px var(--shadow-color); */
+  height: 100%;
+  border-radius: 0.75rem;
 }
 
 .placeholder {
@@ -90,19 +108,15 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
   z-index: 1;
   width: 100%;
+  padding-top: 1rem;
 }
 
 .a {
   text-decoration: none;
-  color: white;
   display: flex;
+  color: var(--theme-text);
   flex-direction: column;
   width: 100%;
 }
@@ -110,14 +124,15 @@
 .h1 {
   margin-bottom: 1rem;
   padding-right: 1rem;
-  font-weight: 600;
+  font-weight: 300;
   z-index: 99;
-  line-height: 1.8rem;
-  font-size: 1.6rem;
+  line-height: 1.7rem;
+  font-size: 1.5rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
 }
 
 .imageParent,
@@ -127,11 +142,11 @@
 }
 
 .description {
-  line-height: 1.4rem;
+  line-height: 1.3rem;
   padding-left: 0;
   padding-right: 2rem;
   opacity: 0.8;
-  font-weight: 400;
+  font-weight: 300;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -141,9 +156,9 @@
 .metadata {
   display: flex;
   align-items: center;
-  padding-top: 2rem;
+  margin-top: auto;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.25rem;
   justify-content: space-between;
 }
 
@@ -163,14 +178,7 @@
 
 /* Only run the hover animations on larger screens */
 @media only screen and (min-width: 650px) {
-  .wrapper:hover .h1,
-  .wrapper:hover .imageParent,
-  .wrapper:hover .description {
-    filter: brightness(1.3);
-  }
-
   .wrapper:hover {
-    filter: grayscale(0);
     transform: scale(1.02);
   }
 }
@@ -181,19 +189,6 @@
 
 .wrapperLoading {
   pointer-events: none;
-}
-
-.blurredOuter {
-  padding: 0;
-}
-
-.blurred {
-  backdrop-filter: blur(20px);
-  background: rgba(150, 150, 150, 0.1);
-  padding: 1rem;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
 }
 
 @keyframes shimmer {

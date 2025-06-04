@@ -28,6 +28,7 @@
 
   /* Use-cases */
   --theme-background: rgba(255, 255, 255, var(--background-opacity, 1));
+  --theme-card-background: rgb(247, 252, 255);
   --theme-box-shadow-standard: 0px 0px 20px 1px var(--shadow-color);
   --theme-box-shadow-small: 0px 0px 100px 0px rgba(226, 226, 226, 0.5);
   --theme-background-gradient: linear-gradient(
@@ -84,6 +85,7 @@ body.dark {
 
   /* Use-cases */
   --theme-background: rgba(8, 8, 39, var(--background-opacity, 1));
+  --theme-card-background: rgb(14, 14, 43);
   --theme-box-shadow-standard: 0px 0px 20px 1px var(--shadow-color);
   --theme-box-shadow-small: 0px 0px 100px 0px rgba(46, 46, 71, 0.5);
   --theme-background-gradient: linear-gradient(

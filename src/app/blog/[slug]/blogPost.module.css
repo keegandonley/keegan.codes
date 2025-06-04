@@ -70,8 +70,7 @@
   background: linear-gradient(
     to right,
     var(--theme-background) 0%,
-    transparent 20%,
-    transparent 80%,
+    transparent 50%,
     var(--theme-background) 100%
   );
   z-index: 1;
