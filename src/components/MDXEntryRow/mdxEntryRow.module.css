@@ -46,7 +46,7 @@
   );
 }
 
-@media only screen and (max-width: 1000px) {
+/* @media only screen and (max-width: 1000px) {
   .wrapper {
     --block-height: 400px;
   }
@@ -56,7 +56,7 @@
   .wrapper {
     --block-height: 450px;
   }
-}
+} */
 
 .parent {
   position: relative;
@@ -150,7 +150,8 @@
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
 }
 
 .metadata {

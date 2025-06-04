@@ -62,8 +62,13 @@ export default function Home() {
       <section className={styles.content}>
         <Paragraph className={styles.paragraph}>Hi! I&apos;m Keegan!</Paragraph>
         <Paragraph className={styles.paragraph}>
-          I&apos;m a <strong>product-focused software engineer</strong> located
-          in Austin, Texas.
+          I&apos;m a{' '}
+          <strong>
+            <Link href="/blog/what-is-a-product-focused-software-engineer">
+              product-focused software engineer
+            </Link>
+          </strong>{' '}
+          located in Austin, Texas.
         </Paragraph>
         <Paragraph className={styles.paragraph}>
           I love solving challenging problems for the web, and building
