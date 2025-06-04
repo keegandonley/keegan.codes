@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 
 export const userTheme = async () => {
   const cookieStore = await cookies();
-  return (cookieStore.get('theme')?.value || 'dark') as Theme;
+  return (cookieStore.get('theme')?.value || 'light') as Theme;
 };
 
 export const isDarkMode = async () => {
