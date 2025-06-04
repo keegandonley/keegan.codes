@@ -23,13 +23,7 @@ const DynamicWaves = dynamic(
   },
 );
 
-const MainNavigation = ({
-  currentTheme,
-  usesSystemTheme,
-}: {
-  currentTheme: Theme;
-  usesSystemTheme: boolean;
-}) => {
+const MainNavigation = ({ currentTheme }: { currentTheme: Theme }) => {
   const urlQuery = useSearchParams();
   const frameless = urlQuery?.get('frameless') === 'true';
 
@@ -93,7 +87,6 @@ const MainNavigation = ({
           <ThemeToggle
             size={isHomePage ? 'large' : 'small'}
             currentTheme={currentTheme}
-            usesSystemTheme={usesSystemTheme}
           />
           <div className={merge(styles.shadowGroup)}>
             <div

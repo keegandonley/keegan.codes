@@ -75,10 +75,10 @@
 
 .text {
   position: absolute;
-  bottom: -5px;
   right: -5px;
   left: -5px;
-  top: -5px;
+  top: 0;
+  bottom: 0;
   z-index: 999999;
   font-weight: 900;
   color: var(--theme-off-white);

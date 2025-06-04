@@ -6,11 +6,6 @@ export const userTheme = async () => {
   return (cookieStore.get('theme')?.value || 'dark') as Theme;
 };
 
-export const isUsingSystemTheme = async () => {
-  const cookieStore = await cookies();
-  return cookieStore.get('use-system-theme')?.value === 'true';
-};
-
 export const isDarkMode = async () => {
   const allCookies = await cookies();
 

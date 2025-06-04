@@ -19,8 +19,8 @@
   --code-background: rgba(40, 42, 54, 1);
   --code-color: var(--theme-inverted-text);
   --shadow-color: rgb(164, 164, 164);
-  --theme-inverted-background: rgba(10, 9, 53, var(--background-opacity, 1));
-  --theme-inverted-background-overlay: rgba(10, 9, 53, 0.8);
+  --theme-inverted-background: rgba(8, 8, 39, var(--background-opacity, 1));
+  --theme-inverted-background-overlay: rgba(8, 8, 39, 0.8);
 
   /* Theme animation */
   --animation: 0.5s ease-in-out;
@@ -76,14 +76,14 @@ body.dark {
   --theme-transparent: rgba(0, 0, 0, 0);
   --code-background: rgba(40, 42, 54, 1);
   --code-color: var(--theme-text);
-  --shadow-color: rgb(28, 28, 75);
+  --shadow-color: rgb(24, 24, 61);
 
   /* Theme animation */
   --animation: 0.5s ease-in-out;
   --animation-curve: cubic-bezier(0.2, 0.85, 0.45, 1.3);
 
   /* Use-cases */
-  --theme-background: rgba(10, 9, 53, var(--background-opacity, 1));
+  --theme-background: rgba(8, 8, 39, var(--background-opacity, 1));
   --theme-box-shadow-standard: 0px 0px 20px 1px var(--shadow-color);
   --theme-box-shadow-small: 0px 0px 100px 0px rgba(46, 46, 71, 0.5);
   --theme-background-gradient: linear-gradient(

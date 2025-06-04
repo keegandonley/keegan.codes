@@ -12,26 +12,6 @@ export const setMetaTheme = (theme: Theme) => {
     );
 };
 
-export const setUseSystemThemeCookie = () => {
-  const cookieDomain = getCookieDomain();
-  try {
-    document.cookie = `use-system-theme=true; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=Lax; Secure;`;
-  } catch (e) {
-    console.warn('Cookie was not set due to browser permissions');
-    captureException(e);
-  }
-};
-
-export const unsetUseSystemThemeCookie = () => {
-  const cookieDomain = getCookieDomain();
-  try {
-    document.cookie = `use-system-theme=false; path=/; domain=${cookieDomain}; expires=Tue, 19 Jan 2038 04:14:07 GMT; SameSite=Lax; Secure;`;
-  } catch (e) {
-    console.warn('Cookie was not set due to browser permissions');
-    captureException(e);
-  }
-};
-
 export const setThemeCookie = (theme: Theme) => {
   const cookieDomain = getCookieDomain();
   try {
@@ -40,14 +20,6 @@ export const setThemeCookie = (theme: Theme) => {
     console.warn('Cookie was not set due to browser permissions');
     captureException(e);
   }
-};
-
-export const getMatch = () => {
-  return window.matchMedia('(prefers-color-scheme: dark)');
-};
-
-export const getPrefersDark = () => {
-  return getMatch().matches;
 };
 
 export const addDarkTheme = () => {

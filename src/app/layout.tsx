@@ -5,7 +5,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import { merge } from '@/util/classNames';
 import { background } from '@/theme/colors';
-import { isUsingSystemTheme, userTheme } from '@/util/cookies';
+import { userTheme } from '@/util/cookies';
 import { Analytics } from '@vercel/analytics/react';
 import { Suspense } from 'react';
 import { BASEURL, DESCRIPTION, NAME } from '@/metadata';
@@ -29,7 +29,6 @@ config.autoAddCss = false;
 
 export default async function RootLayout({ children, postModal }: any) {
   const theme = await userTheme();
-  const usesSystemTheme = await isUsingSystemTheme();
 
   return (
     <html lang="en" id="fullscreen-context">
@@ -44,10 +43,7 @@ export default async function RootLayout({ children, postModal }: any) {
           <LoadingProvider>
             {/* Display banner text from the edge config if an event is active */}
             <DynamicEventWaiter />
-            <MainNavigation
-              currentTheme={theme}
-              usesSystemTheme={usesSystemTheme}
-            />
+            <MainNavigation currentTheme={theme} />
             <main>{children}</main>
             <ModalBoundary>{postModal}</ModalBoundary>
           </LoadingProvider>

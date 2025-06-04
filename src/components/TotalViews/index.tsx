@@ -11,7 +11,7 @@ interface TotalViewsProps {
 export const TotalViews = ({ className }: TotalViewsProps) => {
   return (
     <span className={merge(className)}>
-      <Suspense fallback={<ViewCountFallback />}>
+      <Suspense fallback={<ViewCountFallback digits={5} />}>
         <ViewCountRenderer className={styles.renderer} />
       </Suspense>
     </span>

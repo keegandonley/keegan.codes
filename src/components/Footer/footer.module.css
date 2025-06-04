@@ -21,8 +21,22 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+}
+
+.column.first {
   min-width: calc(33% - 1rem);
   max-width: calc(33% - 1rem);
+}
+
+.column.second {
+  min-width: calc(11% - 1rem);
+  max-width: calc(11% - 1rem);
+}
+
+.column.third {
+  min-width: calc(56% - 1rem);
+  max-width: calc(56% - 1rem);
+  align-items: end;
 }
 
 .column a {
@@ -56,4 +70,5 @@
   font-size: 0.9em;
   text-align: right;
   padding-top: 1rem;
+  max-width: 200px;
 }

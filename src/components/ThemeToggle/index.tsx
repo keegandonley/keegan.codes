@@ -5,14 +5,7 @@ import styles from './themeToggle.module.css';
 import { AnimatedIcon } from '../AnimatedIcon';
 import { faMoon, faSunBright } from '@keegandonley/pro-solid-svg-icons';
 import { usePathname } from 'next/navigation';
-import {
-  getMatch,
-  getPrefersDark,
-  handleTheme,
-  setUseSystemThemeCookie,
-  setMetaTheme,
-  setThemeCookie,
-} from '@/util/theme';
+import { handleTheme, setMetaTheme, setThemeCookie } from '@/util/theme';
 import { Theme, ThemeChooserSize } from '@/types/theme';
 import va from '@vercel/analytics';
 import { ThemeContext } from '@/app/themeProvider';
@@ -21,14 +14,12 @@ interface ThemeToggleProps {
   relative?: boolean;
   size?: ThemeChooserSize;
   currentTheme: Theme;
-  usesSystemTheme: boolean;
 }
 
 export const ThemeToggle = ({
   relative,
   size = 'large',
   currentTheme,
-  usesSystemTheme,
 }: ThemeToggleProps) => {
   const [theme, setTheme] = useState<Theme>(currentTheme);
   const { setTheme: ctxSetTheme } = use(ThemeContext);
@@ -51,41 +42,10 @@ export const ThemeToggle = ({
     setTheme((theme) => (theme === 'light' ? 'dark' : 'light'));
   };
 
-  const handleMatch = useCallback((prefersDark: boolean) => {
-    va.track('Theme Match', {
-      prefersDark,
-    });
-
-    setTheme(prefersDark ? 'dark' : 'light');
-  }, []);
-
-  useEffect(() => {
-    if (usesSystemTheme) {
-      handleMatch(getPrefersDark());
-    }
-  }, [handleMatch, usesSystemTheme]);
-
   useEffect(() => {
     setThemeCookie(theme);
     handleTheme(theme);
   }, [theme]);
-
-  const handleColorSchemeChange = useCallback(
-    (event: MediaQueryListEvent) => {
-      if (usesSystemTheme) {
-        handleMatch(event.matches);
-      }
-    },
-    [handleMatch, usesSystemTheme],
-  );
-
-  useEffect(() => {
-    getMatch().addEventListener('change', handleColorSchemeChange);
-
-    return () => {
-      getMatch().removeEventListener('change', handleColorSchemeChange);
-    };
-  }, [handleColorSchemeChange]);
 
   const isLight = theme === 'light';
   const isSmall = size === 'small';
@@ -102,8 +62,8 @@ export const ThemeToggle = ({
       title="Toggle Theme"
       aria-label="Toggle Theme"
     >
-      <AnimatedIcon icon={faMoon} from="bottom" visible={isLight} />
-      <AnimatedIcon icon={faSunBright} from="top" visible={!isLight} />
+      <AnimatedIcon icon={faSunBright} from="bottom" visible={isLight} />
+      <AnimatedIcon icon={faMoon} from="top" visible={!isLight} />
     </button>
   );
 };

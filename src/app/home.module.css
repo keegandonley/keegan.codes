@@ -2,6 +2,11 @@
   padding-bottom: 6rem;
   padding-top: 12rem;
   z-index: 1;
+
+  @media screen and (max-width: 600px) {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
 }
 
 .footer {
@@ -17,9 +22,14 @@
   max-width: 1000px;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-bottom: 2rem;
-  font-size: 1.6rem;
-  line-height: 2.7rem;
+  padding-bottom: 1rem;
+  font-size: 1.5rem;
+  line-height: 2.6rem;
+
+  @media screen and (max-width: 600px) {
+    font-size: 1.3rem;
+    line-height: 2.3rem;
+  }
 }
 
 .sectionHeader {
@@ -122,7 +132,7 @@
   margin: 0 auto;
   border-radius: 10rem;
   color: white;
-  animation: textGradient 15s ease infinite;
+  /* animation: textGradient 15s ease infinite; */
   background-size: 400% 400%;
   cursor: pointer;
   text-decoration: none;
