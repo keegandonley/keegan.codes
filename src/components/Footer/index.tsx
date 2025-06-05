@@ -19,9 +19,6 @@ export const Footer = ({ className, children }: FooterProps) => {
           <Link href="/blog">Blog</Link>
           <Link href="/resume">Resume</Link>
           <Link href="/links">Links</Link>
-          <Link href="https://keegan.codes/playground?html=JTNDZGl2JTIwY2xhc3MlM0QlMjJ0ZXh0LWJsdWUtODAwJTIwd2VsY29tZS10ZXh0JTIyJTNFJTBBJTIwJTIwSGVsbG8lMkMlMjB3b3JsZCElMEElM0MlMkZkaXYlM0U%3D&css=LndlbGNvbWUtdGV4dCUyMCU3QiUwQSUyMCUyMGZvbnQtc2l6ZSUzQSUyMDEuMXJlbSUzQiUwQSU3RA%3D%3D&frameless=false&name=Welcome">
-            Playground
-          </Link>
           <br />
         </div>
         <div className={merge(styles.column, styles.second)}>{children}</div>
