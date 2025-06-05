@@ -1,0 +1,53 @@
+.blogButton {
+  text-align: center;
+  margin-top: 2rem;
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.blogInner {
+  background: var(--color-render-25-primary);
+  color: var(--color-render-25-accent);
+  border-radius: 10rem;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+.buttonIcon {
+  transform: translateX(0);
+  transition: transform 0.3s;
+}
+
+@media (hover: hover) {
+  .blogButtonText:hover .blogInner {
+    background: transparent;
+    color: white;
+  }
+
+  .blogButtonText:hover .buttonIcon {
+    transform: translateX(1.5rem);
+  }
+}
+
+.blogButtonText {
+  background: var(--color-render-25-accent);
+  margin: 0 auto;
+  border-radius: 10rem;
+  color: white;
+  background-size: 400% 400%;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 3px;
+  box-shadow: 0 0 0.2rem var(--shadow-color);
+  font-weight: 500;
+}
+
+.blogButtonText svg {
+  margin-left: 0.5rem;
+}

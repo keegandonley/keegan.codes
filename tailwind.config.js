@@ -12,6 +12,8 @@ const colors = {
   'neon-pink': '#fc03b1',
   'sasw-primary': '#322979',
   'sasw-secondary': '#EC228D',
+  'render-25-primary': '#FF88DF',
+  'render-25-accent': '#711B44',
   sand: 'rgb(240, 229, 206)',
   teal: 'rgb(63, 142, 180)',
   pink: 'rgb(173, 73, 179)',
