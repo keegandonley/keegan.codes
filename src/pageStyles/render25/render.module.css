@@ -1,0 +1,18 @@
+.textShadow {
+  text-shadow:
+    -3px -3px 0px var(--color-render-25-primary),
+    -2px -2px 0px var(--color-render-25-primary),
+    -1px -1px 0px var(--color-render-25-primary),
+    1px 1px 0px var(--color-render-25-accent),
+    2px 2px 0px var(--color-render-25-accent),
+    3px 3px 0px var(--color-render-25-accent);
+}
+
+.textShadowSmall {
+  text-shadow: 1px 1px 0px var(--color-render-25-primary);
+
+  a {
+    color: var(--color-render-25-primary);
+    text-shadow: -1px -1px 0px var(--color-render-25-accent);
+  }
+}

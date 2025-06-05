@@ -107,15 +107,3 @@ body {
   left: 50%;
   transform: rotate(180deg);
 }
-
-.text-shadow {
-  text-shadow:
-    -4px -4px 0px var(--color-render-25-primary),
-    -3px -3px 0px var(--color-render-25-primary),
-    -2px -2px 0px var(--color-render-25-primary),
-    -1px -1px 0px var(--color-render-25-primary),
-    1px 1px 0px var(--color-render-25-accent),
-    2px 2px 0px var(--color-render-25-accent),
-    3px 3px 0px var(--color-render-25-accent),
-    4px 4px 0px var(--color-render-25-accent);
-}
