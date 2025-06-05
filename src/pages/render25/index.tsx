@@ -1,17 +1,12 @@
 import { Avatar } from '@/components/Avatar';
 import Link from 'next/link';
-import linkedIn from '@/images/linkedin-dynamic.svg';
-import X from '@/images/x-twitter.svg';
 import Image from 'next/image';
 import { Hr } from '@/components/Post/Hr';
 import { BUCKET_URL } from '@/util/r2';
 import '@/tw.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { merge } from '@keegancodes/foundations';
-import { faArrowRight } from '@keegandonley/pro-solid-svg-icons';
 import styles from '../../pageStyles/render25/render.module.css';
 import '../../pageStyles/render25/render.css';
-
 import '../../app/theme.css';
 import dynamic from 'next/dynamic';
 import localFont from 'next/font/local';
@@ -20,33 +15,6 @@ const rubik = localFont({
   src: [
     {
       path: '../../sharedFonts/Rubik.ttf',
-      style: 'normal',
-    },
-  ],
-});
-
-const rye = localFont({
-  src: [
-    {
-      path: '../../sharedFonts/Rye.ttf',
-      style: 'normal',
-    },
-  ],
-});
-
-const carnivalee = localFont({
-  src: [
-    {
-      path: '../../sharedFonts/Carnivalee.ttf',
-      style: 'normal',
-    },
-  ],
-});
-
-const bradrock = localFont({
-  src: [
-    {
-      path: '../../sharedFonts/Bradrock.ttf',
       style: 'normal',
     },
   ],
