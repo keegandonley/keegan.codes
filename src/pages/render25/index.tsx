@@ -10,6 +10,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { merge } from '@keegancodes/foundations';
 import { faArrowRight } from '@keegandonley/pro-solid-svg-icons';
 import styles from '../../pageStyles/render25/render.module.css';
+import '../../pageStyles/render25/render.css';
+
 import '../../app/theme.css';
 import dynamic from 'next/dynamic';
 import localFont from 'next/font/local';
@@ -51,10 +53,11 @@ export default function Render25() {
     <>
       <div
         className={merge(
-          'flex min-h-dvh flex-col items-center justify-start bg-render-bg pt-20',
+          'flex min-h-dvh flex-col items-center justify-start pt-20',
           rubik.className,
         )}
       >
+        <div id="grad" />
         <div className="flex max-w-[1000px] flex-col items-center justify-center px-5 text-center">
           <Avatar
             width={200}
@@ -66,7 +69,14 @@ export default function Render25() {
             priority
           />
         </div>
-        <p>Render25</p>
+        <p
+          className={merge(
+            'text-shadow z-50 px-12 pt-8 text-center text-5xl leading-[4rem] text-white',
+            rye.className,
+          )}
+        >
+          Hi, I&apos;m Keegan!
+        </p>
       </div>
       <HiTrack slug="render25" qrScanned={false} />
     </>

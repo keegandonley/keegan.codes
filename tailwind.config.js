@@ -14,6 +14,8 @@ const colors = {
   'sasw-secondary': '#EC228D',
   'render-25-primary': '#FF88DF',
   'render-25-accent': '#711B44',
+  'render-25-burst-1': '#fdf1e2',
+  'render-25-burst-2': 'white',
   sand: 'rgb(240, 229, 206)',
   teal: 'rgb(63, 142, 180)',
   pink: 'rgb(173, 73, 179)',
