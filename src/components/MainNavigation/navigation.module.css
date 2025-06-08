@@ -53,6 +53,7 @@
   opacity: 1;
   box-shadow: var(--theme-box-shadow-standard);
   transition: opacity var(--animation) 0.3s;
+  border-radius: 200px;
 }
 
 .shadow:before {
