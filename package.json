@@ -15,8 +15,8 @@
     "analyze": "NODE_OPTIONS=--max-old-space-size=4096 ANALYZE=true pnpm build"
   },
   "dependencies": {
-    "@atproto/api": "^0.15.12",
-    "@aws-sdk/client-s3": "^3.823.0",
+    "@atproto/api": "^0.15.14",
+    "@aws-sdk/client-s3": "^3.826.0",
     "@fortawesome/fontawesome-svg-core": "6.7.2",
     "@fortawesome/free-brands-svg-icons": "6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
@@ -29,10 +29,10 @@
     "@next/bundle-analyzer": "15.3.3",
     "@next/mdx": "15.3.3",
     "@planetscale/database": "^1.19.0",
-    "@sentry/nextjs": "^9.26.0",
+    "@sentry/nextjs": "^9.27.0",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.15.29",
+    "@types/node": "^22.15.30",
     "@types/react": "19.1.6",
     "@types/react-dom": "19.1.6",
     "@vercel/analytics": "^1.5.0",
@@ -85,5 +85,5 @@
       ]
     }
   },
-  "packageManager": "pnpm@10.11.1+sha256.211e9990148495c9fc30b7e58396f7eeda83d9243eb75407ea4f8650fb161f7c"
+  "packageManager": "pnpm@10.12.1+sha256.889bac470ec93ccc3764488a19d6ba8f9c648ad5e50a9a6e4be3768a5de387a3"
 }
