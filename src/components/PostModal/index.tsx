@@ -6,6 +6,20 @@ import Image from 'next/image';
 import { BottomFade } from '@/components/BottomFade';
 import { BUCKET_URL } from '@/util/r2';
 import { PostHeader } from '../PostHeader';
+import dynamic from 'next/dynamic';
+
+const Comments = dynamic(
+  () => import('@/components/Comments').then((mod) => mod.Comments),
+  {
+    loading: () => (
+      <div
+        style={{
+          height: '300px',
+        }}
+      />
+    ),
+  },
+);
 
 interface PostModalProps {
   slug: string;
@@ -25,6 +39,7 @@ export const PostModal = ({ slug, wordCount }: PostModalProps) => {
   const title = found.title;
   const cover = found.cover;
   const metadata = getImageMetadata(parseSource(cover)[0]);
+  const bskyThreadId = found.bskyThreadId;
 
   if (!Component) {
     notFound();
@@ -54,6 +69,11 @@ export const PostModal = ({ slug, wordCount }: PostModalProps) => {
           />
           <Component />
         </article>
+        {bskyThreadId ? (
+          <div className={styles.comments}>
+            <Comments threadId={bskyThreadId} />
+          </div>
+        ) : null}
       </div>
     </>
   );

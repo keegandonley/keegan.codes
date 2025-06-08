@@ -31,3 +31,7 @@
   background: var(--theme-background);
   margin-top: 1rem;
 }
+
+.comments {
+  padding-bottom: 20px;
+}
