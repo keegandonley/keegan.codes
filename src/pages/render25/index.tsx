@@ -151,8 +151,8 @@ export default function Render25() {
               <div className="h-2" />
               <p className="text-justify">
                 Job descriptions and titles can be tricky! For the last few
-                years, I&apos;'ve called myself a "product-focused software
-                engineer." What does that mean to me, and why do I like the
+                years, I&apos;'ve called myself a &quot;product-focused software
+                engineer.&quot; What does that mean to me, and why do I like the
                 term?
               </p>
             </div>
