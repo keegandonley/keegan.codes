@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Avatar } from '../Avatar';
 import { TotalViews } from '../TotalViews';
 import { CountryViews } from '../CountryViews';
+import { Hr } from '../Post/Hr';
 
 interface FooterProps {
   className?: string;
@@ -19,6 +20,15 @@ export const Footer = ({ className, children }: FooterProps) => {
           <Link href="/blog">Blog</Link>
           <Link href="/resume">Resume</Link>
           <Link href="/links">Links</Link>
+          {/* <Hr
+            style={{
+              '--theme-blue-2': 'white',
+              '--theme-background': 'var(--theme-text)',
+            }}
+          /> */}
+          <Link target="_blank" href="/paid-consultation">
+            Book a Consultation
+          </Link>
           <br />
         </div>
         <div className={merge(styles.column, styles.second)}>{children}</div>

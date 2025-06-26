@@ -35,21 +35,7 @@ const mapping: Mapping = {
           title: 'Reddit',
           url: '/reddit',
         },
-      ].sort((a, b) => a.title.localeCompare(b.title)),
-    },
-    {
-      title: 'Fitness',
-      links: [
-        {
-          title: 'Strava',
-          description: 'My most used fitness platform',
-          url: '/strava',
-        },
-        {
-          title: 'Peloton',
-          url: '/peloton',
-        },
-      ].sort((a, b) => a.title.localeCompare(b.title)),
+      ],
     },
     {
       title: 'Projects',
@@ -61,7 +47,7 @@ const mapping: Mapping = {
         },
         {
           title: 'DALL·E 3 UI',
-          description: "A UI for OpenAI's DALL·E 3 API",
+          description: "The missing UI for OpenAI's DALL·E 3",
           url: 'https://dalle.keegan.codes',
         },
         {
@@ -69,7 +55,7 @@ const mapping: Mapping = {
           description: 'A better UI for building cycling workouts for Zwift',
           url: 'https://workout.keegan.codes/',
         },
-      ].sort((a, b) => a.title.localeCompare(b.title)),
+      ],
     },
     {
       title: 'Software & Design',
@@ -82,7 +68,43 @@ const mapping: Mapping = {
           title: 'Dribbble',
           url: '/dribbble',
         },
-      ].sort((a, b) => a.title.localeCompare(b.title)),
+      ],
+    },
+    {
+      title: 'Meet with Me',
+      links: [
+        {
+          title: 'Book a Consultation',
+          url: '/paid-consultation',
+          description:
+            'A paid consultation with me for custom development work or advice',
+        },
+        {
+          title: 'Quick Chat',
+          url: '/1-1',
+          description:
+            'A quick chat with me for networking, catching up, or discussing how we can work together',
+        },
+      ],
+    },
+    {
+      title: 'Fitness',
+      links: [
+        {
+          title: 'Strava',
+          description: 'My most used fitness platform',
+          url: '/strava',
+        },
+        {
+          title: 'Zwift',
+          url: '/zwift',
+          description: 'Much more active than Peloton these days',
+        },
+        {
+          title: 'Peloton',
+          url: '/peloton',
+        },
+      ],
     },
   ],
 };
