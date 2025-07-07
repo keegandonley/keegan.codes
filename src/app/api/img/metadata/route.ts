@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 import imageMetadata from '../../../../image-metadata.json';
 
-export const runtime = 'edge';
-
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 

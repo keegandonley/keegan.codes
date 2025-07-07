@@ -14,8 +14,6 @@ const HiTrack = dynamic(() => import('@/components/Track/Hi'));
 
 const DynamicEmbed = dynamic(() => import('@/components/Calendly/EmbedTarget'));
 
-export const runtime = 'edge';
-
 interface RenderPageProps {
   searchParams: Promise<{ scan: string }>;
 }

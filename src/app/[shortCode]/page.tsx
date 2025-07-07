@@ -16,8 +16,6 @@ interface ShortCodePageProps {
   }>;
 }
 
-export const runtime = 'edge';
-
 export default async function ShortCodePage(props: ShortCodePageProps) {
   const params = await props.params;
 

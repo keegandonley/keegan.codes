@@ -6,8 +6,6 @@ import { URLS } from '@/components/Social/socials';
 import { merge } from '@/util/classNames';
 import { faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
-export const runtime = 'edge';
-
 export default function RenderPage() {
   return (
     <div className={styles.content}>

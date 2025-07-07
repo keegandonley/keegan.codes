@@ -8,8 +8,6 @@ const config = {
   password: process.env.password,
 };
 
-export const runtime = 'edge';
-
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const limit = url.searchParams.get('limit') ?? '3';

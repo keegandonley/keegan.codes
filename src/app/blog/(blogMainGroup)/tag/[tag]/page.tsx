@@ -12,8 +12,6 @@ import Link from 'next/link';
 import { getIsLikelyMobile } from '@/util/userAgent';
 import { getImageMetadata } from '@/util/image';
 
-export const runtime = 'edge';
-
 interface BlogTagPageProps {
   params: Promise<{
     tag: string;

@@ -6,8 +6,6 @@ import { BOOK_BUCKET_URL, BUCKET_URL } from '@/util/r2';
 import { getBookCoverMetadata, parseSource } from '@/util/image';
 import { isDarkMode } from '@/util/cookies';
 
-export const runtime = 'edge';
-
 const darkBackground = 'rgba(32, 65, 123, 1)';
 
 export async function GET(request: Request) {

@@ -8,8 +8,6 @@ import { Div } from '../components/Div';
 import { postCount as bookCount } from '@/book-count';
 import { postCount } from '@/post-count';
 
-export const runtime = 'edge';
-
 const darkBackground = 'rgba(32, 65, 123, 1)';
 
 const getMetadata = (page: string) => {

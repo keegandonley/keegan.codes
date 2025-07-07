@@ -11,8 +11,6 @@ const config = {
 
 const HALF_DAY_SECONDS = 60 * 60 * 12;
 
-export const runtime = 'edge';
-
 export async function POST(request: Request) {
   const res: CheersBody = await request.json();
   if (!res.id) {

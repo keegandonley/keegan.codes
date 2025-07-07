@@ -11,8 +11,6 @@ import dynamic from 'next/dynamic';
 
 const HiTrack = dynamic(() => import('@/components/Track/Hi'));
 
-export const runtime = 'edge';
-
 interface TailwindProps {
   searchParams: Promise<{ scan: string }>;
 }

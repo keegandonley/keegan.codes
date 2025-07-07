@@ -4,8 +4,6 @@ import { ImageResponse } from '@vercel/og';
 import { BUCKET_URL } from '@/util/r2';
 import { cookies } from 'next/headers';
 
-export const runtime = 'edge';
-
 const darkBackground = 'rgba(32, 65, 123, 1)';
 const lightBackground = 'rgba(227, 229, 240, 1)';
 
