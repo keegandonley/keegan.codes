@@ -4,8 +4,6 @@ import styles from './resume.module.css';
 import { userTheme } from '@/util/cookies';
 import { background } from '@/theme/colors';
 
-export const runtime = 'edge';
-
 export async function generateViewport() {
   const theme = await userTheme();
 

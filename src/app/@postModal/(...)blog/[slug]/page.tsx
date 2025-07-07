@@ -6,8 +6,6 @@ import dynamic from 'next/dynamic';
 
 const Track = dynamic(() => import('@/components/Track'));
 
-export const runtime = 'edge';
-
 interface InterceptorProps {
   params: Promise<{
     slug: string;

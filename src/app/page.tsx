@@ -20,8 +20,6 @@ const DynamicBlogPreview = dynamic(() => import('@/components/BlogPreview'), {
   loading: () => <BlogPreviewFallback />,
 });
 
-export const runtime = 'edge';
-
 export default function Home() {
   const posts = Object.keys(Posts)
     .map((key) => {

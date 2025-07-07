@@ -11,8 +11,6 @@ import { background } from '@/theme/colors';
 import { getIsLikelyMobile } from '@/util/userAgent';
 import { getBookCoverMetadata } from '@/util/image';
 
-export const runtime = 'edge';
-
 export default async function LibraryPage() {
   const isLikelyMobile = await getIsLikelyMobile();
 

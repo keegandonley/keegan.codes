@@ -8,8 +8,6 @@ import { headers } from 'next/headers';
 import { Graphic } from './routing-error/graphic';
 import Link from 'next/link';
 
-export const runtime = 'edge';
-
 export default async function NotFound() {
   const allHeaders = await headers();
 

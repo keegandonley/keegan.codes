@@ -1,7 +1,5 @@
 import { redirect } from 'next/navigation';
 
-export const runtime = 'edge';
-
 interface RestProps {
   params: Promise<{
     shortCode: string;

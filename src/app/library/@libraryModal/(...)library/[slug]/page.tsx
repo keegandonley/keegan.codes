@@ -1,8 +1,6 @@
 import { BookModal } from '@/components/BookModal';
 import { Modal } from '@/components/Modal';
 
-export const runtime = 'edge';
-
 interface InterceptorProps {
   params: Promise<{
     slug: string;

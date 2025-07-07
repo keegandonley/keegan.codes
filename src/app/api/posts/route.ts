@@ -1,4 +1,3 @@
-export const runtime = 'edge';
 import Posts from '@/posts';
 import { Post } from '@/types/post';
 import wordCounts from '../../../post-word-counts.json';

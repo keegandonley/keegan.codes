@@ -15,8 +15,6 @@ import { Footer } from '@/components/Footer';
 
 const Track = dynamic(() => import('@/components/Track'));
 
-export const runtime = 'edge';
-
 const Timeline = dynamic(() => import('@/components/Timeline'), {
   loading: () => (
     <div

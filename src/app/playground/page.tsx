@@ -17,8 +17,6 @@ import {
 } from '@keegandonley/pro-solid-svg-icons';
 import { useCopyElementText } from '@keegancodes/foundations-react';
 
-export const runtime = 'edge';
-
 // This is invalid: <div id=“test”>Hello</div>
 const cleanQuotes = (str: string) => {
   return str.replace(/“/g, '"').replace(/”/g, '"');
