@@ -4,6 +4,8 @@ import { ImageResponse } from '@vercel/og';
 import { getComponentForKey, getKey } from '@/app/blog/util';
 import { BUCKET_URL } from '@/util/r2';
 
+export const runtime = 'edge';
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get('slug');
