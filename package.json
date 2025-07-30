@@ -82,7 +82,9 @@
     ],
     "updateConfig": {
       "ignoreDependencies": [
-        "tailwindcss"
+        "tailwindcss",
+        "@fortawesome/fontawesome-svg-core",
+        "@fortawesome/free-brands-svg-icons"
       ]
     }
   },
