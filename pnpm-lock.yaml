@@ -18,8 +18,8 @@ importers:
         specifier: 6.7.2
         version: 6.7.2
       '@fortawesome/free-brands-svg-icons':
-        specifier: 6.7.2
-        version: 6.7.2
+        specifier: 7.1.0
+        version: 7.1.0
       '@fortawesome/react-fontawesome':
         specifier: ^0.2.3
         version: 0.2.3(@fortawesome/fontawesome-svg-core@6.7.2)(react@19.1.1)
@@ -46,7 +46,7 @@ importers:
         version: 15.4.5
       '@next/mdx':
         specifier: 15.4.5
-        version: 15.4.5(@mdx-js/loader@3.1.0(acorn@8.15.0)(webpack@5.101.0))(@mdx-js/react@3.1.0(@types/react@19.1.9)(react@19.1.1))
+        version: 15.4.5(@mdx-js/loader@3.1.0(webpack@5.101.0))(@mdx-js/react@3.1.0(@types/react@19.1.9)(react@19.1.1))
       '@planetscale/database':
         specifier: ^1.19.0
         version: 1.19.0
@@ -528,12 +528,16 @@ packages:
     resolution: {integrity: sha512-Zs+YeHUC5fkt7Mg1l6XTniei3k4bwG/yo3iFUtZWd/pMx9g3fdvkSK9E0FOC+++phXOka78uJcYb8JaFkW52Xg==}
     engines: {node: '>=6'}
 
+  '@fortawesome/fontawesome-common-types@7.1.0':
+    resolution: {integrity: sha512-l/BQM7fYntsCI//du+6sEnHOP6a74UixFyOYUyz2DLMXKx+6DEhfR3F2NYGE45XH1JJuIamacb4IZs9S0ZOWLA==}
+    engines: {node: '>=6'}
+
   '@fortawesome/fontawesome-svg-core@6.7.2':
     resolution: {integrity: sha512-yxtOBWDrdi5DD5o1pmVdq3WMCvnobT0LU6R8RyyVXPvFRd2o79/0NCuQoCjNTeZz9EzA9xS3JxNWfv54RIHFEA==}
     engines: {node: '>=6'}
 
-  '@fortawesome/free-brands-svg-icons@6.7.2':
-    resolution: {integrity: sha512-zu0evbcRTgjKfrr77/2XX+bU+kuGfjm0LbajJHVIgBWNIDzrhpRxiCPNT8DW5AdmSsq7Mcf9D1bH0aSeSUSM+Q==}
+  '@fortawesome/free-brands-svg-icons@7.1.0':
+    resolution: {integrity: sha512-9byUd9bgNfthsZAjBl6GxOu1VPHgBuRUP9juI7ZoM98h8xNPTCTagfwUFyYscdZq4Hr7gD1azMfM9s5tIWKZZA==}
     engines: {node: '>=6'}
 
   '@fortawesome/react-fontawesome@0.2.3':
@@ -790,8 +794,8 @@ packages:
       webpack:
         optional: true
 
-  '@mdx-js/mdx@3.1.0':
-    resolution: {integrity: sha512-/QxEhPAvGwbQmy1Px8F899L5Uc2KZ6JtXwlCgJmjSTBedwOZkByYcBG4GceIGPXRDsmfxhHazuS+hlOShRLeDw==}
+  '@mdx-js/mdx@3.1.1':
+    resolution: {integrity: sha512-f6ZO2ifpwAQIpzGWaBQT2TXxPv6z3RBzQKpVftEWN78Vl/YweF1uwussDx8ECAXVtr3Rs89fKyG9YlzUs9DyGQ==}
 
   '@mdx-js/react@3.1.0':
     resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
@@ -3981,8 +3985,8 @@ packages:
   remark-gfm@4.0.1:
     resolution: {integrity: sha512-1quofZ2RQ9EWdeN34S79+KExV1764+wCUGop5CPL1WGdD0ocPpu91lzPGbwWMECpEpd42kJGQwzRfyov9j4yNg==}
 
-  remark-mdx@3.1.0:
-    resolution: {integrity: sha512-Ngl/H3YXyBV9RcRNdlYsZujAmhsxwzxpDzpDEhFBVAGthS4GDgnctpDjgFl/ULx5UEDzqtW1cyBSNKqYYrqLBA==}
+  remark-mdx@3.1.1:
+    resolution: {integrity: sha512-Pjj2IYlUY3+D8x00UJsIOg5BEvfMyeI+2uLPn9VO9Wg4MEtN/VTIq2NEJQfde9PnX15KgtHyl9S0BcTnWrIuWg==}
 
   remark-parse@11.0.0:
     resolution: {integrity: sha512-FCxlKLNGknS5ba/1lmpYijMUzX2esxW5xQqjWxw2eHFfS2MSdaHVINFmhjo+qN1WhZhNimq0dZATN9pH0IDrpA==}
@@ -5452,13 +5456,15 @@ snapshots:
 
   '@fortawesome/fontawesome-common-types@6.7.2': {}
 
+  '@fortawesome/fontawesome-common-types@7.1.0': {}
+
   '@fortawesome/fontawesome-svg-core@6.7.2':
     dependencies:
       '@fortawesome/fontawesome-common-types': 6.7.2
 
-  '@fortawesome/free-brands-svg-icons@6.7.2':
+  '@fortawesome/free-brands-svg-icons@7.1.0':
     dependencies:
-      '@fortawesome/fontawesome-common-types': 6.7.2
+      '@fortawesome/fontawesome-common-types': 7.1.0
 
   '@fortawesome/react-fontawesome@0.2.3(@fortawesome/fontawesome-svg-core@6.7.2)(react@19.1.1)':
     dependencies:
@@ -5666,23 +5672,23 @@ snapshots:
       rw: 1.3.3
       sort-object: 3.0.3
 
-  '@mdx-js/loader@3.1.0(acorn@8.15.0)(webpack@5.101.0)':
+  '@mdx-js/loader@3.1.0(webpack@5.101.0)':
     dependencies:
-      '@mdx-js/mdx': 3.1.0(acorn@8.15.0)
+      '@mdx-js/mdx': 3.1.1
       source-map: 0.7.6
     optionalDependencies:
       webpack: 5.101.0
     transitivePeerDependencies:
-      - acorn
       - supports-color
     optional: true
 
-  '@mdx-js/mdx@3.1.0(acorn@8.15.0)':
+  '@mdx-js/mdx@3.1.1':
     dependencies:
       '@types/estree': 1.0.8
       '@types/estree-jsx': 1.0.5
       '@types/hast': 3.0.4
       '@types/mdx': 2.0.13
+      acorn: 8.15.0
       collapse-white-space: 2.1.0
       devlop: 1.1.0
       estree-util-is-identifier-name: 3.0.0
@@ -5694,7 +5700,7 @@ snapshots:
       recma-jsx: 1.0.1(acorn@8.15.0)
       recma-stringify: 1.0.0
       rehype-recma: 1.0.0
-      remark-mdx: 3.1.0
+      remark-mdx: 3.1.1
       remark-parse: 11.0.0
       remark-rehype: 11.1.2
       source-map: 0.7.6
@@ -5704,7 +5710,6 @@ snapshots:
       unist-util-visit: 5.0.0
       vfile: 6.0.3
     transitivePeerDependencies:
-      - acorn
       - supports-color
     optional: true
 
@@ -5735,11 +5740,11 @@ snapshots:
     dependencies:
       fast-glob: 3.3.1
 
-  '@next/mdx@15.4.5(@mdx-js/loader@3.1.0(acorn@8.15.0)(webpack@5.101.0))(@mdx-js/react@3.1.0(@types/react@19.1.9)(react@19.1.1))':
+  '@next/mdx@15.4.5(@mdx-js/loader@3.1.0(webpack@5.101.0))(@mdx-js/react@3.1.0(@types/react@19.1.9)(react@19.1.1))':
     dependencies:
       source-map: 0.7.4
     optionalDependencies:
-      '@mdx-js/loader': 3.1.0(acorn@8.15.0)(webpack@5.101.0)
+      '@mdx-js/loader': 3.1.0(webpack@5.101.0)
       '@mdx-js/react': 3.1.0(@types/react@19.1.9)(react@19.1.1)
 
   '@next/swc-darwin-arm64@15.4.5':
@@ -9543,7 +9548,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  remark-mdx@3.1.0:
+  remark-mdx@3.1.1:
     dependencies:
       mdast-util-mdx: 3.0.0
       micromark-extension-mdxjs: 3.0.0
