@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@atproto/api':
-        specifier: ^0.16.0
-        version: 0.16.0
+        specifier: ^0.17.2
+        version: 0.17.2
       '@aws-sdk/client-s3':
         specifier: ^3.856.0
         version: 3.856.0
@@ -176,20 +176,20 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@atproto/api@0.16.0':
-    resolution: {integrity: sha512-PQHeae6mz/L1YirUslfci7bknfg3RrSZjXpYwzLICxIOvqGKIkOi0+qukC2Py238RhXRo8YZ9dCuole9HQBXDw==}
+  '@atproto/api@0.17.2':
+    resolution: {integrity: sha512-luRY9YPaRQFpm3v7a1bTOaekQ/KPCG3gb0jVyaOtfMXDSfIZJh9lr9MtmGPdEp7AvfE8urkngZ+V/p8Ial3z2g==}
 
-  '@atproto/common-web@0.4.2':
-    resolution: {integrity: sha512-vrXwGNoFGogodjQvJDxAeP3QbGtawgZute2ed1XdRO0wMixLk3qewtikZm06H259QDJVu6voKC5mubml+WgQUw==}
+  '@atproto/common-web@0.4.3':
+    resolution: {integrity: sha512-nRDINmSe4VycJzPo6fP/hEltBcULFxt9Kw7fQk6405FyAWZiTluYHlXOnU7GkQfeUK44OENG1qFTBcmCJ7e8pg==}
 
-  '@atproto/lexicon@0.4.12':
-    resolution: {integrity: sha512-fcEvEQ1GpQYF5igZ4IZjPWEoWVpsEF22L9RexxLS3ptfySXLflEyH384e7HITzO/73McDeaJx3lqHIuqn9ulnw==}
+  '@atproto/lexicon@0.5.1':
+    resolution: {integrity: sha512-y8AEtYmfgVl4fqFxqXAeGvhesiGkxiy3CWoJIfsFDDdTlZUC8DFnZrYhcqkIop3OlCkkljvpSJi1hbeC1tbi8A==}
 
-  '@atproto/syntax@0.4.0':
-    resolution: {integrity: sha512-b9y5ceHS8YKOfP3mdKmwAx5yVj9294UN7FG2XzP6V5aKUdFazEYRnR9m5n5ZQFKa3GNvz7de9guZCJ/sUTcOAA==}
+  '@atproto/syntax@0.4.1':
+    resolution: {integrity: sha512-CJdImtLAiFO+0z3BWTtxwk6aY5w4t8orHTMVJgkf++QRJWTxPbIFko/0hrkADB7n2EruDxDSeAgfUGehpH6ngw==}
 
-  '@atproto/xrpc@0.7.1':
-    resolution: {integrity: sha512-ANHEzlskYlMEdH18m+Itp3a8d0pEJao2qoDybDoMupTnoeNkya4VKIaOgAi6ERQnqatBBZyn9asW+7rJmSt/8g==}
+  '@atproto/xrpc@0.7.5':
+    resolution: {integrity: sha512-MUYNn5d2hv8yVegRL0ccHvTHAVj5JSnW07bkbiaz96UH45lvYNRVwt44z+yYVnb0/mvBzyD3/ZQ55TRGt7fHkA==}
 
   '@aws-crypto/crc32@5.2.0':
     resolution: {integrity: sha512-nLbCWqQNgUiwwtFsen1AdzAtvuLRsQS8rYgMuxCrdKf9kOssamGLuPwyTY9wyYblNr9+1XM8v6zoDTPPSIeANg==}
@@ -4357,8 +4357,8 @@ packages:
   tinyqueue@3.0.0:
     resolution: {integrity: sha512-gRa9gwYU3ECmQYv3lslts5hxuIa90veaEcxDYuu3QGOIAEM2mOZkVHp48ANJuu1CURtRdHKUBY5Lm1tHV+sD4g==}
 
-  tlds@1.259.0:
-    resolution: {integrity: sha512-AldGGlDP0PNgwppe2quAvuBl18UcjuNtOnDuUkqhd6ipPqrYYBt3aTxK1QTsBVknk97lS2JcafWMghjGWFtunw==}
+  tlds@1.260.0:
+    resolution: {integrity: sha512-78+28EWBhCEE7qlyaHA9OR3IPvbCLiDh3Ckla593TksfFc9vfTsgvH7eS+dr3o9qr31gwGbogcI16yN91PoRjQ==}
     hasBin: true
 
   to-regex-range@5.0.1:
@@ -4663,6 +4663,9 @@ packages:
   zod@3.25.67:
     resolution: {integrity: sha512-idA2YXwpCdqUSKRCACDE6ItZD9TZzy3OZMtpfLoh6oPR47lipysRrJfjzMqFxQ3uJuUPyUeWe1r9vLH33xO/Qw==}
 
+  zod@3.25.76:
+    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
@@ -4675,38 +4678,38 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@atproto/api@0.16.0':
+  '@atproto/api@0.17.2':
     dependencies:
-      '@atproto/common-web': 0.4.2
-      '@atproto/lexicon': 0.4.12
-      '@atproto/syntax': 0.4.0
-      '@atproto/xrpc': 0.7.1
+      '@atproto/common-web': 0.4.3
+      '@atproto/lexicon': 0.5.1
+      '@atproto/syntax': 0.4.1
+      '@atproto/xrpc': 0.7.5
       await-lock: 2.2.2
       multiformats: 9.9.0
-      tlds: 1.259.0
-      zod: 3.25.67
+      tlds: 1.260.0
+      zod: 3.25.76
 
-  '@atproto/common-web@0.4.2':
+  '@atproto/common-web@0.4.3':
     dependencies:
       graphemer: 1.4.0
       multiformats: 9.9.0
       uint8arrays: 3.0.0
-      zod: 3.25.67
+      zod: 3.25.76
 
-  '@atproto/lexicon@0.4.12':
+  '@atproto/lexicon@0.5.1':
     dependencies:
-      '@atproto/common-web': 0.4.2
-      '@atproto/syntax': 0.4.0
+      '@atproto/common-web': 0.4.3
+      '@atproto/syntax': 0.4.1
       iso-datestring-validator: 2.2.2
       multiformats: 9.9.0
-      zod: 3.25.67
+      zod: 3.25.76
 
-  '@atproto/syntax@0.4.0': {}
+  '@atproto/syntax@0.4.1': {}
 
-  '@atproto/xrpc@0.7.1':
+  '@atproto/xrpc@0.7.5':
     dependencies:
-      '@atproto/lexicon': 0.4.12
-      zod: 3.25.67
+      '@atproto/lexicon': 0.5.1
+      zod: 3.25.76
 
   '@aws-crypto/crc32@5.2.0':
     dependencies:
@@ -10083,7 +10086,7 @@ snapshots:
 
   tinyqueue@3.0.0: {}
 
-  tlds@1.259.0: {}
+  tlds@1.260.0: {}
 
   to-regex-range@5.0.1:
     dependencies:
@@ -10491,5 +10494,7 @@ snapshots:
       zod: 3.25.67
 
   zod@3.25.67: {}
+
+  zod@3.25.76: {}
 
   zwitch@2.0.4: {}
