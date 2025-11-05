@@ -12,8 +12,6 @@ import dynamic from 'next/dynamic';
 
 const HiTrack = dynamic(() => import('@/components/Track/Hi'));
 
-const DynamicEmbed = dynamic(() => import('@/components/Calendly/EmbedTarget'));
-
 interface RenderPageProps {
   searchParams: Promise<{ scan: string }>;
 }
@@ -64,10 +62,6 @@ export default async function RenderPage(props: RenderPageProps) {
         people at conferences like this, so feel free to schedule a time to
         connect!
       </Paragraph>
-      <DynamicEmbed
-        meeting="render"
-        primaryColor={{ light: 'ff88df', dark: 'ff88df' }}
-      />
       <div className={styles.renderLogoContainer}>
         <Image
           src={renderLogo}

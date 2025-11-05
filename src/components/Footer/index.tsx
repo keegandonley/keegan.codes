@@ -26,7 +26,7 @@ export const Footer = ({ className, children }: FooterProps) => {
               '--theme-background': 'var(--theme-text)',
             }}
           /> */}
-          <Link target="_blank" href="/paid-consultation">
+          <Link target="_blank" href="/paid-consultation" prefetch={false}>
             Book a Consultation
           </Link>
           <br />

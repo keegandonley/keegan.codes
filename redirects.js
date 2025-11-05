@@ -34,9 +34,9 @@ module.exports = [
   ['/girlstart', 'https://give.girlstart.org/team/542895'],
   ['/reddit', 'https://www.reddit.com/user/keegancodes'],
   ['/strava', 'https://www.strava.com/athletes/17351940'],
-  ['/consulting', 'https://calendly.com/k10y/consulting'],
-  ['/paid-consultation', 'https://calendly.com/k10y/consultation'],
-  ['/1-1', 'https://calendly.com/k10y/1-1-chat'],
+  ['/consulting', 'https://fantastical.app/keegancodes/consultation'],
+  ['/paid-consultation', 'https://fantastical.app/keegancodes/consultation'],
+  ['/1-1', 'https://fantastical.app/keegancodes/1-1-chat'],
   [
     '/zwift',
     'https://www.zwift.com/athlete/ba93b27d-b57e-4aeb-9384-54c5870a3a57',

@@ -7,6 +7,7 @@ import addAnalyzer from '@next/bundle-analyzer';
 
 const nextConfig = {
   reactStrictMode: true,
+  reactCompiler: true,
   images: {
     remotePatterns: [
       {
@@ -44,6 +45,7 @@ const nextConfig = {
     ],
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60 * 60 * 24 * 90,
+    qualities: [75, 80],
   },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   redirects: async () => {
@@ -60,7 +62,6 @@ const nextConfig = {
   // Support the pages router with the Geist font
   transpilePackages: ['geist'],
   experimental: {
-    reactCompiler: true,
     optimizePackageImports: [
       '@keegandonley/pro-solid-svg-icons',
       '@keegandonley/pro-regular-svg-icons',
