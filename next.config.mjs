@@ -7,6 +7,7 @@ import addAnalyzer from '@next/bundle-analyzer';
 
 const nextConfig = {
   reactStrictMode: true,
+  reactCompiler: true,
   images: {
     remotePatterns: [
       {
@@ -67,7 +68,6 @@ const nextConfig = {
       '@fortawesome/free-brands-svg-icons',
     ],
   },
-  reactCompiler: true,
   webpack: (config, { isServer }) => {
     // Ignore the warning for tailwind's dynamic requires
     if (isServer) {
