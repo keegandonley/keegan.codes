@@ -1,7 +1,7 @@
 import { NextFetchEvent, NextRequest } from 'next/server';
 import { MiddlewareManager } from './middleware/middlewareManager';
 
-export async function middleware(
+export async function proxy(
   request: NextRequest,
   context: NextFetchEvent,
 ) {

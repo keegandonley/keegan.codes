@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3561",
-    "build": "node -e \"console.log(new Date())\" > ./public/published.txt && next build",
+    "dev": "next dev -p 3561 --webpack",
+    "build": "node -e \"console.log(new Date())\" > ./public/published.txt && next build --webpack",
     "start": "next start",
     "lint": "next lint",
     "blurhash": "cd blurhash-generator && go run .",
@@ -26,8 +26,8 @@
     "@keegandonley/fitness-embed": "^0.1.1",
     "@keegandonley/pro-regular-svg-icons": "^6.7.2",
     "@keegandonley/pro-solid-svg-icons": "^6.7.2",
-    "@next/bundle-analyzer": "15.4.5",
-    "@next/mdx": "15.5.6",
+    "@next/bundle-analyzer": "16.0.1",
+    "@next/mdx": "16.0.1",
     "@planetscale/database": "^1.19.0",
     "@sentry/nextjs": "^10.5.0",
     "@tailwindcss/line-clamp": "^0.4.4",
@@ -45,10 +45,10 @@
     "babel-plugin-react-compiler": "19.1.0-rc.3",
     "bundle-analyzer@latest": "link:@@next/bundle-analyzer@latest",
     "eslint": "^9.37.0",
-    "eslint-config-next": "16.0.0",
+    "eslint-config-next": "16.0.1",
     "eslint-plugin-react-compiler": "19.1.0-rc.2",
     "geist": "^1.5.1",
-    "next": "15.5.4",
+    "next": "16.0.1",
     "postcss": "^8.5.6",
     "react": "19.2.0",
     "react-calendly": "^4.4.0",
@@ -86,6 +86,10 @@
         "@fortawesome/fontawesome-svg-core",
         "@fortawesome/free-brands-svg-icons"
       ]
+    },
+    "overrides": {
+      "@types/react": "19.2.2",
+      "@types/react-dom": "19.2.2"
     }
   },
   "packageManager": "pnpm@10.19.0+sha256.1c5f5ee59267e4e2e1bfd335f432a18dc48f9a9944094d5d2649757e725ad376"
