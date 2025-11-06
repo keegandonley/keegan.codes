@@ -11,6 +11,12 @@ import { ReadingTime } from './components/ReadingTime';
 import dynamic from 'next/dynamic';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHourglassHalf } from '@keegandonley/pro-solid-svg-icons';
+import localFont from 'next/font/local';
+
+const accentFont = localFont({
+  // src: './fonts/Domine.ttf',
+  src: '../../app/fonts/InstrumentSerif.ttf',
+});
 
 const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
 
@@ -124,7 +130,7 @@ export const MDXEntryRow = ({
         )}
         {!filler ? (
           <div className={styles.content}>
-            <h1 className={styles.h1}>{title}</h1>
+            <h1 className={merge(styles.h1, accentFont.className)}>{title}</h1>
             <p className={styles.description}>{description}</p>
             <div className={styles.metadata}>
               {slug && (showViewCount || fixedViewCount) && (

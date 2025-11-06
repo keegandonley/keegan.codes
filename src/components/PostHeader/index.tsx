@@ -1,10 +1,17 @@
+import localFont from 'next/font/local';
 import { Cheers } from '../Cheers';
 import { ReadingTime } from '../MDXEntryRow/components/ReadingTime';
 import { H1 } from '../Post/Heading/H1';
 import styles from './postHeader.module.css';
 import dynamic from 'next/dynamic';
+import { merge } from '@keegancodes/foundations';
 
 const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
+
+const accentFont = localFont({
+  // src: './fonts/Domine.ttf',
+  src: '../../app/fonts/InstrumentSerif.ttf',
+});
 
 interface PostHeaderProps {
   title: string;
@@ -21,7 +28,7 @@ export const PostHeader = ({
 }: PostHeaderProps) => {
   return (
     <div className={styles.topSection}>
-      <H1 className={styles.title}>{title}</H1>
+      <H1 className={merge(styles.title, accentFont.className)}>{title}</H1>
       <div className={styles.metadata}>
         <div className={styles.cheersWrapper}>
           <Cheers slug={slug} location={location} />

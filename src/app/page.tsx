@@ -15,9 +15,15 @@ import { Post } from '@/types/post';
 import dynamic from 'next/dynamic';
 import { Fallback as BlogPreviewFallback } from '@/components/BlogPreview/Fallback';
 import { merge } from '@/util/classNames';
+import localFont from 'next/font/local';
 
 const DynamicBlogPreview = dynamic(() => import('@/components/BlogPreview'), {
   loading: () => <BlogPreviewFallback />,
+});
+
+const accentFont = localFont({
+  // src: './fonts/Domine.ttf',
+  src: './fonts/InstrumentSerif.ttf',
 });
 
 export default function Home() {
@@ -44,9 +50,11 @@ export default function Home() {
     <>
       <Swoop />
       <HeroBlock isHomePage collapse inline>
-        <HeroText className={styles.name}>Keegan Donley</HeroText>
+        <HeroText className={merge(styles.name, accentFont.className)}>
+          Keegan Donley
+        </HeroText>
       </HeroBlock>
-      <div className={styles.cta}>
+      <div className={merge(styles.cta)}>
         <div className={styles.menu}>
           Developer, maker, and lifelong learner
         </div>

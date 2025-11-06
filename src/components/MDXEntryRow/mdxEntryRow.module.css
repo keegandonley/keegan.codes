@@ -127,8 +127,8 @@
   font-weight: 300;
   z-index: 99;
   line-height: 1.7rem;
-  font-size: 1.5rem;
-  overflow: hidden;
+  font-size: 1.7rem;
+  overflow: visible;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
