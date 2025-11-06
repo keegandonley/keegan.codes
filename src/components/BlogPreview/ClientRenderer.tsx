@@ -13,6 +13,12 @@ import {
   faArrowCircleRight,
 } from '@keegandonley/pro-solid-svg-icons';
 import { formatDate } from '@/util/date';
+import localFont from 'next/font/local';
+
+const accentFont = localFont({
+  // src: './fonts/Domine.ttf',
+  src: '../../app/fonts/InstrumentSerif.ttf',
+});
 
 interface PostWithMetadata extends Post {
   metadata?: ImageMetadata;
@@ -66,8 +72,10 @@ export const ClientRenderer = ({ posts }: ClientRendererProps) => {
             >
               <span className={styles.text}>
                 <div className={styles.inner}>
-                  <h1>{post.title}</h1>
-                  <p className={styles.metadata}>
+                  <h1 className={merge(accentFont.className, styles.header)}>
+                    {post.title}
+                  </h1>
+                  <p className={merge(styles.metadata)}>
                     {formatDate(post.published)}
                   </p>
                   <p className={styles.description}>{post.description}</p>
