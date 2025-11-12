@@ -29,7 +29,7 @@
     "@next/bundle-analyzer": "16.0.1",
     "@next/mdx": "16.0.1",
     "@planetscale/database": "^1.19.0",
-    "@sentry/nextjs": "^10.23.0",
+    "@sentry/nextjs": "^10.24.0",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@types/mdx": "^2.0.13",
     "@types/node": "^24.10.0",
