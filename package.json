@@ -27,7 +27,7 @@
     "@keegandonley/pro-regular-svg-icons": "^6.7.2",
     "@keegandonley/pro-solid-svg-icons": "^6.7.2",
     "@next/bundle-analyzer": "16.0.1",
-    "@next/mdx": "16.0.1",
+    "@next/mdx": "16.0.2",
     "@planetscale/database": "^1.19.0",
     "@sentry/nextjs": "^10.24.0",
     "@tailwindcss/line-clamp": "^0.4.4",
