@@ -1,0 +1,38 @@
+export const title = 'Tips for Syncing Apple Health Data to a New iPhone';
+export const slug = 'tips-for-syncing-apple-health-data-to-a-new-iphone';
+export const tags = ['fitness'];
+export const description = 'Description';
+export const cover = 'apple-sync-cover.png';
+export const published = new Date(2025, 10, 14);
+export const shortCodes = ['apple-sync'];
+export const bskyThreadId = '';
+
+I recently had a lot of trouble getting my Apple Health data to sync to a new iPhone. After a couple
+nerve-wracking days where I thought my nearly 10 years of health data were lost, I finally got everything
+in a working state again. I learned a lot about how iCloud sync works for Apple Health, so in case it's useful,
+I'll write up my findings here.
+
+After getting the new phone, all of my health data didn't transfer. I was stuck with only 6 months of data, all my
+achievements gone, and more importantly, all of my historical cycling training data was gone. After 24 hours with no progress
+toward my data restoring, I started to get worried. Thankfully, another day later, things were looking better.
+
+## TL;DR - My Findings
+
+1. **Apple Health data is not part of your device backup**. Apple Health data is synced to iCloud separately - similar to how photos are synced.
+   This makes sense, because the data can sync between multiple devices easily (to iPad, for example).
+
+2. **Your iPhone must be unlocked to restore health data**. Apple considers your health data as highly sensitive, so it's always encrypted (this is good). This does mean, however, that health data
+   will only restore from iCloud _while your device is unlocked_. I can't find much reference to this fact in any official documentation around
+   restoring from a backup, but when enabling iCloud health sync on a new iPad the notice does confirm this detail.
+
+   This is the main one that got me - my phone is usually locked, so I didn't understand why it wasn't updating the data, especially overnight.
+
+3. **You can force an iCloud sync by performing a backup**. I've actually known this one for a while, but it came in handy here. Whenever my iPad
+   gets out of sync and is missing the latest health data, I manually perform a backup, and voilà, my health data is updated. I figured this would
+   work on the iPhone too, and it did seem to help whenever the data syncing got "stuck."
+
+## My Setup
+
+I have, as far as I can tell, an abnormally large Apple Health database. I've been tracking workouts since
+watchOS 1 back in 2015, and I've been wearing an Apple Watch nearly 24/7 ever since. My health database takes up
+around 10 GB on my phone right now.

@@ -51,6 +51,7 @@ import * as Hobbies from './when-hobbies-and-career-intersect.mdx';
 import * as MyData from './i-own-my-data.mdx';
 import * as YearInReview2024 from './2024-in-review.mdx';
 import * as ProductFocused from './product-focused-software-engineer.mdx';
+import * as AppleHealthSync from './tips-for-apple-heath-sync.mdx';
 
 const posts = {
   Welcome,
@@ -106,6 +107,7 @@ const posts = {
   MyData,
   YearInReview2024,
   ProductFocused,
+  AppleHealthSync,
 };
 
 export default posts;
