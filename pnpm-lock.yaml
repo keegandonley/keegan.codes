@@ -50,7 +50,7 @@ importers:
         version: 16.0.10
       '@next/mdx':
         specifier: 16.0.10
-        version: 16.0.10(@mdx-js/loader@3.1.0(webpack@5.102.1))(@mdx-js/react@3.1.0(@types/react@19.2.7)(react@19.2.3))
+        version: 16.0.10(@mdx-js/loader@3.1.0(webpack@5.102.1))(@mdx-js/react@3.1.0(@types/react@19.2.2)(react@19.2.3))
       '@planetscale/database':
         specifier: ^1.19.0
         version: 1.19.0
@@ -67,11 +67,11 @@ importers:
         specifier: ^24.10.0
         version: 24.10.0
       '@types/react':
-        specifier: 19.2.7
-        version: 19.2.7
+        specifier: 19.2.2
+        version: 19.2.2
       '@types/react-dom':
         specifier: 19.2.3
-        version: 19.2.3(@types/react@19.2.7)
+        version: 19.2.3(@types/react@19.2.2)
       '@vercel/analytics':
         specifier: ^1.6.1
         version: 1.6.1(next@16.0.10(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.1.0-rc.3)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
@@ -1694,8 +1694,8 @@ packages:
     peerDependencies:
       '@types/react': 19.2.2
 
-  '@types/react@19.2.7':
-    resolution: {integrity: sha512-MWtvHrGZLFttgeEj28VXHxpmwYbor/ATPYbBfSFZEIRK0ecCFLl2Qo55z52Hss+UV9CRN7trSeq1zbgx7YDWWg==}
+  '@types/react@19.2.2':
+    resolution: {integrity: sha512-6mDvHUFSjyT2B2yeNx2nUgMxh9LtOWvkhIU3uePn2I2oyNymUAX1NIsdgviM4CH+JSrp2D2hsMvJOkxY+0wNRA==}
 
   '@types/sanitize-html@2.16.0':
     resolution: {integrity: sha512-l6rX1MUXje5ztPT0cAFtUayXF06DqPhRyfVXareEN5gGCFaP/iwsxIyKODr9XDhfxPpN6vXUFNfo5kZMXCxBtw==}
@@ -5767,10 +5767,10 @@ snapshots:
       - supports-color
     optional: true
 
-  '@mdx-js/react@3.1.0(@types/react@19.2.7)(react@19.2.3)':
+  '@mdx-js/react@3.1.0(@types/react@19.2.2)(react@19.2.3)':
     dependencies:
       '@types/mdx': 2.0.13
-      '@types/react': 19.2.7
+      '@types/react': 19.2.2
       react: 19.2.3
     optional: true
 
@@ -5794,12 +5794,12 @@ snapshots:
     dependencies:
       fast-glob: 3.3.1
 
-  '@next/mdx@16.0.10(@mdx-js/loader@3.1.0(webpack@5.102.1))(@mdx-js/react@3.1.0(@types/react@19.2.7)(react@19.2.3))':
+  '@next/mdx@16.0.10(@mdx-js/loader@3.1.0(webpack@5.102.1))(@mdx-js/react@3.1.0(@types/react@19.2.2)(react@19.2.3))':
     dependencies:
       source-map: 0.7.6
     optionalDependencies:
       '@mdx-js/loader': 3.1.0(webpack@5.102.1)
-      '@mdx-js/react': 3.1.0(@types/react@19.2.7)(react@19.2.3)
+      '@mdx-js/react': 3.1.0(@types/react@19.2.2)(react@19.2.3)
 
   '@next/swc-darwin-arm64@16.0.10':
     optional: true
@@ -6822,11 +6822,11 @@ snapshots:
       pg-protocol: 1.10.3
       pg-types: 2.2.0
 
-  '@types/react-dom@19.2.3(@types/react@19.2.7)':
+  '@types/react-dom@19.2.3(@types/react@19.2.2)':
     dependencies:
-      '@types/react': 19.2.7
+      '@types/react': 19.2.2
 
-  '@types/react@19.2.7':
+  '@types/react@19.2.2':
     dependencies:
       csstype: 3.2.3
 
