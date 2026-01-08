@@ -42,7 +42,7 @@ export const Footer = ({ className, children }: FooterProps) => {
           <CountryViews />
         </div>
       </div>
-      <div className={styles.copyright}>&copy; 2025 by Keegan Donley</div>
+      <div className={styles.copyright}>&copy; 2026 by Keegan Donley</div>
     </footer>
   );
 };
