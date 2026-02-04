@@ -1,0 +1,17 @@
+{
+  "SLOC": {
+    "definition": "Source lines of code. The number of lines in a codebase that contain actual code, typically excluding comments and blank lines.",
+    "partOfSpeech": "noun"
+  },
+  "LoC": {
+    "definition": "Lines of Code. A (not very useful) software metric used to measure the size of a software program by counting the number of lines in its source code.",
+    "partOfSpeech": "noun"
+  },
+  "LLM": {
+    "definition": "Large Language Model. A type of artificial intelligence model that is trained on vast amounts of text data to understand and generate human-like language. These models are often used for code generation in software development.",
+    "partOfSpeech": "noun"
+  },
+  "LLMs": {
+    "see": "LLM"
+  }
+}

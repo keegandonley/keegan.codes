@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const directoryPath = path.join(__dirname, '../src/posts');
-const shortCodesRegex = /export const shortCodes = (\[[^\]]*\])/;
+const shortCodesRegex = /export const shortCodes = (\[[\s\S]*?\])/;
 
 fs.readdir(directoryPath, (err, files) => {
   if (err) {
@@ -24,7 +24,11 @@ fs.readdir(directoryPath, (err, files) => {
 
         if (shortCodesMatch) {
           const shortCodesArray = JSON.parse(
-            shortCodesMatch[1].replace(/'/g, '"'),
+            shortCodesMatch[1]
+              .replace(/'/g, '"')
+              .replace(/,(\s*[}\]])/g, '$1')
+              .replace(/\s+/g, ' ')
+              .trim(),
           );
           shortCodesArray.forEach((shortCode) => {
             if (shortcodesMap[shortCode]) {
