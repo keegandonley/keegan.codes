@@ -1,0 +1,10 @@
+.icon {
+  font-size: 0.65em;
+  margin-left: 0.25em;
+  opacity: 0.6;
+}
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+}
