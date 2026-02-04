@@ -95,8 +95,12 @@ export default withSentryConfig(withBundleAnalyzer(withMDX(nextConfig)), {
   silent: true,
   widenClientFileUpload: true,
   tunnelRoute: '/monitoring',
-  automaticVercelMonitors: false,
   telemetry: false,
   enabled: process.env.NODE_ENV === 'production',
-  disableLogger: true,
+  webpack: {
+    treeshake: {
+      removeDebugLogging: true,
+    },
+    automaticVercelMonitors: false,
+  },
 });

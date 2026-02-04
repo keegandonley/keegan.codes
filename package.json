@@ -36,25 +36,21 @@
     "@types/node": "^25.2.0",
     "@types/react": "19.2.11",
     "@types/react-dom": "19.2.3",
+    "@upstash/redis": "^1.36.2",
     "@vercel/analytics": "^1.6.1",
     "@vercel/edge-config": "^1.4.3",
     "@vercel/functions": "^3.4.1",
-    "@vercel/kv": "^3.0.0",
     "@vercel/og": "^0.8.6",
     "@vercel/speed-insights": "^1.3.1",
     "autoprefixer": "^10.4.24",
-    "babel-plugin-react-compiler": "19.1.0-rc.3",
-    "bundle-analyzer@latest": "link:@@next/bundle-analyzer@latest",
     "eslint": "^9.39.2",
     "eslint-config-next": "16.1.6",
-    "eslint-plugin-react-compiler": "19.1.0-rc.2",
     "geist": "^1.5.1",
     "next": "16.1.6",
     "postcss": "^8.5.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-tweet": "^3.3.0",
-    "react@latest": "link:@@types/react@latest",
     "remark-gfm": "^4.0.1",
     "remark-prism": "^1.3.6",
     "sanitize-html": "^2.17.0",
@@ -65,6 +61,7 @@
   "devDependencies": {
     "@opentelemetry/api": "^1.9.0",
     "@types/sanitize-html": "^2.16.0",
+    "babel-plugin-react-compiler": "19.1.0-rc.3",
     "csv-parse": "^6.1.0",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
@@ -86,10 +83,6 @@
         "@fortawesome/fontawesome-svg-core",
         "@fortawesome/free-brands-svg-icons"
       ]
-    },
-    "overrides": {
-      "@types/react": "19.2.2",
-      "@types/react-dom": "19.2.3"
     }
   },
   "packageManager": "pnpm@10.28.2+sha256.afa99b0b4b3d11c1dad2b472f9318ae2c78673829749ded527f89f09071479a7"
