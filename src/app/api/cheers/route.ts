@@ -1,6 +1,6 @@
 import { connect } from '@planetscale/database';
-import { kv } from '@vercel/kv';
 import { get } from '@vercel/edge-config';
+import { Redis } from '@upstash/redis';
 import { getCheersCountForSlug } from '@/util/db';
 
 const config = {
@@ -8,6 +8,8 @@ const config = {
   username: process.env.username,
   password: process.env.password,
 };
+
+const redis = Redis.fromEnv();
 
 const HALF_DAY_SECONDS = 60 * 60 * 12;
 
@@ -25,11 +27,12 @@ export async function POST(request: Request) {
 
   const key = `cheers-${res.id}`;
 
-  const value = await kv.get(key);
+  const value = await redis.get(key);
+
   const count = value ? parseInt(value as string) : -1;
 
   if (count < 0) {
-    await kv.set(key, 0, { ex: HALF_DAY_SECONDS });
+    await redis.set(key, 0, { ex: HALF_DAY_SECONDS });
   }
 
   if (count >= maxAllowed) {
@@ -38,7 +41,8 @@ export async function POST(request: Request) {
     });
   }
 
-  kv.incr(key);
+  await redis.incr(key);
+
   const conn = connect(config);
   const results = await conn.execute(
     'INSERT INTO post_cheers (slug, cheers_date, location) VALUES (?, ?, ?)',
