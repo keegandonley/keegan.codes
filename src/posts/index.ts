@@ -47,11 +47,11 @@ import * as CSSTouchscreen from './touchscreen-css.mdx';
 import * as ReactMiami24Recap from './react-miami-2024-recap.mdx';
 import * as Render2024 from './render-2024-recap.mdx';
 import * as SASW2024 from './sasw-2024.mdx';
-import * as Hobbies from './when-hobbies-and-career-intersect.mdx';
 import * as MyData from './i-own-my-data.mdx';
 import * as YearInReview2024 from './2024-in-review.mdx';
 import * as ProductFocused from './product-focused-software-engineer.mdx';
 import * as LinesOfCodeProductivity from './lines-of-code-productivity-metric.mdx';
+import * as Update2026 from './an-update-for-2026.mdx';
 
 const posts = {
   Welcome,
@@ -103,11 +103,11 @@ const posts = {
   ReactMiami24Recap,
   Render2024,
   SASW2024,
-  // Hobbies,
   MyData,
   YearInReview2024,
   ProductFocused,
   LinesOfCodeProductivity,
+  Update2026,
 };
 
 export default posts;
