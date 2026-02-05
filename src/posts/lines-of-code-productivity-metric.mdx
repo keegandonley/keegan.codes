@@ -1,0 +1,118 @@
+import { Definition } from '../components/Definition';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faClock,
+  faCode,
+  faQuestionCircle,
+  faCodeBranch,
+} from '@keegandonley/pro-solid-svg-icons';
+
+export const title = 'Lines of Code as a Productivity Metric in the AI Era';
+export const slug = 'lines-of-code-as-a-productivity-metric-ai-era';
+export const tags = ['ai', 'opinion'];
+export const description =
+  '10,000 lines of code per day. 6,700 lines per day. 1 billion lines per day. Why does the industry seem to be chasing bigger numbers?';
+export const cover = 'lines-of-code-ai-cover.png';
+export const published = new Date(2026, 1, 3);
+export const shortCodes = [
+  'lines-of-code-ai',
+  'lines-of-code-productivity',
+  'ai-productivity',
+];
+export const bskyThreadId = '3me267qhzsk26';
+
+**_More lines of code is not an indicator of a better developer!_**
+
+I heard these words repeated over and over again by professors in my freshman year at Sonoma State, working on my computer science degree.
+
+When I worked through school as a teaching assistant at Santa Rosa Junior College, it was the same advice in the syllabus, in the first lesson, and was a constant point of discussion on students' assignments: "You are not 'better' or more productive just because you're writing more lines of code than your classmate."
+
+When I worked on an engineering performance management platform at Pinpoint after college, <Definition>SLOC</Definition> as a metric came up often, but we were always careful to use it as just one small piece of a larger puzzle when analyzing the productivity of developers and teams (and certainly more code did not equal more productive).
+
+When I was beginning my career, if I'd posted online the number of lines I'd written in a day, and asked if it was good or bad, what response would I have likely gotten? Probably none congratulating me on my deep understanding of the software development process.
+
+Across every career path, people learning to code love to gravitate toward counting lines of code, and use the metric as a measuring stick against their peers. Everyone I know in the academic and corporate world worked hard to educate away from that mindset. We instead measured productivity and developer effectiveness by the code's maintainability, correctness, and, to some degree, elegance (though not brevity - no code golf here).
+
+Now, I'm starting to see a concerning and, frankly, frustrating, shift in the online discourse around AI coding, where lines of code written has become a popular metric to brag about how amazing your favorite vibe-coding tool is.
+
+![](ai-posts-1.png?hideShadow)
+
+10,000 lines of code per day. 6,700 lines per day. 1 billion lines per day. Do these numbers indicate anything meaningful at all? More importantly, should a bigger number even be considered a good thing?
+
+![](ai-posts-2.png?hideShadow)
+
+## When AI Writes Too Much Code
+
+When using an <Definition>LLM</Definition> responsibly to write code, you, the experienced developer, need to be the guide. You direct the agent on how to accomplish your task, and you need to understand what it did so you can maintain control. You need to be able to explain decisions to stakeholders, debug issues, and be responsible for the code's performance - whether good or bad. When things go wrong (and they always do - this is software after all), you can't just claim ignorance.
+
+Back to the lines-as-productivity problem: I argue that nobody is reading, understanding, code reviewing, and vetting 10,000 lines of code every day. In the real world, if a teammate dumped a 10,000 line change request in my inbox, we'd more than likely have a real problem. That to me would indicate an issue in the development process somewhere. Perhaps the task wasn't broken down into a small enough unit. Or, maybe what I'm looking at is AI slop to reach a solution that could have been accomplished in 500 lines of maintainable, understandable code written by a human developer.
+
+Fewer lines of quality code to maintain, understand, and potentially debug in the future sure sounds a lot more productive to me than 10,000 lines of spaghetti that no human has reasonably taken the time to understand.
+
+<div
+    style={{
+        display: "flex",
+        justifyContent: "space-around",
+        fontSize: "2rem",
+        paddingTop: '30px',
+        paddingBottom: '20px',
+        gap: '1rem',
+        opacity: "0.8"
+    }}
+>
+
+    <FontAwesomeIcon icon={faCodeBranch} />
+
+    <FontAwesomeIcon icon={faQuestionCircle} />
+
+    <FontAwesomeIcon icon={faCodeBranch} />
+
+    <FontAwesomeIcon icon={faQuestionCircle} />
+
+    <FontAwesomeIcon icon={faCodeBranch} />
+
+</div>
+
+## How Did We Get Here?
+
+I have a couple ideas as to how <Definition>LoC</Definition> became such a popular metric in the AI age.
+
+First and foremost, I think it's due to the fact that so many more people are now exposed to coding and software development who haven't yet learned this lesson. It makes sense when I think about it - for someone coming from a non-coding background, it's easy to assume that volume equals quality/productivity, and start to spread that message excitedly. You can't blame someone who's never written a line of code for being excited they're now "writing" thousands a day.
+
+Who I can (and do) blame, however, are the experienced developers who keep perpetuating this idea. There are no shortage of so-called "thought leaders" on X, LinkedIn, Reddit, etc., who are happy to keep spreading misinformation about how great it is that they are producing thousands of lines of code every day with little to no oversight or comprehension.
+
+LLMs are a great tool for enabling anyone to write software - I'm not arguing here that it's a bad thing that new people are exposed to software development every day who wouldn't be otherwise. In fact, that's one of the most incredible things about the modern era of LLMs and coding agents. But, just like I and many others took time to learn and teach proper practices, we should be encouraging the "vibe coders" of the world to learn and understand the same lessons. Rather that congratulate a newcomer on their volume of thousands of lines per day, maybe we start to lead with a warning that more is often not better.
+
+The second cause of the lines-as-productivity problem I see is a bit more complex. I think counting lines of code has become so popular because we don't really have any better metric for measuring how productive we are being when coding with the assistance of LLMs. How do you prove to senior leadership that their AI initiatives are (or aren't) working? A nice number or simple trend line is pretty attractive.
+
+<div
+    style={{
+        display: "flex",
+        justifyContent: "space-around",
+        fontSize: "2rem",
+        paddingTop: '30px',
+        paddingBottom: '20px',
+        gap: '1rem',
+        opacity: "0.8"
+    }}
+>
+
+    <FontAwesomeIcon icon={faClock} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faClock} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faClock} />
+
+</div>
+
+## Measuring Real Productivity
+
+I'm not going to pretend to have an answer to the question of measuring productivity right now. Hopefully as the technology continues to evolve and the solutions mature it will become more clear how productive (or not) LLMs actually make us as developers, but I do know that right now lines of code is as bad of a metric as ever - it may have even become a worse metric with the advent of AI and the slop that came with it.
+
+These days, when I read a social media post or LinkedIn article about how many lines of code your agent writes in a day, I consider that a negative indicator of quality. I don't want to hear about the 50,000 lines of code you wrote with Claude. Instead, show off the cool thing you built, and the lessons you learned while _reviewing_ the LLM-generated parts of your project. Maybe switching to a qualitative measure of productivity is the solution for now. Without a useful quantitative measure of productivity, why not shift to a more results-driven approach? A developer who uses AI to actually ship quality, tested, and secure software is far more productive in my eyes than the one who brags about their thousands of lines of code but never gets past the prototype phase.
+
+As has been the case since the dawn of computing, the quality of the end result proves far more about the productivity of the developer than any individual metric ever will.

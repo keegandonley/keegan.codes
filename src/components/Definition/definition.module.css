@@ -1,0 +1,36 @@
+.icon {
+  font-size: 0.65em;
+  margin-left: 0.5em;
+  opacity: 0.6;
+}
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.2em;
+}
+
+.button {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.button:hover .icon {
+  opacity: 1;
+}
+
+.popover {
+  padding: 1rem;
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 0.5rem;
+  background: var(--background-color, white);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  margin: 2rem;
+}
+
+.popover::backdrop {
+  background: rgba(0, 0, 0, 0.3);
+}

@@ -86,7 +86,7 @@ export default function Home() {
           <Link href="https://kizen.com">
             <strong>Kizen</strong>
           </Link>
-          .
+          , building our developer platform and plugin engine.
         </Paragraph>
         <DynamicBlogPreview posts={posts} />
         <div className={merge(styles.blogButton)}>
