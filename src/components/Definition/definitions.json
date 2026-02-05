@@ -13,5 +13,9 @@
   },
   "LLMs": {
     "see": "LLM"
+  },
+  "century ride": {
+    "definition": "A long-distance cycling event covering 100 miles (approximately 160 kilometers).",
+    "partOfSpeech": "noun"
   }
 }

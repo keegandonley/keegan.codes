@@ -5,12 +5,13 @@ export const Definition = (props: { children: keyof typeof defs }) => {
   let def = defs[props.children];
   let key = props.children;
 
-  if ('see' in def && def.see) {
+  if (def && 'see' in def && def.see) {
     key = def.see as keyof typeof defs;
     def = defs[def.see as keyof typeof defs];
   }
 
   if (
+    !def ||
     !('partOfSpeech' in def) ||
     !('definition' in def) ||
     !def.partOfSpeech ||
