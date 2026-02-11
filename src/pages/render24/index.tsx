@@ -4,7 +4,7 @@ import linkedIn from '@/images/linkedin.svg';
 import X from '@/images/x-twitter.svg';
 import Image from 'next/image';
 import { Hr } from '@/components/Post/Hr';
-import { BUCKET_URL } from '@/util/r2';
+import { BUCKET_URL } from '@/util/const';
 import '@/tw.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { merge } from '@keegancodes/foundations';

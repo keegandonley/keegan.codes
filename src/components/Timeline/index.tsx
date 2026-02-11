@@ -8,7 +8,7 @@ import {
 import { merge } from '@/util/classNames';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { BUCKET_URL } from '@/util/r2';
+import { BUCKET_URL } from '@/util/const';
 import { parseToProps } from '@/util/image';
 import { formatDate } from '@/util/date';
 import {

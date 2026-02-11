@@ -21,3 +21,62 @@
   max-width: 500px;
   margin: 0 auto;
 }
+
+.trigger {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  inset: 0px;
+  background: transparent;
+  border: none;
+  cursor: zoom-in;
+  user-select: none;
+  outline: none;
+}
+
+@keyframes fade-in {
+  0% {
+    transform: scaleX(0) scaleY(0);
+  }
+
+  100% {
+    transform: scaleX(1) scaleY(1);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    transform: scaleX(1) scaleY(1);
+    /* display needed on the closing animation to keep the popover
+    visible until the animation ends */
+    display: block;
+  }
+
+  100% {
+    transform: scaleX(0) scaleY(0);
+    /* display: none not required here because it is the default value
+    for a closed popover, but including it so the behavior is clear */
+    display: none;
+  }
+}
+
+.popover {
+  background-color: transparent;
+  animation: fade-out 0.2s ease-out;
+  width: 100dvw;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.popover:popover-open {
+  animation: fade-in 0.2s ease-out;
+  display: block;
+  cursor: zoom-out;
+}
