@@ -9,8 +9,6 @@ import {
   AppBskyFeedPost,
   RichText,
 } from '@atproto/api';
-import { ThreadViewPost } from '@atproto/api/dist/client/types/app/bsky/feed/defs';
-import Link from 'next/dist/client/link';
 
 export const runtime = 'edge';
 
@@ -95,7 +93,7 @@ export async function GET(request: Request) {
     return new Response('Post is not a thread view', { status: 404 });
   }
 
-  const threadData = data.thread as ThreadViewPost;
+  const threadData = data.thread as any;
 
   if (!threadData) {
     console.error('No thread data found for', slug, 'at', request.url);
