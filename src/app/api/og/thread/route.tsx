@@ -10,6 +10,8 @@ import {
   RichText,
 } from '@atproto/api';
 import { ThreadViewPost } from '@atproto/api/dist/client/types/app/bsky/feed/defs';
+import { readFile } from 'fs/promises';
+import { join } from 'path';
 
 const replaceFacets = (content: string, facets: any) => {
   const rt = new RichText({
@@ -43,13 +45,13 @@ export async function GET(request: Request) {
   const width = searchParams.get('width') ?? '800';
   const height = searchParams.get('height') ?? '418';
 
-  const oswaldData = await fetch(
-    new URL('../../../fonts/Oswald.ttf', import.meta.url),
-  ).then((res) => res.arrayBuffer());
+  const oswaldData = await readFile(
+    join(process.cwd(), 'src', 'app', 'fonts', 'Oswald.ttf'),
+  );
 
-  const oswaldLightData = await fetch(
-    new URL('../../../fonts/Oswald-Light.ttf', import.meta.url),
-  ).then((res) => res.arrayBuffer());
+  const oswaldLightData = await readFile(
+    join(process.cwd(), 'src', 'app', 'fonts', 'Oswald-Light.ttf'),
+  );
 
   if (!slug) {
     console.error('Missing slug at', request.url);
