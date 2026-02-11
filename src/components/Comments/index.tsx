@@ -13,16 +13,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@keegandonley/pro-solid-svg-icons';
 import { captureException } from '@sentry/nextjs';
 import { replaceFacets } from './facet';
+import { faExpandWide } from '@keegandonley/pro-regular-svg-icons';
 
 const authorDid = 'did:plc:qu7mp3zsk6r5eoairedflnsm';
 
 type CommentsProps = {
   threadUri?: string;
   threadId?: string;
+  slug: string;
+  hideExpand?: boolean;
 };
 
 type CommentProps = {
   post: ThreadViewPost;
+  depth: number;
 };
 
 const avatarSize = 30;
@@ -34,7 +38,7 @@ const sortRepliesByLikes = (replies: ThreadViewPost[] = []) => {
 };
 
 const Comment = (props: CommentProps) => {
-  const { post } = props;
+  const { post, depth } = props;
 
   if (!AppBskyFeedPost.isRecord(post.post.record)) {
     return null;
@@ -46,7 +50,10 @@ const Comment = (props: CommentProps) => {
   );
 
   return (
-    <div className={styles.postWrapper}>
+    <div
+      className={styles.postWrapper}
+      style={injectVariables([['depth', depth > 3 ? '3' : String(depth)]])}
+    >
       <div className={styles.header}>
         {post.post.author.avatar ? (
           <div
@@ -80,7 +87,11 @@ const Comment = (props: CommentProps) => {
       </span>
       <div className={styles.subCommentsWrapper}>
         {sortRepliesByLikes(post.replies as ThreadViewPost[]).map((reply) => (
-          <Comment key={reply.post.uri as string} post={reply} />
+          <Comment
+            key={reply.post.uri as string}
+            post={reply}
+            depth={depth + 1}
+          />
         ))}
       </div>
     </div>
@@ -88,11 +99,13 @@ const Comment = (props: CommentProps) => {
 };
 
 export const Comments = async (props: CommentsProps) => {
-  const { threadUri, threadId } = props;
+  const { threadUri, threadId, slug, hideExpand } = props;
 
   let uri = threadId
     ? `at://keegan.codes/app.bsky.feed.post/${threadId}`
     : threadUri;
+
+  const parsedThreadId = threadUri ? threadUri.split('/').pop() : threadId;
 
   if (!uri) {
     return null;
@@ -124,18 +137,25 @@ export const Comments = async (props: CommentsProps) => {
 
   return (
     <div className={styles.commentsWrapper}>
-      <Hr />
-      <div className={styles.cta}>
-        Join the conversation here and on Bluesky by{' '}
-        <Link
-          target="_blank"
-          href={`https://bsky.app/profile/${threadData.post.author.handle}/post/${threadData.post.uri.split('/').pop()}`}
-        >
-          replying to this thread
-        </Link>
-        !
+      {!hideExpand ? <Hr /> : null}
+      <div className={styles.ctaWrapper}>
+        <div className={styles.cta}>
+          Join the conversation here and on Bluesky by{' '}
+          <Link
+            target="_blank"
+            href={`https://bsky.app/profile/${threadData.post.author.handle}/post/${threadData.post.uri.split('/').pop()}`}
+          >
+            replying to this thread
+          </Link>
+          !
+        </div>
+        {!hideExpand ? (
+          <Link href={`/thread/${parsedThreadId}/${slug}`} target="_blank">
+            <FontAwesomeIcon icon={faExpandWide} />
+          </Link>
+        ) : null}
       </div>
-      <Comment post={threadData} />
+      <Comment post={threadData} depth={0} />
     </div>
   );
 };

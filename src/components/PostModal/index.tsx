@@ -71,7 +71,7 @@ export const PostModal = ({ slug, wordCount }: PostModalProps) => {
         </article>
         {bskyThreadId ? (
           <div className={styles.comments}>
-            <Comments threadId={bskyThreadId} />
+            <Comments threadId={bskyThreadId} slug={slug} />
           </div>
         ) : null}
       </div>

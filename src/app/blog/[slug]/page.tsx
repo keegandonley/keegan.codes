@@ -144,7 +144,7 @@ export default async function BlogSlugPage(props: BlogPageProps) {
           </div>
         </article>
       </div>
-      <Comments threadId={bskyThreadId} />
+      <Comments threadId={bskyThreadId} slug={params.slug} />
       <footer>
         <Timeline slug={params.slug} />
         <Footer />
