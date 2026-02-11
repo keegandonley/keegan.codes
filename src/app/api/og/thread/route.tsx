@@ -9,8 +9,7 @@ import {
   AppBskyFeedPost,
   RichText,
 } from '@atproto/api';
-
-export const runtime = 'edge';
+import { ThreadViewPost } from '@atproto/api/dist/client/types/app/bsky/feed/defs';
 
 const replaceFacets = (content: string, facets: any) => {
   const rt = new RichText({
@@ -93,7 +92,7 @@ export async function GET(request: Request) {
     return new Response('Post is not a thread view', { status: 404 });
   }
 
-  const threadData = data.thread as any;
+  const threadData = data.thread as ThreadViewPost;
 
   if (!threadData) {
     console.error('No thread data found for', slug, 'at', request.url);
