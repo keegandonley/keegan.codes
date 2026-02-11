@@ -36,24 +36,28 @@
 
 @keyframes fade-in {
   0% {
-    transform: scaleX(0) scaleY(0);
+    transform: scaleX(0.5) scaleY(0.5);
+    opacity: 0;
   }
 
   100% {
     transform: scaleX(1) scaleY(1);
+    opacity: 1;
   }
 }
 
 @keyframes fade-out {
   0% {
     transform: scaleX(1) scaleY(1);
+    opacity: 1;
     /* display needed on the closing animation to keep the popover
     visible until the animation ends */
     display: block;
   }
 
   100% {
-    transform: scaleX(0) scaleY(0);
+    transform: scaleX(0.5) scaleY(0.5);
+    opacity: 0;
     /* display: none not required here because it is the default value
     for a closed popover, but including it so the behavior is clear */
     display: none;
@@ -73,6 +77,7 @@
   justify-content: center;
   align-items: center;
   display: none;
+  padding: 2rem;
 }
 
 .popover:popover-open {
