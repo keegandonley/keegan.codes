@@ -68,8 +68,6 @@ export async function GET(request: Request) {
 
   const found = getComponentForKey({ key });
 
-  console.log(found);
-
   const threadId = found.bskyThreadId;
 
   if (!threadId) {
@@ -114,7 +112,15 @@ export async function GET(request: Request) {
     (threadData.post.record as any).facets,
   );
 
-  console.log(postContent);
+  const parsedHeight = parseInt(height);
+  const contentFontSize =
+    parsedHeight < 400
+      ? 22
+      : parsedHeight < 600
+        ? 30
+        : parsedHeight < 800
+          ? 40
+          : 50;
 
   return new ImageResponse(
     <div
@@ -164,7 +170,7 @@ export async function GET(request: Request) {
         <h1
           style={{
             paddingLeft: 20,
-            fontSize: 50,
+            fontSize: contentFontSize,
             paddingBottom: 0,
             marginBottom: 0,
             color: 'white',
