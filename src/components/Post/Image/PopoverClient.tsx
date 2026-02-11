@@ -4,22 +4,21 @@ import Image from 'next/image';
 import imageStyles from './image.module.css';
 import { merge } from '@keegancodes/foundations';
 import { BUCKET_URL } from '@/util/const';
+import va from '@vercel/analytics';
 
 export const PopoverClient = (props: {
   popoverId: string;
   imgUrl: string;
   alt: string;
   className?: string;
-  shouldHideShadow?: boolean;
-  dataUrl?: string;
 }) => {
-  const { popoverId, imgUrl, alt, className, shouldHideShadow, dataUrl } =
-    props;
+  const { popoverId, imgUrl, alt, className } = props;
 
   const closePopover = () => {
     const popover = document.getElementById(popoverId);
     if (popover) {
       popover.hidePopover();
+      va.track('image:popover:close', { imgUrl });
     }
   };
 
@@ -36,11 +35,7 @@ export const PopoverClient = (props: {
           alt={alt}
           fill
           className={merge(imageStyles.img, className)}
-          style={{
-            boxShadow: shouldHideShadow
-              ? 'none'
-              : '0 0 0.5rem var(--shadow-color)',
-          }}
+          placeholder="empty"
         />
       </span>
     </span>
