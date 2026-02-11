@@ -80,6 +80,7 @@
   align-items: center;
   display: none;
   padding: 1rem;
+  border: none;
 }
 
 .popover:popover-open {
