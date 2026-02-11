@@ -20,10 +20,10 @@ const Comments = dynamic(
 );
 
 interface ThreadPageProps {
-  params: {
+  params: Promise<{
     id: string;
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata(
