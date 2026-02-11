@@ -41,8 +41,6 @@ export const PopoverClient = (props: {
               ? 'none'
               : '0 0 0.5rem var(--shadow-color)',
           }}
-          placeholder="blur"
-          blurDataURL={dataUrl}
         />
       </span>
     </span>

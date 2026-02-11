@@ -37,11 +37,13 @@
 @keyframes fade-in {
   0% {
     transform: scaleX(0.5) scaleY(0.5);
+
     opacity: 0;
   }
 
   100% {
     transform: scaleX(1) scaleY(1);
+
     opacity: 1;
   }
 }
@@ -65,7 +67,7 @@
 }
 
 .popover {
-  background-color: transparent;
+  background: var(--theme-background);
   animation: fade-out 0.2s ease-out;
   width: 100dvw;
   height: 100dvh;
