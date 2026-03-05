@@ -32,35 +32,32 @@ export default function MessagesPage() {
   return (
     <div
       style={{
-        padding: '40px',
-        maxWidth: '1200px',
-        margin: '0 auto',
+        padding: '12px',
         fontFamily:
           '"SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, monospace',
       }}
     >
-      <div style={{ marginBottom: '32px' }}>
+      <div style={{ marginBottom: '12px' }}>
         <h1
           style={{
-            fontSize: '32px',
+            fontSize: '18px',
             fontWeight: '700',
-            marginBottom: '8px',
+            marginBottom: '4px',
             color: '#111',
           }}
         >
           Frame Messages
         </h1>
-        <p style={{ color: '#666', fontSize: '14px' }}>
+        <p style={{ color: '#666', fontSize: '12px', marginBottom: '6px' }}>
           Listening for messages from parent frame...
         </p>
         <div
           style={{
             display: 'inline-block',
-            marginTop: '12px',
-            padding: '6px 12px',
+            padding: '4px 8px',
             backgroundColor: '#e0e7ff',
-            borderRadius: '6px',
-            fontSize: '14px',
+            borderRadius: '4px',
+            fontSize: '12px',
             fontWeight: '600',
             color: '#4338ca',
           }}
@@ -69,16 +66,16 @@ export default function MessagesPage() {
         </div>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {messages.length === 0 ? (
           <div
             style={{
               textAlign: 'center',
-              padding: '60px 20px',
+              padding: '24px 12px',
               color: '#999',
-              fontSize: '15px',
+              fontSize: '13px',
               backgroundColor: '#fafafa',
-              borderRadius: '8px',
+              borderRadius: '6px',
               border: '2px dashed #e0e0e0',
             }}
           >
@@ -90,11 +87,10 @@ export default function MessagesPage() {
               key={message.id}
               style={{
                 border: '1px solid #e5e7eb',
-                borderRadius: '8px',
-                padding: '20px',
+                borderRadius: '6px',
+                padding: '12px',
                 backgroundColor: '#fff',
                 boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-                transition: 'box-shadow 0.2s',
               }}
             >
               <div
@@ -102,24 +98,23 @@ export default function MessagesPage() {
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  marginBottom: '16px',
-                  paddingBottom: '12px',
+                  marginBottom: '8px',
+                  paddingBottom: '8px',
                   borderBottom: '1px solid #f3f4f6',
                 }}
               >
                 <div
                   style={{
-                    fontSize: '12px',
+                    fontSize: '11px',
                     fontWeight: '600',
                     color: '#6b7280',
-                    fontFamily: 'monospace',
                   }}
                 >
                   #{messages.length - index}
                 </div>
                 <div
                   style={{
-                    fontSize: '13px',
+                    fontSize: '11px',
                     color: '#6b7280',
                   }}
                 >
@@ -127,27 +122,26 @@ export default function MessagesPage() {
                 </div>
               </div>
 
-              <div style={{ marginBottom: '12px' }}>
+              <div style={{ marginBottom: '8px' }}>
                 <div
                   style={{
-                    fontSize: '11px',
+                    fontSize: '10px',
                     textTransform: 'uppercase',
                     fontWeight: '600',
                     color: '#9ca3af',
                     letterSpacing: '0.5px',
-                    marginBottom: '6px',
+                    marginBottom: '4px',
                   }}
                 >
                   Origin
                 </div>
                 <div
                   style={{
-                    fontSize: '14px',
+                    fontSize: '12px',
                     color: '#374151',
-                    fontFamily: 'monospace',
                     backgroundColor: '#f9fafb',
-                    padding: '8px 12px',
-                    borderRadius: '6px',
+                    padding: '6px 8px',
+                    borderRadius: '4px',
                   }}
                 >
                   {message.origin}
@@ -157,28 +151,26 @@ export default function MessagesPage() {
               <div>
                 <div
                   style={{
-                    fontSize: '11px',
+                    fontSize: '10px',
                     textTransform: 'uppercase',
                     fontWeight: '600',
                     color: '#9ca3af',
                     letterSpacing: '0.5px',
-                    marginBottom: '6px',
+                    marginBottom: '4px',
                   }}
                 >
                   Data
                 </div>
                 <pre
                   style={{
-                    padding: '16px',
+                    padding: '8px',
                     backgroundColor: '#1f2937',
                     color: '#f3f4f6',
-                    borderRadius: '6px',
+                    borderRadius: '4px',
                     overflow: 'auto',
-                    fontSize: '13px',
-                    lineHeight: '1.6',
+                    fontSize: '11px',
+                    lineHeight: '1.5',
                     margin: 0,
-                    fontFamily:
-                      '"SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, monospace',
                   }}
                 >
                   {JSON.stringify(message.data, null, 2)}
