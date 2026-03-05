@@ -9,6 +9,7 @@ interface Message {
 
 export default function MessagesPage() {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [context, setContext] = useState<Record<string, unknown> | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -32,6 +33,17 @@ export default function MessagesPage() {
           origin: 'https://example.com',
         },
       ]);
+    }
+
+    const context = params.get('context');
+
+    if (context) {
+      try {
+        const decodedContext = atob(context);
+        setContext(JSON.parse(decodedContext));
+      } catch (ex) {
+        console.error('Context could not be decoded', ex);
+      }
     }
 
     const handleMessage = (event: MessageEvent) => {
@@ -89,6 +101,39 @@ export default function MessagesPage() {
           {messages.length} {messages.length === 1 ? 'message' : 'messages'}
         </div>
       </div>
+
+      {context && (
+        <div style={{ marginBottom: '12px' }}>
+          <div
+            style={{
+              fontSize: '10px',
+              textTransform: 'uppercase',
+              fontWeight: '600',
+              color: '#9ca3af',
+              letterSpacing: '0.5px',
+              marginBottom: '4px',
+            }}
+          >
+            Context
+          </div>
+          <pre
+            style={{
+              padding: '8px',
+              backgroundColor: '#f3f4f6',
+              color: '#1f2937',
+              borderRadius: '4px',
+              overflow: 'auto',
+              fontSize: '11px',
+              lineHeight: '1.5',
+              margin: 0,
+              whiteSpace: 'pre',
+              border: '1px solid #e5e7eb',
+            }}
+          >
+            {JSON.stringify(context, null, 2)}
+          </pre>
+        </div>
+      )}
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {messages.length === 0 ? (
