@@ -11,6 +11,29 @@ export default function MessagesPage() {
   const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('seed') === 'true') {
+      setMessages([
+        {
+          id: 'seed-1',
+          timestamp: Date.now(),
+          data: {
+            type: 'example',
+            action: 'test',
+            payload: {
+              userId: 123,
+              status: 'active',
+              metadata: {
+                source: 'parent-frame',
+                version: '1.0.0',
+              },
+            },
+          },
+          origin: 'https://example.com',
+        },
+      ]);
+    }
+
     const handleMessage = (event: MessageEvent) => {
       const newMessage: Message = {
         id: `${Date.now()}-${Math.random()}`,
@@ -142,6 +165,8 @@ export default function MessagesPage() {
                     backgroundColor: '#f9fafb',
                     padding: '6px 8px',
                     borderRadius: '4px',
+                    overflowX: 'auto',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   {message.origin}
@@ -171,6 +196,7 @@ export default function MessagesPage() {
                     fontSize: '11px',
                     lineHeight: '1.5',
                     margin: 0,
+                    whiteSpace: 'pre',
                   }}
                 >
                   {JSON.stringify(message.data, null, 2)}
