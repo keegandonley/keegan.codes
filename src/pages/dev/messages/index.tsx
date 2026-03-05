@@ -68,7 +68,7 @@ export default function MessagesPage() {
   return (
     <div
       style={{
-        padding: '12px',
+        padding: '0 12px 12px 12px',
         fontFamily:
           '"SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, monospace',
       }}
