@@ -35,6 +35,7 @@ export default function MessagesPage() {
     }
 
     const handleMessage = (event: MessageEvent) => {
+      console.log(event);
       const newMessage: Message = {
         id: `${Date.now()}-${Math.random()}`,
         timestamp: Date.now(),
