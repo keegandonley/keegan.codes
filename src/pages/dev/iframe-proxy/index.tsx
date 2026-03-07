@@ -13,7 +13,7 @@ const DEBUG_BAR_HEIGHT = 36;
 function validateIframeUrl(rawUrl: string | null): string | null {
   if (!rawUrl) return null;
   try {
-    const parsed = new URL(rawUrl, window.location.origin);
+    const parsed = new URL(rawUrl);
     if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
       return parsed.toString();
     }
