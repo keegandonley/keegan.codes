@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { getImageMetadata, parseSource, parseToProps } from '@/util/image';
 import Image from 'next/image';
 import { BottomFade } from '@/components/BottomFade';
-import { BUCKET_URL } from '@/util/r2';
+import { BUCKET_URL } from '@/util/const';
 import { PostHeader } from '../PostHeader';
 import dynamic from 'next/dynamic';
 
