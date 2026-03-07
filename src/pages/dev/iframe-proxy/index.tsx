@@ -10,6 +10,19 @@ interface RelayedMessage {
 const PANEL_WIDTH = 320;
 const DEBUG_BAR_HEIGHT = 36;
 
+function validateIframeUrl(rawUrl: string | null): string | null {
+  if (!rawUrl) return null;
+  try {
+    const parsed = new URL(rawUrl, window.location.origin);
+    if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+      return parsed.toString();
+    }
+  } catch {
+    // Ignore invalid URLs and fall through to return null.
+  }
+  return null;
+}
+
 export default function IframeProxyPage() {
   const [url, setUrl] = useState<string | null>(null);
   const [debug, setDebug] = useState(false);
@@ -20,7 +33,9 @@ export default function IframeProxyPage() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const isDebug = params.get('debug') === 'true';
-    setUrl(params.get('url'));
+    const rawUrl = params.get('url');
+    const safeUrl = validateIframeUrl(rawUrl);
+    setUrl(safeUrl);
     setDebug(isDebug);
     setMounted(true);
     if (isDebug) {
