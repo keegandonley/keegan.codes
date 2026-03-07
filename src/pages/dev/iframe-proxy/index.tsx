@@ -19,9 +19,13 @@ export default function IframeProxyPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    const isDebug = params.get('debug') === 'true';
     setUrl(params.get('url'));
-    setDebug(params.get('debug') === 'true');
+    setDebug(isDebug);
     setMounted(true);
+    if (isDebug) {
+      document.body.style.backgroundColor = '#1f2937';
+    }
   }, []);
 
   useEffect(() => {
@@ -86,11 +90,11 @@ export default function IframeProxyPage() {
         <div
           style={{
             position: 'fixed',
-            top: 0,
+            top: 6,
             left: 0,
             right: 0,
             height: DEBUG_BAR_HEIGHT,
-            backgroundColor: '#1f2937',
+            backgroundColor: 'transparent',
             color: '#f3f4f6',
             display: 'flex',
             alignItems: 'center',
@@ -133,12 +137,17 @@ export default function IframeProxyPage() {
         src={url}
         style={{
           position: 'fixed',
-          top: debug ? DEBUG_BAR_HEIGHT : 0,
-          left: 0,
-          bottom: 0,
-          width: debug ? `calc(100% - ${PANEL_WIDTH}px)` : '100%',
-          height: debug ? `calc(100% - ${DEBUG_BAR_HEIGHT}px)` : '100%',
+          top: debug ? DEBUG_BAR_HEIGHT + 12 : 0,
+          left: debug ? 12 : 0,
+          bottom: debug ? 12 : 0,
+          width: debug ? `calc(100% - ${PANEL_WIDTH}px - 24px)` : '100%',
+          height: debug ? `calc(100% - ${DEBUG_BAR_HEIGHT}px - 24px)` : '100%',
           border: 'none',
+          borderRadius: debug ? '10px' : 0,
+          boxShadow: debug
+            ? '0 8px 32px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3)'
+            : 'none',
+          overflow: 'hidden',
         }}
       />
 
@@ -150,8 +159,8 @@ export default function IframeProxyPage() {
             right: 0,
             bottom: 0,
             width: PANEL_WIDTH,
-            backgroundColor: '#1f2937',
-            borderLeft: '1px solid #374151',
+            backgroundColor: 'transparent',
+            borderLeft: 'none',
             display: 'flex',
             flexDirection: 'column',
             overflowY: 'hidden',
