@@ -55,6 +55,12 @@ const mapping: Mapping = {
           description: 'A better UI for building cycling workouts for Zwift',
           url: 'https://workout.keegan.codes/',
         },
+        {
+          title: 'Hypothesis',
+          description:
+            'A set of tools for web development and testing, including iframes, webhooks, and cross-domain behaviors.',
+          url: 'https://hypothesis.sh',
+        },
       ],
     },
     {
