@@ -1,0 +1,393 @@
+import { IFrame } from '@/components/IFrame';
+import { Definition } from '@/components/Definition';
+import {
+  faRobot,
+  faCode,
+  faRobotAstromech,
+  faUserRobot,
+  faComputerClassic,
+  faBinary,
+  faGearCode,
+  faBrainCircuit,
+} from '@keegandonley/pro-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+export const title = 'Claude Code is Great at Building Developer Tools';
+export const slug = 'claude-code-developer-tools';
+export const tags = [
+  'ai',
+  'optionion',
+  'developer-tools',
+  'claude',
+  'claude-code',
+];
+export const description =
+  'An alaysis of how I leverage Claude Code to generate developer tools on the fly, and a real-life case study using a recent project.';
+export const cover = 'claude-code-dev-tools-cover.png';
+export const published = new Date(2026, 2, 11);
+export const shortCodes = [
+  'claude-code-dev-tools',
+  'claude-code-developer-tools',
+];
+export const bskyThreadId = '';
+
+In this post, I'm going to give an overview of how I've been using Claude Code to generate useful developer tools
+on-the-fly, for projects I'm currently working on both at [Kizen](https://developer.kizen.com) and personally. But first, a quick note:
+
+> I'm going to talk a lot about Claude Code in this post, but I want to be clear that this blog is
+> still entirely human-written by me. I get a lot of joy from writing this blog and refuse to delegate
+> the task to a machine. All written content in this post is 100% human-written, human-proofread, and human-edited.
+
+## Some Context
+
+The work that I've been doing lately typically involves a lot of test case building. I've been developing a browser-based plugin engine that relies heavily on
+iframes and frame messaging with cross-domain considerations, arbitrary code execution, webhooks, worker threads, and other complexities. It
+takes a lot of time to build test cases for these behaviors! I typically need to spin up mini websites and host them
+on different domains, and build tools for capturing and viewing frame messages, browser events, and more!
+
+I wanted to see if Claude Code could generate test tools for me with minimal oversight and guidance, so I
+could focus on core features, while test infrasructure was built in parallel. What follows is a dive into what I built with Claude, and what I learned.
+
+### Definition of Success
+
+How would I consider this a successful attempt?
+
+1. Must be faster than building the tools myself.
+2. Must be cheap enough to be a sustainable cost - Ideally fitting within a monthly Claude Pro subscription without overage.
+3. Claude must be mostly autonomous - I want to write specs of what I need, and have it built it with little guidance or hand-holding.
+4. The tools must work, and be presentable in a work environment for demos, etc.
+
+### Necessary Behaviors
+
+Here are the initial use-cases I needed help testing:
+
+1. Test handling of messages from a parent window to embedded iframes on page navigation.
+2. Test proxying iframes through multiple domains: for example, a.com embeds a frame at b.com, which embeds a frame at c.com, and messages can be passed between them.
+3. Ability to easily test across domains without additional deployment or configuration.
+4. Ability to test arbitrary frame messages from one child frame to another child frame.
+
+<div
+    style={{
+        display: "flex",
+        justifyContent: "space-around",
+        fontSize: "2rem",
+        paddingTop: '55px',
+        paddingBottom: '35px',
+        gap: '1rem',
+        opacity: "0.8"
+    }}
+>
+
+    <FontAwesomeIcon icon={faRobot} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faRobot} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faRobot} />
+
+</div>
+
+## What I (We?) Built - Primary Use-Cases
+
+The end result of my work is [hypothesis.sh](https://hypothesis.sh). This tool provides a number of useful "experiments" (as I've been calling them). Feel free to poke around now, but keep reading if you want more details first.
+
+### Multi-Domain Support
+
+One of the main things I needed to build a demo of was cross-domain iframe embeds and messaging. To accomplish this easily, I have 4 domains
+set up to point at the same site. This is much easier than having to deploy and maintain multiple individual projects. Claude made
+short work of theming each one differently and detecting which domain is in use at runtime, so that they can be visually disambiguated.
+
+I chose some domain names based on the scientific method - may as well follow a theme:
+
+- [hypothesis.sh](https://hyopothesis.sh)
+- [observation.sh](https://observation.sh)
+- [conclusion.sh](https://conclusion.sh)
+- [falsify.sh](https://falsify.sh)
+
+(I let Claude recommend that last choice. Not my favorite of the 4, but it does the job)
+
+### Message Stream
+
+This is a page that shows messages that are sent to its frame by the parent window. Useful for debugging Kizen's plugins
+that work by listening for frame messages from the main app. It can also send messages back up the other direction (to the parent). Useful for
+debugging, and coincidentally, the next demo. You can see this page in action in the next experiment.
+
+### Frame Proxy
+
+This is a page that can be embedded in an iframe, and in turn embed another page in itself. This was my intial primary use-case.
+Try out the interactive demo below by sending a message from the inner frame the outer frame:
+
+<IFrame url="https://hypothesis.sh/iframe-proxy?debug=true&url=https://observation.sh/message-stream" />
+
+The multiple domain support comes in handy here, as I can keep nesting the iframe proxy using different domains to verify the message pass-through logic:
+
+<IFrame url="https://hypothesis.sh/iframe-proxy?url=https%3A%2F%2Fobservation.sh%2Fiframe-proxy%3Furl%3Dhttps%253A%252F%252Fconclusion.sh%252Fmessage-stream%26debug%3Dtrue&debug=true" />
+
+<div
+    style={{
+        display: "flex",
+        justifyContent: "space-around",
+        fontSize: "2rem",
+        paddingTop: '55px',
+        paddingBottom: '35px',
+        gap: '1rem',
+        opacity: "0.8"
+    }}
+>
+
+    <FontAwesomeIcon icon={faRobotAstromech} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faRobotAstromech} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faRobotAstromech} />
+
+</div>
+
+## Next, Some Basic Tools
+
+We were on a roll here - Claude was doing an excellent job building these test experiments while I worked on my actual tasks, so I decided to take it a step further and build some useful tools.
+
+**The problem**: I've always been concerned using simple tools available on the web to do things like format JSON, decode base64 strings, etc. Pasting potentially sensitive content
+into an unknown developer's site wasn't going to work for me. Why not have Claude solve that problem?
+
+I asked Claude to build the following:
+
+- [base64 encode/decode with realtime output](https://hypothesis.sh/base64)
+- [url encode/decode with realtime output](https://hypothesis.sh/urlencode)
+- [json pretty-print formatter](https://hypothesis.sh/pretty-print)
+- [uuid generator](https://hypothesis.sh/uuid?version=4) ([v1](https://hypothesis.sh/uuid?version=1), [v4](https://hypothesis.sh/uuid?version=4), and [v7](https://hypothesis.sh/uuid?version=7))
+- [datetime parser and converter with realtime output](https://hypothesis.sh/datetime)
+- [regex tester, validator, and capture group display](https://hypothesis.sh/regex)
+
+I also wanted everything to have permalinks where it made sense, so that reloading the page was persistent and output could be shared.
+
+Keep reading for a few standout examples as interactive demos.
+
+### Datetime Parsing and Display
+
+Live mode always shows the current time, or a value can be pasted into the input. A permalink can preserve the current state.
+
+<IFrame url="https://hypothesis.sh/datetime?live=true" />
+
+### Regular Expression Tester
+
+This started to get a bit more complicated. Claude did a reasonable job, though I spent a lot more time in the planning
+phase than I needed to for the earlier simpler features.
+
+Try it out below by changing the expression or the test strings. If you enter an invalid expression, you can see why it failed too!
+
+<IFrame url="https://hypothesis.sh/regex?v=eyJwIjoiXihIZWxsb3xIaSksIChcXHcrKS4qJCIsImYiOiJnIiwicyI6IkhlbGxvLCBLZWVnYW5cbkhleSB0aGVyZSBLZWVnYW5cbkhpLCBmcmllbmQhXG4ifQ==" />
+
+<div
+    style={{
+        display: "flex",
+        justifyContent: "space-around",
+        fontSize: "2rem",
+        paddingTop: '55px',
+        paddingBottom: '35px',
+        gap: '1rem',
+        opacity: "0.8"
+    }}
+>
+
+    <FontAwesomeIcon icon={faUserRobot} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faUserRobot} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faUserRobot} />
+
+</div>
+
+## Documentation
+
+Documentation is a key part of any good tool suite. I found I had the most success asking Claude to write the docs after the features
+were fully implemented, with a fresh (empty) context. This forced it to read the final resulting code, understand the behaviors, and then
+write documentation, rather than rely on any assumptions polluting the context from development.
+
+I found there was quite a bit of tweaking to do here - Claude liked to put an over-emphasis on implementation details, like describing the width of the sidebar when
+explaining the features it contained, or explaining that logic runs in a <Definition>useEffect</Definition> hook, and so on.
+
+Here's an example documentation page:
+
+<IFrame url="https://hypothesis.sh/docs/iframe-proxy?embed=true" />
+
+<div
+    style={{
+        display: "flex",
+        justifyContent: "space-around",
+        fontSize: "2rem",
+        paddingTop: '55px',
+        paddingBottom: '35px',
+        gap: '1rem',
+        opacity: "0.8"
+    }}
+>
+
+    <FontAwesomeIcon icon={faComputerClassic} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faComputerClassic} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faComputerClassic} />
+
+</div>
+
+## Time for a Challenge
+
+This had been going pretty well. I'd used up my available quota for the current session, and needed to wait a while for it to reset, lest I start paying for on-demand usage.
+
+In my downtime, I started thinking about a bigger challenge I wanted to solve - testing webhooks. I often find myself building
+software that needs to make a webhook call upon task completion. This is always a challenge to build and debug, because I don't typically have a service
+running that can receive and display webhooks in a generic way. It's also a challenge to test in an end-to-end suite, since the webhooks can't be
+handled in an isolated, repeatable way. I worked on a plan, and when Claude was available again, I set it to it:
+
+I decided to build a service that generates a temporary webhook URL that can receive events, and display them in a feed in the browser.
+The handler needs to be kept alive while in use, but get cleaned up when abandoned. This required a bit more complex thinking and also needed some infrastructure.
+
+I created a simple <Definition>Postgres</Definition> database and set up the schema Claude recommended (I did not allow Claude to touch my database itself).
+
+Here's the resulting tool. Go ahead and try it - you can simulate events using the <Definition>cURL</Definition> panel on the right, or copy the curl command into your terminal.
+
+<IFrame url="https://hypothesis.sh/webhook" />
+
+Imagine using this in automated tests! Each test could create a handler, send it events, verify the results, and then it will get torn down when it automatically expires! [Read the documentation](https://hypothesis.sh/docs/webhook) for more on how this tool works.
+
+<div
+    style={{
+        display: "flex",
+        justifyContent: "space-around",
+        fontSize: "2rem",
+        paddingTop: '55px',
+        paddingBottom: '35px',
+        gap: '1rem',
+        opacity: "0.8"
+    }}
+>
+
+    <FontAwesomeIcon icon={faBinary} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faBinary} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faBinary} />
+
+</div>
+
+## Evaluating Claude and the Results
+
+If the title didn't spoil the surprise, Claude Code ended up being great at these kinds of tasks. Let's look back at my definition of success and then
+I'll evaluate why I think Claude did well at this:
+
+#### 1. Must be faster than building the tools myself
+
+This was absolutely faster! A bit of time in planning mode was all it took to send Claude off working on these tasks. I did a lot of them one piece at a time, but with a good plan, I have a feeling it would have worked well to do multiple tools at once.
+
+#### 2. Must be cheap enough to be a negligible cost - Ideally fitting within a monthly Claude Pro subscription without overage
+
+This was mostly the case. I did run into session limits on my basic Claude Pro plan, but usually only had to wait an hour or two to resume - fine for this kind of work with no timeline or deadline.
+
+#### 3. Claude must be mostly autonomous - I want to write specs of what I need, and have it built it with little guidance or hand-holding
+
+For the simple tasks, this held up. Only once I got into the more complex features did I need to spend more time refining plans, reworking, and adding features piece-by-piece. For my primary use-case (iframe proxy & messaging) it was essentially one-shot to build the whole thing.
+
+#### 4. The tools must work, and be presentable in a work environment for demos, etc.
+
+I think my embedded demos make this case quite well - everything is working great for my needs. Any little bugs that come up (maybe you'll find one - let me know!) are easy for Claude to undertand and fix.
+
+I'm pretty happy with Claude's design skills too - I refined the look and feel quite a bit at the start to get what I envisioned, and then Claude took it from there whenever a new pattern needed to be developed in-system.
+
+<div
+    style={{
+        display: "flex",
+        justifyContent: "space-around",
+        fontSize: "2rem",
+        paddingTop: '55px',
+        paddingBottom: '35px',
+        gap: '1rem',
+        opacity: "0.8"
+    }}
+>
+
+    <FontAwesomeIcon icon={faGearCode} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faGearCode} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faGearCode} />
+
+</div>
+
+## Why Did This Work? And What Did I Learn for the Future?
+
+I have a couple ideas about why this worked well, and what I learned about my use of coding agents in the future.
+
+### Plan, Plan, Plan
+
+Anyone familiar with these tools will tell you that your successes and failures are made in the planning phase.
+I learned first-hand how true this is. Investing time in plan mode sets Claude up for success throughout the development. I could give it permission to apply edits right away for really small things like color and layout tweaks, but all features were spec'd and revised in planning mode as a rule.
+
+![Claude Plan Mode in a Terminal](claude-plan-new.png?hideShadow)
+
+### Small, Greenfield Projects Are Easiest
+
+This was a brand new project - I basically allowed Claude to implement its wishes from the get-go. Claude excels at this type of work. I find that I have to do a lot
+more coaxing, planning and re-planning, and manual guidance trying to get Claude to work well in a large existing project. Even then, I need to keep the tasks fairly small and targeted. In a new and small-scale project like this,
+the context stayed small and Claude was able to add features easily.
+
+### Verbosity & Code Standards Simply Didn't Matter Much
+
+At the end of the day, these are developer tools that I use to test and develop features for a specific project at work that I'm currently focused on. If I built them myself by hand, I still would have rushed them and not focused _too_ much on perfection.
+I wasn't too worried about Claude's tendency to over-produce code, which is a very real problem. I've even written about this in the past, and how [the volume of output from Claude and other coding agents should be seen as a negative indicator, not a positive](/blog/lines-of-code-as-a-productivity-metric-ai-era).
+
+I just didn't care that much that Claude over-relied on <Definition>useEffect</Definition> (to an almost laughable degree) or write many more lines of JavaScript and CSS as I would have. For this project, it worked out just fine. And, I'm probably going to have Claude continue to maintain these tools, and do very little maintenance or add additional features by hand.
+
+<div
+    style={{
+        display: "flex",
+        justifyContent: "space-around",
+        fontSize: "2rem",
+        paddingTop: '55px',
+        paddingBottom: '35px',
+        gap: '1rem',
+        opacity: "0.8"
+    }}
+>
+
+    <FontAwesomeIcon icon={faBrainCircuit} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faBrainCircuit} />
+
+    <FontAwesomeIcon icon={faCode} />
+
+    <FontAwesomeIcon icon={faBrainCircuit} />
+
+</div>
+
+## Final Thoughts
+
+Overall, I'm extremely pleased with how these developer tools turned out. I'll be relying on them for many future projects, and expanding them (with Claude's help) as needed. Feel free to use them yourself!
+
+If you want to see the underlying code for [hypothesis.sh](https://hypothesis.sh) (that's what I'm calling it, even though it really has four names), take a look at it on [Github](https://github.com/keegandonley/hypothesis), and let me know your thoughts about
+this, developer tools in general, or Claude Code as a whole!

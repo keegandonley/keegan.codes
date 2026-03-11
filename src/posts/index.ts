@@ -52,6 +52,7 @@ import * as YearInReview2024 from './2024-in-review.mdx';
 import * as ProductFocused from './product-focused-software-engineer.mdx';
 import * as LinesOfCodeProductivity from './lines-of-code-productivity-metric.mdx';
 import * as Update2026 from './an-update-for-2026.mdx';
+import * as ClaudeDevTools from './claude-code-developer-tools.mdx';
 
 const posts = {
   Welcome,
@@ -108,6 +109,7 @@ const posts = {
   ProductFocused,
   LinesOfCodeProductivity,
   Update2026,
+  ClaudeDevTools,
 };
 
 export default posts;
