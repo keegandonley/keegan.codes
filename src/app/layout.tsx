@@ -43,8 +43,8 @@ export default async function RootLayout({ children, postModal }: any) {
         <JsonLd data={{
           '@context': 'https://schema.org',
           '@type': 'Person',
-          name: 'Keegan Donley',
-          url: 'https://keegan.codes',
+          name: NAME,
+          url: BASEURL,
           sameAs: [
             'https://twitter.com/keegandonley',
             'https://github.com/keegandonley',
@@ -52,14 +52,14 @@ export default async function RootLayout({ children, postModal }: any) {
             'https://bsky.app/profile/keegan.codes',
           ],
           jobTitle: 'Principal Front-End Engineer',
-          description: 'Developer, maker, and lifelong learner',
+          description: DESCRIPTION,
         }} />
         <JsonLd data={{
           '@context': 'https://schema.org',
           '@type': 'WebSite',
-          name: 'Keegan Donley',
-          url: 'https://keegan.codes',
-          description: 'Developer, maker, and lifelong learner',
+          name: NAME,
+          url: BASEURL,
+          description: DESCRIPTION,
         }} />
         <ThemeProvider>
           <LoadingProvider>

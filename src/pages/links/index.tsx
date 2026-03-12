@@ -2,10 +2,12 @@ import '@/tw.css';
 import linkMapping from '../../links/links';
 import va from '@vercel/analytics';
 import Head from 'next/head';
+import { BASEURL } from '@/metadata';
 
 const imageHeight = 630;
 const imageWidth = 1200;
-const imageUrl = `/api/og/page?page=links&width=${imageWidth}&height=${imageHeight}&background=black&text=white`;
+const pageUrl = `${BASEURL}/links`;
+const imageUrl = `${BASEURL}/api/og/page?page=links&width=${imageWidth}&height=${imageHeight}&background=black&text=white`;
 
 export default function Links() {
   return (
@@ -15,7 +17,9 @@ export default function Links() {
         <meta name="description" content="Links to useful resources, things I've worked on, ways to get in touch, and more." />
         <meta property="og:title" content="Keegan's Links" />
         <meta property="og:description" content="Links to useful resources, things I've worked on, ways to get in touch, and more." />
+        <meta property="og:url" content={pageUrl} />
         <meta property="og:image" content={imageUrl} />
+        <link rel="canonical" href={pageUrl} />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content={`${imageWidth}px`} />
         <meta property="og:image:height" content={`${imageHeight}px`} />

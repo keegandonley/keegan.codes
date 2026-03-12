@@ -65,11 +65,17 @@ export async function generateMetadata(
       alternates: {
         canonical: `${BASEURL}/blog/${params.slug}`,
       },
+      robots: {
+        index: false,
+      },
     };
   }
 
   return {
     title: NAME,
+    robots: {
+      index: false,
+    },
   };
 }
 

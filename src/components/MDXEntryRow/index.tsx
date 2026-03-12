@@ -147,9 +147,9 @@ export const MDXEntryRow = ({
           </div>
         ) : loader ? (
           <div className={styles.content}>
-            <h1 className={merge(styles.h1, styles.placeholder)}>
+            <h2 className={merge(styles.h1, styles.placeholder)}>
               I&apos;ll be Right There
-            </h1>
+            </h2>
             <p className={styles.description}>
               Hang tight while this awesome blog post is downloaded!
               Shouldn&apos;t be long now...
