@@ -61,7 +61,7 @@ const Timeline = async (props: TimelineProps) => {
       </div>
       <Image
         src={`${BUCKET_URL}/${randomPost.cover}`}
-        alt="todo"
+        alt={randomPost.title}
         fill
         {...parseToProps(randomPost.metadata)}
         sizes={
@@ -103,7 +103,7 @@ const Timeline = async (props: TimelineProps) => {
             </div>
             <Image
               src={`${BUCKET_URL}/${previousPost.cover}`}
-              alt="todo"
+              alt={previousPost.title}
               fill
               {...parseToProps(previousPost.metadata)}
               sizes={
@@ -142,7 +142,7 @@ const Timeline = async (props: TimelineProps) => {
             </div>
             <Image
               src={`${BUCKET_URL}/${nextPost.cover}`}
-              alt="todo"
+              alt={nextPost.title}
               fill
               {...parseToProps(nextPost.metadata)}
               sizes={

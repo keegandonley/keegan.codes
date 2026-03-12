@@ -87,5 +87,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.3,
       };
     }) ?? []),
+    ...Array.from(
+      new Set(
+        Object.keys(Posts).flatMap((key) => (Posts as any)[key].tags ?? [])
+      )
+    ).map((tag) => ({
+      url: `https://keegan.codes/blog/tag/${encodeURIComponent(tag)}`,
+      lastModified: published,
+      priority: 0.5,
+    })),
   ];
 }

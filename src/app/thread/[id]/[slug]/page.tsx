@@ -62,6 +62,9 @@ export async function generateMetadata(
         creator: '@keegandonley',
         images: [`/api/og/thread?slug=${params.slug}&width=1200&height=630`],
       },
+      alternates: {
+        canonical: `${BASEURL}/blog/${params.slug}`,
+      },
     };
   }
 
