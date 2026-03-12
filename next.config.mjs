@@ -65,7 +65,7 @@ const nextConfig = {
         return {
           source: r[0],
           destination: r[1],
-          permanent: r[3] !== false,
+          permanent: r[2] !== undefined ? Boolean(r[2]) : true,
         };
       }),
     ];
