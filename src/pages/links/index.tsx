@@ -14,23 +14,32 @@ export default function Links() {
     <>
       <Head>
         <title>Keegan&apos;s Links</title>
-        <meta name="description" content="Links to useful resources, things I've worked on, ways to get in touch, and more." />
+        <meta
+          name="description"
+          content="Links to useful resources, things I've worked on, ways to get in touch, and more."
+        />
         <meta property="og:title" content="Keegan's Links" />
-        <meta property="og:description" content="Links to useful resources, things I've worked on, ways to get in touch, and more." />
+        <meta
+          property="og:description"
+          content="Links to useful resources, things I've worked on, ways to get in touch, and more."
+        />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:image" content={imageUrl} />
         <link rel="canonical" href={pageUrl} />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content={`${imageWidth}px`} />
-        <meta property="og:image:height" content={`${imageHeight}px`} />
+        <meta property="og:image:width" content={String(imageWidth)} />
+        <meta property="og:image:height" content={String(imageHeight)} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Keegan's Links" />
-        <meta name="twitter:description" content="Links to useful resources, things I've worked on, ways to get in touch, and more." />
+        <meta
+          name="twitter:description"
+          content="Links to useful resources, things I've worked on, ways to get in touch, and more."
+        />
         <meta name="twitter:creator" content="@keegandonley" />
         <meta name="twitter:image" content={imageUrl} />
         <meta name="twitter:image:type" content="image/png" />
-        <meta name="twitter:image:width" content={`${imageWidth}px`} />
-        <meta name="twitter:image:height" content={`${imageHeight}px`} />
+        <meta name="twitter:image:width" content={String(imageWidth)} />
+        <meta name="twitter:image:height" content={String(imageHeight)} />
       </Head>
       <div className="min-h-dvh bg-black font-mono text-white">
         <div className="flex flex-col items-center px-4 pb-24 pt-24">
