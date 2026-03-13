@@ -1,6 +1,6 @@
 import { getComponentForKey, getKey } from '@/app/library/util';
 import { getBookCoverMetadata, parseSource, parseToProps } from '@/util/image';
-import { BOOK_BUCKET_URL } from '@/util/r2';
+import { BOOK_BUCKET_URL } from '@/util/const';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { BottomFade } from '../BottomFade';
