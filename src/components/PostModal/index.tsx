@@ -51,7 +51,7 @@ export const PostModal = ({ slug, wordCount }: PostModalProps) => {
         {cover ? (
           <Image
             src={`${BUCKET_URL}/${cover}`}
-            alt="todo"
+            alt={title}
             fill
             priority
             {...parseToProps(metadata)}

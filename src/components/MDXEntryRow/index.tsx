@@ -106,7 +106,7 @@ export const MDXEntryRow = ({
             </div>
             <Image
               src={`${book ? BOOK_BUCKET_URL : BUCKET_URL}/${cover}`}
-              alt="todo"
+              alt={title ?? ''}
               fill
               sizes={`(max-width: 550px) 100vw, (max-width: 900px) 50vw, ${resultWidth}px`}
               // Rough guess at which images are above the fold
@@ -130,7 +130,7 @@ export const MDXEntryRow = ({
         )}
         {!filler ? (
           <div className={styles.content}>
-            <h1 className={merge(styles.h1, accentFont.className)}>{title}</h1>
+            <h2 className={merge(styles.h1, accentFont.className)}>{title}</h2>
             <p className={styles.description}>{description}</p>
             <div className={styles.metadata}>
               {slug && (showViewCount || fixedViewCount) && (
@@ -147,9 +147,9 @@ export const MDXEntryRow = ({
           </div>
         ) : loader ? (
           <div className={styles.content}>
-            <h1 className={merge(styles.h1, styles.placeholder)}>
+            <h2 className={merge(styles.h1, styles.placeholder)}>
               I&apos;ll be Right There
-            </h1>
+            </h2>
             <p className={styles.description}>
               Hang tight while this awesome blog post is downloaded!
               Shouldn&apos;t be long now...

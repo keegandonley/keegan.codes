@@ -114,5 +114,8 @@ export async function generateMetadata() {
       creator: '@keegandonley',
       images: [`/api/og/page?page=blog&width=1200&height=630`],
     },
+    alternates: {
+      canonical: `${BASEURL}/blog`,
+    },
   };
 }

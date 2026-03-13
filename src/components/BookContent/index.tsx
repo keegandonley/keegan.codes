@@ -49,7 +49,7 @@ export const BookContent = ({
           {cover ? (
             <Image
               src={`${BOOK_BUCKET_URL}/${headerImage}`}
-              alt="todo"
+              alt={title}
               fill
               priority
               {...parseToProps(coverMetadata)}
@@ -65,7 +65,7 @@ export const BookContent = ({
               {cover ? (
                 <Image
                   src={`${BOOK_BUCKET_URL}/${cover}`}
-                  alt="todo"
+                  alt={title}
                   fill
                   priority
                   {...parseToProps(metadata)}

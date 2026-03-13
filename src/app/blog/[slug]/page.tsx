@@ -10,6 +10,7 @@ import { getComponentForKey, getKey } from '../util';
 import wordCounts from '../../../post-word-counts.json';
 import { BASEURL, NAME } from '@/metadata';
 import { PostHeader } from '@/components/PostHeader';
+import { JsonLd } from '@/components/JsonLd';
 import dynamic from 'next/dynamic';
 import { Footer } from '@/components/Footer';
 
@@ -80,6 +81,9 @@ export async function generateMetadata(
         creator: '@keegandonley',
         images: [`/api/og/post?slug=${params.slug}&width=1200&height=630`],
       },
+      alternates: {
+        canonical: `${BASEURL}/blog/${params.slug}`,
+      },
     };
   }
 
@@ -110,13 +114,35 @@ export default async function BlogSlugPage(props: BlogPageProps) {
     notFound();
   }
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: found.title,
+    description: found.description,
+    author: {
+      '@type': 'Person',
+      name: 'Keegan Donley',
+      url: BASEURL,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Keegan Donley',
+      url: BASEURL,
+    },
+    url: `${BASEURL}/blog/${params.slug}`,
+    image: `${BASEURL}/api/og/post?slug=${params.slug}&width=1200&height=630`,
+    datePublished: found.published?.toISOString(),
+    dateModified: ((found as any).updated ?? found.published)?.toISOString(),
+  };
+
   return (
     <>
+      <JsonLd data={articleSchema} />
       <div className={styles.coverWrapper}>
         {cover ? (
           <Image
             src={`${BUCKET_URL}/${cover}`}
-            alt="todo"
+            alt={found.title}
             fill
             priority
             {...parseToProps(metadata)}

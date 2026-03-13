@@ -10,6 +10,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { Suspense } from 'react';
 import { BASEURL, DESCRIPTION, NAME } from '@/metadata';
 import MainNavigation from '@/components/MainNavigation';
+import { JsonLd } from '@/components/JsonLd';
 import { ModalBoundary } from '@/components/ModalBoundary';
 import ThemeProvider from './themeProvider';
 import dynamic from 'next/dynamic';
@@ -39,6 +40,27 @@ export default async function RootLayout({ children, postModal }: any) {
           theme === 'dark' && 'dark',
         )}
       >
+        <JsonLd data={{
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: NAME,
+          url: BASEURL,
+          sameAs: [
+            'https://twitter.com/keegandonley',
+            'https://github.com/keegandonley',
+            'https://www.linkedin.com/in/k10y/',
+            'https://bsky.app/profile/keegan.codes',
+          ],
+          jobTitle: 'Principal Front-End Engineer',
+          description: DESCRIPTION,
+        }} />
+        <JsonLd data={{
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: NAME,
+          url: BASEURL,
+          description: DESCRIPTION,
+        }} />
         <ThemeProvider>
           <LoadingProvider>
             {/* Display banner text from the edge config if an event is active */}
@@ -94,6 +116,9 @@ export async function generateMetadata() {
       description: DESCRIPTION,
       creator: '@keegandonley',
       images: [`/api/og/page?page=home&width=1200&height=630`],
+    },
+    alternates: {
+      canonical: BASEURL,
     },
   };
 }

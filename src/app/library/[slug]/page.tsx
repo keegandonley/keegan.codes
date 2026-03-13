@@ -44,6 +44,9 @@ export async function generateMetadata(
         creator: '@keegandonley',
         images: [`/api/og/book?slug=${params.slug}&width=1200&height=630`],
       },
+      alternates: {
+        canonical: `${BASEURL}/library/${params.slug}`,
+      },
     };
   }
 
