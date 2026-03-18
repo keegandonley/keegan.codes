@@ -11,7 +11,7 @@
 }
 
 .pillInner {
-  color: var(--theme-text);
+  color: white;
   padding: 0.2rem 0;
   font-size: 0.8rem;
   border-radius: 25px;
