@@ -15,7 +15,7 @@
     "analyze": "NODE_OPTIONS=--max-old-space-size=4096 ANALYZE=true pnpm build"
   },
   "dependencies": {
-    "@atproto/api": "^0.18.20",
+    "@atproto/api": "^0.19.3",
     "@aws-sdk/client-s3": "^3.982.0",
     "@fortawesome/fontawesome-svg-core": "6.7.2",
     "@fortawesome/free-brands-svg-icons": "6.7.2",
@@ -33,19 +33,19 @@
     "@sentry/nextjs": "^10.38.0",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^25.2.0",
+    "@types/node": "^25.5.0",
     "@types/react": "19.2.11",
     "@types/react-dom": "19.2.3",
-    "@upstash/redis": "^1.36.2",
-    "@vercel/analytics": "^1.6.1",
+    "@upstash/redis": "^1.37.0",
+    "@vercel/analytics": "^2.0.1",
     "@vercel/edge-config": "^1.4.3",
     "@vercel/functions": "^3.4.1",
-    "@vercel/og": "^0.8.6",
-    "@vercel/speed-insights": "^1.3.1",
+    "@vercel/og": "^0.11.1",
+    "@vercel/speed-insights": "^2.0.0",
     "autoprefixer": "^10.4.24",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.3",
     "eslint-config-next": "16.1.6",
-    "geist": "^1.5.1",
+    "geist": "^1.7.0",
     "next": "16.1.6",
     "postcss": "^8.5.6",
     "react": "19.2.4",
@@ -85,5 +85,5 @@
       ]
     }
   },
-  "packageManager": "pnpm@10.28.2+sha256.afa99b0b4b3d11c1dad2b472f9318ae2c78673829749ded527f89f09071479a7"
+  "packageManager": "pnpm@10.32.1+sha256.9b943b94bc8f55efb993aad8e44b538e6b091e60a9e4a944dcde869855f233e3"
 }
