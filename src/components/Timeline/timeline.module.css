@@ -6,12 +6,25 @@
   font-weight: 500;
 }
 
-.timelineWrapper {
+.pill {
   display: flex;
+}
+
+.pillInner {
+  color: var(--theme-text);
+  padding: 0.2rem 0;
+  font-size: 0.8rem;
+  border-radius: 25px;
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+.timelineWrapper {
+  display: grid;
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 2rem 6rem 2rem;
-  justify-content: space-between;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
 }
 
 .blurContainer {
@@ -31,7 +44,7 @@
 .post {
   display: flex;
   flex-direction: column;
-  max-width: 45%;
+  width: 100%;
   color: white;
   text-decoration: none;
   box-shadow: 0 0 0.5rem var(--shadow-color);

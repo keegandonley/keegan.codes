@@ -204,6 +204,71 @@ export const getRandomPostForSlug = async (
   return {};
 };
 
+export const getPostsForTags = async (
+  tags: string[],
+  origin?: string,
+): Promise<any> => {
+  const allPosts = Object.keys(Posts);
+  const posts = allPosts
+    .map((key) => {
+      const component = (Posts as any)[key] as Post;
+      return {
+        title: component.title,
+        slug: component.slug,
+        tags: component.tags ?? [],
+        description: component.description,
+        cover: component.cover,
+        published: component.published,
+        wordCount: (wordCounts as Record<string, number>)[component.slug],
+      };
+    })
+    .filter((post) => {
+      return post.tags.some((tag) => tags.includes(tag));
+    });
+
+  if (posts.length) {
+    const conn = connect(config);
+
+    const postsWithViews = await Promise.all(
+      posts.map(async (post) => {
+        const results = await conn.execute(
+          'SELECT views FROM post_page_views_aggregate WHERE slug = ?',
+          [post.slug],
+        );
+
+        const metadata = getImageMetadata(post.cover);
+
+        return {
+          ...post,
+          viewCount:
+            (results.rows[0] as Record<'views', number> | undefined)?.views ??
+            0,
+          metadata,
+          url: `${origin}/blog/${post.slug}`,
+        };
+      }),
+    );
+
+    const sortedByMatches = [...postsWithViews].sort((a: any, b: any) => {
+      const aMatches = a.tags.filter((tag: string) =>
+        tags.includes(tag),
+      ).length;
+      const bMatches = b.tags.filter((tag: string) =>
+        tags.includes(tag),
+      ).length;
+
+      if (aMatches === bMatches) {
+        // If they have the same number of matches, sort by publish date
+        return (b.published?.getTime() ?? 0) - (a.published?.getTime() ?? 0);
+      }
+
+      return bMatches - aMatches;
+    });
+
+    return sortedByMatches;
+  }
+};
+
 export const getPostForSlug = async (
   slug: string | null,
   origin?: string,
