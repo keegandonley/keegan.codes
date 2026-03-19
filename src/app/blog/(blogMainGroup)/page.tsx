@@ -11,13 +11,17 @@ import { getIsLikelyMobile } from '@/util/userAgent';
 import { get } from '@vercel/edge-config';
 import dynamic from 'next/dynamic';
 import { getImageMetadata } from '@/util/image';
+import { commentCountsEnabled } from '@/components/Comments/util';
 
 const DynamicDynamicPosts = dynamic(
   () => import('@/components/DynamicPosts/index'),
 );
 
 export default async function BlogPage() {
-  const postsPerPage = parseInt((await get('blogPageSize')) ?? '12');
+  const [postsPerPage, commentsEnabled] = await Promise.all([
+    parseInt((await get('blogPageSize')) ?? '12'),
+    commentCountsEnabled(),
+  ]);
 
   const allPosts = Object.keys(Posts);
   const posts = allPosts
@@ -55,6 +59,7 @@ export default async function BlogPage() {
               <MDXEntryRow
                 key={post.slug}
                 showViewCount
+                showCommentCount={commentsEnabled}
                 index={index}
                 isLikelyMobile={isLikelyMobile}
                 className={

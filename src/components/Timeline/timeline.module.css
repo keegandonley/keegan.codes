@@ -136,8 +136,10 @@
 
 @media only screen and (max-width: 700px) {
   .timelineWrapper {
+    display: flex;
     flex-direction: column;
-    row-gap: 2rem;
+    padding: 0 1.5rem;
+    gap: 1.5rem;
   }
 
   .post {

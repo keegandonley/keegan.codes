@@ -4,6 +4,10 @@ import wordCounts from '../../../post-word-counts.json';
 import { connect } from '@planetscale/database';
 import { get } from '@vercel/edge-config';
 import { getImageMetadata } from '@/util/image';
+import {
+  commentCountsEnabled,
+  getCommentCountForSlug,
+} from '@/components/Comments/util';
 
 const config = {
   host: process.env.host,
@@ -30,6 +34,7 @@ export async function GET(request: Request) {
         cover: component.cover,
         published: component.published,
         wordCount: (wordCounts as Record<string, number>)[component.slug],
+        bskyThreadId: component.bskyThreadId,
       };
     })
     .sort((a, b) => {
@@ -70,6 +75,20 @@ export async function GET(request: Request) {
     }),
   );
 
+  const enableComments = await commentCountsEnabled();
+
+  const commentCounts = await Promise.all(
+    result.map(async (post) => {
+      if (!post.bskyThreadId || !enableComments) {
+        return 0;
+      }
+
+      const commentCount = await getCommentCountForSlug(post.slug);
+
+      return commentCount;
+    }),
+  );
+
   console.log(
     'fetched blog page',
     pageNumber,
@@ -85,6 +104,7 @@ export async function GET(request: Request) {
         return {
           ...post,
           viewCount: pageViews[index]?.views ?? 0,
+          commentCount: commentCounts[index] ?? 0,
           imageMetadata: getImageMetadata(post.cover),
         };
       }),

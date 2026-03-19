@@ -13,6 +13,7 @@ import { getIsLikelyMobile } from '@/util/userAgent';
 import { getImageMetadata } from '@/util/image';
 import { Metadata } from 'next';
 import { BASEURL, NAME } from '@/metadata';
+import { commentCountsEnabled } from '@/components/Comments/util';
 
 interface BlogTagPageProps {
   params: Promise<{
@@ -20,7 +21,9 @@ interface BlogTagPageProps {
   }>;
 }
 
-export async function generateMetadata(props: BlogTagPageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: BlogTagPageProps,
+): Promise<Metadata> {
   const params = await props.params;
   const decodedTag = decodeURIComponent(params.tag);
   const title = `${decodedTag} · Blog · ${NAME}`;
@@ -36,12 +39,14 @@ export async function generateMetadata(props: BlogTagPageProps): Promise<Metadat
       siteName: NAME,
       locale: 'en_US',
       authors: ['Keegan Donley'],
-      images: [{
-        url: `/api/og/page?page=blog&width=1200&height=630`,
-        width: 1200,
-        height: 630,
-        type: 'image/png',
-      }],
+      images: [
+        {
+          url: `/api/og/page?page=blog&width=1200&height=630`,
+          width: 1200,
+          height: 630,
+          type: 'image/png',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
@@ -60,7 +65,11 @@ export default async function BlogTagPage(props: BlogTagPageProps) {
   const params = await props.params;
 
   const decodedTag = decodeURIComponent(params.tag);
-  const isLikelyMobile = await getIsLikelyMobile();
+
+  const [isLikelyMobile, commentsEnabled] = await Promise.all([
+    getIsLikelyMobile(),
+    commentCountsEnabled(),
+  ]);
 
   const posts = Object.keys(Posts)
     .map((key) => {
@@ -108,6 +117,7 @@ export default async function BlogTagPage(props: BlogTagPageProps) {
                   key={post.slug}
                   index={index}
                   showViewCount
+                  showCommentCount={commentsEnabled}
                   isLikelyMobile={isLikelyMobile}
                   {...post}
                   imageMetadata={metadata}

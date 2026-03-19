@@ -46,6 +46,7 @@ export default async function LibraryPage() {
                   index={index}
                   columns={4}
                   showViewCount={false}
+                  showCommentCount={false}
                   isLikelyMobile={isLikelyMobile}
                   {...post}
                   book
