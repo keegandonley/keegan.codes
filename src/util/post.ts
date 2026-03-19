@@ -267,6 +267,8 @@ export const getPostsForTags = async (
 
     return sortedByMatches;
   }
+
+  return [];
 };
 
 export const getPostForSlug = async (
