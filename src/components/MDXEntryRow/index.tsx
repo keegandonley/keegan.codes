@@ -6,7 +6,6 @@ import { BOOK_BUCKET_URL, BUCKET_URL } from '@/util/r2';
 import { parseToProps } from '@/util/image';
 import { merge } from '@/util/classNames';
 import { Date } from './components/Date';
-import { Tags } from './components/Tags';
 import { ReadingTime } from './components/ReadingTime';
 import dynamic from 'next/dynamic';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,6 +18,7 @@ const accentFont = localFont({
 });
 
 const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
+const DynamicCommentCount = dynamic(() => import('@/components/CommentCount'));
 
 interface MDXEntryRowProps extends ElementBaseProps {
   title?: string;
@@ -33,9 +33,11 @@ interface MDXEntryRowProps extends ElementBaseProps {
   book?: boolean;
   columns?: number;
   showViewCount?: boolean;
+  showCommentCount?: boolean;
   isLikelyMobile: boolean;
   className?: string;
   fixedViewCount?: number;
+  fixedCommentCount?: number;
   loader?: boolean;
   imageMetadata?: ImageMetadata;
 }
@@ -51,9 +53,11 @@ export const MDXEntryRow = ({
   book,
   columns = 3,
   showViewCount = false,
+  showCommentCount = false,
   isLikelyMobile,
   className,
   fixedViewCount,
+  fixedCommentCount,
   imageMetadata,
   filler,
   loader,
@@ -133,15 +137,26 @@ export const MDXEntryRow = ({
             <h2 className={merge(styles.h1, accentFont.className)}>{title}</h2>
             <p className={styles.description}>{description}</p>
             <div className={styles.metadata}>
-              {slug && (showViewCount || fixedViewCount) && (
-                <div>
-                  <DynamicViewCount
-                    slug={slug}
-                    className={styles.viewCount}
-                    fixedCount={fixedViewCount}
-                  />
-                </div>
-              )}
+              <div className={merge(styles.metadata, styles.badges)}>
+                {slug && (showViewCount || fixedViewCount) ? (
+                  <div>
+                    <DynamicViewCount
+                      slug={slug}
+                      className={styles.viewCount}
+                      fixedCount={fixedViewCount}
+                    />
+                  </div>
+                ) : null}
+                {slug && (showCommentCount || fixedCommentCount) ? (
+                  <div>
+                    <DynamicCommentCount
+                      slug={slug}
+                      className={styles.commentCount}
+                      fixedCount={fixedCommentCount}
+                    />
+                  </div>
+                ) : null}
+              </div>
               {published ? <Date date={published} /> : false}
             </div>
           </div>

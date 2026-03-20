@@ -314,3 +314,58 @@ export const getPostForSlug = async (
 
   return {};
 };
+
+export const getLatestPosts = async (
+  count: number,
+  origin?: string,
+): Promise<any> => {
+  const allPosts = Object.keys(Posts);
+  const posts = allPosts
+    .map((key) => {
+      const component = (Posts as any)[key] as Post;
+      return {
+        title: component.title,
+        slug: component.slug,
+        tags: component.tags ?? [],
+        description: component.description,
+        cover: component.cover,
+        published: component.published,
+        wordCount: (wordCounts as Record<string, number>)[component.slug],
+      };
+    })
+    .sort((a, b) => {
+      if (!a.published || !b.published) {
+        return 0;
+      }
+      return b.published.getTime() - a.published.getTime();
+    })
+    .slice(0, count);
+
+  if (posts.length) {
+    const conn = connect(config);
+
+    const postsWithViews = await Promise.all(
+      posts.map(async (post) => {
+        const results = await conn.execute(
+          'SELECT views FROM post_page_views_aggregate WHERE slug = ?',
+          [post.slug],
+        );
+
+        const metadata = getImageMetadata(post.cover);
+
+        return {
+          ...post,
+          viewCount:
+            (results.rows[0] as Record<'views', number> | undefined)?.views ??
+            0,
+          metadata,
+          url: `${origin}/blog/${post.slug}`,
+        };
+      }),
+    );
+
+    return postsWithViews;
+  }
+
+  return [];
+};

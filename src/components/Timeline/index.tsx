@@ -3,9 +3,11 @@ import styles from './timeline.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBackward,
+  faClock,
   faDice,
   faForward,
   faMagicWandSparkles,
+  IconDefinition,
 } from '@keegandonley/pro-solid-svg-icons';
 import { merge } from '@/util/classNames';
 import dynamic from 'next/dynamic';
@@ -14,6 +16,7 @@ import { BUCKET_URL } from '@/util/r2';
 import { parseToProps } from '@/util/image';
 import { formatDate } from '@/util/date';
 import {
+  getLatestPosts,
   getNextPostForSlug,
   getPostsForTags,
   getPreviousPostForSlug,
@@ -31,59 +34,14 @@ interface TimelineProps {
 const Timeline = async (props: TimelineProps) => {
   const { slug, tags } = props;
 
-  const [previousPost, nextPost, tagsPosts] = await Promise.all([
-    getPreviousPostForSlug(slug),
-    getNextPostForSlug(slug),
-    getPostsForTags(tags ?? []),
-  ]);
-
-  const isAlone = !previousPost?.slug || !nextPost?.slug;
-
-  let randomPost: any;
-
-  if (isAlone) {
-    randomPost = await getRandomPostForSlug(slug);
-  }
-
-  const remainder = randomPost ? (
-    <Link
-      className={merge(styles.post, isAlone ? styles.single : '')}
-      href={randomPost.slug}
-    >
-      <div className={styles.blurContainer} />
-      <div className={styles.pill}>
-        <div className={styles.pillInner}>
-          <FontAwesomeIcon icon={faDice} />
-          &nbsp;&nbsp;something random
-        </div>
-      </div>
-      <span className={merge(styles.postTitle, styles.random)}>
-        <h4>{randomPost.title}</h4>
-      </span>
-      <p>{randomPost.description}</p>
-      <div className={styles.metadataWrapper}>
-        <DynamicViewCount
-          slug={slug}
-          className={styles.viewCount}
-          fixedCount={randomPost.viewCount}
-        />
-        <p className={styles.metadata}>
-          {formatDate(new Date(randomPost.published))}
-        </p>
-      </div>
-      <Image
-        src={`${BUCKET_URL}/${randomPost.cover}`}
-        alt={randomPost.title}
-        fill
-        {...parseToProps(randomPost.metadata)}
-        sizes={
-          isAlone
-            ? `(max-width: 700px) 100vw, 50vw`
-            : `(max-width: 600px) 100vw, 50vw`
-        }
-      />
-    </Link>
-  ) : null;
+  const [previousPost, nextPost, tagsPosts, randomPost, latestPost] =
+    await Promise.all([
+      getPreviousPostForSlug(slug),
+      getNextPostForSlug(slug),
+      getPostsForTags(tags ?? []),
+      getRandomPostForSlug(slug),
+      getLatestPosts(1).then((posts) => posts[0]),
+    ]);
 
   const filteredTagsPosts = tagsPosts.filter(
     (p: Post) =>
@@ -93,137 +51,92 @@ const Timeline = async (props: TimelineProps) => {
       p.slug !== slug,
   );
 
+  const timelinePosts: (Post & { label: string; icon: IconDefinition } & {
+    viewCount: number;
+    metadata?: ImageMetadata;
+  })[] = [
+    ...filteredTagsPosts.slice(0, 2).map((p: any) => {
+      return { ...p, label: 'related post', icon: faMagicWandSparkles };
+    }),
+  ];
+
+  if (nextPost?.slug) {
+    timelinePosts.push({
+      ...nextPost,
+      label: 'newer post',
+      icon: faForward,
+    });
+  }
+
+  if (previousPost?.slug) {
+    timelinePosts.push({
+      ...previousPost,
+      label: 'older post',
+      icon: faBackward,
+    });
+  }
+
+  if (randomPost?.slug && timelinePosts.length < 4) {
+    timelinePosts.push({
+      ...randomPost,
+      label: 'something random',
+      icon: faDice,
+    });
+  }
+
+  if (latestPost?.slug && timelinePosts.length < 4) {
+    timelinePosts.unshift({
+      ...latestPost,
+      label: 'latest post',
+      icon: faClock,
+    });
+  }
+
   return (
     <>
       <h3 className={styles.heading}>Further Reading</h3>
       <div className={styles.timelineWrapper}>
-        {filteredTagsPosts
-          .slice(0, 2)
-          .map((p: Post & { viewCount: number; metadata?: ImageMetadata }) => {
-            return (
-              <Link
-                className={merge(
-                  styles.post,
-                  filteredTagsPosts.length === 1 ? styles.single : '',
-                )}
-                href={p.slug}
-                key={p.slug}
-              >
-                <div className={styles.blurContainer} />
-                <div className={styles.pill}>
-                  <div className={styles.pillInner}>
-                    <FontAwesomeIcon icon={faMagicWandSparkles} />
-                    &nbsp;&nbsp;related post
-                  </div>
+        {timelinePosts.map((p) => {
+          return (
+            <Link
+              className={merge(
+                styles.post,
+                filteredTagsPosts.length === 1 ? styles.single : '',
+              )}
+              href={p.slug}
+              key={p.slug}
+            >
+              <div className={styles.blurContainer} />
+              <div className={styles.pill}>
+                <div className={styles.pillInner}>
+                  <FontAwesomeIcon icon={p.icon} />
+                  &nbsp;&nbsp;{p.label}
                 </div>
-                <span className={styles.postTitle}>
-                  <h4>{p.title}</h4>
-                </span>
-                <p>{p.description}</p>
-                <div className={styles.metadataWrapper}>
-                  <DynamicViewCount
-                    slug={slug}
-                    className={styles.viewCount}
-                    fixedCount={p.viewCount}
-                  />
-                  <p className={styles.metadata}>
-                    {formatDate(new Date(p.published))}
-                  </p>
-                </div>
-                <Image
-                  src={`${BUCKET_URL}/${p.cover}`}
-                  alt={p.title}
-                  fill
-                  {...parseToProps(p.metadata)}
-                  sizes={
-                    isAlone
-                      ? `(max-width: 700px) 100vw, 50vw`
-                      : `(max-width: 600px) 100vw, 50vw`
-                  }
+              </div>
+              <span className={styles.postTitle}>
+                <h4>{p.title}</h4>
+              </span>
+              <p>{p.description}</p>
+              <div className={styles.metadataWrapper}>
+                <DynamicViewCount
+                  slug={slug}
+                  className={styles.viewCount}
+                  fixedCount={p.viewCount}
                 />
-              </Link>
-            );
-          })}
-
-        {nextPost?.slug ? (
-          <Link
-            className={merge(styles.post, isAlone ? styles.single : '')}
-            href={nextPost.slug}
-          >
-            <div className={styles.blurContainer} />
-            <div className={styles.pill}>
-              <div className={styles.pillInner}>
-                <FontAwesomeIcon icon={faForward} />
-                &nbsp;&nbsp;newer post
+                <p className={styles.metadata}>
+                  {formatDate(new Date(p.published))}
+                </p>
               </div>
-            </div>
-            <span className={styles.postTitle}>
-              <h4>{nextPost.title}</h4>
-            </span>
-            <p>{nextPost.description}</p>
-            <div className={styles.metadataWrapper}>
-              <DynamicViewCount
-                slug={slug}
-                className={styles.viewCount}
-                fixedCount={nextPost.viewCount}
+              <Image
+                src={`${BUCKET_URL}/${p.cover}`}
+                alt={p.title}
+                fill
+                {...parseToProps(p.metadata)}
+                sizes={`(max-width: 700px) 100vw, 50vw`}
               />
-              <p className={styles.metadata}>
-                {formatDate(new Date(nextPost.published))}
-              </p>
-            </div>
-            <Image
-              src={`${BUCKET_URL}/${nextPost.cover}`}
-              alt={nextPost.title}
-              fill
-              {...parseToProps(nextPost.metadata)}
-              sizes={
-                isAlone
-                  ? `(max-width: 700px) 100vw, 50vw`
-                  : `(max-width: 600px) 100vw, 50vw`
-              }
-            />
-          </Link>
-        ) : null}
-        {previousPost?.slug ? (
-          <Link
-            className={merge(styles.post, isAlone ? styles.single : '')}
-            href={previousPost.slug}
-          >
-            <div className={styles.blurContainer} />
-            <div className={styles.pill}>
-              <div className={styles.pillInner}>
-                <FontAwesomeIcon icon={faBackward} />
-                &nbsp;&nbsp;older post
-              </div>
-            </div>
-            <span className={styles.postTitle}>
-              <h4>{previousPost.title}</h4>
-            </span>
-            <p>{previousPost.description}</p>
-            <div className={styles.metadataWrapper}>
-              <DynamicViewCount
-                slug={slug}
-                className={styles.viewCount}
-                fixedCount={previousPost.viewCount}
-              />
-              <p className={styles.metadata}>
-                {formatDate(new Date(previousPost.published))}
-              </p>
-            </div>
-            <Image
-              src={`${BUCKET_URL}/${previousPost.cover}`}
-              alt={previousPost.title}
-              fill
-              {...parseToProps(previousPost.metadata)}
-              sizes={
-                isAlone
-                  ? `(max-width: 700px) 100vw, 50vw`
-                  : `(max-width: 600px) 100vw, 50vw`
-              }
-            />
-          </Link>
-        ) : null}
-        {remainder}
+            </Link>
+          );
+        })}
       </div>
     </>
   );
