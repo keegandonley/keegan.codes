@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from '@vercel/og';
 import { getComponentForKey, getKey } from '@/app/blog/util';
-import { BUCKET_URL } from '@/util/r2';
+import { BUCKET_URL } from '@/util/const';
 
 export const runtime = 'edge';
 
@@ -34,108 +34,106 @@ export async function GET(request: Request) {
   const found = getComponentForKey({ key });
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <img
+        src={`${BUCKET_URL}/${found.cover}`}
+        style={{
+          minWidth: '110%',
+          minHeight: '100%',
+          width: '110%',
+          filter: 'blur(3px)',
+        }}
+      />
       <div
         style={{
-          width: '100%',
-          height: '100%',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
           display: 'flex',
           flexDirection: 'column',
+          justifyContent: 'center',
+          backgroundImage: 'linear-gradient(45deg, black, transparent)',
+        }}
+      ></div>
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          background: 'rgba(0, 0, 0, 0.4)',
+          paddingBottom: '8%',
+        }}
+      >
+        <h1
+          style={{
+            paddingLeft: 20,
+            fontSize: 60,
+            paddingBottom: 0,
+            marginBottom: 0,
+            color: 'white',
+            padding: '5px 10% 0 10%',
+            fontWeight: 'bold',
+            fontFamily: '"Raleway"',
+          }}
+        >
+          {found.title}
+        </h1>
+      </div>
+      <div
+        style={{
+          padding: '120px 0 0 0',
+          display: 'flex',
+          position: 'absolute',
+          left: '10%',
+          bottom: '10%',
+          alignItems: 'center',
         }}
       >
         <img
-          src={`${BUCKET_URL}/${found.cover}`}
           style={{
-            minWidth: '110%',
-            minHeight: '100%',
-            width: '110%',
-            filter: 'blur(3px)',
+            width: 50,
+            height: 50,
+            borderRadius: 50,
+            marginRight: 20,
+            boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.6)',
+            border: '2px solid white',
           }}
+          src={`${BUCKET_URL}/avatar.jpg`}
         />
         <div
           style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
             display: 'flex',
+            color: 'white',
             flexDirection: 'column',
-            justifyContent: 'center',
-            backgroundImage: 'linear-gradient(45deg, black, transparent)',
-          }}
-        ></div>
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            background: 'rgba(0, 0, 0, 0.4)',
-            paddingBottom: '8%',
+            fontSize: 20,
           }}
         >
-          <h1
+          <span>Keegan Donley</span>
+          <span
             style={{
-              paddingLeft: 20,
-              fontSize: 60,
-              paddingBottom: 0,
-              marginBottom: 0,
-              color: 'white',
-              padding: '5px 10% 0 10%',
-              fontWeight: 'bold',
-              fontFamily: '"Raleway"',
+              fontFamily: '"OswaldLight"',
+              color: 'lightGray',
             }}
           >
-            {found.title}
-          </h1>
-        </div>
-        <div
-          style={{
-            padding: '120px 0 0 0',
-            display: 'flex',
-            position: 'absolute',
-            left: '10%',
-            bottom: '10%',
-            alignItems: 'center',
-          }}
-        >
-          <img
-            style={{
-              width: 50,
-              height: 50,
-              borderRadius: 50,
-              marginRight: 20,
-              boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.6)',
-              border: '2px solid white',
-            }}
-            src={`${BUCKET_URL}/avatar.jpg`}
-          />
-          <div
-            style={{
-              display: 'flex',
-              color: 'white',
-              flexDirection: 'column',
-              fontSize: 20,
-            }}
-          >
-            <span>Keegan Donley</span>
-            <span
-              style={{
-                fontFamily: '"OswaldLight"',
-                color: 'lightGray',
-              }}
-            >
-              keegan.codes
-            </span>
-          </div>
+            keegan.codes
+          </span>
         </div>
       </div>
-    ),
+    </div>,
     {
       width: parseInt(width),
       height: parseInt(height),

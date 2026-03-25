@@ -2,7 +2,7 @@ import { Avatar } from '@/components/Avatar';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Hr } from '@/components/Post/Hr';
-import { BUCKET_URL } from '@/util/r2';
+import { BUCKET_URL } from '@/util/const';
 import '@/tw.css';
 import { merge } from '@keegancodes/foundations';
 import styles from '../../pageStyles/render25/render.module.css';
@@ -55,10 +55,10 @@ export default function Render25() {
             }}
             priority
           />
-          <div className="text-render-25-primary z-50 flex gap-x-6 pt-6">
+          <div className="z-50 flex gap-x-6 pt-6 text-render-25-primary">
             <Link
               href="/linkedin"
-              className="hover:text-render-25-accent transition-colors"
+              className="transition-colors hover:text-render-25-accent"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@ export default function Render25() {
             </Link>
             <Link
               href="/bluesky"
-              className="hover:text-render-25-accent transition-colors"
+              className="transition-colors hover:text-render-25-accent"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +91,7 @@ export default function Render25() {
         <span className="z-50">
           <p
             className={merge(
-              'text-render-25-accent px-12 pt-8 text-center text-5xl font-extrabold leading-[4rem]',
+              'px-12 pt-8 text-center text-5xl font-extrabold leading-[4rem] text-render-25-accent',
               roboto.className,
               styles.textShadowSmall,
             )}
@@ -100,7 +100,7 @@ export default function Render25() {
           </p>
           <p
             className={merge(
-              'text-render-25-accent text-shadow-sm max-w-[800px] px-6 pt-4 text-center text-2xl leading-[2.2rem]',
+              'text-shadow-sm max-w-[800px] px-6 pt-4 text-center text-2xl leading-[2.2rem] text-render-25-accent',
               rubik.className,
               styles.textShadowSmall,
             )}
@@ -111,7 +111,7 @@ export default function Render25() {
           </p>
           <p
             className={merge(
-              'text-render-25-accent text-shadow-sm max-w-[800px] px-6 pt-12 text-center text-2xl leading-[2.2rem]',
+              'text-shadow-sm max-w-[800px] px-6 pt-12 text-center text-2xl leading-[2.2rem] text-render-25-accent',
               rubik.className,
               styles.textShadowSmall,
             )}
@@ -130,7 +130,7 @@ export default function Render25() {
         <div className="motion-safe:animation-delay-400 z-50 grid w-full max-w-[1100px] grid-cols-1 grid-rows-3 gap-4 px-12 pb-12 pt-12 motion-safe:animate-fadeIn motion-safe:opacity-0 sm:grid-cols-3 sm:grid-rows-1">
           <Link
             href="/blog/what-is-a-product-focused-software-engineer?source=render24"
-            className="text-render-25-accent bg-render-25-burst-1 overflow-hidden rounded-lg text-left shadow-xl"
+            className="overflow-hidden rounded-lg bg-render-25-burst-1 text-left text-render-25-accent shadow-xl"
           >
             <div className="h-36">
               <Image
@@ -159,7 +159,7 @@ export default function Render25() {
           </Link>
           <Link
             href="/blog/ai-app-in-72-hours?source=render24"
-            className="text-render-25-accent bg-render-25-burst-1 overflow-hidden rounded-lg text-left shadow-xl"
+            className="overflow-hidden rounded-lg bg-render-25-burst-1 text-left text-render-25-accent shadow-xl"
           >
             <div className="h-36">
               <Image
@@ -188,7 +188,7 @@ export default function Render25() {
           </Link>
           <Link
             href="/blog/using-javascript-variables-in-tailwind?source=render24"
-            className="text-render-25-accent bg-render-25-burst-1 overflow-hidden rounded-lg text-left shadow-xl"
+            className="overflow-hidden rounded-lg bg-render-25-burst-1 text-left text-render-25-accent shadow-xl"
           >
             <div className="h-36">
               <Image

@@ -4,7 +4,7 @@ import linkedIn from '@/images/linkedin-sasw.svg';
 import X from '@/images/x-twitter-sasw.svg';
 import Image from 'next/image';
 import { Hr } from '@/components/Post/Hr';
-import { BUCKET_URL } from '@/util/r2';
+import { BUCKET_URL } from '@/util/const';
 import '@/tw.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { merge } from '@keegancodes/foundations';
@@ -31,7 +31,7 @@ export default function SASW24() {
 
   return (
     <>
-      <div className="bg-sasw-primary flex min-h-dvh flex-col items-center justify-start pt-20">
+      <div className="flex min-h-dvh flex-col items-center justify-start bg-sasw-primary pt-20">
         <div
           className={merge(
             rubik.className,

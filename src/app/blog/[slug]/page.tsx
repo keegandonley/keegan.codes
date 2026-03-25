@@ -3,7 +3,7 @@ import '../../syntax-theme.css';
 import { BottomFade } from '@/components/BottomFade';
 import Image from 'next/image';
 import { getImageMetadata, parseSource, parseToProps } from '@/util/image';
-import { BUCKET_URL } from '@/util/r2';
+import { BUCKET_URL } from '@/util/const';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getComponentForKey, getKey } from '../util';
