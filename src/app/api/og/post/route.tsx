@@ -24,17 +24,9 @@ export async function GET(request: Request) {
     return new Response('No slug provided', { status: 400 });
   }
 
-  const url = new URL(request.url);
-
   let post;
 
   try {
-    console.log(
-      'Getting post metadata for slug',
-      slug,
-      'at',
-      `https://keegan.codes/api/posts/single?slug=${slug}`,
-    );
     post = await fetch(
       `https://keegan.codes/api/posts/single?slug=${slug}`,
     ).then((res) => res.json());
