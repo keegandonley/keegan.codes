@@ -53,6 +53,7 @@ import * as ProductFocused from './product-focused-software-engineer.mdx';
 import * as LinesOfCodeProductivity from './lines-of-code-productivity-metric.mdx';
 import * as Update2026 from './an-update-for-2026.mdx';
 import * as ClaudeDevTools from './claude-code-developer-tools.mdx';
+import * as HypothesisMobile from './introducing-hypothesis-mobile-app.mdx';
 
 const posts = {
   Welcome,
@@ -110,6 +111,7 @@ const posts = {
   LinesOfCodeProductivity,
   Update2026,
   ClaudeDevTools,
+  // HypothesisMobile,
 };
 
 export default posts;
