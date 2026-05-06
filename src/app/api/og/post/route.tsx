@@ -29,6 +29,12 @@ export async function GET(request: Request) {
   let post;
 
   try {
+    console.log(
+      'Getting post metadata for slug',
+      slug,
+      'at',
+      `${url.origin}/api/posts/single?slug=${slug}`,
+    );
     post = await fetch(`${url.origin}/api/posts/single?slug=${slug}`).then(
       (res) => res.json(),
     );
