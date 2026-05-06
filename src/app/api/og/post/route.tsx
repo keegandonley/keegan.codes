@@ -33,11 +33,11 @@ export async function GET(request: Request) {
       'Getting post metadata for slug',
       slug,
       'at',
-      `${url.origin}/api/posts/single?slug=${slug}`,
+      `https://keegan.codes/api/posts/single?slug=${slug}`,
     );
-    post = await fetch(`${url.origin}/api/posts/single?slug=${slug}`).then(
-      (res) => res.json(),
-    );
+    post = await fetch(
+      `https://keegan.codes/api/posts/single?slug=${slug}`,
+    ).then((res) => res.json());
   } catch (ex) {
     console.error('Error fetching post for slug', slug, 'at', request.url, ex);
     return new Response('Error fetching post data', { status: 500 });
