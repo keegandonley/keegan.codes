@@ -111,7 +111,7 @@ const posts = {
   LinesOfCodeProductivity,
   Update2026,
   ClaudeDevTools,
-  // HypothesisMobile,
+  HypothesisMobile,
 };
 
 export default posts;

@@ -36,10 +36,19 @@ module.exports = [
   ['/reddit', 'https://www.reddit.com/user/keegancodes'],
   ['/strava', 'https://www.strava.com/athletes/17351940'],
   ['/consulting', 'https://fantastical.app/keegancodes/consultation', false],
-  ['/paid-consultation', 'https://fantastical.app/keegancodes/consultation', false],
+  [
+    '/paid-consultation',
+    'https://fantastical.app/keegancodes/consultation',
+    false,
+  ],
   ['/1-1', 'https://fantastical.app/keegancodes/1-1-chat', false],
   [
     '/zwift',
     'https://www.zwift.com/athlete/ba93b27d-b57e-4aeb-9384-54c5870a3a57',
+  ],
+  [
+    '/hypothesis-app-store',
+    'https://apps.apple.com/us/app/hypothesis-sh/id6764898246',
+    false,
   ],
 ];
