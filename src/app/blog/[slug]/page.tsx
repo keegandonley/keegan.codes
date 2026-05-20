@@ -163,6 +163,7 @@ export default async function BlogSlugPage(props: BlogPageProps) {
               title={title}
               location="blog"
               wordCount={wordCount}
+              published={found.published}
             />
           </span>
           <div className={styles.bodyText}>

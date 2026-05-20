@@ -72,3 +72,14 @@
   padding-top: 1rem;
   max-width: 200px;
 }
+
+.socials {
+  margin: 0 auto;
+  padding-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.socials a {
+  color: var(--theme-inverted-text);
+}

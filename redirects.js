@@ -51,4 +51,5 @@ module.exports = [
     'https://apps.apple.com/us/app/hypothesis-sh/id6764898246',
     false,
   ],
+  ['/repo', 'https://github.com/keegandonley/keegan.codes', false],
 ];

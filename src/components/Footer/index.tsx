@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { Avatar } from '../Avatar';
 import { TotalViews } from '../TotalViews';
 import { CountryViews } from '../CountryViews';
-import { Hr } from '../Post/Hr';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBluesky, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 interface FooterProps {
   className?: string;
@@ -41,6 +42,14 @@ export const Footer = ({ className, children }: FooterProps) => {
           </span>
           <CountryViews />
         </div>
+      </div>
+      <div className={styles.socials}>
+        <Link href="/bluesky" target="_blank">
+          <FontAwesomeIcon icon={faBluesky} />
+        </Link>
+        <Link href="/repo" target="_blank">
+          <FontAwesomeIcon icon={faGithub} />
+        </Link>
       </div>
       <div className={styles.copyright}>&copy; 2026 by Keegan Donley</div>
     </footer>
