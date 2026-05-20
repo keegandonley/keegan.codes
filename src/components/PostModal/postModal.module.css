@@ -35,3 +35,14 @@
 .comments {
   padding-bottom: 20px;
 }
+
+.socials {
+  justify-content: center;
+  padding-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.socials a {
+  color: var(--theme-text);
+}
