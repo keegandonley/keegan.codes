@@ -46,8 +46,9 @@ const mapping: Mapping = {
           url: 'https://thirsty.bot',
         },
         {
-          title: 'DALL·E 3 UI',
-          description: "The missing UI for OpenAI's DALL·E 3",
+          title: 'OpenAI Image Generator',
+          description:
+            "A UI for using OpenAI's image generation models with your own API keys",
           url: 'https://dalle.keegan.codes',
         },
         {

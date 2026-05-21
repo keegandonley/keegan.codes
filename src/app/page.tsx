@@ -5,7 +5,6 @@ import { Paragraph } from '@/components/Paragraph';
 import Link from 'next/link';
 import styles from './home.module.css';
 import { postCount } from '../post-count';
-// import { postCount as bookCount } from '../book-count';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@keegandonley/pro-solid-svg-icons';
 import { Footer } from '@/components/Footer';
@@ -22,7 +21,6 @@ const DynamicBlogPreview = dynamic(() => import('@/components/BlogPreview'), {
 });
 
 const accentFont = localFont({
-  // src: './fonts/Domine.ttf',
   src: './fonts/InstrumentSerif.ttf',
 });
 
@@ -114,14 +112,6 @@ export default function Home() {
           electronics, connected fitness and travel. Come join me and follow
           along as I work to build a better web!
         </Paragraph>
-        {/* <Paragraph className={styles.paragraph}>
-          I also have {bookCount} books on{' '}
-          <Link href="/library">
-            <strong>my reading list</strong>
-          </Link>
-          . Books I read range anywhere from business and software to fantasy
-          and fiction.
-        </Paragraph> */}
       </section>
       <Footer />
     </>
