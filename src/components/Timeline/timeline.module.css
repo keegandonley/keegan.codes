@@ -25,6 +25,7 @@
   margin: 0 auto;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
+  padding: 0 2rem;
 }
 
 .blurContainer {
