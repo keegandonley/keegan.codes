@@ -2,7 +2,6 @@ import { injectVariables, merge } from '@/util/classNames';
 import imageStyles from './image.module.css';
 import Image from 'next/image';
 import { getImageMetadata, parseSource } from '@/util/image';
-import { useId } from 'react';
 import { PopoverClient } from './PopoverClient';
 import { BUCKET_URL } from '@/util/const';
 import { TriggerClient } from './TriggerClient';
@@ -26,8 +25,6 @@ export const Img = ({ src, className, alt }: any) => {
   const isLimited = flags.includes('limit');
 
   const shouldShowPopover = !shouldHidePopover && !isLimited && !isTableMode;
-
-  const popoverId = useId();
 
   if (metadata) {
     const imgElement = (
