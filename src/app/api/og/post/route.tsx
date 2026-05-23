@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from '@vercel/og';
-import { getComponentForKey, getKey } from '@/app/blog/util';
 import { BUCKET_URL } from '@/util/const';
 
 export const runtime = 'edge';
@@ -25,13 +24,21 @@ export async function GET(request: Request) {
     return new Response('No slug provided', { status: 400 });
   }
 
-  const key = getKey({ slug });
-  if (!key) {
+  let post;
+
+  try {
+    post = await fetch(
+      `https://keegan.codes/api/posts/single?slug=${slug}`,
+    ).then((res) => res.json());
+  } catch (ex) {
+    console.error('Error fetching post for slug', slug, 'at', request.url, ex);
+    return new Response('Error fetching post data', { status: 500 });
+  }
+
+  if (!post.slug) {
     console.error('Count not find the post for', slug, 'at', request.url);
     return new Response('No post found', { status: 404 });
   }
-
-  const found = getComponentForKey({ key });
 
   return new ImageResponse(
     <div
@@ -43,7 +50,7 @@ export async function GET(request: Request) {
       }}
     >
       <img
-        src={`${BUCKET_URL}/${found.cover}`}
+        src={`${BUCKET_URL}/${post.cover}`}
         style={{
           minWidth: '110%',
           minHeight: '100%',
@@ -90,7 +97,7 @@ export async function GET(request: Request) {
             fontFamily: '"Raleway"',
           }}
         >
-          {found.title}
+          {post.title}
         </h1>
       </div>
       <div

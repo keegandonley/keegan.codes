@@ -4,7 +4,7 @@ import { ReadingTime } from '../MDXEntryRow/components/ReadingTime';
 import { H1 } from '../Post/Heading/H1';
 import styles from './postHeader.module.css';
 import dynamic from 'next/dynamic';
-import { merge } from '@keegancodes/foundations';
+import { formatDate, merge } from '@keegancodes/foundations';
 
 const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
 
@@ -18,6 +18,7 @@ interface PostHeaderProps {
   slug: string;
   location: 'modal' | 'blog';
   wordCount: number;
+  published: Date;
 }
 
 export const PostHeader = ({
@@ -25,10 +26,16 @@ export const PostHeader = ({
   slug,
   location,
   wordCount,
+  published,
 }: PostHeaderProps) => {
   return (
     <div className={styles.topSection}>
-      <H1 className={merge(styles.title, accentFont.className)}>{title}</H1>
+      <div>
+        <H1 className={merge(styles.title, accentFont.className)}>{title}</H1>
+        <span className={styles.published}>
+          Published {formatDate(published)}
+        </span>
+      </div>
       <div className={styles.metadata}>
         <div className={styles.cheersWrapper}>
           <Cheers slug={slug} location={location} />

@@ -163,7 +163,12 @@
   justify-content: space-between;
 }
 
-.viewCount {
+.badges {
+  gap: 1rem;
+}
+
+.viewCount,
+.commentCount {
   font-size: 0.8rem;
   margin-right: auto;
   display: flex;
@@ -173,7 +178,8 @@
   width: 100%;
 }
 
-.viewCount svg {
+.viewCount svg,
+.commentCount svg {
   opacity: 0.5;
 }
 

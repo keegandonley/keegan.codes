@@ -46,26 +46,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
       };
     }),
-    ...Object.keys(Posts)
-      .filter((key) => {
-        const slug = (Posts as any)[key].slug;
-        const threadId = (Posts as any)[key].bskyThreadId;
-
-        if (!slug || !threadId) {
-          return false;
-        }
-
-        return true;
-      })
-      .map((key) => {
-        return {
-          url: `https://keegan.codes/thread/${(Posts as any)[key].bskyThreadId}/${(Posts as any)[key].slug}`,
-          lastModified:
-            (Posts as any)[key].updated || (Posts as any)[key].published,
-          priority: 0.6,
-        };
-      })
-      .filter(Boolean),
     {
       url: 'https://keegan.codes/library',
       lastModified: published,
@@ -87,5 +67,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.3,
       };
     }) ?? []),
+    ...Array.from(
+      new Set(
+        Object.keys(Posts).flatMap((key) => (Posts as any)[key].tags ?? [])
+      )
+    ).map((tag) => ({
+      url: `https://keegan.codes/blog/tag/${encodeURIComponent(tag)}`,
+      lastModified: published,
+      priority: 0.5,
+    })),
   ];
 }

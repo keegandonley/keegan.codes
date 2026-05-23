@@ -6,7 +6,6 @@ import { BOOK_BUCKET_URL, BUCKET_URL } from '@/util/const';
 import { parseToProps } from '@/util/image';
 import { merge } from '@/util/classNames';
 import { Date } from './components/Date';
-import { Tags } from './components/Tags';
 import { ReadingTime } from './components/ReadingTime';
 import dynamic from 'next/dynamic';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,6 +18,7 @@ const accentFont = localFont({
 });
 
 const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
+const DynamicCommentCount = dynamic(() => import('@/components/CommentCount'));
 
 interface MDXEntryRowProps extends ElementBaseProps {
   title?: string;
@@ -33,9 +33,11 @@ interface MDXEntryRowProps extends ElementBaseProps {
   book?: boolean;
   columns?: number;
   showViewCount?: boolean;
+  showCommentCount?: boolean;
   isLikelyMobile: boolean;
   className?: string;
   fixedViewCount?: number;
+  fixedCommentCount?: number;
   loader?: boolean;
   imageMetadata?: ImageMetadata;
 }
@@ -51,9 +53,11 @@ export const MDXEntryRow = ({
   book,
   columns = 3,
   showViewCount = false,
+  showCommentCount = false,
   isLikelyMobile,
   className,
   fixedViewCount,
+  fixedCommentCount,
   imageMetadata,
   filler,
   loader,
@@ -106,7 +110,7 @@ export const MDXEntryRow = ({
             </div>
             <Image
               src={`${book ? BOOK_BUCKET_URL : BUCKET_URL}/${cover}`}
-              alt="todo"
+              alt={title ?? ''}
               fill
               sizes={`(max-width: 550px) 100vw, (max-width: 900px) 50vw, ${resultWidth}px`}
               // Rough guess at which images are above the fold
@@ -130,26 +134,37 @@ export const MDXEntryRow = ({
         )}
         {!filler ? (
           <div className={styles.content}>
-            <h1 className={merge(styles.h1, accentFont.className)}>{title}</h1>
+            <h2 className={merge(styles.h1, accentFont.className)}>{title}</h2>
             <p className={styles.description}>{description}</p>
             <div className={styles.metadata}>
-              {slug && (showViewCount || fixedViewCount) && (
-                <div>
-                  <DynamicViewCount
-                    slug={slug}
-                    className={styles.viewCount}
-                    fixedCount={fixedViewCount}
-                  />
-                </div>
-              )}
+              <div className={merge(styles.metadata, styles.badges)}>
+                {slug && (showViewCount || fixedViewCount) ? (
+                  <div>
+                    <DynamicViewCount
+                      slug={slug}
+                      className={styles.viewCount}
+                      fixedCount={fixedViewCount}
+                    />
+                  </div>
+                ) : null}
+                {slug && (showCommentCount || fixedCommentCount) ? (
+                  <div>
+                    <DynamicCommentCount
+                      slug={slug}
+                      className={styles.commentCount}
+                      fixedCount={fixedCommentCount}
+                    />
+                  </div>
+                ) : null}
+              </div>
               {published ? <Date date={published} /> : false}
             </div>
           </div>
         ) : loader ? (
           <div className={styles.content}>
-            <h1 className={merge(styles.h1, styles.placeholder)}>
+            <h2 className={merge(styles.h1, styles.placeholder)}>
               I&apos;ll be Right There
-            </h1>
+            </h2>
             <p className={styles.description}>
               Hang tight while this awesome blog post is downloaded!
               Shouldn&apos;t be long now...

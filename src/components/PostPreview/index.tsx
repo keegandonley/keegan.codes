@@ -52,7 +52,7 @@ export const PostPreviewRenderer = async (props: PostPreviewProps) => {
         </div>
         <Image
           src={`${BUCKET_URL}/${post.cover}`}
-          alt="todo"
+          alt={post.title}
           fill
           {...parseToProps(post.metadata)}
         />

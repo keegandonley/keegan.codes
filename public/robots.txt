@@ -1,3 +1,8 @@
 # Allow all crawlers
 User-agent: *
 Allow: /
+Disallow: /dev/
+Disallow: /routing-error
+Disallow: /frame/
+
+Sitemap: https://keegan.codes/sitemap.xml

@@ -46,14 +46,21 @@ const mapping: Mapping = {
           url: 'https://thirsty.bot',
         },
         {
-          title: 'DALL·E 3 UI',
-          description: "The missing UI for OpenAI's DALL·E 3",
+          title: 'OpenAI Image Generator',
+          description:
+            "A UI for using OpenAI's image generation models with your own API keys",
           url: 'https://dalle.keegan.codes',
         },
         {
           title: 'Zwift Workout Builder',
           description: 'A better UI for building cycling workouts for Zwift',
           url: 'https://workout.keegan.codes/',
+        },
+        {
+          title: 'Hypothesis',
+          description:
+            'A set of tools for web development and testing, including iframes, webhooks, and cross-domain behaviors.',
+          url: 'https://hypothesis.sh',
         },
       ],
     },

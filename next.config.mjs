@@ -48,13 +48,24 @@ const nextConfig = {
     qualities: [75, 80],
   },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  headers: async () => [
+    {
+      source: '/dev/iframe-proxy',
+      headers: [
+        {
+          key: 'Content-Security-Policy',
+          value: 'frame-src *;',
+        },
+      ],
+    },
+  ],
   redirects: async () => {
     return [
       ...redirects.map((r) => {
         return {
           source: r[0],
           destination: r[1],
-          permanent: Boolean(r[3]) ?? true,
+          permanent: r[2] !== undefined ? Boolean(r[2]) : true,
         };
       }),
     ];

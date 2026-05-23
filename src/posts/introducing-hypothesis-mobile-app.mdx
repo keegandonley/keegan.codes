@@ -1,0 +1,142 @@
+import { IFrame } from '@/components/IFrame';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVial } from '@keegandonley/pro-solid-svg-icons';
+import { faAppStore } from '@fortawesome/free-brands-svg-icons';
+
+export const title = 'Introducing the Companion Mobile App for Hypothesis.sh';
+export const slug = 'introducing-the-hypothesis-mobile-app';
+export const tags = [
+  'javascript',
+  'react',
+  'native',
+  'mobile',
+  'ios',
+  'ai',
+  'developer-tools',
+  'claude',
+  'claude-code',
+  'app',
+  'native',
+];
+export const description =
+  'I built a free mobile companion app for hypothesis.sh, a suite of online tools and experiments for developers.';
+export const cover = 'hypothesis-cover.png';
+export const published = new Date(2026, 4, 7);
+export const shortCodes = ['hypothesis-mobile'];
+export const bskyThreadId = '3mlccbzi23c22';
+
+<div style={{ display: 'flex', paddingBottom: '2rem' }}>
+  <a
+    href="https://keegan.codes/hypothesis-app-store"
+    target="_blank"
+    style={{
+      marginLeft: 'auto',
+    }}
+  >
+    <img
+      src="https://static.donley.xyz/appstore-white.svg"
+      alt="Download on the App Store"
+      style={{
+        height: '54px',
+      }}
+      height="54"
+    />
+  </a>
+</div>
+
+I recently [wrote a bit about some developer tools that I worked on](https://keegan.codes/blog/claude-code-developer-tools) as a test of Claude Code's capabilities and limits.
+These tools ended up being extremely useful to me and I've continued to expand the functionality of the site since I wrote that post. At the time of
+writing this one, there are 39 tools, as well as 10 "experiments" for testing out ideas. Check out [hypothesis.sh](https://hypothesis.sh) for all the new free tools, as well as the
+new [work mode](https://hypothesis.sh/work) designed to be a companion during projects with saved state.
+
+## Work Mode Demo
+
+Try out the new work mode with multiple tabs and saved state! Building this interaction pattern was the beginning of my thought process that eventually ended with a mobile app.
+
+<IFrame url="https://hypothesis.sh/work" />
+
+## Mobile App Features
+
+The companion mobile app, [available now on the app store for free](https://keegan.codes/hypothesis-app-store), expands on the functionalities of the web application and work mode. It's currently available for iOS on iPhone and iPad, with Android support coming in the near term.
+
+### Push Notifications
+
+This was my primary desire: a way to send myself push notifications on demand. The mobile app handles push notifications sent to your registered device ID via a webhook. This
+allows you to build the app into all sorts of workflows where you want to be notified of activities. I've set mine up to receive notifications from Vercel for deployment statuses, as well
+as notifications from Strava via [Strautomator](https://strautomator.com/) and agentic workflows in [Kizen](https://kizen.com).
+
+Below is the push test tool, where you can send a one-off notification, or build the payload you want and copy it as either a GET or POST webhook.
+
+<IFrame url="https://hypothesis.sh/push-test" />
+
+### Persistent Webhook Session
+
+The [webhook experiment](https://hypothesis.sh/webhook?s=63731974-d2ad-4f7f-9c00-f4e10647411f) is ephemeral - it shuts down and deletes events after a period of inactivity or if the browser
+session is idle for too long. This is great for simple web-based testing and verification or short-term projects, but I wanted a persistent webhook URL that I could keep coming back to, and events that would stick around.
+
+The mobile app enables this by establishing a single long-lived session associated to your device ID. This session is never deleted or made unavailable,
+so you can trust it will continue to receive test events. You'll also receive a push notification when the webhook is called!
+
+These sessions are also secure by nature, whereas the web-based ephemeral sessions are completely open to anyone who knows the session UUID. Your persistent session can only be modified or viewed by you.
+For sessions established from the mobile app, events can still be sent by anyone with the URL, but the ability to view the previous events is limited to only the device that owns the session.
+
+### Tool State
+
+Much like the earlier mentioned [work mode](https://hypothesis.sh/work), the mobile app supports saved state and multiple instances of the same tool. This means if you have, for example,
+a regular expression you want to frequently return to and test, or some formatted JSON blobs you want to revisit, the mobile app allows you to save those instances. I've also been exploring iCloud
+sync for a future update, to keep tool status synced across devices.
+
+### Pocket-Sized References and Testing
+
+While using the TestFlight beta for the last week, I've found myself reaching for the mobile app more than the web app. A lot of the content and tools are the same,
+but something about it being so readily available in my pocket makes it that much easier to use! It runs really nicely on iPads as well, which has been nice for sitting
+on my desk at the office.
+
+<div
+    style={{
+        display: "flex",
+        justifyContent: "space-around",
+        fontSize: "2rem",
+        paddingTop: '55px',
+        paddingBottom: '35px',
+        gap: '1rem',
+        opacity: "0.8"
+    }}
+>
+
+    <FontAwesomeIcon icon={faAppStore} />
+
+    <FontAwesomeIcon icon={faVial} />
+
+    <FontAwesomeIcon icon={faAppStore} />
+
+    <FontAwesomeIcon icon={faVial} />
+
+    <FontAwesomeIcon icon={faAppStore} />
+
+</div>
+
+This is the first mobile app I've worked on in many years, since I worked on a cross-platform mobile app at Pinpoint. It was a fun project and I plan to
+continue expanding the features and tools! Please check it out on [the App Store](https://keegan.codes/hypothesis-app-store), and if you like it, leave a review and spread the word!
+
+&nbsp;
+
+<div style={{ display: 'flex', paddingBottom: '2rem' }}>
+  <a
+    href="https://keegan.codes/hypothesis-app-store"
+    target="_blank"
+    style={{
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    }}
+  >
+    <img
+      src="https://static.donley.xyz/appstore-white.svg"
+      alt="Download on the App Store"
+      style={{
+        height: '54px',
+      }}
+      height="54"
+    />
+  </a>
+</div>

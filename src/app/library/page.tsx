@@ -46,6 +46,7 @@ export default async function LibraryPage() {
                   index={index}
                   columns={4}
                   showViewCount={false}
+                  showCommentCount={false}
                   isLikelyMobile={isLikelyMobile}
                   {...post}
                   book
@@ -100,10 +101,10 @@ export async function generateViewport() {
 
 export async function generateMetadata() {
   return {
-    title: `Blog · ${NAME}`,
+    title: `Library · ${NAME}`,
     description: `My library of ${postCount} books I've enjoyed`,
     openGraph: {
-      title: `Blog · ${NAME}`,
+      title: `Library · ${NAME}`,
       description: `My library of ${postCount} books I've enjoyed`,
       url: `${BASEURL}/library`,
       siteName: NAME,
@@ -124,6 +125,9 @@ export async function generateMetadata() {
       description: `My library of ${postCount} books I've enjoyed`,
       creator: '@keegandonley',
       images: [`/api/og/page?page=library&width=1200&height=630`],
+    },
+    alternates: {
+      canonical: `${BASEURL}/library`,
     },
   };
 }

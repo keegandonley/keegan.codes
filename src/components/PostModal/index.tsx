@@ -7,6 +7,9 @@ import { BottomFade } from '@/components/BottomFade';
 import { BUCKET_URL } from '@/util/const';
 import { PostHeader } from '../PostHeader';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBluesky, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const Comments = dynamic(
   () => import('@/components/Comments').then((mod) => mod.Comments),
@@ -51,7 +54,7 @@ export const PostModal = ({ slug, wordCount }: PostModalProps) => {
         {cover ? (
           <Image
             src={`${BUCKET_URL}/${cover}`}
-            alt="todo"
+            alt={title}
             fill
             priority
             {...parseToProps(metadata)}
@@ -66,6 +69,7 @@ export const PostModal = ({ slug, wordCount }: PostModalProps) => {
             title={title}
             location="modal"
             wordCount={wordCount}
+            published={found.published}
           />
           <Component />
         </article>
@@ -74,6 +78,14 @@ export const PostModal = ({ slug, wordCount }: PostModalProps) => {
             <Comments threadId={bskyThreadId} slug={slug} />
           </div>
         ) : null}
+        <div className={styles.socials}>
+          <Link href="/bluesky" target="_blank">
+            <FontAwesomeIcon icon={faBluesky} />
+          </Link>
+          <Link href="/repo" target="_blank">
+            <FontAwesomeIcon icon={faGithub} />
+          </Link>
+        </div>
       </div>
     </>
   );

@@ -83,7 +83,7 @@ export const ClientRenderer = ({ posts }: ClientRendererProps) => {
               </span>
               <Image
                 src={`${BUCKET_URL}/${post.cover}`}
-                alt="todo"
+                alt={post.title}
                 fill
                 sizes={`(max-width: 1000px) 100vw, ${resultWidth}px`}
                 {...parseToProps(post.metadata)}

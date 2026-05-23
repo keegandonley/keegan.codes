@@ -42,7 +42,7 @@ export default function ClientRenderer({
           >
             <Image
               src={`${bucket}/${photo.image}`}
-              alt="todo"
+              alt=""
               fill
               {...parseToProps(photo.metadata)}
             />

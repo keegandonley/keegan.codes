@@ -14,6 +14,7 @@ import { faThumbsUp } from '@keegandonley/pro-solid-svg-icons';
 import { captureException } from '@sentry/nextjs';
 import { replaceFacets } from './facet';
 import { faExpandWide } from '@keegandonley/pro-regular-svg-icons';
+import { getThread } from './util';
 
 const authorDid = 'did:plc:qu7mp3zsk6r5eoairedflnsm';
 
@@ -101,37 +102,11 @@ const Comment = (props: CommentProps) => {
 export const Comments = async (props: CommentsProps) => {
   const { threadUri, threadId, slug, hideExpand } = props;
 
-  let uri = threadId
-    ? `at://keegan.codes/app.bsky.feed.post/${threadId}`
-    : threadUri;
+  const threadData = await getThread({ threadId, threadUri });
 
   const parsedThreadId = threadUri ? threadUri.split('/').pop() : threadId;
 
-  if (!uri) {
-    return null;
-  }
-
-  const params = new URLSearchParams({ uri });
-
-  const thread = await fetch(
-    `https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?${params.toString()}`,
-  );
-
-  if (!thread.ok) {
-    return null;
-  }
-
-  const data = (await thread.json()) as AppBskyFeedGetPostThread.OutputSchema;
-
-  if (!AppBskyFeedDefs.isThreadViewPost(data.thread)) {
-    captureException(new Error('Post is not a thread view'));
-    return null;
-  }
-
-  const threadData = data.thread as ThreadViewPost;
-
   if (!threadData) {
-    captureException(new Error('No thread data'));
     return null;
   }
 

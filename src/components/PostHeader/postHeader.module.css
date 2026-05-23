@@ -17,6 +17,7 @@
 .title {
   padding-top: 1rem;
   font-size: 3rem;
+  padding-bottom: 1rem;
 }
 
 .metadata {
@@ -39,6 +40,14 @@
   display: flex;
   flex-direction: column;
   margin-left: auto;
+}
+
+.published {
+  font-size: 1rem;
+  margin-top: 1.2rem;
+  color: var(--theme-text);
+  opacity: 0.5;
+  font-style: italic;
 }
 
 .readingTime.readingTime {
