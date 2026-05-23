@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from '@vercel/og';
-import { BUCKET_URL } from '@/util/r2';
+import { BUCKET_URL } from '@/util/const';
 
 export const runtime = 'edge';
 

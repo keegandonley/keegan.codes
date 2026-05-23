@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from '@vercel/og';
 import { getComponentForKey, getKey } from '@/app/library/util';
-import { BOOK_BUCKET_URL, BUCKET_URL } from '@/util/r2';
+import { BOOK_BUCKET_URL, BUCKET_URL } from '@/util/const';
 import { getBookCoverMetadata, parseSource } from '@/util/image';
 import { isDarkMode } from '@/util/cookies';
 
@@ -31,112 +31,110 @@ export async function GET(request: Request) {
   const coverMetadata = getBookCoverMetadata(parseSource(found.cover)[0]);
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+      }}
+    >
+      <img
+        src={`${BOOK_BUCKET_URL}/${found.headerImage}`}
+        style={{
+          minWidth: '110%',
+          minHeight: '100%',
+          width: '110%',
+        }}
+      />
       <div
         style={{
-          width: '100%',
+          position: 'absolute',
+          right: 0,
+          top: 0,
           height: '100%',
+          width: '30%',
           display: 'flex',
-          flexDirection: 'column',
-          position: 'relative',
         }}
       >
         <img
-          src={`${BOOK_BUCKET_URL}/${found.headerImage}`}
+          src={`${BOOK_BUCKET_URL}/${found.cover}`}
           style={{
-            minWidth: '110%',
-            minHeight: '100%',
-            width: '110%',
+            objectFit: 'contain',
+            width: '100%',
+            height: '100%',
+            paddingTop: 0,
+            paddingBottom: 0,
+            paddingRight: 10,
           }}
+          width={coverMetadata?.width}
+          height={coverMetadata?.height}
         />
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 20,
+          left: 20,
+          right: 20,
+          background: darkMode ? darkBackground : 'white',
+          display: 'flex',
+          flexDirection: 'column',
+          borderRadius: 10,
+          boxShadow: '7px 7px 17px rgba(0, 0, 0, 0.6)',
+          width: '65%',
+        }}
+      >
+        <h1
+          style={{
+            paddingLeft: 20,
+            fontSize: 50,
+            paddingBottom: 0,
+            marginBottom: 0,
+            color: darkMode ? 'white' : darkBackground,
+            width: '85%',
+            paddingTop: 5,
+          }}
+        >
+          &#34;{found.title}&#34; Review
+        </h1>
+        <p
+          style={{
+            paddingLeft: 20,
+            fontSize: 25,
+            color: darkMode ? 'lightgray' : 'gray',
+            marginTop: 10,
+            width: '85%',
+            paddingBottom: 10,
+          }}
+        >
+          A book by {found.author}
+        </p>
         <div
           style={{
             position: 'absolute',
             right: 0,
+            bottom: 0,
             top: 0,
-            height: '100%',
-            width: '30%',
             display: 'flex',
+            alignItems: 'center',
           }}
         >
           <img
-            src={`${BOOK_BUCKET_URL}/${found.cover}`}
             style={{
-              objectFit: 'contain',
-              width: '100%',
-              height: '100%',
-              paddingTop: 0,
-              paddingBottom: 0,
-              paddingRight: 10,
+              width: 100,
+              height: 100,
+              borderRadius: 50,
+              marginRight: 20,
+              boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.6)',
+              border: '2px solid white',
             }}
-            width={coverMetadata?.width}
-            height={coverMetadata?.height}
+            src={`${BUCKET_URL}/avatar.jpg`}
           />
         </div>
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 20,
-            left: 20,
-            right: 20,
-            background: darkMode ? darkBackground : 'white',
-            display: 'flex',
-            flexDirection: 'column',
-            borderRadius: 10,
-            boxShadow: '7px 7px 17px rgba(0, 0, 0, 0.6)',
-            width: '65%',
-          }}
-        >
-          <h1
-            style={{
-              paddingLeft: 20,
-              fontSize: 50,
-              paddingBottom: 0,
-              marginBottom: 0,
-              color: darkMode ? 'white' : darkBackground,
-              width: '85%',
-              paddingTop: 5,
-            }}
-          >
-            &#34;{found.title}&#34; Review
-          </h1>
-          <p
-            style={{
-              paddingLeft: 20,
-              fontSize: 25,
-              color: darkMode ? 'lightgray' : 'gray',
-              marginTop: 10,
-              width: '85%',
-              paddingBottom: 10,
-            }}
-          >
-            A book by {found.author}
-          </p>
-          <div
-            style={{
-              position: 'absolute',
-              right: 0,
-              bottom: 0,
-              top: 0,
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            <img
-              style={{
-                width: 100,
-                height: 100,
-                borderRadius: 50,
-                marginRight: 20,
-                boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.6)',
-                border: '2px solid white',
-              }}
-              src={`${BUCKET_URL}/avatar.jpg`}
-            />
-          </div>
-        </div>
       </div>
-    ),
+    </div>,
     {
       width: parseInt(width),
       height: parseInt(height),

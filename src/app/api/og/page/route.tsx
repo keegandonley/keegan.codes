@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import { DESCRIPTION, NAME } from '@/metadata';
-import { BUCKET_URL } from '@/util/r2';
+import { BUCKET_URL } from '@/util/const';
 import { ImageResponse } from '@vercel/og';
 import { cookies } from 'next/headers';
 import { Div } from '../components/Div';
@@ -60,61 +60,58 @@ export async function GET(request: Request) {
   }
 
   return new ImageResponse(
-    (
+    <Div
+      style={{
+        width: '100%',
+        height: '100%',
+        flexDirection: 'row',
+        background: backgroundOverride ?? (darkMode ? darkBackground : 'white'),
+        alignItems: 'center',
+      }}
+    >
       <Div
         style={{
-          width: '100%',
-          height: '100%',
-          flexDirection: 'row',
-          background:
-            backgroundOverride ?? (darkMode ? darkBackground : 'white'),
+          margin: '0 auto',
+          flexDirection: 'column',
           alignItems: 'center',
         }}
       >
-        <Div
+        <img
           style={{
-            margin: '0 auto',
-            flexDirection: 'column',
+            width: parseInt(height) / 3,
+            height: parseInt(height) / 3,
+            borderRadius: '100%',
+            boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.6)',
+            border: '2px solid white',
+          }}
+          src={`${BUCKET_URL}/avatar.jpg`}
+        />
+        <p
+          style={{
+            display: 'flex',
             alignItems: 'center',
+            flexDirection: 'column',
           }}
         >
-          <img
+          <h1
             style={{
-              width: parseInt(height) / 3,
-              height: parseInt(height) / 3,
-              borderRadius: '100%',
-              boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.6)',
-              border: '2px solid white',
-            }}
-            src={`${BUCKET_URL}/avatar.jpg`}
-          />
-          <p
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              flexDirection: 'column',
+              fontSize: '50px',
+              color: textOverride ?? (darkMode ? 'white' : darkBackground),
             }}
           >
-            <h1
-              style={{
-                fontSize: '50px',
-                color: textOverride ?? (darkMode ? 'white' : darkBackground),
-              }}
-            >
-              {metadata.title}
-            </h1>
-            <span
-              style={{
-                fontSize: '25px',
-                color: textOverride ?? (darkMode ? 'lightGray' : 'gray'),
-              }}
-            >
-              {metadata.description}
-            </span>
-          </p>
-        </Div>
+            {metadata.title}
+          </h1>
+          <span
+            style={{
+              fontSize: '25px',
+              color: textOverride ?? (darkMode ? 'lightGray' : 'gray'),
+            }}
+          >
+            {metadata.description}
+          </span>
+        </p>
       </Div>
-    ),
+    </Div>,
     {
       width: parseInt(width),
       height: parseInt(height),

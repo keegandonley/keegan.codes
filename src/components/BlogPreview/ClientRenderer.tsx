@@ -4,7 +4,7 @@ import { merge } from '@/util/classNames';
 import { useState } from 'react';
 import styles from './blogPreview.module.css';
 import Image from 'next/image';
-import { BUCKET_URL } from '@/util/r2';
+import { BUCKET_URL } from '@/util/const';
 import { parseToProps } from '@/util/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

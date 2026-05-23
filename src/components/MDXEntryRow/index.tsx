@@ -2,7 +2,7 @@ import { ElementBaseProps } from '@/types/elements';
 import Link from 'next/link';
 import styles from './mdxEntryRow.module.css';
 import Image from 'next/image';
-import { BOOK_BUCKET_URL, BUCKET_URL } from '@/util/r2';
+import { BOOK_BUCKET_URL, BUCKET_URL } from '@/util/const';
 import { parseToProps } from '@/util/image';
 import { merge } from '@/util/classNames';
 import { Date } from './components/Date';

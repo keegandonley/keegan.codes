@@ -5,7 +5,7 @@ import { merge } from '@/util/classNames';
 import dynamic from 'next/dynamic';
 import { formatDate } from '@/util/date';
 import Image from 'next/image';
-import { BUCKET_URL } from '@/util/r2';
+import { BUCKET_URL } from '@/util/const';
 import { parseToProps } from '@/util/image';
 import { captureException } from '@sentry/nextjs';
 import { getPostForSlug } from '@/util/post';

@@ -6,9 +6,6 @@ import {
   ListObjectsV2CommandOutput,
 } from '@aws-sdk/client-s3';
 
-export const BUCKET_URL = 'https://static.donley.xyz';
-export const BOOK_BUCKET_URL = 'https://library.static.donley.xyz';
-
 export const client = new S3Client({
   region: 'us-east-1',
   endpoint: process.env.R2_WATCH_ENDPOINT,
