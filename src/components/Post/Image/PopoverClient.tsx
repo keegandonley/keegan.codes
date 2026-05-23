@@ -36,6 +36,7 @@ export const PopoverClient = (props: {
           fill
           className={merge(imageStyles.img, className)}
           placeholder="empty"
+          sizes="100vw"
         />
       </span>
     </span>
