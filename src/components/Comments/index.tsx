@@ -10,7 +10,7 @@ import { injectVariables } from '@keegancodes/foundations';
 import { Hr } from '../Post/Hr';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp } from '@keegandonley/pro-solid-svg-icons';
+import { faComment, faThumbsUp } from '@keegandonley/pro-solid-svg-icons';
 import { captureException } from '@sentry/nextjs';
 import { replaceFacets } from './facet';
 import { faExpandWide } from '@keegandonley/pro-regular-svg-icons';
@@ -50,41 +50,65 @@ const Comment = (props: CommentProps) => {
     (post.post.record as any).facets,
   );
 
+  const createdAt = (post.post.record as any).createdAt;
+
+  let dateString = '';
+
+  if (createdAt) {
+    try {
+      const date = new Date(createdAt);
+      dateString = date.toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      });
+    } catch (ex) {
+      captureException(ex);
+    }
+  }
+
   return (
     <div
       className={styles.postWrapper}
       style={injectVariables([['depth', depth > 3 ? '3' : String(depth)]])}
     >
       <div className={styles.header}>
-        {post.post.author.avatar ? (
-          <div
-            className={styles.avatar}
-            style={injectVariables([['avatar-size', `${avatarSize}px`]])}
+        <div className={styles.headerBody}>
+          {post.post.author.avatar ? (
+            <div
+              className={styles.avatar}
+              style={injectVariables([['avatar-size', `${avatarSize}px`]])}
+            >
+              <Image
+                src={post.post.author.avatar}
+                alt={post.post.author.displayName ?? 'Poster Avatar'}
+                width={avatarSize}
+                height={avatarSize}
+              />
+            </div>
+          ) : null}
+          <span>{post.post.author.displayName}</span>
+          <Link
+            key={post.post.author.did}
+            href={`https://bsky.app/profile/${post.post.author.did}`}
+            target="_blank"
+            className={styles.handle}
           >
-            <Image
-              src={post.post.author.avatar}
-              alt={post.post.author.displayName ?? 'Poster Avatar'}
-              width={avatarSize}
-              height={avatarSize}
-            />
-          </div>
-        ) : null}
-        <span>{post.post.author.displayName}</span>
-        <Link
-          key={post.post.author.did}
-          href={`https://bsky.app/profile/${post.post.author.did}`}
-          target="_blank"
-          className={styles.handle}
-        >
-          @{post.post.author.handle}
-        </Link>
-        {post.post.author.did === authorDid ? (
-          <span className={styles.authorBadge}>author</span>
-        ) : null}
+            @{post.post.author.handle}
+          </Link>
+          {post.post.author.did === authorDid ? (
+            <span className={styles.authorBadge}>author</span>
+          ) : null}
+        </div>
+        <span className={styles.published}>{dateString}</span>
       </div>
       <span>{postContent}</span>
       <span className={styles.likes}>
-        <FontAwesomeIcon icon={faThumbsUp} /> {post.post.likeCount ?? 0}
+        <FontAwesomeIcon icon={faThumbsUp} />
+        &nbsp; {post.post.likeCount ?? 0}
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <FontAwesomeIcon icon={faComment} />
+        &nbsp; {post.post.replyCount ?? 0}
       </span>
       <div className={styles.subCommentsWrapper}>
         {sortRepliesByLikes(post.replies as ThreadViewPost[]).map((reply) => (
