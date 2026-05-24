@@ -74,33 +74,39 @@ const Comment = (props: CommentProps) => {
     >
       <div className={styles.header}>
         <div className={styles.headerBody}>
-          {post.post.author.avatar ? (
-            <div
-              className={styles.avatar}
-              style={injectVariables([['avatar-size', `${avatarSize}px`]])}
+          <div className={styles.subgroup}>
+            {post.post.author.avatar ? (
+              <div
+                className={styles.avatar}
+                style={injectVariables([['avatar-size', `${avatarSize}px`]])}
+              >
+                <Image
+                  src={post.post.author.avatar}
+                  alt={post.post.author.displayName ?? 'Poster Avatar'}
+                  width={avatarSize}
+                  height={avatarSize}
+                />
+              </div>
+            ) : null}
+            <span>{post.post.author.displayName}</span>
+          </div>
+          <div className={styles.subgroup}>
+            <Link
+              key={post.post.author.did}
+              href={`https://bsky.app/profile/${post.post.author.did}`}
+              target="_blank"
+              className={styles.handle}
             >
-              <Image
-                src={post.post.author.avatar}
-                alt={post.post.author.displayName ?? 'Poster Avatar'}
-                width={avatarSize}
-                height={avatarSize}
-              />
-            </div>
-          ) : null}
-          <span>{post.post.author.displayName}</span>
-          <Link
-            key={post.post.author.did}
-            href={`https://bsky.app/profile/${post.post.author.did}`}
-            target="_blank"
-            className={styles.handle}
-          >
-            @{post.post.author.handle}
-          </Link>
-          {post.post.author.did === authorDid ? (
-            <span className={styles.authorBadge}>author</span>
-          ) : null}
+              @{post.post.author.handle}
+            </Link>
+            {post.post.author.did === authorDid ? (
+              <span className={styles.authorBadge}>author</span>
+            ) : null}
+          </div>
         </div>
-        <span className={styles.published}>{dateString}</span>
+        {dateString ? (
+          <span className={styles.published}>{dateString}</span>
+        ) : null}
       </div>
       <span>{postContent}</span>
       <span className={styles.likes}>
