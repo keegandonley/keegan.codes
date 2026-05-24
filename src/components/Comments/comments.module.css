@@ -72,9 +72,10 @@
 .authorBadge {
   font-size: 0.75em;
   background-color: var(--theme-yellow);
-  padding: 0.25rem 0.5rem;
+  padding: 0.2rem 0.3rem;
   border-radius: 6px;
   color: var(--theme-dark);
+  opacity: 0.9;
 }
 
 .likes {
