@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 import styles from './timeline.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -35,25 +34,14 @@ interface TimelineProps {
 const Timeline = async (props: TimelineProps) => {
   const { slug, tags } = props;
 
-  let previousPost: any,
-    nextPost: any,
-    tagsPosts: any,
-    randomPost: any,
-    latestPost: any;
-
-  try {
-    [previousPost, nextPost, tagsPosts, randomPost, latestPost] =
-      await Promise.all([
-        getPreviousPostForSlug(slug),
-        getNextPostForSlug(slug),
-        getPostsForTags(tags ?? []),
-        getRandomPostForSlug(slug),
-        getLatestPosts(1).then((posts: any[]) => posts[0]),
-      ]);
-  } catch (e) {
-    console.error('[Timeline] data fetch error for', slug, e);
-    return null;
-  }
+  const [previousPost, nextPost, tagsPosts, randomPost, latestPost] =
+    await Promise.all([
+      getPreviousPostForSlug(slug),
+      getNextPostForSlug(slug),
+      getPostsForTags(tags ?? []),
+      getRandomPostForSlug(slug),
+      getLatestPosts(1).then((posts) => posts[0]),
+    ]);
 
   const filteredTagsPosts = tagsPosts.filter(
     (p: Post) =>
@@ -104,13 +92,11 @@ const Timeline = async (props: TimelineProps) => {
     });
   }
 
-  let rendered: React.ReactNode;
-  try {
-    rendered = (
-      <>
-        <h3 className={styles.heading}>Further Reading</h3>
-        <div className={styles.timelineWrapper}>
-          {timelinePosts.map((p) => {
+  return (
+    <>
+      <h3 className={styles.heading}>Further Reading</h3>
+      <div className={styles.timelineWrapper}>
+        {timelinePosts.map((p) => {
           return (
             <Link
               className={merge(
@@ -151,23 +137,9 @@ const Timeline = async (props: TimelineProps) => {
             </Link>
           );
         })}
-        </div>
-      </>
-    );
-  } catch (e) {
-    console.error(
-      '[Timeline] render error for',
-      slug,
-      e,
-      'timelinePosts:',
-      JSON.stringify(
-        timelinePosts.map((p: any) => ({ slug: p.slug, label: p.label })),
-      ),
-    );
-    return null;
-  }
-
-  return rendered;
+      </div>
+    </>
+  );
 };
 
 export default Timeline;

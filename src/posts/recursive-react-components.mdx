@@ -246,13 +246,6 @@ user scrolls. Each element with the class `last-element-page-*` represents the e
 and the next page is recursively rendered. That element is also the one that tracks the visibility
 of the end of the page to kick off the request for the next one.
 
-### Simplifying UI Components
-
-While I was writing this post, [Adam Wathan](https://twitter.com/adamwathan), the creator of [Tailwind](https://keegan.codes/blog/using-javascript-variables-in-tailwind) published a [Tweet](https://twitter.com/adamwathan/status/1726707563440505116) about this pattern
-and how it can be used conditionally based on children to create a simple checkbox component with or without a label:
-
-<Tweet id="1726707563440505116" centered />
-
 ## Things to Watch Out For
 
 I hope I've sufficiently shown you that this is a useful pattern to use in React, but there are a few things to watch out for when using recursion to render components.
