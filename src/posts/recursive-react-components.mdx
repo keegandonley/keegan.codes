@@ -1,6 +1,5 @@
 import { RocketLaunch } from '../interactivePosts/RecursiveReact/index.tsx';
 import { FileTree } from '../interactivePosts/RecursiveReact/index.tsx';
-import { Tweet } from '../components/Tweet';
 
 export const title = 'Recursive React Component Rendering';
 export const slug = 'recursive-react-component-rendering';
@@ -245,13 +244,6 @@ with a single parent for all the blog posts as the pages are fetched and rendere
 user scrolls. Each element with the class `last-element-page-*` represents the end of a page,
 and the next page is recursively rendered. That element is also the one that tracks the visibility
 of the end of the page to kick off the request for the next one.
-
-### Simplifying UI Components
-
-While I was writing this post, [Adam Wathan](https://twitter.com/adamwathan), the creator of [Tailwind](https://keegan.codes/blog/using-javascript-variables-in-tailwind) published a [Tweet](https://twitter.com/adamwathan/status/1726707563440505116) about this pattern
-and how it can be used conditionally based on children to create a simple checkbox component with or without a label:
-
-<Tweet id="1726707563440505116" centered />
 
 ## Things to Watch Out For
 
