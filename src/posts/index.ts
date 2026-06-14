@@ -54,6 +54,7 @@ import * as LinesOfCodeProductivity from './lines-of-code-productivity-metric.md
 import * as Update2026 from './an-update-for-2026.mdx';
 import * as ClaudeDevTools from './claude-code-developer-tools.mdx';
 import * as HypothesisMobile from './introducing-hypothesis-mobile-app.mdx';
+import * as DeadInternet from './dead-internet-feed.mdx';
 
 const posts = {
   Welcome,
@@ -112,6 +113,7 @@ const posts = {
   Update2026,
   ClaudeDevTools,
   HypothesisMobile,
+  DeadInternet,
 };
 
 export default posts;
