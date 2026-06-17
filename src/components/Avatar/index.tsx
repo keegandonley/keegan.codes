@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import avatar from './avatar.jpg';
+import avatar from './blue.png';
 import styles from './avatar.module.css';
 import { ElementBaseProps } from '@/types/elements';
 import { merge } from '@/util/classNames';
