@@ -1,6 +1,6 @@
 module blurhash-generator/main
 
-go 1.20
+go 1.25.0
 
 require (
 	github.com/aws/aws-sdk-go-v2 v1.17.7
@@ -10,7 +10,7 @@ require (
 	github.com/esimov/stackblur-go v1.1.0
 	github.com/joho/godotenv v1.5.1
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
-	golang.org/x/image v0.18.0
+	golang.org/x/image v0.38.0
 	golang.org/x/time v0.3.0
 )
 
