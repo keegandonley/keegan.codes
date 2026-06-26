@@ -62,6 +62,18 @@ const mapping: Mapping = {
             'A set of tools for web development and testing, including iframes, webhooks, and cross-domain behaviors.',
           url: 'https://hypothesis.sh',
         },
+        {
+          title: 'Dead Internet Feed',
+          description:
+            'An art installation/satirical project about the state of social media and AI bots.',
+          url: 'https://deadinternet.tech/feed',
+        },
+        {
+          title: 'Ocean Observatories Explorer',
+          description:
+            'Explore data from the Ocean Observatories Initiative (OOI) network.',
+          url: 'https://oceanobservatories.app/',
+        },
       ],
     },
     {
