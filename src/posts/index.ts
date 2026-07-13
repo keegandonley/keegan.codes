@@ -55,6 +55,7 @@ import * as Update2026 from './an-update-for-2026.mdx';
 import * as ClaudeDevTools from './claude-code-developer-tools.mdx';
 import * as HypothesisMobile from './introducing-hypothesis-mobile-app.mdx';
 import * as DeadInternet from './dead-internet-feed.mdx';
+import * as SideProjects from './i-can-finally-build-every-side-project.mdx';
 
 const posts = {
   Welcome,
@@ -114,6 +115,7 @@ const posts = {
   ClaudeDevTools,
   HypothesisMobile,
   DeadInternet,
+  SideProjects,
 };
 
 export default posts;

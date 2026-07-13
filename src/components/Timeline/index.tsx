@@ -104,7 +104,7 @@ const Timeline = async (props: TimelineProps) => {
                 filteredTagsPosts.length === 1 ? styles.single : '',
               )}
               href={p.slug}
-              key={p.slug}
+              key={`${p.slug}-${p.label}`}
             >
               <div className={styles.blurContainer} />
               <div className={styles.pill}>
