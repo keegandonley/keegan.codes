@@ -1,0 +1,104 @@
+export const title = 'I Can Build Every Side Project I Want With AI. Should I?';
+export const slug = 'i-can-build-every-side-project-i-want-with-ai-should-i';
+export const tags = ['software', 'ai', 'opinion'];
+export const description =
+  "Agentic Coding with Claude and Codex allows me to build every project I've ever conceived. Is this a good idea, and how do I choose what to build myself?";
+export const cover = 'side-projects-2.png';
+export const published = new Date(2026, 6, 13);
+export const shortCodes = ['every-side-project'];
+export const bskyThreadId = '';
+
+My opinion of AI right now is a bit of a mixed bag. On one hand, [I'm sick of reading AI slop](https://keegan.codes/blog/a-slop-has-taken-over-linkedin).
+On the other hand, [I've had great success building developer tools](https://keegan.codes/blog/claude-code-developer-tools) with Claude, Codex, and even open models. These AI-built tools
+greatly accelerate my development process. Having large suites of custom tools and experiments on [Hypothesis.sh](https://hypothesis.sh) really speeds up testing of my other work,
+but even using agents to build me smaller one-off dev tools has been valuable. However, one thing I hadn't been using AI for until recently was building personal/side projects.
+
+My side projects have historically always been built by me, by hand. One of my first AI-assisted projects, [Thirsty Bot](https://keegan.codes/blog/introducing-thirsty-bot), was still written back when
+the best coding tool I had access to was Copilot with auto-complete that occasionally could write whole methods (and not always correctly).
+
+I was pretty happy working like this, but I think every software developer can relate to my predicament: I have too many projects I want to build, and not enough time. What if I could delegate some of these
+projects to Claude or Codex, and finally have something to show for all those domains collecting dust? Would I feel sad if I didn't implement every idea I had by hand? Most of what I enjoy about
+software development is the actual coding, right? Am I wasting years of experience by deferring to a machine? Are my skills going to get rusty?
+
+Okay, that's a lot of questions, and there's clearly a lot on my mind when it comes to AI coding. When I'm considering throwing an agent at a new project, here are the questions I ask myself:
+
+## Question 1: Why Am I Building This?
+
+The first thing I ask myself is: "Why am I building this?" Usually a project falls into one or more of these buckets:
+
+1. I want it to be a showcase of my skills as a developer.
+2. I want to showcase my design/product/other skills (bascially anything software-adjacent, but not coding).
+3. I want to learn a new technology or explore a new tool/platform.
+4. I want the end result - it will be useful to me.
+
+If the goal is explicitly to demonstrate my coding chops, I'd better be doing the coding - I won't be handing this off to AI.
+On the flipside, if I just want the end result, the implementation is just going to be a blocker to getting the tool I need or want. In this case, AI can deliver the end result much faster, freeing me up to work on things in buckets 1-3.
+
+My blog (this site) is an example of goal #1. This is not a means to an end - the code and content is the whole point. Every bit of CSS and Javascript is hand-crafted, and every piece of text is written, proofread, and re-written by me.
+
+What about the other buckets? If my goal is #3 - learning - AI can be useful to show me the way, but I'd better be closely reading everything that comes out, and better yet, do a lot of implementation
+by myself. Otherwise, what have I really learned? (No, how to prompt ChatGPT doesn't count). If I answer #2 (other skills development), it's usually something where I don't care much about the implementation, but I spend a lot of time on
+the user experience, design, and product side of things. These are well-suited to be AI-assisted on the coding side, with me operating as a product owner and designer.
+
+## Question 2: Who Will Use This?
+
+The next question I ask is who my audience is. It's usually:
+
+1. Just me.
+2. Me and a small trusted group.
+3. The public.
+
+I use this question as not just an AI/no-AI gate, but also to determine the level of effort I put in. If it's just for me or a small group of friends or colleagues, and I decide to go AI-generated or heavily AI-assisted, I may spend less time reviewing the code.
+Maybe I review diffs from Claude but skip a formal code review/PR and just continue to iterate in production. If I'm deploying this for wider use, and choose to lean on my agents a lot, I'll follow a more
+rigorous code-review and branching process, like building real production software should, human or not.
+
+## Question 3: Am I Ever Going to Do It Myself?
+
+This is the one that got me "un-stuck" on some old ideas I had, and convinced me to (reluctantly at first) let AI work on some of my side projects for me.
+I'm busy. Between work at [Kizen](https://kizen.com), personal projects, family, cycling, and other hobbies, something is bound to get dropped. A lot of projects I want to build
+fall into this "dropped" designation. Mostly things that would take a long time for me to code, but have minimal utility or wouldn't be used often.
+
+Here's a good example: My [BMW Drive Recorder Player](https://bimmer.camera/). My built-in dashcam records from 4
+cameras and also carries GPS data and speed in a JSON file, but there's no good way to look at these outside the car or view the map.
+So, I had Claude build me a webapp for storing and viewing them. This is a complicated app - taking the video footage, splitting the 4 camera feeds, playing them back in sync, replaying the GPS data overlaid on a map, etc. Too much work for something
+I only use once or twice a year if I need to watch back an incident. This idea sat on the shelf for years before I had Claude build it. And I didn't miss out on anything - it would have been boring to build and I'd already done most of the learning during the planning phases. Instead, I get
+a useful app with minimal time spent on it. That's a win!
+
+## Question 4: What Are the Risks When Something Breaks?
+
+Another way to generalize this question would be "How important is this?"
+
+When I am working on something like a core library or an application
+with billing and paying customers like [Thirsty Bot](https://thirsty.bot), I'm much less likely to delegate to AI with carte blanche control. I like to carefully and meticulously
+build these parts. But a developer tool that consumes said library, a simple site or app for testing something, or a personal tool where bugs and downtime only affect me?
+This is where I'm happy to hand off some of the work, so I can focus on what's a better use of my time.
+
+A real-world example: I've built myself a platform for coordinating coding agents, sharing knowledge across machines and coding harnesses, and tracking usage. This platform is heavily built
+by Claude - Opus does most of the work, Fable does some optimizations on the big data side of things, and I give direction throughout my work day as I need new tools or MCP servers
+built. I give a cursory glance at what Claude is doing to make sure it's safe and reasonable, but relistically the risk is low here - if something breaks, my workflow just degrades a bit
+until I have Claude fix it.
+
+## The Last Question
+
+AI has finally allowed me to build all the side projects I've been dreaming of. Every idea can be prioritized, planned, and built.
+The last question I need to ask myself:
+_**Should I Build This?**_
+
+Coding has never been the only bottleneck to getting an idea out there. For a personal tool or something I desperately need, sure, coding was the main gate between idea and execution.
+Often formulating the idea, building a plan, designing the product in front of the code, and getting the completed product to market takes just as long or longer than implementation.
+Also, not every idea is worth building. Sometimes, the effort a project would demand was just enough of a filter to stop me from building bad ideas, or wasting time on useless things.
+
+That's not to say useless things can't be fun, and even worth building! I spent a good chunk of time building my [Dead Internet Feed](https://deadinternet.tech), and also [writing about it](https://keegan.codes/blog/a-slop-has-taken-over-linkedin).
+I did most of the design on that project by hand, but I wouldn't have had the time to dedicate to such a silly idea if I needed to build all of the agent flows that drive the actual content.
+
+## Conclusion
+
+So, do I build every idea now? Definitely not.
+
+Whether I build something myself or AI builds it autonomously for me, it still takes resources. Tokens, hosting, the time
+I spend designing the solution, chatting with the agent, iterating and reviewing. None of this is free, both in terms of hard cost and cognitive load.
+It's pretty clear to me that in the days of AI, the path to burnout is shorter and faster. I could build every idea I've ever had, waste time and money on terrible ones, just for the sake of building.
+Or, I can use my time wisely, focus on refining my best ideas, delegate the ones I don't want to build, and spend time coding the things that are actually valuable to me - things that teach
+me a new skill, or that I can be proud of my own craftsmanship when they're finished.
+
+I may even throw away more ideas now than ever before, but I'm content in knowing I no longer throw one away because I don't have time to build it.
