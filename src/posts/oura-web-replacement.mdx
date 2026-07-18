@@ -1,0 +1,90 @@
+import { Definition } from '../components/Definition';
+
+export const title = "I Built a Free Replacement for Oura's Web Application";
+export const slug = 'i-built-a-free-replacement-for-ouras-web-application';
+export const tags = ['fitness', 'gadget', 'hobby', 'oura', 'app', 'launch'];
+export const description =
+  'Oura on the web is shutting down later this year. I built a free replacement app with data summaries, a correlation explorer, and CSV exporting!';
+export const cover = 'ringpulse-hero-image-compressed.png';
+export const published = new Date(2026, 6, 18);
+export const shortCodes = ['oura-web', 'ring-pulse-launch'];
+export const bskyThreadId = '';
+
+If you're an Oura ring user, you may or may not be aware that there's a web-based application for viewing your data. It's really quite useful: Oura on the web was previously the
+only place that you could view your data and explore correlations over time, with <Definition>r-value</Definition> calculations
+and advanced comparisons. It also provided the only way to easily and quickly export data in CSV format.
+Straight from Oura's website:
+
+> Oura on the Web is a useful tool for looking into your long-term health patterns and exploring how two of your Oura data points compare to one another.
+
+However, last month,
+[the company announced](https://support.ouraring.com/hc/en-us/articles/43392924561171-Oura-on-the-Web) they are shutting down Oura on the web later this year:
+
+> We will be discontinuing Oura on the Web later this year. For now, there are no changes and you can continue using
+> Oura on the Web as normal. Your data will also continue to be available in the Oura App or Membership Hub. We'll share
+> more details as we get closer to the date.
+
+They've been pretty quiet about any further details on their reasoning or exact timeline, but it's a bummer to see a useful tool go away.
+I can't say I'm too surprised, seeing as the web version doesn't appear to have been updated often and sort of felt like a little-known side
+project for the company. Nevertheless, it seems to have been pretty well-liked based on some [Reddit threads](https://www.reddit.com/r/ouraring/comments/1uwfwxv/oura_on_the_web_is_retiring_in_september_im/).
+
+Thankfully, the Oura API is alive and well, and it's super easy to build with! I already had some experience with Oura's API from other
+projects I've worked on, so it felt like a good opportunity to put together a nice web-based replacement.
+
+## Ring Pulse is Born
+
+First, if you don't want to read about it, you can just go try it out at [ringpulse.app](https://ringpulse.app). It's pretty self-explanatory and super easy to use!
+
+![Ringpulse Landing Page](ringpulse-cover.png)
+
+[Ring Pulse](https://ringpulse.app) connects to the Oura API using <Definition>OAuth</Definition>, but rather than store your data in a remote database, it uses <Definition>IndexedDB</Definition> in the browser
+to cache and organize all your data. This makes browsing and using your data lightning fast, and keeps it all private - Ring Pulse simply
+operates as a proxy to securely make API requests on your behalf.
+
+![Rinpulse Data Screen](ringpulse-data.png)
+
+> Ring Pulse is entirely local-first, meaning I never store, log, or view your actual health data. This keeps things simple for me, and 100% private for you!
+> You can even see the entire set of cached data and manage it by re-syncing or completely deleting it from your device. Read the [full privacy policy](https://ringpulse.app/privacy) for more.
+
+## Daily Views
+
+[Ring Pulse](https://ringpulse.app) allows you to view a summary of the current day accross your 3 core metrics: readiness, sleep, and activity.
+
+![Ringpulse Summary Screen](ringpulse-summary.png)
+
+For any given day, you can drill down into those 3 metrics and see all the data driving them:
+
+![Ringpulse Activity](ringpulse-activity.png)
+![Ringpulse Readiness](ringpulse-readiness.png)
+![Ringpulse Sleep](ringpulse-sleep.png)
+
+## Correlation Views
+
+The core of Oura on the web was being able to look at correlations between data points. [Ring Pulse](https://ringpulse.app) takes this a step further and allows
+overlaying any combination of data points on top of each other, calculating r-values for each pairing on the chart:
+
+![Ringpulse Readiness vs Sleep](ringpulse-readiness-sleep.png)
+![Ringpulse Readiness vs Lowest Resting HR](ringpulse-readiness-hr.png)
+![Ringpule Multiple Series Comparison](ringpulse-multi.png)
+
+> Data gaps are gracefully handled in trends, for situations like that time I took a weekend trip and left my ring on the charger at home 😔
+
+## CSV Export
+
+CSV export is one of the features I've heard the most disappointment around losing. Without Oura on the web, there won't be a good way to
+get immediate CSV exports; Oura's recommended approach is using the account data export tool, which isn't immediate. Ring Pulse fills
+this gap with a nice CSV exporter, allowing you to export your data for any date range, across any data points:
+
+![Rinpulse CSV Export](ringpulse-export.png)
+
+## Free to Use
+
+Because of the local-data architecture I built Ring Pulse with, the costs are minimal to me to run this. The source of truth remains Oura,
+and your local on-device database enables the lightning fast performance. The only thing I'm hosting is the UI and the lightweight API proxy.
+
+This means I can continue to offer [Ring Pulse](https://ringpulse.app) for free for the forseeable future. You don't need another subscription just to view the data you're
+already paying for.
+
+If you find this useful, [buying me a beer](https://buymeacoffee.com/keegancodes)
+is always appreciated, but certainly not expected. And if you do start using this app as part of your workflow, feedback is always welcomed by
+emailing [feedback@ringpulse.app](mailto:feedback@ringpulse.app). Happy analyzing!
