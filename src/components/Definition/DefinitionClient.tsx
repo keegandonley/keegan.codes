@@ -43,7 +43,12 @@ export const DefinitionClient = ({
       >
         <FontAwesomeIcon icon={faQuestionCircle} className={styles.icon} />
       </button>
-      <span popover="auto" id={popoverId} className={styles.popover}>
+      <span
+        popover="auto"
+        id={popoverId}
+        className={styles.popover}
+        data-nosnippet=""
+      >
         <strong className={accentFont.className}>{termKey}</strong>:{' '}
         <em className={accentFont.className}>{partOfSpeech}</em>
         <br />

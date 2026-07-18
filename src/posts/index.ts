@@ -56,6 +56,7 @@ import * as ClaudeDevTools from './claude-code-developer-tools.mdx';
 import * as HypothesisMobile from './introducing-hypothesis-mobile-app.mdx';
 import * as DeadInternet from './dead-internet-feed.mdx';
 import * as SideProjects from './i-can-finally-build-every-side-project.mdx';
+import * as OuraWebReplacement from './oura-web-replacement.mdx';
 
 const posts = {
   Welcome,
@@ -116,6 +117,7 @@ const posts = {
   HypothesisMobile,
   DeadInternet,
   SideProjects,
+  OuraWebReplacement,
 };
 
 export default posts;

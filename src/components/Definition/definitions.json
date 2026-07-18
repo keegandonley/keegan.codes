@@ -29,5 +29,13 @@
   "cURL": {
     "definition": "A command-line tool and library for transferring data with URLs, supporting various protocols such as HTTP, HTTPS, FTP, and more.",
     "partOfSpeech": "noun"
+  },
+  "IndexedDB": {
+    "definition": "A low-level browser API for client-side storage of significant amounts of structured data, including files/blobs. It allows for high-performance searches and is supported by most modern browsers.",
+    "partOfSpeech": "noun"
+  },
+  "OAuth": {
+    "definition": "An open standard for access delegation commonly used as a way to grant websites or applications limited access to user information without exposing passwords.",
+    "partOfSpeech": "noun"
   }
 }
