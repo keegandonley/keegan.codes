@@ -37,5 +37,9 @@
   "OAuth": {
     "definition": "An open standard for access delegation commonly used as a way to grant websites or applications limited access to user information without exposing passwords.",
     "partOfSpeech": "noun"
+  },
+  "r-value": {
+    "definition": "In statistics, the r-value is a measure of the strength and direction of a linear relationship between two variables. It ranges from -1 to 1, where values close to 1 indicate a strong positive correlation, values close to -1 indicate a strong negative correlation, and values around 0 indicate no correlation.",
+    "partOfSpeech": "noun"
   }
 }

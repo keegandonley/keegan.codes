@@ -10,13 +10,14 @@ export const published = new Date(2026, 6, 18);
 export const shortCodes = ['oura-web', 'ring-pulse-launch'];
 export const bskyThreadId = '';
 
-If you're an Oura ring user, you may or may not be aware that there's a web-based application for viewing your data. By
-Oura's own admission, this is a pretty useful app:
+If you're an Oura ring user, you may or may not be aware that there's a web-based application for viewing your data. It's really quite useful: Oura on the web was previously the
+only place that you could view your data and explore correlations over time, with <Definition>r-value</Definition> calculations
+and advanced comparisons. It also provided the only way to easily and quickly export data in CSV format.
+Straight from Oura's website:
 
 > Oura on the Web is a useful tool for looking into your long-term health patterns and exploring how two of your Oura data points compare to one another.
 
-Oura on the web was previously the only place that you could view your data and explore correlations over time, with r-value calculations
-and advanced comparisons. It also provided the only way to easily and quickly export data in CSV format. However, last month,
+However, last month,
 [the company announced](https://support.ouraring.com/hc/en-us/articles/43392924561171-Oura-on-the-Web) they are shutting down Oura on the web later this year:
 
 > We will be discontinuing Oura on the Web later this year. For now, there are no changes and you can continue using
@@ -36,7 +37,7 @@ First, if you don't want to read about it, just go try it ot at [ringpulse.app](
 
 ![Ringpulse Landing Page](ringpulse-cover.png)
 
-Ring Pulse connects to the Oura API using <Definition>OAuth</Definition>, but rather than store your data in a remote database, it uses <Definition>IndexedDB</Definition> in the browser
+[Ring Pulse](https://ringpulse.app) connects to the Oura API using <Definition>OAuth</Definition>, but rather than store your data in a remote database, it uses <Definition>IndexedDB</Definition> in the browser
 to cache and organize all your data. This makes browsing and using your data lightning fast, and keeps it all private - Ring Pulse simply
 operates as a proxy to securely make API requests on your behalf.
 
@@ -47,7 +48,7 @@ operates as a proxy to securely make API requests on your behalf.
 
 ## Daily Views
 
-Ring Pulse allows you to view a summary of the current day accross your 3 core metrics: readiness, sleep, and activity.
+[Ring Pulse](https://ringpulse.app) allows you to view a summary of the current day accross your 3 core metrics: readiness, sleep, and activity.
 
 ![Ringpulse Summary Screen](ringpulse-summary.png)
 
@@ -59,7 +60,7 @@ For any given day, you can drill down into those 3 metrics and see all the data 
 
 ## Correlation Views
 
-The core of Oura on the web was being able to look at correlations between data points. Ring Pulse takes this a step further and allows
+The core of Oura on the web was being able to look at correlations between data points. [Ring Pulse](https://ringpulse.app) takes this a step further and allows
 overlaying any combination of data points on top of each other, calculating r-values for each pairing on the chart:
 
 ![Ringpulse Readiness vs Sleep](ringpulse-readiness-sleep.png)
@@ -81,7 +82,7 @@ this gap with a nice CSV exporter, allowing you to export your data for any date
 Because of the local-data architecture I built Ring Pulse with, the costs are minimal to me to run this. The source of truth remains Oura,
 and your local on-device database enables the lightning fast performance. The only thing I'm hosting is the UI and the lightweight API proxy.
 
-This means I can continue to offer Ring Pulse for free for the forseeable future. You don't need another subscription just to view the data you're
+This means I can continue to offer [Ring Pulse](https://ringpulse.app) for free for the forseeable future. You don't need another subscription just to view the data you're
 already paying for.
 
 If you find this useful, [buying me a beer](https://buymeacoffee.com/keegancodes)
