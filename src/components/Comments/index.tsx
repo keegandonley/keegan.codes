@@ -3,7 +3,6 @@ import {
   AppBskyFeedGetPostThread,
   AppBskyFeedPost,
 } from '@atproto/api';
-import { ThreadViewPost } from '@atproto/api/dist/client/types/app/bsky/feed/defs';
 import Image from 'next/image';
 import styles from './comments.module.css';
 import { injectVariables } from '@keegancodes/foundations';
@@ -26,13 +25,13 @@ type CommentsProps = {
 };
 
 type CommentProps = {
-  post: ThreadViewPost;
+  post: AppBskyFeedDefs.ThreadViewPost;
   depth: number;
 };
 
 const avatarSize = 30;
 
-const sortRepliesByLikes = (replies: ThreadViewPost[] = []) => {
+const sortRepliesByLikes = (replies: AppBskyFeedDefs.ThreadViewPost[] = []) => {
   return [...replies].sort((a, b) => {
     return (b.post.likeCount ?? 0) - (a.post.likeCount ?? 0);
   });
@@ -117,7 +116,9 @@ const Comment = (props: CommentProps) => {
         &nbsp; {post.post.replyCount ?? 0}
       </span>
       <div className={styles.subCommentsWrapper}>
-        {sortRepliesByLikes(post.replies as ThreadViewPost[]).map((reply) => (
+        {sortRepliesByLikes(
+          post.replies as AppBskyFeedDefs.ThreadViewPost[],
+        ).map((reply) => (
           <Comment
             key={reply.post.uri as string}
             post={reply}

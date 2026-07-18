@@ -5,7 +5,6 @@ import {
   AppBskyFeedGetPostThread,
   AppBskyFeedPost,
 } from '@atproto/api';
-import { ThreadViewPost } from '@atproto/api/dist/client/types/app/bsky/feed/defs';
 import { get } from '@vercel/edge-config';
 
 import { captureException } from '@sentry/nextjs';
@@ -42,7 +41,7 @@ export const getThread = async ({
     return null;
   }
 
-  const threadData = data.thread as ThreadViewPost;
+  const threadData = data.thread as AppBskyFeedDefs.ThreadViewPost;
 
   if (!threadData) {
     captureException(new Error('No thread data'));
@@ -52,7 +51,7 @@ export const getThread = async ({
   return threadData;
 };
 
-const getCountRecursively = (post: ThreadViewPost): number => {
+const getCountRecursively = (post: AppBskyFeedDefs.ThreadViewPost): number => {
   if (!post.replies) {
     return 1;
   }
@@ -60,8 +59,14 @@ const getCountRecursively = (post: ThreadViewPost): number => {
   return (
     1 +
     post.replies.reduce((acc, reply) => {
-      if (AppBskyFeedPost.isRecord((reply as ThreadViewPost).post.record)) {
-        return acc + getCountRecursively(reply as ThreadViewPost);
+      if (
+        AppBskyFeedPost.isRecord(
+          (reply as AppBskyFeedDefs.ThreadViewPost).post.record,
+        )
+      ) {
+        return (
+          acc + getCountRecursively(reply as AppBskyFeedDefs.ThreadViewPost)
+        );
       }
       return acc;
     }, 0)
