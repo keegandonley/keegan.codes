@@ -41,10 +41,26 @@
   animation-delay: 0.3s;
 }
 
+.posts {
+  animation-delay: 0.4s;
+}
+
 .socials {
   animation-delay: 0.4s;
 }
 
-.more {
+.footer {
   animation-delay: 0.5s;
+}
+
+.post {
+  @apply overflow-hidden rounded-lg bg-stone-50 text-left text-stone-500 shadow-md sm:w-1/2;
+}
+
+.post h4 {
+  @apply p-2 text-sm;
+}
+
+.description a {
+  @apply text-stone-500 underline decoration-stone-400 decoration-dashed underline-offset-2;
 }

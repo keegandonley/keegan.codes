@@ -109,7 +109,7 @@ export default function Render26({
         className={merge(
           styles.tiles,
           stokeRegular.className,
-          'flex h-dvh w-full items-center bg-stone-300',
+          'h-dvh w-full overflow-y-auto bg-stone-300',
         )}
         style={
           {
@@ -118,55 +118,20 @@ export default function Render26({
           } as React.CSSProperties
         }
       >
-        {isReadMore ? (
+        <div className="flex min-h-full w-full items-center justify-center py-8">
           <div
             className={merge(
               styles.card,
-              'mx-auto flex h-[80%] w-[80%] max-w-[600px] flex-col rounded-lg border-[12px] border-stone-100 p-1 shadow-xl',
+              'flex min-h-[80dvh] w-[80%] max-w-[600px] shrink-0 flex-col rounded-lg border-[12px] border-stone-100 p-1 shadow-xl',
             )}
           >
             <div
               className={merge(
-                'mx-auto flex h-full w-full flex-col rounded-sm bg-stone-100 px-12 pb-6 pt-12',
-              )}
-            >
-              <h3
-                className={merge(
-                  styles.element,
-                  styles.description,
-                  'pt-4 text-stone-500',
-                )}
-              >
-                Principal Front-End Engineer @ Kizen
-              </h3>
-              <div className="mt-auto text-center">
-                <button
-                  className={merge(
-                    styles.element,
-                    styles.more,
-                    'pt-4 text-xs text-stone-500',
-                  )}
-                  onClick={() => setIsReadMore((prev) => !prev)}
-                >
-                  read less -
-                </button>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div
-            className={merge(
-              styles.card,
-              'mx-auto flex h-[80%] w-[80%] max-w-[600px] flex-col rounded-lg border-[12px] border-stone-100 p-1 shadow-xl',
-            )}
-          >
-            <div
-              className={merge(
-                'mx-auto flex h-full w-full flex-col rounded-sm bg-stone-100 px-12 pb-6 pt-12',
+                'mx-auto flex w-full flex-1 flex-col rounded-sm bg-stone-100 px-12 pb-6 pt-12',
               )}
             >
               <Avatar width={200} priority className={styles.avatar} />
-              <div className="mx-auto flex h-full flex-col pt-4 text-center">
+              <div className="mx-auto flex flex-1 flex-col pt-4 text-center">
                 <h1
                   className={merge(
                     styles.element,
@@ -183,13 +148,61 @@ export default function Render26({
                     'pt-4 text-stone-500',
                   )}
                 >
-                  Principal Front-End Engineer @ Kizen
+                  Principal Front-End Engineer @{' '}
+                  <Link href="https://kizen.com" target="_blank">
+                    Kizen
+                  </Link>
                 </h3>
                 <div
                   className={merge(
                     styles.element,
+                    styles.posts,
+                    '-mx-4 flex flex-col justify-center gap-4 pt-4 text-stone-400 sm:flex-row',
+                  )}
+                >
+                  <Link
+                    className={merge(styles.post)}
+                    href="/blog/i-can-build-every-side-project-i-want-with-ai-should-i"
+                  >
+                    <Image
+                      src={`${BUCKET_URL}/side-projects-2.png`}
+                      alt="Cover"
+                      width={3600}
+                      height={2041}
+                      blurDataURL="data:image/jpeg;base64,/9j/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIAB0AMgMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APSRdqe1TLMp6VR8mQdBT1ilr2HCJ4yZeEme9LuJ71TEc1L+9HWo5F3K5iwVPY1E8ch6Go/MkHemNcOO9UosTuL5MvrR5MvrUX2lvWj7S3rV2kTYlW6b0qZbjI5qlt96cq5PWhxiJSRfEo9aXcp61SZdpGCalEfy53Gs3BFp32Jyit6VE1uh71XZ2ViAaaZG9apQfcOW5N9lT+9R9lT+9VbzG9aPMb1q+WXcXIf/2Q=="
+                      className="h-24 object-cover"
+                      placeholder="blur"
+                      sizes={`(max-width: 550px) 100vw, 310px`}
+                    />
+                    <h4>
+                      I Can Build Every Side Project I Want With AI. Should I?
+                    </h4>
+                  </Link>
+                  <Link
+                    className={merge(styles.post)}
+                    href="/blog/lines-of-code-as-a-productivity-metric-ai-era"
+                    target="_blank"
+                  >
+                    <Image
+                      src={`${BUCKET_URL}/lines-of-code-ai-cover.png`}
+                      alt="Cover"
+                      width={3840}
+                      height={2160}
+                      blurDataURL="data:image/jpeg;base64,/9j/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIABwAMgMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APLiJRFkMaoNI5lCsxPNSmSSNMbuKrKTJMD3rq6nMa+xTDndjikSNXgbCg1FIX8rHtTLaSXY209O1DVwM6QbbjGMc1txBntxmYgY9axZWLT/ADDnNXMARDEhHtQANbruPz96T7Ov96oM8/fpM/7dAFm7tjGmQ2RVS0jMk2M81ZuXYw8modO/4+KEgJLh5YzjNFlmQn5sVJqR5qtZ9TyRQBLNCFlBzmpHeHysFDmomJ+0AZrQnhQWm7HOKOgGMSuTxRlfSmk8mjNAH//Z"
+                      className="h-24 object-cover"
+                      placeholder="blur"
+                      sizes={`(max-width: 550px) 100vw, 310px`}
+                    />
+                    <h4>
+                      Lines of Code as a Productivity Metric in the AI Era
+                    </h4>
+                  </Link>
+                </div>
+                <div
+                  className={merge(
+                    styles.element,
                     styles.socials,
-                    'mt-auto flex flex-row justify-center gap-4 text-stone-400',
+                    'mt-auto flex flex-row justify-center gap-4 pt-6 text-stone-400',
                   )}
                 >
                   <Link href="https://keegan.codes" target="_blank">
@@ -198,21 +211,37 @@ export default function Render26({
                   <Link href="/linkedin" target="_blank">
                     <h3 className="pt-4 text-stone-500">linkedin</h3>
                   </Link>
+                  <Link href="/bsky" target="_blank">
+                    <h3 className="pt-4 text-stone-500">bluesky</h3>
+                  </Link>
                 </div>
-                <button
+
+                <hr className="mt-4" />
+                <div
                   className={merge(
                     styles.element,
-                    styles.more,
-                    'pt-4 text-xs text-stone-500',
+                    styles.footer,
+                    'mt-auto flex flex-row justify-center gap-6 text-stone-400',
                   )}
-                  onClick={() => setIsReadMore((prev) => !prev)}
                 >
-                  read more +
-                </button>
+                  <Link href="https://scalene.app" target="_blank">
+                    <h4 className="pt-4 text-xs text-stone-400">scalene.app</h4>
+                  </Link>
+                  <Link href="https://hypothesis.sh" target="_blank">
+                    <h4 className="pt-4 text-xs text-stone-400">
+                      hypothesis.sh
+                    </h4>
+                  </Link>
+                  <Link href="https://ringpulse.app" target="_blank">
+                    <h4 className="pt-4 text-xs text-stone-400">
+                      ringpulse.app
+                    </h4>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
       <HiTrack slug="render26" qrScanned={false} />
     </>
