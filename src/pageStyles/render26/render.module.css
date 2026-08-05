@@ -1,0 +1,50 @@
+.tiles {
+  background-image: var(--wallpaper-tile);
+  background-repeat: repeat;
+  background-size: var(--wallpaper-tile-size) auto;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(var(--fade-amount));
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  --fade-amount: 20px;
+  opacity: 0;
+  animation: appear 0.5s ease-in-out forwards;
+  transform: translateY(var(--fade-amount));
+}
+
+.element {
+  --fade-amount: 10px;
+  opacity: 0;
+  animation: appear 0.5s ease-in-out forwards;
+  transform: translateY(var(--fade-amount));
+}
+
+.avatar {
+  animation-delay: 0.1s;
+}
+
+.title {
+  animation-delay: 0.2s;
+}
+
+.description {
+  animation-delay: 0.3s;
+}
+
+.socials {
+  animation-delay: 0.4s;
+}
+
+.more {
+  animation-delay: 0.5s;
+}
