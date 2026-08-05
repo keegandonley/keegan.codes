@@ -118,16 +118,16 @@ export default function Render26({
           } as React.CSSProperties
         }
       >
-        <div className="flex min-h-full w-full items-center justify-center py-8">
+        <div className="flex min-h-full w-full items-center justify-center px-4 py-8">
           <div
             className={merge(
               styles.card,
-              'flex min-h-[80dvh] w-[80%] max-w-[600px] shrink-0 flex-col rounded-lg border-[12px] border-stone-100 p-1 shadow-xl',
+              'flex min-h-[80dvh] w-full max-w-[600px] shrink-0 flex-col rounded-lg border-[8px] border-stone-100 p-1 shadow-xl sm:w-[80%] sm:border-[12px]',
             )}
           >
             <div
               className={merge(
-                'mx-auto flex w-full flex-1 flex-col rounded-sm bg-stone-100 px-12 pb-6 pt-12',
+                'mx-auto flex w-full flex-1 flex-col rounded-sm bg-stone-100 px-6 pb-6 pt-8 sm:px-12 sm:pt-12',
               )}
             >
               <Avatar width={200} priority className={styles.avatar} />
@@ -157,7 +157,7 @@ export default function Render26({
                   className={merge(
                     styles.element,
                     styles.posts,
-                    '-mx-4 flex flex-col justify-center gap-4 pt-4 text-stone-400 sm:flex-row',
+                    'flex flex-col justify-center gap-4 pt-6 text-stone-400 sm:-mx-4 sm:flex-row',
                   )}
                 >
                   <Link
@@ -202,7 +202,7 @@ export default function Render26({
                   className={merge(
                     styles.element,
                     styles.socials,
-                    'mt-auto flex flex-row justify-center gap-4 pt-6 text-stone-400',
+                    'flex flex-row flex-wrap justify-center gap-x-4 pt-6 text-stone-400',
                   )}
                 >
                   <Link href="https://keegan.codes" target="_blank">
@@ -221,7 +221,7 @@ export default function Render26({
                   className={merge(
                     styles.element,
                     styles.footer,
-                    'mt-auto flex flex-row justify-center gap-6 text-stone-400',
+                    'mt-auto flex flex-row flex-wrap justify-center gap-x-6 text-stone-400',
                   )}
                 >
                   <Link href="https://scalene.app" target="_blank">
@@ -235,6 +235,11 @@ export default function Render26({
                   <Link href="https://ringpulse.app" target="_blank">
                     <h4 className="pt-4 text-xs text-stone-400">
                       ringpulse.app
+                    </h4>
+                  </Link>
+                  <Link href="https://deadinternet.tech" target="_blank">
+                    <h4 className="pt-4 text-xs text-stone-400">
+                      deadinternet.tech
                     </h4>
                   </Link>
                 </div>
