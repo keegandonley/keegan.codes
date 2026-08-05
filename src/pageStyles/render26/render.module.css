@@ -22,6 +22,12 @@
   transform: translateY(var(--fade-amount));
 }
 
+.card * {
+  transition:
+    color 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
+}
+
 .element {
   --fade-amount: 10px;
   opacity: 0;
@@ -31,6 +37,8 @@
 
 .avatar {
   animation-delay: 0.1s;
+  user-select: none;
+  pointer-events: none;
 }
 
 .title {
@@ -41,6 +49,10 @@
   animation-delay: 0.3s;
 }
 
+.divider.first {
+  animation-delay: 0.4s;
+}
+
 .posts {
   animation-delay: 0.4s;
 }
@@ -49,18 +61,47 @@
   animation-delay: 0.4s;
 }
 
+.socials h3:hover {
+  @apply text-stone-600;
+}
+
+.divider.second {
+  animation-delay: 0.5s;
+}
+
 .footer {
   animation-delay: 0.5s;
 }
 
+.footer h4:hover {
+  @apply text-stone-600;
+}
+
 .post {
   @apply overflow-hidden rounded-lg bg-stone-50 text-left text-stone-500 shadow-md sm:w-1/2;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+}
+
+.post img {
+  pointer-events: none;
+  user-select: none;
 }
 
 .post h4 {
   @apply p-2 text-sm;
 }
 
+.post:hover {
+  @apply bg-stone-100 text-stone-600 shadow-lg;
+}
+
 .description a {
   @apply text-stone-500 underline decoration-stone-400 decoration-dashed underline-offset-2;
+}
+
+.description a:hover {
+  @apply text-stone-600 decoration-stone-500;
 }

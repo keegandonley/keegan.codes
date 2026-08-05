@@ -145,7 +145,7 @@ export default function Render26({
                   className={merge(
                     styles.element,
                     styles.description,
-                    'pt-4 text-stone-500',
+                    'pt-2 text-lg text-stone-500',
                   )}
                 >
                   Principal Front-End Engineer @{' '}
@@ -156,13 +156,42 @@ export default function Render26({
                 <div
                   className={merge(
                     styles.element,
+                    styles.socials,
+                    'flex flex-row flex-wrap justify-center gap-x-5 pt-2 text-stone-400',
+                  )}
+                >
+                  <Link href="https://keegan.codes" target="_blank">
+                    <h3 className="pt-4 text-stone-500">blog</h3>
+                  </Link>
+                  <Link href="/linkedin" target="_blank">
+                    <h3 className="pt-4 text-stone-500">linkedin</h3>
+                  </Link>
+                  <Link href="/bsky" target="_blank">
+                    <h3 className="pt-4 text-stone-500">bluesky</h3>
+                  </Link>
+                  <Link href="/github" target="_blank">
+                    <h3 className="pt-4 text-stone-500">github</h3>
+                  </Link>
+                </div>
+                <hr
+                  className={merge(
+                    styles.element,
+                    styles.divider,
+                    styles.first,
+                    'mt-4',
+                  )}
+                />
+                <div
+                  className={merge(
+                    styles.element,
                     styles.posts,
-                    'flex flex-col justify-center gap-4 pt-6 text-stone-400 sm:-mx-4 sm:flex-row',
+                    'flex flex-col justify-center gap-4 pb-2 pt-6 text-stone-400 sm:-mx-4 sm:flex-row',
                   )}
                 >
                   <Link
                     className={merge(styles.post)}
                     href="/blog/i-can-build-every-side-project-i-want-with-ai-should-i"
+                    target="_blank"
                   >
                     <Image
                       src={`${BUCKET_URL}/side-projects-2.png`}
@@ -198,30 +227,20 @@ export default function Render26({
                     </h4>
                   </Link>
                 </div>
-                <div
+                <span className="mt-auto" />
+                <hr
                   className={merge(
                     styles.element,
-                    styles.socials,
-                    'flex flex-row flex-wrap justify-center gap-x-4 pt-6 text-stone-400',
+                    styles.divider,
+                    styles.second,
+                    'mt-4',
                   )}
-                >
-                  <Link href="https://keegan.codes" target="_blank">
-                    <h3 className="pt-4 text-stone-500">blog</h3>
-                  </Link>
-                  <Link href="/linkedin" target="_blank">
-                    <h3 className="pt-4 text-stone-500">linkedin</h3>
-                  </Link>
-                  <Link href="/bsky" target="_blank">
-                    <h3 className="pt-4 text-stone-500">bluesky</h3>
-                  </Link>
-                </div>
-
-                <hr className="mt-4" />
+                />{' '}
                 <div
                   className={merge(
                     styles.element,
                     styles.footer,
-                    'mt-auto flex flex-row flex-wrap justify-center gap-x-6 text-stone-400',
+                    'flex flex-row flex-wrap justify-center gap-x-6 text-stone-400',
                   )}
                 >
                   <Link href="https://scalene.app" target="_blank">
