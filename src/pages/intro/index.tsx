@@ -1,13 +1,11 @@
 import { Avatar } from '@/components/Avatar';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Hr } from '@/components/Post/Hr';
 import { BUCKET_URL } from '@/util/const';
 import '@/tw.css';
-import { useState } from 'react';
 import { merge } from '@keegancodes/foundations';
-import styles from '../../pageStyles/render26/render.module.css';
-import '../../pageStyles/render26/render.css';
+import styles from '../../pageStyles/intro/intro.module.css';
+import '../../pageStyles/intro/intro.css';
 import '../../app/theme.css';
 import dynamic from 'next/dynamic';
 import localFont from 'next/font/local';
@@ -42,67 +40,79 @@ const stokeRegular = localFont({
 
 const HiTrack = dynamic(() => import('@/components/Track/Hi'));
 
-export async function getServerSideProps(context: any) {
-  const tiles = {
-    peacock,
-    poppy,
-    mirage,
-    clockwork,
-    exotic,
-    lush,
-    floral,
-    triangles,
-    daffodil,
-    songbirds,
-    bloom,
-    tigers,
-    celestial,
-    tropicana,
-    pea,
-    toucan,
-    owl,
-    classic,
-  };
+const tiles = {
+  peacock,
+  poppy,
+  mirage,
+  clockwork,
+  exotic,
+  lush,
+  floral,
+  triangles,
+  daffodil,
+  songbirds,
+  bloom,
+  tigers,
+  celestial,
+  tropicana,
+  pea,
+  toucan,
+  owl,
+  classic,
+};
 
-  const sizeOverrides = {
-    [tiles.peacock.src]: 500,
-    [tiles.lush.src]: 500,
-    [tiles.daffodil.src]: 300,
-    [tiles.tigers.src]: 500,
-    [tiles.celestial.src]: 600,
-    [tiles.tropicana.src]: 350,
-    [tiles.owl.src]: 500,
-    [tiles.classic.src]: 500,
-  };
+const sizeOverrides = {
+  [tiles.peacock.src]: 500,
+  [tiles.lush.src]: 500,
+  [tiles.daffodil.src]: 300,
+  [tiles.tigers.src]: 500,
+  [tiles.celestial.src]: 600,
+  [tiles.tropicana.src]: 350,
+  [tiles.owl.src]: 500,
+  [tiles.classic.src]: 500,
+};
+
+const pinnedSources: Record<string, string> = {
+  render26: tiles.lush.src,
+};
+
+export async function getServerSideProps(context: any) {
+  const query = context.query as { tile?: keyof typeof tiles; source?: string };
 
   const tileOptions = Object.values(tiles).map((tile) => tile.src);
 
   let tile = tileOptions[Math.floor(Math.random() * tileOptions.length)];
 
-  if (context.query.tile) {
-    const match = tiles[context.query.tile as keyof typeof tiles];
+  if (query.tile) {
+    const match = tiles[query.tile];
 
     if (match) {
       tile = match.src;
     }
   }
 
+  if (query.source && pinnedSources[query.source]) {
+    tile = pinnedSources[query.source];
+  }
+
   return {
     props: {
       imageSrc: tile,
       imageSize: sizeOverrides[tile] || 400,
+      source: query.source ?? 'render26',
     },
   };
 }
 
-export default function Render26({
+export default function Intro({
   imageSrc,
   imageSize,
+  source,
 }: {
   imageSrc: string;
   imageSize: number;
+  source: string;
 }) {
-  const [isReadMore, setIsReadMore] = useState(false);
   return (
     <>
       <div
@@ -267,7 +277,7 @@ export default function Render26({
           </div>
         </div>
       </div>
-      <HiTrack slug="render26" qrScanned={false} />
+      <HiTrack slug={source} qrScanned={false} />
     </>
   );
 }
