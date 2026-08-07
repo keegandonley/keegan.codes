@@ -95,11 +95,14 @@ export async function getServerSideProps(context: any) {
     tile = pinnedSources[query.source];
   }
 
+  const scaleneLink = process.env.SCALENE_TESTFLIGHT_LINK || '';
+
   return {
     props: {
       imageSrc: tile,
       imageSize: sizeOverrides[tile] || 400,
       source: query.source ?? 'render26',
+      scaleneLink,
     },
   };
 }
@@ -108,10 +111,12 @@ export default function Intro({
   imageSrc,
   imageSize,
   source,
+  scaleneLink,
 }: {
   imageSrc: string;
   imageSize: number;
   source: string;
+  scaleneLink: string;
 }) {
   return (
     <>
@@ -253,7 +258,10 @@ export default function Intro({
                     'flex flex-row flex-wrap justify-center gap-x-6 text-stone-400',
                   )}
                 >
-                  <Link href="https://scalene.app" target="_blank">
+                  <Link
+                    href={`https://scalene.app?beta=${encodeURIComponent(scaleneLink)}`}
+                    target="_blank"
+                  >
                     <h4 className="pt-4 text-xs text-stone-400">scalene.app</h4>
                   </Link>
                   <Link href="https://hypothesis.sh" target="_blank">
