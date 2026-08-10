@@ -62,8 +62,8 @@ const tiles = {
 };
 
 const sizeOverrides = {
-  [tiles.peacock.src]: 500,
-  [tiles.lush.src]: 500,
+  [tiles.peacock.src]: 700,
+  [tiles.lush.src]: 600,
   [tiles.daffodil.src]: 300,
   [tiles.tigers.src]: 500,
   [tiles.celestial.src]: 600,
