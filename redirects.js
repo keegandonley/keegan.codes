@@ -52,5 +52,5 @@ module.exports = [
     false,
   ],
   ['/repo', 'https://github.com/keegandonley/keegan.codes', false],
-  ['/render26', '/intro?source=render26', false],
+  ['/render26', '/intro?source=render26&medium=qr', false],
 ];

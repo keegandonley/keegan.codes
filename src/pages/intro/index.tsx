@@ -77,7 +77,11 @@ const pinnedSources: Record<string, string> = {
 };
 
 export async function getServerSideProps(context: any) {
-  const query = context.query as { tile?: keyof typeof tiles; source?: string };
+  const query = context.query as {
+    tile?: keyof typeof tiles;
+    source?: string;
+    medium?: 'qr' | 'direct';
+  };
 
   const tileOptions = Object.values(tiles).map((tile) => tile.src);
 
@@ -103,6 +107,7 @@ export async function getServerSideProps(context: any) {
       imageSize: sizeOverrides[tile] || 400,
       source: query.source ?? 'render26',
       scaleneLink,
+      wasQr: query.medium === 'qr' ? true : false,
     },
   };
 }
@@ -112,11 +117,13 @@ export default function Intro({
   imageSize,
   source,
   scaleneLink,
+  wasQr,
 }: {
   imageSrc: string;
   imageSize: number;
   source: string;
   scaleneLink: string;
+  wasQr: boolean;
 }) {
   return (
     <>
@@ -285,7 +292,7 @@ export default function Intro({
           </div>
         </div>
       </div>
-      <HiTrack slug={source} qrScanned={false} />
+      <HiTrack slug={source} qrScanned={wasQr} />
     </>
   );
 }
