@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from '@vercel/og';
 import { BUCKET_URL } from '@/util/const';
+import { OG_CACHE_HEADERS } from '../cache';
 
 export const runtime = 'edge';
 
@@ -144,6 +145,7 @@ export async function GET(request: Request) {
     {
       width: parseInt(width),
       height: parseInt(height),
+      headers: OG_CACHE_HEADERS,
       fonts: [
         {
           name: 'Oswald',

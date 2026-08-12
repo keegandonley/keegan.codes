@@ -3,12 +3,12 @@
 import { DESCRIPTION, NAME } from '@/metadata';
 import { BUCKET_URL } from '@/util/const';
 import { ImageResponse } from '@vercel/og';
-import { cookies } from 'next/headers';
 import { Div } from '../components/Div';
 import { postCount as bookCount } from '@/book-count';
 import { postCount } from '@/post-count';
+import { OG_CACHE_HEADERS } from '../cache';
 
-const darkBackground = 'rgba(32, 65, 123, 1)';
+const brandBlue = 'rgba(32, 65, 123, 1)';
 
 const getMetadata = (page: string) => {
   if (page === 'home') {
@@ -39,12 +39,6 @@ const getMetadata = (page: string) => {
 };
 
 export async function GET(request: Request) {
-  const allCookies = await cookies();
-
-  const theme = allCookies.get('theme');
-
-  const darkMode = theme?.value === 'dark';
-
   const { searchParams } = new URL(request.url);
   const width = searchParams.get('width') ?? '800';
   const height = searchParams.get('height') ?? '418';
@@ -65,7 +59,7 @@ export async function GET(request: Request) {
         width: '100%',
         height: '100%',
         flexDirection: 'row',
-        background: backgroundOverride ?? (darkMode ? darkBackground : 'white'),
+        background: backgroundOverride ?? 'white',
         alignItems: 'center',
       }}
     >
@@ -96,7 +90,7 @@ export async function GET(request: Request) {
           <h1
             style={{
               fontSize: '50px',
-              color: textOverride ?? (darkMode ? 'white' : darkBackground),
+              color: textOverride ?? brandBlue,
             }}
           >
             {metadata.title}
@@ -104,7 +98,7 @@ export async function GET(request: Request) {
           <span
             style={{
               fontSize: '25px',
-              color: textOverride ?? (darkMode ? 'lightGray' : 'gray'),
+              color: textOverride ?? 'gray',
             }}
           >
             {metadata.description}
@@ -115,6 +109,7 @@ export async function GET(request: Request) {
     {
       width: parseInt(width),
       height: parseInt(height),
+      headers: OG_CACHE_HEADERS,
     },
   );
 }

@@ -3,6 +3,7 @@
 import { ImageResponse } from '@vercel/og';
 import { getComponentForKey, getKey } from '@/app/blog/util';
 import { BUCKET_URL } from '@/util/const';
+import { OG_CACHE_HEADERS_EXTERNAL } from '../cache';
 import {
   AppBskyFeedDefs,
   AppBskyFeedGetPostThread,
@@ -225,6 +226,7 @@ export async function GET(request: Request) {
     {
       width: parseInt(width),
       height: parseInt(height),
+      headers: OG_CACHE_HEADERS_EXTERNAL,
       fonts: [
         {
           name: 'Oswald',

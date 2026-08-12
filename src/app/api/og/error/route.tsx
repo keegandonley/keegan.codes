@@ -2,18 +2,12 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from '@vercel/og';
 import { BUCKET_URL } from '@/util/const';
-import { cookies } from 'next/headers';
+import { OG_CACHE_HEADERS } from '../cache';
 
-const darkBackground = 'rgba(32, 65, 123, 1)';
+const brandBlue = 'rgba(32, 65, 123, 1)';
 const lightBackground = 'rgba(227, 229, 240, 1)';
 
 export async function GET(request: Request) {
-  const allCookies = await cookies();
-
-  const theme = allCookies.get('theme');
-
-  const darkMode = theme?.value === 'dark';
-
   const { searchParams } = new URL(request.url);
   const value = searchParams.get('value');
 
@@ -25,7 +19,7 @@ export async function GET(request: Request) {
         justifyContent: 'center',
         height: '100%',
         width: '100%',
-        background: darkMode ? darkBackground : lightBackground,
+        background: lightBackground,
       }}
     >
       <div
@@ -33,7 +27,7 @@ export async function GET(request: Request) {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          color: darkMode ? lightBackground : darkBackground,
+          color: brandBlue,
           fontSize: 30,
           paddingBottom: 40,
         }}
@@ -42,7 +36,7 @@ export async function GET(request: Request) {
           style={{
             width: 200,
             paddingBottom: 30,
-            filter: darkMode ? 'invert(1)' : 'invert(0.5)',
+            filter: 'invert(0.5)',
           }}
           src={`${BUCKET_URL}/radar-solid.svg`}
         />
@@ -66,6 +60,7 @@ export async function GET(request: Request) {
     {
       width: 1200,
       height: 600,
+      headers: OG_CACHE_HEADERS,
     },
   );
 }

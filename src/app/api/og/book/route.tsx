@@ -4,13 +4,11 @@ import { ImageResponse } from '@vercel/og';
 import { getComponentForKey, getKey } from '@/app/library/util';
 import { BOOK_BUCKET_URL, BUCKET_URL } from '@/util/const';
 import { getBookCoverMetadata, parseSource } from '@/util/image';
-import { isDarkMode } from '@/util/cookies';
+import { OG_CACHE_HEADERS } from '../cache';
 
-const darkBackground = 'rgba(32, 65, 123, 1)';
+const brandBlue = 'rgba(32, 65, 123, 1)';
 
 export async function GET(request: Request) {
-  const darkMode = await isDarkMode();
-
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get('slug');
   const width = searchParams.get('width') ?? '800';
@@ -78,7 +76,7 @@ export async function GET(request: Request) {
           bottom: 20,
           left: 20,
           right: 20,
-          background: darkMode ? darkBackground : 'white',
+          background: 'white',
           display: 'flex',
           flexDirection: 'column',
           borderRadius: 10,
@@ -92,7 +90,7 @@ export async function GET(request: Request) {
             fontSize: 50,
             paddingBottom: 0,
             marginBottom: 0,
-            color: darkMode ? 'white' : darkBackground,
+            color: brandBlue,
             width: '85%',
             paddingTop: 5,
           }}
@@ -103,7 +101,7 @@ export async function GET(request: Request) {
           style={{
             paddingLeft: 20,
             fontSize: 25,
-            color: darkMode ? 'lightgray' : 'gray',
+            color: 'gray',
             marginTop: 10,
             width: '85%',
             paddingBottom: 10,
@@ -138,6 +136,7 @@ export async function GET(request: Request) {
     {
       width: parseInt(width),
       height: parseInt(height),
+      headers: OG_CACHE_HEADERS,
     },
   );
 }
