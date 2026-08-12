@@ -1,24 +1,21 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import { ImageResponse } from '@vercel/og';
 import { BUCKET_URL } from '@/util/const';
 import { OG_CACHE_HEADERS } from '../cache';
 
-export const runtime = 'edge';
+const [oswaldData, oswaldLightData] = await Promise.all([
+  readFile(join(process.cwd(), 'src/app/fonts/Oswald.ttf')),
+  readFile(join(process.cwd(), 'src/app/fonts/Oswald-Light.ttf')),
+]);
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get('slug');
   const width = searchParams.get('width') ?? '800';
   const height = searchParams.get('height') ?? '418';
-
-  const oswaldData = await fetch(
-    new URL('../../../fonts/Oswald.ttf', import.meta.url),
-  ).then((res) => res.arrayBuffer());
-
-  const oswaldLightData = await fetch(
-    new URL('../../../fonts/Oswald-Light.ttf', import.meta.url),
-  ).then((res) => res.arrayBuffer());
 
   if (!slug) {
     console.error('Missing slug at', request.url);
