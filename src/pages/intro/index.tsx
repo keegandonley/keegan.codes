@@ -194,6 +194,9 @@ export default function Intro({
                   <Link href="/github" target="_blank">
                     <h3 className="pt-4 text-stone-500">github</h3>
                   </Link>
+                  <Link href="/twitter" target="_blank">
+                    <h3 className="pt-4 text-stone-500">twitter</h3>
+                  </Link>
                 </div>
                 <hr
                   className={merge(

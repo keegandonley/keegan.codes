@@ -2,7 +2,7 @@ const v2Domain = 'https://v2.keegandonley.com';
 
 module.exports = [
   // origin | destination | permanent
-  ['/twitter', 'https://twitter.com/keegandonley'],
+  ['/twitter', 'https://x.com/keegandonley'],
   ['/linkedin', 'https://www.linkedin.com/in/k10y/'],
   ['/github', 'https://github.com/keegandonley'],
   ['/instagram', 'https://www.instagram.com/keegandonley'],
