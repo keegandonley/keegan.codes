@@ -1,3 +1,4 @@
+import Books from '@/books';
 import { BookModal } from '@/components/BookModal';
 import { Modal } from '@/components/Modal';
 
@@ -5,6 +6,10 @@ interface InterceptorProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export function generateStaticParams() {
+  return Object.keys(Books).map((key) => ({ slug: (Books as any)[key].slug }));
 }
 
 export default async function LibraryInterceptor(props: InterceptorProps) {

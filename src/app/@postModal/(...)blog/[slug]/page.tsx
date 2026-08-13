@@ -1,3 +1,4 @@
+import Posts from '@/posts';
 import { Modal } from '@/components/Modal';
 import { PostModal } from '@/components/PostModal';
 import '../../../syntax-theme.css';
@@ -10,6 +11,10 @@ interface InterceptorProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export function generateStaticParams() {
+  return Object.keys(Posts).map((key) => ({ slug: (Posts as any)[key].slug }));
 }
 
 export default async function Interceptor(args: InterceptorProps) {

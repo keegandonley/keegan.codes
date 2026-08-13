@@ -3,26 +3,18 @@ import Posts from '@/posts';
 import styles from './blog.module.css';
 import wordCounts from '../../../post-word-counts.json';
 import { Post } from '@/types/post';
-import { userTheme } from '@/util/cookies';
 import { BASEURL, NAME } from '@/metadata';
 import { postCount } from '@/post-count';
 import { background } from '@/theme/colors';
-import { getIsLikelyMobile } from '@/util/userAgent';
-import { get } from '@vercel/edge-config';
 import dynamic from 'next/dynamic';
 import { getImageMetadata } from '@/util/image';
-import { commentCountsEnabled } from '@/components/Comments/util';
+import { POSTS_PER_PAGE } from '@/util/const';
 
 const DynamicDynamicPosts = dynamic(
   () => import('@/components/DynamicPosts/index'),
 );
 
 export default async function BlogPage() {
-  const [postsPerPage, commentsEnabled] = await Promise.all([
-    parseInt((await get('blogPageSize')) ?? '12'),
-    commentCountsEnabled(),
-  ]);
-
   const allPosts = Object.keys(Posts);
   const posts = allPosts
     .map((key) => {
@@ -43,10 +35,9 @@ export default async function BlogPage() {
       }
       return b.published.getTime() - a.published.getTime();
     })
-    .slice(0, postsPerPage);
+    .slice(0, POSTS_PER_PAGE);
 
-  const pageCount = Math.ceil(allPosts.length / postsPerPage);
-  const isLikelyMobile = await getIsLikelyMobile();
+  const pageCount = Math.ceil(allPosts.length / POSTS_PER_PAGE);
 
   return (
     <>
@@ -59,9 +50,8 @@ export default async function BlogPage() {
               <MDXEntryRow
                 key={post.slug}
                 showViewCount
-                showCommentCount={commentsEnabled}
+                showCommentCount
                 index={index}
-                isLikelyMobile={isLikelyMobile}
                 className={
                   index === posts.length - 1 ? 'last-element-page-1' : ''
                 }
@@ -73,10 +63,9 @@ export default async function BlogPage() {
 
           <DynamicDynamicPosts
             previousPage={1}
-            isLikelyMobile={isLikelyMobile}
             pageCount={pageCount}
-            postsPerPage={postsPerPage}
-            remainingPosts={allPosts.length - postsPerPage}
+            postsPerPage={POSTS_PER_PAGE}
+            remainingPosts={allPosts.length - POSTS_PER_PAGE}
           />
         </div>
       </section>
@@ -84,11 +73,9 @@ export default async function BlogPage() {
   );
 }
 
-export async function generateViewport() {
-  const theme = await userTheme();
-
+export function generateViewport() {
   return {
-    themeColor: theme === 'light' ? background.light : background.dark,
+    themeColor: background.light,
   };
 }
 

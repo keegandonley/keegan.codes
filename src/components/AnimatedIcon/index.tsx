@@ -1,5 +1,6 @@
 import { ElementBaseProps } from '@/types/elements';
 import { fallback, merge } from '@/util/classNames';
+import { Theme } from '@/types/theme';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './animatedIcon.module.css';
@@ -7,14 +8,14 @@ import styles from './animatedIcon.module.css';
 interface AnimatedIconProps extends ElementBaseProps {
   from: 'top' | 'bottom';
   icon: IconProp;
-  visible: boolean;
+  visibleIn: Theme;
 }
 
 export const AnimatedIcon = ({
   from,
   icon,
   className,
-  visible,
+  visibleIn,
 }: AnimatedIconProps) => {
   const fromBottom = from === 'bottom';
 
@@ -24,7 +25,7 @@ export const AnimatedIcon = ({
         className,
         merge(
           styles.animatedIcon,
-          visible && styles.show,
+          visibleIn === 'dark' ? styles.showInDark : styles.showInLight,
           fromBottom ? styles.darkModeToggle : styles.lightModeToggle,
         ),
       )}

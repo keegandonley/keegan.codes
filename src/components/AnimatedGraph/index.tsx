@@ -1,14 +1,14 @@
 import { merge } from '@/util/classNames';
 import styles from './animatedGraph.module.css';
 import { BottomFade } from '../BottomFade';
-import { getIsLikelyMobile } from '@/util/userAgent';
 import { RadialFade } from '../RadialFade';
 import { TopFade } from '../TopFade';
+import { connection } from 'next/server';
 
 export const AnimatedGraph = async () => {
-  const isLikelyMobile = await getIsLikelyMobile();
+  await connection();
 
-  const values = Array(isLikelyMobile ? 150 : 250).fill(1);
+  const values = Array(250).fill(1);
 
   const coloredValues = values.map((_, _i) => {
     const color = Math.floor(Math.random() * 7) + 1;

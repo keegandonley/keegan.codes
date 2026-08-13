@@ -1,4 +1,6 @@
 import { PostPreview } from '@/components/PostPreview';
+import Posts from '@/posts';
+import { Post } from '@/types/post';
 import dynamic from 'next/dynamic';
 import styles from './thread.module.css';
 import { Footer } from '@/components/Footer';
@@ -24,6 +26,13 @@ interface ThreadPageProps {
     id: string;
     slug: string;
   }>;
+}
+
+export function generateStaticParams() {
+  return Object.keys(Posts)
+    .map((key) => (Posts as any)[key] as Post)
+    .filter((post) => post.bskyThreadId)
+    .map((post) => ({ id: post.bskyThreadId as string, slug: post.slug }));
 }
 
 export async function generateMetadata(

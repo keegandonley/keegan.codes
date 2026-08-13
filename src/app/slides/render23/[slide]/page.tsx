@@ -23,6 +23,10 @@ const order = [
   Slides.Intro,
 ];
 
+export function generateStaticParams() {
+  return order.map((_, index) => ({ slide: String(index) }));
+}
+
 export default async function Render2023SlidePage(props: SlideProps) {
   const params = await props.params;
 

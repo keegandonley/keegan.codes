@@ -7,11 +7,10 @@ import {
   useSelectedLayoutSegments,
 } from 'next/navigation';
 import { MenuItem } from './components/MenuItem';
-import { useEffect } from 'react';
+import { ReactNode, Suspense, useEffect } from 'react';
 import styles from './navigation.module.css';
 import { ThemeToggle } from '../ThemeToggle';
 import { merge } from '@/util/classNames';
-import { Theme } from '@/types/theme';
 import dynamic from 'next/dynamic';
 import { useLinkClick } from '@/hooks/useLinkClick';
 
@@ -23,10 +22,13 @@ const DynamicWaves = dynamic(
   },
 );
 
-const MainNavigation = ({ currentTheme }: { currentTheme: Theme }) => {
+const FramelessGate = ({ children }: { children: ReactNode }) => {
   const urlQuery = useSearchParams();
-  const frameless = urlQuery?.get('frameless') === 'true';
 
+  return urlQuery?.get('frameless') === 'true' ? null : <>{children}</>;
+};
+
+const MainNavigation = () => {
   const pathname = usePathname();
   const segments = useSelectedLayoutSegments();
   const isHomePage = pathname === '/' || !segments?.length;
@@ -61,11 +63,11 @@ const MainNavigation = ({ currentTheme }: { currentTheme: Theme }) => {
     });
   }, []);
 
-  if (isSlideshow || (isPlaygroundPage && frameless)) {
+  if (isSlideshow) {
     return null;
   }
 
-  return (
+  const navigation = (
     <>
       <div />
       <HeroBlock
@@ -90,10 +92,7 @@ const MainNavigation = ({ currentTheme }: { currentTheme: Theme }) => {
         </MenuItem>
         <div className={styles.avatarWrapper}>
           <Avatar width={isHomePage ? 150 : 75} priority />
-          <ThemeToggle
-            size={isHomePage ? 'large' : 'small'}
-            currentTheme={currentTheme}
-          />
+          <ThemeToggle size={isHomePage ? 'large' : 'small'} />
           <div className={merge(styles.shadowGroup)}>
             <div
               className={merge(
@@ -125,6 +124,16 @@ const MainNavigation = ({ currentTheme }: { currentTheme: Theme }) => {
       <DynamicWaves />
     </>
   );
+
+  if (isPlaygroundPage) {
+    return (
+      <Suspense fallback={navigation}>
+        <FramelessGate>{navigation}</FramelessGate>
+      </Suspense>
+    );
+  }
+
+  return navigation;
 };
 
 export default MainNavigation;

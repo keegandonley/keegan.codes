@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+import { ScanTracker } from '../ScanTracker';
 import { Paragraph } from '@/components/Paragraph';
 import styles from './tailwind.module.css';
 import Link from 'next/link';
@@ -7,16 +9,12 @@ import { merge } from '@/util/classNames';
 import { faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
 import tailwindLogo from './tailwind.png';
-import dynamic from 'next/dynamic';
-
-const HiTrack = dynamic(() => import('@/components/Track/Hi'));
 
 interface TailwindProps {
   searchParams: Promise<{ scan: string }>;
 }
 
 export default async function TailwindPage(props: TailwindProps) {
-  const searchParams = await props.searchParams;
 
   return (
     <div className={styles.wrapper}>
@@ -62,7 +60,9 @@ export default async function TailwindPage(props: TailwindProps) {
           width={80}
         />
       </div>
-      <HiTrack slug="tailwind" qrScanned={searchParams?.scan === 'true'} />
+      <Suspense fallback={null}>
+        <ScanTracker slug="tailwind" searchParams={props.searchParams} />
+      </Suspense>
     </div>
   );
 }

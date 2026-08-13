@@ -16,6 +16,12 @@ interface ShortCodePageProps {
   }>;
 }
 
+export function generateStaticParams() {
+  return posts.flatMap((post) =>
+    (post.shortCodes ?? []).map((shortCode) => ({ shortCode })),
+  );
+}
+
 export default async function ShortCodePage(props: ShortCodePageProps) {
   const params = await props.params;
 

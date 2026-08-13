@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { MDXEntryRow } from '@/components/MDXEntryRow';
 import Posts from '@/posts';
 import styles from '../../blog.module.css';
@@ -9,16 +10,22 @@ import tagPageStyles from './tagPage.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@keegandonley/pro-solid-svg-icons';
 import Link from 'next/link';
-import { getIsLikelyMobile } from '@/util/userAgent';
 import { getImageMetadata } from '@/util/image';
 import { Metadata } from 'next';
 import { BASEURL, NAME } from '@/metadata';
-import { commentCountsEnabled } from '@/components/Comments/util';
 
 interface BlogTagPageProps {
   params: Promise<{
     tag: string;
   }>;
+}
+
+export function generateStaticParams() {
+  const tags = new Set(
+    Object.keys(Posts).flatMap((key) => ((Posts as any)[key] as Post).tags ?? []),
+  );
+
+  return Array.from(tags).map((tag) => ({ tag: encodeURIComponent(tag) }));
 }
 
 export async function generateMetadata(
@@ -66,11 +73,6 @@ export default async function BlogTagPage(props: BlogTagPageProps) {
 
   const decodedTag = decodeURIComponent(params.tag);
 
-  const [isLikelyMobile, commentsEnabled] = await Promise.all([
-    getIsLikelyMobile(),
-    commentCountsEnabled(),
-  ]);
-
   const posts = Object.keys(Posts)
     .map((key) => {
       const component = (Posts as any)[key] as Post;
@@ -117,8 +119,7 @@ export default async function BlogTagPage(props: BlogTagPageProps) {
                   key={post.slug}
                   index={index}
                   showViewCount
-                  showCommentCount={commentsEnabled}
-                  isLikelyMobile={isLikelyMobile}
+                  showCommentCount
                   {...post}
                   imageMetadata={metadata}
                 />
@@ -128,24 +129,23 @@ export default async function BlogTagPage(props: BlogTagPageProps) {
             key="extra-1"
             index={-1}
             filler
-            isLikelyMobile={isLikelyMobile}
           />
           <MDXEntryRow
             key="extra-2"
             index={-1}
             filler
-            isLikelyMobile={isLikelyMobile}
           />
           <MDXEntryRow
             key="extra-3"
             index={-1}
             filler
-            isLikelyMobile={isLikelyMobile}
           />
         </div>
       </section>
       <Delay>
-        <AnimatedGraph />
+        <Suspense fallback={null}>
+          <AnimatedGraph />
+        </Suspense>
       </Delay>
     </>
   );

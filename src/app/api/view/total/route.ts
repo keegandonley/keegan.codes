@@ -1,7 +1,9 @@
 import { getTotalViews } from '@/util/db';
-import { NextResponse } from 'next/server';
+import { NextResponse, connection } from 'next/server';
 
 export async function GET() {
+  await connection();
+
   try {
     const views = await getTotalViews();
 

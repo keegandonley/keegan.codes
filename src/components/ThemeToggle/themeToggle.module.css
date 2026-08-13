@@ -18,7 +18,7 @@
     bottom var(--animation);
 }
 
-.dark {
+:global(body:not(.dark)) .themeWrapper {
   border-color: var(--theme-yellow);
   background-color: var(--theme-yellow);
 }

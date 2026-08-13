@@ -23,6 +23,7 @@
   color: var(--theme-dark-blue);
 }
 
-.show {
+:global(body:not(.dark)) .showInLight,
+:global(body.dark) .showInDark {
   transform: translateY(0);
 }

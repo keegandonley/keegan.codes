@@ -7,6 +7,7 @@ import { BUCKET_URL } from '@/util/const';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getComponentForKey, getKey } from '../util';
+import Posts from '@/posts';
 import wordCounts from '../../../post-word-counts.json';
 import { BASEURL, NAME } from '@/metadata';
 import { PostHeader } from '@/components/PostHeader';
@@ -43,6 +44,10 @@ export interface BlogPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export function generateStaticParams() {
+  return Object.keys(Posts).map((key) => ({ slug: (Posts as any)[key].slug }));
 }
 
 export async function generateMetadata(
