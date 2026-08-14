@@ -1,11 +1,9 @@
 import { PostPreview } from '@/components/PostPreview';
-import Posts from '@/posts';
-import { Post } from '@/types/post';
 import dynamic from 'next/dynamic';
 import styles from './thread.module.css';
 import { Footer } from '@/components/Footer';
 import { Metadata } from 'next';
-import { getComponentForKey, getKey } from '@/app/blog/util';
+import { getAllPosts, getComponentForKey, getKey } from '@/app/blog/util';
 import { notFound } from 'next/navigation';
 import { BASEURL, NAME } from '@/metadata';
 
@@ -32,8 +30,7 @@ interface ThreadPageProps {
 }
 
 export function generateStaticParams() {
-  return Object.keys(Posts)
-    .map((key) => (Posts as any)[key] as Post)
+  return getAllPosts()
     .filter((post) => post.bskyThreadId)
     .map((post) => ({ id: post.bskyThreadId as string, slug: post.slug }));
 }
@@ -96,7 +93,10 @@ export default async function ThreadPage(props: ThreadPageProps) {
 
   const componentKey = getKey({ slug });
 
-  if (!componentKey || getComponentForKey({ key: componentKey })?.bskyThreadId !== id) {
+  if (
+    !componentKey ||
+    getComponentForKey({ key: componentKey })?.bskyThreadId !== id
+  ) {
     notFound();
   }
 

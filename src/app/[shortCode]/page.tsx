@@ -1,16 +1,9 @@
-import Posts from '@/posts';
-import { Post } from '@/types/post';
+import { getAllPosts } from '@/app/blog/util';
 import { notFound, redirect } from 'next/navigation';
 
 export const instant = false;
 
-const posts = Object.keys(Posts).map((key) => {
-  const component = (Posts as any)[key] as Post;
-  return {
-    slug: component.slug,
-    shortCodes: component.shortCodes,
-  };
-});
+const posts = getAllPosts();
 
 interface ShortCodePageProps {
   params: Promise<{

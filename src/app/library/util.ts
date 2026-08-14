@@ -1,6 +1,11 @@
 import Books from '@/books';
 import { Book } from '@/types/book';
 
+export const getAllBooks = (): Book[] =>
+  Object.keys(Books).map((key) => (Books as any)[key] as Book);
+
+export const getSlugParams = () => getAllBooks().map(({ slug }) => ({ slug }));
+
 interface GetKeyArg {
   slug: string;
 }

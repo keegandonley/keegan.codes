@@ -1,7 +1,6 @@
 import { BookContent } from '@/components/BookContent';
 import { Metadata } from 'next';
-import { getComponentForKey, getKey } from '../util';
-import Books from '@/books';
+import { getComponentForKey, getKey, getSlugParams } from '../util';
 import { BASEURL, NAME } from '@/metadata';
 
 export const instant = false;
@@ -13,7 +12,7 @@ interface LibraryPageProps {
 }
 
 export function generateStaticParams() {
-  return Object.keys(Books).map((key) => ({ slug: (Books as any)[key].slug }));
+  return getSlugParams();
 }
 
 export async function generateMetadata(

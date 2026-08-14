@@ -16,7 +16,6 @@ interface RenderPageProps {
 }
 
 export default async function RenderPage(props: RenderPageProps) {
-
   return (
     <div className={styles.wrapper}>
       <Paragraph className={merge(styles.firstParagraph, styles.paragraph)}>

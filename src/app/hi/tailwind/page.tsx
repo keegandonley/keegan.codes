@@ -15,7 +15,6 @@ interface TailwindProps {
 }
 
 export default async function TailwindPage(props: TailwindProps) {
-
   return (
     <div className={styles.wrapper}>
       <Paragraph className={merge(styles.firstParagraph, styles.paragraph)}>

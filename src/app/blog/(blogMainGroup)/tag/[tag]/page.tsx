@@ -25,7 +25,9 @@ interface BlogTagPageProps {
 
 export function generateStaticParams() {
   const tags = new Set(
-    Object.keys(Posts).flatMap((key) => ((Posts as any)[key] as Post).tags ?? []),
+    Object.keys(Posts).flatMap(
+      (key) => ((Posts as any)[key] as Post).tags ?? [],
+    ),
   );
 
   return Array.from(tags).map((tag) => ({ tag: encodeURIComponent(tag) }));
@@ -132,21 +134,9 @@ export default async function BlogTagPage(props: BlogTagPageProps) {
                 />
               );
             })}
-          <MDXEntryRow
-            key="extra-1"
-            index={-1}
-            filler
-          />
-          <MDXEntryRow
-            key="extra-2"
-            index={-1}
-            filler
-          />
-          <MDXEntryRow
-            key="extra-3"
-            index={-1}
-            filler
-          />
+          <MDXEntryRow key="extra-1" index={-1} filler />
+          <MDXEntryRow key="extra-2" index={-1} filler />
+          <MDXEntryRow key="extra-3" index={-1} filler />
         </div>
       </section>
       <Delay>

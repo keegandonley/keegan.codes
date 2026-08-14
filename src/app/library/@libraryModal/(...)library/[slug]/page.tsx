@@ -1,4 +1,4 @@
-import Books from '@/books';
+import { getSlugParams } from '@/app/library/util';
 import { BookModal } from '@/components/BookModal';
 import { Modal } from '@/components/Modal';
 
@@ -11,7 +11,7 @@ interface InterceptorProps {
 }
 
 export function generateStaticParams() {
-  return Object.keys(Books).map((key) => ({ slug: (Books as any)[key].slug }));
+  return getSlugParams();
 }
 
 export default async function LibraryInterceptor(props: InterceptorProps) {

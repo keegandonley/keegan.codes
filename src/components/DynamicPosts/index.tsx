@@ -19,12 +19,7 @@ interface PostWithViewCount extends Post {
 }
 
 const DynamicPosts = (props: DynamicPostsProps) => {
-  const {
-    previousPage,
-    pageCount,
-    postsPerPage,
-    remainingPosts,
-  } = props;
+  const { previousPage, pageCount, postsPerPage, remainingPosts } = props;
   const currentPage = previousPage + 1;
   const [isVisibile, setIsVisible] = useState(false);
   const [pageData, setPageData] = useState<PostWithViewCount[]>();

@@ -6,8 +6,7 @@ import { getImageMetadata, parseSource, parseToProps } from '@/util/image';
 import { BUCKET_URL } from '@/util/const';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getComponentForKey, getKey } from '../util';
-import Posts from '@/posts';
+import { getComponentForKey, getKey, getSlugParams } from '../util';
 import wordCounts from '../../../post-word-counts.json';
 import { BASEURL, NAME } from '@/metadata';
 import { PostHeader } from '@/components/PostHeader';
@@ -49,7 +48,7 @@ export interface BlogPageProps {
 }
 
 export function generateStaticParams() {
-  return Object.keys(Posts).map((key) => ({ slug: (Posts as any)[key].slug }));
+  return getSlugParams();
 }
 
 export async function generateMetadata(

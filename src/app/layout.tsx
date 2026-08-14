@@ -5,6 +5,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import { merge } from '@/util/classNames';
 import { background } from '@/theme/colors';
+import { DARK_CLASS, DARK_THEME, THEME_COOKIE } from '@/theme/constants';
 import { Analytics } from '@vercel/analytics/react';
 import { Suspense } from 'react';
 import { BASEURL, DESCRIPTION, NAME } from '@/metadata';
@@ -27,7 +28,22 @@ const DynamicEventWaiter = dynamic(
 
 config.autoAddCss = false;
 
-const THEME_SCRIPT = `(function(){try{var t=document.cookie.match(/(?:^|;\\s*)theme=([^;]*)/);if(t&&t[1]==='dark'){document.body.classList.add('dark');var m=document.querySelector('meta[name="theme-color"]');if(m){m.setAttribute('content','${background.dark}');}}}catch(e){}})();`;
+const THEME_SCRIPT = `
+(function () {
+  try {
+    var match = document.cookie.match(
+      new RegExp('(?:^|;\\\\s*)' + ${JSON.stringify(THEME_COOKIE)} + '=([^;]*)')
+    );
+    if (match && match[1] === ${JSON.stringify(DARK_THEME)}) {
+      document.body.classList.add(${JSON.stringify(DARK_CLASS)});
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) {
+        meta.setAttribute('content', ${JSON.stringify(background.dark)});
+      }
+    }
+  } catch (e) {}
+})();
+`;
 
 export default async function RootLayout({ children, postModal }: any) {
   return (

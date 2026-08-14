@@ -7,6 +7,20 @@ const LABELS: Record<string, string> = {
   blog: 'blog post',
   library: 'book',
   shortcode: 'shortcode',
+  tag: 'tag',
+  thread: 'discussion',
+};
+
+const resolveType = (segments: string[]) => {
+  if (segments[0] === 'blog' && segments[1] === 'tag') {
+    return 'tag';
+  }
+
+  if (segments.length === 1) {
+    return 'shortcode';
+  }
+
+  return segments.length > 1 ? segments[0] : null;
 };
 
 const headerStyle = {
@@ -24,7 +38,15 @@ const linkStyle = {
   textDecoration: 'none',
 };
 
-const Body = ({ slug, label }: { slug: string | null; label: string }) => (
+const Body = ({
+  slug,
+  label,
+  retryHref,
+}: {
+  slug: string | null;
+  label: string;
+  retryHref?: string | null;
+}) => (
   <>
     {slug ? (
       <h2 style={headerStyle}>
@@ -43,16 +65,18 @@ const Body = ({ slug, label }: { slug: string | null; label: string }) => (
       Please double check your URL, and if you think you&apos;re seeing this
       message in error, please{' '}
       <Link
-        href={`mailto:kd+brokenlink@keegandonley.com?subject=Broken link for ${label} at ${slug}`}
+        href={`mailto:kd+brokenlink@keegandonley.com?subject=${encodeURIComponent(
+          slug ? `Broken link for ${label} at ${slug}` : `Broken ${label} link`,
+        )}`}
         style={linkStyle}
       >
         get in touch
       </Link>
-      {slug ? (
+      {retryHref ? (
         <>
           {' '}
           or{' '}
-          <Link style={linkStyle} href={`/${slug}`}>
+          <Link style={linkStyle} href={retryHref}>
             retry your request
           </Link>
         </>
@@ -68,8 +92,16 @@ export const NotFoundDetail = () => {
   const pathname = usePathname();
 
   const segments = pathname?.split('/').filter(Boolean) ?? [];
-  const slug = segments.length ? segments[segments.length - 1] : null;
-  const type = segments.length > 1 ? segments[0] : null;
+  const slug = segments.length
+    ? decodeURIComponent(segments[segments.length - 1])
+    : null;
+  const type = resolveType(segments);
 
-  return <Body slug={slug} label={(type && LABELS[type]) || 'page'} />;
+  return (
+    <Body
+      slug={slug}
+      label={(type && LABELS[type]) || 'page'}
+      retryHref={pathname && pathname !== '/' ? pathname : null}
+    />
+  );
 };

@@ -35,7 +35,6 @@ const MainNavigation = () => {
   const isBlogPage = pathname?.startsWith('/blog');
   const isLibraryPage = pathname?.startsWith('/library');
   const isSlideshow = pathname?.startsWith('/slides');
-  const isErrorPage = pathname?.startsWith('/routing-error');
   const isPlaygroundPage = pathname?.startsWith('/playground');
   const isThreadPage = pathname?.startsWith('/thread');
 
@@ -73,12 +72,7 @@ const MainNavigation = () => {
       <HeroBlock
         isHomePage={isHomePage}
         sticky={
-          !isChat &&
-          !isResume &&
-          !isHi &&
-          !isErrorPage &&
-          !isPlaygroundPage &&
-          !isThreadPage
+          !isChat && !isResume && !isHi && !isPlaygroundPage && !isThreadPage
         }
         noPointer
       >

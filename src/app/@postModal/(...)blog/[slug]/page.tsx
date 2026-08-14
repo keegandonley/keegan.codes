@@ -1,4 +1,4 @@
-import Posts from '@/posts';
+import { getSlugParams } from '@/app/blog/util';
 import { Modal } from '@/components/Modal';
 import { PostModal } from '@/components/PostModal';
 import '../../../syntax-theme.css';
@@ -16,7 +16,7 @@ interface InterceptorProps {
 }
 
 export function generateStaticParams() {
-  return Object.keys(Posts).map((key) => ({ slug: (Posts as any)[key].slug }));
+  return getSlugParams();
 }
 
 export default async function Interceptor(args: InterceptorProps) {

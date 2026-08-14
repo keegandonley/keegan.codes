@@ -11,7 +11,6 @@ import { background } from '@/theme/colors';
 import { getBookCoverMetadata } from '@/util/image';
 
 export default async function LibraryPage() {
-
   const books = Object.keys(Books).map((key) => {
     const component = (Books as any)[key] as Book;
     return {
@@ -51,30 +50,10 @@ export default async function LibraryPage() {
                 />
               );
             })}
-          <MDXEntryRow
-            key="extra-1"
-            index={-1}
-            columns={4}
-            filler
-          />
-          <MDXEntryRow
-            key="extra-2"
-            index={-1}
-            columns={4}
-            filler
-          />
-          <MDXEntryRow
-            key="extra-3"
-            index={-1}
-            columns={4}
-            filler
-          />
-          <MDXEntryRow
-            key="extra-4"
-            index={-1}
-            columns={4}
-            filler
-          />
+          <MDXEntryRow key="extra-1" index={-1} columns={4} filler />
+          <MDXEntryRow key="extra-2" index={-1} columns={4} filler />
+          <MDXEntryRow key="extra-3" index={-1} columns={4} filler />
+          <MDXEntryRow key="extra-4" index={-1} columns={4} filler />
         </div>
       </section>
       <Delay>
