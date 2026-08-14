@@ -39,10 +39,18 @@ export const Footer = ({ className, children }: FooterProps) => {
         </div>
       </div>
       <div className={styles.socials}>
-        <Link href="/bluesky" target="_blank">
+        <Link
+          href="/bluesky"
+          target="_blank"
+          aria-label="Keegan Donley on Bluesky"
+        >
           <FontAwesomeIcon icon={faBluesky} />
         </Link>
-        <Link href="/repo" target="_blank">
+        <Link
+          href="/repo"
+          target="_blank"
+          aria-label="Source code for this site on GitHub"
+        >
           <FontAwesomeIcon icon={faGithub} />
         </Link>
       </div>

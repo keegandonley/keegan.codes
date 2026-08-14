@@ -155,7 +155,11 @@ export const Comments = async (props: CommentsProps) => {
           !
         </div>
         {!hideExpand ? (
-          <Link href={`/thread/${parsedThreadId}/${slug}`} target="_blank">
+          <Link
+            href={`/thread/${parsedThreadId}/${slug}`}
+            target="_blank"
+            aria-label="Open the full discussion thread"
+          >
             <FontAwesomeIcon icon={faExpandWide} />
           </Link>
         ) : null}
