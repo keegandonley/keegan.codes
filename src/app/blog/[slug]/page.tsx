@@ -6,7 +6,8 @@ import { getImageMetadata, parseSource, parseToProps } from '@/util/image';
 import { BUCKET_URL } from '@/util/const';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getComponentForKey, getKey, getSlugParams } from '../util';
+import { getPostBySlug, getSlugParams } from '../util';
+import { loadPost } from '../loadPost';
 import wordCounts from '../../../post-word-counts.json';
 import { BASEURL, NAME } from '@/metadata';
 import { PostHeader } from '@/components/PostHeader';
@@ -56,11 +57,9 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const params = await props.params;
 
-  const componentKey = getKey({ slug: params.slug });
+  const found = getPostBySlug(params.slug);
 
-  if (componentKey) {
-    const found = getComponentForKey({ key: componentKey });
-
+  if (found) {
     return {
       title: `${found.title} · ${NAME}`,
       description: found.description,
@@ -101,13 +100,11 @@ export async function generateMetadata(
 export default async function BlogSlugPage(props: BlogPageProps) {
   const params = await props.params;
 
-  const componentKey = getKey({ slug: params.slug });
+  const found = await loadPost(params.slug);
 
-  if (!componentKey) {
+  if (!found) {
     notFound();
   }
-
-  const found = getComponentForKey({ key: componentKey });
 
   const Component = found.default;
   const title = found.title;
@@ -115,10 +112,6 @@ export default async function BlogSlugPage(props: BlogPageProps) {
   const metadata = getImageMetadata(parseSource(cover)[0]);
   const wordCount = (wordCounts as Record<string, number>)[found.slug];
   const bskyThreadId = found.bskyThreadId;
-
-  if (!Component) {
-    notFound();
-  }
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -138,7 +131,7 @@ export default async function BlogSlugPage(props: BlogPageProps) {
     url: `${BASEURL}/blog/${params.slug}`,
     image: `${BASEURL}/api/og/post?slug=${params.slug}&width=1200&height=630`,
     datePublished: found.published?.toISOString(),
-    dateModified: ((found as any).updated ?? found.published)?.toISOString(),
+    dateModified: (found.updated ?? found.published)?.toISOString(),
   };
 
   return (

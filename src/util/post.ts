@@ -1,5 +1,5 @@
-import { Post } from '@/types/post';
-import Posts from '@/posts';
+import { PostMetadata } from '@/types/post';
+import { getAllPosts, getPostBySlug } from '@/app/blog/util';
 import wordCounts from '../post-word-counts.json';
 import { connect } from '@planetscale/database';
 import { getImageMetadata } from './image';
@@ -10,30 +10,31 @@ const config = {
   password: process.env.password,
 };
 
-export const getPreviousPostForSlug = async (
-  slug: string | null,
-  origin?: string,
-): Promise<any> => {
-  const allPosts = Object.keys(Posts);
-  const posts = allPosts
-    .map((key) => {
-      const component = (Posts as any)[key] as Post;
-      return {
-        title: component.title,
-        slug: component.slug,
-        tags: component.tags ?? [],
-        description: component.description,
-        cover: component.cover,
-        published: component.published,
-        wordCount: (wordCounts as Record<string, number>)[component.slug],
-      };
-    })
+const toListing = (post: PostMetadata) => ({
+  title: post.title,
+  slug: post.slug,
+  tags: post.tags ?? [],
+  description: post.description,
+  cover: post.cover,
+  published: post.published,
+  wordCount: (wordCounts as Record<string, number>)[post.slug],
+});
+
+const getListings = () =>
+  getAllPosts()
+    .map(toListing)
     .sort((a, b) => {
       if (!a.published || !b.published) {
         return 0;
       }
       return b.published.getTime() - a.published.getTime();
     });
+
+export const getPreviousPostForSlug = async (
+  slug: string | null,
+  origin?: string,
+): Promise<any> => {
+  const posts = getListings();
 
   const currentIndex = posts.findIndex((post) => post.slug === slug);
 
@@ -73,26 +74,7 @@ export const getNextPostForSlug = async (
   slug: string | null,
   origin?: string,
 ): Promise<any> => {
-  const allPosts = Object.keys(Posts);
-  const posts = allPosts
-    .map((key) => {
-      const component = (Posts as any)[key] as Post;
-      return {
-        title: component.title,
-        slug: component.slug,
-        tags: component.tags ?? [],
-        description: component.description,
-        cover: component.cover,
-        published: component.published,
-        wordCount: (wordCounts as Record<string, number>)[component.slug],
-      };
-    })
-    .sort((a, b) => {
-      if (!a.published || !b.published) {
-        return 0;
-      }
-      return b.published.getTime() - a.published.getTime();
-    });
+  const posts = getListings();
 
   const currentIndex = posts.findIndex((post) => post.slug === slug);
 
@@ -132,26 +114,7 @@ export const getRandomPostForSlug = async (
   slug: string | null,
   origin?: string,
 ): Promise<any> => {
-  const allPosts = Object.keys(Posts);
-  const posts = allPosts
-    .map((key) => {
-      const component = (Posts as any)[key] as Post;
-      return {
-        title: component.title,
-        slug: component.slug,
-        tags: component.tags ?? [],
-        description: component.description,
-        cover: component.cover,
-        published: component.published,
-        wordCount: (wordCounts as Record<string, number>)[component.slug],
-      };
-    })
-    .sort((a, b) => {
-      if (!a.published || !b.published) {
-        return 0;
-      }
-      return b.published.getTime() - a.published.getTime();
-    });
+  const posts = getListings();
 
   const currentIndex = posts.findIndex((post) => post.slug === slug);
 
@@ -208,23 +171,9 @@ export const getPostsForTags = async (
   tags: string[],
   origin?: string,
 ): Promise<any> => {
-  const allPosts = Object.keys(Posts);
-  const posts = allPosts
-    .map((key) => {
-      const component = (Posts as any)[key] as Post;
-      return {
-        title: component.title,
-        slug: component.slug,
-        tags: component.tags ?? [],
-        description: component.description,
-        cover: component.cover,
-        published: component.published,
-        wordCount: (wordCounts as Record<string, number>)[component.slug],
-      };
-    })
-    .filter((post) => {
-      return post.tags.some((tag) => tags.includes(tag));
-    });
+  const posts = getListings().filter((post) => {
+    return post.tags.some((tag) => tags.includes(tag));
+  });
 
   if (posts.length) {
     const conn = connect(config);
@@ -275,21 +224,8 @@ export const getPostForSlug = async (
   slug: string | null,
   origin?: string,
 ): Promise<any> => {
-  const allPosts = Object.keys(Posts);
-  const post = allPosts
-    .map((key) => {
-      const component = (Posts as any)[key] as Post;
-      return {
-        title: component.title,
-        slug: component.slug,
-        tags: component.tags ?? [],
-        description: component.description,
-        cover: component.cover,
-        published: component.published,
-        wordCount: (wordCounts as Record<string, number>)[component.slug],
-      };
-    })
-    .find((post) => post.slug === slug);
+  const found = slug ? getPostBySlug(slug) : undefined;
+  const post = found ? toListing(found) : undefined;
 
   if (post) {
     const conn = connect(config);
@@ -319,27 +255,7 @@ export const getLatestPosts = async (
   count: number,
   origin?: string,
 ): Promise<any> => {
-  const allPosts = Object.keys(Posts);
-  const posts = allPosts
-    .map((key) => {
-      const component = (Posts as any)[key] as Post;
-      return {
-        title: component.title,
-        slug: component.slug,
-        tags: component.tags ?? [],
-        description: component.description,
-        cover: component.cover,
-        published: component.published,
-        wordCount: (wordCounts as Record<string, number>)[component.slug],
-      };
-    })
-    .sort((a, b) => {
-      if (!a.published || !b.published) {
-        return 0;
-      }
-      return b.published.getTime() - a.published.getTime();
-    })
-    .slice(0, count);
+  const posts = getListings().slice(0, count);
 
   if (posts.length) {
     const conn = connect(config);

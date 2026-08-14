@@ -1,11 +1,10 @@
 import { Suspense } from 'react';
 import { MDXEntryRow } from '@/components/MDXEntryRow';
-import Posts from '@/posts';
+import { getAllPosts } from '@/app/blog/util';
 import styles from '../../blog.module.css';
 import { AnimatedGraph } from '@/components/AnimatedGraph';
 import { Delay } from '@/components/Delay';
 import wordCounts from '../../../../../post-word-counts.json';
-import { Post } from '@/types/post';
 import tagPageStyles from './tagPage.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@keegandonley/pro-solid-svg-icons';
@@ -24,11 +23,7 @@ interface BlogTagPageProps {
 }
 
 export function generateStaticParams() {
-  const tags = new Set(
-    Object.keys(Posts).flatMap(
-      (key) => ((Posts as any)[key] as Post).tags ?? [],
-    ),
-  );
+  const tags = new Set(getAllPosts().flatMap((post) => post.tags ?? []));
 
   return Array.from(tags).map((tag) => ({ tag: encodeURIComponent(tag) }));
 }
@@ -78,19 +73,16 @@ export default async function BlogTagPage(props: BlogTagPageProps) {
 
   const decodedTag = decodeURIComponent(params.tag);
 
-  const posts = Object.keys(Posts)
-    .map((key) => {
-      const component = (Posts as any)[key] as Post;
-      return {
-        title: component.title,
-        slug: component.slug,
-        tags: component.tags ?? [],
-        description: component.description,
-        cover: component.cover,
-        published: component.published,
-        wordCount: (wordCounts as Record<string, number>)[component.slug],
-      };
-    })
+  const posts = getAllPosts()
+    .map((post) => ({
+      title: post.title,
+      slug: post.slug,
+      tags: post.tags ?? [],
+      description: post.description,
+      cover: post.cover,
+      published: post.published,
+      wordCount: (wordCounts as Record<string, number>)[post.slug],
+    }))
     .filter((p) => {
       return p.tags
         .map((t) => t.toLowerCase())

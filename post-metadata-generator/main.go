@@ -5,16 +5,6 @@ import (
 )
 
 func process(dir string, countFile string, slugsFile string, wordCountsFile string) {
-	count, err := countFilesInDir(dir)
-	excludedFileCount := 3
-
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	writeCountToTsFile(countFile, count-excludedFileCount)
-
 	contents, err := loadFilesInDir(dir)
 	if err != nil {
 		fmt.Println(err)
@@ -23,6 +13,8 @@ func process(dir string, countFile string, slugsFile string, wordCountsFile stri
 
 	slugs := getSlugs(contents)
 	writeSlugsToTsFile(slugsFile, slugs)
+
+	writeCountToTsFile(countFile, len(slugs))
 
 	wordCounts := getWordCounts(contents)
 	writeWordCountsToJSONFile(wordCountsFile, wordCounts)

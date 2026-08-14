@@ -8,22 +8,6 @@ import (
 	"strings"
 )
 
-func countFilesInDir(path string) (int, error) {
-	files, err := os.ReadDir(path)
-	if err != nil {
-		return 0, err
-	}
-
-	count := 0
-	for _, file := range files {
-		if file.Type().Perm().IsRegular() {
-			count++
-		}
-	}
-
-	return count, nil
-}
-
 func loadFilesInDir(path string) ([]string, error) {
 	files, err := os.ReadDir(path)
 	if err != nil {
@@ -40,6 +24,11 @@ func loadFilesInDir(path string) ([]string, error) {
 			if err != nil {
 				return nil, err
 			}
+
+			if isDraft(string(content)) {
+				continue
+			}
+
 			fileContents = append(fileContents, string(content))
 
 		}

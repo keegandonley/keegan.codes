@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import styles from './thread.module.css';
 import { Footer } from '@/components/Footer';
 import { Metadata } from 'next';
-import { getAllPosts, getComponentForKey, getKey } from '@/app/blog/util';
+import { getAllPosts, getPostBySlug } from '@/app/blog/util';
 import { notFound } from 'next/navigation';
 import { BASEURL, NAME } from '@/metadata';
 
@@ -40,11 +40,9 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const params = await props.params;
 
-  const componentKey = getKey({ slug: params.slug });
+  const found = getPostBySlug(params.slug);
 
-  if (componentKey) {
-    const found = getComponentForKey({ key: componentKey });
-
+  if (found) {
     return {
       title: `Discussion · ${found.title} · ${NAME}`,
       description: found.description,
@@ -91,12 +89,7 @@ export async function generateMetadata(
 export default async function ThreadPage(props: ThreadPageProps) {
   const { id, slug } = await props.params;
 
-  const componentKey = getKey({ slug });
-
-  if (
-    !componentKey ||
-    getComponentForKey({ key: componentKey })?.bskyThreadId !== id
-  ) {
+  if (getPostBySlug(slug)?.bskyThreadId !== id) {
     notFound();
   }
 

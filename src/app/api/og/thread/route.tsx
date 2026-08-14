@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from '@vercel/og';
-import { getComponentForKey, getKey } from '@/app/blog/util';
+import { getPostBySlug } from '@/app/blog/util';
 import { BUCKET_URL } from '@/util/const';
 import { OG_CACHE_HEADERS_EXTERNAL } from '../cache';
 import {
@@ -59,14 +59,12 @@ export async function GET(request: Request) {
     return new Response('No slug provided', { status: 400 });
   }
 
-  const key = getKey({ slug });
+  const found = getPostBySlug(slug);
 
-  if (!key) {
+  if (!found) {
     console.error('Count not find the post for', slug, 'at', request.url);
     return new Response('No post found', { status: 404 });
   }
-
-  const found = getComponentForKey({ key });
 
   const threadId = found.bskyThreadId;
 
@@ -179,7 +177,9 @@ export async function GET(request: Request) {
             fontFamily: '"Raleway"',
           }}
         >
-          "{postContent}"
+          {'"'}
+          {postContent}
+          {'"'}
         </h1>
       </div>
       <div

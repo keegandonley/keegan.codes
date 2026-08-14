@@ -9,8 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@keegandonley/pro-solid-svg-icons';
 import { Footer } from '@/components/Footer';
 import { Swoop } from '@/components/Swoop';
-import Posts from '@/posts';
-import { Post } from '@/types/post';
+import { getAllPosts } from '@/app/blog/util';
 import dynamic from 'next/dynamic';
 import { Fallback as BlogPreviewFallback } from '@/components/BlogPreview/Fallback';
 import { merge } from '@/util/classNames';
@@ -25,17 +24,7 @@ const accentFont = localFont({
 });
 
 export default function Home() {
-  const posts = Object.keys(Posts)
-    .map((key) => {
-      const component = (Posts as any)[key] as Post;
-      return {
-        title: component.title,
-        slug: component.slug,
-        description: component.description,
-        cover: component.cover,
-        published: component.published,
-      } as Post;
-    })
+  const posts = getAllPosts()
     .sort((a, b) => {
       if (!a.published || !b.published) {
         return 0;

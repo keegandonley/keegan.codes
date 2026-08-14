@@ -1,26 +1,9 @@
-import Posts from '@/posts';
-import { Post } from '@/types/post';
+import postMetadata from '@/post-metadata';
+import { PostMetadata } from '@/types/post';
 
-export const getAllPosts = (): Post[] =>
-  Object.keys(Posts).map((key) => (Posts as any)[key] as Post);
+export const getAllPosts = (): PostMetadata[] => [...postMetadata];
 
-export const getSlugParams = () => getAllPosts().map(({ slug }) => ({ slug }));
+export const getSlugParams = () => postMetadata.map(({ slug }) => ({ slug }));
 
-interface GetKeyArg {
-  slug: string;
-}
-
-export const getKey = ({ slug }: GetKeyArg) => {
-  return Object.keys(Posts).find((key) => {
-    const component = (Posts as any)[key];
-    return component.slug === slug;
-  });
-};
-
-interface GetComponentArg {
-  key: string;
-}
-
-export const getComponentForKey = ({ key }: GetComponentArg): Post => {
-  return (Posts as any)[key];
-};
+export const getPostBySlug = (slug: string): PostMetadata | undefined =>
+  postMetadata.find((post) => post.slug === slug);
