@@ -1,19 +1,16 @@
+import { Suspense } from 'react';
 import Books from '@/books';
 import { AnimatedGraph } from '@/components/AnimatedGraph';
 import { Delay } from '@/components/Delay';
 import { MDXEntryRow } from '@/components/MDXEntryRow';
 import { Book } from '@/types/book';
 import styles from './library.module.css';
-import { userTheme } from '@/util/cookies';
 import { BASEURL, NAME } from '@/metadata';
 import { postCount } from '@/book-count';
 import { background } from '@/theme/colors';
-import { getIsLikelyMobile } from '@/util/userAgent';
 import { getBookCoverMetadata } from '@/util/image';
 
 export default async function LibraryPage() {
-  const isLikelyMobile = await getIsLikelyMobile();
-
   const books = Object.keys(Books).map((key) => {
     const component = (Books as any)[key] as Book;
     return {
@@ -47,55 +44,30 @@ export default async function LibraryPage() {
                   columns={4}
                   showViewCount={false}
                   showCommentCount={false}
-                  isLikelyMobile={isLikelyMobile}
                   {...post}
                   book
                   imageMetadata={metadata}
                 />
               );
             })}
-          <MDXEntryRow
-            key="extra-1"
-            index={-1}
-            columns={4}
-            filler
-            isLikelyMobile={isLikelyMobile}
-          />
-          <MDXEntryRow
-            key="extra-2"
-            index={-1}
-            columns={4}
-            filler
-            isLikelyMobile={isLikelyMobile}
-          />
-          <MDXEntryRow
-            key="extra-3"
-            index={-1}
-            columns={4}
-            filler
-            isLikelyMobile={isLikelyMobile}
-          />
-          <MDXEntryRow
-            key="extra-4"
-            index={-1}
-            columns={4}
-            filler
-            isLikelyMobile={isLikelyMobile}
-          />
+          <MDXEntryRow key="extra-1" index={-1} columns={4} filler />
+          <MDXEntryRow key="extra-2" index={-1} columns={4} filler />
+          <MDXEntryRow key="extra-3" index={-1} columns={4} filler />
+          <MDXEntryRow key="extra-4" index={-1} columns={4} filler />
         </div>
       </section>
       <Delay>
-        <AnimatedGraph />
+        <Suspense fallback={null}>
+          <AnimatedGraph />
+        </Suspense>
       </Delay>
     </>
   );
 }
 
-export async function generateViewport() {
-  const theme = await userTheme();
-
+export function generateViewport() {
   return {
-    themeColor: theme === 'light' ? background.light : background.dark,
+    themeColor: background.light,
   };
 }
 

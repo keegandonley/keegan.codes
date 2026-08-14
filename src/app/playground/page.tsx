@@ -3,7 +3,14 @@
 import { injectVariables, merge } from '@keegancodes/foundations';
 import styles from './playground.module.css';
 import { GeistMono } from 'geist/font/mono';
-import { KeyboardEvent, useCallback, useEffect, useRef, useState } from 'react';
+import {
+  KeyboardEvent,
+  Suspense,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useSearchParams } from 'next/navigation';
 import sanitizeHtml from 'sanitize-html';
 import { Avatar } from '@/components/Avatar';
@@ -22,7 +29,7 @@ const cleanQuotes = (str: string) => {
   return str.replace(/“/g, '"').replace(/”/g, '"');
 };
 
-export default function PlaygroundPage() {
+function PlaygroundContent() {
   const urlQuery = useSearchParams();
 
   const htmlParam = urlQuery?.get('html');
@@ -276,5 +283,13 @@ export default function PlaygroundPage() {
         </style>
       )}
     </div>
+  );
+}
+
+export default function PlaygroundPage() {
+  return (
+    <Suspense fallback={null}>
+      <PlaygroundContent />
+    </Suspense>
   );
 }

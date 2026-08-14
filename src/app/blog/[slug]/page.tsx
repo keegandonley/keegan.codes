@@ -6,13 +6,15 @@ import { getImageMetadata, parseSource, parseToProps } from '@/util/image';
 import { BUCKET_URL } from '@/util/const';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getComponentForKey, getKey } from '../util';
+import { getComponentForKey, getKey, getSlugParams } from '../util';
 import wordCounts from '../../../post-word-counts.json';
 import { BASEURL, NAME } from '@/metadata';
 import { PostHeader } from '@/components/PostHeader';
 import { JsonLd } from '@/components/JsonLd';
 import dynamic from 'next/dynamic';
 import { Footer } from '@/components/Footer';
+
+export const instant = false;
 
 const Track = dynamic(() => import('@/components/Track'));
 
@@ -43,6 +45,10 @@ export interface BlogPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export function generateStaticParams() {
+  return getSlugParams();
 }
 
 export async function generateMetadata(

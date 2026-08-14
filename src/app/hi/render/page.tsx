@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+import { ScanTracker } from '../ScanTracker';
 import { Paragraph } from '@/components/Paragraph';
 import renderLogo from './render-logo.svg';
 import Image from 'next/image';
@@ -8,17 +10,12 @@ import { URLS } from '@/components/Social/socials';
 import { merge } from '@/util/classNames';
 import { faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { Hr } from '@/components/Post/Hr';
-import dynamic from 'next/dynamic';
-
-const HiTrack = dynamic(() => import('@/components/Track/Hi'));
 
 interface RenderPageProps {
   searchParams: Promise<{ scan: string }>;
 }
 
 export default async function RenderPage(props: RenderPageProps) {
-  const searchParams = await props.searchParams;
-
   return (
     <div className={styles.wrapper}>
       <Paragraph className={merge(styles.firstParagraph, styles.paragraph)}>
@@ -69,7 +66,9 @@ export default async function RenderPage(props: RenderPageProps) {
           className={styles.renderLogo}
         />
       </div>
-      <HiTrack slug="render" qrScanned={searchParams?.scan === 'true'} />
+      <Suspense fallback={null}>
+        <ScanTracker slug="render" searchParams={props.searchParams} />
+      </Suspense>
     </div>
   );
 }

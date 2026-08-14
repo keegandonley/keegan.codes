@@ -1,12 +1,18 @@
 import { BookContent } from '@/components/BookContent';
 import { Metadata } from 'next';
-import { getComponentForKey, getKey } from '../util';
+import { getComponentForKey, getKey, getSlugParams } from '../util';
 import { BASEURL, NAME } from '@/metadata';
+
+export const instant = false;
 
 interface LibraryPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export function generateStaticParams() {
+  return getSlugParams();
 }
 
 export async function generateMetadata(

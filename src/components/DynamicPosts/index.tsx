@@ -7,7 +7,6 @@ import { captureException } from '@sentry/nextjs';
 
 interface DynamicPostsProps {
   previousPage: number;
-  isLikelyMobile: boolean;
   pageCount: number;
   postsPerPage: number;
   remainingPosts: number;
@@ -20,13 +19,7 @@ interface PostWithViewCount extends Post {
 }
 
 const DynamicPosts = (props: DynamicPostsProps) => {
-  const {
-    previousPage,
-    isLikelyMobile,
-    pageCount,
-    postsPerPage,
-    remainingPosts,
-  } = props;
+  const { previousPage, pageCount, postsPerPage, remainingPosts } = props;
   const currentPage = previousPage + 1;
   const [isVisibile, setIsVisible] = useState(false);
   const [pageData, setPageData] = useState<PostWithViewCount[]>();
@@ -89,7 +82,6 @@ const DynamicPosts = (props: DynamicPostsProps) => {
           <MDXEntryRow
             key={post.slug}
             index={index + previousPage * postsPerPage}
-            isLikelyMobile={isLikelyMobile}
             {...post}
             published={new Date(post.published)}
             className={
@@ -110,7 +102,6 @@ const DynamicPosts = (props: DynamicPostsProps) => {
               <MDXEntryRow
                 key={`loader-${currentPage}-${index}`}
                 index={index + previousPage * postsPerPage}
-                isLikelyMobile={isLikelyMobile}
                 filler
                 loader
               />
@@ -119,7 +110,6 @@ const DynamicPosts = (props: DynamicPostsProps) => {
       {hasNextPage && pageData ? (
         <DynamicPosts
           previousPage={currentPage}
-          isLikelyMobile={isLikelyMobile}
           pageCount={pageCount}
           postsPerPage={postsPerPage}
           remainingPosts={remainingPosts - pageData.length}

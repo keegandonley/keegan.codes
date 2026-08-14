@@ -6,7 +6,6 @@ import {
   AppBskyFeedPost,
 } from '@atproto/api';
 import { ThreadViewPost } from '@atproto/api/dist/client/types/app/bsky/feed/defs';
-import { get } from '@vercel/edge-config';
 
 import { captureException } from '@sentry/nextjs';
 
@@ -93,10 +92,4 @@ export const getCommentCountForSlug = async (slug: string) => {
   }
 
   return 0;
-};
-
-export const commentCountsEnabled = async (): Promise<boolean> => {
-  const setting = await get('commentCountsEnabled');
-
-  return Boolean(setting);
 };

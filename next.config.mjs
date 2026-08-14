@@ -8,6 +8,7 @@ import addAnalyzer from '@next/bundle-analyzer';
 const nextConfig = {
   reactStrictMode: true,
   reactCompiler: true,
+  cacheComponents: true,
   images: {
     remotePatterns: [
       {

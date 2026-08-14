@@ -34,7 +34,6 @@ interface MDXEntryRowProps extends ElementBaseProps {
   columns?: number;
   showViewCount?: boolean;
   showCommentCount?: boolean;
-  isLikelyMobile: boolean;
   className?: string;
   fixedViewCount?: number;
   fixedCommentCount?: number;
@@ -54,7 +53,6 @@ export const MDXEntryRow = ({
   columns = 3,
   showViewCount = false,
   showCommentCount = false,
-  isLikelyMobile,
   className,
   fixedViewCount,
   fixedCommentCount,
@@ -114,7 +112,7 @@ export const MDXEntryRow = ({
               fill
               sizes={`(max-width: 550px) 100vw, (max-width: 900px) 50vw, ${resultWidth}px`}
               // Rough guess at which images are above the fold
-              priority={isLikelyMobile ? index < 2 : index < 4}
+              priority={index < 2}
               {...parseToProps(metadata)}
             />
           </div>

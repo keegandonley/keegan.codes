@@ -2,12 +2,9 @@ import Posts from '@/posts';
 import { Post } from '@/types/post';
 import wordCounts from '../../../post-word-counts.json';
 import { connect } from '@planetscale/database';
-import { get } from '@vercel/edge-config';
 import { getImageMetadata } from '@/util/image';
-import {
-  commentCountsEnabled,
-  getCommentCountForSlug,
-} from '@/components/Comments/util';
+import { POSTS_PER_PAGE } from '@/util/const';
+import { getCommentCountForSlug } from '@/components/Comments/util';
 
 const config = {
   host: process.env.host,
@@ -16,7 +13,7 @@ const config = {
 };
 
 export async function GET(request: Request) {
-  const postsPerPage = parseInt((await get('blogPageSize')) ?? '12');
+  const postsPerPage = POSTS_PER_PAGE;
 
   const url = new URL(request.url);
   const _page = url.searchParams.get('page');
@@ -75,11 +72,9 @@ export async function GET(request: Request) {
     }),
   );
 
-  const enableComments = await commentCountsEnabled();
-
   const commentCounts = await Promise.all(
     result.map(async (post) => {
-      if (!post.bskyThreadId || !enableComments) {
+      if (!post.bskyThreadId) {
         return 0;
       }
 

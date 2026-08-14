@@ -1,8 +1,5 @@
 import { NextFetchEvent, NextRequest } from 'next/server';
 import { ScanMiddleware } from '../scanMiddleware';
-import { BlogMiddleware } from './blogMiddleware';
-import { LibraryMiddleware } from './libraryMiddleware';
-import { NotFoundMiddleware } from './notFoundMiddleware';
 import { ProxyMiddleware } from './proxyMiddleware';
 
 export class MiddlewareManager {
@@ -36,13 +33,6 @@ export class MiddlewareManager {
     switch (firstSegment) {
       case 'scan':
         return new ScanMiddleware(this.request, this.ctx, this.pathSplits);
-      case 'blog':
-        return new BlogMiddleware(this.request, this.pathSplits);
-      case 'library':
-        return new LibraryMiddleware(this.request, this.pathSplits);
-      case 'not-found':
-      case 'routing-error':
-        return new NotFoundMiddleware(this.request, this.pathSplits);
       case 'api': {
         const secondSegment = this.getRouteSecondSegment();
 

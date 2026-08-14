@@ -1,15 +1,12 @@
 import { Footer } from '@/components/Footer';
 import * as ResumeContent from './resume.mdx';
 import styles from './resume.module.css';
-import { userTheme } from '@/util/cookies';
 import { background } from '@/theme/colors';
 import { BASEURL, NAME } from '@/metadata';
 
-export async function generateViewport() {
-  const theme = await userTheme();
-
+export function generateViewport() {
   return {
-    themeColor: theme === 'light' ? background.light : background.dark,
+    themeColor: background.light,
   };
 }
 
@@ -26,12 +23,14 @@ export async function generateMetadata() {
       url: `${BASEURL}/resume`,
       siteName: NAME,
       locale: 'en_US',
-      images: [{
-        url: `/api/og/page?page=home&width=1200&height=630`,
-        width: 1200,
-        height: 630,
-        type: 'image/png',
-      }],
+      images: [
+        {
+          url: `/api/og/page?page=home&width=1200&height=630`,
+          width: 1200,
+          height: 630,
+          type: 'image/png',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image' as const,

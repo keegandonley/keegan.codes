@@ -1,6 +1,11 @@
 import Posts from '@/posts';
 import { Post } from '@/types/post';
 
+export const getAllPosts = (): Post[] =>
+  Object.keys(Posts).map((key) => (Posts as any)[key] as Post);
+
+export const getSlugParams = () => getAllPosts().map(({ slug }) => ({ slug }));
+
 interface GetKeyArg {
   slug: string;
 }

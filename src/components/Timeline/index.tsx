@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { connection } from 'next/server';
 import styles from './timeline.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -33,6 +34,8 @@ interface TimelineProps {
 
 const Timeline = async (props: TimelineProps) => {
   const { slug, tags } = props;
+
+  await connection();
 
   const [previousPost, nextPost, tagsPosts, randomPost, latestPost] =
     await Promise.all([

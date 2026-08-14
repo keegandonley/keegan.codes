@@ -42,6 +42,11 @@
   animation: fadeSquares 8s infinite;
   transition: opacity 0.3s;
 }
+@media (max-width: 700px) {
+  .square:nth-child(n + 151) {
+    display: none;
+  }
+}
 
 .color-1 {
   background-color: var(--color-gh-1);

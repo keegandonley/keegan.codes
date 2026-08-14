@@ -3,8 +3,11 @@ import dynamic from 'next/dynamic';
 import styles from './thread.module.css';
 import { Footer } from '@/components/Footer';
 import { Metadata } from 'next';
-import { getComponentForKey, getKey } from '@/app/blog/util';
+import { getAllPosts, getComponentForKey, getKey } from '@/app/blog/util';
+import { notFound } from 'next/navigation';
 import { BASEURL, NAME } from '@/metadata';
+
+export const instant = false;
 
 const Comments = dynamic(
   () => import('@/components/Comments').then((mod) => mod.Comments),
@@ -24,6 +27,12 @@ interface ThreadPageProps {
     id: string;
     slug: string;
   }>;
+}
+
+export function generateStaticParams() {
+  return getAllPosts()
+    .filter((post) => post.bskyThreadId)
+    .map((post) => ({ id: post.bskyThreadId as string, slug: post.slug }));
 }
 
 export async function generateMetadata(
@@ -81,6 +90,15 @@ export async function generateMetadata(
 
 export default async function ThreadPage(props: ThreadPageProps) {
   const { id, slug } = await props.params;
+
+  const componentKey = getKey({ slug });
+
+  if (
+    !componentKey ||
+    getComponentForKey({ key: componentKey })?.bskyThreadId !== id
+  ) {
+    notFound();
+  }
 
   return (
     <div>

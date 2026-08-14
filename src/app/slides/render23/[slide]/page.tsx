@@ -4,6 +4,8 @@ import styles from './slide.module.css';
 import { merge } from '@/util/classNames';
 import '../../../syntax-theme.css';
 
+export const instant = false;
+
 interface SlideProps {
   params: Promise<{
     slide: string;
@@ -22,6 +24,10 @@ const order = [
   Slides.ColorMix,
   Slides.Intro,
 ];
+
+export function generateStaticParams() {
+  return order.map((_, index) => ({ slide: String(index) }));
+}
 
 export default async function Render2023SlidePage(props: SlideProps) {
   const params = await props.params;

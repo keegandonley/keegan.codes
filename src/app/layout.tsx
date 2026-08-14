@@ -5,7 +5,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import { merge } from '@/util/classNames';
 import { background } from '@/theme/colors';
-import { userTheme } from '@/util/cookies';
+import { DARK_CLASS, DARK_THEME, THEME_COOKIE } from '@/theme/constants';
 import { Analytics } from '@vercel/analytics/react';
 import { Suspense } from 'react';
 import { BASEURL, DESCRIPTION, NAME } from '@/metadata';
@@ -28,44 +28,65 @@ const DynamicEventWaiter = dynamic(
 
 config.autoAddCss = false;
 
-export default async function RootLayout({ children, postModal }: any) {
-  const theme = await userTheme();
+const THEME_SCRIPT = `
+(function () {
+  try {
+    var match = document.cookie.match(
+      new RegExp('(?:^|;\\\\s*)' + ${JSON.stringify(THEME_COOKIE)} + '=([^;]*)')
+    );
+    if (match && match[1] === ${JSON.stringify(DARK_THEME)}) {
+      document.body.classList.add(${JSON.stringify(DARK_CLASS)});
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) {
+        meta.setAttribute('content', ${JSON.stringify(background.dark)});
+      }
+    }
+  } catch (e) {}
+})();
+`;
 
+export default async function RootLayout({ children, postModal }: any) {
   return (
-    <html lang="en" id="fullscreen-context">
+    <html lang="en" id="fullscreen-context" suppressHydrationWarning>
       <body
-        className={merge(
-          GeistSans.className,
-          'preload',
-          theme === 'dark' && 'dark',
-        )}
+        className={merge(GeistSans.className, 'preload')}
+        suppressHydrationWarning
       >
-        <JsonLd data={{
-          '@context': 'https://schema.org',
-          '@type': 'Person',
-          name: NAME,
-          url: BASEURL,
-          sameAs: [
-            'https://twitter.com/keegandonley',
-            'https://github.com/keegandonley',
-            'https://www.linkedin.com/in/k10y/',
-            'https://bsky.app/profile/keegan.codes',
-          ],
-          jobTitle: 'Principal Front-End Engineer',
-          description: DESCRIPTION,
-        }} />
-        <JsonLd data={{
-          '@context': 'https://schema.org',
-          '@type': 'WebSite',
-          name: NAME,
-          url: BASEURL,
-          description: DESCRIPTION,
-        }} />
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: NAME,
+            url: BASEURL,
+            sameAs: [
+              'https://twitter.com/keegandonley',
+              'https://github.com/keegandonley',
+              'https://www.linkedin.com/in/k10y/',
+              'https://bsky.app/profile/keegan.codes',
+            ],
+            jobTitle: 'Principal Front-End Engineer',
+            description: DESCRIPTION,
+          }}
+        />
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: NAME,
+            url: BASEURL,
+            description: DESCRIPTION,
+          }}
+        />
         <ThemeProvider>
           <LoadingProvider>
             {/* Display banner text from the edge config if an event is active */}
-            <DynamicEventWaiter />
-            <MainNavigation currentTheme={theme} />
+            <Suspense fallback={null}>
+              <DynamicEventWaiter />
+            </Suspense>
+            <Suspense fallback={null}>
+              <MainNavigation />
+            </Suspense>
             <main>{children}</main>
             <ModalBoundary>{postModal}</ModalBoundary>
           </LoadingProvider>
@@ -81,11 +102,9 @@ export default async function RootLayout({ children, postModal }: any) {
   );
 }
 
-export async function generateViewport() {
-  const theme = await userTheme();
-
+export function generateViewport() {
   return {
-    themeColor: theme === 'light' ? background.light : background.dark,
+    themeColor: background.light,
   };
 }
 

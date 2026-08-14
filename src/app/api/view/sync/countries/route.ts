@@ -1,5 +1,5 @@
 import { ExecutedQuery, connect } from '@planetscale/database';
-import { NextResponse } from 'next/server';
+import { NextResponse, connection } from 'next/server';
 
 const config = {
   host: process.env.host,
@@ -8,6 +8,8 @@ const config = {
 };
 
 export async function GET() {
+  await connection();
+
   const startTime = Date.now();
   const conn = connect(config);
 

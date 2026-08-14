@@ -1,6 +1,6 @@
 'use client';
 import { merge } from '@/util/classNames';
-import { use, useCallback, useEffect, useState } from 'react';
+import { use, useEffect } from 'react';
 import styles from './themeToggle.module.css';
 import { AnimatedIcon } from '../AnimatedIcon';
 import { faMoon, faSunBright } from '@keegandonley/pro-solid-svg-icons';
@@ -13,48 +13,39 @@ import { ThemeContext } from '@/app/themeProvider';
 interface ThemeToggleProps {
   relative?: boolean;
   size?: ThemeChooserSize;
-  currentTheme: Theme;
 }
 
-export const ThemeToggle = ({
-  relative,
-  size = 'large',
-  currentTheme,
-}: ThemeToggleProps) => {
-  const [theme, setTheme] = useState<Theme>(currentTheme);
+const readTheme = (): Theme =>
+  document.body.classList.contains('dark') ? 'dark' : 'light';
+
+export const ThemeToggle = ({ relative, size = 'large' }: ThemeToggleProps) => {
   const { setTheme: ctxSetTheme } = use(ThemeContext);
-
-  useEffect(() => {
-    ctxSetTheme(theme);
-  }, [ctxSetTheme, theme]);
-
   const route = usePathname();
 
   useEffect(() => {
+    const theme = readTheme();
+
+    ctxSetTheme(theme);
     setMetaTheme(theme);
-  }, [route, theme]);
+  }, [ctxSetTheme, route]);
 
   const toggleTheme = () => {
-    va.track('Toggle Theme', {
-      theme: theme === 'light' ? 'dark' : 'light',
-    });
+    const next: Theme = readTheme() === 'light' ? 'dark' : 'light';
 
-    setTheme((theme) => (theme === 'light' ? 'dark' : 'light'));
+    va.track('Toggle Theme', { theme: next });
+
+    handleTheme(next);
+    setThemeCookie(next);
+    setMetaTheme(next);
+    ctxSetTheme(next);
   };
 
-  useEffect(() => {
-    setThemeCookie(theme);
-    handleTheme(theme);
-  }, [theme]);
-
-  const isLight = theme === 'light';
   const isSmall = size === 'small';
 
   return (
     <button
       className={merge(
         styles.themeWrapper,
-        isLight && styles.dark,
         relative && styles.relative,
         isSmall && styles.small,
       )}
@@ -62,8 +53,8 @@ export const ThemeToggle = ({
       title="Toggle Theme"
       aria-label="Toggle Theme"
     >
-      <AnimatedIcon icon={faSunBright} from="bottom" visible={isLight} />
-      <AnimatedIcon icon={faMoon} from="top" visible={!isLight} />
+      <AnimatedIcon icon={faSunBright} from="bottom" visibleIn="light" />
+      <AnimatedIcon icon={faMoon} from="top" visibleIn="dark" />
     </button>
   );
 };
