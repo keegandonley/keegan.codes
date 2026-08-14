@@ -29,7 +29,7 @@ const Body = ({ slug, label }: { slug: string | null; label: string }) => (
   <>
     {slug ? (
       <h2 style={headerStyle}>
-        On no! I couldn&apos;t find a {label} for{' '}
+        Oh no! I couldn&apos;t find a {label} for{' '}
         <code style={{ color: 'var(--theme-yellow)' }}>{slug}</code>
       </h2>
     ) : (
@@ -79,8 +79,7 @@ export const NotFoundDetail = () => {
 
     try {
       setReferrerParams(new URL(document.referrer).searchParams);
-    } catch {
-    }
+    } catch {}
   }, []);
 
   const attemptedPath =
