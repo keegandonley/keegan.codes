@@ -1,9 +1,9 @@
-import { Post } from '@/types/post';
+import { PostMetadata } from '@/types/post';
 import { ClientRenderer } from './ClientRenderer';
 import { getImageMetadata } from '@/util/image';
 
 interface BlogPreviewProps {
-  posts: Post[];
+  posts: PostMetadata[];
 }
 
 const BlogPreview = ({ posts }: BlogPreviewProps) => {

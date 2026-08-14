@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import Posts from '@/posts';
+import { getAllPosts } from '@/app/blog/util';
 import Books from '@/books';
 import { readFileSync } from 'fs';
 import { listObjects } from '@/util/r2';
@@ -38,11 +38,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: published,
       priority: 0.3,
     },
-    ...Object.keys(Posts).map((key) => {
+    ...getAllPosts().map((post) => {
       return {
-        url: `https://keegan.codes/blog/${(Posts as any)[key].slug}`,
-        lastModified:
-          (Posts as any)[key].updated || (Posts as any)[key].published,
+        url: `https://keegan.codes/blog/${post.slug}`,
+        lastModified: post.updated || post.published,
         priority: 0.7,
       };
     }),
@@ -68,9 +67,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       };
     }) ?? []),
     ...Array.from(
-      new Set(
-        Object.keys(Posts).flatMap((key) => (Posts as any)[key].tags ?? [])
-      )
+      new Set(getAllPosts().flatMap((post) => post.tags ?? [])),
     ).map((tag) => ({
       url: `https://keegan.codes/blog/tag/${encodeURIComponent(tag)}`,
       lastModified: published,

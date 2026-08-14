@@ -6,5 +6,7 @@ src/book-slugs.ts
 src/book-word-counts.json
 src/galleries/barcelona/image-metadata.json
 src/image-metadata.json
+src/post-metadata.ts
 src/post-slugs.ts
 src/post-word-counts.json
+src/posts/components.ts

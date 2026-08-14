@@ -1,5 +1,5 @@
 'use client';
-import { Post } from '@/types/post';
+import { PostMetadata } from '@/types/post';
 import { merge } from '@/util/classNames';
 import { useState } from 'react';
 import styles from './blogPreview.module.css';
@@ -20,7 +20,7 @@ const accentFont = localFont({
   src: '../../app/fonts/InstrumentSerif.ttf',
 });
 
-interface PostWithMetadata extends Post {
+interface PostWithMetadata extends PostMetadata {
   metadata?: ImageMetadata;
 }
 

@@ -3,16 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3561 --webpack",
-    "build": "node -e \"console.log(new Date())\" > ./public/published.txt && next build --webpack",
+    "dev": "pnpm metadata && next dev -p 3561 --webpack",
+    "build": "node ./scripts/generate-post-metadata.mjs --check && node -e \"console.log(new Date())\" > ./public/published.txt && next build --webpack",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "blurhash": "cd blurhash-generator && go run .",
-    "metadata": "cd post-metadata-generator && go run .",
+    "metadata": "(cd post-metadata-generator && go run .) && node ./scripts/generate-post-metadata.mjs",
+    "metadata:check": "node ./scripts/generate-post-metadata.mjs --check",
     "serve": "cd img-serve && go run . && cd - || cd -",
     "process": "pnpm blurhash && pnpm metadata",
     "validate-shortcodes": "node ./validate/validateShortcodes.js",
-    "analyze": "NODE_OPTIONS=--max-old-space-size=4096 ANALYZE=true pnpm build"
+    "analyze": "NODE_OPTIONS=--max-old-space-size=4096 ANALYZE=true pnpm build",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@atproto/api": "^0.19.13",
@@ -43,7 +45,6 @@
     "@vercel/og": "^0.11.1",
     "@vercel/speed-insights": "^2.0.0",
     "autoprefixer": "^10.5.4",
-    "eslint": "^10.8.1",
     "eslint-config-next": "16.3.0",
     "geist": "^1.7.2",
     "next": "16.3.1",
@@ -63,6 +64,7 @@
     "@types/sanitize-html": "^2.16.1",
     "babel-plugin-react-compiler": "19.1.0-rc.3",
     "csv-parse": "^6.2.1",
+    "eslint": "^9.39.5",
     "prettier": "^3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "webpack": "^5.109.2"

@@ -1,5 +1,4 @@
-import Posts from '@/posts';
-import { Post } from '@/types/post';
+import { getAllPosts } from '@/app/blog/util';
 import wordCounts from '../../../post-word-counts.json';
 import { connect } from '@planetscale/database';
 import { getImageMetadata } from '@/util/image';
@@ -19,21 +18,18 @@ export async function GET(request: Request) {
   const _page = url.searchParams.get('page');
   const pageNumber = _page ? parseInt(_page, 10) : -1;
 
-  const allPosts = Object.keys(Posts);
+  const allPosts = getAllPosts();
   const posts = allPosts
-    .map((key) => {
-      const component = (Posts as any)[key] as Post;
-      return {
-        title: component.title,
-        slug: component.slug,
-        tags: component.tags ?? [],
-        description: component.description,
-        cover: component.cover,
-        published: component.published,
-        wordCount: (wordCounts as Record<string, number>)[component.slug],
-        bskyThreadId: component.bskyThreadId,
-      };
-    })
+    .map((post) => ({
+      title: post.title,
+      slug: post.slug,
+      tags: post.tags ?? [],
+      description: post.description,
+      cover: post.cover,
+      published: post.published,
+      wordCount: (wordCounts as Record<string, number>)[post.slug],
+      bskyThreadId: post.bskyThreadId,
+    }))
     .sort((a, b) => {
       if (!a.published || !b.published) {
         return 0;

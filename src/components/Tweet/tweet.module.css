@@ -6,3 +6,9 @@
 .wrapper.centered {
   justify-content: center;
 }
+
+.placeholder {
+  width: 100%;
+  max-width: 550px;
+  min-height: 250px;
+}

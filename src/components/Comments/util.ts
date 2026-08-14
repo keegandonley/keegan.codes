@@ -1,5 +1,4 @@
-import { Post } from '@/types/post';
-import Posts from '@/posts';
+import { getPostBySlug } from '@/app/blog/util';
 import {
   AppBskyFeedDefs,
   AppBskyFeedGetPostThread,
@@ -68,22 +67,7 @@ const getCountRecursively = (post: ThreadViewPost): number => {
 };
 
 export const getCommentCountForSlug = async (slug: string) => {
-  const allPosts = Object.keys(Posts);
-
-  const post = allPosts
-    .map((key) => {
-      const component = (Posts as any)[key] as Post;
-      return {
-        title: component.title,
-        slug: component.slug,
-        tags: component.tags ?? [],
-        description: component.description,
-        cover: component.cover,
-        published: component.published,
-        bskyThreadId: component.bskyThreadId,
-      };
-    })
-    .find((post) => post.slug === slug);
+  const post = getPostBySlug(slug);
 
   if (post?.bskyThreadId) {
     const thread = await getThread({ threadId: post.bskyThreadId });

@@ -38,13 +38,25 @@ export const cover = 'cover';            // filename on R2 CDN
 export const published = new Date(...);
 export const shortCodes = ['code'];      // short URL aliases
 export const bskyThreadId = '';          // Bluesky thread for comments
+export const draft = true;               // optional; omit or false to publish
 ```
 
-**Every new post must be manually added to `src/posts/index.ts`** (import + add to the `posts` object). The same pattern applies to books in `src/books/`.
+Posts are discovered automatically from `src/posts/*.mdx` — there is no barrel file to update. **After adding or editing a post, run `pnpm metadata`.** That regenerates `src/post-count.ts`, `src/post-slugs.ts`, `src/post-word-counts.json`, and (via `scripts/generate-post-metadata.mjs`) `src/post-metadata.ts` and `src/posts/components.ts`.
 
-After adding posts, run `pnpm metadata` to regenerate `src/post-count.ts`, `src/post-slugs.ts`, and `src/post-word-counts.json`.
+Books in `src/books/` still use the manual `src/books/index.ts` barrel.
 
-A `src/posts/template.mdx` exists as a starting point.
+**Drafts:** `export const draft = true;` excludes a post from every build — no page, no sitemap entry, no listing, and it isn't counted in `postCount`. Delete the line (or set it to `false`) to publish.
+
+The flag must live in the metadata export block at the top of the file, unindented, with the literal `true` or `false`. It only takes effect once the generated files are refreshed, so `pnpm dev` regenerates automatically and `pnpm build` runs `metadata:check` first. The build fails rather than shipping a post you meant to hide if:
+
+- the generated files are stale (you marked a draft but didn't run `pnpm metadata`)
+- a `draft` export sits below the markdown, where it would be silently ignored
+- `draft` isn't a boolean literal
+- the two generators disagree about which posts are drafts
+
+Never edit `src/post-metadata.ts` or `src/posts/components.ts` by hand; they are generated.
+
+A `src/posts/template.mdx` exists as a starting point. It carries `draft = true` so a newly copied post stays unpublished until you remove it.
 
 ### Routing
 

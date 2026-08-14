@@ -1,4 +1,4 @@
-import { getComponentForKey, getKey } from '@/app/blog/util';
+import { loadPost } from '@/app/blog/loadPost';
 import styles from './postModal.module.css';
 import { notFound } from 'next/navigation';
 import { getImageMetadata, parseSource, parseToProps } from '@/util/image';
@@ -29,24 +29,18 @@ interface PostModalProps {
   wordCount: number;
 }
 
-export const PostModal = ({ slug, wordCount }: PostModalProps) => {
-  const componentKey = getKey({ slug });
+export const PostModal = async ({ slug, wordCount }: PostModalProps) => {
+  const found = await loadPost(slug);
 
-  if (!componentKey) {
+  if (!found) {
     notFound();
   }
-
-  const found = getComponentForKey({ key: componentKey });
 
   const Component = found.default;
   const title = found.title;
   const cover = found.cover;
   const metadata = getImageMetadata(parseSource(cover)[0]);
   const bskyThreadId = found.bskyThreadId;
-
-  if (!Component) {
-    notFound();
-  }
 
   return (
     <>

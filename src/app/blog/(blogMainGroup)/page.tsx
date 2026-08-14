@@ -1,8 +1,7 @@
 import { MDXEntryRow } from '@/components/MDXEntryRow';
-import Posts from '@/posts';
+import { getAllPosts } from '@/app/blog/util';
 import styles from './blog.module.css';
 import wordCounts from '../../../post-word-counts.json';
-import { Post } from '@/types/post';
 import { BASEURL, NAME } from '@/metadata';
 import { postCount } from '@/post-count';
 import { background } from '@/theme/colors';
@@ -15,20 +14,17 @@ const DynamicDynamicPosts = dynamic(
 );
 
 export default async function BlogPage() {
-  const allPosts = Object.keys(Posts);
+  const allPosts = getAllPosts();
   const posts = allPosts
-    .map((key) => {
-      const component = (Posts as any)[key] as Post;
-      return {
-        title: component.title,
-        slug: component.slug,
-        tags: component.tags ?? [],
-        description: component.description,
-        cover: component.cover,
-        published: component.published,
-        wordCount: (wordCounts as Record<string, number>)[component.slug],
-      };
-    })
+    .map((post) => ({
+      title: post.title,
+      slug: post.slug,
+      tags: post.tags ?? [],
+      description: post.description,
+      cover: post.cover,
+      published: post.published,
+      wordCount: (wordCounts as Record<string, number>)[post.slug],
+    }))
     .sort((a, b) => {
       if (!a.published || !b.published) {
         return 0;
