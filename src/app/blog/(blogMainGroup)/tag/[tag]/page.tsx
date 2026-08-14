@@ -10,9 +10,12 @@ import tagPageStyles from './tagPage.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@keegandonley/pro-solid-svg-icons';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { getImageMetadata } from '@/util/image';
 import { Metadata } from 'next';
 import { BASEURL, NAME } from '@/metadata';
+
+export const instant = false;
 
 interface BlogTagPageProps {
   params: Promise<{
@@ -91,6 +94,10 @@ export default async function BlogTagPage(props: BlogTagPageProps) {
         .map((t) => t.toLowerCase())
         .includes(decodedTag.toLowerCase());
     });
+
+  if (!posts.length) {
+    notFound();
+  }
 
   return (
     <>

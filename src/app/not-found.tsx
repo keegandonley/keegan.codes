@@ -5,7 +5,7 @@
 */
 
 import { Suspense } from 'react';
-import { Graphic } from './routing-error/graphic';
+import { Graphic } from '@/components/Graphic';
 import { NotFoundDetail, NotFoundDetailFallback } from './not-found-detail';
 
 export default function NotFound() {

@@ -4,6 +4,8 @@ import { getComponentForKey, getKey } from '../util';
 import Books from '@/books';
 import { BASEURL, NAME } from '@/metadata';
 
+export const instant = false;
+
 interface LibraryPageProps {
   params: Promise<{
     slug: string;

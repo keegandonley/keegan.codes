@@ -15,6 +15,8 @@ import { JsonLd } from '@/components/JsonLd';
 import dynamic from 'next/dynamic';
 import { Footer } from '@/components/Footer';
 
+export const instant = false;
+
 const Track = dynamic(() => import('@/components/Track'));
 
 const Timeline = dynamic(() => import('@/components/Timeline'), {

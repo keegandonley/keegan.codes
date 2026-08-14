@@ -1,7 +1,8 @@
 import Posts from '@/posts';
 import { Post } from '@/types/post';
-import { redirect } from 'next/navigation';
-import { Suspense } from 'react';
+import { notFound, redirect } from 'next/navigation';
+
+export const instant = false;
 
 const posts = Object.keys(Posts).map((key) => {
   const component = (Posts as any)[key] as Post;
@@ -23,8 +24,8 @@ export function generateStaticParams() {
   );
 }
 
-const ShortCodeRedirect = async ({ params }: ShortCodePageProps) => {
-  const { shortCode } = await params;
+export default async function ShortCodePage(props: ShortCodePageProps) {
+  const { shortCode } = await props.params;
 
   const foundPost = posts.find((post) => post.shortCodes?.includes(shortCode));
 
@@ -32,13 +33,5 @@ const ShortCodeRedirect = async ({ params }: ShortCodePageProps) => {
     redirect(`/blog/${foundPost.slug}`);
   }
 
-  return redirect(`/routing-error?slug=${shortCode}&type=shortcode`);
-};
-
-export default function ShortCodePage(props: ShortCodePageProps) {
-  return (
-    <Suspense fallback={null}>
-      <ShortCodeRedirect params={props.params} />
-    </Suspense>
-  );
+  notFound();
 }

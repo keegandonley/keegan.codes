@@ -2,6 +2,8 @@ import Books from '@/books';
 import { BookModal } from '@/components/BookModal';
 import { Modal } from '@/components/Modal';
 
+export const instant = false;
+
 interface InterceptorProps {
   params: Promise<{
     slug: string;

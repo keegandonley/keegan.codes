@@ -9,12 +9,5 @@ export async function proxy(
 }
 
 export const config = {
-  matcher: [
-    '/scan/:id*',
-    '/blog/:path*',
-    '/library/:path*',
-    '/not-found',
-    '/routing-error',
-    '/api/proxy',
-  ],
+  matcher: ['/scan/:id*', '/api/proxy'],
 };

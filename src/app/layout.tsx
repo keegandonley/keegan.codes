@@ -68,7 +68,9 @@ export default async function RootLayout({ children, postModal }: any) {
             <Suspense fallback={null}>
               <DynamicEventWaiter />
             </Suspense>
-            <MainNavigation />
+            <Suspense fallback={null}>
+              <MainNavigation />
+            </Suspense>
             <main>{children}</main>
             <ModalBoundary>{postModal}</ModalBoundary>
           </LoadingProvider>

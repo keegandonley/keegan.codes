@@ -4,6 +4,8 @@ import styles from './slide.module.css';
 import { merge } from '@/util/classNames';
 import '../../../syntax-theme.css';
 
+export const instant = false;
+
 interface SlideProps {
   params: Promise<{
     slide: string;

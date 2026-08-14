@@ -1,8 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 const LABELS: Record<string, string> = {
   blog: 'blog post',
@@ -66,28 +65,11 @@ const Body = ({ slug, label }: { slug: string | null; label: string }) => (
 export const NotFoundDetailFallback = () => <Body slug={null} label="page" />;
 
 export const NotFoundDetail = () => {
-  const params = useSearchParams();
   const pathname = usePathname();
-  const [referrerParams, setReferrerParams] = useState<URLSearchParams | null>(
-    null,
-  );
 
-  useEffect(() => {
-    if (!document.referrer) {
-      return;
-    }
-
-    try {
-      setReferrerParams(new URL(document.referrer).searchParams);
-    } catch {}
-  }, []);
-
-  const attemptedPath =
-    pathname && pathname !== '/' ? pathname.replace(/^\//, '') : null;
-
-  const slug =
-    params?.get('slug') ?? referrerParams?.get('slug') ?? attemptedPath;
-  const type = params?.get('type') ?? referrerParams?.get('type') ?? null;
+  const segments = pathname?.split('/').filter(Boolean) ?? [];
+  const slug = segments.length ? segments[segments.length - 1] : null;
+  const type = segments.length > 1 ? segments[0] : null;
 
   return <Body slug={slug} label={(type && LABELS[type]) || 'page'} />;
 };

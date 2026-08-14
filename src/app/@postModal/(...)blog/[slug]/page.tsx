@@ -5,6 +5,8 @@ import '../../../syntax-theme.css';
 import wordCounts from '../../../../post-word-counts.json';
 import dynamic from 'next/dynamic';
 
+export const instant = false;
+
 const Track = dynamic(() => import('@/components/Track'));
 
 interface InterceptorProps {
