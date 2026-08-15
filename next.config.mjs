@@ -77,6 +77,7 @@ const nextConfig = {
   // Support the pages router with the Geist font
   transpilePackages: ['geist'],
   experimental: {
+    inlineCss: true,
     optimizePackageImports: [
       '@keegandonley/pro-solid-svg-icons',
       '@keegandonley/pro-regular-svg-icons',
@@ -115,6 +116,7 @@ export default withSentryConfig(withBundleAnalyzer(withMDX(nextConfig)), {
   webpack: {
     treeshake: {
       removeDebugLogging: true,
+      removeTracing: true,
     },
     automaticVercelMonitors: false,
   },

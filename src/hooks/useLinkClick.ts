@@ -7,8 +7,16 @@ export const useLinkClick = () => {
   const path = usePathname();
   const { setLoading } = ctx;
 
-  const onClick = useCallback(
-    (href: string) => (e: MouseEvent) => {
+  const onMouseUp = useCallback(
+    (e: MouseEvent) => {
+      const anchor = (e.target as Element | null)?.closest?.('a');
+
+      if (!anchor || anchor.target === '_blank') {
+        return;
+      }
+
+      const { href } = anchor;
+
       if (
         !href.startsWith(window.location.href) &&
         !href.startsWith('mailto:') &&
@@ -20,28 +28,11 @@ export const useLinkClick = () => {
     [setLoading],
   );
 
-  const getLinks = useCallback(() => {
-    setTimeout(() => {
-      const links = Array.from(document.getElementsByTagName('a'));
-      for (const link of links) {
-        if (link.target !== '_blank') {
-          link.onmouseup = onClick(link.href);
-        }
-      }
-    }, 1);
-  }, [onClick]);
-
   useEffect(() => {
-    const observer = new MutationObserver(getLinks);
+    document.addEventListener('mouseup', onMouseUp);
 
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-    });
-
-    return () => observer.disconnect();
-  }, [getLinks]);
+    return () => document.removeEventListener('mouseup', onMouseUp);
+  }, [onMouseUp]);
 
   useEffect(() => {
     setLoading(false);

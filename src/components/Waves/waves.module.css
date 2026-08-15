@@ -14,16 +14,18 @@
 
 @keyframes progressBar {
   0% {
-    width: 0%;
+    transform: scaleX(0);
   }
   100% {
-    width: 100%;
+    transform: scaleX(1);
   }
 }
 
 .barInner {
   background-color: var(--theme-blue-1);
-  width: 0%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
   height: 100%;
   animation-duration: 5s;
   animation-fill-mode: forwards;

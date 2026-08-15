@@ -10,12 +10,7 @@ import { ReadingTime } from './components/ReadingTime';
 import dynamic from 'next/dynamic';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHourglassHalf } from '@keegandonley/pro-solid-svg-icons';
-import localFont from 'next/font/local';
-
-const accentFont = localFont({
-  // src: './fonts/Domine.ttf',
-  src: '../../app/fonts/InstrumentSerif.ttf',
-});
+import { accentFont } from '@/app/fonts/accent';
 
 const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
 const DynamicCommentCount = dynamic(() => import('@/components/CommentCount'));

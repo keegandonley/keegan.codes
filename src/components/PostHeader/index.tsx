@@ -1,4 +1,4 @@
-import localFont from 'next/font/local';
+import { accentFont } from '@/app/fonts/accent';
 import { Cheers } from '../Cheers';
 import { ReadingTime } from '../MDXEntryRow/components/ReadingTime';
 import { H1 } from '../Post/Heading/H1';
@@ -7,11 +7,6 @@ import dynamic from 'next/dynamic';
 import { formatDate, merge } from '@keegancodes/foundations';
 
 const DynamicViewCount = dynamic(() => import('@/components/ViewCount'));
-
-const accentFont = localFont({
-  // src: './fonts/Domine.ttf',
-  src: '../../app/fonts/InstrumentSerif.ttf',
-});
 
 interface PostHeaderProps {
   title: string;

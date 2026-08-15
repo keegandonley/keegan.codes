@@ -1,11 +1,17 @@
 'use client';
 
 import { injectVariables, merge } from '@/util/classNames';
-import { GeistMono } from 'geist/font/mono';
+import { Geist_Mono } from 'next/font/google';
 import styles from './code.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faCopy } from '@keegandonley/pro-solid-svg-icons';
 import { useCopyElementText } from '@keegancodes/foundations-react';
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  preload: false,
+});
 
 interface CodeProps {
   children?: any;
@@ -22,8 +28,8 @@ export const Code = ({ children, className }: CodeProps) => {
       <code
         className={merge(className, styles.parent)}
         style={injectVariables([
-          ['ffamily', GeistMono.style.fontFamily],
-          ['fstyle', GeistMono.style.fontStyle],
+          ['ffamily', geistMono.style.fontFamily],
+          ['fstyle', geistMono.style.fontStyle],
         ])}
       >
         <span ref={ref} className={language ? styles.text : ''}>
