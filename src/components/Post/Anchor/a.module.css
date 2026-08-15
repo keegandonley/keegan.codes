@@ -1,4 +1,6 @@
 .a {
-  text-decoration: none;
-  color: var(--theme-blue-2);
+  text-decoration: dashed underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  color: var(--theme-link);
 }

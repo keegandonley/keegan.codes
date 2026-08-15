@@ -10,7 +10,7 @@
 }
 
 .item a {
-  color: var(--theme-blue-2);
+  color: var(--theme-link);
   text-decoration: none;
 }
 
