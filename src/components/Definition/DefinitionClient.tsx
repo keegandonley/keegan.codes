@@ -4,12 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './definition.module.css';
 import { faQuestionCircle } from '@keegandonley/pro-regular-svg-icons';
 import { useId } from 'react';
-import localFont from 'next/font/local';
+import { accentFont } from '@/app/fonts/accent';
 import va from '@vercel/analytics';
-
-const accentFont = localFont({
-  src: '../../app/fonts/InstrumentSerif.ttf',
-});
 
 interface DefinitionClientProps {
   term: string;

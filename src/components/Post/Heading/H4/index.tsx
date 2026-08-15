@@ -3,12 +3,7 @@ import { MDXComponentBaseProps } from '../../types';
 import h4Styles from './h4.module.css';
 import hStyles from '../h.module.css';
 import { getId } from '../util';
-import localFont from 'next/font/local';
-
-const accentFont = localFont({
-  // src: './fonts/Domine.ttf',
-  src: '../../../../app/fonts/InstrumentSerif.ttf',
-});
+import { accentFont } from '@/app/fonts/accent';
 
 interface H4Props extends MDXComponentBaseProps {}
 

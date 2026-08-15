@@ -101,11 +101,3 @@ body.dark {
   --grid-line: 1px dashed var(--theme-grid-line-color);
   --theme-pill: var(--theme-grid-line-color);
 }
-
-* {
-  --no-animation: 0s linear;
-  transition:
-    color var(--no-animation),
-    background-color var(--no-animation),
-    box-shadow var(--no-animation);
-}

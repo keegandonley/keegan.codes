@@ -13,12 +13,7 @@ import {
   faArrowCircleRight,
 } from '@keegandonley/pro-solid-svg-icons';
 import { formatDate } from '@/util/date';
-import localFont from 'next/font/local';
-
-const accentFont = localFont({
-  // src: './fonts/Domine.ttf',
-  src: '../../app/fonts/InstrumentSerif.ttf',
-});
+import { accentFont } from '@/app/fonts/accent';
 
 interface PostWithMetadata extends PostMetadata {
   metadata?: ImageMetadata;

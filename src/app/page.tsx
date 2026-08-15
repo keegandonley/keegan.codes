@@ -13,14 +13,10 @@ import { getAllPosts } from '@/app/blog/util';
 import dynamic from 'next/dynamic';
 import { Fallback as BlogPreviewFallback } from '@/components/BlogPreview/Fallback';
 import { merge } from '@/util/classNames';
-import localFont from 'next/font/local';
+import { accentFont } from '@/app/fonts/accent';
 
 const DynamicBlogPreview = dynamic(() => import('@/components/BlogPreview'), {
   loading: () => <BlogPreviewFallback />,
-});
-
-const accentFont = localFont({
-  src: './fonts/InstrumentSerif.ttf',
 });
 
 export default function Home() {
