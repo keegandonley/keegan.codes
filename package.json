@@ -25,7 +25,7 @@
     "@keegancodes/foundations": "^1.1.2",
     "@keegancodes/foundations-next": "4.0.2",
     "@keegancodes/foundations-react": "3.0.3",
-    "@keegandonley/fitness-embed": "^0.1.1",
+    "@keegandonley/fitness-embed": "^0.1.2",
     "@keegandonley/pro-regular-svg-icons": "^6.7.2",
     "@keegandonley/pro-solid-svg-icons": "^6.7.2",
     "@next/bundle-analyzer": "16.3.0",

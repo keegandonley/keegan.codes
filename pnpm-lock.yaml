@@ -33,8 +33,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3(@keegancodes/foundations@1.1.2)(react@19.2.8)
       '@keegandonley/fitness-embed':
-        specifier: ^0.1.1
-        version: 0.1.1(@keegancodes/foundations@1.1.2)(@types/mapbox-gl@3.4.1)(fast-xml-parser@5.7.2)(mapbox-gl@3.8.0)(next@16.3.1(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@types/node@25.6.0)(babel-plugin-react-compiler@19.1.0-rc.3)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react-map-gl@7.1.7(mapbox-gl@3.8.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
+        specifier: ^0.1.2
+        version: 0.1.2(@keegancodes/foundations@1.1.2)(@types/mapbox-gl@3.4.1)(fast-xml-parser@5.7.2)(mapbox-gl@3.8.0)(next@16.3.1(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@types/node@25.6.0)(babel-plugin-react-compiler@19.1.0-rc.3)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react-map-gl@7.1.7(mapbox-gl@3.8.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
       '@keegandonley/pro-regular-svg-icons':
         specifier: ^6.7.2
         version: 6.7.2
@@ -778,8 +778,8 @@ packages:
   '@keegancodes/foundations@1.1.2':
     resolution: {integrity: sha512-cTACbeILVNk/6ZceMm2rWFnDJOZPM8WBwBeRsdCG5Al1zEfs6dMDQmJCMZf0vokitsCE31G2OZWGVU6Byo/rRA==}
 
-  '@keegandonley/fitness-embed@0.1.1':
-    resolution: {integrity: sha512-Sqd5kQOWIMXASG2bAsI0mWKIagT8eEe3tpY0X6jymUgcvv6Wr7NDiJZyuyvi1c3pVK9qKSc9QdciCOEbxWn7aQ==}
+  '@keegandonley/fitness-embed@0.1.2':
+    resolution: {integrity: sha512-ThrrlMM/FNS82lvUmAQg7tZE+b2kgVhHRDWgmfv3paYeDhhO0XuyhcO/3mvPi6PuBS0oZYyo5CEs0D9d9Kwpzw==}
     peerDependencies:
       '@keegancodes/foundations': ^1.0.21
       '@types/mapbox-gl': ^3.4.1
@@ -5274,7 +5274,7 @@ snapshots:
 
   '@keegancodes/foundations@1.1.2': {}
 
-  '@keegandonley/fitness-embed@0.1.1(@keegancodes/foundations@1.1.2)(@types/mapbox-gl@3.4.1)(fast-xml-parser@5.7.2)(mapbox-gl@3.8.0)(next@16.3.1(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@types/node@25.6.0)(babel-plugin-react-compiler@19.1.0-rc.3)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react-map-gl@7.1.7(mapbox-gl@3.8.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)':
+  '@keegandonley/fitness-embed@0.1.2(@keegancodes/foundations@1.1.2)(@types/mapbox-gl@3.4.1)(fast-xml-parser@5.7.2)(mapbox-gl@3.8.0)(next@16.3.1(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@types/node@25.6.0)(babel-plugin-react-compiler@19.1.0-rc.3)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react-map-gl@7.1.7(mapbox-gl@3.8.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)':
     dependencies:
       '@keegancodes/foundations': 1.1.2
       '@types/mapbox-gl': 3.4.1

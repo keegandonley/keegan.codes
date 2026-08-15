@@ -2,10 +2,22 @@ import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/app/blog/util';
 import Books from '@/books';
 import { readFileSync } from 'fs';
+import { join } from 'path';
 import { listObjects } from '@/util/r2';
 
+const getPublishedDate = () => {
+  try {
+    return readFileSync(
+      join(process.cwd(), 'public', 'published.txt'),
+      'utf-8',
+    ).trim();
+  } catch {
+    return new Date().toISOString();
+  }
+};
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const published = await readFileSync('public/published.txt', 'utf-8');
+  const published = getPublishedDate();
 
   const watchContent = await listObjects({
     Bucket: process.env.R2_WATCH_BUCKET!,
