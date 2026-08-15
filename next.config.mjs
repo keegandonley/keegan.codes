@@ -49,6 +49,9 @@ const nextConfig = {
     qualities: [75, 80],
   },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  outputFileTracingIncludes: {
+    '/sitemap.xml': ['./public/published.txt'],
+  },
   headers: async () => [
     {
       source: '/dev/iframe-proxy',
