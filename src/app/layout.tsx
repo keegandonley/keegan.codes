@@ -17,7 +17,7 @@ import dynamic from 'next/dynamic';
 import LoadingProvider from './loadingProvider';
 import { GeistSans } from 'geist/font/sans';
 import { TailwindDebugger } from '@keegancodes/foundations-react/client';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SpeedInsights } from '@/components/SpeedInsights';
 
 const DynamicEventWaiter = dynamic(
   () => import('./event').then((m) => m.EventWaiter),
@@ -96,7 +96,9 @@ export default async function RootLayout({ children, postModal }: any) {
           <Analytics />
         </Suspense>
         {process.env.NODE_ENV === 'development' ? <TailwindDebugger /> : null}
-        <SpeedInsights />
+        <Suspense fallback={null}>
+          <SpeedInsights />
+        </Suspense>
       </body>
     </html>
   );
