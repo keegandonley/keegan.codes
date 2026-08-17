@@ -170,7 +170,9 @@ export default async function BlogSlugPage(props: BlogPageProps) {
           </div>
         </article>
       </div>
-      <Comments threadId={bskyThreadId} slug={params.slug} />
+      {bskyThreadId ? (
+        <Comments threadId={bskyThreadId} slug={params.slug} />
+      ) : null}
       <footer>
         <Timeline slug={params.slug} tags={found.tags} />
         <Footer />

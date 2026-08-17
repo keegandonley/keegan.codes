@@ -25,6 +25,8 @@
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   box-shadow: 0 0 0.5rem var(--shadow-color);
+  width: 100%;
+  height: auto;
 }
 
 .bg {
