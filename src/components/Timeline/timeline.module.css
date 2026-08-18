@@ -66,7 +66,7 @@
 
 .post * {
   z-index: 1;
-  text-shadow: var(--shadow-color) 1px 0 20px;
+  text-shadow: var(--shadow-color) 1px 0 40px;
 }
 
 .post img {
