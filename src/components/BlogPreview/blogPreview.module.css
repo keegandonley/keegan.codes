@@ -1,6 +1,9 @@
 .fallback {
   background-color: transparent;
-  height: 516px; /* Approximate height of the slider - hack to avoid shift */
+}
+
+.controlPlaceholder {
+  height: 1em;
 }
 
 .outer {
@@ -189,8 +192,8 @@
     margin-bottom: -10px;
   }
 
-  .fallback {
-    height: 944px; /* This is a hack to avoid CLS - can probably be done better */
+  .wrapper.fallback {
+    height: 880px;
   }
 
   .controls {

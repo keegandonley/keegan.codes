@@ -9,6 +9,7 @@ export const postComponents: Record<string, () => Promise<PostModule>> = {
   "a-quick-look-at-openai-dall-e-2": () => import('./a-quick-look-at-openai-dall-e-2.mdx'),
   "an-update-for-2026-and-beyond": () => import('./an-update-for-2026.mdx'),
   "filling-in-the-connected-fitness-gaps-with-apple-shortcuts": () => import('./apple-shortcuts-fitness.mdx'),
+  "are-we-finally-done-saying-ai-will-kill-software-development": () => import('./are-we-done-saying-software-is-dead.mdx'),
   "beginning-a-new-chapter-of-my-career-with-kizen": () => import('./beginning-a-new-chapter-of-my-career-with-kizen.mdx'),
   "building-a-static-generated-blog-with-next-js": () => import('./building-a-static-generated-blog-with-next-js.mdx'),
   "building-a-super-simple-and-free-twitter-bot": () => import('./building-a-super-simple-and-free-twitter-bot.mdx'),

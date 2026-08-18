@@ -52,6 +52,16 @@ export const postMetadata: PostMetadata[] = [
     shortCodes: ['fitness-shortcuts'],
   },
   {
+    title: 'Are We Finally Done Saying AI Will Kill Software Development?',
+    slug: 'are-we-finally-done-saying-ai-will-kill-software-development',
+    tags: ['conference', 'ai', 'opinion'],
+    description: 'It felt like everyone was saying AI would kill software development. At Render Atlanta, the discourse seems to be changing.',
+    cover: 'render26.png',
+    published: new Date(2026, 7, 17),
+    shortCodes: ['software-dead'],
+    bskyThreadId: '',
+  },
+  {
     title: 'Beginning a New Chapter of my Career with Kizen',
     slug: 'beginning-a-new-chapter-of-my-career-with-kizen',
     tags: ['javascript'],
