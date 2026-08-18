@@ -39,7 +39,22 @@ export const published = new Date(...);
 export const shortCodes = ['code'];      // short URL aliases
 export const bskyThreadId = '';          // Bluesky thread for comments
 export const draft = true;               // optional; omit or false to publish
+
+// Optional, per-theme CSS filter for the cover image (see below)
+export const coverFilterLight = 'brightness(1.18) contrast(0.82)';
+export const coverFilterDark = 'brightness(0.85)';
 ```
+
+**Cover image filters:** `coverFilterLight` / `coverFilterDark` apply a CSS `filter`
+to the cover image in the matching theme. Both are optional; omit them and the
+cover renders untouched. Covers span the full luminance range (~0.06 to ~0.80
+average), so there is no global treatment that suits all of them: a near-black
+cover needs its black point lifted (`contrast(<1)`) to sit on the light
+background, while a near-white cover needs damping in dark mode. This is a
+render-time treatment of the single asset -- it never produces a second image.
+
+Unlike the other exports, these are read straight off the MDX module rather than
+the generated metadata, so adding one does **not** require `pnpm metadata`.
 
 Posts are discovered automatically from `src/posts/*.mdx` — there is no barrel file to update. **After adding or editing a post, run `pnpm metadata`.** That regenerates `src/post-count.ts`, `src/post-slugs.ts`, `src/post-word-counts.json`, and (via `scripts/generate-post-metadata.mjs`) `src/post-metadata.ts` and `src/posts/components.ts`.
 

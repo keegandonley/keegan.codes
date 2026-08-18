@@ -1,4 +1,6 @@
+import { CSSProperties } from 'react';
 import { ImageProps } from 'next/image';
+import { CoverFilters } from '@/types/post';
 import imageMetadata from '../image-metadata.json';
 import bookCoverMetadata from '../book-cover-metadata.json';
 
@@ -40,3 +42,12 @@ export const parseSource = (src: string): [string, string[]] => {
 
   return [imgUrl, flags];
 };
+
+export const coverFilterStyle = ({
+  coverFilterLight,
+  coverFilterDark,
+}: CoverFilters): CSSProperties =>
+  ({
+    '--cover-filter-light': coverFilterLight,
+    '--cover-filter-dark': coverFilterDark,
+  }) as CSSProperties;

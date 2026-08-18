@@ -135,3 +135,11 @@
     opacity: 0;
   }
 }
+
+.coverWrapper img {
+  filter: var(--cover-filter-light, none);
+}
+
+:global(body.dark) .coverWrapper img {
+  filter: var(--cover-filter-dark, none);
+}

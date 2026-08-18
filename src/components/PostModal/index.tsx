@@ -1,7 +1,12 @@
 import { loadPost } from '@/app/blog/loadPost';
 import styles from './postModal.module.css';
 import { notFound } from 'next/navigation';
-import { getImageMetadata, parseSource, parseToProps } from '@/util/image';
+import {
+  coverFilterStyle,
+  getImageMetadata,
+  parseSource,
+  parseToProps,
+} from '@/util/image';
 import Image from 'next/image';
 import { BottomFade } from '@/components/BottomFade';
 import { BUCKET_URL } from '@/util/const';
@@ -44,7 +49,7 @@ export const PostModal = async ({ slug, wordCount }: PostModalProps) => {
 
   return (
     <>
-      <div className={styles.coverWrapper}>
+      <div className={styles.coverWrapper} style={coverFilterStyle(found)}>
         {cover ? (
           <Image
             src={`${BUCKET_URL}/${cover}`}

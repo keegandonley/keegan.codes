@@ -2,7 +2,12 @@ import styles from './blogPost.module.css';
 import '../../syntax-theme.css';
 import { BottomFade } from '@/components/BottomFade';
 import Image from 'next/image';
-import { getImageMetadata, parseSource, parseToProps } from '@/util/image';
+import {
+  coverFilterStyle,
+  getImageMetadata,
+  parseSource,
+  parseToProps,
+} from '@/util/image';
 import { BUCKET_URL } from '@/util/const';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -137,7 +142,7 @@ export default async function BlogSlugPage(props: BlogPageProps) {
   return (
     <>
       <JsonLd data={articleSchema} />
-      <div className={styles.coverWrapper}>
+      <div className={styles.coverWrapper} style={coverFilterStyle(found)}>
         {cover ? (
           <Image
             src={`${BUCKET_URL}/${cover}`}

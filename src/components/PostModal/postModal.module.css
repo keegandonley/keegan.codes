@@ -48,3 +48,11 @@
 .socials a {
   color: var(--theme-text);
 }
+
+.coverWrapper img {
+  filter: var(--cover-filter-light, none);
+}
+
+:global(body.dark) .coverWrapper img {
+  filter: var(--cover-filter-dark, none);
+}

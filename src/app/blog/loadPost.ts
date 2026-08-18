@@ -10,11 +10,17 @@ export const loadPost = async (slug: string): Promise<Post | undefined> => {
     return undefined;
   }
 
-  const { default: component } = await loader();
+  const postModule = await loader();
+  const { default: component } = postModule;
 
   if (!component) {
     return undefined;
   }
 
-  return { ...metadata, default: component };
+  return {
+    ...metadata,
+    default: component,
+    coverFilterLight: postModule.coverFilterLight,
+    coverFilterDark: postModule.coverFilterDark,
+  };
 };

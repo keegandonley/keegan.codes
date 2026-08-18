@@ -10,10 +10,15 @@ export interface PostMetadata {
   updated?: Date;
 }
 
-export interface PostModule {
+export interface CoverFilters {
+  coverFilterLight?: string;
+  coverFilterDark?: string;
+}
+
+export interface PostModule extends CoverFilters {
   default: any;
 }
 
-export interface Post extends PostMetadata {
+export interface Post extends PostMetadata, CoverFilters {
   default: any;
 }
