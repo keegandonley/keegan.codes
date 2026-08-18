@@ -59,7 +59,7 @@ export const postMetadata: PostMetadata[] = [
     cover: 'render26.png',
     published: new Date(2026, 7, 17),
     shortCodes: ['software-dead'],
-    bskyThreadId: '',
+    bskyThreadId: '3mtemjyhigs2t',
     coverFilterLight: 'invert(1) hue-rotate(180deg)',
   },
   {
