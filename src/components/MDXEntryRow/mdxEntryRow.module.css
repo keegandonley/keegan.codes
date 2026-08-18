@@ -9,7 +9,7 @@
   min-height: var(--block-height);
   max-height: var(--block-height);
   width: 100%;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px 0 var(--shadow-color);
   border-radius: 1rem;
   overflow: hidden;
   transition:
