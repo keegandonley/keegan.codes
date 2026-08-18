@@ -50,7 +50,9 @@
   background-size: contain;
 }
 
-.author {
+/* Doubled to outrank .h2/.h from the shared MDX heading modules, which tie
+   on specificity and would otherwise win or lose based on chunk order. */
+.author.author {
   opacity: 0.5;
   font-size: 1.5rem;
   margin-top: 0;

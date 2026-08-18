@@ -14,7 +14,9 @@
   position: relative;
 }
 
-.title {
+/* Doubled to outrank .h1/.h from the shared MDX heading modules, which tie
+   on specificity and would otherwise win or lose based on chunk order. */
+.title.title {
   padding-top: 1rem;
   font-size: 3rem;
   padding-bottom: 1rem;
