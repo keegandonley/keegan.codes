@@ -54,7 +54,7 @@ export const postMetadata: PostMetadata[] = [
   {
     title: 'Are We Finally Done Saying AI Will Kill Software Development?',
     slug: 'are-we-finally-done-saying-ai-will-kill-software-development',
-    tags: ['conference', 'ai', 'opinion'],
+    tags: ['conference', 'ai', 'opinion', 'software', 'career'],
     description: 'It felt like everyone was saying AI would kill software development. At Render Atlanta, the discourse seems to be changing.',
     cover: 'render26.png',
     published: new Date(2026, 7, 17),
