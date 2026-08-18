@@ -8,6 +8,8 @@ export interface PostMetadata {
   shortCodes?: string[];
   bskyThreadId?: string;
   updated?: Date;
+  coverFilterLight?: string;
+  coverFilterDark?: string;
 }
 
 export interface CoverFilters {

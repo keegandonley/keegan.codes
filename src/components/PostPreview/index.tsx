@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 import { formatDate } from '@/util/date';
 import Image from 'next/image';
 import { BUCKET_URL } from '@/util/const';
-import { parseToProps } from '@/util/image';
+import { coverFilterStyle, parseToProps } from '@/util/image';
 import { captureException } from '@sentry/nextjs';
 import { getPostForSlug } from '@/util/post';
 
@@ -55,6 +55,10 @@ export const PostPreviewRenderer = async (props: PostPreviewProps) => {
           alt={post.title}
           fill
           {...parseToProps(post.metadata)}
+          style={coverFilterStyle({
+            coverFilterLight: post.coverFilterLight,
+            coverFilterDark: post.coverFilterDark,
+          })}
         />
       </Link>
     </div>

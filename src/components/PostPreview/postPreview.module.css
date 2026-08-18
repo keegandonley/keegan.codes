@@ -32,6 +32,14 @@
   transition: all 0.2s;
 }
 
+.post img {
+  filter: var(--cover-filter-light, none);
+}
+
+:global(body.dark) .post img {
+  filter: var(--cover-filter-dark, none);
+}
+
 .post h4 {
   font-size: 1.2em;
 }

@@ -60,6 +60,7 @@ export const postMetadata: PostMetadata[] = [
     published: new Date(2026, 7, 17),
     shortCodes: ['software-dead'],
     bskyThreadId: '',
+    coverFilterLight: 'invert(1) hue-rotate(180deg)',
   },
   {
     title: 'Beginning a New Chapter of my Career with Kizen',
@@ -249,6 +250,7 @@ export const postMetadata: PostMetadata[] = [
     published: new Date(2026, 6, 13),
     shortCodes: ['every-side-project'],
     bskyThreadId: '3mqkrjnwq322b',
+    coverFilterDark: 'invert(1) hue-rotate(180deg)',
   },
   {
     title: 'I Own My Data',
@@ -296,6 +298,7 @@ export const postMetadata: PostMetadata[] = [
     published: new Date(2026, 4, 7),
     shortCodes: ['hypothesis-mobile'],
     bskyThreadId: '3mlccbzi23c22',
+    coverFilterLight: 'invert(1) hue-rotate(180deg)',
   },
   {
     title: 'Introducing Thirsty Bot: The Cocktail-Making AI',
@@ -329,6 +332,7 @@ export const postMetadata: PostMetadata[] = [
   'ai-productivity',
 ],
     bskyThreadId: '3me267qhzsk26',
+    coverFilterLight: 'invert(1) hue-rotate(180deg)',
   },
   {
     title: 'Using Effective Feedback and Communication to Boost Developer Confidence',
@@ -418,6 +422,7 @@ export const postMetadata: PostMetadata[] = [
     published: new Date(2025, 5, 4),
     shortCodes: ['product-focused'],
     bskyThreadId: '3lqsskjrpu22r',
+    coverFilterDark: 'invert(1) hue-rotate(180deg)',
   },
   {
     title: 'React Technical Interview Questions',

@@ -59,6 +59,14 @@
   overflow: hidden;
 }
 
+.imageParent img {
+  filter: var(--cover-filter-light, none);
+}
+
+:global(body.dark) .imageParent img {
+  filter: var(--cover-filter-dark, none);
+}
+
 .text {
   position: absolute;
   right: -5px;

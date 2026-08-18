@@ -29,6 +29,8 @@ export async function GET(request: Request) {
       published: post.published,
       wordCount: (wordCounts as Record<string, number>)[post.slug],
       bskyThreadId: post.bskyThreadId,
+      coverFilterLight: post.coverFilterLight,
+      coverFilterDark: post.coverFilterDark,
     }))
     .sort((a, b) => {
       if (!a.published || !b.published) {

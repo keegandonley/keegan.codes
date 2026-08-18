@@ -18,6 +18,8 @@ const toListing = (post: PostMetadata) => ({
   cover: post.cover,
   published: post.published,
   wordCount: (wordCounts as Record<string, number>)[post.slug],
+  coverFilterLight: post.coverFilterLight,
+  coverFilterDark: post.coverFilterDark,
 });
 
 const getListings = () =>

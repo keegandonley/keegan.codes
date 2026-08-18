@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from './mdxEntryRow.module.css';
 import Image from 'next/image';
 import { BOOK_BUCKET_URL, BUCKET_URL } from '@/util/const';
-import { parseToProps } from '@/util/image';
+import { coverFilterStyle, parseToProps } from '@/util/image';
 import { merge } from '@/util/classNames';
 import { Date } from './components/Date';
 import { ReadingTime } from './components/ReadingTime';
@@ -34,6 +34,8 @@ interface MDXEntryRowProps extends ElementBaseProps {
   fixedCommentCount?: number;
   loader?: boolean;
   imageMetadata?: ImageMetadata;
+  coverFilterLight?: string;
+  coverFilterDark?: string;
 }
 
 export const MDXEntryRow = ({
@@ -54,6 +56,8 @@ export const MDXEntryRow = ({
   imageMetadata,
   filler,
   loader,
+  coverFilterLight,
+  coverFilterDark,
 }: MDXEntryRowProps) => {
   const metadata = imageMetadata;
 
@@ -95,7 +99,10 @@ export const MDXEntryRow = ({
         className={merge(styles.parent, styles.a, loader ? styles.loader : '')}
       >
         {cover && !loader ? (
-          <div className={merge(styles.imageParent, book && styles.book)}>
+          <div
+            className={merge(styles.imageParent, book && styles.book)}
+            style={coverFilterStyle({ coverFilterLight, coverFilterDark })}
+          >
             <div className={styles.fieldWrapper}>
               <div className={styles.field}>
                 <ReadingTime wordCount={wordCount} />
@@ -112,7 +119,10 @@ export const MDXEntryRow = ({
             />
           </div>
         ) : loader ? (
-          <div className={merge(styles.imageParent, book && styles.book)}>
+          <div
+            className={merge(styles.imageParent, book && styles.book)}
+            style={coverFilterStyle({ coverFilterLight, coverFilterDark })}
+          >
             <Image
               src={`${BUCKET_URL}/loading-cover.png`}
               alt="Loading image placeholder"

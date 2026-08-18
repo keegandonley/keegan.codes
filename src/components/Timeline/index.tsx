@@ -14,7 +14,7 @@ import { merge } from '@/util/classNames';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { BUCKET_URL } from '@/util/const';
-import { parseToProps } from '@/util/image';
+import { coverFilterStyle, parseToProps } from '@/util/image';
 import { formatDate } from '@/util/date';
 import {
   getLatestPosts,
@@ -136,6 +136,10 @@ const Timeline = async (props: TimelineProps) => {
                 fill
                 {...parseToProps(p.metadata)}
                 sizes={`(max-width: 700px) 100vw, 50vw`}
+                style={coverFilterStyle({
+                  coverFilterLight: p.coverFilterLight,
+                  coverFilterDark: p.coverFilterDark,
+                })}
               />
             </Link>
           );

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import styles from './blogPreview.module.css';
 import Image from 'next/image';
 import { BUCKET_URL } from '@/util/const';
-import { parseToProps } from '@/util/image';
+import { coverFilterStyle, parseToProps } from '@/util/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -64,6 +64,10 @@ export const ClientRenderer = ({ posts }: ClientRendererProps) => {
               )}
               onMouseOver={() => setActiveIndex(postIndex)}
               href={`/blog/${post.slug}`}
+              style={coverFilterStyle({
+                coverFilterLight: post.coverFilterLight,
+                coverFilterDark: post.coverFilterDark,
+              })}
             >
               <span className={styles.text}>
                 <div className={styles.inner}>

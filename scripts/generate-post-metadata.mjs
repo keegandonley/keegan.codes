@@ -17,6 +17,8 @@ const METADATA_KEYS = [
   'shortCodes',
   'bskyThreadId',
   'updated',
+  'coverFilterLight',
+  'coverFilterDark',
 ];
 const REQUIRED_KEYS = ['title', 'slug', 'description', 'cover', 'published'];
 

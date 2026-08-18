@@ -24,6 +24,8 @@ export default async function BlogPage() {
       cover: post.cover,
       published: post.published,
       wordCount: (wordCounts as Record<string, number>)[post.slug],
+      coverFilterLight: post.coverFilterLight,
+      coverFilterDark: post.coverFilterDark,
     }))
     .sort((a, b) => {
       if (!a.published || !b.published) {

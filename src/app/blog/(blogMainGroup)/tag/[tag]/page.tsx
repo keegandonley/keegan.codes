@@ -82,6 +82,8 @@ export default async function BlogTagPage(props: BlogTagPageProps) {
       cover: post.cover,
       published: post.published,
       wordCount: (wordCounts as Record<string, number>)[post.slug],
+      coverFilterLight: post.coverFilterLight,
+      coverFilterDark: post.coverFilterDark,
     }))
     .filter((p) => {
       return p.tags

@@ -97,6 +97,11 @@
   object-fit: cover;
   height: 100%;
   border-radius: 0.75rem;
+  filter: var(--cover-filter-light, none);
+}
+
+:global(body.dark) .imageParent img {
+  filter: var(--cover-filter-dark, none);
 }
 
 .placeholder {
