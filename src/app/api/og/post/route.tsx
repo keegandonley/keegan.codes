@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { ImageResponse } from '@vercel/og';
 import { BUCKET_URL } from '@/util/const';
+import { AVATAR_SRC } from '../avatar';
 import { OG_CACHE_HEADERS } from '../cache';
 
 const [oswaldData, oswaldLightData] = await Promise.all([
@@ -117,7 +118,7 @@ export async function GET(request: Request) {
             boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.6)',
             border: '2px solid white',
           }}
-          src={`${BUCKET_URL}/avatar.jpg`}
+          src={AVATAR_SRC}
         />
         <div
           style={{

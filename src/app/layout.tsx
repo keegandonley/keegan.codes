@@ -115,6 +115,15 @@ export async function generateMetadata() {
     metadataBase: new URL('https://keegan.codes'),
     title: NAME,
     description: DESCRIPTION,
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/favicon-32x32.png?v=4', type: 'image/png', sizes: '32x32' },
+        { url: '/favicon-16x16.png?v=4', type: 'image/png', sizes: '16x16' },
+      ],
+      apple: [{ url: '/apple-touch-icon.png?v=4', sizes: '180x180' }],
+    },
+    manifest: '/site.webmanifest',
     openGraph: {
       title: NAME,
       description: DESCRIPTION,
