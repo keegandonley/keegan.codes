@@ -115,15 +115,6 @@ export async function generateMetadata() {
     metadataBase: new URL('https://keegan.codes'),
     title: NAME,
     description: DESCRIPTION,
-    // The icons in public/ had no declaration at all, so only favicon.ico and
-    // apple-touch-icon.png were ever fetched -- browsers probe those two root
-    // paths by convention. Everything else (the PNG sizes, the manifest, and
-    // via it the android-chrome icons) was unreachable, which is why installed
-    // PWA icons never picked up a new photo. The ?v= matches site.webmanifest.
-    //
-    // safari-pinned-tab.svg is deliberately NOT declared: it's still traced
-    // from the old photo, and adding a mask-icon link would start serving a
-    // stale face rather than nothing. Declare it once it's been redrawn.
     icons: {
       icon: [
         { url: '/favicon.ico', sizes: 'any' },
