@@ -64,6 +64,20 @@ export async function generateMetadata(
     },
     alternates: {
       canonical: `${BASEURL}/blog/tag/${params.tag}`,
+      types: {
+        'application/rss+xml': [
+          {
+            url: `${BASEURL}/blog/tag/${params.tag}/feed.xml`,
+            title: `${decodedTag} \u00b7 ${NAME}`,
+          },
+        ],
+        'application/atom+xml': [
+          {
+            url: `${BASEURL}/blog/tag/${params.tag}/feed.atom`,
+            title: `${decodedTag} \u00b7 ${NAME}`,
+          },
+        ],
+      },
     },
   };
 }
