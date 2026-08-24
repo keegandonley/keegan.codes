@@ -2,7 +2,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from '@vercel/og';
 import { getComponentForKey, getKey } from '@/app/library/util';
-import { BOOK_BUCKET_URL, BUCKET_URL } from '@/util/const';
+import { BOOK_BUCKET_URL } from '@/util/const';
+import { AVATAR_SRC } from '../avatar';
 import { getBookCoverMetadata, parseSource } from '@/util/image';
 import { OG_CACHE_HEADERS } from '../cache';
 
@@ -128,7 +129,7 @@ export async function GET(request: Request) {
               boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.6)',
               border: '2px solid white',
             }}
-            src={`${BUCKET_URL}/avatar.jpg`}
+            src={AVATAR_SRC}
           />
         </div>
       </div>

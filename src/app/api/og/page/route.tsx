@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import { DESCRIPTION, NAME } from '@/metadata';
-import { BUCKET_URL } from '@/util/const';
 import { ImageResponse } from '@vercel/og';
 import { Div } from '../components/Div';
 import { postCount as bookCount } from '@/book-count';
 import { postCount } from '@/post-count';
+import { AVATAR_SRC } from '../avatar';
 import { OG_CACHE_HEADERS } from '../cache';
 
 const brandBlue = 'rgba(32, 65, 123, 1)';
@@ -78,7 +78,7 @@ export async function GET(request: Request) {
             boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.6)',
             border: '2px solid white',
           }}
-          src={`${BUCKET_URL}/avatar.jpg`}
+          src={AVATAR_SRC}
         />
         <p
           style={{

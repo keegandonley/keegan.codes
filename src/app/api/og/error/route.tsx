@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from '@vercel/og';
 import { BUCKET_URL } from '@/util/const';
+import { AVATAR_SRC } from '../avatar';
 import { OG_CACHE_HEADERS } from '../cache';
 
 const brandBlue = 'rgba(32, 65, 123, 1)';
@@ -54,7 +55,7 @@ export async function GET(request: Request) {
           right: 30,
           bottom: 40,
         }}
-        src={`${BUCKET_URL}/avatar.jpg`}
+        src={AVATAR_SRC}
       />
     </div>,
     {
