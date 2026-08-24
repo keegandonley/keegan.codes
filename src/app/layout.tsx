@@ -149,6 +149,10 @@ export async function generateMetadata() {
     },
     alternates: {
       canonical: BASEURL,
+      types: {
+        'application/rss+xml': [{ url: `${BASEURL}/feed.xml`, title: NAME }],
+        'application/atom+xml': [{ url: `${BASEURL}/feed.atom`, title: NAME }],
+      },
     },
   };
 }

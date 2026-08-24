@@ -6,3 +6,5 @@ Disallow: /routing-error
 Disallow: /frame/
 
 Sitemap: https://keegan.codes/sitemap.xml
+Sitemap: https://keegan.codes/feed.xml
+Sitemap: https://keegan.codes/feed.atom

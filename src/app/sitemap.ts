@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getAllPosts } from '@/app/blog/util';
+import { getAllPosts, getAllTags } from '@/app/blog/util';
 import Books from '@/books';
 import { readFileSync } from 'fs';
 import { join } from 'path';
@@ -41,6 +41,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly',
     },
     {
+      url: 'https://keegan.codes/feed.xml',
+      lastModified: published,
+      changeFrequency: 'weekly' as const,
+      priority: 0.4,
+    },
+    {
+      url: 'https://keegan.codes/feed.atom',
+      lastModified: published,
+      changeFrequency: 'weekly' as const,
+      priority: 0.4,
+    },
+    {
       url: 'https://keegan.codes/links',
       lastModified: published,
       priority: 0.6,
@@ -78,9 +90,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.3,
       };
     }) ?? []),
-    ...Array.from(
-      new Set(getAllPosts().flatMap((post) => post.tags ?? [])),
-    ).map((tag) => ({
+    ...getAllTags().map((tag) => ({
       url: `https://keegan.codes/blog/tag/${encodeURIComponent(tag)}`,
       lastModified: published,
       priority: 0.5,

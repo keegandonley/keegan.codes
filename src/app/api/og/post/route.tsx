@@ -3,6 +3,7 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { ImageResponse } from '@vercel/og';
+import { getPostBySlug } from '@/app/blog/util';
 import { BUCKET_URL } from '@/util/const';
 import { AVATAR_SRC } from '../avatar';
 import { OG_CACHE_HEADERS } from '../cache';
@@ -23,19 +24,10 @@ export async function GET(request: Request) {
     return new Response('No slug provided', { status: 400 });
   }
 
-  let post;
+  const post = getPostBySlug(slug);
 
-  try {
-    post = await fetch(
-      `https://keegan.codes/api/posts/single?slug=${slug}`,
-    ).then((res) => res.json());
-  } catch (ex) {
-    console.error('Error fetching post for slug', slug, 'at', request.url, ex);
-    return new Response('Error fetching post data', { status: 500 });
-  }
-
-  if (!post.slug) {
-    console.error('Count not find the post for', slug, 'at', request.url);
+  if (!post) {
+    console.error('Could not find the post for', slug, 'at', request.url);
     return new Response('No post found', { status: 404 });
   }
 
@@ -93,7 +85,7 @@ export async function GET(request: Request) {
             color: 'white',
             padding: '5px 10% 0 10%',
             fontWeight: 'bold',
-            fontFamily: '"Raleway"',
+            fontFamily: '"Oswald"',
           }}
         >
           {post.title}
