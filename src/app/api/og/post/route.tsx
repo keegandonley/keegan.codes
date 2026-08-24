@@ -8,8 +8,8 @@ import { BUCKET_URL } from '@/util/const';
 import { AVATAR_SRC } from '../avatar';
 import { OG_CACHE_HEADERS } from '../cache';
 
-const [oswaldData, oswaldLightData] = await Promise.all([
-  readFile(join(process.cwd(), 'src/app/fonts/Oswald.ttf')),
+const [instrumentSerifData, oswaldLightData] = await Promise.all([
+  readFile(join(process.cwd(), 'src/app/fonts/InstrumentSerif.ttf')),
   readFile(join(process.cwd(), 'src/app/fonts/Oswald-Light.ttf')),
 ]);
 
@@ -84,8 +84,9 @@ export async function GET(request: Request) {
             marginBottom: 0,
             color: 'white',
             padding: '5px 10% 0 10%',
-            fontWeight: 'bold',
-            fontFamily: '"Oswald"',
+            fontWeight: 400,
+            letterSpacing: '0.01em',
+            fontFamily: 'InstrumentSerif',
           }}
         >
           {post.title}
@@ -138,8 +139,8 @@ export async function GET(request: Request) {
       headers: OG_CACHE_HEADERS,
       fonts: [
         {
-          name: 'Oswald',
-          data: oswaldData,
+          name: 'InstrumentSerif',
+          data: instrumentSerifData,
           style: 'normal',
         },
         {
