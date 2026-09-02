@@ -51,6 +51,7 @@ export const postComponents: Record<string, () => Promise<PostModule>> = {
   "recap-render-24": () => import('./render-2024-recap.mdx'),
   "review-your-own-pull-requests": () => import('./review-your-own-pull-requests.mdx'),
   "sasw-2024": () => import('./sasw-2024.mdx'),
+  "scalene-for-vercel-launches-today": () => import('./scalene-launch.mdx'),
   "abbreviated-variable-names": () => import('./short-variable-names.mdx'),
   "statically-generating-twitter-embeds-and-sharing-for-a-performance-boost": () => import('./statically-generating-twitter-embeds-and-sharing-for-a-performance-boost.mdx'),
   "ai-app-in-72-hours": () => import('./thirsty-bot-deep-dive.mdx'),

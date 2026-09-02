@@ -497,6 +497,17 @@ export const postMetadata: PostMetadata[] = [
     bskyThreadId: '3lahghz54ak2d',
   },
   {
+    title: 'Scalene for Vercel Launches Today!',
+    slug: 'scalene-for-vercel-launches-today',
+    tags: ['mobile', 'ios', 'app', 'native'],
+    description: 'My new app for iOS, iPad OS, and Mac launched today. Use it to get live activities and homescreen widgets for your Vercel projects!',
+    cover: 'scalene-light.png',
+    published: new Date(2026, 8, 2),
+    shortCodes: ['scalene-launch'],
+    bskyThreadId: '',
+    coverFilterDark: 'invert(1) hue-rotate(180deg)',
+  },
+  {
     title: 'When Can I Use Abbreviated Variable Names?',
     slug: 'abbreviated-variable-names',
     tags: ['software', 'opinion'],

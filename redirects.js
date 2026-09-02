@@ -53,4 +53,9 @@ module.exports = [
   ],
   ['/repo', 'https://github.com/keegandonley/keegan.codes', false],
   ['/render26', '/intro?source=render26&medium=qr', false],
+  [
+    '/scalene-ios',
+    'https://apps.apple.com/us/app/scalene-for-vercel/id6792431857',
+    false,
+  ],
 ];
