@@ -500,7 +500,7 @@ export const postMetadata: PostMetadata[] = [
     title: 'Scalene for Vercel Launches Today!',
     slug: 'scalene-for-vercel-launches-today',
     tags: ['mobile', 'ios', 'app', 'native'],
-    description: 'My new app for iOS, iPad OS, and Mac launched today. Use it to get live activities and homescreen widgets for your Vercel projects!',
+    description: 'My new app for iOS and Mac launched today! It gives you live activities and widgets for your Vercel projects, including analytics, performance insights, and deployment status!',
     cover: 'scalene-light.png',
     published: new Date(2026, 8, 2),
     shortCodes: ['scalene-launch'],
