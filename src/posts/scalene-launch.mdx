@@ -1,0 +1,104 @@
+export const title = 'Scalene for Vercel Launches Today!';
+export const slug = 'scalene-for-vercel-launches-today';
+export const tags = ['mobile', 'ios', 'app', 'native'];
+export const description =
+  'My new app for iOS and Mac launched today! It gives you live activities and widgets for your Vercel projects, including analytics, performance insights, and deployment status!';
+export const cover = 'scalene-light.png';
+export const published = new Date(2026, 8, 2);
+export const shortCodes = ['scalene-launch'];
+export const bskyThreadId = '';
+export const coverFilterDark = 'invert(1) hue-rotate(180deg)';
+
+<div style={{ display: 'flex', paddingBottom: '2rem' }}>
+  <a
+    href="https://keegan.codes/scalene-ios"
+    target="_blank"
+    style={{
+      marginLeft: 'auto',
+    }}
+  >
+    <img
+      src="https://static.donley.xyz/appstore-black.svg"
+      alt="Download on the App Store"
+      style={{
+        height: '54px',
+      }}
+      height="54"
+    />
+  </a>
+</div>
+
+I've been a long-time Vercel user. It's where I host [this blog](/blog/welcome-to-my-new-blog), as well as the large majority
+of my other projects, like [hypothesis.sh](blog/claude-code-developer-tools). One thing I was really
+missing was a native app for iPhone and iPad that not only allowed me to look up my deployments and analytics, but also
+view live deployment statuses and other realtime metrics.
+
+Today, after a few months of work, I'm happy to announce that I solved my own problem (and hopefully one of yours too!), and launched [Scalene](https://scalene.app) for iOS and iPad!
+
+## Scalene for Vercel
+
+Scalene has a bunch of features for viewing analytics and usage across your projects, laid out to be glanceable whether you have one or many.
+
+![](scalene-screens-shadow.png?hideShadow)
+
+There is also deep integration with iOS to keep you informed (my favorite part): Live activities and push notifications for every deployment, homescreen widgets
+with deployment status, traffic analytics, and performance insights, as well as a lockscreen widget!
+
+These live activities and push notifications
+work through a relay. When you first connect the app, a webhook is installed into your account, secured with a token, pointing at the Scalene relay, and any additional users or devices
+that connect to the same account or team share the single webhook. The relay handles fanning out push notifications and live activities to authenticated devices.
+
+![](scalene-widgets.png?hideShadow)
+
+Scalene lets your view each build log, and manage redeploying and promoting builds. Notifications can be configured on a per-project
+basis depending on your desire, and are device-specific, so one device can be noisier than another. There's even an Apple Watch companion too!
+
+![](scalene-screens-2.png?hideShadow)
+
+The app is built for iPad from the start, and I have in-progress a dedicated Mac app. In the meantime, the iPad app running on Apple Silicon Macs works quite well.
+
+![](scalene-ipad.png?hideShadow)
+
+I have an Android version in development as well that I expect will hit the Play Store in the coming weeks. I've been testing it on my Pixel 11 for the past week or so
+and it's been working really nicely, though the integration surfaces are a little different than iOS.
+
+## Pricing
+
+In the US, I have the app priced at $6.99, with a launch week discount down to $2.99. Nobody needs another subscription, but I've put a lot of time into this project, and do have some ongoing costs
+with the push notification relay. I think that a one-time, upfront cost is a good balance here.
+
+But don't worry! As a longtime reader of my blog, you have a chance to get it for free! Here are 5 redemption codes that the first 5 people can use:
+
+YHYJFF9PMXK9
+K3FFKRTWW7MK
+XTHRL9P96H46
+EW7YARTF6R9Y
+TR64HLFP4WFE
+
+Please feel free to take one if you'll use the app, and especially if you'd be willing to provide feedback!
+I'd love to hear how you're using it and how well it works at [support@scalene.app](mailto:support@scalene.app).
+And if by the time you read this they're all taken, try to snag it at a discounted price before it goes back to full!
+
+Take a look at [scalene.app](https://scalene.app/) for the full feature set and for more information about how it works!
+
+&nbsp;
+
+<div style={{ display: 'flex', paddingBottom: '2rem' }}>
+  <a
+    href="https://keegan.codes/scalene-ios"
+    target="_blank"
+    style={{
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    }}
+  >
+    <img
+      src="https://static.donley.xyz/appstore-black.svg"
+      alt="Download on the App Store"
+      style={{
+        height: '54px',
+      }}
+      height="54"
+    />
+  </a>
+</div>
