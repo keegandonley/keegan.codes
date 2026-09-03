@@ -1,3 +1,4 @@
+import { AppleAppStoreLink } from '../components/AppStoreLink/Apple';
 export const title = 'Scalene for Vercel Launches Today!';
 export const slug = 'scalene-for-vercel-launches-today';
 export const tags = ['mobile', 'ios', 'app', 'native', 'android', 'vercel'];
@@ -10,22 +11,7 @@ export const bskyThreadId = '3mularca5t22c';
 export const coverFilterDark = 'invert(1) hue-rotate(180deg)';
 
 <div style={{ display: 'flex', paddingBottom: '2rem' }}>
-  <a
-    href="https://keegan.codes/scalene-ios"
-    target="_blank"
-    style={{
-      marginLeft: 'auto',
-    }}
-  >
-    <img
-      src="https://static.donley.xyz/appstore-black.svg"
-      alt="Download on the App Store"
-      style={{
-        height: '54px',
-      }}
-      height="54"
-    />
-  </a>
+  <AppleAppStoreLink link="https://keegan.codes/scalene-ios" invert />
 </div>
 
 I've been a long-time Vercel user. It's where I host [this blog](/blog/welcome-to-my-new-blog), as well as the large majority
@@ -84,21 +70,5 @@ Take a look at [scalene.app](https://scalene.app/) for the full feature set and 
 &nbsp;
 
 <div style={{ display: 'flex', paddingBottom: '2rem' }}>
-  <a
-    href="https://keegan.codes/scalene-ios"
-    target="_blank"
-    style={{
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    }}
-  >
-    <img
-      src="https://static.donley.xyz/appstore-black.svg"
-      alt="Download on the App Store"
-      style={{
-        height: '54px',
-      }}
-      height="54"
-    />
-  </a>
+  <AppleAppStoreLink link="https://keegan.codes/scalene-ios" center invert />
 </div>

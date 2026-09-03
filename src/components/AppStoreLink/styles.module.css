@@ -1,0 +1,44 @@
+.appStoreBlack {
+  display: none;
+}
+
+.appStoreBlack.invert {
+  display: block;
+}
+
+.appStoreWhite {
+  display: block;
+}
+
+.appStoreWhite.invert {
+  display: none;
+}
+
+:global(.dark) .appStoreBlack {
+  display: block;
+}
+
+:global(.dark) .appStoreBlack.invert {
+  display: none;
+}
+
+:global(.dark) .appStoreWhite {
+  display: none;
+}
+
+:global(.dark) .appStoreWhite.invert {
+  display: block;
+}
+
+.link {
+  margin-left: auto;
+}
+
+.center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.appStore {
+  height: 54px;
+}

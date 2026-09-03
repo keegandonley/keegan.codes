@@ -2,6 +2,7 @@ import { IFrame } from '@/components/IFrame';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVial } from '@keegandonley/pro-solid-svg-icons';
 import { faAppStore } from '@fortawesome/free-brands-svg-icons';
+import { AppleAppStoreLink } from '../components/AppStoreLink/Apple';
 
 export const title = 'Introducing the Companion Mobile App for Hypothesis.sh';
 export const slug = 'introducing-the-hypothesis-mobile-app';
@@ -27,22 +28,7 @@ export const bskyThreadId = '3mlccbzi23c22';
 export const coverFilterLight = 'invert(1) hue-rotate(180deg)';
 
 <div style={{ display: 'flex', paddingBottom: '2rem' }}>
-  <a
-    href="https://keegan.codes/hypothesis-app-store"
-    target="_blank"
-    style={{
-      marginLeft: 'auto',
-    }}
-  >
-    <img
-      src="https://static.donley.xyz/appstore-white.svg"
-      alt="Download on the App Store"
-      style={{
-        height: '54px',
-      }}
-      height="54"
-    />
-  </a>
+  <AppleAppStoreLink link="https://keegan.codes/hypothesis-app-store" invert />
 </div>
 
 I recently [wrote a bit about some developer tools that I worked on](https://keegan.codes/blog/claude-code-developer-tools) as a test of Claude Code's capabilities and limits.
@@ -123,21 +109,9 @@ continue expanding the features and tools! Please check it out on [the App Store
 &nbsp;
 
 <div style={{ display: 'flex', paddingBottom: '2rem' }}>
-  <a
-    href="https://keegan.codes/hypothesis-app-store"
-    target="_blank"
-    style={{
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    }}
-  >
-    <img
-      src="https://static.donley.xyz/appstore-white.svg"
-      alt="Download on the App Store"
-      style={{
-        height: '54px',
-      }}
-      height="54"
-    />
-  </a>
+  <AppleAppStoreLink
+    link="https://keegan.codes/hypothesis-app-store"
+    invert
+    center
+  />
 </div>
