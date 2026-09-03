@@ -499,12 +499,12 @@ export const postMetadata: PostMetadata[] = [
   {
     title: 'Scalene for Vercel Launches Today!',
     slug: 'scalene-for-vercel-launches-today',
-    tags: ['mobile', 'ios', 'app', 'native'],
+    tags: ['mobile', 'ios', 'app', 'native', 'android', 'vercel'],
     description: 'My new app for iOS and Mac launched today! It gives you live activities and widgets for your Vercel projects, including analytics, performance insights, and deployment status!',
     cover: 'scalene-light.png',
     published: new Date(2026, 8, 2),
     shortCodes: ['scalene-launch'],
-    bskyThreadId: '',
+    bskyThreadId: '3mularca5t22c',
     coverFilterDark: 'invert(1) hue-rotate(180deg)',
   },
   {
