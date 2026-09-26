@@ -1,0 +1,185 @@
+export const title = 'Social Media Moderation with Jev';
+export const slug = 'social-media-moderation-with-jev';
+export const tags = ['ai', 'Jev', 'software', 'app'];
+export const description =
+  "How Victory Lap uses TypeSafe AI's Jev as an auto-moderator (shared from the Victory Lap blog)";
+export const cover = 'victory-lap-post-header.png';
+export const published = new Date(2026, 8, 26);
+export const shortCodes = ['victory-lap-jev'];
+export const bskyThreadId = '';
+export const draft = false;
+export const coverFilterDark = 'invert(1) hue-rotate(180deg)';
+
+> [Victory Lap](https://victorylap.fit/) is an app I've been working on as a nights-and-weekends type of project, to solve
+> some fitness use-cases that I've always wished existed. It's starting to come together and just entered
+> a private beta (More on that coming soon).
+>
+> This post originally appeared on [Victory Lap's Blog](https://victorylap.fit/blog/social-moderation-with-jev)
+
+---
+
+We didn't originally set out to build any social features into Victory Lap. However, in early beta testing it became
+clear that having a built-in feed of friends' shared activities would be important. This serves not only to celebrate activities and
+achievements, but also to share creative ways of using Victory Lap, including unique templates and designs.
+
+Social platforms are a whole different ball game from a fitness analysis and compositing app. One of the primary initial concerns
+was how to moderate the platform without putting a burden on our tiny team. We settled on a relatively obvious solution, one that often
+comes with a lot of downsides: auto-moderation.
+
+Nobody really likes auto-moderation on social platforms. Posts can get hidden after the fact for no obvious reason, appeals can be frustrating,
+and "shadow-bans" are a constant fear. We wanted to take a stab at solving some of these pain points, while still keeping a safe yet fun
+platform for social interaction. So, Victory Lap's auto-moderation is done using [TypeSafe AI's Jev model](https://typesafe.ai/).
+
+## What is Jev?
+
+Jev is a new frontier AI model that is fundamentally different from the LLMs of today. It's far faster, cheaper, and most notably, only emits structured output and is incredibly reliable for making binary (yes or no) decisions.
+
+You can read more in the technical details [here on their website](https://typesafe.ai/blog/introducing-system-one-models-and-jev).
+
+## Why AI?
+
+We settled on an AI auto-moderator due to the nature of a fitness-focused platform. A simple banned word list is far too restrictive for a platform where phrases like "This ride kicked my ass!" are common. We want to let that one through, while "You're an ass" gets a block for harassment.
+
+## Why Jev?
+
+Simply put, Jev is used to answer questions about a piece of input. For example, "Does the text threaten, incite, or glorify violence against a person or an animal?" For that question, Jev outputs a value between 0 and 1, indicating the likelihood of the answer being yes.
+
+This is a bit different from other AI models. The primary benefit for Victory Lap is that it's orders of magnitude faster than other types of AI. One of the big problems with most auto-moderation systems
+is that they work after the fact, and the user doesn't know that a piece of content, be it a post or comment, was caught up in the filter.
+
+We also don't want an opaque moderation process that is confusing or frustrating. Due
+to the low price and high speed of Jev, we run the moderation at post time, every time, and immediately give the user feedback on whether their post was allowed or rejected.
+
+## Auto-Moderation Workflow
+
+We ask Jev to answer a series of questions about the text being submitted by the user:
+
+```ts
+const questions = {
+  harassment: noul(
+    'Does the text harass or insult a specific person? Swearing at a hill or a workout is not harassment.',
+  ),
+  violence: noul(
+    'Does the text threaten or glorify violence? "Crushed it" or "killed that climb" is not violence.',
+  ),
+  spam: noul(
+    'Is the text advertising or promotion? Mentioning your bike or shoes is not spam.',
+  ),
+  // ...plus sexual, hate, and self_harm
+  severity: score('How harmful is the worst part of the text?', [
+    'Not harmful',
+    'Mildly inappropriate',
+    'Clearly inappropriate',
+    'Severe',
+  ]),
+};
+
+const { answers } = await client.systemOne({
+  state: { kind: 'workout post', text: post.caption },
+  questions,
+});
+
+// answers.harassment → { type: 'noul', noul: 0.02 }
+// answers.severity   → { type: 'score', score: 0 }
+```
+
+One of our guiding principles for moderation is to give the user an opportunity to immediately correct the issue themselves. Rather than drop your post silently into
+a review queue, we give the option to correct the content and try again. In certain scenarios where it's possible the auto-moderator got it wrong, and you don't want to change your content, you can submit it for manual moderator review. Our team is small, so the goal is to limit how
+often this really happens.
+
+We do also have a blocked word list. Some words on it are always blocked; others go through a secondary
+AI review to see if it might have been a mismatch on a partial word.
+
+Here's the general flow when new content is submitted:
+
+```
+                 User submits text
+                        │
+                        ▼
+              ┌───────────────────┐
+              │ Blocked word list │   (local, instant)
+              └─────────┬─────────┘
+             no match   │   match
+        ┌───────────────┴───────────────┐
+        ▼                               ▼
+┌───────────────┐         ┌───────────────────────────┐
+│  Jev screen   │         │ Jev: Could this word be   │
+│ (7 questions) │         │ innocent here? (a name,   │
+└───────┬───────┘         │ a place, a brand...)      │
+        │                 └─────────────┬─────────────┘
+        ▼                          no   │   yes
+  Compare scores to           ┌─────────┴─────────┐
+  thresholds                  ▼                   ▼
+        │               Rejected, no         Rejected, can
+  pass  │  hold         appeal               ask for review
+   ┌────┴─────┐                                   │
+   ▼          ▼                                   │
+Published  Might break guidelines.                │
+           → edit it, or ask for review           │
+                      │                           │
+                      └─────────────┬─────────────┘
+                                    ▼
+                      Held for review → admins notified
+                                    │
+                                    ▼
+                      Human approves (published) or rejects (deleted)
+```
+
+## Reporting Posts
+
+Users can also report content on Victory Lap that they find objectionable. This uses a combination of automated review with Jev and human intervention.
+
+When you report something, it is immediately hidden from you. Your report then triggers a second look by Jev. The auto-moderator gets a hint of what the content was reported for, and uses stricter thresholds, so it's more likely to be hidden for everyone while it waits for human review. After 3 independent reports, the content is immediately hidden until a human can review it, regardless of Jev's determination. Reports are rate-limited over a rolling window to prevent abuse.
+
+Here's the general report flow:
+
+```
+              User reports a post, comment, or photo
+                  (reason: spam, harassment, hate...)
+                                │
+                                ▼
+                 Hidden from the reporter right away
+                                │
+                                ▼
+              Added to the review queue → admins notified
+                                │
+                                ▼
+                    ┌───────────────────────┐
+                    │ 3 or more reports on  │
+                    │ this content?         │
+                    └───────────┬───────────┘
+                       yes      │      no
+               ┌────────────────┴────────────────┐
+               ▼                                 ▼
+      Hidden for everyone              ┌───────────────────────┐
+      until reviewed                   │ Jev re-screens it,    │
+               │                       │ with the report       │
+               │                       │ reasons as a hint and │
+               │                       │ stricter thresholds   │
+               │                       └───────────┬───────────┘
+               │                          hold     │     pass
+               │                     ┌─────────────┴────────────┐
+               │                     ▼                          ▼
+               │            Hidden for everyone          Stays up, still
+               │            until reviewed               in the queue
+               │                     │                          │
+               └─────────────────────┼──────────────────────────┘
+                                     ▼
+            Human approves (restored) or rejects (deleted)
+```
+
+## Cost
+
+All of this can be done for around $0.00004 per post or comment. That's about $1 per 25,000 posts. Not too bad!
+
+## Final Thoughts
+
+Social moderation is going to be an interesting challenge to take on, but it's one we think is worth it to build the platform we want. Without the auto-moderation engine we've built, the burden would be too high on such a small team to make this work.
+
+Content moderation is hard, and we certainly won't solve it in a weekend. This is an ongoing effort and we'll be continuing to tune the engine as we come out of private beta. But we strongly believe in this direction, and that we can build a safe and fun platform for all. Jev is scalable, fast, and exactly what we need for a new kind of content moderation.
+
+---
+
+> Follow along as I build [Victory Lap](https://victorylap.fit/) with a tiny team. It's an app for compositing and sharing
+> your favorite photos and videos from any workout! You can find the app on [Bluesky](https://bsky.app/profile/victorylap.fit) or [sign up](https://form.typeform.com/to/hh68BufU) to be one of the first to know
+> when it launches!

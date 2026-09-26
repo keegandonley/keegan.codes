@@ -607,6 +607,17 @@ export const postMetadata: PostMetadata[] = [
     shortCodes: ['vercel-deployment-protection'],
   },
   {
+    title: 'Social Media Moderation with Jev',
+    slug: 'social-media-moderation-with-jev',
+    tags: ['ai', 'Jev', 'software', 'app'],
+    description: "How Victory Lap uses TypeSafe AI's Jev as an auto-moderator (shared from the Victory Lap blog)",
+    cover: 'victory-lap-post-header.png',
+    published: new Date(2026, 8, 26),
+    shortCodes: ['victory-lap-jev'],
+    bskyThreadId: '',
+    coverFilterDark: 'invert(1) hue-rotate(180deg)',
+  },
+  {
     title: 'Visual Regression Testing with Storybook',
     slug: 'visual-regression-testing',
     tags: [

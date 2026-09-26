@@ -62,6 +62,7 @@ export const postComponents: Record<string, () => Promise<PostModule>> = {
   "trip-to-europe-part-ii-lisbon": () => import('./trip-to-europe-part-ii-lisbon.mdx'),
   "using-ai-to-generate-dall-e-2-prompts": () => import('./using-ai-to-generate-dall-e-2-prompts.mdx'),
   "how-to-use-vercel-deployment-protection-next-rsc": () => import('./vercel-deployment-protection.mdx'),
+  "social-media-moderation-with-jev": () => import('./victory-lap-content-moderation.mdx'),
   "visual-regression-testing": () => import('./visual-regression-tests.mdx'),
   "welcome-to-my-new-blog": () => import('./welcome-to-my-new-blog.mdx'),
   "why-write-a-newsletter": () => import('./why-write-a-newsletter.mdx'),
