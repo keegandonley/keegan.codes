@@ -614,7 +614,7 @@ export const postMetadata: PostMetadata[] = [
     cover: 'victory-lap-post-header.png',
     published: new Date(2026, 8, 26),
     shortCodes: ['victory-lap-jev'],
-    bskyThreadId: '',
+    bskyThreadId: '3mwgpw42pac23',
     coverFilterDark: 'invert(1) hue-rotate(180deg)',
   },
   {
